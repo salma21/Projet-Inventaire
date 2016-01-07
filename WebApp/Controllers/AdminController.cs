@@ -130,6 +130,7 @@ namespace WebApp.Controllers
             ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
             ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "Libelle");
             ViewData["contratass"] = new SelectList(BissInventaireEntities.Instance.Contrat_assurance.ToList(), "Id_contrat_assurance", "Num");
+            ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Contrat_garanti.ToList(), "Id_contrat_garanti", "Num");
             ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat_maintenance.ToList(), "Id_contrat_maintenance", "Num");
             ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
             ViewData["Depot"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "IdDepot", "libelle");
@@ -186,10 +187,10 @@ namespace WebApp.Controllers
             }
         }
 
-        public ActionResult RapportBien( string Etage, string Batiment)
+        public ActionResult RapportBien( string Delegation, string Etage, string Batiment)
         {
 
-            var bureaux = BissInventaireEntities.Instance.Bureau.ToList();
+            var delegation = BissInventaireEntities.Instance.Delegation.ToList();
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
           
@@ -197,7 +198,7 @@ namespace WebApp.Controllers
            
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
-            ViewData["bureaux"] = new SelectList(bureaux, "Description", "Description");
+            ViewData["delegation"] = new SelectList(delegation, "libelle", "libelle");
             var bien = BissInventaireEntities.Instance.Bien.ToList();
             int nbr = bien.ToList().Count();
             ViewBag.nbr = nbr;

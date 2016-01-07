@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Domain.Mouvement>
+﻿@model IEnumerable<Domain.MouvementB>
+
 
 <!-- Start Row -->
 <div class="row">
@@ -12,10 +13,10 @@
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                            <th>Organisation</th>
+                            
                             <th>Batiment</th>
-                            <th>Parc</th>
-                            <th>Vehicule</th>
+                            <th>Etage</th>
+                            <th>Bien</th>
                             <th>Nom Mouvement</th>
                             <th>Date derniére affectation</th>
                             <th>Date prochaine affectation</th>
@@ -32,10 +33,11 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td class="center">@item.Bien.Bureau.Etage.Batiment.Organisation.description</td>
-                                <td class="center">@item.Bien.Bureau.Etage.Batiment.description</td>
-                                <td class="center">@item.Bien.Bureau.Etage.description</td>
-                                <td class="center">@item.Bien.Bureau.Description</td>
+                              
+                                <td class="center">@item.Bien.Etage.Batiment.description</td>
+                             
+                                <td class="center">@item.Bien.Etage.description</td>
+                                <td class="center">@item.Bien.Num_Serie</td>
                                 <td class="center">@item.Nom</td>
                                 <td class="center">@item.Date_derniere_affectation</td>
                                 <td class="center">@item.Date_prochaine_affectation</td>
@@ -46,8 +48,8 @@
 
                                 <td>
 
-                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvement })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-
+                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvementB })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    
                                 </td>
 
                             </tr>
@@ -57,7 +59,7 @@
                     </tbody>
                 </table>
                 <br /><p>
-                    @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvement")
+                    @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvementB")
                 </p>
 
             </div>

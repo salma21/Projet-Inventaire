@@ -294,6 +294,16 @@ namespace Data.Infrastructure
                 return EtageRepository ?? (EtageRepository = new EtageRepository(dbFactory));
             }
         }
+
+        private IInventaireBienRepository InventaireBienRepository;
+        IInventaireBienRepository IUnitOfWork.InventaireBienRepository
+        {
+            get
+            {
+                return InventaireBienRepository ?? (InventaireBienRepository = new InventaireBienRepository(dbFactory));
+            }
+        }
+
         protected BissInventaireEntities DataContext
         {
             get

@@ -29,7 +29,7 @@ namespace WebApp.Controllers
 
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
-            ViewData["bureaux"] = new SelectList(bureaux, "Description", "Description");
+           
             //var inv = BissInventaireEntities.Instance.AtbDataTest.ToList(); 
             var inv = BissInventaireEntities.Instance.Bien.ToList();
             return View(inv);
@@ -38,7 +38,7 @@ namespace WebApp.Controllers
         public ActionResult RapportBien( string Etage, string Batiment)
         {
 
-            var bureaux = BissInventaireEntities.Instance.Bureau.ToList();
+           
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
 
@@ -46,7 +46,7 @@ namespace WebApp.Controllers
 
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
-            ViewData["bureaux"] = new SelectList(bureaux, "Description", "Description");
+           
             var bien = BissInventaireEntities.Instance.Bien.ToList();
             int nbr = bien.ToList().Count();
             ViewBag.nbr = nbr;

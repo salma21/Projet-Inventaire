@@ -1,25 +1,48 @@
-﻿@model Domain.Mouvement
+﻿@model Domain.MouvementB
 
 
 @{
-
-    List<string> listBatiment = new List<string>();
+    List<string> listDeleg = new List<string>();
+    List<string> listBat = new List<string>();
     List<string> listEtage = new List<string>();
-
-    List<string> listBureau = new List<string>();
     List<string> listBien = new List<string>();
 }
 
+
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript">
-    function GetEtage(_batimentid) {
+
+    function GetBat(_delegid) {
+        var procemessage = "<option value='0'>En cours</option>";
+        $("#Bat").html(procemessage).show();
+        var url = "/Gestion/FindBatimentByDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegid },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#Bat").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+    function GetEtage(_batid) {
         var procemessage = "<option value='0'>En cours</option>";
         $("#Etage").html(procemessage).show();
         var url = "/Gestion/GetEtageByBatiment/";
 
         $.ajax({
             url: url,
-            data: { batimentid: _batimentid },
+            data: { batid: _batid },
             cache: false,
             type: "POST",
             success: function (data) {
@@ -36,39 +59,14 @@
 
     }
 
-    function GetBur(_etageid) {
-        var procemessage = "<option value='0'>En cours</option>";
-        $("#Bur").html(procemessage).show();
-        var url = "/Gestion/GetBureauByEtage/";
-
-        $.ajax({
-            url: url,
-            data: { etageid: _etageid },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                var markup = "<option value='0'>--Choisir--</option>";
-                for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                }
-                $("#Bur").html(markup).show();
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-
-    }
-
-
-    function GetBien(_burid) {
+    function GetBien(_etid) {
         var procemessage = "<option value='0'>En cours</option>";
         $("#Bien").html(procemessage).show();
-        var url = "/Gestion/GetBienByBureau/";
+        var url = "/Gestion/FindBienByEtage/";
 
         $.ajax({
             url: url,
-            data: { burid: _burid },
+            data: { etid: _etid },
             cache: false,
             type: "POST",
             success: function (data) {
@@ -86,11 +84,12 @@
     }
 </script>
 
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Ajout d'organisation
+                Ajout mouvement bien
             </div>
             <div class="panel-body">
 
@@ -101,47 +100,54 @@
 
 
 
-                    @using (@Html.BeginForm("CreateMouvement", "Gestion", FormMethod.Post,
+                    @using (@Html.BeginForm("CreateMouvementB", "Gestion", FormMethod.Post,
 new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
                         <div class="form-horizontal">
-                            <h4>Organisation</h4>
+                            <h4>Bien</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Batiment</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Delegation</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Bie_idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "ddlstate", @class = "form-control",  required = "True", @onchange = "javascript:GetEtage(this.value);" })
-                                
+                                    @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })*@
+                                    @Html.DropDownList("Delegation", (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })
+
                                 </div>
                             </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Batiment</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownList("Batiment", (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetEtage(this.value);" })
+                                    @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })*@
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Etage</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Id_etage, new SelectList(listEtage), "--Choisir--", new { @id = "Etage", @class = "form-control",  required = "True", @onchange = "javascript:GetBur(this.value);" })
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Bureau</label>
-                                <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Id_bureau, new SelectList(listBureau), "--Choisir--", new { @id = "Bur", @class = "form-control", required = "True" , @onchange = "javascript:GetBien(this.value);" })
+                                    @Html.DropDownListFor(model => model.Id_etage, (SelectList)ViewData["etage"], "--Choisir--", new { @id = "Etage", @class = "form-control", required = "True", @onchange = "javascript:GetBien(this.value);" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Bien</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Id_bien, new SelectList(listBien), "--Choisir--", new {@id = "Bien", @class = "form-control", required = "True" })
+                                    @Html.DropDownListFor(model => model.Id_bien, new SelectList(listBien), "--Choisir--", new { @id = "Bien", @class = "form-control", required = "True" })
                                 </div>
                             </div>
+
+
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Nom , new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Nom , String.Empty, new { @class = "test" })
+                                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -150,7 +156,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date derniére affectation </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -159,7 +165,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date prochaine affectation </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_prochaine_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_prochaine_affectation, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_prochaine_affectation, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -169,7 +175,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date renouvellement </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_renouvellement_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_renouvellement_prevue, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_renouvellement_prevue, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -179,7 +185,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date retour prévue </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_retour_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_retour_prevue, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_retour_prevue, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -189,7 +195,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date sortie</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_sortie, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_sortie, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_sortie, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -197,6 +203,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                         </div>
+
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
@@ -210,30 +217,10 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("List", "GeMouvement")
+                    @Html.ActionLink("Liste des mouvements", "GetMouvementB")
                 </div>
 
             </div>
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Enregistrement Avec Succée </h4>
-            </div>
-            <div class="modal-body">
-                <p>Voulez Vous Ajouter une Autre ?<p>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default">Oui</button>
-                <button type="button" class="btn btn-white" data-dismiss="modal" onClick="document.location='~/Admin/GetOrganisation'">Non</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-

@@ -1,0 +1,225 @@
+﻿@model Domain.MouvementV
+
+@{
+    List<string> listDeleg = new List<string>();
+    List<string> listBat = new List<string>();
+    List<string> listParc = new List<string>();
+    List<string> listVehicule = new List<string>();
+}
+
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+
+    function GetBat(_delegid) {
+        var procemessage = "<option value='0'>En cours</option>";
+        $("#Bat").html(procemessage).show();
+        var url = "/Gestion/GetBatimentByDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegid },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#Bat").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+    function GetParc(_batid) {
+        var procemessage = "<option value='0'>En cours</option>";
+        $("#Parc").html(procemessage).show();
+        var url = "/Gestion/GetParcByBatiment/";
+
+        $.ajax({
+            url: url,
+            data: { batid: _batid },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#Parc").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
+    function GetVeh(_parcid) {
+        var procemessage = "<option value='0'>En cours</option>";
+        $("#Veh").html(procemessage).show();
+        var url = "/Gestion/GetVehiculeByParc/";
+
+        $.ajax({
+            url: url,
+            data: { parcid: _parcid },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#Veh").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout de mouvement
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+
+
+
+                    @using (@Html.BeginForm("CreateMouvementV", "Gestion", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Véhicule</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Delegation</label>
+                                <div class="col-lg-6">
+                                    @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })*@
+                                    @Html.DropDownList("Delegation", (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Batiment</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownList("Batiment", (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })
+                                    @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })*@
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Parc auto</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.Id_parc, (SelectList)ViewData["parc"], "--Choisir--", new { @id = "Parc", @class = "form-control", required = "True", @onchange = "javascript:GetVeh(this.value);" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Vehicule</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.Id_Vehicule, new SelectList(listVehicule), "--Choisir--", new { @id = "Veh", @class = "form-control", required = "True" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date derniére affectation </label>
+                                <div class="col-lg-6">
+                                   
+                                    @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date prochaine affectation </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_prochaine_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_prochaine_affectation, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date renouvellement </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_renouvellement_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_renouvellement_prevue, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date retour prévue </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_retour_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_retour_prevue, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date sortie</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_sortie, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_sortie, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                            <div style="text-align: center;">
+                                <input type="submit" value="Valider" class="btn btn-default" />
+
+                                <button type="reset" class="btn btn-white">Annuler</button>
+
+                            </div>
+
+                    }
+
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("Liste des mouvements", "GeMouvementVehicule")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Domain.Mouvement>
+﻿@model IEnumerable<Domain.MouvementV>
+
 
 
 <!-- Start Row -->
@@ -7,16 +8,15 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Liste des Mouvements Biens
+                Liste des Mouvements Vehicules
             </div>
             <div class="panel-body table-responsive">
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                            <th>Organisation</th>
+                          
                             <th>Batiment</th>
                             <th>Etage</th>
-                            <th>Bureau</th>
                             <th>Bien</th>
                             <th>Nom Mouvement</th>
                             <th>Date derniére affectation</th>
@@ -30,16 +30,18 @@
 
 
 
+
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
-                              
-                                <td class="center">@item.Bien.Bureau.Etage.Batiment.Organisation.description</td>
-                                <td class="center">@item.Bien.Bureau.Etage.Batiment.description</td>
-                                <td class="center">@item.Bien.Bureau.Etage.description</td>
-                                <td class="center">@item.Bien.Bureau.Description</td>
+                             
+                                <td class="center">@item.Vehicule.Parc_auto.Batiment.description</td>
+                                <td class="center">@item.Vehicule.Parc_auto.Libelle</td>
+
+                                <td class="center">@item.Vehicule.Matricule</td>
                                 <td class="center">@item.Nom</td>
+
                                 <td class="center">@item.Date_derniere_affectation</td>
                                 <td class="center">@item.Date_prochaine_affectation</td>
                                 <td class="center">@item.Date_renouvellement_prevue</td>
@@ -49,8 +51,8 @@
 
                                 <td>
 
-                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvement })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                    
+                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvementV })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+
                                 </td>
 
                             </tr>
@@ -58,6 +60,9 @@
 
                         }
                     </tbody>
+
+
+
                 </table>
                 <br /><p>
                     @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvement")
