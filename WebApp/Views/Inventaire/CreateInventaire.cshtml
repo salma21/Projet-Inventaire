@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Ajout Inventaire
+              Inventaire
             </div>
             <div class="panel-body">
 
@@ -20,7 +20,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
                         <div class="form-horizontal">
-                            <h4>Bureau</h4>
+                            <h4>Ajout Inventaire</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
@@ -58,7 +58,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("Back to List", "GetBureuax")
+                    @Html.ActionLink("Liste des inventaires", "GetInventaire")
                 </div>
 
             </div>

@@ -211,6 +211,7 @@
     <Compile Include="Controllers\ImportExportController.cs" />
     <Compile Include="Controllers\InventaireController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ParametreController.cs" />
     <Compile Include="Controllers\PersonnelController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ServiceDController .cs" />
@@ -483,6 +484,9 @@
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
     <Content Include="Views\Gestion\GetMouvementVehicule.cshtml" />
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditContrat_Assurance1.cshtml" />
+    <Content Include="Views\GestionContratetSoc\DetailsAssurence.cshtml" />
+    <Content Include="Views\GestionContratetSoc\DetailsContrat_Assurance.cshtml" />
     <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
   </ItemGroup>
   <ItemGroup>

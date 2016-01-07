@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Achat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,11 +24,9 @@ namespace Domain
         public int Id_achat { get; set; }
         public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_livraison { get; set; }
         public Nullable<int> Num_facture { get; set; }
         public Nullable<int> Num_commande { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_d_achat { get; set; }
         public Nullable<decimal> Prix_d_achat { get; set; }
         public Nullable<int> Num_livraison { get; set; }

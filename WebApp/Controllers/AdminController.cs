@@ -29,8 +29,10 @@ namespace WebApp.Controllers
             return View(bure);
         }
 
+        
         public ActionResult GetUsers()
         {
+            
             var users = db1.GetUtilisateurs();
             return View(users);
         }
