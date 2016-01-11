@@ -1,0 +1,99 @@
+﻿@model Domain.Batiment
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout de Batiment
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+
+
+
+                    @using (@Html.BeginForm("CreateBatiment", "Gestion", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Batiment</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                           
+                            
+                             <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.code, new { @class = "form-control", required = "" })
+                                    
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Description</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.description, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Organisation </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idOrganisation, (SelectList)ViewData["organisation"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.idGouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Delegation </label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+                            
+
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
+                        </div>
+
+                    }
+
+
+                </div>
+
+             
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

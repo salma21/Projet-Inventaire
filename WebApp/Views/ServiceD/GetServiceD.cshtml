@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Domain.ServiceD>
+
+@{
+    ViewBag.Title = "GetServiceD";
+}
+
+<h2>Liste des services</h2>
+
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+               
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Code Service</th>
+                            <th>Nom Service</th>
+                            <th>Direction</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Code Service</th>
+                            <th>Nom Service</th>
+                            <th>Direction</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">@item.Id_service</td>
+                                <td class="center">@item.Libelle</td>
+                                <td class="center">@item.Direction.Libelle</td> 
+
+
+                                <td>
+
+                                    <a href="@Url.Action("EditServiceD", new { id = item.Id_service })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                     </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveau service", "CreateServiceD")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

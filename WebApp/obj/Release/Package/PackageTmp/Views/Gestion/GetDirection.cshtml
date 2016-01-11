@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Domain.Direction>
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Directions
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                           
+                            <th>Direction</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td class="center">@item.Libelle</td>
+                                
+
+
+                                <td>
+
+                                    <a href="@Url.Action("EditDirection", new { id = item.Id_direction })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                      </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter une nouvelle Direction", "CreateDirection")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

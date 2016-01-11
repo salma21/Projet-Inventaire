@@ -1,0 +1,135 @@
+﻿@model IEnumerable<Domain.Bien>
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Biens
+            </div>
+            @using (Html.BeginForm("RapportBien", "Admin", FormMethod.Get))
+            {
+
+
+                <div class="form-horizontal">
+
+
+                    <style>
+                        select {
+                            height: 30px;
+                            width: 220px;
+                        }
+                    </style>
+                    <div style="margin-left:50px;">
+                        <table>          
+                        
+                        
+                      Batiment:     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
+                      ViewBag.CurrentFilter as string)&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                     Bureau :      @Html.DropDownList("bureaux", (SelectList)ViewData["bureaux"], "",
+                     ViewBag.CurrentFilter as string)
+
+                            &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                     Etage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
+                     ViewBag.CurrentFilter as string)
+
+                    
+
+
+
+
+
+
+
+
+                        </table><br /><br />
+                        <center>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Ok" class="btn btn-default" />
+
+                            </div>
+                        </center>
+
+                    </div>
+                    <br /><br />
+                </div>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                                <th>Designation </th>
+                                <th>Batiment </th>
+                                <th>Bureau</th>
+                                <th>Etage</th>
+                                <th>Region</th>
+                                <th>Ville </th>
+                                <th>Categorie </th>
+                                <th>Desigantion </th>
+                                <th>Achat</th>
+                                <th>Code</th>
+                                <th>Mode</th>
+                                <th>Etat</th>
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+
+                                    <td>@item.Designation</td>
+                                    <td>@item.Bureau.Etage.Batiment.description</td>
+                                    <td>@item.Bureau.Description</td>
+
+                                    <td>@item.Bureau.Etage.description</td>
+                                    <td>@item.Bureau.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
+                                    <td>@item.Bureau.Etage.Batiment.Delegation.libelle</td>
+                                    <td>@item.Categorie_materiel.libelle</td>
+                                    <td>@item.Designation</td>
+                                    <td>@item.Achat.Num_facture</td>
+                                    <td>@item.Code</td>
+                                    <td>@item.Mode</td>
+                                    <td>@item.Etat</td>
+                                    <td>
+                                        <a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
+                                    </td>
+                                </tr>
+
+
+
+
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <br /><p>
+
+
+
+
+
+                    </p>
+                    <br /><p>
+                        @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
+
+                              
+                    </p>
+                     
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    $(document).tooltip();
+</script>

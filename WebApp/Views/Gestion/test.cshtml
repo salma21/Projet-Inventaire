@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Domain.AtbDataTest>
+
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+
+        <div id="div-1" class="accordion-body collapse in body">
+
+            @using (Html.BeginForm("SaveUploadedFile", "Gestion", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true)
+
+                <div class="form-horizontal">
+
+
+                    <table class="display" cellspacing="0" width="100%">
+                        <tbody>
+                            <tr>
+                                <td style="text-align:left" width="70%">
+                                    <input type="file" id="fileToUpload" name="file" />
+                                </td>
+                                <td align="right" colspan="2">
+                                    <input type="submit" class="btn btn-default" value="Charger le fichier" />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            }
+
+
+
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Biens
+            </div>
+            @using (Html.BeginForm("RapportBien", "Admin", FormMethod.Get))
+            {
+
+
+                <div class="form-horizontal">
+
+
+                    <style>
+                        select {
+                            height: 30px;
+                            width: 220px;
+                        }
+                    </style>
+                    <div style="margin-left:50px;">
+                        <table>
+
+
+                            Batiment:     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
+                      ViewBag.CurrentFilter as string)&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                            Bureau :      @Html.DropDownList("bureaux", (SelectList)ViewData["bureaux"], "",
+                     ViewBag.CurrentFilter as string)
+
+                            &nbsp;&nbsp; &nbsp;&nbsp;
+                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+
+                            Etage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
+                     ViewBag.CurrentFilter as string)
+
+
+
+
+
+
+
+
+
+
+                        </table><br /><br />
+                        <center>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Ok" class="btn btn-default" />
+
+                            </div>
+                        </center>
+
+                    </div>
+                    <br /><br />
+                </div>
+            }
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                                <th>Code Materiel </th>
+                                <th>Num Serie </th>
+                                <th>Categorie</th>
+                                <th>Modele</th>
+                                <th>Marque</th>
+                                <th>Statut </th>
+                                <th>Fin Garantie </th>
+                                <th>Localisation </th>
+                                <th>Entite Dernier</th>
+                                <th>Date Inventaire</th>
+                                <th>Date Installation</th>
+                                <th>Localisation Complet</th>
+                                <th>Entite Complet</th>
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+
+                                    <td>@item.Code_materiel</td>
+                                    <td>@item.Num_serie</td>
+                                    <td>@item.Categorie</td>
+                                    <td>@item.Modele</td>
+                                    <td>@item.Marque</td>
+                                    <td>@item.Statut</td>
+                                    <td>@item.Fin_garantie</td>
+                                    <td>@item.Localisation_dernier</td>
+                                    <td>@item.Entite_dernier</td>
+                                    <td>@item.Date_inventaire</td>
+                                    <td>@item.Date_installation</td>
+                                    <td>@item.Localisation_complet</td>
+                                    <td>@item.Entite_complet</td>
+                                    <td>
+                                        <a href="@Url.Action("DetailsBien", new { id = item.id })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
+                                    </td>
+                                </tr>
+
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <br /><p>
+
+
+
+
+
+                    </p>
+                    <br /><p>
+                        @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
+
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

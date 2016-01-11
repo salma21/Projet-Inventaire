@@ -1,0 +1,60 @@
+﻿@model Domain.Bien
+<div class="row presentation">
+
+    <div class="panel panel-default">
+        <div class="panel-title">
+           Details Bien
+
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Id Bien </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Code, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Designation </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Batiment </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Bureau.Etage.Batiment.description, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Etage </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Bureau.Etage.description, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Bureau </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Bureau.Description, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+
+
+                }
+            </div>@Html.ActionLink("Retour", "RapportBien")
+        </div>
+    </div>
+</div>

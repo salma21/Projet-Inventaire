@@ -1,0 +1,403 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from egemem.com/theme/kode/v1.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 09 Jun 2015 08:52:59 GMT -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Kode is a Premium Bootstrap Admin Template, It's responsive, clean coded and mobile friendly">
+    <meta name="keywords" content="bootstrap, admin, dashboard, flat admin template, responsive," />
+    <title>Biss Inventaire</title>
+    <!-- ========== Css Files ========== -->
+    @Styles.Render("~/Content/css/root.css")
+
+</head>
+<body>
+    <!-- Start Page Loading -->
+    <div class="loading"><img src="~/Content/img/loading.gif" alt="loading-img"></div>
+    <!-- End Page Loading -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START TOP -->
+    <div id="top" class="clearfix">
+        <!-- Start App Logo -->
+        <div class="applogo">
+
+            <img src="~/Content/img/Nouveau/bissp.png" alt="loading-img" style="height:50px; width:70px;margin-top:-10px;">
+
+        </div>
+        <!-- End App Logo -->
+        <!-- Start Sidebar Show Hide Button -->
+        <a href="#" class="sidebar-open-button"><i class="fa fa-bars"></i></a>
+        <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
+        <!-- End Sidebar Show Hide Button -->
+        <!-- Start Searchbox -->
+        <form class="searchform">
+           
+            <span class="searchbutton"><i class="fa fa-home"></i></span>
+        </form>
+        <!-- End Searchbox -->
+        <!-- Start Top Menu -->
+        <ul class="topmenu">
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Fichier <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Nouveau</a></li>
+                    <li><a href="#">Ouvrir</a></li>
+                    <li><a href="#">Imprimer</a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Édition <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Recherche</a></li>
+                    <li><a href="~/Admin/RapportBien">Création des Biens</a></li>
+                    <li><a href="#">Déplacement des Biens</a></li>
+                    <li><a href="#">Suppression des Biens</a></li>
+                </ul>
+            </li>
+          
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Contrat <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="~/GestionContratetSoc/GetAchat">Contrat d'Achat </a></li>
+                    <li><a href="~/GestionContratetSoc/GetContrat_Maintenance">Contrat de Maintenance </a></li>
+                    <li><a href="~/GestionContratetSoc/GetContrat_Assurance">Contrat d'Assurance </a></li>
+                    <li><a href="~/GestionContratetSoc/GetContrat_Garantie">Contrat de Garantie  </a></li>
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Paramètre <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="~/Personnel/GetPersonnel">Personnel </a></li>
+                    <li><a href="~/GestionContratetSoc/GetSociete_Maintenance">Société de maintenance </a></li>
+                    <li><a href="~/GestionContratetSoc/GetSociete_Assurance">Société d'assurance </a></li>
+        
+                 
+                   
+                </ul>
+            </li>
+            <li><a href="~/Gestion/GetStock">Entrée en Stock</a></li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Import <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="~/ImportExport/Index"><span class="icon color7"><i class="fa fa-file-excel-o"></i></span>&nbsp; &nbsp;  Excel</a></li>
+                    <li><a href="~/ImportExport/ImportTxt"><i class="fa fa-file-text-o"></i>&nbsp; &nbsp;  Txt</a></li>
+
+                </ul>
+            </li>
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Export <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="~/ImportExport/ExportToExel"><span class="icon color7"><i class="fa fa-file-excel-o"></i></span>&nbsp; &nbsp;  Ecxel</a></li>
+                    <li><a href="~/ImportExport/ExportToCSV"><i class="fa fa-file-text-o"></i>&nbsp; &nbsp;  CSV </a></li>
+                  
+                </ul>
+            </li>
+          
+
+
+        </ul>
+        <!-- End Top Menu -->
+        <!-- Start Sidepanel Show-Hide Button -->
+        <!-- End Sidepanel Show-Hide Button -->
+        <!-- Start Top Right -->
+        <ul class="top-right">
+
+            <li class="dropdown link">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="~/Content/img/profileimg.png" alt="img"><b>Test </b><span class="caret"></span></a>
+                <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
+                    <li role="presentation" class="dropdown-header">Profil</li>
+               
+                    <li><a href="#"><i class="fa falist fa-lock"></i> Verrouiller</a></li>
+                    <li><a href="~/Home/Index"><i class="fa falist fa-power-off"></i> Déconnexion</a></li>
+                </ul>
+            </li>
+            <img src="~/Content/img/Nouveau/atb.png" alt="loading-img" style="height:60px; width:80px;margin-top:-15px;">
+        </ul>
+        <!-- End Top Right -->
+
+    </div>
+    <!-- END TOP -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- START SIDEBAR -->
+    <div class="sidebar clearfix">
+        <ul class="sidebar-panel nav">
+            <li class="sidetitle">Menu</li>
+           
+
+
+            <li>
+                <a href="#"><span class="icon color7"><img src="~/Content/img/cheklist.png" alt="img"></span>Nouveau Inventaire<span class="caret"></span></a>
+                <ul>
+                    <li><a href="~/Inventaire/GetInventaire" >Premier Exercice</a></li>
+                    <li><a href="~/Inventaire/GetInventaire">Nouvelle Exercice </a> </li>
+                    <!-- Modal -->
+
+                </ul>
+            </li>
+            <li>
+                <a href="#"><span class="icon color7"><i class="fa fa-map-marker"></i></span>Géolocalisation<span class="caret"></span></a>
+                <ul>
+
+                    <li><a href="~/Gestion/GetPays">Pays</a></li>
+                    <li><a href="~/Gestion/GetRegion">Régions</a></li>
+                    <li><a href="~/Gestion/GetGouvernorat">Gouvernorats</a></li>
+                    <li><a href="~/Gestion/GetDelegation">Délégations</a></li>
+
+                    <!-- Modal -->
+
+                </ul>
+            </li>
+            <li>
+                <a href="#"><span class="icon color7"><i class="fa fa-building-o"></i></span>Emplacement<span class="caret"></span></a>
+                <ul>
+                    <li><a href="~/Gestion/GetOrganisation">Organisation</a></li>
+                    <li><a href="~/Gestion/GetBatiment">Batiment</a></li>
+                  
+                    <li><a href="~/Gestion/GetEtage">Étage</a></li>
+                    <li><a href="~/Gestion/GetBureau">Bureau</a></li>
+                   
+               
+                    <!-- Modal -->
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><span class="icon color7"><i class="fa falist fa-wrench"></i></span>Paramétre supplémentaire<span class="caret"></span></a>
+                <ul>
+
+                    <li><a href="~/Role/GetRole">Rôle</a></li>
+                    <li><a href="~/Gestion/GetDirection">Direction</a></li>
+                    <li><a href="~/ServiceD/GetServiceD">Service</a></li>
+                    <li><a href="~/Gestion/GetFournisseur">Fournisseur</a></li>
+                    
+
+
+                    <!-- Modal -->
+
+                </ul>
+            </li>
+            <li><a href="#"><span class="icon color8"><i class="fa fa-share-square-o"></i></span>Mouvement<span class="caret"></span></a>
+                <ul>
+                    <li><a href="~/Gestion/GetMouvement">Mouvement Bien</a></li>
+                    <li><a href="~/Role/GetMouvementvehicule">Mouvement Véhicule</a></li>
+                  
+                    
+
+                    <!-- Modal -->
+
+                </ul>
+            </li>
+            <li>
+                <a href="#"><span class="icon color7"><i class="fa fa-cubes"></i></span>Stock<span class="caret"></span></a>
+                <ul>
+
+                    <li><a href="~/Gestion/GetStock">Stock</a></li>
+                    <li><a href="~/Gestion/GetDirection">Direction</a></li>
+                
+
+                    <!-- Modal -->
+
+                </ul>
+            </li>
+
+            <li>
+                <a href="#"><span class="icon color7"><i class="fa fa-automobile"></i></span>Parc automobile<span class="caret"></span></a>
+                <ul>
+
+                    <li><a href="~/Gestion/GetParcAuto"> Liste Des Parc Auto</a></li>
+                    <li><a href="~/Gestion/GetVehicule">Liste Des Véhicules</a></li>
+
+
+                    <!-- Modal -->
+
+                </ul>
+            </li>
+
+            <li><a href="calendar.html"><span class="icon color8"><i class="fa fa-calendar-o"></i></span>Calendrier</a></li>
+            <li>
+                <a href="#"><span class="icon color14"><i class="fa fa-paper-plane-o"></i></span>Extra Pages<span class="caret"></span></a>
+                <ul>
+
+                    <li><a href="invoice.html">Invoice<span class="label label-danger">NEW</span></a></li>
+                    <li><a href="login.html">Login Page</a></li>
+                    <li><a href="register.html">Register</a></li>
+                    <li><a href="blank.html">Blank Page</a></li>
+                    <li><a href="404.html">404 Page</a></li>
+                    <li><a href="500.html">500 Page</a></li>
+                </ul>
+            </li>
+        </ul>
+        <div>
+
+        </div>
+    </div>
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Nouveaux Inventaire</h4>
+                </div>
+                <div class="modal-body">
+                    <input type="text" style="width:530px;">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default" onClick="document.location='form-elements.html'">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Start Page Header -->
+        <div class="page-header">
+            <h1 class="title" style="text-align:center">BISS Inventaire</h1>
+
+            <!-- Start Page Header Right Div -->
+            <!-- End Page Header Right Div -->
+        </div>
+        <!-- End Page Header -->
+        <ul class="panel quick-menu clearfix">
+            <li class="col-sm-2">
+                <a href="#"><i class="fa fa-plus-circle"></i>Nouveau</a>
+            </li>
+
+            <li class="col-sm-2">
+                <a href="~/Db/Index"><i class="fa fa-folder-open"></i>Parcourir</a>
+            </li>
+            <li class="col-sm-2">
+                <a href="#"><i class="fa fa-cogs"></i>Paramétre </a>
+            </li>
+            <li class="col-sm-2">
+                <a href="~/Admin/GetUsers"><i class="fa fa-users"></i>Utilisateur</a>
+            </li>
+            <li class="col-sm-2">
+                <a href="~/Admin/GetBureuax"><i class="fa fa-map-marker"></i>Bureau</a>
+            </li>
+            <li class="col-sm-2">
+                <a href="~/Gestion/GetEtage"><i class="fa fa-cubes"></i>Étage</a>
+            </li>
+        
+            <li class="col-sm-2">
+                <a href="~/Gestion/GetOrganisation"><i class="fa fa-building-o"></i>Organisation</a>
+            </li>
+            <li class="col-sm-2">
+                <a href="~/Categorie_materiel/GetCategorie_materiel"><i class="fa fa-sitemap"></i>Categorie</a>
+            </li>
+
+            <li class="col-sm-2">
+                <a href="~/Admin/RapportBien"><i class="fa fa-life-bouy"></i>Biens</a>
+            </li>
+            <li class="col-sm-2">
+                <a href="~/Gestion/GetBiens"><i class="fa fa-line-chart"></i>Statistiques</a>
+            </li>
+            <li class="col-sm-2">
+                <a href="~/Gestion/GetMouvement"><i class="fa fa-bar-chart"></i>Mouvement</a>
+            </li>
+
+            <li class="col-sm-2">
+                <a href="~/Gestion/GetVehicule"><i class="fa fa-car"></i>Véhicule</a>
+            </li>
+        </ul>
+
+        <!-- //////////////////////////////////////////////////////////////////////////// -->
+        <!-- START CONTAINER -->
+        <div id="content">
+
+            @RenderBody()
+
+        </div>
+
+        <div class="row footer">
+            <div class="col-md-6 text-left">
+                Copyright © 2015 <a href="http://www.bisstn.com/main/main.php" target="_blank">BISS</a> All rights reserved.
+            </div>
+            <div class="col-md-6 text-right">
+                Design and Developed by <a href="http://www.bisstn.com/main/main.php" target="_blank">BISS</a>
+            </div>
+        </div>
+    </div>
+    <!-- END SIDEPANEL -->
+    <!-- //////////////////////////////////////////////////////////////////////////// -->
+    <!-- ================================================
+    <!-- ================================================
+    jQuery Library
+            <!-- ================================================
+    Data Tables
+    ================================================ -->
+ 
+   
+    @Scripts.Render("~/Content/js/jquery.min.js" )
+    <!-- ================================================
+    Bootstrap Core JavaScript File
+    ================================================ -->
+   @Scripts.Render("~/Content/js/bootstrap/bootstrap.min.js")
+    <!-- ================================================
+    Plugin.js - Some Specific JS codes for Plugin Settings
+    ================================================ -->
+    @Scripts.Render("~/Content/js/plugins.js")
+
+
+    @Scripts.Render("~/Content/js/bootstrap-select/bootstrap-select.js")
+    <!-- ================================================
+    Bootstrap Toggle
+    ================================================ -->
+   @Scripts.Render("~/Content/js/bootstrap-toggle/bootstrap-toggle.min.js")
+    <!-- ================================================
+
+    <!-- ================================================
+    Moment.js
+    ================================================ -->
+   @Scripts.Render("~/Content/js/moment/moment.min.js")
+    @Scripts.Render("~/Content/js/datatables/datatables.min.js")
+    <script>
+$(document).ready(function() {
+    $('#example0').DataTable();
+} );
+    </script>
+    <script>
+$(document).ready(function() {
+    var table = $('#example').DataTable({
+        "columnDefs": [
+            { "visible": false, "targets": 2 }
+        ],
+        "order": [[ 2, 'asc' ]],
+        "displayLength": 25,
+        "drawCallback": function ( settings ) {
+            var api = this.api();
+            var rows = api.rows( {page:'current'} ).nodes();
+            var last=null;
+
+            api.column(2, {page:'current'} ).data().each( function ( group, i ) {
+                if ( last !== group ) {
+                    $(rows).eq( i ).before(
+                        '<tr class="group"><td colspan="5">'+group+'</td></tr>'
+                    );
+
+                    last = group;
+                }
+            } );
+        }
+    } );
+
+    // Order by the grouping
+    $('#example tbody').on( 'click', 'tr.group', function () {
+        var currentOrder = table.order()[0];
+        if ( currentOrder[0] === 2 && currentOrder[1] === 'asc' ) {
+            table.order( [ 2, 'desc' ] ).draw();
+        }
+        else {
+            table.order( [ 2, 'asc' ] ).draw();
+        }
+    } );
+} );
+    </script>
+</body>
+
+</html>

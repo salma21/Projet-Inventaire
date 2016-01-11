@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Domain.Cipherlab>
+
+
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Qte</th>
+                        
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Code</th>
+                            <th>Qte</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">@item.Code</td>
+                                <td class="center">@item.Qte</td>
+                              
+                                <td>
+
+                                    <a href="@Url.Action("Edit", new { id = item.ID })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("Delete", new { id = item.ID })">&nbsp;&nbsp;<i class="fa fa-trash" title="Effacer"></i></a>
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br />
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

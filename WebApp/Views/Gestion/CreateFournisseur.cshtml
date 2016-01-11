@@ -1,0 +1,138 @@
+﻿@model Domain.Fournisseur
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout Fournisseur
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+
+
+
+                    @using (@Html.BeginForm("CreateFournisseur", "Gestion", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Bureau</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Nom</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Prenom</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Prenom, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Adresse</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Rue ,new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Telephone</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Fax</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Fax, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Email</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Autre</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Commentaire, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                         
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idGouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Delegation </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
+                        </div>
+
+                    }
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

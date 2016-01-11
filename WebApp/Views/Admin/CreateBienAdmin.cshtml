@@ -1,0 +1,417 @@
+﻿@model Domain.Bien
+
+<div class="row">
+    <div class="col-md-12">
+    <div class="panel panel-default">
+        <div class="panel-title">
+
+            <h4 class="title" color="#58666e" font-weight="bold"> Ajout Des Biens</h4>
+            <ol class="breadcrumb">
+                <li><class ="active">Génerale</li>
+
+                <li><a href="">Adminstartif</a></li>
+                <li> <a href="">Journal</a></li>
+            </ol>
+
+            </ol>
+
+
+            <div class="panel-body">
+                <!-- Start Modal Code -->
+                <!-- End Moda Code -->
+            </div>
+            <ul class="panel-tools">
+                <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+            </ul>
+        </div>
+        <div class="panel-body">
+            @using (@Html.BeginForm("CreateBienAdmin", "Admin", FormMethod.Post,
+    new { @id = "frmId", @class = "fieldset-form" }))
+            {
+                <div class="panel panel-default">
+                    <fieldset>
+
+                        <legend>Acquisition (Achat)</legend>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE border=0>
+                                    <TR>
+
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label">Référence (N° facture)</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.TextBoxFor(model => model.Id_achat, new { @class = "form-control", required = "" })
+
+                                             </div>
+                                        </TD>
+
+                                        <TD width=34%>
+                                            <label class="col-sm-4 control-label form-label">Fournisseur</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.TextBoxFor(model => model.Id_fournisseur, new { @class = "form-control", required = "" })
+
+
+                                            </div>
+                                        </TD>
+
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label"> Date</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                    </TR>
+
+                                </TABLE>
+                            </CENTER>
+
+                        </div>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE width=70%>
+                                    <TR>
+                                        <TD width=35%>
+                                            <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                        <TD width=35%>
+                                            <label class="col-sm-4 control-label form-label">N° de commande</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+
+
+                    </fieldset>
+
+
+
+
+
+                    <br>
+
+                    <fieldset>
+
+                        <legend>Contrat de garentie</legend>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE border=0 width="90%">
+                                    <TR>
+
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label">N° de contrat</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+
+                                        <TD width=34%>
+                                            <label class="col-sm-4 control-label form-label">Code</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label"> Société</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                    </TR>
+
+                                </TABLE>
+                            </CENTER>
+
+                        </div>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE width=70%>
+                                    <TR>
+                                        <TD width=45%>
+                                            <label class="col-sm-4 control-label form-label">Dédut</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                        <TD width=45%>
+                                            <label class="col-sm-4 control-label form-label">Fin</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+
+                    </fieldset>
+                    <br>
+
+                    <fieldset>
+
+                        <legend>Contrat de maintenance</legend>
+
+                        <div class="form-group">
+
+
+
+                            <div class="form-group">
+                                <CENTER>
+                                    <TABLE width=70%>
+                                        <TR>
+                                            <TD width=35%>
+                                                <label class="col-sm-4 control-label form-label"> N° de contrat</label>
+
+                                                <div class="col-sm-8">
+
+                                                    <input type="text" class="form-control" id="input2" style="width:220px;">
+                                                </div>
+                                            </TD>
+                                            <TD width=35%>
+                                                <label class="col-sm-4 control-label form-label">Code</label>
+
+                                                <div class="col-sm-8">
+
+                                                    <input type="text" class="form-control" id="input2" style="width:220px;">
+                                                </div>
+                                            </TD>
+
+                                        </TR>
+
+                                    </TABLE>
+                                </CENTER>
+                            </div>
+
+
+                            <div class="form-group">
+                                <CENTER>
+                                    <TABLE border=0 width=90%>
+                                        <TR>
+                                            <TD width=33%>
+                                                <label class="col-sm-4 control-label form-label">Dérnier réparateur </label>
+
+                                                <div class="col-sm-8">
+                                                    <input type="text" class="form-control" id="input2" style="width:220px;">
+
+                                                </div>
+                                            </TD>
+                                            <TD width=34%>
+                                                <label class="col-sm-4 control-label form-label">Société réparatrice</label>
+
+                                                <div class="col-sm-8">
+
+                                                    <select class="selectpicker">
+                                                        <option>AAAA</option>
+                                                        <option>BBBB</option>
+                                                        <option>CCCCCC</option>
+                                                    </select>
+                                                </div>
+                                            </TD>
+                                            <TD width=33%>
+                                                <label class="col-sm-4 control-label form-label">Coût</label>
+
+                                                <div class="col-sm-8">
+
+                                                    <input type="text" class="form-control" id="input2" style="width:220px;">
+                                                </div>
+                                            </TD>
+
+                                        </TR>
+
+                                    </TABLE>
+                                </CENTER>
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE width=70%>
+                                    <TR>
+                                        <TD width=35%>
+                                            <label class="col-sm-4 control-label form-label">Dédut</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                        <TD width=35%>
+                                            <label class="col-sm-4 control-label form-label">Fin</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+
+                    </fieldset>
+                    <br>
+
+                    <fieldset>
+
+                        <legend>Contrat d'assurance</legend>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE border=0>
+                                    <TR>
+
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label">N° de contrat</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+
+                                        <TD width=34%>
+                                            <label class="col-sm-4 control-label form-label">Code</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label"> Société</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                    </TR>
+
+                                </TABLE>
+                            </CENTER>
+
+                        </div>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE width=70%>
+                                    <TR>
+                                        <TD width=35%>
+                                            <label class="col-sm-4 control-label form-label">Dédut</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                        <TD width=35%>
+                                            <label class="col-sm-4 control-label form-label">Fin</label>
+
+                                            <div class="col-sm-8">
+
+                                                <input type="text" class="form-control" id="input2" style="width:220px;">
+                                            </div>
+                                        </TD>
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+
+                    </fieldset>
+                    <br>
+                    <br>
+      
+
+
+                    <fieldset>
+
+                        <legend>Commentaire</legend>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE border=0>
+                                    <TR>
+
+                                        <TD width=100%>
+
+
+                                            <div class="col-sm-8">
+
+
+                                                <textarea name="textarea" class="form-control" style="width:700px;height:100px;"></textarea>
+
+                                            </div>
+                                        </TD>
+
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
+                    </fieldset>	<br>
+
+
+                    <div style="text-align: center;">
+
+                        <a href="#" class="btn btn-default" data-toggle="modal" data-target="#myModal">Valider</a> &nbsp; &nbsp; &nbsp; &nbsp;
+                        <button type="reset" class="btn btn-white">Annuler</button>
+
+
+
+                    </div>
+
+
+
+
+
+
+
+                </div>
+            }
+            </div>
+
+
+        </div>
+
+    </div>
+
+    </div>
+

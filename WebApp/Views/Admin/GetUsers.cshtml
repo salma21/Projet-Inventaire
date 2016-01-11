@@ -1,0 +1,100 @@
+﻿@model IEnumerable<Domain.Utilisateur>
+
+
+<div class="inner">
+    <!-- Start Row -->
+    <div class="row">
+        <!-- Start Panel -->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-title">
+                    Liste des Utlisateurs
+                </div>
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                               
+                                <th>Login</th>
+
+                                <th>Password</th>
+                                <th>Nom</th>
+
+                                <th>Prenom</th>
+                                <th>Etat</th>
+                                <th>Role</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        
+
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                   
+                                    <td class="center">@item.login</td>
+                                    <td class="center">@item.motDePasse</td>
+                                    <td class="center">@item.Personnel.nom</td>
+                                    <td class="center">@item.Personnel.prenom</td>
+                                    <td class="center">@item.etatUtilisateur</td>
+                                    <td class="center">@item.Personnel.Role.libelle</td>
+
+                                    <td>
+
+                                        <a href="@Url.Action("EditUser", new { id = item.id })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                     
+                                   
+                                        @*@if (item.etatUtilisateur == true)
+                                        {        <a href="@Url.Action("ActDesactiveUsers", new { id = item.id })">&nbsp;<i class="fa fa-lock"title="Bloquer"></i></a>}
+                                        @if (item.etatUtilisateur == false)
+                                        {       <a href="@Url.Action("ActDesactiveUsers", new { id = item.id })">&nbsp;<i class="fa fa-unlock-alt" title="Activer"></i></a>}*@
+
+                                    </td>
+
+                                </tr>
+
+                                @*<div class="modal fade" id="myModal-@item.id" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+
+                                                <h4 class="modal-title" id="myModalLabel">Activation-Desactivaion User</h4>
+                                            </div>
+                                            @if (item.etatUtilisateur == true)
+                                            { <div class="modal-body">
+                                                Vous êtes sur de vouloir Bloquer Cet User
+                                            </div> }
+
+
+                                            else
+                                            {  <div class="modal-body">
+                                                Vous êtes sur de vouloir Activer Cet User
+                                            </div>}
+                                            @using (Html.BeginForm("ActDesactiveUsers", "Admin", new { id = item.id }))
+                                            {  <div class="modal-footer">
+                                                <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                <button type="submit" id="mySubmit" class="btn btn-primary">Confirmer</button>
+                                            </div> }
+                                        </div>
+                                    </div>
+                                </div>*@
+
+
+
+                            }
+                        </tbody>
+                    </table>
+                    <br /><p>
+                        @Html.ActionLink("Ajouter un nouveau User", "CreateUsers")
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

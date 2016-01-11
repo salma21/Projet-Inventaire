@@ -1,0 +1,61 @@
+﻿@model Domain.Categorie_materiel
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout de categorie materiel
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Categorie_materiel</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id_categorie)
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Nom categorie  </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.libelle, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Description  </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Description, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
+                        </div>
+                    }
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("Afficher la liste des categories materiels", "GetCategorie_materiel")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

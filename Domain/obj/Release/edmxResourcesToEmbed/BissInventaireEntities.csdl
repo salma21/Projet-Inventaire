@@ -1,0 +1,1247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BissInventaireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Achat">
+    <Key>
+      <PropertyRef Name="Id_achat" />
+    </Key>
+    <Property Name="Id_achat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idDelegation" Type="Int32" Nullable="false" />
+    <Property Name="Id_fournisseur" Type="Int32" Nullable="false" />
+    <Property Name="Date_livraison" Type="DateTime" Precision="0" />
+    <Property Name="Num_facture" Type="Int32" />
+    <Property Name="Num_commande" Type="Int32" />
+    <Property Name="Date_d_achat" Type="DateTime" Precision="0" />
+    <Property Name="Prix_d_achat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Num_livraison" Type="Int32" />
+    <NavigationProperty Name="Fournisseur" Relationship="Self.FK_ACHAT_ASSOCIATI_FOURNISS" FromRole="Achat" ToRole="Fournisseur" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_ACHAT" FromRole="Achat" ToRole="Bien" />
+    <NavigationProperty Name="Vehicule" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Achat" ToRole="Vehicule" />
+  </EntityType>
+  <EntityType Name="Association_30">
+    <Key>
+      <PropertyRef Name="Id_inventaire" />
+      <PropertyRef Name="Id_bien" />
+    </Key>
+    <Property Name="Id_inventaire" Type="Int32" Nullable="false" />
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idOrganisation" Type="Int32" />
+    <Property Name="Bur_idDelegation" Type="Int32" />
+    <Property Name="idBatiment" Type="Int32" />
+    <Property Name="Id_etage" Type="Int32" />
+    <Property Name="Id_direction" Type="Int32" />
+    <Property Name="Id_bureau" Type="Int32" />
+    <Property Name="Id_bien" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_BIEN" FromRole="Association_30" ToRole="Bien" />
+    <NavigationProperty Name="Inventaire" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_INVENTA" FromRole="Association_30" ToRole="Inventaire" />
+  </EntityType>
+  <EntityType Name="Association_31">
+    <Key>
+      <PropertyRef Name="Id_inventaire" />
+      <PropertyRef Name="Id_Vehicule" />
+    </Key>
+    <Property Name="Id_inventaire" Type="Int32" Nullable="false" />
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idOrganisation" Type="Int32" />
+    <Property Name="Par_idDelegation" Type="Int32" />
+    <Property Name="idBatiment" Type="Int32" />
+    <Property Name="Id_parc" Type="Int32" />
+    <Property Name="Id_Vehicule" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Inventaire" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_INVENTAI" FromRole="Association_31" ToRole="Inventaire" />
+    <NavigationProperty Name="Vehicule" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_VEHICULE" FromRole="Association_31" ToRole="Vehicule" />
+  </EntityType>
+  <EntityType Name="AtbDataTest">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code_materiel" Type="Int32" Nullable="false" />
+    <Property Name="Num_serie" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Categorie" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Modele" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Marque" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Statut" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Fin_garantie" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Localisation_dernier" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Entite_dernier" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Date_inventaire" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Date_installation" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Localisation_complet" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Entite_complet" Type="String" MaxLength="254" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Batiment">
+    <Key>
+      <PropertyRef Name="idDelegation" />
+      <PropertyRef Name="idBatiment" />
+    </Key>
+    <Property Name="idOrganisation" Type="Int32" />
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idDelegation" Type="Int32" Nullable="false" />
+    <Property Name="idBatiment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Delegation" Relationship="Self.FK_BATIMENT_ASSOCIATI_DELEGATI" FromRole="Batiment" ToRole="Delegation" />
+    <NavigationProperty Name="Organisation" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Batiment" ToRole="Organisation" />
+    <NavigationProperty Name="Etage" Relationship="Self.FK_ETAGE_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Etage" />
+    <NavigationProperty Name="Parc_auto" Relationship="Self.FK_PARC_AUT_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Parc_auto" />
+    <NavigationProperty Name="Personnel" Relationship="Self.FK_PERSONNE_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Personnel" />
+  </EntityType>
+  <EntityType Name="Bien">
+    <Key>
+      <PropertyRef Name="Id_bureau" />
+      <PropertyRef Name="Id_bien" />
+    </Key>
+    <Property Name="Id_contrat_garanti" Type="Int32" />
+    <Property Name="Id_etage" Type="Int32" />
+    <Property Name="Id_direction" Type="Int32" />
+    <Property Name="Id_bureau" Type="Int32" Nullable="false" />
+    <Property Name="Id_bien" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_categorie" Type="Int32" />
+    <Property Name="Id_achat" Type="Int32" />
+    <Property Name="Id_societe_maintenance" Type="Int32" />
+    <Property Name="Id_contrat_assurance" Type="Int32" />
+    <Property Name="Id_fournisseur" Type="Int32" />
+    <Property Name="Id_societe_assurance" Type="Int32" />
+    <Property Name="Id_contrat_maintenance" Type="Int32" />
+    <Property Name="Designation" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Marque" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Modele" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Code" Type="Int32" />
+    <Property Name="Num_Serie" Type="Int32" />
+    <Property Name="Etat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Valeur" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Mode" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Code_a_barre" Type="Int32" />
+    <Property Name="Emploi_principal" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Date_d_installation" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Achat" Relationship="Self.FK_BIEN_ASSOCIATI_ACHAT" FromRole="Bien" ToRole="Achat" />
+    <NavigationProperty Name="Association_30" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_BIEN" FromRole="Bien" ToRole="Association_30" />
+    <NavigationProperty Name="Bureau" Relationship="Self.FK_BIEN_ASSOCIATI_BUREAU" FromRole="Bien" ToRole="Bureau" />
+    <NavigationProperty Name="Categorie_materiel" Relationship="Self.FK_BIEN_ASSOCIATI_CATEGORI" FromRole="Bien" ToRole="Categorie_materiel" />
+    <NavigationProperty Name="Contrat_garanti" Relationship="Self.FK_BIEN_ASSOCIATI_CONTRAT" FromRole="Bien" ToRole="Contrat_garanti" />
+    <NavigationProperty Name="Contrat_maintenance" Relationship="Self.FK_BIEN_ASSOCIATI_CONTRAT_" FromRole="Bien" ToRole="Contrat_maintenance" />
+    <NavigationProperty Name="Contrat_assurance" Relationship="Self.FK_BIEN_ASSOCIATI_CONTRAT_1" FromRole="Bien" ToRole="Contrat_assurance" />
+    <NavigationProperty Name="Mouvement" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_BIEN" FromRole="Bien" ToRole="Mouvement" />
+  </EntityType>
+  <EntityType Name="Bureau">
+    <Key>
+      <PropertyRef Name="Id_etage" />
+      <PropertyRef Name="Id_direction" />
+      <PropertyRef Name="Id_bureau" />
+    </Key>
+    <Property Name="idBatiment" Type="Int32" />
+    <Property Name="Id_etage" Type="Int32" Nullable="false" />
+    <Property Name="Id_direction" Type="Int32" Nullable="false" />
+    <Property Name="Id_bureau" Type="Int32" Nullable="false" />
+    <Property Name="Code_a_barre" Type="Int32" />
+    <Property Name="Description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_BUREAU" FromRole="Bureau" ToRole="Bien" />
+    <NavigationProperty Name="Direction" Relationship="Self.FK_BUREAU_ASSOCIATI_DIRECTIO" FromRole="Bureau" ToRole="Direction" />
+    <NavigationProperty Name="Etage" Relationship="Self.FK_BUREAU_ASSOCIATI_ETAGE" FromRole="Bureau" ToRole="Etage" />
+  </EntityType>
+  <EntityType Name="Categorie_materiel">
+    <Key>
+      <PropertyRef Name="Id_categorie" />
+    </Key>
+    <Property Name="Id_categorie" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_CATEGORI" FromRole="Categorie_materiel" ToRole="Bien" />
+    <NavigationProperty Name="CategorieDesignation" Relationship="Self.FK_CATEGORI_ASSOCIATI_CATEGORI" FromRole="Categorie_materiel" ToRole="CategorieDesignation" />
+    <NavigationProperty Name="Stock" Relationship="Self.FK_Stock_Categorie_materiel" FromRole="Categorie_materiel" ToRole="Stock" />
+  </EntityType>
+  <EntityType Name="CategorieDesignation">
+    <Key>
+      <PropertyRef Name="Id_categorie" />
+      <PropertyRef Name="id_categorie_Designation" />
+    </Key>
+    <Property Name="Id_categorie" Type="Int32" Nullable="false" />
+    <Property Name="id_categorie_Designation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Categorie_materiel" Relationship="Self.FK_CATEGORI_ASSOCIATI_CATEGORI" FromRole="CategorieDesignation" ToRole="Categorie_materiel" />
+  </EntityType>
+  <EntityType Name="Cipherlab">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Qte" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Contrat_assurance">
+    <Key>
+      <PropertyRef Name="Id_societe_assurance" />
+      <PropertyRef Name="Id_contrat_assurance" />
+    </Key>
+    <Property Name="idDelegation" Type="Int32" />
+    <Property Name="Id_societe_assurance" Type="Int32" Nullable="false" />
+    <Property Name="Id_contrat_assurance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_assurance" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Num" Type="Int32" />
+    <Property Name="Date_debut" Type="DateTime" Precision="0" />
+    <Property Name="Date_fin" Type="DateTime" Precision="0" />
+    <Property Name="Cout" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_CONTRAT_1" FromRole="Contrat_assurance" ToRole="Bien" />
+    <NavigationProperty Name="Societe_assurance" Relationship="Self.FK_CONTRAT__ASSOCIATI_SOCIETE_1" FromRole="Contrat_assurance" ToRole="Societe_assurance" />
+    <NavigationProperty Name="Vehicule" Relationship="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_2" FromRole="Contrat_assurance" ToRole="Vehicule" />
+  </EntityType>
+  <EntityType Name="Contrat_garanti">
+    <Key>
+      <PropertyRef Name="Id_contrat_garanti" />
+      <PropertyRef Name="Id_fournisseur" />
+    </Key>
+    <Property Name="Id_contrat_garanti" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idDelegation" Type="Int32" />
+    <Property Name="Id_fournisseur" Type="Int32" Nullable="false" />
+    <Property Name="Type_garanti" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Num" Type="Int32" />
+    <Property Name="Date_debut" Type="DateTime" Precision="0" />
+    <Property Name="Date_fin" Type="DateTime" Precision="0" />
+    <Property Name="Cout" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_CONTRAT" FromRole="Contrat_garanti" ToRole="Bien" />
+    <NavigationProperty Name="Fournisseur" Relationship="Self.FK_CONTRAT__ASSOCIATI_FOURNISS" FromRole="Contrat_garanti" ToRole="Fournisseur" />
+    <NavigationProperty Name="Vehicule" Relationship="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_3" FromRole="Contrat_garanti" ToRole="Vehicule" />
+  </EntityType>
+  <EntityType Name="Contrat_maintenance">
+    <Key>
+      <PropertyRef Name="Id_societe_maintenance" />
+      <PropertyRef Name="Id_contrat_maintenance" />
+    </Key>
+    <Property Name="idDelegation" Type="Int32" />
+    <Property Name="Id_societe_maintenance" Type="Int32" Nullable="false" />
+    <Property Name="Id_contrat_maintenance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_maintenance" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Num" Type="Int32" />
+    <Property Name="Date_debut" Type="DateTime" Precision="0" />
+    <Property Name="Date_fin" Type="DateTime" Precision="0" />
+    <Property Name="Cout" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_CONTRAT_" FromRole="Contrat_maintenance" ToRole="Bien" />
+    <NavigationProperty Name="Societe_maintenance" Relationship="Self.FK_CONTRAT__ASSOCIATI_SOCIETE" FromRole="Contrat_maintenance" ToRole="Societe_maintenance" />
+    <NavigationProperty Name="Vehicule" Relationship="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_" FromRole="Contrat_maintenance" ToRole="Vehicule" />
+  </EntityType>
+  <EntityType Name="Delegation">
+    <Key>
+      <PropertyRef Name="idPays" />
+      <PropertyRef Name="idRegion" />
+      <PropertyRef Name="idGouvernorat" />
+      <PropertyRef Name="idDelegation" />
+    </Key>
+    <Property Name="idPays" Type="Int32" Nullable="false" />
+    <Property Name="idRegion" Type="Int32" Nullable="false" />
+    <Property Name="idGouvernorat" Type="Int32" Nullable="false" />
+    <Property Name="idDelegation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Code_postal" Type="Int32" />
+    <NavigationProperty Name="Batiment" Relationship="Self.FK_BATIMENT_ASSOCIATI_DELEGATI" FromRole="Delegation" ToRole="Batiment" />
+    <NavigationProperty Name="Gouvernorat" Relationship="Self.FK_DELEGATI_ASSOCIATI_GOUVERNO" FromRole="Delegation" ToRole="Gouvernorat" />
+    <NavigationProperty Name="Fournisseur" Relationship="Self.FK_FOURNISS_ASSOCIATI_DELEGATI" FromRole="Delegation" ToRole="Fournisseur" />
+    <NavigationProperty Name="Societe_assurance" Relationship="Self.FK_SOCIETE__ASSOCIATI_DELEGATI" FromRole="Delegation" ToRole="Societe_assurance" />
+    <NavigationProperty Name="Societe_maintenance" Relationship="Self.FK_SOCIETE__ASSOCIATI_DELEGATION" FromRole="Delegation" ToRole="Societe_maintenance" />
+  </EntityType>
+  <EntityType Name="Direction">
+    <Key>
+      <PropertyRef Name="Id_direction" />
+    </Key>
+    <Property Name="Id_direction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Bureau" Relationship="Self.FK_BUREAU_ASSOCIATI_DIRECTIO" FromRole="Direction" ToRole="Bureau" />
+    <NavigationProperty Name="ServiceD" Relationship="Self.FK_SERVICED_ASSOCIATI_DIRECTIO" FromRole="Direction" ToRole="ServiceD" />
+  </EntityType>
+  <EntityType Name="Etage">
+    <Key>
+      <PropertyRef Name="idBatiment" />
+      <PropertyRef Name="Id_etage" />
+    </Key>
+    <Property Name="idDelegation" Type="Int32" />
+    <Property Name="idBatiment" Type="Int32" Nullable="false" />
+    <Property Name="Id_etage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Batiment" Relationship="Self.FK_ETAGE_ASSOCIATI_BATIMENT" FromRole="Etage" ToRole="Batiment" />
+    <NavigationProperty Name="Bureau" Relationship="Self.FK_BUREAU_ASSOCIATI_ETAGE" FromRole="Etage" ToRole="Bureau" />
+  </EntityType>
+  <EntityType Name="Fournisseur">
+    <Key>
+      <PropertyRef Name="idDelegation" />
+      <PropertyRef Name="Id_fournisseur" />
+    </Key>
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idDelegation" Type="Int32" Nullable="false" />
+    <Property Name="Id_fournisseur" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Prenom" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Rue" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="Int32" />
+    <Property Name="Fax" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Commentaire" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Achat" Relationship="Self.FK_ACHAT_ASSOCIATI_FOURNISS" FromRole="Fournisseur" ToRole="Achat" />
+    <NavigationProperty Name="Contrat_garanti" Relationship="Self.FK_CONTRAT__ASSOCIATI_FOURNISS" FromRole="Fournisseur" ToRole="Contrat_garanti" />
+    <NavigationProperty Name="Delegation" Relationship="Self.FK_FOURNISS_ASSOCIATI_DELEGATI" FromRole="Fournisseur" ToRole="Delegation" />
+  </EntityType>
+  <EntityType Name="Gouvernorat">
+    <Key>
+      <PropertyRef Name="idPays" />
+      <PropertyRef Name="idRegion" />
+      <PropertyRef Name="idGouvernorat" />
+    </Key>
+    <Property Name="idPays" Type="Int32" Nullable="false" />
+    <Property Name="idRegion" Type="Int32" Nullable="false" />
+    <Property Name="idGouvernorat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Delegation" Relationship="Self.FK_DELEGATI_ASSOCIATI_GOUVERNO" FromRole="Gouvernorat" ToRole="Delegation" />
+    <NavigationProperty Name="Region" Relationship="Self.FK_GOUVERNO_ASSOCIATI_REGION" FromRole="Gouvernorat" ToRole="Region" />
+  </EntityType>
+  <EntityType Name="Inventaire">
+    <Key>
+      <PropertyRef Name="Id_inventaire" />
+    </Key>
+    <Property Name="Id_inventaire" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nom_" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Association_30" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_INVENTA" FromRole="Inventaire" ToRole="Association_30" />
+    <NavigationProperty Name="Association_31" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_INVENTAI" FromRole="Inventaire" ToRole="Association_31" />
+  </EntityType>
+  <EntityType Name="Mouvement">
+    <Key>
+      <PropertyRef Name="Id_mouvement" />
+    </Key>
+    <Property Name="Id_mouvement" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idBatiment" Type="Int32" />
+    <Property Name="Id_parc" Type="Int32" />
+    <Property Name="Id_Vehicule" Type="Int32" />
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idOrganisation" Type="Int32" />
+    <Property Name="Bur_idDelegation" Type="Int32" />
+    <Property Name="Bie_idBatiment" Type="Int32" />
+    <Property Name="Id_etage" Type="Int32" />
+    <Property Name="Id_bureau" Type="Int32" />
+    <Property Name="Id_bien" Type="Int32" />
+    <Property Name="Nom" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Date_derniere_affectation" Type="DateTime" Precision="3" />
+    <Property Name="Date_prochaine_affectation" Type="DateTime" Precision="3" />
+    <Property Name="Date_renouvellement_prevue" Type="DateTime" Precision="3" />
+    <Property Name="Date_retour_prevue" Type="DateTime" Precision="3" />
+    <Property Name="Date_sortie" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Bien" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_BIEN" FromRole="Mouvement" ToRole="Bien" />
+    <NavigationProperty Name="Vehicule" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE" FromRole="Mouvement" ToRole="Vehicule" />
+  </EntityType>
+  <EntityType Name="Organisation">
+    <Key>
+      <PropertyRef Name="idOrganisation" />
+    </Key>
+    <Property Name="idOrganisation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Batiment" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Organisation" ToRole="Batiment" />
+  </EntityType>
+  <EntityType Name="Parc_auto">
+    <Key>
+      <PropertyRef Name="idBatiment" />
+      <PropertyRef Name="Id_parc" />
+    </Key>
+    <Property Name="idDelegation" Type="Int32" />
+    <Property Name="idBatiment" Type="Int32" Nullable="false" />
+    <Property Name="Id_parc" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Batiment" Relationship="Self.FK_PARC_AUT_ASSOCIATI_BATIMENT" FromRole="Parc_auto" ToRole="Batiment" />
+    <NavigationProperty Name="Vehicule" Relationship="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT" FromRole="Parc_auto" ToRole="Vehicule" />
+  </EntityType>
+  <EntityType Name="Pays">
+    <Key>
+      <PropertyRef Name="idPays" />
+    </Key>
+    <Property Name="idPays" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Region" Relationship="Self.FK_REGION_ASSOCIATI_PAYS" FromRole="Pays" ToRole="Region" />
+  </EntityType>
+  <EntityType Name="Personnel">
+    <Key>
+      <PropertyRef Name="idBatiment" />
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idOrganisation" Type="Int32" />
+    <Property Name="idDelegation" Type="Int32" />
+    <Property Name="idBatiment" Type="Int32" Nullable="false" />
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Rol_id" Type="Int32" Nullable="false" />
+    <Property Name="nom" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="prenom" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Matricule" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Batiment" Relationship="Self.FK_PERSONNE_ASSOCIATI_BATIMENT" FromRole="Personnel" ToRole="Batiment" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_PERSONNE_ASSOCIATI_ROLE" FromRole="Personnel" ToRole="Role" />
+    <NavigationProperty Name="Utilisateur" Relationship="Self.FK_UTILISAT_ASSOCIATI_PERSONNE" FromRole="Personnel" ToRole="Utilisateur" />
+  </EntityType>
+  <EntityType Name="Region">
+    <Key>
+      <PropertyRef Name="idPays" />
+      <PropertyRef Name="idRegion" />
+    </Key>
+    <Property Name="idPays" Type="Int32" Nullable="false" />
+    <Property Name="idRegion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Gouvernorat" Relationship="Self.FK_GOUVERNO_ASSOCIATI_REGION" FromRole="Region" ToRole="Gouvernorat" />
+    <NavigationProperty Name="Pays" Relationship="Self.FK_REGION_ASSOCIATI_PAYS" FromRole="Region" ToRole="Pays" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Personnel" Relationship="Self.FK_PERSONNE_ASSOCIATI_ROLE" FromRole="Role" ToRole="Personnel" />
+  </EntityType>
+  <EntityType Name="ServiceD">
+    <Key>
+      <PropertyRef Name="Id_direction" />
+      <PropertyRef Name="Id_service" />
+    </Key>
+    <Property Name="Id_direction" Type="Int32" Nullable="false" />
+    <Property Name="Id_service" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Direction" Relationship="Self.FK_SERVICED_ASSOCIATI_DIRECTIO" FromRole="ServiceD" ToRole="Direction" />
+  </EntityType>
+  <EntityType Name="Societe_assurance">
+    <Key>
+      <PropertyRef Name="idDelegation" />
+      <PropertyRef Name="Id_societe_assurance" />
+    </Key>
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idDelegation" Type="Int32" Nullable="false" />
+    <Property Name="Id_societe_assurance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Rue" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="Int32" />
+    <Property Name="Fax" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Commentaire" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contrat_assurance" Relationship="Self.FK_CONTRAT__ASSOCIATI_SOCIETE_1" FromRole="Societe_assurance" ToRole="Contrat_assurance" />
+    <NavigationProperty Name="Delegation" Relationship="Self.FK_SOCIETE__ASSOCIATI_DELEGATI" FromRole="Societe_assurance" ToRole="Delegation" />
+  </EntityType>
+  <EntityType Name="Societe_maintenance">
+    <Key>
+      <PropertyRef Name="idDelegation" />
+      <PropertyRef Name="Id_societe_maintenance" />
+    </Key>
+    <Property Name="idPays" Type="Int32" />
+    <Property Name="idRegion" Type="Int32" />
+    <Property Name="idGouvernorat" Type="Int32" />
+    <Property Name="idDelegation" Type="Int32" Nullable="false" />
+    <Property Name="Id_societe_maintenance" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Rue" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Tel" Type="Int32" />
+    <Property Name="Fax" Type="Int32" />
+    <Property Name="Email" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Commentaire" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Contrat_maintenance" Relationship="Self.FK_CONTRAT__ASSOCIATI_SOCIETE" FromRole="Societe_maintenance" ToRole="Contrat_maintenance" />
+    <NavigationProperty Name="Delegation" Relationship="Self.FK_SOCIETE__ASSOCIATI_DELEGATION" FromRole="Societe_maintenance" ToRole="Delegation" />
+  </EntityType>
+  <EntityType Name="Stock">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="produit" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Qte" Type="Int32" />
+    <Property Name="Emplacement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="id_categorie" Type="Int32" />
+    <Property Name="Num_BonLivraison" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_Livraison" Type="DateTime" Precision="0" />
+    <Property Name="Num_BonCommande" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="date_BonCommande" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="Categorie_materiel" Relationship="Self.FK_Stock_Categorie_materiel" FromRole="Stock" ToRole="Categorie_materiel" />
+    <Property Name="Fournisseur" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Utilisateur">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idBatiment" Type="Int32" Nullable="false" />
+    <Property Name="Per_id" Type="Int32" Nullable="false" />
+    <Property Name="login" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="motDePasse" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="etatUtilisateur" Type="Boolean" />
+    <NavigationProperty Name="Personnel" Relationship="Self.FK_UTILISAT_ASSOCIATI_PERSONNE" FromRole="Utilisateur" ToRole="Personnel" />
+  </EntityType>
+  <EntityType Name="Vehicule">
+    <Key>
+      <PropertyRef Name="Id_parc" />
+      <PropertyRef Name="Id_Vehicule" />
+    </Key>
+    <Property Name="Id_contrat_garanti" Type="Int32" />
+    <Property Name="idBatiment" Type="Int32" />
+    <Property Name="Id_parc" Type="Int32" Nullable="false" />
+    <Property Name="Id_Vehicule" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Id_fournisseur" Type="Int32" />
+    <Property Name="Id_societe_assurance" Type="Int32" />
+    <Property Name="Id_contrat_assurance" Type="Int32" />
+    <Property Name="Id_societe_maintenance" Type="Int32" />
+    <Property Name="Id_contrat_maintenance" Type="Int32" />
+    <Property Name="Id_achat" Type="Int32" />
+    <Property Name="Matricule" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Modele" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Etat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Num_sachet" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Prix_d_achat" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="Achat" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Vehicule" ToRole="Achat" />
+    <NavigationProperty Name="Association_31" Relationship="Self.FK_ASSOCIAT_ASSOCIATI_VEHICULE" FromRole="Vehicule" ToRole="Association_31" />
+    <NavigationProperty Name="Contrat_assurance" Relationship="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_2" FromRole="Vehicule" ToRole="Contrat_assurance" />
+    <NavigationProperty Name="Contrat_garanti" Relationship="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_3" FromRole="Vehicule" ToRole="Contrat_garanti" />
+    <NavigationProperty Name="Contrat_maintenance" Relationship="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_" FromRole="Vehicule" ToRole="Contrat_maintenance" />
+    <NavigationProperty Name="Mouvement" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE" FromRole="Vehicule" ToRole="Mouvement" />
+    <NavigationProperty Name="Parc_auto" Relationship="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT" FromRole="Vehicule" ToRole="Parc_auto" />
+  </EntityType>
+  <Association Name="FK_ACHAT_ASSOCIATI_FOURNISS">
+    <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
+    <End Role="Achat" Type="Self.Achat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fournisseur">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Principal>
+      <Dependent Role="Achat">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATI_ACHAT">
+    <End Role="Achat" Type="Self.Achat" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Achat">
+        <PropertyRef Name="Id_achat" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="Id_achat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VEHICULE_ASSOCIATI_ACHAT">
+    <End Role="Achat" Type="Self.Achat" Multiplicity="0..1" />
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Achat">
+        <PropertyRef Name="Id_achat" />
+      </Principal>
+      <Dependent Role="Vehicule">
+        <PropertyRef Name="Id_achat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_BIEN">
+    <End Role="Bien" Type="Self.Bien" Multiplicity="0..1" />
+    <End Role="Association_30" Type="Self.Association_30" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bien">
+        <PropertyRef Name="Id_bureau" />
+        <PropertyRef Name="Id_bien" />
+      </Principal>
+      <Dependent Role="Association_30">
+        <PropertyRef Name="Id_bureau" />
+        <PropertyRef Name="Id_bien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_INVENTA">
+    <End Role="Inventaire" Type="Self.Inventaire" Multiplicity="1" />
+    <End Role="Association_30" Type="Self.Association_30" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventaire">
+        <PropertyRef Name="Id_inventaire" />
+      </Principal>
+      <Dependent Role="Association_30">
+        <PropertyRef Name="Id_inventaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_INVENTAI">
+    <End Role="Inventaire" Type="Self.Inventaire" Multiplicity="1" />
+    <End Role="Association_31" Type="Self.Association_31" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventaire">
+        <PropertyRef Name="Id_inventaire" />
+      </Principal>
+      <Dependent Role="Association_31">
+        <PropertyRef Name="Id_inventaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_VEHICULE">
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="0..1" />
+    <End Role="Association_31" Type="Self.Association_31" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicule">
+        <PropertyRef Name="Id_parc" />
+        <PropertyRef Name="Id_Vehicule" />
+      </Principal>
+      <Dependent Role="Association_31">
+        <PropertyRef Name="Id_parc" />
+        <PropertyRef Name="Id_Vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BATIMENT_ASSOCIATI_DELEGATI">
+    <End Role="Delegation" Type="Self.Delegation" Multiplicity="0..1" />
+    <End Role="Batiment" Type="Self.Batiment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delegation">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Principal>
+      <Dependent Role="Batiment">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BATIMENT_ASSOCIATI_ORGANISA">
+    <End Role="Organisation" Type="Self.Organisation" Multiplicity="0..1" />
+    <End Role="Batiment" Type="Self.Batiment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Organisation">
+        <PropertyRef Name="idOrganisation" />
+      </Principal>
+      <Dependent Role="Batiment">
+        <PropertyRef Name="idOrganisation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ETAGE_ASSOCIATI_BATIMENT">
+    <End Role="Batiment" Type="Self.Batiment" Multiplicity="0..1" />
+    <End Role="Etage" Type="Self.Etage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batiment">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="idBatiment" />
+      </Principal>
+      <Dependent Role="Etage">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="idBatiment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PARC_AUT_ASSOCIATI_BATIMENT">
+    <End Role="Batiment" Type="Self.Batiment" Multiplicity="0..1" />
+    <End Role="Parc_auto" Type="Self.Parc_auto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batiment">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="idBatiment" />
+      </Principal>
+      <Dependent Role="Parc_auto">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="idBatiment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONNE_ASSOCIATI_BATIMENT">
+    <End Role="Batiment" Type="Self.Batiment" Multiplicity="0..1" />
+    <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Batiment">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="idBatiment" />
+      </Principal>
+      <Dependent Role="Personnel">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="idBatiment" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATI_BUREAU">
+    <End Role="Bureau" Type="Self.Bureau" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bureau">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_direction" />
+        <PropertyRef Name="Id_bureau" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_direction" />
+        <PropertyRef Name="Id_bureau" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATI_CATEGORI">
+    <End Role="Categorie_materiel" Type="Self.Categorie_materiel" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie_materiel">
+        <PropertyRef Name="Id_categorie" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="Id_categorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATI_CONTRAT">
+    <End Role="Contrat_garanti" Type="Self.Contrat_garanti" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_garanti">
+        <PropertyRef Name="Id_contrat_garanti" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="Id_contrat_garanti" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATI_CONTRAT_">
+    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_maintenance">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_assurance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATI_CONTRAT_1">
+    <End Role="Contrat_assurance" Type="Self.Contrat_assurance" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_assurance">
+        <PropertyRef Name="Id_societe_assurance" />
+        <PropertyRef Name="Id_contrat_assurance" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="Id_societe_assurance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOUVEMEN_ASSOCIATI_BIEN">
+    <End Role="Bien" Type="Self.Bien" Multiplicity="0..1" />
+    <End Role="Mouvement" Type="Self.Mouvement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bien">
+        <PropertyRef Name="Id_bureau" />
+        <PropertyRef Name="Id_bien" />
+      </Principal>
+      <Dependent Role="Mouvement">
+        <PropertyRef Name="Id_bureau" />
+        <PropertyRef Name="Id_bien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUREAU_ASSOCIATI_DIRECTIO">
+    <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
+    <End Role="Bureau" Type="Self.Bureau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direction">
+        <PropertyRef Name="Id_direction" />
+      </Principal>
+      <Dependent Role="Bureau">
+        <PropertyRef Name="Id_direction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BUREAU_ASSOCIATI_ETAGE">
+    <End Role="Etage" Type="Self.Etage" Multiplicity="0..1" />
+    <End Role="Bureau" Type="Self.Bureau" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etage">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_etage" />
+      </Principal>
+      <Dependent Role="Bureau">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_etage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CATEGORI_ASSOCIATI_CATEGORI">
+    <End Role="Categorie_materiel" Type="Self.Categorie_materiel" Multiplicity="1" />
+    <End Role="CategorieDesignation" Type="Self.CategorieDesignation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie_materiel">
+        <PropertyRef Name="Id_categorie" />
+      </Principal>
+      <Dependent Role="CategorieDesignation">
+        <PropertyRef Name="Id_categorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Stock_Categorie_materiel">
+    <End Role="Categorie_materiel" Type="Self.Categorie_materiel" Multiplicity="0..1" />
+    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Categorie_materiel">
+        <PropertyRef Name="Id_categorie" />
+      </Principal>
+      <Dependent Role="Stock">
+        <PropertyRef Name="id_categorie" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRAT__ASSOCIATI_SOCIETE_1">
+    <End Role="Societe_assurance" Type="Self.Societe_assurance" Multiplicity="0..1" />
+    <End Role="Contrat_assurance" Type="Self.Contrat_assurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe_assurance">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_societe_assurance" />
+      </Principal>
+      <Dependent Role="Contrat_assurance">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_societe_assurance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT_2">
+    <End Role="Contrat_assurance" Type="Self.Contrat_assurance" Multiplicity="0..1" />
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_assurance">
+        <PropertyRef Name="Id_societe_assurance" />
+        <PropertyRef Name="Id_contrat_assurance" />
+      </Principal>
+      <Dependent Role="Vehicule">
+        <PropertyRef Name="Id_societe_assurance" />
+        <PropertyRef Name="Id_contrat_assurance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRAT__ASSOCIATI_FOURNISS">
+    <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+    <End Role="Contrat_garanti" Type="Self.Contrat_garanti" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Fournisseur">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Principal>
+      <Dependent Role="Contrat_garanti">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT_3">
+    <End Role="Contrat_garanti" Type="Self.Contrat_garanti" Multiplicity="0..1" />
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_garanti">
+        <PropertyRef Name="Id_contrat_garanti" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Principal>
+      <Dependent Role="Vehicule">
+        <PropertyRef Name="Id_contrat_garanti" />
+        <PropertyRef Name="Id_fournisseur" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRAT__ASSOCIATI_SOCIETE">
+    <End Role="Societe_maintenance" Type="Self.Societe_maintenance" Multiplicity="0..1" />
+    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe_maintenance">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_societe_maintenance" />
+      </Principal>
+      <Dependent Role="Contrat_maintenance">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_societe_maintenance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT_">
+    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="0..1" />
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_maintenance">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
+      </Principal>
+      <Dependent Role="Vehicule">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DELEGATI_ASSOCIATI_GOUVERNO">
+    <End Role="Gouvernorat" Type="Self.Gouvernorat" Multiplicity="1" />
+    <End Role="Delegation" Type="Self.Delegation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Gouvernorat">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+      </Principal>
+      <Dependent Role="Delegation">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FOURNISS_ASSOCIATI_DELEGATI">
+    <End Role="Delegation" Type="Self.Delegation" Multiplicity="0..1" />
+    <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delegation">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Principal>
+      <Dependent Role="Fournisseur">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SOCIETE__ASSOCIATI_DELEGATI">
+    <End Role="Delegation" Type="Self.Delegation" Multiplicity="0..1" />
+    <End Role="Societe_assurance" Type="Self.Societe_assurance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delegation">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Principal>
+      <Dependent Role="Societe_assurance">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SOCIETE__ASSOCIATI_DELEGATION">
+    <End Role="Delegation" Type="Self.Delegation" Multiplicity="0..1" />
+    <End Role="Societe_maintenance" Type="Self.Societe_maintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delegation">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Principal>
+      <Dependent Role="Societe_maintenance">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SERVICED_ASSOCIATI_DIRECTIO">
+    <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
+    <End Role="ServiceD" Type="Self.ServiceD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Direction">
+        <PropertyRef Name="Id_direction" />
+      </Principal>
+      <Dependent Role="ServiceD">
+        <PropertyRef Name="Id_direction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GOUVERNO_ASSOCIATI_REGION">
+    <End Role="Region" Type="Self.Region" Multiplicity="1" />
+    <End Role="Gouvernorat" Type="Self.Gouvernorat" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Region">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+      </Principal>
+      <Dependent Role="Gouvernorat">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MOUVEMEN_ASSOCIATI_VEHICULE">
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="0..1" />
+    <End Role="Mouvement" Type="Self.Mouvement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicule">
+        <PropertyRef Name="Id_parc" />
+        <PropertyRef Name="Id_Vehicule" />
+      </Principal>
+      <Dependent Role="Mouvement">
+        <PropertyRef Name="Id_parc" />
+        <PropertyRef Name="Id_Vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VEHICULE_ASSOCIATI_PARC_AUT">
+    <End Role="Parc_auto" Type="Self.Parc_auto" Multiplicity="0..1" />
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parc_auto">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_parc" />
+      </Principal>
+      <Dependent Role="Vehicule">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_parc" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REGION_ASSOCIATI_PAYS">
+    <End Role="Pays" Type="Self.Pays" Multiplicity="1" />
+    <End Role="Region" Type="Self.Region" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Pays">
+        <PropertyRef Name="idPays" />
+      </Principal>
+      <Dependent Role="Region">
+        <PropertyRef Name="idPays" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PERSONNE_ASSOCIATI_ROLE">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Personnel">
+        <PropertyRef Name="Rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UTILISAT_ASSOCIATI_PERSONNE">
+    <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personnel">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Utilisateur">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Per_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BissInventaireEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Achat" EntityType="Self.Achat" />
+    <EntitySet Name="Association_30" EntityType="Self.Association_30" />
+    <EntitySet Name="Association_31" EntityType="Self.Association_31" />
+    <EntitySet Name="AtbDataTest" EntityType="Self.AtbDataTest" />
+    <EntitySet Name="Batiment" EntityType="Self.Batiment" />
+    <EntitySet Name="Bien" EntityType="Self.Bien" />
+    <EntitySet Name="Bureau" EntityType="Self.Bureau" />
+    <EntitySet Name="Categorie_materiel" EntityType="Self.Categorie_materiel" />
+    <EntitySet Name="CategorieDesignation" EntityType="Self.CategorieDesignation" />
+    <EntitySet Name="Cipherlab" EntityType="Self.Cipherlab" />
+    <EntitySet Name="Contrat_assurance" EntityType="Self.Contrat_assurance" />
+    <EntitySet Name="Contrat_garanti" EntityType="Self.Contrat_garanti" />
+    <EntitySet Name="Contrat_maintenance" EntityType="Self.Contrat_maintenance" />
+    <EntitySet Name="Delegation" EntityType="Self.Delegation" />
+    <EntitySet Name="Direction" EntityType="Self.Direction" />
+    <EntitySet Name="Etage" EntityType="Self.Etage" />
+    <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" />
+    <EntitySet Name="Gouvernorat" EntityType="Self.Gouvernorat" />
+    <EntitySet Name="Inventaire" EntityType="Self.Inventaire" />
+    <EntitySet Name="Mouvement" EntityType="Self.Mouvement" />
+    <EntitySet Name="Organisation" EntityType="Self.Organisation" />
+    <EntitySet Name="Parc_auto" EntityType="Self.Parc_auto" />
+    <EntitySet Name="Pays" EntityType="Self.Pays" />
+    <EntitySet Name="Personnel" EntityType="Self.Personnel" />
+    <EntitySet Name="Region" EntityType="Self.Region" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="ServiceD" EntityType="Self.ServiceD" />
+    <EntitySet Name="Societe_assurance" EntityType="Self.Societe_assurance" />
+    <EntitySet Name="Societe_maintenance" EntityType="Self.Societe_maintenance" />
+    <EntitySet Name="Stock" EntityType="Self.Stock" />
+    <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" />
+    <EntitySet Name="Vehicule" EntityType="Self.Vehicule" />
+    <AssociationSet Name="FK_ACHAT_ASSOCIATI_FOURNISS" Association="Self.FK_ACHAT_ASSOCIATI_FOURNISS">
+      <End Role="Fournisseur" EntitySet="Fournisseur" />
+      <End Role="Achat" EntitySet="Achat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_ACHAT" Association="Self.FK_BIEN_ASSOCIATI_ACHAT">
+      <End Role="Achat" EntitySet="Achat" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_ACHAT" Association="Self.FK_VEHICULE_ASSOCIATI_ACHAT">
+      <End Role="Achat" EntitySet="Achat" />
+      <End Role="Vehicule" EntitySet="Vehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_BIEN" Association="Self.FK_ASSOCIAT_ASSOCIATI_BIEN">
+      <End Role="Bien" EntitySet="Bien" />
+      <End Role="Association_30" EntitySet="Association_30" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_INVENTA" Association="Self.FK_ASSOCIAT_ASSOCIATI_INVENTA">
+      <End Role="Inventaire" EntitySet="Inventaire" />
+      <End Role="Association_30" EntitySet="Association_30" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_INVENTAI" Association="Self.FK_ASSOCIAT_ASSOCIATI_INVENTAI">
+      <End Role="Inventaire" EntitySet="Inventaire" />
+      <End Role="Association_31" EntitySet="Association_31" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_VEHICULE" Association="Self.FK_ASSOCIAT_ASSOCIATI_VEHICULE">
+      <End Role="Vehicule" EntitySet="Vehicule" />
+      <End Role="Association_31" EntitySet="Association_31" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BATIMENT_ASSOCIATI_DELEGATI" Association="Self.FK_BATIMENT_ASSOCIATI_DELEGATI">
+      <End Role="Delegation" EntitySet="Delegation" />
+      <End Role="Batiment" EntitySet="Batiment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BATIMENT_ASSOCIATI_ORGANISA" Association="Self.FK_BATIMENT_ASSOCIATI_ORGANISA">
+      <End Role="Organisation" EntitySet="Organisation" />
+      <End Role="Batiment" EntitySet="Batiment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ETAGE_ASSOCIATI_BATIMENT" Association="Self.FK_ETAGE_ASSOCIATI_BATIMENT">
+      <End Role="Batiment" EntitySet="Batiment" />
+      <End Role="Etage" EntitySet="Etage" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PARC_AUT_ASSOCIATI_BATIMENT" Association="Self.FK_PARC_AUT_ASSOCIATI_BATIMENT">
+      <End Role="Batiment" EntitySet="Batiment" />
+      <End Role="Parc_auto" EntitySet="Parc_auto" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONNE_ASSOCIATI_BATIMENT" Association="Self.FK_PERSONNE_ASSOCIATI_BATIMENT">
+      <End Role="Batiment" EntitySet="Batiment" />
+      <End Role="Personnel" EntitySet="Personnel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_BUREAU" Association="Self.FK_BIEN_ASSOCIATI_BUREAU">
+      <End Role="Bureau" EntitySet="Bureau" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_CATEGORI" Association="Self.FK_BIEN_ASSOCIATI_CATEGORI">
+      <End Role="Categorie_materiel" EntitySet="Categorie_materiel" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_CONTRAT" Association="Self.FK_BIEN_ASSOCIATI_CONTRAT">
+      <End Role="Contrat_garanti" EntitySet="Contrat_garanti" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_CONTRAT_" Association="Self.FK_BIEN_ASSOCIATI_CONTRAT_">
+      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_CONTRAT_1" Association="Self.FK_BIEN_ASSOCIATI_CONTRAT_1">
+      <End Role="Contrat_assurance" EntitySet="Contrat_assurance" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOUVEMEN_ASSOCIATI_BIEN" Association="Self.FK_MOUVEMEN_ASSOCIATI_BIEN">
+      <End Role="Bien" EntitySet="Bien" />
+      <End Role="Mouvement" EntitySet="Mouvement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUREAU_ASSOCIATI_DIRECTIO" Association="Self.FK_BUREAU_ASSOCIATI_DIRECTIO">
+      <End Role="Direction" EntitySet="Direction" />
+      <End Role="Bureau" EntitySet="Bureau" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BUREAU_ASSOCIATI_ETAGE" Association="Self.FK_BUREAU_ASSOCIATI_ETAGE">
+      <End Role="Etage" EntitySet="Etage" />
+      <End Role="Bureau" EntitySet="Bureau" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CATEGORI_ASSOCIATI_CATEGORI" Association="Self.FK_CATEGORI_ASSOCIATI_CATEGORI">
+      <End Role="Categorie_materiel" EntitySet="Categorie_materiel" />
+      <End Role="CategorieDesignation" EntitySet="CategorieDesignation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Stock_Categorie_materiel" Association="Self.FK_Stock_Categorie_materiel">
+      <End Role="Categorie_materiel" EntitySet="Categorie_materiel" />
+      <End Role="Stock" EntitySet="Stock" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRAT__ASSOCIATI_SOCIETE_1" Association="Self.FK_CONTRAT__ASSOCIATI_SOCIETE_1">
+      <End Role="Societe_assurance" EntitySet="Societe_assurance" />
+      <End Role="Contrat_assurance" EntitySet="Contrat_assurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT_2" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_2">
+      <End Role="Contrat_assurance" EntitySet="Contrat_assurance" />
+      <End Role="Vehicule" EntitySet="Vehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRAT__ASSOCIATI_FOURNISS" Association="Self.FK_CONTRAT__ASSOCIATI_FOURNISS">
+      <End Role="Fournisseur" EntitySet="Fournisseur" />
+      <End Role="Contrat_garanti" EntitySet="Contrat_garanti" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT_3" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_3">
+      <End Role="Contrat_garanti" EntitySet="Contrat_garanti" />
+      <End Role="Vehicule" EntitySet="Vehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRAT__ASSOCIATI_SOCIETE" Association="Self.FK_CONTRAT__ASSOCIATI_SOCIETE">
+      <End Role="Societe_maintenance" EntitySet="Societe_maintenance" />
+      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT_" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_">
+      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
+      <End Role="Vehicule" EntitySet="Vehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DELEGATI_ASSOCIATI_GOUVERNO" Association="Self.FK_DELEGATI_ASSOCIATI_GOUVERNO">
+      <End Role="Gouvernorat" EntitySet="Gouvernorat" />
+      <End Role="Delegation" EntitySet="Delegation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FOURNISS_ASSOCIATI_DELEGATI" Association="Self.FK_FOURNISS_ASSOCIATI_DELEGATI">
+      <End Role="Delegation" EntitySet="Delegation" />
+      <End Role="Fournisseur" EntitySet="Fournisseur" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SOCIETE__ASSOCIATI_DELEGATI" Association="Self.FK_SOCIETE__ASSOCIATI_DELEGATI">
+      <End Role="Delegation" EntitySet="Delegation" />
+      <End Role="Societe_assurance" EntitySet="Societe_assurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SOCIETE__ASSOCIATI_DELEGATION" Association="Self.FK_SOCIETE__ASSOCIATI_DELEGATION">
+      <End Role="Delegation" EntitySet="Delegation" />
+      <End Role="Societe_maintenance" EntitySet="Societe_maintenance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SERVICED_ASSOCIATI_DIRECTIO" Association="Self.FK_SERVICED_ASSOCIATI_DIRECTIO">
+      <End Role="Direction" EntitySet="Direction" />
+      <End Role="ServiceD" EntitySet="ServiceD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GOUVERNO_ASSOCIATI_REGION" Association="Self.FK_GOUVERNO_ASSOCIATI_REGION">
+      <End Role="Region" EntitySet="Region" />
+      <End Role="Gouvernorat" EntitySet="Gouvernorat" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MOUVEMEN_ASSOCIATI_VEHICULE" Association="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE">
+      <End Role="Vehicule" EntitySet="Vehicule" />
+      <End Role="Mouvement" EntitySet="Mouvement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_PARC_AUT" Association="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT">
+      <End Role="Parc_auto" EntitySet="Parc_auto" />
+      <End Role="Vehicule" EntitySet="Vehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REGION_ASSOCIATI_PAYS" Association="Self.FK_REGION_ASSOCIATI_PAYS">
+      <End Role="Pays" EntitySet="Pays" />
+      <End Role="Region" EntitySet="Region" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PERSONNE_ASSOCIATI_ROLE" Association="Self.FK_PERSONNE_ASSOCIATI_ROLE">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Personnel" EntitySet="Personnel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UTILISAT_ASSOCIATI_PERSONNE" Association="Self.FK_UTILISAT_ASSOCIATI_PERSONNE">
+      <End Role="Personnel" EntitySet="Personnel" />
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

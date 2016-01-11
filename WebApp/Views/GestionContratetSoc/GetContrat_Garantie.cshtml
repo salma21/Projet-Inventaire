@@ -1,0 +1,93 @@
+﻿@model IEnumerable<Domain.Contrat_garanti>
+
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Contrat de Garantie
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+
+                            <th>Region</th>
+
+                            <th>Delegation</th>
+                            <th>Fournisseur</th>
+                            <th>Garantie</th>
+                            <th>Num</th>
+                            <th>Date Deb</th>
+                            <th>Date Fin</th>
+                            <th>Cout</th>
+
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Region</th>
+
+                            <th>Delegation</th>
+                            <th>Fournisseur</th>
+                            <th>Garantie</th>
+                           
+                            <th>Date Deb</th>
+                            <th>Date Fin</th>
+                            <th>Cout</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td class="center">@item.Fournisseur.Delegation.Gouvernorat.Region.libelle</td>
+                                <td class="center">@item.Fournisseur.Delegation.libelle</td>
+                                <td class="center">@item.Fournisseur.Nom   &nbsp;&nbsp; @item.Fournisseur.Prenom</td>
+                                <td class="center">@item.Type_garanti</td>
+                               
+                                <td class="center">@item.Date_debut</td>
+                                <td class="center">@item.Date_fin</td>
+                                <td class="center">@item.Cout</td>
+
+
+                                <td>
+                                    <a href="@Url.Action("Edit", new { id = item.Id_contrat_garanti })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("Delete", new { id = item.Id_contrat_garanti })">&nbsp;&nbsp;<i class="fa fa-trash" title="Effacer"></i></a>
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveau Contrat de Garantie", "CreateContrat_garanti")
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<script>
+    $(document).tooltip();
+</script>
+
+

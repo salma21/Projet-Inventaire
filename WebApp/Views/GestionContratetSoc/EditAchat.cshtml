@@ -1,0 +1,231 @@
+﻿@model Domain.Achat
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+
+                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat Achat</h4>
+                <ol class="breadcrumb">
+                    <li><class ="active">Achat</li>
+
+
+                </ol>
+
+
+
+                <div class="panel-body">
+                    <!-- Start Modal Code -->
+                    <!-- End Moda Code -->
+                </div>
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                @using (@Html.BeginForm("CreateAchat", "GestionContratetSoc", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                   
+
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.Id_achat)
+                    
+                        <div class="panel panel-default">
+                            <fieldset>
+
+                                <legend>Acquisition (Achat)</legend>
+
+                                <div class="form-group">
+                                    <CENTER>
+                                        <TABLE border=0>
+                                            <TR>
+
+                                                <TD width=33%>
+                                                    <label class="col-sm-4 control-label form-label">Référence (N° facture)</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.TextBoxFor(model => model.Id_achat, new { @class = "form-control", required = "" })
+
+                                                    </div>
+                                                </TD>
+
+                                                <TD width=34%>
+                                                    <label class="col-sm-4 control-label form-label">Fournisseur</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+
+
+                                                    </div>
+                                                </TD>
+
+                                                <TD width=33%>
+                                                    <label class="col-sm-4 control-label form-label"> Num Livraison</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.TextBoxFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
+
+
+                                                    </div>
+                                                </TD>
+                                            </TR>
+
+                                        </TABLE>
+                                    </CENTER>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <CENTER>
+                                        <TABLE width=70%>
+                                            <TR>
+
+                                                <TD width=35%>
+                                                    <label class="col-sm-4 control-label form-label">N° de commande</label>
+
+                                                    <div class="col-sm-8">
+
+
+                                                        @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+                                                    </div>
+                                                </TD>
+                                                <TD width=35%>
+                                                    <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
+
+                                                    <div class="col-sm-8">
+
+
+                                                        @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                                    </div>
+                                                </TD>
+
+                                            </TR>
+                                        </TABLE>
+                                    </CENTER>
+                                </div>
+
+
+
+                            </fieldset>
+
+
+                            <fieldset>
+
+                                <legend>Localisation</legend>
+
+                                <div class="form-group">
+                                    <CENTER>
+                                        <TABLE width=80%>
+                                            <TR>
+                                                <TD width=40%>
+                                                    <label class="col-sm-4 control-label form-label"> Ville</label>
+
+                                                    <div class="col-sm-8">
+                                                        @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                                    </div>
+                                                </TD>
+                                                <TD width=40%>
+                                                    <label class="col-sm-4 control-label form-label">Gouvernerat</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        <div class="col-sm-8">
+
+                                                            @Html.DropDownListFor(model => model.idGouvernorat, (SelectList)ViewData["gouvers"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                                        </div>
+                                                    </div>
+                                                </TD>
+
+                                            </TR>
+
+                                        </TABLE>
+                                    </CENTER>
+                                </div>
+
+                                <div class="form-group">
+                                    <CENTER>
+                                        <TABLE width=80%>
+                                            <TR>
+                                                <TD width=40%>
+                                                    <label class="col-sm-4 control-label form-label"> Region</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.DropDownListFor(model => model.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                                    </div>
+                                                </TD>
+                                                <TD width=40%>
+                                                    <label class="col-sm-4 control-label form-label">Pays</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        <div class="col-sm-8">
+
+                                                            @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                                        </div>
+                                                    </div>
+                                                </TD>
+
+                                            </TR>
+
+                                        </TABLE>
+                                    </CENTER>
+
+                            </fieldset>
+                            <br>
+
+
+                            <br>
+
+
+
+
+
+
+
+
+                            <div style="text-align: center;">
+
+                                <input type="submit" value="Valider" class="btn btn-default" />
+                                <button type="reset" class="btn btn-white">Annuler</button>
+
+
+
+                            </div>
+
+
+
+
+
+
+
+                        </div>
+                        }
+                    </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+

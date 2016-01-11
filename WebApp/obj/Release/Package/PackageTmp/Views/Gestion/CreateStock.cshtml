@@ -1,0 +1,198 @@
+﻿@model Domain.Stock
+<script type="text/javascript">
+    function disp() {
+        //if ((document.getElementById("article1").style.display == "none") && (document.getElementById("article2").style.display == "none") && (document.getElementById("article3").style.display == "none")) { document.getElementById("article1").style.display = "inline"; }
+
+        document.getElementById("article1").style.display = "inline"; 
+        //if ((document.getElementById("article1").style.display == "inline") && (document.getElementById("article2").style.display == "none")) { document.getElementById("article2").style.display = "inline"; }
+        //if ((document.getElementById("article1").style.display == "inline") && (document.getElementById("article2").style.display == "inline") && (document.getElementById("article3").style.display == "none")) { document.getElementById("article3").style.display = "inline"; }
+    }
+    function disp2() {
+         document.getElementById("article2").style.display = "inline";
+       }
+   
+</script>
+@{
+
+
+    List<string> listRegion = new List<string>();
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_stateId) {
+        var procemessage = "<option value='0'>EnCours....</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Gestion/GetProduitByCAt/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Text + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlcity").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout Produit
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+
+
+
+                    @using (@Html.BeginForm("CreateStock", "Gestion", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Nouvelle Reception</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <fieldset>
+
+                                <legend> Details</legend>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Fournisseur</label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.Fournisseur, (SelectList)ViewData["fournis"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">N° Bon de Commande</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Num_BonCommande, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Date Bon de Commande</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.date_BonCommande, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">N° Bon de Livraison</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Num_BonLivraison, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Date Bon de Livraison</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.date_Livraison, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+                                <input type="button" value="Ajouter Article" class="btn btn-warning" style="margin-left:500px;" onclick="disp()"/>
+
+                            </fieldset>
+                            <br />
+
+                            <fieldset>
+
+                                <legend> Articles</legend>
+                                <div class="col-md-4">
+                                    <fieldset id="article1" style="width:300px; display:none;">
+
+                                        <legend> Article 1</legend>
+
+                                        <ul class="panel quick-menu clearfix">
+                                            <li class="col-sm-2" style="margin-left:120px;">
+                                                <a href="#" onclick="Disp2()"><i class="fa fa-plus-circle"></i>Autre Article</a>
+                                            </li>
+
+                                        </ul>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4" style="font-style:oblique;">Categorie </label>
+                                            <div class="col-lg-6">
+                                                @Html.DropDownListFor(m => m.id_categorie, (SelectList)ViewData["catgorie"], "--Choisir--", new { @id = "ddlstate", @style = "width:115px; height: 30px; color: black", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                            </div>
+                                         </div>
+                                   
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4" style="font-style:oblique;">Produit </label>
+                                            <div class="col-lg-6">
+                                                @Html.DropDownListFor(m => m.produit, new SelectList(listRegion), "--Choisir--", new { @id = "ddlcity", @style = "width:115px;height:30px;color:black", required = "True" })
+                                             </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4" style="font-style:oblique;">QTE</label>
+                                            <div class="col-lg-6">
+
+                                                @Html.TextBoxFor(model => model.Qte, new { @class = "form-control", required = "" })
+
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-lg-4" style="font-style:oblique;">Emplacement</label>
+                                            <div class="col-lg-6">
+
+                                                @Html.TextBoxFor(model => model.Emplacement, new { @class = "form-control", required = "" })
+
+                                            </div>
+                                        </div>
+
+                                    </fieldset>
+                                </div>
+                        
+                            </fieldset>
+
+                            <br />
+                            </div>
+
+                         <br />                            <br />
+
+                            <div style="text-align: center;">
+                                <input type="submit" value="Valider" class="btn btn-default" />
+
+                                <button type="reset" class="btn btn-white">Annuler</button>
+
+                            </div>
+
+                            }
+
+
+                        </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

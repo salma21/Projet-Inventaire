@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Domain.Pays>
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Pays
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            
+                            <th>Pays</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td class="center">@item.libelle</td>
+                                
+
+
+                                <td>
+
+                                    <a href="@Url.Action("Edit", new { id = item.idPays })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("Delete", new { id = item.idPays })">&nbsp;&nbsp;<i class="fa fa-trash" title="Supprimer"></i></a>
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveau pay", "CreatePays")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

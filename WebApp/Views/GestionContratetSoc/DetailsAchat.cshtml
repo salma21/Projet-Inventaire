@@ -1,0 +1,93 @@
+﻿@model Domain.Achat
+
+<div class="row presentation">
+
+    <div class="panel panel-default">
+        <div class="panel-title">
+            Details Bien
+
+        </div>
+        <div class="panel-body">
+            <div class="form-horizontal">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Numero de facture </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Num_facture, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Numero de commande</label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Numero de livraison </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Num_livraison, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Date Livraison </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Date_livraison, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Date d'Achat </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Date_d_achat, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Prix d'Achat</label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Fournisseurs </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Fournisseur.Nom, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Fournisseur.Delegation.Gouvernorat.Region.libelle, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label col-lg-4" style="font-style:oblique;">Delegation </label>
+                        <div class="col-lg-6">
+
+                            @Html.TextBoxFor(model => model.Fournisseur.Delegation.libelle, new { @class = "form-control", @readonly = "readonly" })
+
+                        </div>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

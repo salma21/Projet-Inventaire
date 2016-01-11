@@ -1,0 +1,201 @@
+﻿@model Domain.Contrat_garanti
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+
+                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat de Garantie</h4>
+                <ol class="breadcrumb">
+                    <li><class ="active">Contrat de Garantie</li>
+
+              
+                </ol>
+
+
+                <div class="panel-body">
+                    <!-- Start Modal Code -->
+                    <!-- End Moda Code -->
+                </div>
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                @using (@Html.BeginForm("CreateContrat_garanti", "GestionContratetSoc", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                {
+                    <div class="panel panel-default">
+                        <fieldset>
+
+                            <legend>Contrat De Garantie</legend>
+
+                            <div class="form-group">
+                                <CENTER>
+                                    <TABLE border=0>
+                                        <TR>
+
+                                            <TD width=33%>
+                                                <label class="col-sm-4 control-label form-label">Référence (N° Contrat)</label>
+
+                                                <div class="col-sm-8">
+
+                                                    @Html.TextBoxFor(model => model.Num, new { @class = "form-control", required = "" })
+
+                                                </div>
+                                            </TD>
+
+                                            <TD width=34%>
+                                                <label class="col-sm-4 control-label form-label">Societe</label>
+
+                                                <div class="col-sm-8">
+
+                                                    @Html.DropDownListFor(model => model.Id_contrat_garanti, (SelectList)ViewData["societe"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+
+
+                                                </div>
+                                            </TD>
+
+                                            <TD width=33%>
+                                                <label class="col-sm-4 control-label form-label"> Type</label>
+
+                                                <div class="col-sm-8">
+
+                                                    @{
+
+                                                        var listItems = new List<SelectListItem>()
+                            {
+                                new SelectListItem {Text = "Bon",   Value = "Bon"},
+                                new SelectListItem {Text = "Mauvais", Value = "Mauvais"},
+                                new SelectListItem {Text = "Moyenne", Value = "Moyenne"},
+                                 new SelectListItem {Text = "Trés Bien", Value = "Trés Bien"}
+
+
+                            };
+
+                                                        @Html.DropDownListFor(m => m.Type_garanti, listItems, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Type_garanti, String.Empty, new { @class = "test" })
+                                                    }
+
+
+                                                </div>
+                                            </TD>
+                                        </TR>
+
+                                    </TABLE>
+                                </CENTER>
+
+                            </div>
+
+                            <div class="form-group">
+                                <CENTER>
+                                    <TABLE width=100%>
+                                        <TR>
+                                            <TD width=35%>
+                                                <label class="col-sm-4 control-label form-label">Cout</label>
+
+                                                <div class="col-sm-8">
+
+
+                                                    @Html.TextBoxFor(model => model.Cout, new { @class = "form-control", required = "" })
+                                                </div>
+                                            </TD>
+                                            <TD width=35%>
+                                                <label class="col-sm-4 control-label form-label">Date Debut </label>
+
+                                                <div class="col-sm-8">
+
+
+                                                    @Html.TextBoxFor(model => model.Date_debut, new { @class = "form-control", required = "" })
+                                                </div>
+                                            </TD>
+                                            <TD width=35%>
+                                                <label class="col-sm-4 control-label form-label">Date Fin</label>
+
+                                                <div class="col-sm-8">
+
+
+                                                    @Html.TextBoxFor(model => model.Date_fin, new { @class = "form-control", required = "" })
+                                                </div>
+                                            </TD>
+                                        </TR>
+                                    </TABLE>
+                                </CENTER>
+                            </div>
+
+
+
+                        </fieldset>
+
+
+
+                        <fieldset>
+
+                            <legend>Localisation</legend>
+
+                            <div class="form-group">
+                                <CENTER>
+                                    <TABLE width=80%>
+                                        <TR>
+                                            <TD width=40%>
+                                                <label class="col-sm-4 control-label form-label"> Ville</label>
+
+                                                <div class="col-sm-8">
+                                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                                </div>
+                                            </TD>
+
+
+                                        </TR>
+
+                                    </TABLE>
+                                </CENTER>
+                            </div>
+
+
+                        </fieldset>
+                        <br>
+
+
+                        <br>
+
+
+
+
+
+
+
+
+                        <div style="text-align: center;">
+
+                            <input type="submit" value="Valider" class="btn btn-default" />
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                                                        }
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+

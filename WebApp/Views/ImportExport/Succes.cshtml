@@ -1,0 +1,27 @@
+﻿<html>
+<head>
+
+    <body>
+
+        <table>
+
+            <tr>
+                <th>Nom</th>
+                <th>Prenom</th>
+            </tr>
+
+
+            @foreach (var p in ViewBag.list)
+            {
+
+                <tr>
+                    <td>@p.Code_materiel </td>
+                    <td>@p.Num_serie</td>
+                </tr>
+
+            }
+        </table>
+    </body>
+</head>
+
+</html>

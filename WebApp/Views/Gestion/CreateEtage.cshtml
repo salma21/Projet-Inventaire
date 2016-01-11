@@ -1,0 +1,119 @@
+﻿@model Domain.Etage
+
+
+
+@{
+
+
+    List<string> listbatiment = new List<string>();
+    List<string> listetage = new List<string>();
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Gestion/GetBatiemntByDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlcity").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout d'étage
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+                    @using (@Html.BeginForm("CreateEtage", "Gestion", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Étage</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Ville</label>
+                                <div class="col-lg-6">
+                                       @Html.DropDownListFor(m => m.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+
+
+                                </div>
+                            </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4">Batiment</label>
+                                    <div class="col-lg-6">
+                                         @Html.DropDownListFor(m => m.idBatiment, new SelectList(listbatiment), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
+
+
+                                    </div>
+                                </div>
+
+                              
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4">Code à barre de l'ÉTAGE</label>
+                                    <div class="col-lg-6">
+                                        @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4">Description</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div style="text-align: center;">
+                                <input type="submit" value="Valider" class="btn btn-default" />
+
+                                <button type="reset" class="btn btn-white">Annuler</button>
+
+                            </div>
+
+                            @*</div>*@
+
+
+
+                            }
+                            <div>
+                                @Html.ActionLink("Afficher la liste des étages", "GetEtage")
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+             

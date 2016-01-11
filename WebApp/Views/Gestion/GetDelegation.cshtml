@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Domain.Delegation>
+
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Délégations
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Code postal</th>
+                            <th>Délégation</th>
+                            <th>Region</th>
+                            <th>Pay</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td class="center">@item.libelle</td>
+                                <td class="center">@item.Code_postal</td>
+                                <td class="center">@item.Gouvernorat.libelle</td>
+                                <td class="center">@item.Gouvernorat.Region.libelle</td>
+                                <td class="center">@item.Gouvernorat.Region.Pays.libelle</td>
+
+
+                                <td>
+
+                                    <a href="@Url.Action("EditDelegation", new { id = item.idDelegation })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                  </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter une nouvelle Delegation", "CreateDelegation")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

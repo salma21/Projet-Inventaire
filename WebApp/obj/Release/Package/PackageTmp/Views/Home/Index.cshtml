@@ -1,0 +1,79 @@
+﻿@model Domain.Utilisateur
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biss Inventaire</title>
+
+    <!-- Error CSS -->
+   @Styles.Render("~/Content/css/login.css")
+    <!-- Animate CSS -->
+    @Styles.Render("~/Content/css/animate.css" )
+
+    <style>
+
+        Errormesg {
+        text-align:center;
+        COLOR:red;}
+    </style>
+</head>
+<body>
+    
+ 
+        <div id="box" class="animated bounceIn">
+
+            <div id="top_header">
+                <a href="#">
+                    <img class="logo" src="~/Content/img/Nouveau/atb.png" alt="logo" style="margin-top:-30px;">
+                </a>
+                <h5>
+                    Sign in to continue to your<br />
+                    Application.
+                </h5>
+            </div>
+@using (Html.BeginForm("Index", "Home", FormMethod.Post))
+{
+
+       
+                <div class="form-control">
+
+                    @Html.TextBoxFor(model => model.login, new { placeholder = "Login", id = "user-email", required = "" })
+
+
+                    <i class="fa fa-envelope-o"></i>
+                </div>
+                <div class="form-control">
+                    @Html.PasswordFor(model => model.motDePasse, new { placeholder = "password", id = "user-pw", required = "" })
+
+
+                    <i class="fa fa-key"></i>
+                </div>
+                <input type="submit" value="S'authentifier">
+    
+       
+}                       
+            @if (@Html.ViewBag.msg1 != null)
+            {
+                <div><p style="text-align:center; color:red;">@Html.ViewBag.msg1</p></div>
+            }
+       
+            </div>
+    <script>
+        setTimeout(function () {
+            $('#t2').fadeOut('slow');
+        }, 3000);
+
+
+        setTimeout(function () {
+            $('#t1').fadeOut('slow');
+        }, 5000);
+
+    </script>
+</body>
+</html>

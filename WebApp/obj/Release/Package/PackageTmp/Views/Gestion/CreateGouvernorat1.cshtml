@@ -1,0 +1,65 @@
+﻿@model Domain.Gouvernorat
+@{
+
+
+    List<string> listRegion = new List<string>();
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_stateId) {
+        var procemessage = "<option value='0'> Please wait...</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Gestion/GetCityByStaeId/";
+        alert("ok");
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlcity").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout de gouvernorat
+            </div>
+            <div class="panel-body">
+                 <div class="panel panel-default">
+             @using (Html.BeginForm())
+             {
+                @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @style = "width:200px;", @onchange = "javascript:GetCity(this.value);" })
+                <br />
+                <br />
+                @*<select id="ddlcity" name="ddlcity" style="width: 200px"></select>*@
+                @Html.DropDownListFor(m => m.idRegion, new SelectList(listRegion), "--Choisir--", new { @id = "ddlcity", @style = "width:200px;", @onchange = "javascript:GetCity(this.value);" })
+
+                <br /><br />
+             }
+
+
+                </div>
+
+                <div>
+
+                    @Html.ActionLink("List", "GetGouvernorat")
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

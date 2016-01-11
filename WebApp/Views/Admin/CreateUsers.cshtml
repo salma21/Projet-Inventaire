@@ -1,0 +1,80 @@
+﻿@model Domain.Utilisateur
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout Utilisateur
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+                    @using (@Html.BeginForm("CreateUsers", "Admin", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Role</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Login </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.login, new { @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Description</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.motDePasse, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.motDePasse, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Personnel</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.Per_id, (SelectList)ViewData["personel"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Batiment</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
+                        </div>
+
+                    }
+
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("Afficher la liste des Utlisateurs", "GetUsers")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

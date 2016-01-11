@@ -1,0 +1,100 @@
+﻿@model Domain.Gouvernorat
+@{
+
+
+    List<string> listRegion = new List<string>();
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_stateId) {
+        var procemessage = "<option value='0'>EnCours....</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Gestion/GetRegionByPays/";
+        
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlcity").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout de gouvernorat
+            </div>
+            <div class="panel-body">
+                 <div class="panel panel-default">
+                      @using (@Html.BeginForm("CreateGouvernorat", "Gestion", FormMethod.Post,
+            new { @id = "frmId", @class = "fieldset-form", role = "form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Gouvernorat</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Nom Gouvernorat </label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.libelle, new { @class = "form-control", style = "width:300px;height:30px;color:black", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @style = "width:300px; height: 30px; color: black", required = "True", @onchange = "javascript:GetCity(this.value);" })   </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.idRegion, new SelectList(listRegion), "--Choisir--", new { @id = "ddlcity", @style = "width:300px;height:30px;color:black", required = "True" })
+
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
+                        </div>
+
+                    }
+
+
+                </div>
+
+                <div>
+
+                    @Html.ActionLink("List", "GetGouvernorat")
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

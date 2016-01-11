@@ -1,0 +1,145 @@
+﻿@model Domain.Achat
+
+<link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
+<script src="~/Content/js/jquery.datetimepicker.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(function () {
+
+            $("#txtdatepicker").datetimepicker({
+                lang: 'fr',
+                timepicker: false,
+                format: 'Y/m/d',
+            });
+          
+
+        });
+    });
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+
+                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat Achat</h4>
+                <ol class="breadcrumb">
+                    <li><class ="active">Achat</li>
+
+                   
+                </ol>
+
+
+
+                <div class="panel-body">
+                    <!-- Start Modal Code -->
+                    <!-- End Moda Code -->
+                </div>
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                @using (@Html.BeginForm("CreateAchat", "GestionContratetSoc", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                {
+                    <div class="panel panel-default">
+                        <fieldset>
+
+                            <legend>Acquisition (Achat)</legend>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">N° facture</label>
+
+                                    <div class="col-md-8">
+
+                                        @Html.TextBoxFor(model => model.Num_facture, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Fournisseur</label>
+
+                                    <div class="col-md-8">
+
+                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label"> Num Livraison</label>
+
+                                    <div class="col-md-8">
+
+                                        @Html.TextBoxFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
+
+
+                                    </div>
+                                </div>
+
+                                        </div>
+
+                            <br />
+                            <div class="form-group">
+                               <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label">N° de commande</label>
+
+                                   <div class="col-md-8">
+
+
+
+                                       @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+                                   </div></div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
+
+                                    <div class="col-md-8">
+
+
+                                        @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label"> Date Livraison</label>
+
+                                    <div class="col-md-8">
+
+
+                                        @Html.TextBoxFor(model => model.Date_livraison, new { @class = "form-control", id = "txtdatepicker" })
+                                    </div>
+                                </div><br /><br /><br /><br />  </div>
+
+                        </fieldset>
+
+                        <br /><br /> <div style="text-align: center;">
+
+                            <input type="submit" value="Valider" class="btn btn-default" />
+                             <button type="reset" class="btn btn-white">Annuler</button>
+
+
+
+                        </div>
+
+
+
+
+
+
+
+                    </div>
+                }
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+

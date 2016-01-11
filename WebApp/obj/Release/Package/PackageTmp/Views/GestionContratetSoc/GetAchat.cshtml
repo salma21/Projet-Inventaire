@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Domain.Achat>
+
+
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Contrat d'Achat
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                           
+                            <th>Delegation</th>
+                            <th>Fournisseur</th>
+                            <th>Date Livraison</th>
+                            <th>Num Facture</th>
+                            <th>Num Commande</th>
+                            <th>Date D'achat</th>
+                            <th>Prix</th>
+                            <th>Num livraison</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Delegation</th>
+                            <th>Fournisseur</th>
+                            <th>Date Livraison</th>
+                            <th>Num Facture</th>
+                            <th>Num Commande</th>
+                            <th>Date D'achat</th>
+                            <th>Prix</th>
+                            <th>Num livraison</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                              
+                                <td class="center">@item.Fournisseur.Delegation.libelle</td>
+                                <td class="center">@item.Fournisseur.Nom   &nbsp;&nbsp; @item.Fournisseur.Prenom</td>
+                                <td class="center">@item.Date_livraison</td>
+                                <td class="center">@item.Num_facture</td>
+                                <td class="center">@item.Num_commande</td>
+                                <td class="center">@item.Date_d_achat</td>
+                                <td class="center">@item.Prix_d_achat</td>
+                                <td class="center">@item.Num_livraison</td>
+
+
+                                <td>
+                                    <a href="@Url.Action("EditAchat", new { id = item.Id_achat })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("DetailsAchat", new { id = item.Id_achat })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveau Contrat d'achat", "CreateAchat")
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </div>
+</div>
+
+<script>
+    $(document).tooltip();
+</script>

@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Domain.Mouvement>
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Mouvements Biens
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Organisation</th>
+                            <th>Batiment</th>
+                            <th>Parc</th>
+                            <th>Vehicule</th>
+                            <th>Nom Mouvement</th>
+                            <th>Date derniére affectation</th>
+                            <th>Date prochaine affectation</th>
+                            <th>Date renouvellementt</th>
+                            <th>Date retour prévue</th>
+                            <th>Date sortie</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">@item.Bien.Bureau.Etage.Batiment.Organisation.description</td>
+                                <td class="center">@item.Bien.Bureau.Etage.Batiment.description</td>
+                                <td class="center">@item.Bien.Bureau.Etage.description</td>
+                                <td class="center">@item.Bien.Bureau.Description</td>
+                                <td class="center">@item.Nom</td>
+                                <td class="center">@item.Date_derniere_affectation</td>
+                                <td class="center">@item.Date_prochaine_affectation</td>
+                                <td class="center">@item.Date_renouvellement_prevue</td>
+                                <td class="center">@item.Date_retour_prevue</td>
+                                <td class="center">@item.Date_sortie</td>
+
+
+                                <td>
+
+                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvement })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvement")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

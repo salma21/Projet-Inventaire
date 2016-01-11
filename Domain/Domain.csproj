@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{5D1612A6-B114-4BCB-ACFD-7C9CC398998F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Achat.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Association_30.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Association_31.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AtbDataTest.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Batiment.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Bien.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BissInventaireEntities.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BissInventaireEntities.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BissInventaireEntities.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BissInventaireEntities.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Bureau.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CategorieDesignation.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Categorie_materiel.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Cipherlab.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contrat_assurance.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contrat_garanti.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Contrat_maintenance.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Delegation.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Direction.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Etage.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Fournisseur.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Gouvernorat.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Inventaire.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mouvement.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Organisation.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Parc_auto.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Pays.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Personnel.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Region.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceD.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Societe_assurance.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Societe_maintenance.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Stock.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utilisateur.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicule.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="BissInventaireEntities.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>BissInventaireEntities.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="BissInventaireEntities.edmx.diagram">
+      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="BissInventaireEntities.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
+      <LastGenOutput>BissInventaireEntities.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="BissInventaireEntities.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
+      <LastGenOutput>BissInventaireEntities.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

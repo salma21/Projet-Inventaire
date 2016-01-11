@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Domain.Role>
+
+@{
+    ViewBag.Title = "GetRole";
+}
+
+<h2>Liste des rôles</h2>
+
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+              
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Code Rôles</th>
+                            <th>Nom Rôles</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Code Rôles</th>
+                            <th>Nom Rôles</th>
+                            <th>Description</th>
+                            <th>Action</th>
+
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">@item.id</td>
+                                <td class="center">@item.libelle</td>
+                                <td class="center">@item.description</td> 
+
+
+                                <td>
+
+                                    <a href="@Url.Action("Edit", new { id = item.id })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                  </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveau Rôles", "CreateRole")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

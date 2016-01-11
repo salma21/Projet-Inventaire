@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Domain.AtbDataTest>
+
+@{
+    List<Domain.AtbDataTest>
+      atb = (List<Domain.AtbDataTest>
+          )HttpContext.Current.Session["Tesst"];
+
+}
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Biens
+            </div>
+          
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                                <th>Code Materiel </th>
+                                <th>Num Serie </th>
+                                <th>Categorie</th>
+                                <th>Modele</th>
+                                <th>Marque</th>
+                                <th>Statut </th>
+                                <th>Fin Garantie </th>
+                                <th>Localisation </th>
+                                <th>Entite Dernier</th>
+                                <th>Date Inventaire</th>
+                                <th>Date Installation</th>
+                                <th>Localisation Complet</th>
+                                <th>Entite Complet</th>
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in atb)
+                            {
+                                <tr class="odd gradeX">
+
+                                    <td>@item.Code_materiel</td>
+                                    <td>@item.Num_serie</td>
+                                    <td>@item.Categorie</td>
+                                    <td>@item.Modele</td>
+                                    <td>@item.Marque</td>
+                                    <td>@item.Statut</td>
+                                    <td>@item.Fin_garantie</td>
+                                    <td>@item.Localisation_dernier</td>
+                                    <td>@item.Entite_dernier</td>
+                                    <td>@item.Date_inventaire</td>
+                                    <td>@item.Date_installation</td>
+                                    <td>@item.Localisation_complet</td>
+                                    <td>@item.Entite_complet</td>
+                                    <td>
+                                        <a href="@Url.Action("DetailsBien", new { id = item.id })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
+                                    </td>
+                                </tr>
+
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <br /><p>
+
+
+
+
+
+                    </p>
+                    <br /><p>
+                        @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
+
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+    $(document).tooltip();
+</script>

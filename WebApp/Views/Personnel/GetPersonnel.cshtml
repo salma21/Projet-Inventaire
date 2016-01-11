@@ -1,0 +1,96 @@
+﻿@model IEnumerable<Domain.Personnel>
+
+@{
+    ViewBag.Title = "GetPersonnel";
+}
+
+
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste Du Personnel
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Matricule</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Rôle</th>
+                            <th>Organisation</th>
+                            <th>Batiment</th>
+                            <th>Ville</th>
+                            <th>Region</th>
+                            <th>Gouvernorat</th>
+                            <th>Pays</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Matricule</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Rôle</th>
+                            <th>Organisation</th>
+                            <th>Batiment</th>
+                            <th>Ville</th>
+                            <th>Region</th>
+                            <th>Gouvernorat</th>
+                            <th>Pays</th>
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td class="center">@item.Matricule</td>
+                                <td class="center">@item.nom</td>
+                                <td class="center">@item.prenom</td>
+                                <td class="center">@item.Role.libelle</td>
+                                <td class="center">@item.Batiment.Organisation.libelle</td>
+                                <td class="center">@item.Batiment.description</td>
+                                <td class="center">@item.Batiment.Delegation.libelle</td>
+                                <td class="center">@item.Batiment.Delegation.Gouvernorat.Region.libelle</td>
+                                <td class="center">@item.Batiment.Delegation.Gouvernorat.libelle</td>
+                                <td class="center">@item.Batiment.Delegation.Gouvernorat.Region.Pays.libelle</td>
+
+
+                                <td>
+
+                                    <a href="@Url.Action("Edit", new { id = item.id })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("Delete", new { id = item.id })">&nbsp;&nbsp;<i class="fa fa-trash" title="Effacer"></i></a>
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveau personnel", "CreatePersonnel")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

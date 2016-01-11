@@ -1,0 +1,447 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities">
+    <EntitySetMapping Name="Achat">
+      <EntityTypeMapping TypeName="BissInventaireModel.Achat">
+        <MappingFragment StoreEntitySet="Achat">
+          <ScalarProperty Name="Id_achat" ColumnName="Id_achat" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="Id_fournisseur" ColumnName="Id_fournisseur" />
+          <ScalarProperty Name="Date_livraison" ColumnName="Date_livraison" />
+          <ScalarProperty Name="Num_facture" ColumnName="Num_facture" />
+          <ScalarProperty Name="Num_commande" ColumnName="Num_commande" />
+          <ScalarProperty Name="Date_d_achat" ColumnName="Date_d_achat" />
+          <ScalarProperty Name="Prix_d_achat" ColumnName="Prix_d_achat" />
+          <ScalarProperty Name="Num_livraison" ColumnName="Num_livraison" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Association_30">
+      <EntityTypeMapping TypeName="BissInventaireModel.Association_30">
+        <MappingFragment StoreEntitySet="Association_30">
+          <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
+          <ScalarProperty Name="Bur_idDelegation" ColumnName="Bur_idDelegation" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Id_etage" ColumnName="Id_etage" />
+          <ScalarProperty Name="Id_direction" ColumnName="Id_direction" />
+          <ScalarProperty Name="Id_bureau" ColumnName="Id_bureau" />
+          <ScalarProperty Name="Id_bien" ColumnName="Id_bien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Association_31">
+      <EntityTypeMapping TypeName="BissInventaireModel.Association_31">
+        <MappingFragment StoreEntitySet="Association_31">
+          <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
+          <ScalarProperty Name="Par_idDelegation" ColumnName="Par_idDelegation" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Id_parc" ColumnName="Id_parc" />
+          <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AtbDataTest">
+      <EntityTypeMapping TypeName="BissInventaireModel.AtbDataTest">
+        <MappingFragment StoreEntitySet="AtbDataTest">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Code_materiel" ColumnName="Code_materiel" />
+          <ScalarProperty Name="Num_serie" ColumnName="Num_serie" />
+          <ScalarProperty Name="Categorie" ColumnName="Categorie" />
+          <ScalarProperty Name="Modele" ColumnName="Modele" />
+          <ScalarProperty Name="Marque" ColumnName="Marque" />
+          <ScalarProperty Name="Statut" ColumnName="Statut" />
+          <ScalarProperty Name="Fin_garantie" ColumnName="Fin_garantie" />
+          <ScalarProperty Name="Localisation_dernier" ColumnName="Localisation_dernier" />
+          <ScalarProperty Name="Entite_dernier" ColumnName="Entite_dernier" />
+          <ScalarProperty Name="Date_inventaire" ColumnName="Date_inventaire" />
+          <ScalarProperty Name="Date_installation" ColumnName="Date_installation" />
+          <ScalarProperty Name="Localisation_complet" ColumnName="Localisation_complet" />
+          <ScalarProperty Name="Entite_complet" ColumnName="Entite_complet" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Batiment">
+      <EntityTypeMapping TypeName="BissInventaireModel.Batiment">
+        <MappingFragment StoreEntitySet="Batiment">
+          <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bien">
+      <EntityTypeMapping TypeName="BissInventaireModel.Bien">
+        <MappingFragment StoreEntitySet="Bien">
+          <ScalarProperty Name="Id_contrat_garanti" ColumnName="Id_contrat_garanti" />
+          <ScalarProperty Name="Id_etage" ColumnName="Id_etage" />
+          <ScalarProperty Name="Id_direction" ColumnName="Id_direction" />
+          <ScalarProperty Name="Id_bureau" ColumnName="Id_bureau" />
+          <ScalarProperty Name="Id_bien" ColumnName="Id_bien" />
+          <ScalarProperty Name="Id_categorie" ColumnName="Id_categorie" />
+          <ScalarProperty Name="Id_achat" ColumnName="Id_achat" />
+          <ScalarProperty Name="Id_societe_maintenance" ColumnName="Id_societe_maintenance" />
+          <ScalarProperty Name="Id_contrat_assurance" ColumnName="Id_contrat_assurance" />
+          <ScalarProperty Name="Id_fournisseur" ColumnName="Id_fournisseur" />
+          <ScalarProperty Name="Id_societe_assurance" ColumnName="Id_societe_assurance" />
+          <ScalarProperty Name="Id_contrat_maintenance" ColumnName="Id_contrat_maintenance" />
+          <ScalarProperty Name="Designation" ColumnName="Designation" />
+          <ScalarProperty Name="Marque" ColumnName="Marque" />
+          <ScalarProperty Name="Modele" ColumnName="Modele" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Num_Serie" ColumnName="Num_Serie" />
+          <ScalarProperty Name="Etat" ColumnName="Etat" />
+          <ScalarProperty Name="Valeur" ColumnName="Valeur" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Code_a_barre" ColumnName="Code_a_barre" />
+          <ScalarProperty Name="Emploi_principal" ColumnName="Emploi_principal" />
+          <ScalarProperty Name="Date_d_installation" ColumnName="Date_d_installation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bureau">
+      <EntityTypeMapping TypeName="BissInventaireModel.Bureau">
+        <MappingFragment StoreEntitySet="Bureau">
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Id_etage" ColumnName="Id_etage" />
+          <ScalarProperty Name="Id_direction" ColumnName="Id_direction" />
+          <ScalarProperty Name="Id_bureau" ColumnName="Id_bureau" />
+          <ScalarProperty Name="Code_a_barre" ColumnName="Code_a_barre" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categorie_materiel">
+      <EntityTypeMapping TypeName="BissInventaireModel.Categorie_materiel">
+        <MappingFragment StoreEntitySet="Categorie_materiel">
+          <ScalarProperty Name="Id_categorie" ColumnName="Id_categorie" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategorieDesignation">
+      <EntityTypeMapping TypeName="BissInventaireModel.CategorieDesignation">
+        <MappingFragment StoreEntitySet="CategorieDesignation">
+          <ScalarProperty Name="Id_categorie" ColumnName="Id_categorie" />
+          <ScalarProperty Name="id_categorie_Designation" ColumnName="id_categorie_Designation" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cipherlab">
+      <EntityTypeMapping TypeName="BissInventaireModel.Cipherlab">
+        <MappingFragment StoreEntitySet="Cipherlab">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Qte" ColumnName="Qte" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contrat_assurance">
+      <EntityTypeMapping TypeName="BissInventaireModel.Contrat_assurance">
+        <MappingFragment StoreEntitySet="Contrat_assurance">
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="Id_societe_assurance" ColumnName="Id_societe_assurance" />
+          <ScalarProperty Name="Id_contrat_assurance" ColumnName="Id_contrat_assurance" />
+          <ScalarProperty Name="Type_assurance" ColumnName="Type_assurance" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Date_debut" ColumnName="Date_debut" />
+          <ScalarProperty Name="Date_fin" ColumnName="Date_fin" />
+          <ScalarProperty Name="Cout" ColumnName="Cout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contrat_garanti">
+      <EntityTypeMapping TypeName="BissInventaireModel.Contrat_garanti">
+        <MappingFragment StoreEntitySet="Contrat_garanti">
+          <ScalarProperty Name="Id_contrat_garanti" ColumnName="Id_contrat_garanti" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="Id_fournisseur" ColumnName="Id_fournisseur" />
+          <ScalarProperty Name="Type_garanti" ColumnName="Type_garanti" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Date_debut" ColumnName="Date_debut" />
+          <ScalarProperty Name="Date_fin" ColumnName="Date_fin" />
+          <ScalarProperty Name="Cout" ColumnName="Cout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Contrat_maintenance">
+      <EntityTypeMapping TypeName="BissInventaireModel.Contrat_maintenance">
+        <MappingFragment StoreEntitySet="Contrat_maintenance">
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="Id_societe_maintenance" ColumnName="Id_societe_maintenance" />
+          <ScalarProperty Name="Id_contrat_maintenance" ColumnName="Id_contrat_maintenance" />
+          <ScalarProperty Name="Type_maintenance" ColumnName="Type_maintenance" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="Date_debut" ColumnName="Date_debut" />
+          <ScalarProperty Name="Date_fin" ColumnName="Date_fin" />
+          <ScalarProperty Name="Cout" ColumnName="Cout" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Delegation">
+      <EntityTypeMapping TypeName="BissInventaireModel.Delegation">
+        <MappingFragment StoreEntitySet="Delegation">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="Code_postal" ColumnName="Code_postal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Direction">
+      <EntityTypeMapping TypeName="BissInventaireModel.Direction">
+        <MappingFragment StoreEntitySet="Direction">
+          <ScalarProperty Name="Id_direction" ColumnName="Id_direction" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Etage">
+      <EntityTypeMapping TypeName="BissInventaireModel.Etage">
+        <MappingFragment StoreEntitySet="Etage">
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Id_etage" ColumnName="Id_etage" />
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Fournisseur">
+      <EntityTypeMapping TypeName="BissInventaireModel.Fournisseur">
+        <MappingFragment StoreEntitySet="Fournisseur">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="Id_fournisseur" ColumnName="Id_fournisseur" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Rue" ColumnName="Rue" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gouvernorat">
+      <EntityTypeMapping TypeName="BissInventaireModel.Gouvernorat">
+        <MappingFragment StoreEntitySet="Gouvernorat">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Inventaire">
+      <EntityTypeMapping TypeName="BissInventaireModel.Inventaire">
+        <MappingFragment StoreEntitySet="Inventaire">
+          <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
+          <ScalarProperty Name="Nom_" ColumnName="Nom_" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mouvement">
+      <EntityTypeMapping TypeName="BissInventaireModel.Mouvement">
+        <MappingFragment StoreEntitySet="Mouvement">
+          <ScalarProperty Name="Id_mouvement" ColumnName="Id_mouvement" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Id_parc" ColumnName="Id_parc" />
+          <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
+          <ScalarProperty Name="Bur_idDelegation" ColumnName="Bur_idDelegation" />
+          <ScalarProperty Name="Bie_idBatiment" ColumnName="Bie_idBatiment" />
+          <ScalarProperty Name="Id_etage" ColumnName="Id_etage" />
+          <ScalarProperty Name="Id_bureau" ColumnName="Id_bureau" />
+          <ScalarProperty Name="Id_bien" ColumnName="Id_bien" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Date_derniere_affectation" ColumnName="Date_derniere_affectation" />
+          <ScalarProperty Name="Date_prochaine_affectation" ColumnName="Date_prochaine_affectation" />
+          <ScalarProperty Name="Date_renouvellement_prevue" ColumnName="Date_renouvellement_prevue" />
+          <ScalarProperty Name="Date_retour_prevue" ColumnName="Date_retour_prevue" />
+          <ScalarProperty Name="Date_sortie" ColumnName="Date_sortie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Organisation">
+      <EntityTypeMapping TypeName="BissInventaireModel.Organisation">
+        <MappingFragment StoreEntitySet="Organisation">
+          <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parc_auto">
+      <EntityTypeMapping TypeName="BissInventaireModel.Parc_auto">
+        <MappingFragment StoreEntitySet="Parc_auto">
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Id_parc" ColumnName="Id_parc" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pays">
+      <EntityTypeMapping TypeName="BissInventaireModel.Pays">
+        <MappingFragment StoreEntitySet="Pays">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Personnel">
+      <EntityTypeMapping TypeName="BissInventaireModel.Personnel">
+        <MappingFragment StoreEntitySet="Personnel">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Rol_id" ColumnName="Rol_id" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Region">
+      <EntityTypeMapping TypeName="BissInventaireModel.Region">
+        <MappingFragment StoreEntitySet="Region">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="BissInventaireModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="libelle" ColumnName="libelle" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceD">
+      <EntityTypeMapping TypeName="BissInventaireModel.ServiceD">
+        <MappingFragment StoreEntitySet="ServiceD">
+          <ScalarProperty Name="Id_direction" ColumnName="Id_direction" />
+          <ScalarProperty Name="Id_service" ColumnName="Id_service" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Societe_assurance">
+      <EntityTypeMapping TypeName="BissInventaireModel.Societe_assurance">
+        <MappingFragment StoreEntitySet="Societe_assurance">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="Id_societe_assurance" ColumnName="Id_societe_assurance" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="Rue" ColumnName="Rue" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Societe_maintenance">
+      <EntityTypeMapping TypeName="BissInventaireModel.Societe_maintenance">
+        <MappingFragment StoreEntitySet="Societe_maintenance">
+          <ScalarProperty Name="idPays" ColumnName="idPays" />
+          <ScalarProperty Name="idRegion" ColumnName="idRegion" />
+          <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
+          <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
+          <ScalarProperty Name="Id_societe_maintenance" ColumnName="Id_societe_maintenance" />
+          <ScalarProperty Name="Libelle" ColumnName="Libelle" />
+          <ScalarProperty Name="Rue" ColumnName="Rue" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Commentaire" ColumnName="Commentaire" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stock">
+      <EntityTypeMapping TypeName="BissInventaireModel.Stock">
+        <MappingFragment StoreEntitySet="Stock">
+          <ScalarProperty Name="Fournisseur" ColumnName="Fournisseur" />
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="produit" ColumnName="produit" />
+          <ScalarProperty Name="Qte" ColumnName="Qte" />
+          <ScalarProperty Name="Emplacement" ColumnName="Emplacement" />
+          <ScalarProperty Name="id_categorie" ColumnName="id_categorie" />
+          <ScalarProperty Name="Num_BonLivraison" ColumnName="Num_BonLivraison" />
+          <ScalarProperty Name="date_Livraison" ColumnName="date_Livraison" />
+          <ScalarProperty Name="Num_BonCommande" ColumnName="Num_BonCommande" />
+          <ScalarProperty Name="date_BonCommande" ColumnName="date_BonCommande" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Utilisateur">
+      <EntityTypeMapping TypeName="BissInventaireModel.Utilisateur">
+        <MappingFragment StoreEntitySet="Utilisateur">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Per_id" ColumnName="Per_id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />
+          <ScalarProperty Name="etatUtilisateur" ColumnName="etatUtilisateur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicule">
+      <EntityTypeMapping TypeName="BissInventaireModel.Vehicule">
+        <MappingFragment StoreEntitySet="Vehicule">
+          <ScalarProperty Name="Id_contrat_garanti" ColumnName="Id_contrat_garanti" />
+          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="Id_parc" ColumnName="Id_parc" />
+          <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
+          <ScalarProperty Name="Id_fournisseur" ColumnName="Id_fournisseur" />
+          <ScalarProperty Name="Id_societe_assurance" ColumnName="Id_societe_assurance" />
+          <ScalarProperty Name="Id_contrat_assurance" ColumnName="Id_contrat_assurance" />
+          <ScalarProperty Name="Id_societe_maintenance" ColumnName="Id_societe_maintenance" />
+          <ScalarProperty Name="Id_contrat_maintenance" ColumnName="Id_contrat_maintenance" />
+          <ScalarProperty Name="Id_achat" ColumnName="Id_achat" />
+          <ScalarProperty Name="Matricule" ColumnName="Matricule" />
+          <ScalarProperty Name="Modele" ColumnName="Modele" />
+          <ScalarProperty Name="Etat" ColumnName="Etat" />
+          <ScalarProperty Name="Num_sachet" ColumnName="Num_sachet" />
+          <ScalarProperty Name="Prix_d_achat" ColumnName="Prix_d_achat" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

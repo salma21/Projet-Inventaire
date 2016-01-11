@@ -1,0 +1,149 @@
+﻿@model Domain.Stock
+<script type="text/javascript">
+    function disp() {
+        //if ((document.getElementById("article1").style.display == "none") && (document.getElementById("article2").style.display == "none") && (document.getElementById("article3").style.display == "none")) { document.getElementById("article1").style.display = "inline"; }
+
+        document.getElementById("article1").style.display = "inline";
+        //if ((document.getElementById("article1").style.display == "inline") && (document.getElementById("article2").style.display == "none")) { document.getElementById("article2").style.display = "inline"; }
+        //if ((document.getElementById("article1").style.display == "inline") && (document.getElementById("article2").style.display == "inline") && (document.getElementById("article3").style.display == "none")) { document.getElementById("article3").style.display = "inline"; }
+    }
+    function disp2() {
+        document.getElementById("article2").style.display = "inline";
+    }
+
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Modification Produit
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Stock</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.id)
+
+
+                            <fieldset>
+
+                                <legend> Details</legend>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Fournisseur</label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.Fournisseur, (SelectList)ViewData["fournis"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">N° Bon de Commande</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Num_BonCommande, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Date Bon de Commande</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.date_BonCommande, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">N° Bon de Livraison</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Num_BonLivraison, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Date Bon de Livraison</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.date_Livraison, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Categorie </label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.id_categorie, (SelectList)ViewData["catgorie"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Produit </label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.produit, (SelectList)ViewData["materiel"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">QTE</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Qte, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Emplacement</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Emplacement, new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+
+                            </fieldset>
+                            <br />
+
+                           
+                                </div>
+                              
+                         
+
+                        
+
+                        <br />                            <br />
+
+                            <div style="text-align: center;">
+                                <input type="submit" value="Valider" class="btn btn-default" />
+
+                                <button type="reset" class="btn btn-white">Annuler</button>
+
+                            </div>
+
+                    }
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Domain.Fournisseur>
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Batiments
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Nom  </th>
+                            <th>Adresse  </th>
+                            <th>Tel</th>
+                            <th>Fax</th>
+                            <th>Email </th>
+
+                            <th>Autre </th>
+                            <th>Region </th>
+                            <th>Delegation </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Nom  </th>
+                            <th>Adresse  </th>
+                            <th>Tel</th>
+                            <th>Fax</th>
+                            <th>Email </th>
+
+                            <th>Autre </th>
+                            <th>Region </th>
+                            <th>Delegation </th>
+
+                            <th>Action</th>
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                <td class="center">@item.Nom  &nbsp;&nbsp;@item.Prenom </td>
+                                <td class="center">@item.Rue</td>
+                                <td class="center">@item.Tel</td>
+                                <td class="center">@item.Fax</td>
+                                <td class="center">@item.Email</td>
+                                <td class="center">@item.Commentaire</td>
+                                <td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>
+                                <td class="center">@item.Delegation.libelle</td>
+                                <td>
+
+                                    <a href="@Url.Action("EditFournisseur", new { id = item.idRegion })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Ajouter un nouveaux Fournisseur", "CreateFournisseur")
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+
+
+
+<script>
+    $(document).tooltip();
+</script>

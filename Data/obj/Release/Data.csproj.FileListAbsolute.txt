@@ -1,0 +1,12 @@
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\Data.dll.config
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\Data.dll
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\Data.pdb
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\Domain.dll
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\EntityFramework.dll
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\EntityFramework.SqlServer.dll
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\Domain.pdb
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\EntityFramework.xml
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\obj\Release\Data.csprojResolveAssemblyReference.cache
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\obj\Release\Data.dll
+C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\obj\Release\Data.pdb

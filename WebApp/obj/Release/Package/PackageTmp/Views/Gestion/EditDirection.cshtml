@@ -1,0 +1,59 @@
+﻿@model Domain.Direction
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout Direction
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+
+
+
+                    @using (@Html.BeginForm("EditDirection", "Gestion", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+                            <h4>Direction</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Libelle, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
+                        </div>
+
+                    }
+
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("List", "GetDirection")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
