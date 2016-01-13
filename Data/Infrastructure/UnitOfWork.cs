@@ -166,14 +166,14 @@ namespace Data.Infrastructure
                 return InventaireRepository ?? (InventaireRepository = new InventaireRepository(dbFactory));
             }
         }
-        private IBiensRepository BiensRepository;
-        IBiensRepository IUnitOfWork.BiensRepository
-        {
-            get
-            {
-                return BiensRepository ?? (BiensRepository = new BiensRepository(dbFactory));
-            }
-        }
+        //private IBiensRepository BiensRepository;
+        //IBiensRepository IUnitOfWork.BiensRepository
+        //{
+        //    get
+        //    {
+        //        return BiensRepository ?? (BiensRepository = new BiensRepository(dbFactory));
+        //    }
+        //}
 
         private IGouvernoratRepository GouvernoratRepository;
         IGouvernoratRepository IUnitOfWork.GouvernoratRepository

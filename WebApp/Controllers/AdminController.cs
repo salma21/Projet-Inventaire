@@ -149,13 +149,13 @@ namespace WebApp.Controllers
             //int gouv = db2.FindGouvByDelegation(Bur.idDelegation);
             //int pays = db2.FindPaysByDelegation(Bur.idDelegation);
             //int organisation = db2.FindOrganisationByDelegation(Bur.idBatiment);
-            int direct = db2.FindDirectionByDelegation(Bur.Id_bureau);
+            int direct = db2.FindDirectionByDelegation((int)Bur.id_bureau);
 
             //Bur.idRegion = region;
             //Bur.idGouvernorat = gouv;
             //Bur.idPays = pays;
             //Bur.idOrganisation = organisation;
-            Bur.Id_direction = direct;
+            Bur.id_direction = direct;
 
             BissInventaireEntities.Instance.Bien.Add(Bur);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -188,7 +188,7 @@ namespace WebApp.Controllers
             }
         }
 
-        public ActionResult RapportBien(string Bureaux, string Etage, string Batiment)
+        public ActionResult RapportBien( string Etage, string Batiment)
         {
 
             var bureaux = BissInventaireEntities.Instance.Bureau.ToList();
@@ -205,7 +205,7 @@ namespace WebApp.Controllers
             ViewBag.nbr = nbr;
 
 
-            if (string.IsNullOrEmpty(Bureaux) && string.IsNullOrEmpty(Etage) && string.IsNullOrEmpty(Batiment))
+            if (string.IsNullOrEmpty(Etage) && string.IsNullOrEmpty(Batiment))
             {
                 return View(bien.ToList());
 
@@ -214,20 +214,18 @@ namespace WebApp.Controllers
             {
                
                 var dep = from s in bien select s;
-                if (String.IsNullOrEmpty(Bureaux) || String.IsNullOrEmpty(Etage) || (String.IsNullOrEmpty(Batiment)))
+                if ( String.IsNullOrEmpty(Etage) || (String.IsNullOrEmpty(Batiment)))
                 {
-                    dep = dep.Where(s => (string.IsNullOrEmpty(Bureaux) || (s.Bureau.Description.ToString().StartsWith(Bureaux)))
-                    && (string.IsNullOrEmpty(Etage) || (s.Bureau.Etage.description.ToString().StartsWith(Etage)))
-                    && (string.IsNullOrEmpty(Batiment) || (s.Bureau.Etage.Batiment.description.ToString().StartsWith(Batiment)))
+                    dep = dep.Where(s =>  (string.IsNullOrEmpty(Etage) || (s.Etage.description.ToString().StartsWith(Etage)))
+                    && (string.IsNullOrEmpty(Batiment) || (s.Etage.Batiment.description.ToString().StartsWith(Batiment)))
                   
                     );
 
                 }
                 else
                 {
-                    dep = dep.Where(s => (s.Bureau.Description.ToString().StartsWith(Bureaux))
-                    && (s.Bureau.Etage.description.ToString().StartsWith(Etage))
-                    && (s.Bureau.Etage.Batiment.description.ToString().StartsWith(Batiment))
+                    dep = dep.Where(s => (s.Etage.description.ToString().StartsWith(Etage))
+                    && (s.Etage.Batiment.description.ToString().StartsWith(Batiment))
                   
                         );
 

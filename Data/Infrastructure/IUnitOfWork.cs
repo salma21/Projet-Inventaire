@@ -20,7 +20,7 @@ namespace Data.Infrastructure
         IFournisseurRepository FournisseurRepository { get; }
         IBatimentRepository BatimentRepository { get; }
         IInventaireRepository InventaireRepository { get; }
-        IBiensRepository BiensRepository { get; }
+        //IBiensRepository BiensRepository { get; }
         IServiceRepository ServiceRepository { get; }
         IParc_autoRepository Parc_autoRepository { get; }
         IGouvernoratRepository GouvernoratRepository { get; }
