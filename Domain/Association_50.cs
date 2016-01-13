@@ -31,6 +31,5 @@ namespace Domain
         public int Id_Vehicule { get; set; }
     
         public virtual Vehicule Vehicule { get; set; }
-        public virtual Personnel Personnel { get; set; }
     }
 }

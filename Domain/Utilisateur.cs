@@ -20,7 +20,5 @@ namespace Domain
         public string login { get; set; }
         public string motDePasse { get; set; }
         public Nullable<bool> etatUtilisateur { get; set; }
-    
-        public virtual Personnel Personnel { get; set; }
     }
 }

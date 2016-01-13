@@ -157,6 +157,11 @@
           <ScalarProperty Name="Code_a_barre" ColumnName="Code_a_barre" />
           <ScalarProperty Name="Emploi_principal" ColumnName="Emploi_principal" />
           <ScalarProperty Name="Date_d_installation" ColumnName="Date_d_installation" />
+          <ScalarProperty Name="Date_d_inventaire" ColumnName="Date_d_inventaire" />
+          <ScalarProperty Name="id_personne" ColumnName="id_personne" />
+          <ScalarProperty Name="Fin_garantie" ColumnName="Fin_garantie" />
+          <ScalarProperty Name="id_direction" ColumnName="id_direction" />
+          <ScalarProperty Name="id_bureau" ColumnName="id_bureau" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

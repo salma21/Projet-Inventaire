@@ -17,9 +17,7 @@ namespace Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Personnel()
         {
-            this.Association_49 = new HashSet<Association_49>();
-            this.Association_50 = new HashSet<Association_50>();
-            this.Utilisateur = new HashSet<Utilisateur>();
+            this.Bien = new HashSet<Bien>();
         }
     
         public Nullable<int> idPays { get; set; }
@@ -35,13 +33,9 @@ namespace Domain
         public Nullable<int> Matricule { get; set; }
         public string Email { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Association_49> Association_49 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Association_50> Association_50 { get; set; }
         public virtual Batiment Batiment { get; set; }
-        public virtual Role Role { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Utilisateur> Utilisateur { get; set; }
+        public virtual ICollection<Bien> Bien { get; set; }
+        public virtual Role Role { get; set; }
     }
 }

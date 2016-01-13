@@ -41,7 +41,7 @@ namespace Domain
         public string Marque { get; set; }
         public string Modele { get; set; }
         public Nullable<int> Code { get; set; }
-        public Nullable<int> Num_Serie { get; set; }
+        public string Num_Serie { get; set; }
         public string Etat { get; set; }
         public string Valeur { get; set; }
         public string Mode { get; set; }
@@ -50,6 +50,11 @@ namespace Domain
         public Nullable<int> Code_a_barre { get; set; }
         public string Emploi_principal { get; set; }
         public Nullable<System.DateTime> Date_d_installation { get; set; }
+        public Nullable<System.DateTime> Date_d_inventaire { get; set; }
+        public Nullable<int> id_personne { get; set; }
+        public Nullable<System.DateTime> Fin_garantie { get; set; }
+        public Nullable<int> id_direction { get; set; }
+        public Nullable<int> id_bureau { get; set; }
     
         public virtual Achat Achat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -62,6 +67,8 @@ namespace Domain
         public virtual Depot Depot { get; set; }
         public virtual Etage Etage { get; set; }
         public virtual Contrat_maintenance Contrat_maintenance { get; set; }
+        public virtual Personnel Personnel { get; set; }
+        public virtual Direction Direction { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MouvementB> MouvementB { get; set; }
     }

@@ -36,6 +36,5 @@ namespace Domain
         public int id { get; set; }
     
         public virtual Bien Bien { get; set; }
-        public virtual Personnel Personnel { get; set; }
     }
 }

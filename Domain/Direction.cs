@@ -18,6 +18,7 @@ namespace Domain
         public Direction()
         {
             this.Association_32 = new HashSet<Association_32>();
+            this.Bien = new HashSet<Bien>();
             this.ServiceD = new HashSet<ServiceD>();
         }
     
@@ -26,6 +27,8 @@ namespace Domain
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Association_32> Association_32 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Bien> Bien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ServiceD> ServiceD { get; set; }
     }
