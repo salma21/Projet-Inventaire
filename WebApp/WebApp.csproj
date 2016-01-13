@@ -228,6 +228,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\78-48.png" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\cheklist1.png" />
@@ -260,6 +261,7 @@
     <Content Include="Content\css\root.css" />
     <Content Include="Content\css\shortcuts.css" />
     <Content Include="Content\css\style.css" />
+    <Content Include="Content\ddd copie.png" />
     <Content Include="Content\fonts\fontawesome-webfonte0a5.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular-2.html" />
     <Content Include="Content\fonts\glyphicons-halflings-regular-3.html" />
@@ -283,7 +285,6 @@
     <Content Include="Content\img\datatables\sort_desc_disabled.png" />
     <Content Include="Content\img\error.png" />
     <Content Include="Content\img\example-logo.png" />
-    <Content Include="Content\img\example1.jpg" />
     <Content Include="Content\img\imag.jpg" />
     <Content Include="Content\img\kode-icon.png" />
     <Content Include="Content\img\loading.gif" />
@@ -293,12 +294,6 @@
     <Content Include="Content\img\Nouveau\ATB.png" />
     <Content Include="Content\img\Nouveau\biss.png" />
     <Content Include="Content\img\Nouveau\bissP.png" />
-    <Content Include="Content\img\profileimg.png" />
-    <Content Include="Content\img\profileimg2.png" />
-    <Content Include="Content\img\profileimg3.png" />
-    <Content Include="Content\img\profileimg4.png" />
-    <Content Include="Content\img\profileimg5.png" />
-    <Content Include="Content\img\profileimg6.png" />
     <Content Include="Content\img\signature.png" />
     <Content Include="Content\img\socialbg.jpg" />
     <Content Include="Content\js\bootstrap-select\bootstrap-select.js" />

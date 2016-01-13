@@ -6,8 +6,16 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Liste des Contrat d'Assurance
+
+                Liste des Contrats d'Assurance
+
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
+            <hr />
             <div class="panel-body table-responsive">
                 <table id="example0" class="table display">
                     <thead>
@@ -15,12 +23,12 @@
 
                             <th>Region</th>
 
-                            <th>Delegation</th>
-                            <th>Societe</th>
+                            <th>Délégation</th>
+                            <th>Sociéte</th>
                             <th>Assurance</th>
-                            <th>Date Deb</th>
+                            <th>Date Debut</th>
                             <th>Date Fin</th>
-                            <th>Cout</th>
+                            <th>Coût</th>
                            
                             <th>Action</th>
                         </tr>
@@ -29,15 +37,15 @@
                     <tfoot>
                         <tr>
                             <th>Region</th>
-
-                            <th>Delegation</th>
-                            <th>Societe</th>
+                            <th>Délégation</th>
+                            <th>Sociéte</th>
                             <th>Assurance</th>
-                            <th>Date Deb</th>
+                            <th>Date Debut</th>
                             <th>Date Fin</th>
-                            <th>Cout</th>
-                           
+                            <th>Coût</th>
+
                             <th>Action</th>
+                           
                         </tr>
                     </tfoot>
 
@@ -68,16 +76,16 @@
                     </tbody>
                 </table>
                 <br /><p>
-                    @Html.ActionLink("Ajouter un nouveau Contrat d'Assurance", "CreateContrat_Maintenance")
+                    @Html.ActionLink("Ajouter un nouveau Contrat d'Assurance", "CreateContrat_Assurance")
                 </p>
 
             </div>
 
-
+            
 
         </div>
 
-
+       
 
     </div>
 </div>

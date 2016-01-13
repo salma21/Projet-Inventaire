@@ -6,9 +6,9 @@
         <div class="panel panel-default">
             <div class="panel-title">
 
-                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat Achat</h4>
+                <h4 class="title" color="#58666e" font-weight="bold"> Modification Contrat Achat</h4>
                 <ol class="breadcrumb">
-                    <li><class ="active">Achat</li>
+                   
 
 
                 </ol>
@@ -118,17 +118,17 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                             </fieldset>
-
+                            <br/>
 
                             <fieldset>
-
+                              
                                 <legend>Localisation</legend>
-
+                                
                                 <div class="form-group">
                                     <CENTER>
-                                        <TABLE width=80%>
+                                        <TABLE width=40%>
                                             <TR>
-                                                <TD width=40%>
+                                                <TD>
                                                     <label class="col-sm-4 control-label form-label"> Ville</label>
 
                                                     <div class="col-sm-8">
@@ -137,19 +137,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                     </div>
                                                 </TD>
-                                                <TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label">Gouvernerat</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        <div class="col-sm-8">
-
-                                                            @Html.DropDownListFor(model => model.idGouvernorat, (SelectList)ViewData["gouvers"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-                                                        </div>
-                                                    </div>
-                                                </TD>
+                                               
 
                                             </TR>
 
@@ -157,50 +145,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     </CENTER>
                                 </div>
 
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=80%>
-                                            <TR>
-                                                <TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label"> Region</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        @Html.DropDownListFor(model => model.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-                                                    </div>
-                                                </TD>
-                                                <TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label">Pays</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        <div class="col-sm-8">
-
-                                                            @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-                                                        </div>
-                                                    </div>
-                                                </TD>
-
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
+                                
+                                
 
                             </fieldset>
-                            <br>
+                           
 
 
                             <br>
-
-
-
-
-
-
 
 
                             <div style="text-align: center;">
@@ -222,9 +174,11 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         }
                     </div>
 
-
+            <p>
+                @Html.ActionLink("Retour", "GetAchat")
+            </p>
         </div>
-
+        
     </div>
 
 </div>

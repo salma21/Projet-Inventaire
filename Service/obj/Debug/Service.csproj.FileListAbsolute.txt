@@ -76,16 +76,3 @@ C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Service\bin
 C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
 C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Service\obj\Debug\Service.dll
 C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Service\obj\Debug\Service.pdb
-C:\ATB_SOLUTIONS\Service\bin\Debug\Service.dll
-C:\ATB_SOLUTIONS\Service\bin\Debug\Service.pdb
-C:\ATB_SOLUTIONS\Service\bin\Debug\Data.dll
-C:\ATB_SOLUTIONS\Service\bin\Debug\Domain.dll
-C:\ATB_SOLUTIONS\Service\bin\Debug\Log.dll
-C:\ATB_SOLUTIONS\Service\bin\Debug\EntityFramework.dll
-C:\ATB_SOLUTIONS\Service\bin\Debug\Data.pdb
-C:\ATB_SOLUTIONS\Service\bin\Debug\Domain.pdb
-C:\ATB_SOLUTIONS\Service\bin\Debug\Log.pdb
-C:\ATB_SOLUTIONS\Service\bin\Debug\EntityFramework.xml
-C:\ATB_SOLUTIONS\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
-C:\ATB_SOLUTIONS\Service\obj\Debug\Service.dll
-C:\ATB_SOLUTIONS\Service\obj\Debug\Service.pdb

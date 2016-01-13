@@ -7,12 +7,7 @@
             <div class="panel-title">
 
                 <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat Maintenance</h4>
-                <ol class="breadcrumb">
-                    <li><class ="active">Contrat Maintenance</li>
-
-                  
-
-                </ol>
+              
 
 
                 <div class="panel-body">
@@ -32,7 +27,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     <div class="panel panel-default">
                         <fieldset>
 
-                            <legend>Contrat De Garantie</legend>
+                            <legend>Contrat De Maintenance</legend>
 
                             <div class="form-group">
                                 <div class="col-md-4">
@@ -46,7 +41,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 </div>
 
                                 <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Societe</label>
+                                    <label class="col-sm-4 control-label form-label">Sociéte</label>
 
                                     <div class="col-sm-8">
 
@@ -60,26 +55,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label"> Type</label>
 
-                                    <div class="col-sm-8">
-
-                                        @{
-
-                                            var listItems = new List<SelectListItem>()
-                            {
-                                new SelectListItem {Text = "Bon",   Value = "Bon"},
-                                new SelectListItem {Text = "Mauvais", Value = "Mauvais"},
-                                new SelectListItem {Text = "Moyenne", Value = "Moyenne"},
-                                 new SelectListItem {Text = "Trés Bien", Value = "Trés Bien"}
-
-
-                            };
-
-                                            @Html.DropDownListFor(m => m.Type_maintenance, listItems, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Type_maintenance, String.Empty, new { @class = "test" })
-                                        }
-
-
-                                    </div>
+                                    @Html.TextBoxFor(model => model.Type_maintenance, new { @class = "form-control", required = "" })
 
 
                                 </div>
@@ -88,7 +64,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Cout</label>
+                                        <label class="col-sm-4 control-label form-label">Coût</label>
 
                                         <div class="col-sm-8">
 
@@ -150,10 +126,12 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     </div>
                                                         }
             </div>
-
+            <p>
+                @Html.ActionLink("Liste des contrats de maintenance", "GetContrat_Maintenance")
+            </p>
 
         </div>
-
+      
     </div>
 
 </div>
