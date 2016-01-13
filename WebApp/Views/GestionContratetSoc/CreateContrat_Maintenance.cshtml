@@ -52,14 +52,21 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     </div>
                                 </div>
+
                                 <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> Type</label>
+                                    <label class="col-sm-4 control-label form-label">Type</label>
 
-                                    @Html.TextBoxFor(model => model.Type_maintenance, new { @class = "form-control", required = "" })
+                                    <div class="col-sm-8">
+
+                                        @Html.TextBoxFor(model => model.Type_maintenance, new { @class = "form-control", required = "" })
 
 
+                                    </div>
                                 </div>
-<br /><br />
+
+
+                           <br/><br />
+
                             </div>
 
                                 <div class="form-group">
@@ -109,7 +116,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                         <div style="text-align: center;">
 
-                            <input type="submit" value="Valider" class="btn btn-default" />
+                            <input type="submit" value="Valider" class="btn btn-default" /> &nbsp; &nbsp; &nbsp;
                             <button type="reset" class="btn btn-white">Annuler</button>
 
 
