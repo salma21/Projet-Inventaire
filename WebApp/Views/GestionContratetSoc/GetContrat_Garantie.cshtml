@@ -7,24 +7,40 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
+
                 Liste des Contrat de Garantie
+           
+
+
+
+                <div class="panel-body">
+                    <!-- Start Modal Code -->
+                    <!-- End Moda Code -->
+                </div>
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
+            <hr />
+
+
+            
             <div class="panel-body table-responsive">
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
+                           <th>Region</th>
 
-                            <th>Region</th>
-
-                            <th>Delegation</th>
+                            <th>Délégation</th>
                             <th>Fournisseur</th>
                             <th>Garantie</th>
                             <th>Num</th>
-                            <th>Date Deb</th>
+                            <th>Date Debut</th>
                             <th>Date Fin</th>
-                            <th>Cout</th>
-
-
+                            <th>Coût</th>
+                        
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -33,13 +49,13 @@
                         <tr>
                             <th>Region</th>
 
-                            <th>Delegation</th>
+                            <th>Délégation</th>
                             <th>Fournisseur</th>
                             <th>Garantie</th>
-                           
-                            <th>Date Deb</th>
+                            <th>Num</th>
+                            <th>Date Debut</th>
                             <th>Date Fin</th>
-                            <th>Cout</th>
+                            <th>Coût</th>
 
                             <th>Action</th>
                         </tr>
@@ -52,9 +68,9 @@
 
                                 <td class="center">@item.Fournisseur.Delegation.Gouvernorat.Region.libelle</td>
                                 <td class="center">@item.Fournisseur.Delegation.libelle</td>
-                                <td class="center">@item.Fournisseur.Nom   &nbsp;&nbsp; @item.Fournisseur.Prenom</td>
+                                <td class="center">@item.Fournisseur.Nom</td>
                                 <td class="center">@item.Type_garanti</td>
-                               
+                                <td class="center">@item.Num</td>
                                 <td class="center">@item.Date_debut</td>
                                 <td class="center">@item.Date_fin</td>
                                 <td class="center">@item.Cout</td>

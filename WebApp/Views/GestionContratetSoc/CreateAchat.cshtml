@@ -24,7 +24,7 @@
 
                 <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat Achat</h4>
                 <ol class="breadcrumb">
-                    <li><class ="active">Achat</li>
+                  
 
                    
                 </ol>
@@ -113,7 +113,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                         @Html.TextBoxFor(model => model.Date_livraison, new { @class = "form-control", id = "txtdatepicker" })
                                     </div>
-                                </div><br /><br /><br /><br />  </div>
+                                </div><br /> </div>
 
                         </fieldset>
 
@@ -136,7 +136,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 }
             </div>
 
-
+            <p>
+                @Html.ActionLink("Liste des contrats d'achat", "GetAchat")
+            </p>
         </div>
 
     </div>
