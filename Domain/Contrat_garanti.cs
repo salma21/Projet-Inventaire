@@ -22,7 +22,7 @@ namespace Domain
         }
     
         public int Id_contrat_garanti { get; set; }
-        public Nullable<int> idDelegation { get; set; }
+        public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
         public string Type_garanti { get; set; }
         public Nullable<int> Num { get; set; }

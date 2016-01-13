@@ -12,9 +12,8 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Association_30
+    public partial class Association_49
     {
-        public int Id_inventaire { get; set; }
         public Nullable<int> Dep_idPays { get; set; }
         public Nullable<int> Dep_idRegion { get; set; }
         public Nullable<int> idPays { get; set; }
@@ -28,8 +27,15 @@ namespace Domain
         public Nullable<int> idDelegation { get; set; }
         public Nullable<int> IdDepot { get; set; }
         public int Id_bien { get; set; }
+        public Nullable<int> Per_idPays { get; set; }
+        public Nullable<int> Per_idRegion { get; set; }
+        public Nullable<int> Per_idGouvernorat { get; set; }
+        public Nullable<int> Per_idOrganisation { get; set; }
+        public Nullable<int> Per_idDelegation { get; set; }
+        public Nullable<int> Per_idBatiment { get; set; }
+        public int id { get; set; }
     
-        public virtual Inventaire Inventaire { get; set; }
         public virtual Bien Bien { get; set; }
+        public virtual Personnel Personnel { get; set; }
     }
 }

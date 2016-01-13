@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BissInventaireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="BissInventaireDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Achat">
     <Key>
       <PropertyRef Name="Id_achat" />
@@ -7,10 +7,10 @@
     <Property Name="Id_achat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="idDelegation" Type="int" Nullable="false" />
     <Property Name="Id_fournisseur" Type="int" Nullable="false" />
-    <Property Name="Date_livraison" Type="date" />
+    <Property Name="Date_livraison" Type="datetime" />
     <Property Name="Num_facture" Type="int" />
     <Property Name="Num_commande" Type="int" />
-    <Property Name="Date_d_achat" Type="date" />
+    <Property Name="Date_d_achat" Type="datetime" />
     <Property Name="Prix_d_achat" Type="numeric" Precision="18" Scale="0" />
     <Property Name="Num_livraison" Type="int" />
   </EntityType>
@@ -20,15 +20,18 @@
       <PropertyRef Name="Id_bien" />
     </Key>
     <Property Name="Id_inventaire" Type="int" Nullable="false" />
+    <Property Name="Dep_idPays" Type="int" />
+    <Property Name="Dep_idRegion" Type="int" />
     <Property Name="idPays" Type="int" />
     <Property Name="idRegion" Type="int" />
+    <Property Name="Dep_idGouvernorat" Type="int" />
     <Property Name="idGouvernorat" Type="int" />
     <Property Name="idOrganisation" Type="int" />
-    <Property Name="Bur_idDelegation" Type="int" />
+    <Property Name="Eta_idDelegation" Type="int" />
     <Property Name="idBatiment" Type="int" />
     <Property Name="Id_etage" Type="int" />
-    <Property Name="Id_direction" Type="int" />
-    <Property Name="Id_bureau" Type="int" />
+    <Property Name="idDelegation" Type="int" />
+    <Property Name="IdDepot" Type="int" />
     <Property Name="Id_bien" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Association_31">
@@ -46,24 +49,67 @@
     <Property Name="Id_parc" Type="int" />
     <Property Name="Id_Vehicule" Type="int" Nullable="false" />
   </EntityType>
-  <EntityType Name="AtbDataTest">
+  <EntityType Name="Association_32">
     <Key>
+      <PropertyRef Name="idBatiment" />
+      <PropertyRef Name="Id_etage" />
+      <PropertyRef Name="Id_direction" />
+    </Key>
+    <Property Name="idPays" Type="int" />
+    <Property Name="idRegion" Type="int" />
+    <Property Name="idGouvernorat" Type="int" />
+    <Property Name="idOrganisation" Type="int" />
+    <Property Name="idDelegation" Type="int" />
+    <Property Name="idBatiment" Type="int" Nullable="false" />
+    <Property Name="Id_etage" Type="int" Nullable="false" />
+    <Property Name="Id_direction" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Association_49">
+    <Key>
+      <PropertyRef Name="Id_bien" />
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Code_materiel" Type="int" Nullable="false" />
-    <Property Name="Num_serie" Type="varchar" MaxLength="254" />
-    <Property Name="Categorie" Type="varchar" MaxLength="254" />
-    <Property Name="Modele" Type="varchar" MaxLength="254" />
-    <Property Name="Marque" Type="varchar" MaxLength="254" />
-    <Property Name="Statut" Type="varchar" MaxLength="254" />
-    <Property Name="Fin_garantie" Type="varchar" MaxLength="254" />
-    <Property Name="Localisation_dernier" Type="varchar" MaxLength="254" />
-    <Property Name="Entite_dernier" Type="varchar" MaxLength="254" />
-    <Property Name="Date_inventaire" Type="varchar" MaxLength="254" />
-    <Property Name="Date_installation" Type="varchar" MaxLength="254" />
-    <Property Name="Localisation_complet" Type="varchar" MaxLength="254" />
-    <Property Name="Entite_complet" Type="varchar" MaxLength="254" Nullable="false" />
+    <Property Name="Dep_idPays" Type="int" />
+    <Property Name="Dep_idRegion" Type="int" />
+    <Property Name="idPays" Type="int" />
+    <Property Name="idRegion" Type="int" />
+    <Property Name="Dep_idGouvernorat" Type="int" />
+    <Property Name="idGouvernorat" Type="int" />
+    <Property Name="idOrganisation" Type="int" />
+    <Property Name="Eta_idDelegation" Type="int" />
+    <Property Name="idBatiment" Type="int" />
+    <Property Name="Id_etage" Type="int" />
+    <Property Name="idDelegation" Type="int" />
+    <Property Name="IdDepot" Type="int" />
+    <Property Name="Id_bien" Type="int" Nullable="false" />
+    <Property Name="Per_idPays" Type="int" />
+    <Property Name="Per_idRegion" Type="int" />
+    <Property Name="Per_idGouvernorat" Type="int" />
+    <Property Name="Per_idOrganisation" Type="int" />
+    <Property Name="Per_idDelegation" Type="int" />
+    <Property Name="Per_idBatiment" Type="int" />
+    <Property Name="id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Association_50">
+    <Key>
+      <PropertyRef Name="id" />
+      <PropertyRef Name="Id_Vehicule" />
+    </Key>
+    <Property Name="Per_idPays" Type="int" />
+    <Property Name="Per_idRegion" Type="int" />
+    <Property Name="Per_idGouvernorat" Type="int" />
+    <Property Name="Per_idOrganisation" Type="int" />
+    <Property Name="idDelegation" Type="int" />
+    <Property Name="Per_idBatiment" Type="int" />
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="idPays" Type="int" />
+    <Property Name="idRegion" Type="int" />
+    <Property Name="idGouvernorat" Type="int" />
+    <Property Name="idOrganisation" Type="int" />
+    <Property Name="Par_idDelegation" Type="int" />
+    <Property Name="idBatiment" Type="int" />
+    <Property Name="Id_parc" Type="int" />
+    <Property Name="Id_Vehicule" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Batiment">
     <Key>
@@ -76,26 +122,29 @@
     <Property Name="idGouvernorat" Type="int" />
     <Property Name="idDelegation" Type="int" Nullable="false" />
     <Property Name="idBatiment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="code" Type="int" />
     <Property Name="description" Type="varchar" MaxLength="254" />
   </EntityType>
   <EntityType Name="Bien">
     <Key>
-      <PropertyRef Name="Id_bureau" />
+      <PropertyRef Name="Id_etage" />
       <PropertyRef Name="Id_bien" />
     </Key>
-    <Property Name="Id_contrat_garanti" Type="int" />
-    <Property Name="Id_etage" Type="int" />
-    <Property Name="Id_direction" Type="int" />
-    <Property Name="Id_bureau" Type="int" Nullable="false" />
+    <Property Name="idBatiment" Type="int" />
+    <Property Name="Id_etage" Type="int" Nullable="false" />
+    <Property Name="Dep_idPays" Type="int" />
+    <Property Name="Dep_idRegion" Type="int" />
+    <Property Name="Dep_idGouvernorat" Type="int" />
+    <Property Name="idDelegation" Type="int" />
+    <Property Name="IdDepot" Type="int" />
     <Property Name="Id_bien" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Id_categorie" Type="int" />
     <Property Name="Id_achat" Type="int" />
+    <Property Name="Id_contrat_garanti" Type="int" />
     <Property Name="Id_societe_maintenance" Type="int" />
-    <Property Name="Id_contrat_assurance" Type="int" />
-    <Property Name="Id_fournisseur" Type="int" />
-    <Property Name="Id_societe_assurance" Type="int" />
     <Property Name="Id_contrat_maintenance" Type="int" />
+    <Property Name="Id_societe_assurance" Type="int" />
+    <Property Name="Id_contrat_assurance" Type="int" />
     <Property Name="Designation" Type="varchar" MaxLength="254" />
     <Property Name="Marque" Type="varchar" MaxLength="254" />
     <Property Name="Modele" Type="varchar" MaxLength="254" />
@@ -113,16 +162,20 @@
   <EntityType Name="Bureau">
     <Key>
       <PropertyRef Name="Id_etage" />
-      <PropertyRef Name="Id_direction" />
       <PropertyRef Name="Id_bureau" />
     </Key>
+    <Property Name="idPays" Type="int" />
+    <Property Name="idRegion" Type="int" />
+    <Property Name="idGouvernorat" Type="int" />
+    <Property Name="idOrganisation" Type="int" />
+    <Property Name="idDelegation" Type="int" />
     <Property Name="idBatiment" Type="int" />
     <Property Name="Id_etage" Type="int" Nullable="false" />
-    <Property Name="Id_direction" Type="int" Nullable="false" />
     <Property Name="Id_bureau" Type="int" Nullable="false" />
     <Property Name="Code_a_barre" Type="int" />
     <Property Name="Description" Type="varchar" MaxLength="254" />
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_direction" Type="int" />
   </EntityType>
   <EntityType Name="Categorie_materiel">
     <Key>
@@ -141,14 +194,6 @@
     <Property Name="id_categorie_Designation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="libelle" Type="nvarchar" MaxLength="50" />
   </EntityType>
-  <EntityType Name="Cipherlab">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Code" Type="nvarchar" MaxLength="50" />
-    <Property Name="Qte" Type="nvarchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="Contrat_assurance">
     <Key>
       <PropertyRef Name="Id_societe_assurance" />
@@ -159,22 +204,21 @@
     <Property Name="Id_contrat_assurance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type_assurance" Type="varchar" MaxLength="254" />
     <Property Name="Num" Type="int" />
-    <Property Name="Date_debut" Type="date" />
-    <Property Name="Date_fin" Type="date" />
+    <Property Name="Date_debut" Type="datetime" />
+    <Property Name="Date_fin" Type="datetime" />
     <Property Name="Cout" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Contrat_garanti">
     <Key>
       <PropertyRef Name="Id_contrat_garanti" />
-      <PropertyRef Name="Id_fournisseur" />
     </Key>
     <Property Name="Id_contrat_garanti" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idDelegation" Type="int" />
+    <Property Name="idDelegation" Type="int" Nullable="false" />
     <Property Name="Id_fournisseur" Type="int" Nullable="false" />
     <Property Name="Type_garanti" Type="varchar" MaxLength="254" />
     <Property Name="Num" Type="int" />
-    <Property Name="Date_debut" Type="date" />
-    <Property Name="Date_fin" Type="date" />
+    <Property Name="Date_debut" Type="datetime" />
+    <Property Name="Date_fin" Type="datetime" />
     <Property Name="Cout" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Contrat_maintenance">
@@ -187,8 +231,8 @@
     <Property Name="Id_contrat_maintenance" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Type_maintenance" Type="varchar" MaxLength="254" />
     <Property Name="Num" Type="int" />
-    <Property Name="Date_debut" Type="date" />
-    <Property Name="Date_fin" Type="date" />
+    <Property Name="Date_debut" Type="datetime" />
+    <Property Name="Date_fin" Type="datetime" />
     <Property Name="Cout" Type="numeric" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="Delegation">
@@ -205,6 +249,22 @@
     <Property Name="libelle" Type="varchar" MaxLength="254" />
     <Property Name="Code_postal" Type="int" />
   </EntityType>
+  <EntityType Name="Depot">
+    <Key>
+      <PropertyRef Name="idPays" />
+      <PropertyRef Name="idRegion" />
+      <PropertyRef Name="idGouvernorat" />
+      <PropertyRef Name="idDelegation" />
+      <PropertyRef Name="IdDepot" />
+    </Key>
+    <Property Name="idPays" Type="int" Nullable="false" />
+    <Property Name="idRegion" Type="int" Nullable="false" />
+    <Property Name="idGouvernorat" Type="int" Nullable="false" />
+    <Property Name="idDelegation" Type="int" Nullable="false" />
+    <Property Name="IdDepot" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="libelle" Type="varchar" MaxLength="254" />
+    <Property Name="Rue" Type="varchar" MaxLength="254" />
+  </EntityType>
   <EntityType Name="Direction">
     <Key>
       <PropertyRef Name="Id_direction" />
@@ -220,7 +280,7 @@
     <Property Name="idDelegation" Type="int" />
     <Property Name="idBatiment" Type="int" Nullable="false" />
     <Property Name="Id_etage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="code" Type="nvarchar" MaxLength="50" />
+    <Property Name="code" Type="int" />
     <Property Name="description" Type="varchar" MaxLength="254" />
   </EntityType>
   <EntityType Name="Fournisseur">
@@ -234,7 +294,6 @@
     <Property Name="idDelegation" Type="int" Nullable="false" />
     <Property Name="Id_fournisseur" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nom" Type="varchar" MaxLength="254" />
-    <Property Name="Prenom" Type="varchar" MaxLength="254" />
     <Property Name="Rue" Type="varchar" MaxLength="254" />
     <Property Name="Tel" Type="int" />
     <Property Name="Fax" Type="int" />
@@ -259,25 +318,29 @@
     <Property Name="Id_inventaire" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Nom_" Type="varchar" MaxLength="254" />
     <Property Name="Type" Type="varchar" MaxLength="254" />
-    <Property Name="Date" Type="date" />
+    <Property Name="Date" Type="datetime" />
   </EntityType>
-  <EntityType Name="Mouvement">
+  <EntityType Name="MouvementB">
     <Key>
-      <PropertyRef Name="Id_mouvement" />
+      <PropertyRef Name="Id_mouvementB" />
     </Key>
-    <Property Name="Id_mouvement" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="idBatiment" Type="int" />
-    <Property Name="Id_parc" Type="int" />
-    <Property Name="Id_Vehicule" Type="int" />
-    <Property Name="idPays" Type="int" />
-    <Property Name="idRegion" Type="int" />
-    <Property Name="idGouvernorat" Type="int" />
-    <Property Name="idOrganisation" Type="int" />
-    <Property Name="Bur_idDelegation" Type="int" />
-    <Property Name="Bie_idBatiment" Type="int" />
-    <Property Name="Id_etage" Type="int" />
-    <Property Name="Id_bureau" Type="int" />
-    <Property Name="Id_bien" Type="int" />
+    <Property Name="Id_mouvementB" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_etage" Type="int" Nullable="false" />
+    <Property Name="Id_bien" Type="int" Nullable="false" />
+    <Property Name="Nom" Type="varchar" MaxLength="254" />
+    <Property Name="Date_derniere_affectation" Type="datetime" />
+    <Property Name="Date_prochaine_affectation" Type="datetime" />
+    <Property Name="Date_renouvellement_prevue" Type="datetime" />
+    <Property Name="Date_retour_prevue" Type="datetime" />
+    <Property Name="Date_sortie" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MouvementV">
+    <Key>
+      <PropertyRef Name="Id_mouvementV" />
+    </Key>
+    <Property Name="Id_mouvementV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Id_parc" Type="int" Nullable="false" />
+    <Property Name="Id_Vehicule" Type="int" Nullable="false" />
     <Property Name="Nom" Type="varchar" MaxLength="254" />
     <Property Name="Date_derniere_affectation" Type="datetime" />
     <Property Name="Date_prochaine_affectation" Type="datetime" />
@@ -298,6 +361,10 @@
       <PropertyRef Name="idBatiment" />
       <PropertyRef Name="Id_parc" />
     </Key>
+    <Property Name="idPays" Type="int" />
+    <Property Name="idRegion" Type="int" />
+    <Property Name="idGouvernorat" Type="int" />
+    <Property Name="idOrganisation" Type="int" />
     <Property Name="idDelegation" Type="int" />
     <Property Name="idBatiment" Type="int" Nullable="false" />
     <Property Name="Id_parc" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
@@ -322,10 +389,11 @@
     <Property Name="idDelegation" Type="int" />
     <Property Name="idBatiment" Type="int" Nullable="false" />
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Rol_id" Type="int" Nullable="false" />
+    <Property Name="Rol_id" Type="int" />
     <Property Name="nom" Type="varchar" MaxLength="254" />
     <Property Name="prenom" Type="varchar" MaxLength="254" />
-    <Property Name="Matricule" Type="varchar" MaxLength="254" />
+    <Property Name="Matricule" Type="int" />
+    <Property Name="Email" Type="varchar" MaxLength="254" />
   </EntityType>
   <EntityType Name="Region">
     <Key>
@@ -387,20 +455,27 @@
     <Property Name="Email" Type="varchar" MaxLength="254" />
     <Property Name="Commentaire" Type="varchar" MaxLength="254" />
   </EntityType>
-  <EntityType Name="Stock">
+  <EntityType Name="Sous_categorie">
     <Key>
-      <PropertyRef Name="id" />
+      <PropertyRef Name="Id_categorie" />
+      <PropertyRef Name="id_categorie_Designation" />
+      <PropertyRef Name="IdSousCategorie" />
     </Key>
-    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="produit" Type="nvarchar" MaxLength="50" />
-    <Property Name="Qte" Type="int" />
-    <Property Name="Emplacement" Type="nvarchar" MaxLength="50" />
-    <Property Name="id_categorie" Type="int" />
-    <Property Name="Num_BonLivraison" Type="nvarchar" MaxLength="50" />
-    <Property Name="date_Livraison" Type="date" />
-    <Property Name="Num_BonCommande" Type="nvarchar" MaxLength="50" />
-    <Property Name="date_BonCommande" Type="date" />
-    <Property Name="Fournisseur" Type="nvarchar" MaxLength="50" />
+    <Property Name="Id_categorie" Type="int" Nullable="false" />
+    <Property Name="id_categorie_Designation" Type="int" Nullable="false" />
+    <Property Name="IdSousCategorie" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="libelle" Type="varchar" MaxLength="254" />
+  </EntityType>
+  <EntityType Name="Trace">
+    <Key>
+      <PropertyRef Name="Id_Trace" />
+    </Key>
+    <Property Name="Id_Trace" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Users" Type="varchar" MaxLength="254" />
+    <Property Name="Actions" Type="varchar" MaxLength="254" />
+    <Property Name="Tables" Type="varchar" MaxLength="254" />
+    <Property Name="Champs" Type="varchar" MaxLength="254" />
+    <Property Name="Dates" Type="datetime" />
   </EntityType>
   <EntityType Name="Utilisateur">
     <Key>
@@ -418,16 +493,15 @@
       <PropertyRef Name="Id_parc" />
       <PropertyRef Name="Id_Vehicule" />
     </Key>
-    <Property Name="Id_contrat_garanti" Type="int" />
     <Property Name="idBatiment" Type="int" />
     <Property Name="Id_parc" Type="int" Nullable="false" />
     <Property Name="Id_Vehicule" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Id_fournisseur" Type="int" />
     <Property Name="Id_societe_assurance" Type="int" />
     <Property Name="Id_contrat_assurance" Type="int" />
     <Property Name="Id_societe_maintenance" Type="int" />
     <Property Name="Id_contrat_maintenance" Type="int" />
     <Property Name="Id_achat" Type="int" />
+    <Property Name="Id_contrat_garanti" Type="int" />
     <Property Name="Matricule" Type="varchar" MaxLength="254" />
     <Property Name="Modele" Type="varchar" MaxLength="254" />
     <Property Name="Etat" Type="varchar" MaxLength="254" />
@@ -450,27 +524,41 @@
   </Association>
   <Association Name="FK_ASSOCIAT_ASSOCIATI_BIEN">
     <End Role="Bien" Type="Self.Bien" Multiplicity="0..1" />
-    <End Role="Association_30" Type="Self.Association_30" Multiplicity="*" />
+    <End Role="Association_49" Type="Self.Association_49" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Bien">
-        <PropertyRef Name="Id_bureau" />
+        <PropertyRef Name="Id_etage" />
         <PropertyRef Name="Id_bien" />
       </Principal>
-      <Dependent Role="Association_30">
-        <PropertyRef Name="Id_bureau" />
+      <Dependent Role="Association_49">
+        <PropertyRef Name="Id_etage" />
         <PropertyRef Name="Id_bien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_ASSOCIAT_ASSOCIATI_INVENTA">
-    <End Role="Inventaire" Type="Self.Inventaire" Multiplicity="1" />
-    <End Role="Association_30" Type="Self.Association_30" Multiplicity="*" />
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_DIRECTIO">
+    <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
+    <End Role="Association_32" Type="Self.Association_32" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Inventaire">
-        <PropertyRef Name="Id_inventaire" />
+      <Principal Role="Direction">
+        <PropertyRef Name="Id_direction" />
       </Principal>
-      <Dependent Role="Association_30">
-        <PropertyRef Name="Id_inventaire" />
+      <Dependent Role="Association_32">
+        <PropertyRef Name="Id_direction" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_ETAGE">
+    <End Role="Etage" Type="Self.Etage" Multiplicity="1" />
+    <End Role="Association_32" Type="Self.Association_32" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etage">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_etage" />
+      </Principal>
+      <Dependent Role="Association_32">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_etage" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -486,6 +574,32 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_INVENTAIRE">
+    <End Role="Inventaire" Type="Self.Inventaire" Multiplicity="1" />
+    <End Role="Association_30" Type="Self.Association_30" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Inventaire">
+        <PropertyRef Name="Id_inventaire" />
+      </Principal>
+      <Dependent Role="Association_30">
+        <PropertyRef Name="Id_inventaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIAT_ASSOCIATI_PERSONNE">
+    <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+    <End Role="Association_49" Type="Self.Association_49" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personnel">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Association_49">
+        <PropertyRef Name="Per_idBatiment" />
+        <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_ASSOCIAT_ASSOCIATI_VEHICULE">
     <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="0..1" />
     <End Role="Association_31" Type="Self.Association_31" Multiplicity="*" />
@@ -497,6 +611,48 @@
       <Dependent Role="Association_31">
         <PropertyRef Name="Id_parc" />
         <PropertyRef Name="Id_Vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIATION_BIEN">
+    <End Role="Bien" Type="Self.Bien" Multiplicity="0..1" />
+    <End Role="Association_30" Type="Self.Association_30" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bien">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_bien" />
+      </Principal>
+      <Dependent Role="Association_30">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_bien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIATION_VEHICULE">
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="0..1" />
+    <End Role="Association_50" Type="Self.Association_50" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vehicule">
+        <PropertyRef Name="Id_parc" />
+        <PropertyRef Name="Id_Vehicule" />
+      </Principal>
+      <Dependent Role="Association_50">
+        <PropertyRef Name="Id_parc" />
+        <PropertyRef Name="Id_Vehicule" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ASSOCIATON_ASSOCIATI_PERSONNE">
+    <End Role="Personnel" Type="Self.Personnel" Multiplicity="0..1" />
+    <End Role="Association_50" Type="Self.Association_50" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personnel">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Association_50">
+        <PropertyRef Name="Per_idBatiment" />
+        <PropertyRef Name="id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -542,22 +698,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_BIEN_ASSOCIATI_BUREAU">
-    <End Role="Bureau" Type="Self.Bureau" Multiplicity="0..1" />
-    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Bureau">
-        <PropertyRef Name="Id_etage" />
-        <PropertyRef Name="Id_direction" />
-        <PropertyRef Name="Id_bureau" />
-      </Principal>
-      <Dependent Role="Bien">
-        <PropertyRef Name="Id_etage" />
-        <PropertyRef Name="Id_direction" />
-        <PropertyRef Name="Id_bureau" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_BIEN_ASSOCIATI_CATEGORI">
     <End Role="Categorie_materiel" Type="Self.Categorie_materiel" Multiplicity="0..1" />
     <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
@@ -576,29 +716,13 @@
     <ReferentialConstraint>
       <Principal Role="Contrat_garanti">
         <PropertyRef Name="Id_contrat_garanti" />
-        <PropertyRef Name="Id_fournisseur" />
       </Principal>
       <Dependent Role="Bien">
         <PropertyRef Name="Id_contrat_garanti" />
-        <PropertyRef Name="Id_fournisseur" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_BIEN_ASSOCIATI_CONTRAT_">
-    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="0..1" />
-    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Contrat_maintenance">
-        <PropertyRef Name="Id_societe_maintenance" />
-        <PropertyRef Name="Id_contrat_maintenance" />
-      </Principal>
-      <Dependent Role="Bien">
-        <PropertyRef Name="Id_societe_maintenance" />
-        <PropertyRef Name="Id_contrat_assurance" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_BIEN_ASSOCIATI_CONTRAT_1">
     <End Role="Contrat_assurance" Type="Self.Contrat_assurance" Multiplicity="0..1" />
     <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
     <ReferentialConstraint>
@@ -608,19 +732,55 @@
       </Principal>
       <Dependent Role="Bien">
         <PropertyRef Name="Id_societe_assurance" />
-        <PropertyRef Name="Id_contrat_maintenance" />
+        <PropertyRef Name="Id_contrat_assurance" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_BUREAU_ASSOCIATI_DIRECTIO">
-    <End Role="Direction" Type="Self.Direction" Multiplicity="1" />
-    <End Role="Bureau" Type="Self.Bureau" Multiplicity="*" />
+  <Association Name="FK_BIEN_ASSOCIATI_DEPOT">
+    <End Role="Depot" Type="Self.Depot" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Direction">
-        <PropertyRef Name="Id_direction" />
+      <Principal Role="Depot">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="IdDepot" />
       </Principal>
-      <Dependent Role="Bureau">
-        <PropertyRef Name="Id_direction" />
+      <Dependent Role="Bien">
+        <PropertyRef Name="Dep_idPays" />
+        <PropertyRef Name="Dep_idRegion" />
+        <PropertyRef Name="Dep_idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="IdDepot" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATI_ETAGE">
+    <End Role="Etage" Type="Self.Etage" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Etage">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_etage" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="idBatiment" />
+        <PropertyRef Name="Id_etage" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BIEN_ASSOCIATION_CONTRAT">
+    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="0..1" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_maintenance">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
+      </Principal>
+      <Dependent Role="Bien">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -651,7 +811,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CONTRAT__ASSOCIATI_FOURNISS">
-    <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="0..1" />
+    <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
     <End Role="Contrat_garanti" Type="Self.Contrat_garanti" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Fournisseur">
@@ -665,20 +825,6 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CONTRAT__ASSOCIATI_SOCIETE">
-    <End Role="Societe_maintenance" Type="Self.Societe_maintenance" Multiplicity="0..1" />
-    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Societe_maintenance">
-        <PropertyRef Name="idDelegation" />
-        <PropertyRef Name="Id_societe_maintenance" />
-      </Principal>
-      <Dependent Role="Contrat_maintenance">
-        <PropertyRef Name="idDelegation" />
-        <PropertyRef Name="Id_societe_maintenance" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_CONTRAT__ASSOCIATI_SOCIETE_1">
     <End Role="Societe_assurance" Type="Self.Societe_assurance" Multiplicity="0..1" />
     <End Role="Contrat_assurance" Type="Self.Contrat_assurance" Multiplicity="*" />
     <ReferentialConstraint>
@@ -689,6 +835,20 @@
       <Dependent Role="Contrat_assurance">
         <PropertyRef Name="idDelegation" />
         <PropertyRef Name="Id_societe_assurance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CONTRAT__ASSOCIATION_SOCIETE_">
+    <End Role="Societe_maintenance" Type="Self.Societe_maintenance" Multiplicity="0..1" />
+    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Societe_maintenance">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_societe_maintenance" />
+      </Principal>
+      <Dependent Role="Contrat_maintenance">
+        <PropertyRef Name="idDelegation" />
+        <PropertyRef Name="Id_societe_maintenance" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -705,6 +865,24 @@
         <PropertyRef Name="idPays" />
         <PropertyRef Name="idRegion" />
         <PropertyRef Name="idGouvernorat" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DEPOT_ASSOCIATI_DELEGATI">
+    <End Role="Delegation" Type="Self.Delegation" Multiplicity="1" />
+    <End Role="Depot" Type="Self.Depot" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Delegation">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Principal>
+      <Dependent Role="Depot">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -755,28 +933,28 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_MOUVEMEN_ASSOCIATI_BIEN">
-    <End Role="Bien" Type="Self.Bien" Multiplicity="0..1" />
-    <End Role="Mouvement" Type="Self.Mouvement" Multiplicity="*" />
+    <End Role="Bien" Type="Self.Bien" Multiplicity="1" />
+    <End Role="MouvementB" Type="Self.MouvementB" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Bien">
-        <PropertyRef Name="Id_bureau" />
+        <PropertyRef Name="Id_etage" />
         <PropertyRef Name="Id_bien" />
       </Principal>
-      <Dependent Role="Mouvement">
-        <PropertyRef Name="Id_bureau" />
+      <Dependent Role="MouvementB">
+        <PropertyRef Name="Id_etage" />
         <PropertyRef Name="Id_bien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_MOUVEMEN_ASSOCIATI_VEHICULE">
-    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="0..1" />
-    <End Role="Mouvement" Type="Self.Mouvement" Multiplicity="*" />
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="1" />
+    <End Role="MouvementV" Type="Self.MouvementV" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Vehicule">
         <PropertyRef Name="Id_parc" />
         <PropertyRef Name="Id_Vehicule" />
       </Principal>
-      <Dependent Role="Mouvement">
+      <Dependent Role="MouvementV">
         <PropertyRef Name="Id_parc" />
         <PropertyRef Name="Id_Vehicule" />
       </Dependent>
@@ -811,7 +989,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_PERSONNE_ASSOCIATI_ROLE">
-    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
     <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
@@ -848,24 +1026,6 @@
   </Association>
   <Association Name="FK_SOCIETE__ASSOCIATI_DELEGATI">
     <End Role="Delegation" Type="Self.Delegation" Multiplicity="0..1" />
-    <End Role="Societe_assurance" Type="Self.Societe_assurance" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Delegation">
-        <PropertyRef Name="idPays" />
-        <PropertyRef Name="idRegion" />
-        <PropertyRef Name="idGouvernorat" />
-        <PropertyRef Name="idDelegation" />
-      </Principal>
-      <Dependent Role="Societe_assurance">
-        <PropertyRef Name="idPays" />
-        <PropertyRef Name="idRegion" />
-        <PropertyRef Name="idGouvernorat" />
-        <PropertyRef Name="idDelegation" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_SOCIETE__ASSOCIATI_DELEGATION">
-    <End Role="Delegation" Type="Self.Delegation" Multiplicity="0..1" />
     <End Role="Societe_maintenance" Type="Self.Societe_maintenance" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Delegation">
@@ -882,15 +1042,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Stock_Categorie_materiel">
-    <End Role="Categorie_materiel" Type="Self.Categorie_materiel" Multiplicity="0..1" />
-    <End Role="Stock" Type="Self.Stock" Multiplicity="*" />
+  <Association Name="FK_SOCIETE__ASSOCIATI_DELEGATION">
+    <End Role="Delegation" Type="Self.Delegation" Multiplicity="0..1" />
+    <End Role="Societe_assurance" Type="Self.Societe_assurance" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Categorie_materiel">
-        <PropertyRef Name="Id_categorie" />
+      <Principal Role="Delegation">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
       </Principal>
-      <Dependent Role="Stock">
-        <PropertyRef Name="id_categorie" />
+      <Dependent Role="Societe_assurance">
+        <PropertyRef Name="idPays" />
+        <PropertyRef Name="idRegion" />
+        <PropertyRef Name="idGouvernorat" />
+        <PropertyRef Name="idDelegation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SOUS_CAT_ASSOCIATI_CATEGORI">
+    <End Role="CategorieDesignation" Type="Self.CategorieDesignation" Multiplicity="1" />
+    <End Role="Sous_categorie" Type="Self.Sous_categorie" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategorieDesignation">
+        <PropertyRef Name="Id_categorie" />
+        <PropertyRef Name="id_categorie_Designation" />
+      </Principal>
+      <Dependent Role="Sous_categorie">
+        <PropertyRef Name="Id_categorie" />
+        <PropertyRef Name="id_categorie_Designation" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -920,21 +1100,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT_">
-    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="0..1" />
+  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT">
+    <End Role="Contrat_garanti" Type="Self.Contrat_garanti" Multiplicity="0..1" />
     <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Contrat_maintenance">
-        <PropertyRef Name="Id_societe_maintenance" />
-        <PropertyRef Name="Id_contrat_maintenance" />
+      <Principal Role="Contrat_garanti">
+        <PropertyRef Name="Id_contrat_garanti" />
       </Principal>
       <Dependent Role="Vehicule">
-        <PropertyRef Name="Id_societe_maintenance" />
-        <PropertyRef Name="Id_contrat_maintenance" />
+        <PropertyRef Name="Id_contrat_garanti" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT_2">
+  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT_">
     <End Role="Contrat_assurance" Type="Self.Contrat_assurance" Multiplicity="0..1" />
     <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
     <ReferentialConstraint>
@@ -945,20 +1123,6 @@
       <Dependent Role="Vehicule">
         <PropertyRef Name="Id_societe_assurance" />
         <PropertyRef Name="Id_contrat_assurance" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_VEHICULE_ASSOCIATI_CONTRAT_3">
-    <End Role="Contrat_garanti" Type="Self.Contrat_garanti" Multiplicity="0..1" />
-    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Contrat_garanti">
-        <PropertyRef Name="Id_contrat_garanti" />
-        <PropertyRef Name="Id_fournisseur" />
-      </Principal>
-      <Dependent Role="Vehicule">
-        <PropertyRef Name="Id_contrat_garanti" />
-        <PropertyRef Name="Id_fournisseur" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -976,27 +1140,44 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissInventaireModelStoreContainer">
+  <Association Name="FK_VEHICULE_ASSOCIATION_CONTRAT_">
+    <End Role="Contrat_maintenance" Type="Self.Contrat_maintenance" Multiplicity="0..1" />
+    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Contrat_maintenance">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
+      </Principal>
+      <Dependent Role="Vehicule">
+        <PropertyRef Name="Id_societe_maintenance" />
+        <PropertyRef Name="Id_contrat_maintenance" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BissInventaireDataModelStoreContainer">
     <EntitySet Name="Achat" EntityType="Self.Achat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Association_30" EntityType="Self.Association_30" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Association_31" EntityType="Self.Association_31" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="AtbDataTest" EntityType="Self.AtbDataTest" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Association_32" EntityType="Self.Association_32" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Association_49" EntityType="Self.Association_49" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Association_50" EntityType="Self.Association_50" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Batiment" EntityType="Self.Batiment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bien" EntityType="Self.Bien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bureau" EntityType="Self.Bureau" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Categorie_materiel" EntityType="Self.Categorie_materiel" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CategorieDesignation" EntityType="Self.CategorieDesignation" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Cipherlab" EntityType="Self.Cipherlab" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contrat_assurance" EntityType="Self.Contrat_assurance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contrat_garanti" EntityType="Self.Contrat_garanti" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Contrat_maintenance" EntityType="Self.Contrat_maintenance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Delegation" EntityType="Self.Delegation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Depot" EntityType="Self.Depot" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Direction" EntityType="Self.Direction" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Etage" EntityType="Self.Etage" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Fournisseur" EntityType="Self.Fournisseur" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Gouvernorat" EntityType="Self.Gouvernorat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Inventaire" EntityType="Self.Inventaire" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Mouvement" EntityType="Self.Mouvement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MouvementB" EntityType="Self.MouvementB" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MouvementV" EntityType="Self.MouvementV" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Organisation" EntityType="Self.Organisation" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Parc_auto" EntityType="Self.Parc_auto" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Pays" EntityType="Self.Pays" Schema="dbo" store:Type="Tables" />
@@ -1006,7 +1187,8 @@
     <EntitySet Name="ServiceD" EntityType="Self.ServiceD" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Societe_assurance" EntityType="Self.Societe_assurance" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Societe_maintenance" EntityType="Self.Societe_maintenance" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Stock" EntityType="Self.Stock" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sous_categorie" EntityType="Self.Sous_categorie" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trace" EntityType="Self.Trace" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Utilisateur" EntityType="Self.Utilisateur" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Vehicule" EntityType="Self.Vehicule" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_ACHAT_ASSOCIATI_FOURNISS" Association="Self.FK_ACHAT_ASSOCIATI_FOURNISS">
@@ -1015,19 +1197,43 @@
     </AssociationSet>
     <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_BIEN" Association="Self.FK_ASSOCIAT_ASSOCIATI_BIEN">
       <End Role="Bien" EntitySet="Bien" />
-      <End Role="Association_30" EntitySet="Association_30" />
+      <End Role="Association_49" EntitySet="Association_49" />
     </AssociationSet>
-    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_INVENTA" Association="Self.FK_ASSOCIAT_ASSOCIATI_INVENTA">
-      <End Role="Inventaire" EntitySet="Inventaire" />
-      <End Role="Association_30" EntitySet="Association_30" />
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_DIRECTIO" Association="Self.FK_ASSOCIAT_ASSOCIATI_DIRECTIO">
+      <End Role="Direction" EntitySet="Direction" />
+      <End Role="Association_32" EntitySet="Association_32" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_ETAGE" Association="Self.FK_ASSOCIAT_ASSOCIATI_ETAGE">
+      <End Role="Etage" EntitySet="Etage" />
+      <End Role="Association_32" EntitySet="Association_32" />
     </AssociationSet>
     <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_INVENTAI" Association="Self.FK_ASSOCIAT_ASSOCIATI_INVENTAI">
       <End Role="Inventaire" EntitySet="Inventaire" />
       <End Role="Association_31" EntitySet="Association_31" />
     </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_INVENTAIRE" Association="Self.FK_ASSOCIAT_ASSOCIATI_INVENTAIRE">
+      <End Role="Inventaire" EntitySet="Inventaire" />
+      <End Role="Association_30" EntitySet="Association_30" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_PERSONNE" Association="Self.FK_ASSOCIAT_ASSOCIATI_PERSONNE">
+      <End Role="Personnel" EntitySet="Personnel" />
+      <End Role="Association_49" EntitySet="Association_49" />
+    </AssociationSet>
     <AssociationSet Name="FK_ASSOCIAT_ASSOCIATI_VEHICULE" Association="Self.FK_ASSOCIAT_ASSOCIATI_VEHICULE">
       <End Role="Vehicule" EntitySet="Vehicule" />
       <End Role="Association_31" EntitySet="Association_31" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIATION_BIEN" Association="Self.FK_ASSOCIATION_BIEN">
+      <End Role="Bien" EntitySet="Bien" />
+      <End Role="Association_30" EntitySet="Association_30" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIATION_VEHICULE" Association="Self.FK_ASSOCIATION_VEHICULE">
+      <End Role="Vehicule" EntitySet="Vehicule" />
+      <End Role="Association_50" EntitySet="Association_50" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ASSOCIATON_ASSOCIATI_PERSONNE" Association="Self.FK_ASSOCIATON_ASSOCIATI_PERSONNE">
+      <End Role="Personnel" EntitySet="Personnel" />
+      <End Role="Association_50" EntitySet="Association_50" />
     </AssociationSet>
     <AssociationSet Name="FK_BATIMENT_ASSOCIATI_DELEGATI" Association="Self.FK_BATIMENT_ASSOCIATI_DELEGATI">
       <End Role="Delegation" EntitySet="Delegation" />
@@ -1041,10 +1247,6 @@
       <End Role="Achat" EntitySet="Achat" />
       <End Role="Bien" EntitySet="Bien" />
     </AssociationSet>
-    <AssociationSet Name="FK_BIEN_ASSOCIATI_BUREAU" Association="Self.FK_BIEN_ASSOCIATI_BUREAU">
-      <End Role="Bureau" EntitySet="Bureau" />
-      <End Role="Bien" EntitySet="Bien" />
-    </AssociationSet>
     <AssociationSet Name="FK_BIEN_ASSOCIATI_CATEGORI" Association="Self.FK_BIEN_ASSOCIATI_CATEGORI">
       <End Role="Categorie_materiel" EntitySet="Categorie_materiel" />
       <End Role="Bien" EntitySet="Bien" />
@@ -1054,16 +1256,20 @@
       <End Role="Bien" EntitySet="Bien" />
     </AssociationSet>
     <AssociationSet Name="FK_BIEN_ASSOCIATI_CONTRAT_" Association="Self.FK_BIEN_ASSOCIATI_CONTRAT_">
-      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
-      <End Role="Bien" EntitySet="Bien" />
-    </AssociationSet>
-    <AssociationSet Name="FK_BIEN_ASSOCIATI_CONTRAT_1" Association="Self.FK_BIEN_ASSOCIATI_CONTRAT_1">
       <End Role="Contrat_assurance" EntitySet="Contrat_assurance" />
       <End Role="Bien" EntitySet="Bien" />
     </AssociationSet>
-    <AssociationSet Name="FK_BUREAU_ASSOCIATI_DIRECTIO" Association="Self.FK_BUREAU_ASSOCIATI_DIRECTIO">
-      <End Role="Direction" EntitySet="Direction" />
-      <End Role="Bureau" EntitySet="Bureau" />
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_DEPOT" Association="Self.FK_BIEN_ASSOCIATI_DEPOT">
+      <End Role="Depot" EntitySet="Depot" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATI_ETAGE" Association="Self.FK_BIEN_ASSOCIATI_ETAGE">
+      <End Role="Etage" EntitySet="Etage" />
+      <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BIEN_ASSOCIATION_CONTRAT" Association="Self.FK_BIEN_ASSOCIATION_CONTRAT">
+      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
+      <End Role="Bien" EntitySet="Bien" />
     </AssociationSet>
     <AssociationSet Name="FK_BUREAU_ASSOCIATI_ETAGE" Association="Self.FK_BUREAU_ASSOCIATI_ETAGE">
       <End Role="Etage" EntitySet="Etage" />
@@ -1078,16 +1284,20 @@
       <End Role="Contrat_garanti" EntitySet="Contrat_garanti" />
     </AssociationSet>
     <AssociationSet Name="FK_CONTRAT__ASSOCIATI_SOCIETE" Association="Self.FK_CONTRAT__ASSOCIATI_SOCIETE">
-      <End Role="Societe_maintenance" EntitySet="Societe_maintenance" />
-      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
-    </AssociationSet>
-    <AssociationSet Name="FK_CONTRAT__ASSOCIATI_SOCIETE_1" Association="Self.FK_CONTRAT__ASSOCIATI_SOCIETE_1">
       <End Role="Societe_assurance" EntitySet="Societe_assurance" />
       <End Role="Contrat_assurance" EntitySet="Contrat_assurance" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CONTRAT__ASSOCIATION_SOCIETE_" Association="Self.FK_CONTRAT__ASSOCIATION_SOCIETE_">
+      <End Role="Societe_maintenance" EntitySet="Societe_maintenance" />
+      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
     </AssociationSet>
     <AssociationSet Name="FK_DELEGATI_ASSOCIATI_GOUVERNO" Association="Self.FK_DELEGATI_ASSOCIATI_GOUVERNO">
       <End Role="Gouvernorat" EntitySet="Gouvernorat" />
       <End Role="Delegation" EntitySet="Delegation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DEPOT_ASSOCIATI_DELEGATI" Association="Self.FK_DEPOT_ASSOCIATI_DELEGATI">
+      <End Role="Delegation" EntitySet="Delegation" />
+      <End Role="Depot" EntitySet="Depot" />
     </AssociationSet>
     <AssociationSet Name="FK_ETAGE_ASSOCIATI_BATIMENT" Association="Self.FK_ETAGE_ASSOCIATI_BATIMENT">
       <End Role="Batiment" EntitySet="Batiment" />
@@ -1103,11 +1313,11 @@
     </AssociationSet>
     <AssociationSet Name="FK_MOUVEMEN_ASSOCIATI_BIEN" Association="Self.FK_MOUVEMEN_ASSOCIATI_BIEN">
       <End Role="Bien" EntitySet="Bien" />
-      <End Role="Mouvement" EntitySet="Mouvement" />
+      <End Role="MouvementB" EntitySet="MouvementB" />
     </AssociationSet>
     <AssociationSet Name="FK_MOUVEMEN_ASSOCIATI_VEHICULE" Association="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE">
       <End Role="Vehicule" EntitySet="Vehicule" />
-      <End Role="Mouvement" EntitySet="Mouvement" />
+      <End Role="MouvementV" EntitySet="MouvementV" />
     </AssociationSet>
     <AssociationSet Name="FK_PARC_AUT_ASSOCIATI_BATIMENT" Association="Self.FK_PARC_AUT_ASSOCIATI_BATIMENT">
       <End Role="Batiment" EntitySet="Batiment" />
@@ -1131,15 +1341,15 @@
     </AssociationSet>
     <AssociationSet Name="FK_SOCIETE__ASSOCIATI_DELEGATI" Association="Self.FK_SOCIETE__ASSOCIATI_DELEGATI">
       <End Role="Delegation" EntitySet="Delegation" />
-      <End Role="Societe_assurance" EntitySet="Societe_assurance" />
+      <End Role="Societe_maintenance" EntitySet="Societe_maintenance" />
     </AssociationSet>
     <AssociationSet Name="FK_SOCIETE__ASSOCIATI_DELEGATION" Association="Self.FK_SOCIETE__ASSOCIATI_DELEGATION">
       <End Role="Delegation" EntitySet="Delegation" />
-      <End Role="Societe_maintenance" EntitySet="Societe_maintenance" />
+      <End Role="Societe_assurance" EntitySet="Societe_assurance" />
     </AssociationSet>
-    <AssociationSet Name="FK_Stock_Categorie_materiel" Association="Self.FK_Stock_Categorie_materiel">
-      <End Role="Categorie_materiel" EntitySet="Categorie_materiel" />
-      <End Role="Stock" EntitySet="Stock" />
+    <AssociationSet Name="FK_SOUS_CAT_ASSOCIATI_CATEGORI" Association="Self.FK_SOUS_CAT_ASSOCIATI_CATEGORI">
+      <End Role="CategorieDesignation" EntitySet="CategorieDesignation" />
+      <End Role="Sous_categorie" EntitySet="Sous_categorie" />
     </AssociationSet>
     <AssociationSet Name="FK_UTILISAT_ASSOCIATI_PERSONNE" Association="Self.FK_UTILISAT_ASSOCIATI_PERSONNE">
       <End Role="Personnel" EntitySet="Personnel" />
@@ -1149,20 +1359,20 @@
       <End Role="Achat" EntitySet="Achat" />
       <End Role="Vehicule" EntitySet="Vehicule" />
     </AssociationSet>
-    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT_" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_">
-      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
-      <End Role="Vehicule" EntitySet="Vehicule" />
-    </AssociationSet>
-    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT_2" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_2">
-      <End Role="Contrat_assurance" EntitySet="Contrat_assurance" />
-      <End Role="Vehicule" EntitySet="Vehicule" />
-    </AssociationSet>
-    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT_3" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_3">
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT">
       <End Role="Contrat_garanti" EntitySet="Contrat_garanti" />
+      <End Role="Vehicule" EntitySet="Vehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATI_CONTRAT_" Association="Self.FK_VEHICULE_ASSOCIATI_CONTRAT_">
+      <End Role="Contrat_assurance" EntitySet="Contrat_assurance" />
       <End Role="Vehicule" EntitySet="Vehicule" />
     </AssociationSet>
     <AssociationSet Name="FK_VEHICULE_ASSOCIATI_PARC_AUT" Association="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT">
       <End Role="Parc_auto" EntitySet="Parc_auto" />
+      <End Role="Vehicule" EntitySet="Vehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VEHICULE_ASSOCIATION_CONTRAT_" Association="Self.FK_VEHICULE_ASSOCIATION_CONTRAT_">
+      <End Role="Contrat_maintenance" EntitySet="Contrat_maintenance" />
       <End Role="Vehicule" EntitySet="Vehicule" />
     </AssociationSet>
   </EntityContainer>

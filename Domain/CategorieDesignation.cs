@@ -14,10 +14,18 @@ namespace Domain
     
     public partial class CategorieDesignation
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public CategorieDesignation()
+        {
+            this.Sous_categorie = new HashSet<Sous_categorie>();
+        }
+    
         public int Id_categorie { get; set; }
         public int id_categorie_Designation { get; set; }
         public string libelle { get; set; }
     
         public virtual Categorie_materiel Categorie_materiel { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Sous_categorie> Sous_categorie { get; set; }
     }
 }

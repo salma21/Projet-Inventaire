@@ -12,21 +12,11 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Mouvement
+    public partial class MouvementV
     {
-        public int Id_mouvement { get; set; }
-        public Nullable<int> idBatiment { get; set; }
-        public Nullable<int> Id_parc { get; set; }
-        public Nullable<int> Id_Vehicule { get; set; }
-        public Nullable<int> idPays { get; set; }
-        public Nullable<int> idRegion { get; set; }
-        public Nullable<int> idGouvernorat { get; set; }
-        public Nullable<int> idOrganisation { get; set; }
-        public Nullable<int> Bur_idDelegation { get; set; }
-        public Nullable<int> Bie_idBatiment { get; set; }
-        public Nullable<int> Id_etage { get; set; }
-        public Nullable<int> Id_bureau { get; set; }
-        public Nullable<int> Id_bien { get; set; }
+        public int Id_mouvementV { get; set; }
+        public int Id_parc { get; set; }
+        public int Id_Vehicule { get; set; }
         public string Nom { get; set; }
         public Nullable<System.DateTime> Date_derniere_affectation { get; set; }
         public Nullable<System.DateTime> Date_prochaine_affectation { get; set; }
@@ -34,7 +24,6 @@ namespace Domain
         public Nullable<System.DateTime> Date_retour_prevue { get; set; }
         public Nullable<System.DateTime> Date_sortie { get; set; }
     
-        public virtual Bien Bien { get; set; }
         public virtual Vehicule Vehicule { get; set; }
     }
 }

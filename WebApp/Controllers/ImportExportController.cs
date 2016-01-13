@@ -171,7 +171,7 @@ namespace WebApp.Controllers
             return HttpNotFound();
         }
 
-        public ActionResult Create1(AtbDataTest customer)
+        public ActionResult Create1(Bien customer)
         {
 
             return View();
@@ -180,7 +180,7 @@ namespace WebApp.Controllers
         public void ExportToExel()
         {
             var grid = new GridView();
-            var inv = BissInventaireEntities.Instance.AtbDataTest.ToList();
+            var inv = BissInventaireEntities.Instance.Bien.ToList();
             grid.DataSource = inv;
             grid.DataBind();
             Response.ClearContent();
@@ -203,17 +203,17 @@ namespace WebApp.Controllers
             String DateExp = DateTime.Now.ToString();
             Response.AddHeader("content-disposition", "attachment;filename=InventaireList_" + DateExp + ".csv");
             Response.ContentType = "text/csv";
-            var inv = BissInventaireEntities.Instance.AtbDataTest.ToList();
+            var inv = BissInventaireEntities.Instance.Bien.ToList();
             foreach (var DataTest in inv)
             {
                 sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\"",
-                    DataTest.Code_materiel,
-                    DataTest.Num_serie,
-                    DataTest.Categorie,
+                    DataTest.Code_a_barre,
+                    DataTest.Num_Serie,
+                    DataTest.Categorie_materiel.libelle,
                     DataTest.Modele,
                     DataTest.Marque,
-                    DataTest.Statut,
-                    DataTest.Date_inventaire,
+                    DataTest.Etat,
+                    DataTest.Date_d_installation,
                     DataTest.Date_installation,
                     DataTest.Localisation_complet));
             }

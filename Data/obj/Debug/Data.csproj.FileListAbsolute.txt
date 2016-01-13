@@ -70,3 +70,6 @@ C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\De
 C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Debug\Domain.pdb
 C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Debug\EntityFramework.xml
 C:\Users\rawia\Desktop\Version Avec Import Fichier Text\ATB_SOLUTION\Data\bin\Debug\EntityFramework.SqlServer.xml
+D:\ATB_SOLUTIONS\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+D:\ATB_SOLUTIONS\Data\obj\Debug\Data.dll
+D:\ATB_SOLUTIONS\Data\obj\Debug\Data.pdb
