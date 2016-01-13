@@ -202,19 +202,7 @@
 
                                                 </div>
                                             </TD>
-                                            <TD width=40%>
-                                                <label class="col-sm-4 control-label form-label">Bureau</label>
-
-                                                <div class="col-sm-8">
-
-                                                    <div class="col-sm-8">
-
-                                                        @Html.DropDownListFor(model => model.Id_bureau, (SelectList)ViewData["bureaux"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-                                                    </div>
-                                                </div>
-                                            </TD>
+                                         
 
                                         </TR>
 
@@ -266,13 +254,7 @@
                                     <div class="col-md-8">
                                         @Html.DropDownListFor(model => model.Id_contrat_garanti, (SelectList)ViewData["contratgar"], "--Choisir--", new { @class = "form-control", required = "" })
                                     </div>
-                                </div><div class="col-md-4">
-    <label class="col-sm-4 control-label form-label">Fournisseurs</label>
-
-    <div class="col-md-8">
-        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
-    </div>
-</div>
+                                </div>
                             </div>
 
                          

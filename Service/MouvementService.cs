@@ -8,144 +8,122 @@ using Domain;
 
 namespace Service
 {
-    public class MouvementService : IMouvementService
+    public class MouvementVService : IMouvementVService
     {
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);
 
-        public MouvementService() { }
+        public MouvementVService() { }
 
-        public IEnumerable<Mouvement> GetMouvements()
+        public IEnumerable<MouvementV> GetMouvementsV()
         {
-            var dep = utOfWork.MouvementRepository.GetAll();
+            var dep = utOfWork.MouvementVRepository.GetAll();
             return dep;
         }
 
-        public Mouvement GetMouvement(int id)
+        public MouvementV GetMouvementV(int id)
         {
-            var Dept = utOfWork.MouvementRepository.GetById(id);
+            var Dept = utOfWork.MouvementVRepository.GetById(id);
             return Dept;
         }
 
-        public IEnumerable<Mouvement> GetMouvementsVehicule()
+        public IEnumerable<MouvementV> GetMouvementsVehicule()
         {
-            var dep = utOfWork.MouvementRepository.GetAll();
+            var dep = utOfWork.MouvementVRepository.GetAll();
             return dep;
         }
 
-        public Mouvement GetMouvementVehicule(int id)
+        public MouvementV GetMouvementVehicule(int id)
         {
-            var Dept = utOfWork.MouvementRepository.GetById(id);
+            var Dept = utOfWork.MouvementVRepository.GetById(id);
             return Dept;
         }
 
-        public void CreateMouvement(Mouvement Mouvement)
+        public void CreateMouvementV(MouvementV MouvementV)
         {
 
-            utOfWork.MouvementRepository.Add(Mouvement);
+            utOfWork.MouvementVRepository.Add(MouvementV);
 
 
         }
 
-        public IEnumerable<Etage> FindEtageByBatiment(int id)
-
-        {
-            var dep = utOfWork.MouvementRepository.FindEtageByBatiment(id);
-            return dep;
-        }
-
-        public IEnumerable<Bureau> FindBureauByEtage(int id)
-
-        {
-            var dep = utOfWork.MouvementRepository.FindBureauByEtage(id);
-            return dep;
-        }
-
-        public IEnumerable<Bien> FindBienByBureau(int id)
-
-        {
-            var dep = utOfWork.MouvementRepository.FindBienByBureau(id);
-            return dep;
-        }
-
-
-
+        
         public IEnumerable<Parc_auto> FindParcByBatiment(int id)
 
         {
-            var dep = utOfWork.MouvementRepository.FindParcByBatiment(id);
+            var dep = utOfWork.MouvementVRepository.FindParcByBatiment(id);
             return dep;
         }
 
         public IEnumerable<Vehicule> FindVehiculeByParc(int id)
 
         {
-            var dep = utOfWork.MouvementRepository.FindVehiculeByParc(id);
+            var dep = utOfWork.MouvementVRepository.FindVehiculeByParc(id);
             return dep;
         }
 
 
 
-        public void CreateMouvementVehicule(Mouvement Mouvement)
+        public void CreateMouvementVehicule(MouvementV MouvementV)
         {
 
-            utOfWork.MouvementRepository.Add(Mouvement);
+            utOfWork.MouvementVRepository.Add(MouvementV);
 
 
         }
-        public void DeleteMouvement(int id)
+        public void DeleteMouvementV(int id)
         {
 
-            var Dept = utOfWork.MouvementRepository.GetById(id);
-            utOfWork.MouvementRepository.Delete(Dept);
+            var Dept = utOfWork.MouvementVRepository.GetById(id);
+            utOfWork.MouvementVRepository.Delete(Dept);
 
 
 
         }
 
-        public void SaveMouvement()
+        public void SaveMouvementV()
         {
             utOfWork.Commit();
         }
 
 
-        public void UpdateMouvementDetached(Mouvement e)
+        public void UpdateMouvementVDetached(MouvementV e)
         {
-            utOfWork.MouvementRepository.UpdateMouvementDetached(e);
+            utOfWork.MouvementVRepository.UpdateMouvementVDetached(e);
         }
 
         public int FindOrganisationByBatiment(int id)
         {
 
-            int Dept = utOfWork.MouvementRepository.FindOrganisationByBatiment(id);
+            int Dept = utOfWork.MouvementVRepository.FindOrganisationByBatiment(id);
             return Dept;
         }
 
         public int FindDelegationByBatiment(int id)
         {
 
-            int Dept = utOfWork.MouvementRepository.FindDelegationByBatiment(id);
+            int Dept = utOfWork.MouvementVRepository.FindDelegationByBatiment(id);
             return Dept;
         }
 
         public int FindGouverneratByBatiment(int id)
         {
 
-            int Dept = utOfWork.MouvementRepository.FindGouverneratByBatiment(id);
+            int Dept = utOfWork.MouvementVRepository.FindGouverneratByBatiment(id);
             return Dept;
         }
 
         public int FindRegionByBatiment(int id)
         {
 
-            int Dept = utOfWork.MouvementRepository.FindRegionByBatiment(id);
+            int Dept = utOfWork.MouvementVRepository.FindRegionByBatiment(id);
             return Dept;
         }
 
         public int FindPaysByBatiment(int id)
         {
 
-            int Dept = utOfWork.MouvementRepository.FindPaysByBatiment(id);
+            int Dept = utOfWork.MouvementVRepository.FindPaysByBatiment(id);
             return Dept;
         }
 
@@ -153,13 +131,13 @@ namespace Service
     }
 }
 
-    public interface IMouvementService
+    public interface IMouvementVService
     {
-        IEnumerable<Mouvement> GetMouvements();
-        Mouvement GetMouvement(int id);
-        IEnumerable<Mouvement> GetMouvementsVehicule();
-        Mouvement GetMouvementVehicule(int id);
-        void UpdateMouvementDetached(Mouvement e);
+        IEnumerable<MouvementV> GetMouvementVs();
+        MouvementV GetMouvementV(int id);
+        IEnumerable<MouvementV> GetMouvementVsVehicule();
+        MouvementV GetMouvementVVehicule(int id);
+        void UpdateMouvementVDetached(MouvementV e);
         int FindDelegationByBatiment(int id);
         int FindGouverneratByBatiment(int id);
         int FindRegionByBatiment(int id);

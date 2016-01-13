@@ -49,12 +49,21 @@ namespace Data.Infrastructure
             }
         }
 
-        private IMouvementRepository MouvementRepository;
-        IMouvementRepository IUnitOfWork.MouvementRepository
+        private IMouvementBRepository MouvementBRepository;
+        IMouvementBRepository IUnitOfWork.MouvementBRepository
         {
             get
             {
-                return MouvementRepository ?? (MouvementRepository = new MouvementRepository(dbFactory));
+                return MouvementBRepository ?? (MouvementBRepository = new MouvementBRepository(dbFactory));
+            }
+        }
+
+        private IMouvementVRepository MouvementRepository;
+        IMouvementVRepository IUnitOfWork.MouvementVRepository
+        {
+            get
+            {
+                return MouvementVRepository ?? (MouvementVRepository = new MouvementVRepository(dbFactory));
             }
         }
 
