@@ -61,7 +61,6 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\BiensRepository.cs" />
     <Compile Include="Repositories\Categorie_materielRepository.cs" />
     <Compile Include="Repositories\DelegationRepository.cs" />
     <Compile Include="Repositories\DirectionRepository.cs" />

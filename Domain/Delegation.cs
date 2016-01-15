@@ -18,9 +18,10 @@ namespace Domain
         public Delegation()
         {
             this.Batiment = new HashSet<Batiment>();
+            this.Depot = new HashSet<Depot>();
             this.Fournisseur = new HashSet<Fournisseur>();
-            this.Societe_assurance = new HashSet<Societe_assurance>();
             this.Societe_maintenance = new HashSet<Societe_maintenance>();
+            this.Societe_assurance = new HashSet<Societe_assurance>();
         }
     
         public int idPays { get; set; }
@@ -34,10 +35,12 @@ namespace Domain
         public virtual ICollection<Batiment> Batiment { get; set; }
         public virtual Gouvernorat Gouvernorat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Depot> Depot { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fournisseur> Fournisseur { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Societe_assurance> Societe_assurance { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Societe_maintenance> Societe_maintenance { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Societe_assurance> Societe_assurance { get; set; }
     }
 }

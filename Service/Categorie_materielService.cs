@@ -57,6 +57,12 @@ namespace Service
         {
             utOfWork.Categorie_materielRepository.UpdateCategorie_materielDetached(e);
         }
+        public IEnumerable<CategorieDesignation> FindPorduitByID(int id)
+        {
+            var dep = utOfWork.Categorie_materielRepository.FindPorduitByID(id);
+            return dep;
+        }
+
 
     }
     public interface ICategorie_materielService
@@ -69,6 +75,7 @@ namespace Service
         void UpdateCategorie_materielDetached(Categorie_materiel e);
         Categorie_materiel FindCategorie_materielByNom(String id);
         void SaveCategorie_materiel();
+        IEnumerable<CategorieDesignation> FindPorduitByID(int id);
 
 
     }

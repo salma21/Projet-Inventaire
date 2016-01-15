@@ -28,7 +28,7 @@ namespace Domain
         public Nullable<int> idGouvernorat { get; set; }
         public int idDelegation { get; set; }
         public int idBatiment { get; set; }
-        public string code { get; set; }
+        public Nullable<int> code { get; set; }
         public string description { get; set; }
     
         public virtual Delegation Delegation { get; set; }

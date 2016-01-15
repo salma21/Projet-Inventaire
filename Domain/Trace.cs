@@ -12,13 +12,13 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Utilisateur
+    public partial class Trace
     {
-        public int id { get; set; }
-        public int idBatiment { get; set; }
-        public int Per_id { get; set; }
-        public string login { get; set; }
-        public string motDePasse { get; set; }
-        public Nullable<bool> etatUtilisateur { get; set; }
+        public int Id_Trace { get; set; }
+        public string Users { get; set; }
+        public string Actions { get; set; }
+        public string Tables { get; set; }
+        public string Champs { get; set; }
+        public Nullable<System.DateTime> Dates { get; set; }
     }
 }

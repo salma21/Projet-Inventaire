@@ -21,7 +21,7 @@ namespace WebApp.Controllers
         private IFournisseurService four = new FournisseurService();
         private BissInventaireEntities con = new BissInventaireEntities();
         private IServiceEtPArcAutoService parc = new ServiceEtPArcAutoService();
-        private IBiensService bien = new BiensService();
+        //private IBiensService bien = new BiensService();
         private IDirectionService dir = new DirectionService();
         private IDelegationService del = new DelegationService();
         private IOrganisationService orga = new OrganisationService();
@@ -346,7 +346,7 @@ namespace WebApp.Controllers
         public ActionResult GetBiens()
         {
          
-            var bien = BissInventaireEntities.Instance.AtbDataTest.ToList();
+            var bien = BissInventaireEntities.Instance.Bien.ToList();
           
             
               
@@ -359,28 +359,28 @@ namespace WebApp.Controllers
 
 
         // GET: Gestion/Create
-        public ActionResult CreateBiens()
-        {
-            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
-            return View();
-        }
+        //public ActionResult CreateBiens()
+        //{
+        //    ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+        //    return View();
+        //}
 
-        // POST: Gestion/Create
-        [HttpPost]
-        public ActionResult CreateBiens(AtbDataTest reg)
-        {
-            try
-            {
-                BissInventaireEntities.Instance.AtbDataTest.Add(reg);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetRegion");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
+        //// POST: Gestion/Create
+        //[HttpPost]
+        //public ActionResult CreateBiens(AtbDataTest reg)
+        //{
+        //    try
+        //    {
+        //        BissInventaireEntities.Instance.AtbDataTest.Add(reg);
+        //        BissInventaireEntities.Instance.SaveChanges();
+        //        return RedirectToAction("GetRegion");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogThread.WriteLine(ex.Message);
+        //        return RedirectToAction("Index", "Error");
+        //    }
+        //}
 
         // GET: Gestion/Details/5
 
@@ -840,7 +840,7 @@ namespace WebApp.Controllers
             var ac = BissInventaireEntities.Instance.Achat.Find(veh.Id_achat);
 
             veh.Prix_d_achat = ac.Prix_d_achat;
-            veh.Id_fournisseur = idfournisseur;
+         
             veh.Id_societe_maintenance = idSocM;
             veh.Id_societe_assurance = idSocA;
             veh.idBatiment = idBat;
@@ -1063,137 +1063,61 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
-        [HttpPost, ActionName("SaveUploadedFile")]
-        public ActionResult SaveUploadedFile(string id)
-        {
-            bool isSavedSuccessfully = true;
-            string fName = "";
-            string fileName1 = "";
-            string fileExtension = "";
-            string pathFile = "";
-            DataTable ds = new DataTable();
-            try
-            {
-                foreach (string fileName in Request.Files)
-                {
-                    HttpPostedFileBase file = Request.Files[fileName];
-                    //Save file content goes here
-                    fName = file.FileName;
-                    fileExtension = System.IO.Path.GetExtension(Request.Files["file"].FileName);
-                    if (file != null && file.ContentLength > 0)
-                    {
-                        var originalDirectory = new DirectoryInfo(string.Format("{0}Fichiers", Server.MapPath(@"\")));
-                        string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "Exels");
-                        fileName1 = Path.GetFileName(file.FileName);
-                        bool isExists = System.IO.Directory.Exists(pathString);
-                        if (!isExists)
-                            System.IO.Directory.CreateDirectory(pathString);
-                        pathFile = string.Format("{0}\\{1}", pathString, file.FileName);
-                        file.SaveAs(pathFile);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                isSavedSuccessfully = false;
-            }
+      
+      
+     
+        //public ActionResult CreateStock()
+        //{
+        //    ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+        //    ViewData["catgorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+        //    ViewData["materiel"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
+        //    ViewData["fournis"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+        //    return View();
+        //}
 
-            if (isSavedSuccessfully)
-            {
-                List<AtbDataTest> list = new List<AtbDataTest>();
+        //// POST: Gestion/Create
+        //[HttpPost]
+        //public ActionResult CreateStock(Stock etg)
+        //{
+        //    try
+        //    {
+        //        BissInventaireEntities.Instance.Stock.Add(etg);
+        //        BissInventaireEntities.Instance.SaveChanges();
+        //        return RedirectToAction("GetStock");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogThread.WriteLine(ex.Message);
+        //        return RedirectToAction("Index", "Error");
+        //    }
+        //}
 
+        //public ActionResult EditStock(int id)
+        //{
+        //    var test = BissInventaireEntities.Instance.Stock.Find(id);
+        //    ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+        //    ViewData["catgorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+        //    ViewData["materiel"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
+        //    ViewData["fournis"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+        //    return View(test);
+        //}
 
-                ds = ExcelParser.Instance.ExcelParserToDataTable(pathFile, null);
-                foreach (DataRow row in ds.Rows)
-                {
-                    AtbDataTest catalogue = new AtbDataTest();
-                    catalogue.Code_materiel = (int)row["test1"];
-
-                    catalogue.Num_serie = row["test2"].ToString();
-                    catalogue.Categorie = row["test3"].ToString();
-                    catalogue.Modele = row["test4"].ToString();
-                    catalogue.Marque = row["test5"].ToString();
-                    catalogue.Statut = row["test6"].ToString();
-                    catalogue.Fin_garantie = row["test7"].ToString();
-                    catalogue.Localisation_dernier = row["test8"].ToString();
-
-                    catalogue.Entite_dernier = row["test9"].ToString();
-                    catalogue.Date_inventaire = row["test10"].ToString();
-                    catalogue.Date_installation = row["test11"].ToString();
-                    catalogue.Localisation_complet = row["test12"].ToString();
-
-                    catalogue.Entite_complet = row["test13"].ToString();
-                    list.Add(catalogue);
-
-                }
-
-
-                return View("Create1");
-            }
-            return HttpNotFound();
-        }
-        public ActionResult Create1(AtbDataTest customer)
-        {
-            var test = bien.GetBienss();
-            return View(test);
-        }
-        public ActionResult GetStock(Stock st)
-        {
-            var test = BissInventaireEntities.Instance.Stock.ToList(); ;
-            return View(test);
-        }
-        public ActionResult CreateStock()
-        {
-            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-            ViewData["catgorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
-            ViewData["materiel"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
-            ViewData["fournis"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-            return View();
-        }
-
-        // POST: Gestion/Create
-        [HttpPost]
-        public ActionResult CreateStock(Stock etg)
-        {
-            try
-            {
-                BissInventaireEntities.Instance.Stock.Add(etg);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetStock");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
-
-        public ActionResult EditStock(int id)
-        {
-            var test = BissInventaireEntities.Instance.Stock.Find(id);
-            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-            ViewData["catgorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
-            ViewData["materiel"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
-            ViewData["fournis"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-            return View(test);
-        }
-
-        // POST: Gestion/Create
-        [HttpPost]
-        public ActionResult EditStock(Stock etg)
-        {
-            try
-            {
-                bien.UpdateStockDetached(etg);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetStock");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
+        //// POST: Gestion/Create
+        //[HttpPost]
+        //public ActionResult EditStock(Stock etg)
+        //{
+        //    try
+        //    {
+        //        bien.UpdateStockDetached(etg);
+        //        BissInventaireEntities.Instance.SaveChanges();
+        //        return RedirectToAction("GetStock");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogThread.WriteLine(ex.Message);
+        //        return RedirectToAction("Index", "Error");
+        //    }
+        //}
 
         [HttpPost]
         public ActionResult GetRegionByPays(int stateid)

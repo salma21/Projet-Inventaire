@@ -12,21 +12,29 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Bureau
+    public partial class Association_49
     {
+        public Nullable<int> Dep_idPays { get; set; }
+        public Nullable<int> Dep_idRegion { get; set; }
         public Nullable<int> idPays { get; set; }
         public Nullable<int> idRegion { get; set; }
+        public Nullable<int> Dep_idGouvernorat { get; set; }
         public Nullable<int> idGouvernorat { get; set; }
         public Nullable<int> idOrganisation { get; set; }
-        public Nullable<int> idDelegation { get; set; }
+        public Nullable<int> Eta_idDelegation { get; set; }
         public Nullable<int> idBatiment { get; set; }
-        public int Id_etage { get; set; }
-        public int Id_bureau { get; set; }
-        public Nullable<int> Code_a_barre { get; set; }
-        public string Description { get; set; }
+        public Nullable<int> Id_etage { get; set; }
+        public Nullable<int> idDelegation { get; set; }
+        public Nullable<int> IdDepot { get; set; }
+        public int Id_bien { get; set; }
+        public Nullable<int> Per_idPays { get; set; }
+        public Nullable<int> Per_idRegion { get; set; }
+        public Nullable<int> Per_idGouvernorat { get; set; }
+        public Nullable<int> Per_idOrganisation { get; set; }
+        public Nullable<int> Per_idDelegation { get; set; }
+        public Nullable<int> Per_idBatiment { get; set; }
         public int id { get; set; }
-        public Nullable<int> Id_direction { get; set; }
     
-        public virtual Etage Etage { get; set; }
+        public virtual Bien Bien { get; set; }
     }
 }

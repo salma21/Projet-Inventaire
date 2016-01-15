@@ -27,7 +27,6 @@ namespace Domain
         public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
         public string Nom { get; set; }
-        public string Prenom { get; set; }
         public string Rue { get; set; }
         public Nullable<int> Tel { get; set; }
         public Nullable<int> Fax { get; set; }

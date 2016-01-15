@@ -49,12 +49,21 @@ namespace Data.Infrastructure
             }
         }
 
-        private IMouvementRepository MouvementRepository;
-        IMouvementRepository IUnitOfWork.MouvementRepository
+        private IMouvementBRepository MouvementBRepository;
+        IMouvementBRepository IUnitOfWork.MouvementBRepository
         {
             get
             {
-                return MouvementRepository ?? (MouvementRepository = new MouvementRepository(dbFactory));
+                return MouvementBRepository ?? (MouvementBRepository = new MouvementBRepository(dbFactory));
+            }
+        }
+
+        private IMouvementVRepository MouvementRepository;
+        IMouvementVRepository IUnitOfWork.MouvementVRepository
+        {
+            get
+            {
+                return MouvementVRepository ?? (MouvementVRepository = new MouvementVRepository(dbFactory));
             }
         }
 
@@ -166,14 +175,14 @@ namespace Data.Infrastructure
                 return InventaireRepository ?? (InventaireRepository = new InventaireRepository(dbFactory));
             }
         }
-        private IBiensRepository BiensRepository;
-        IBiensRepository IUnitOfWork.BiensRepository
-        {
-            get
-            {
-                return BiensRepository ?? (BiensRepository = new BiensRepository(dbFactory));
-            }
-        }
+        //private IBiensRepository BiensRepository;
+        //IBiensRepository IUnitOfWork.BiensRepository
+        //{
+        //    get
+        //    {
+        //        return BiensRepository ?? (BiensRepository = new BiensRepository(dbFactory));
+        //    }
+        //}
 
         private IGouvernoratRepository GouvernoratRepository;
         IGouvernoratRepository IUnitOfWork.GouvernoratRepository

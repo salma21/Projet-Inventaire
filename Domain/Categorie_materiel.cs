@@ -19,7 +19,6 @@ namespace Domain
         {
             this.Bien = new HashSet<Bien>();
             this.CategorieDesignation = new HashSet<CategorieDesignation>();
-            this.Stock = new HashSet<Stock>();
         }
     
         public int Id_categorie { get; set; }
@@ -30,7 +29,5 @@ namespace Domain
         public virtual ICollection<Bien> Bien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CategorieDesignation> CategorieDesignation { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Stock> Stock { get; set; }
     }
 }

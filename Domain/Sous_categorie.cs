@@ -12,10 +12,13 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Cipherlab
+    public partial class Sous_categorie
     {
-        public int ID { get; set; }
-        public string Code { get; set; }
-        public string Qte { get; set; }
+        public int Id_categorie { get; set; }
+        public int id_categorie_Designation { get; set; }
+        public int IdSousCategorie { get; set; }
+        public string libelle { get; set; }
+    
+        public virtual CategorieDesignation CategorieDesignation { get; set; }
     }
 }

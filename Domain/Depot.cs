@@ -12,24 +12,24 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Direction
+    public partial class Depot
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Direction()
+        public Depot()
         {
-            this.Association_32 = new HashSet<Association_32>();
             this.Bien = new HashSet<Bien>();
-            this.ServiceD = new HashSet<ServiceD>();
         }
     
-        public int Id_direction { get; set; }
-        public string Libelle { get; set; }
+        public int idPays { get; set; }
+        public int idRegion { get; set; }
+        public int idGouvernorat { get; set; }
+        public int idDelegation { get; set; }
+        public int IdDepot { get; set; }
+        public string libelle { get; set; }
+        public string Rue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Association_32> Association_32 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bien> Bien { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ServiceD> ServiceD { get; set; }
+        public virtual Delegation Delegation { get; set; }
     }
 }

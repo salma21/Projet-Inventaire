@@ -131,35 +131,35 @@ namespace WebApp.Controllers
 
             if (isSavedSuccessfully)
             {
-                List<AtbDataTest> list = new List<AtbDataTest>();
+                List<Bien> list = new List<Bien>();
 
 
                 ds = ExcelParser.Instance.ExcelParserToDataTable(pathFile, null);
                 foreach (DataRow row in ds.Rows)
                 {
-                    AtbDataTest catalogue = new AtbDataTest();
+                    Bien catalogue = new Bien();
 
-                    catalogue.Code_materiel = Convert.ToInt32(row["Code matériel "]);
+                    catalogue.Code_a_barre = Convert.ToInt32(row["Code matériel "]);
 
-                    catalogue.Num_serie = row["N° de série "].ToString();
+                    catalogue.Num_Serie = row["N° de série "].ToString();
                     ///var i = db.FindCategorie_materielByNom(row["Catégorie "].ToString());
                     //catalogue.Categorie = Convert.ToString(i.Id_categorie);
 
                     catalogue.Modele = row["Modèle "].ToString();
                     catalogue.Marque = row["Marque "].ToString();
-                    catalogue.Statut = row["Statut "].ToString();
-                    catalogue.Fin_garantie = row["Fin de garantie "].ToString();
-                    catalogue.Localisation_dernier = row["Localisation (dernier niveau) "].ToString();
+                    catalogue.Etat = row["Statut "].ToString();
+                    catalogue.Fin_garantie = Convert.ToDateTime(row["Fin de garantie "]);
+                    catalogue.Id_etage = Convert.ToInt32(row["Localisation (dernier niveau) "]);
 
-                    catalogue.Entite_dernier = row["Entité (dernier niveau) "].ToString();
-                    catalogue.Date_inventaire = row["Date inventaire "].ToString();
-                    catalogue.Date_installation = row["Date d'installation "].ToString();
-                    catalogue.Localisation_complet = row["Localisation (complet) "].ToString();
+                    catalogue.idBatiment = Convert.ToInt32(row["Entité (dernier niveau) "]);
+                    catalogue.Date_d_inventaire = Convert.ToDateTime(row["Date inventaire "]);
+                    catalogue.Date_d_installation = Convert.ToDateTime(row["Date d'installation "]);
+                    catalogue.idBatiment = Convert.ToInt32(row["Localisation (complet) "]);
 
-                    catalogue.Entite_complet = row["Entité (complet) "].ToString();
+                    catalogue.id_direction = Convert.ToInt32(row["Entité (complet) "]);
                     //catalogue.Code_materiel.ToString() = Code;
                     list.Add(catalogue);
-                    BissInventaireEntities.Instance.AtbDataTest.Add(catalogue);
+                    BissInventaireEntities.Instance.Bien.Add(catalogue);
 
                     BissInventaireEntities.Instance.SaveChanges();
                 }
@@ -171,7 +171,7 @@ namespace WebApp.Controllers
             return HttpNotFound();
         }
 
-        public ActionResult Create1(AtbDataTest customer)
+        public ActionResult Create1(Bien customer)
         {
 
             return View();
@@ -180,7 +180,7 @@ namespace WebApp.Controllers
         public void ExportToExel()
         {
             var grid = new GridView();
-            var inv = BissInventaireEntities.Instance.AtbDataTest.ToList();
+            var inv = BissInventaireEntities.Instance.Bien.ToList();
             grid.DataSource = inv;
             grid.DataBind();
             Response.ClearContent();
@@ -198,24 +198,24 @@ namespace WebApp.Controllers
         public void ExportToCSV()
         {
             StringWriter sw = new StringWriter();
-            sw.WriteLine("\"Code materiel\",\"Num de serie\",\"Categorie\",\"Modele\",\"Marque\",\"Statut\",\"Date inventaire\",\"Date Installation\",\"Localisation\"");
+            sw.WriteLine("\"Code materiel\",\"Num de serie\",\"Categorie\",\"Modele\",\"Marque\",\"Statut\",\"Date instalation\",\"Localisation\"");
             Response.ClearContent();
             String DateExp = DateTime.Now.ToString();
             Response.AddHeader("content-disposition", "attachment;filename=InventaireList_" + DateExp + ".csv");
             Response.ContentType = "text/csv";
-            var inv = BissInventaireEntities.Instance.AtbDataTest.ToList();
+            var inv = BissInventaireEntities.Instance.Bien.ToList();
             foreach (var DataTest in inv)
             {
                 sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\"",
-                    DataTest.Code_materiel,
-                    DataTest.Num_serie,
-                    DataTest.Categorie,
+                    DataTest.Code_a_barre,
+                    DataTest.Num_Serie,
+                    DataTest.Categorie_materiel.libelle,
                     DataTest.Modele,
                     DataTest.Marque,
-                    DataTest.Statut,
-                    DataTest.Date_inventaire,
-                    DataTest.Date_installation,
-                    DataTest.Localisation_complet));
+                    DataTest.Etat,
+                    DataTest.Date_d_installation,
+                   
+                    DataTest.Etage.description));
             }
             Response.Write(sw.ToString());
             Response.End();
@@ -367,10 +367,10 @@ namespace WebApp.Controllers
                                     string[] splitVou = str.Split(new char[] { ';' });
                                     //Définition de la variable de récupération du résultat de l'exécution de la requête ci-dessus
 
-                                    Cipherlab a = new Cipherlab();
-                                    a.Code =  splitVou[0] ;
-                                    a.Qte = splitVou[1];
-                                    BissInventaireEntities.Instance.Cipherlab.Add(a);
+                                    Bien a = new Bien();
+                                    a.Code_a_barre = Convert.ToInt32(splitVou[0]) ;
+                                    a.Code = Convert.ToInt32(splitVou[1]);
+                                    BissInventaireEntities.Instance.Bien.Add(a);
                                     BissInventaireEntities.Instance.SaveChanges();
                                     insert_test = false;
                                 }
@@ -379,7 +379,7 @@ namespace WebApp.Controllers
                                 {
                                     insert_test = false;
                                     return View("ImportTxt");
-                                    break;
+                                 
                                 }
                                 return RedirectToAction("Cipherlab");
                             }
@@ -405,7 +405,7 @@ namespace WebApp.Controllers
 
         public ActionResult Cipherlab()
         {
-            var cipher = BissInventaireEntities.Instance.Cipherlab.ToList();
+            var cipher = BissInventaireEntities.Instance.Bien.ToList();
             return View(cipher);
         }
     }

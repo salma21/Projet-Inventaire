@@ -83,7 +83,7 @@ namespace Data.Repositories
             var pers = (from p in DataContext.Bureau
                         where p.Id_bureau == id
                         select p);
-            return pers.FirstOrDefault().Id_direction;
+            return (int)pers.FirstOrDefault().Id_direction;
         }
 
 

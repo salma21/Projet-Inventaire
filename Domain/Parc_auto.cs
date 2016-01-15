@@ -20,6 +20,10 @@ namespace Domain
             this.Vehicule = new HashSet<Vehicule>();
         }
     
+        public Nullable<int> idPays { get; set; }
+        public Nullable<int> idRegion { get; set; }
+        public Nullable<int> idGouvernorat { get; set; }
+        public Nullable<int> idOrganisation { get; set; }
         public Nullable<int> idDelegation { get; set; }
         public int idBatiment { get; set; }
         public int Id_parc { get; set; }

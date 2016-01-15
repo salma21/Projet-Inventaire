@@ -30,6 +30,14 @@ namespace Data.Repositories
                         select p);
             return pers.FirstOrDefault();
         }
+        public IEnumerable<CategorieDesignation> FindPorduitByID(int id)
+        {
+
+            var pers = (from p in DataContext.CategorieDesignation
+                        where p.Id_categorie == id
+                        select p);
+            return pers.ToList();
+        }
     }
 
 
@@ -37,7 +45,7 @@ namespace Data.Repositories
     {
         Categorie_materiel FindCategorie_materielByNom(String id);
         void UpdateCategorie_materielDetached(Categorie_materiel e);
-
+        IEnumerable<CategorieDesignation> FindPorduitByID(int id);
     }
 
 

@@ -10,12 +10,12 @@ using System.Data.Entity.Infrastructure;
 
 namespace Data.Repositories
 {
-    public class MouvementRepository : RepositoryBase<Mouvement>, IMouvementRepository
+    public class MouvementVRepository : RepositoryBase<MouvementV>, IMouvementVRepository
     {
-        public MouvementRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateMouvementDetached(Mouvement e)
+        public MouvementVRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        public void UpdateMouvementVDetached(MouvementV e)
         {
-            Mouvement existing = this.DataContext.Mouvement.Find(e.Id_mouvement);
+            MouvementV existing = this.DataContext.MouvementV.Find(e.Id_mouvementV);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
@@ -63,30 +63,10 @@ namespace Data.Repositories
             return (int)pers.FirstOrDefault().idPays;
         }
 
-        public IEnumerable<Etage> FindEtageByBatiment(int id)
-        {
-            var pers = (from p in DataContext.Etage
-                        where p.idBatiment == id
-                        select p);
-            return pers.ToList();
-        }
 
 
-        public IEnumerable<Bureau> FindBureauByEtage(int id)
-        {
-            var pers = (from p in DataContext.Bureau
-                        where p.Id_etage == id
-                        select p);
-            return pers.ToList();
-        }
+      
 
-        public IEnumerable<Bien> FindBienByBureau(int id)
-        {
-            var pers = (from p in DataContext.Bien
-                        where p.Id_bureau == id
-                        select p);
-            return pers.ToList();
-        }
 
         public IEnumerable<Parc_auto> FindParcByBatiment(int id)
         {
@@ -108,19 +88,17 @@ namespace Data.Repositories
 
 
     }
-    public interface IMouvementRepository : IRepository<Mouvement>
+    public interface IMouvementVRepository : IRepository<MouvementV>
     {
 
-        void UpdateMouvementDetached(Mouvement e);
+        void UpdateMouvementVDetached(MouvementV e);
         int FindDelegationByBatiment(int id);
         int FindGouverneratByBatiment(int id);
         int FindRegionByBatiment(int id);
         int FindOrganisationByBatiment(int id);
        
         int FindPaysByBatiment(int id);
-        IEnumerable<Etage> FindEtageByBatiment(int id);
-        IEnumerable<Bureau> FindBureauByEtage(int id);
-        IEnumerable<Bien> FindBienByBureau(int id);
+       
         IEnumerable<Parc_auto> FindParcByBatiment(int id);
         IEnumerable<Vehicule> FindVehiculeByParc(int id);
 
