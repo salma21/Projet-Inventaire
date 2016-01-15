@@ -20,47 +20,24 @@ namespace Data.Repositories
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-        public int FindOrganisationByBatiment(int id)
-        {
-
-            var pers = (from p in DataContext.Batiment
-                        where p.idOrganisation == id
-                        select p);
-            return (int)pers.FirstOrDefault().idOrganisation;
-        }
-
-        public int FindDelegationByBatiment(int id)
+     
+        
+        public  IEnumerable<Batiment> FindBatimentByDelegation(int id)
         {
 
             var pers = (from p in DataContext.Batiment
                         where p.idDelegation == id
                         select p);
-            return pers.FirstOrDefault().idDelegation;
-        }
-        public int FindGouverneratByBatiment(int id)
-        {
-
-            var pers = (from p in DataContext.Batiment
-                        where p.idGouvernorat == id
-                        select p);
-            return (int)pers.FirstOrDefault().idGouvernorat;
-        }
-        public int FindRegionByBatiment(int id)
-        {
-
-            var pers = (from p in DataContext.Batiment
-                        where p.idRegion == id
-                        select p);
-            return (int)pers.FirstOrDefault().idRegion;
+            return pers.ToList();
         }
 
-        public int FindPaysByBatiment(int id)
+        public  IEnumerable<Parc_auto> FindParcByBatiment(int id)
         {
 
-            var pers = (from p in DataContext.Batiment
-                        where p.idPays == id
+            var pers = (from p in DataContext.Parc_auto
+                        where p.idBatiment == id
                         select p);
-            return (int)pers.FirstOrDefault().idPays;
+            return pers.ToList();
         }
 
 
@@ -68,13 +45,6 @@ namespace Data.Repositories
       
 
 
-        public IEnumerable<Parc_auto> FindParcByBatiment(int id)
-        {
-            var pers = (from p in DataContext.Parc_auto
-                        where p.idBatiment == id
-                        select p);
-            return pers.ToList();
-        }
 
         public IEnumerable<Vehicule> FindVehiculeByParc(int id)
         {
@@ -92,13 +62,7 @@ namespace Data.Repositories
     {
 
         void UpdateMouvementVDetached(MouvementV e);
-        int FindDelegationByBatiment(int id);
-        int FindGouverneratByBatiment(int id);
-        int FindRegionByBatiment(int id);
-        int FindOrganisationByBatiment(int id);
-       
-        int FindPaysByBatiment(int id);
-       
+        IEnumerable<Batiment> FindBatimentByDelegation(int id);
         IEnumerable<Parc_auto> FindParcByBatiment(int id);
         IEnumerable<Vehicule> FindVehiculeByParc(int id);
 

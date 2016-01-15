@@ -26,7 +26,7 @@
                 </ul>
             </div>
             <div class="panel-body">
-                @using (@Html.BeginForm("CreateAchat", "GestionContratetSoc", FormMethod.Post,
+                @using (@Html.BeginForm("EditAchat", "GestionContratetSoc", FormMethod.Post,
 new { @id = "frmId", @class = "fieldset-form" }))
                 {
                     @Html.AntiForgeryToken()
@@ -37,119 +37,99 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         @Html.HiddenFor(model => model.Id_achat)
                     
                         <div class="panel panel-default">
-                            <fieldset>
+                           <fieldset>
 
-                                <legend>Acquisition (Achat)</legend>
+                            <legend>Acquisition (Achat)</legend>
 
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE border=0>
-                                            <TR>
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">N° facture</label>
 
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label">Référence (N° facture)</label>
+                                    <div class="col-md-8">
 
-                                                    <div class="col-sm-8">
+                                        @Html.TextBoxFor(model => model.Num_facture, new { @class = "form-control", required = "" })
 
-                                                        @Html.TextBoxFor(model => model.Id_achat, new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Fournisseur</label>
 
-                                                    </div>
-                                                </TD>
+                                    <div class="col-md-8">
 
-                                                <TD width=34%>
-                                                    <label class="col-sm-4 control-label form-label">Fournisseur</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
 
 
-                                                    </div>
-                                                </TD>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label"> Num Livraison</label>
 
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label"> Num Livraison</label>
+                                    <div class="col-md-8">
 
-                                                    <div class="col-sm-8">
-
-                                                        @Html.TextBoxFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
+                                        @Html.TextBoxFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
 
 
-                                                    </div>
-                                                </TD>
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
-
+                                    </div>
                                 </div>
 
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=70%>
-                                            <TR>
+                                        </div>
 
-                                                <TD width=35%>
-                                                    <label class="col-sm-4 control-label form-label">N° de commande</label>
+                            <br />
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">N° de commande</label>
 
-                                                    <div class="col-sm-8">
-
-
-                                                        @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
-                                                    </div>
-                                                </TD>
-                                                <TD width=35%>
-                                                    <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
-
-                                                    <div class="col-sm-8">
+                                    <div class="col-md-8">
 
 
-                                                        @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
-                                                    </div>
-                                                </TD>
 
-                                            </TR>
-                                        </TABLE>
-                                    </CENTER>
+                                        @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
+
+                                    <div class="col-md-8">
+
+
+                                        @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                    </div>
                                 </div>
 
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label"> Date Livraison</label>
+
+                                        <div class="col-md-8">
 
 
-                            </fieldset>
+                                            @Html.EditorFor(model => model.Date_livraison, new { @class = "form-control", required = "" } )
+                                        </div>
+                                    </div><br />
+                                    <br />
+                                    <br />
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label"> </label>
+
+                                    <div class="col-md-8">
+                                     
+                                    </div>
+                                </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label"> Date d'Achat</label>
+
+                                        <div class="col-md-8">
+                                            @Html.EditorFor(model => model.Date_d_achat, new { @class = "form-control", required = ""})
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </fieldset>
                             <br/>
 
-                            <fieldset>
-                              
-                                <legend>Localisation</legend>
-                                
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=40%>
-                                            <TR>
-                                                <TD>
-                                                    <label class="col-sm-4 control-label form-label"> Ville</label>
 
-                                                    <div class="col-sm-8">
-                                                        @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-                                                    </div>
-                                                </TD>
-                                               
-
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
-                                </div>
-
-                                
-                                
-
-                            </fieldset>
-                           
 
 
                             <br>

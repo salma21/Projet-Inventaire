@@ -1,22 +1,6 @@
 ﻿@model Domain.Achat
 
-<link href="~/Content/css/jquery.datetimepicker.css" rel="stylesheet" />
-<script src="~/Content/js/jquery.datetimepicker.js"></script>
-<script type="text/javascript">
-    $(document).ready(function () {
 
-        $(function () {
-
-            $("#txtdatepicker").datetimepicker({
-                lang: 'fr',
-                timepicker: false,
-                format: 'Y/m/d',
-            });
-          
-
-        });
-    });
-</script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -114,7 +98,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         <div class="col-md-8">
 
 
-                                            @Html.TextBoxFor(model => model.Date_livraison, new { @class = "form-control", id = "txtdatepicker" })
+                                            @Html.EditorFor(model => model.Date_livraison, new { @class = "form-control", required = "" } )
                                         </div>
                                     </div><br />
                                     <br />
@@ -130,12 +114,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         <label class="col-sm-4 control-label form-label"> Date d'Achat</label>
 
                                         <div class="col-md-8">
-                                            @Html.TextBoxFor(model => model.Date_d_achat, new { @class = "form-control", id = "txtdatepicker" })
+                                            @Html.EditorFor(model => model.Date_d_achat, new { @class = "form-control", required = ""})
                                         </div>
                                     </div>
 
                             </div>
                         </fieldset>
+                        <br />
+
 
                         <br /><br /> <div style="text-align: center;">
 

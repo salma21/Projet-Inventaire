@@ -67,7 +67,8 @@
     <Compile Include="Repositories\EtageRepository.cs" />
     <Compile Include="Repositories\GouvernoratRepository.cs" />
     <Compile Include="Repositories\InventaireRepository.cs" />
-    <Compile Include="Repositories\MouvementRepository.cs" />
+    <Compile Include="Repositories\MouvementVRepository.cs" />
+    <Compile Include="Repositories\MouvementBRepository.cs" />
     <Compile Include="Repositories\OrganisationRepository.cs" />
     <Compile Include="Repositories\PaysRepository.cs" />
     <Compile Include="Repositories\PersonnelRepository.cs" />

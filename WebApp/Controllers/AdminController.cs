@@ -133,6 +133,8 @@ namespace WebApp.Controllers
             ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
             ViewData["Depot"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "IdDepot", "libelle");
 
+
+
             return View();
         }
 
