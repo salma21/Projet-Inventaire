@@ -58,7 +58,7 @@ namespace Data.Infrastructure
             }
         }
 
-        private IMouvementVRepository MouvementRepository;
+        private IMouvementVRepository MouvementVRepository;
         IMouvementVRepository IUnitOfWork.MouvementVRepository
         {
             get
