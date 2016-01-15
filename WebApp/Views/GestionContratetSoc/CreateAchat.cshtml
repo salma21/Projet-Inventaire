@@ -88,15 +88,16 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <br />
                             <br />
                             <div class="form-group">
-                               <div class="col-md-4">
-                                <label class="col-sm-4 control-label form-label">N° de commande</label>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">N° de commande</label>
 
-                                   <div class="col-md-8">
+                                    <div class="col-md-8">
 
 
 
-                                       @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
-                                   </div></div>
+                                        @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
 
@@ -106,16 +107,34 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
                                     </div>
                                 </div>
+
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label"> Date Livraison</label>
+
+                                        <div class="col-md-8">
+
+
+                                            @Html.TextBoxFor(model => model.Date_livraison, new { @class = "form-control", id = "txtdatepicker" })
+                                        </div>
+                                    </div><br />
+                                    <br />
+                                    <br />
                                 <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> Date Livraison</label>
+                                    <label class="col-sm-4 control-label form-label"> </label>
 
                                     <div class="col-md-8">
-
-
-                                        @Html.TextBoxFor(model => model.Date_livraison, new { @class = "form-control", id = "txtdatepicker" })
+                                     
                                     </div>
-                                </div><br /> </div>
+                                </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label"> Date d'Achat</label>
 
+                                        <div class="col-md-8">
+                                            @Html.TextBoxFor(model => model.Date_d_achat, new { @class = "form-control", id = "txtdatepicker" })
+                                        </div>
+                                    </div>
+
+                            </div>
                         </fieldset>
 
                         <br /><br /> <div style="text-align: center;">

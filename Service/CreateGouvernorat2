@@ -13,33 +13,22 @@ namespace Service
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);
 
-        public MouvementBBService() { }
+        public MouvementBService() { }
 
-        public IEnumerable<MouvementB> GetMouvementBs()
+        public IEnumerable<MouvementB> GetMouvementBiens()
         {
             var dep = utOfWork.MouvementBRepository.GetAll();
             return dep;
         }
 
-        public MouvementB GetMouvementB(int id)
+        public MouvementB GetMouvementBien(int id)
         {
             var Dept = utOfWork.MouvementBRepository.GetById(id);
             return Dept;
         }
 
-        public IEnumerable<MouvementB> GetMouvementBsVehicule()
-        {
-            var dep = utOfWork.MouvementBRepository.GetAll();
-            return dep;
-        }
-
-        public MouvementB GetMouvementBVehicule(int id)
-        {
-            var Dept = utOfWork.MouvementBRepository.GetById(id);
-            return Dept;
-        }
-
-        public void CreateMouvementB(MouvementB MouvementB)
+       
+        public void CreateMouvementBien(MouvementB MouvementB)
         {
 
             utOfWork.MouvementBRepository.Add(MouvementB);
@@ -54,45 +43,24 @@ namespace Service
             return dep;
         }
 
-        public IEnumerable<Bureau> FindBureauByEtage(int id)
+      
+
+        public IEnumerable<Bien> FindBienByEtage(int id)
 
         {
-            var dep = utOfWork.MouvementBRepository.FindBureauByEtage(id);
-            return dep;
-        }
-
-        public IEnumerable<Bien> FindBienByBureau(int id)
-
-        {
-            var dep = utOfWork.MouvementBRepository.FindBienByBureau(id);
+            var dep = utOfWork.MouvementBRepository.FindBienByEtage(id);
             return dep;
         }
 
 
 
-        public IEnumerable<Parc_auto> FindParcByBatiment(int id)
+      
 
-        {
-            var dep = utOfWork.MouvementBRepository.FindParcByBatiment(id);
-            return dep;
-        }
-
-        public IEnumerable<Vehicule> FindVehiculeByParc(int id)
-
-        {
-            var dep = utOfWork.MouvementBRepository.FindVehiculeByParc(id);
-            return dep;
-        }
+      
 
 
 
-        public void CreateMouvementBVehicule(MouvementB MouvementB)
-        {
-
-            utOfWork.MouvementBRepository.Add(MouvementB);
-
-
-        }
+       
         public void DeleteMouvementB(int id)
         {
 
@@ -155,21 +123,20 @@ namespace Service
 
     public interface IMouvementBService
     {
-        IEnumerable<MouvementB> GetMouvementBs();
-        MouvementB GetMouvementB(int id);
-        IEnumerable<MouvementB> GetMouvementBsVehicule();
-        MouvementB GetMouvementBVehicule(int id);
+     
+        MouvementB GetMouvementBien(int id);
+        IEnumerable<MouvementB> GetMouvementBiens();
+       
         void UpdateMouvementBDetached(MouvementB e);
         int FindDelegationByBatiment(int id);
         int FindGouverneratByBatiment(int id);
         int FindRegionByBatiment(int id);
         int FindOrganisationByBatiment(int id);
         int FindPaysByBatiment(int id);
-        IEnumerable<Bureau> FindBureauByEtage(int id);
+        
         IEnumerable<Etage> FindEtageByBatiment(int id);
-        IEnumerable<Bien> FindBienByBureau(int id);
-        IEnumerable<Parc_auto> FindParcByBatiment(int id);
-        IEnumerable<Vehicule> FindVehiculeByParc(int id);
+        IEnumerable<Bien> FindBienByEtage(int id);
+       
 
 
 

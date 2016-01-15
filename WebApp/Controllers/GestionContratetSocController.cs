@@ -16,7 +16,7 @@ namespace WebApp.Controllers
 
         IGestionContratetSocService db1 = new GestionContratetSocService();
         IFournisseurService fourni = new FournisseurService();
-
+        private IGestionContratetSocService del = new GestionContratetSocService();
         // GET: GestionContratetSoc
         public ActionResult GetContrat_Assurance()
         {
@@ -59,15 +59,11 @@ namespace WebApp.Controllers
         {
             try
             {
-
                 var acht = BissInventaireEntities.Instance.Achat.Find(id);
-
                 return View(acht);
             }
             catch (Exception ex)
             {
-
-
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
             }
@@ -101,6 +97,57 @@ namespace WebApp.Controllers
             }
             catch (Exception ex)
             {
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
+        public ActionResult EditContrat_Assurance(int id)
+        {
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+            ViewData["contratass"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_assurance", "Num");
+            var bat = del.FindContrat_assuranceByID(id);
+           
+            return View(bat);
+
+        }
+
+        // POST: GestionContratetSoc/Edit/5
+        [HttpPost]
+        public ActionResult EditContrat_Assurance(Contrat_assurance assur, FormCollection collection)
+        {
+            var bat = del.FindContrat_assuranceByID(assur.Id_contrat_assurance);
+            try
+            {
+               
+                db1.UpdateContrat_assuranceDetached(assur);
+                db.SaveChanges();
+                return RedirectToAction("GetContrat_assurance");
+            }
+            catch (Exception ex)
+            {
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
+        public ActionResult DetailsContrat_Assurance(int id)
+        {
+            try
+            {
+
+                var acht = BissInventaireEntities.Instance.Achat.Find(id);
+
+                return View(acht);
+            }
+            catch (Exception ex)
+            {
+
+
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
             }
@@ -253,7 +300,7 @@ namespace WebApp.Controllers
             try
             {
                 var four = fourni.FindFourByID(achat.Id_fournisseur);
-                achat.Date_d_achat = System.DateTime.Now;
+              //  achat.Date_d_achat = System.DateTime.Now;
                 achat.idDelegation = four.idDelegation;
                 db.Achat.Add(achat);
                 db.SaveChanges();
