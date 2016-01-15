@@ -96,7 +96,7 @@
 
                 <div class="panel panel-default">
 
-                    @*salma*@
+                  
 
 
                     @using (@Html.BeginForm("CreateMouvementV", "Gestion", FormMethod.Post,
@@ -108,26 +108,28 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                            <div class="form-group">
+                           <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Delegation</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @style = "width:200px;", @onchange = "javascript:GetBat(this.value);" })
- )
+                                    @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })*@
+                                   @Html.DropDownList("Delegation", (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True" ,  @onchange = "javascript:GetBat(this.value);" })
+ 
                                 </div>
                             </div>
                        
 
-                            <div class="form-group">
+                           <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Batiment</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.idBatiment, new SelectList(listBat), "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })
+                                   @Html.DropDownList("Batiment", (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })
+                                    @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })*@
                                 </div>
                             </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Parc auto</label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_parc, new SelectList(listParc), "--Choisir--", new { @id = "Parc", @class = "form-control", required = "True", @onchange = "javascript:GetVeh(this.value);" })
+                                        @Html.DropDownListFor(model => model.Id_parc, (SelectList)ViewData["parc"], "--Choisir--", new { @id = "Parc", @class = "form-control", required = "True", @onchange = "javascript:GetVeh(this.value);" })
                                     </div>
                                 </div>
 
@@ -221,23 +223,3 @@ new { @id = "frmId", @class = "fieldset-form" }))
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title">Enregistrement Avec Succée </h4>
-            </div>
-            <div class="modal-body">
-                <p>Voulez Vous Ajouter une Autre ?<p>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-default">Oui</button>
-                <button type="button" class="btn btn-white" data-dismiss="modal" onClick="document.location='~/Admin/GetOrganisation'">Non</button>
-
-            </div>
-        </div>
-    </div>
-</div>
-
-
