@@ -5,6 +5,8 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -901,7 +903,7 @@ namespace WebApp.Controllers
             
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             ViewData["vehicule"] = new SelectList(BissInventaireEntities.Instance.Vehicule.ToList(), "Id_Vehicule", "Matricule");
-            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idDelegation", "libelle");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
           
             return View();
@@ -914,9 +916,40 @@ namespace WebApp.Controllers
 
             try
             {
-                BissInventaireEntities.Instance.MouvementV.Add(mouv);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetMouvement");
+                db7.CreateMouvementV(mouv);
+            db7.SaveMouvementV();
+                //BissInventaireEntities.Instance.MouvementV.Add(mouv);
+                //BissInventaireEntities.Instance.SaveChanges();
+               return RedirectToAction("CreateOrganisation");
+            }
+            catch (DbEntityValidationException r)
+            {
+               
+
+                foreach (var eve in r.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                            ve.PropertyName + " " + ve.ErrorMessage);
+                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+
+
+                    }
+                }
+
+                return RedirectToAction("Index", "Error");
+            }
+            catch (SqlException sq)
+            {
+                LogThread.WriteLine(sq.Message);
+                return RedirectToAction("Index", "Error");
             }
             catch (Exception ex)
             {
@@ -931,7 +964,7 @@ namespace WebApp.Controllers
             List<Batiment> objcity = new List<Batiment>();
             objcity = db7.FindBatimentByDelegation(delegid).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "idDelegation", "libelle", 0);
+            SelectList obgcity = new SelectList(objcity, "idBatiment", "description", 0);
             return Json(obgcity);
         }
 
@@ -976,17 +1009,17 @@ namespace WebApp.Controllers
             SelectList obgcity = new SelectList(objcity, "idBatiment", "description", 0);
             return Json(obgcity);
         }
-        [HttpPost]
-        public ActionResult GetProduitByCAt(int stateid)
-        {
-            IBatimentService bat = new BatimentService();
-            List<CategorieDesignation> objcity = new List<CategorieDesignation>();
+        //[HttpPost]
+        //public ActionResult GetProduitByCAt(int stateid)
+        //{
+        //    IBatimentService bat = new BatimentService();
+        //    List<CategorieDesignation> objcity = new List<CategorieDesignation>();
 
-            objcity = bien.FindPorduitByID(stateid).ToList();
+        //    objcity = bien.FindPorduitByID(stateid).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
-            return Json(obgcity);
-        }
+        //    SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
+        //    return Json(obgcity);
+        //}
 
         [HttpPost]
         public ActionResult GetGouvernoratByRegion(int stateid)
