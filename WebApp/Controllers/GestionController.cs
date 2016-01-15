@@ -894,7 +894,7 @@ namespace WebApp.Controllers
         }
 
         // GET: Mouvement/Create
-        public ActionResult CreateMouvementVehicule()
+        public ActionResult CreateMouvementV()
         {
 
 
@@ -909,7 +909,7 @@ namespace WebApp.Controllers
 
         // POST: Mouvement/Create
         [HttpPost]
-        public ActionResult CreateMouvementVehicule(MouvementV mouv, FormCollection collection)
+        public ActionResult CreateMouvementV(MouvementV mouv, FormCollection collection)
         {
 
             try

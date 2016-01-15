@@ -484,7 +484,7 @@
     <Content Include="Views\Gestion\EditRegion.cshtml" />
     <Content Include="Views\ServiceD\EditServiceD.cshtml" />
     <Content Include="Views\Gestion\CreateMouvement.cshtml" />
-    <Content Include="Views\Gestion\CreateMouvementVehicule.cshtml" />
+    <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
     <Content Include="Views\Gestion\GetMouvementVehicule.cshtml" />
