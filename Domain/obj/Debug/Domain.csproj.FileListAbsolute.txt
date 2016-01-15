@@ -68,3 +68,13 @@ D:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
 D:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 D:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
 D:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb
+C:\ATB_SOLUTIONS\Domain\bin\Debug\Domain.dll.config
+C:\ATB_SOLUTIONS\Domain\bin\Debug\Domain.dll
+C:\ATB_SOLUTIONS\Domain\bin\Debug\Domain.pdb
+C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.dll
+C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.xml
+C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
+C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb
+C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
