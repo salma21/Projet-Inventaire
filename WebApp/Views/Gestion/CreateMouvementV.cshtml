@@ -111,7 +111,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Delegation</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownList("Delegation", (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @style = "width:200px;", @onchange = "javascript:GetBat(this.value);" })
+                                    @Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @style = "width:200px;", @onchange = "javascript:GetBat(this.value);" })
  )
                                 </div>
                             </div>
@@ -120,7 +120,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Batiment</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownList(, (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })
+                                    @Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.idBatiment, new SelectList(listBat), "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })
                                 </div>
                             </div>
 
