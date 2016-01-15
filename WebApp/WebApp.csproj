@@ -483,6 +483,7 @@
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
     <Content Include="Views\Gestion\GetMouvementVehicule.cshtml" />
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

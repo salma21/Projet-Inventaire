@@ -29,7 +29,7 @@ namespace Data.Infrastructure
         IVehiculeRepository VehiculeRepository { get; }
         
         IEtageRepository EtageRepository { get; }
-    IPersonnelRepository PersonnelRepository { get; }
+        IPersonnelRepository PersonnelRepository { get; }
         IRoleRepository RoleRepository { get; }
         ICategorie_materielRepository Categorie_materielRepository { get; }
         IServiceDRepository ServiceDRepository { get; }
