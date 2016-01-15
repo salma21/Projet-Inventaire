@@ -21,14 +21,23 @@ namespace Data.Repositories
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
+        public Contrat_assurance FindContrat_assuranceByID(int id)
+        {
 
-       
+            var contass = (from p in this.DataContext.Contrat_assurance
+                           where p.Id_contrat_assurance == id
+                        select p).ToList<Contrat_assurance>();
+            return contass.FirstOrDefault();
+
+
+        }
+
     }
 
 
     public interface IContratAssuranceRepository : IRepository<Contrat_assurance>
     {
-
+        Contrat_assurance FindContrat_assuranceByID(int id);
         void UpdateCont_AssuranceDetached(Contrat_assurance e);
        
     }

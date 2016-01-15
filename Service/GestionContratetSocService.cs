@@ -60,7 +60,12 @@ namespace Service
             return Dept;
         }
 
+        public Contrat_assurance FindContrat_assuranceByID(int id)
 
+        {
+            var Dept = utOfWork.ContratAssuranceRepository.FindContrat_assuranceByID(id);
+            return Dept;
+        }
 
 
 
@@ -69,23 +74,26 @@ namespace Service
         {
             utOfWork.Commit();
         }
-
-
-       
-
         public void UpdateAchatDetached(Achat e)
         {
             utOfWork.AchatRepository.UpdateAchatDetached(e);
+        }
+
+
+
+        public void UpdateContrat_assuranceDetached(Contrat_assurance e)
+        {
+            utOfWork.ContratAssuranceRepository.UpdateCont_AssuranceDetached(e);
         }
         
     }
     public interface IGestionContratetSocService
     {
         Societe_maintenance FindSocMainByID(int id);
-
+        Contrat_assurance FindContrat_assuranceByID(int id);
         Societe_assurance FindSocAssByID(int id);
         void UpdateAchatDetached(Achat e);
-
+        void UpdateContrat_assuranceDetached(Contrat_assurance e);
         void SaveChange();
      }
 
