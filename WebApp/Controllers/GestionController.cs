@@ -857,9 +857,11 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+         
 
+        //MouvementVehicule
 
-        private IMouvementService db7 = new MouvementService();
+        private IMouvementVService db7 = new MouvementVService();
         // GET: Mouvement
         public ActionResult Index7()
         {
@@ -868,7 +870,7 @@ namespace WebApp.Controllers
 
         public ActionResult GetMouvement()
         {
-            var Mouvement = db7.GetMouvements();
+            var Mouvement = db7.GetMouvementVehicules();
             return View(Mouvement);
         }
         // GET: Vehicule/Details/6
@@ -877,7 +879,7 @@ namespace WebApp.Controllers
             try
             {
 
-                var archive = BissInventaireEntities.Instance.Mouvement.Find(id);
+                var archive = BissInventaireEntities.Instance.MouvementV.Find(id);
 
                 return View(archive);
             }
@@ -892,42 +894,27 @@ namespace WebApp.Controllers
         }
 
         // GET: Mouvement/Create
-        public ActionResult CreateMouvement()
+        public ActionResult CreateMouvementVehicule()
         {
 
 
-            ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Code_a_barre");
+            
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
-            ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "description");
-            ViewData["bureau"] = new SelectList(BissInventaireEntities.Instance.Bureau.ToList(), "Id_bureau", "Description");
-
-
+            ViewData["vehicule"] = new SelectList(BissInventaireEntities.Instance.Vehicule.ToList(), "Id_Vehicule", "Matricule");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idDelegation", "libelle");
+            ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+          
             return View();
         }
 
         // POST: Mouvement/Create
         [HttpPost]
-        public ActionResult CreateMouvement(Mouvement mouv, FormCollection collection)
+        public ActionResult CreateMouvementVehicule(MouvementV mouv, FormCollection collection)
         {
-            int idDeleg = db7.FindDelegationByBatiment((int)mouv.Bie_idBatiment);
-            int idGouv = db7.FindGouverneratByBatiment((int)mouv.Bie_idBatiment);
-            int idReg = db7.FindRegionByBatiment((int)mouv.Bie_idBatiment);
-            int idOrg = db7.FindOrganisationByBatiment((int)mouv.Bie_idBatiment);
-            int idPay = db7.FindPaysByBatiment((int)mouv.Bie_idBatiment);
-
-
-            mouv.Bur_idDelegation = idDeleg;
-            mouv.idRegion = idReg;
-            mouv.idGouvernorat = idGouv;
-            mouv.idOrganisation = idOrg;
-            mouv.idPays = idPay;
-
-
-
 
             try
             {
-                BissInventaireEntities.Instance.Mouvement.Add(mouv);
+                BissInventaireEntities.Instance.MouvementV.Add(mouv);
                 BissInventaireEntities.Instance.SaveChanges();
                 return RedirectToAction("GetMouvement");
             }
@@ -939,110 +926,13 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetEtageByBatiment(int batimentid)
+        public ActionResult GetBatimentByDelegation(int delegid)
         {
-            List<Etage> objcity = new List<Etage>();
-            objcity = db7.FindEtageByBatiment(batimentid).ToList();
+            List<Batiment> objcity = new List<Batiment>();
+            objcity = db7.FindBatimentByDelegation(delegid).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "Id_etage", "description", 0);
+            SelectList obgcity = new SelectList(objcity, "idDelegation", "libelle", 0);
             return Json(obgcity);
-        }
-
-        [HttpPost]
-        public ActionResult GetBureauByEtage(int etageid)
-        {
-            List<Bureau> objcity = new List<Bureau>(); objcity = db7.FindBureauByEtage(etageid).ToList();
-
-            SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
-            return Json(obgcity);
-        }
-
-        [HttpPost]
-        public ActionResult GetBienByBureau(int burid)
-        {
-            List<Bien> objcity = new List<Bien>(); objcity = db7.FindBienByBureau(burid).ToList();
-
-            SelectList obgcity = new SelectList(objcity, "Id_bien", "Code_a_barre", 0);
-            return Json(obgcity);
-        }
-
-        //MouvementVehicule
-        public ActionResult Index8()
-        {
-            return View();
-        }
-
-        public ActionResult GetMouvementVehicule()
-        {
-            var MouvementV = db7.GetMouvementsVehicule();
-            return View(MouvementV);
-        }
-        // GET: Vehicule/Details/6
-        public ActionResult Details8(int id)
-        {
-            try
-            {
-
-                var archive = BissInventaireEntities.Instance.Mouvement.Find(id);
-
-                return View(archive);
-            }
-            catch (Exception ex)
-            {
-
-
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-
-        }
-
-        // GET: MouvementVehicule/Create
-        public ActionResult CreateMouvementVehicule()
-        {
-
-            ViewData["vehicule"] = new SelectList(BissInventaireEntities.Instance.Vehicule.ToList(), "Id_Vehicule", "Matricule");
-
-            ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-            ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
-
-
-
-
-            return View();
-        }
-
-        // POST: Mouvement/Create
-        [HttpPost]
-        public ActionResult CreateMouvementVehicule(Mouvement mou, FormCollection collection)
-        {
-            int idDeleg = db7.FindDelegationByBatiment((int)mou.idBatiment);
-            int idGouv = db7.FindGouverneratByBatiment((int)mou.idBatiment);
-            int idReg = db7.FindRegionByBatiment((int)mou.idBatiment);
-            int idOrg = db7.FindOrganisationByBatiment((int)mou.idBatiment);
-            int idPay = db7.FindPaysByBatiment((int)mou.idBatiment);
-
-
-            mou.Bur_idDelegation = idDeleg;
-            mou.idRegion = idReg;
-            mou.idGouvernorat = idGouv;
-            mou.idOrganisation = idOrg;
-            mou.idPays = idPay;
-
-
-
-
-            try
-            {
-                BissInventaireEntities.Instance.Mouvement.Add(mou);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetMouvementVehicule");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
         }
 
         [HttpPost]
@@ -1063,62 +953,7 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
-      
-      
-     
-        //public ActionResult CreateStock()
-        //{
-        //    ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-        //    ViewData["catgorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
-        //    ViewData["materiel"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
-        //    ViewData["fournis"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-        //    return View();
-        //}
-
-        //// POST: Gestion/Create
-        //[HttpPost]
-        //public ActionResult CreateStock(Stock etg)
-        //{
-        //    try
-        //    {
-        //        BissInventaireEntities.Instance.Stock.Add(etg);
-        //        BissInventaireEntities.Instance.SaveChanges();
-        //        return RedirectToAction("GetStock");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogThread.WriteLine(ex.Message);
-        //        return RedirectToAction("Index", "Error");
-        //    }
-        //}
-
-        //public ActionResult EditStock(int id)
-        //{
-        //    var test = BissInventaireEntities.Instance.Stock.Find(id);
-        //    ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-        //    ViewData["catgorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
-        //    ViewData["materiel"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
-        //    ViewData["fournis"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-        //    return View(test);
-        //}
-
-        //// POST: Gestion/Create
-        //[HttpPost]
-        //public ActionResult EditStock(Stock etg)
-        //{
-        //    try
-        //    {
-        //        bien.UpdateStockDetached(etg);
-        //        BissInventaireEntities.Instance.SaveChanges();
-        //        return RedirectToAction("GetStock");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogThread.WriteLine(ex.Message);
-        //        return RedirectToAction("Index", "Error");
-        //    }
-        //}
-
+        
         [HttpPost]
         public ActionResult GetRegionByPays(int stateid)
         {

@@ -10,12 +10,12 @@ using System.Data.Entity.Infrastructure;
 
 namespace Data.Repositories
 {
-    public class MouvementRepository : RepositoryBase<Mouvement>, IMouvementRepository
+    public class MouvementBRepository : RepositoryBase<MouvementB>, IMouvementBRepository
     {
-        public MouvementRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateMouvementDetached(Mouvement e)
+        public MouvementBRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        public void UpdateMouvementBDetached(MouvementB e)
         {
-            Mouvement existing = this.DataContext.Mouvement.Find(e.Id_mouvement);
+            MouvementB existing = this.DataContext.MouvementB.Find(e.Id_mouvementB);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
@@ -72,46 +72,26 @@ namespace Data.Repositories
         }
 
 
-        public IEnumerable<Bureau> FindBureauByEtage(int id)
+       
+
+        public IEnumerable<Bien> FindBienByEtage(int id)
         {
-            var pers = (from p in DataContext.Bureau
+            var pers = (from p in DataContext.Bien
                         where p.Id_etage == id
                         select p);
             return pers.ToList();
         }
 
-        public IEnumerable<Bien> FindBienByBureau(int id)
-        {
-            var pers = (from p in DataContext.Bien
-                        where p.Id_bureau == id
-                        select p);
-            return pers.ToList();
-        }
-
-        public IEnumerable<Parc_auto> FindParcByBatiment(int id)
-        {
-            var pers = (from p in DataContext.Parc_auto
-                        where p.idBatiment == id
-                        select p);
-            return pers.ToList();
-        }
-
-        public IEnumerable<Vehicule> FindVehiculeByParc(int id)
-        {
-            var pers = (from p in DataContext.Vehicule
-                        where p.Id_parc == id
-                        select p);
-            return pers.ToList();
-        }
+     
 
 
 
 
     }
-    public interface IMouvementRepository : IRepository<Mouvement>
+    public interface IMouvementBRepository : IRepository<MouvementB>
     {
 
-        void UpdateMouvementDetached(Mouvement e);
+        void UpdateMouvementBDetached(MouvementB e);
         int FindDelegationByBatiment(int id);
         int FindGouverneratByBatiment(int id);
         int FindRegionByBatiment(int id);
@@ -119,10 +99,9 @@ namespace Data.Repositories
        
         int FindPaysByBatiment(int id);
         IEnumerable<Etage> FindEtageByBatiment(int id);
-        IEnumerable<Bureau> FindBureauByEtage(int id);
-        IEnumerable<Bien> FindBienByBureau(int id);
-        IEnumerable<Parc_auto> FindParcByBatiment(int id);
-        IEnumerable<Vehicule> FindVehiculeByParc(int id);
+       
+        IEnumerable<Bien> FindBienByEtage(int id);
+       
 
 
 

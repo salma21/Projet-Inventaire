@@ -12,7 +12,7 @@ namespace WebApp.Controllers
     public class InventaireController : Controller
     {
         IInventaireService db = new InventaireService();
-        IBiensService bien = new BiensService();
+        
         // GET: Inventaire
         public ActionResult GetInventaire()
         {
@@ -87,7 +87,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Ajouter(int id)
         {
-            var b1 = bien.FindBienByID(id);
+            
             Association_30 ass = new Association_30();
             ass.Id_bien = id;
            

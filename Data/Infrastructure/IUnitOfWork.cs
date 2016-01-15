@@ -24,7 +24,8 @@ namespace Data.Infrastructure
         IServiceRepository ServiceRepository { get; }
         IParc_autoRepository Parc_autoRepository { get; }
         IGouvernoratRepository GouvernoratRepository { get; }
-        IMouvementRepository MouvementRepository { get; }
+        IMouvementBRepository MouvementBRepository { get; }
+        IMouvementVRepository MouvementVRepository { get; }
         IVehiculeRepository VehiculeRepository { get; }
         
         IEtageRepository EtageRepository { get; }
