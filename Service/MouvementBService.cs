@@ -13,7 +13,7 @@ namespace Service
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);
 
-        public MouvementBBService() { }
+        public MouvementBService() { }
 
         public IEnumerable<MouvementB> GetMouvementBs()
         {
@@ -54,36 +54,11 @@ namespace Service
             return dep;
         }
 
-        public IEnumerable<Bureau> FindBureauByEtage(int id)
-
-        {
-            var dep = utOfWork.MouvementBRepository.FindBureauByEtage(id);
-            return dep;
-        }
-
-        public IEnumerable<Bien> FindBienByBureau(int id)
-
-        {
-            var dep = utOfWork.MouvementBRepository.FindBienByBureau(id);
-            return dep;
-        }
+        
 
 
 
-        public IEnumerable<Parc_auto> FindParcByBatiment(int id)
-
-        {
-            var dep = utOfWork.MouvementBRepository.FindParcByBatiment(id);
-            return dep;
-        }
-
-        public IEnumerable<Vehicule> FindVehiculeByParc(int id)
-
-        {
-            var dep = utOfWork.MouvementBRepository.FindVehiculeByParc(id);
-            return dep;
-        }
-
+       
 
 
         public void CreateMouvementBVehicule(MouvementB MouvementB)
@@ -165,11 +140,11 @@ namespace Service
         int FindRegionByBatiment(int id);
         int FindOrganisationByBatiment(int id);
         int FindPaysByBatiment(int id);
-        IEnumerable<Bureau> FindBureauByEtage(int id);
+     
         IEnumerable<Etage> FindEtageByBatiment(int id);
-        IEnumerable<Bien> FindBienByBureau(int id);
-        IEnumerable<Parc_auto> FindParcByBatiment(int id);
-        IEnumerable<Vehicule> FindVehiculeByParc(int id);
+       
+        
+        
 
 
 

@@ -98,8 +98,8 @@ namespace Service
     {
         IEnumerable<MouvementV> GetMouvementVehicules();
         MouvementV GetMouvementVehicule(int id);
-       
-       
+    void SaveMouvementV();
+    void CreateMouvementV(MouvementV MouvementV);
        void UpdateMouvementVDetached(MouvementV e);
 
       IEnumerable<Vehicule> FindVehiculeByParc(int id);
