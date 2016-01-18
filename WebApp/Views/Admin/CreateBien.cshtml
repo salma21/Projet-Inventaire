@@ -3,8 +3,8 @@
 @{
 
 
-    List<string> listRegion = new List<string>();
-    List<string> listproduit = new List<string>();
+    List<string> listProduit = new List<string>();
+    List<string> listModele = new List<string>();
 }
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript">
@@ -93,6 +93,13 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 </div>
 
                                 <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Contrat de Garantie</label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.Id_contrat_garanti, (SelectList)ViewData["contratgar"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Categorie </label>
                                     <div class="col-lg-6">
                                         @Html.DropDownListFor(m => m.Id_categorie, (SelectList)ViewData["categorie"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
@@ -103,7 +110,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Produit </label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(m => m.Description, new SelectList(listRegion), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
+                                        @Html.DropDownListFor(m => m.Designation, new SelectList(listProduit), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
                                     </div>
                                 </div>
 
@@ -111,7 +118,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Modele </label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(m => m.Modele, new SelectList(listproduit), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
+                                        @Html.DropDownListFor(m => m.Modele, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
                                     </div>
                                 </div>
 
@@ -121,7 +128,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <label class="control-label col-lg-4" style="font-style:oblique;">QTE</label>
                                     <div class="col-lg-6">
 
-                                        @Html.TextBox("Qte")
+                                        @Html.DropDownList("Qte")
 
                                     </div>
                                 </div>

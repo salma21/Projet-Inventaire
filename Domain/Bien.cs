@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Bien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -49,7 +49,9 @@ namespace Domain
         public string Detail { get; set; }
         public Nullable<int> Code_a_barre { get; set; }
         public string Emploi_principal { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_d_installation { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_d_inventaire { get; set; }
         public Nullable<int> id_personne { get; set; }
         public Nullable<System.DateTime> Fin_garantie { get; set; }
