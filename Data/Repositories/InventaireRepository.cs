@@ -11,8 +11,8 @@ using System.Threading.Tasks;
 
 namespace Data.Repositories
 {
-   
-   public class InventaireRepository : RepositoryBase<Inventaire>, IInventaireRepository
+
+    public class InventaireRepository : RepositoryBase<Inventaire>, IInventaireRepository
     {
         public InventaireRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateInventaireDetached(Inventaire e)
@@ -32,6 +32,37 @@ namespace Data.Repositories
 
         //    return pers;
         //}
+
+
+        public IEnumerable<Batiment> FindBatimentByDelegation(int id)
+        {
+
+            var pers = (from p in DataContext.Batiment
+                        where p.idDelegation == id
+                        select p);
+            return pers.ToList();
+        }
+
+        public IEnumerable<Etage> FindEtageByBatiment(int id)
+        {
+            var pers = (from p in DataContext.Etage
+                        where p.idBatiment == id
+                        select p);
+            return pers.ToList();
+        }
+
+
+
+
+        public IEnumerable<Bien> FindBienByEtage(int id)
+        {
+            var pers = (from p in DataContext.Bien
+                        where p.Id_etage == id
+                        select p);
+            return pers.ToList();
+        }
+
+
     }
 
 
@@ -40,8 +71,27 @@ namespace Data.Repositories
 
         void UpdateInventaireDetached(Inventaire e);
 
-        //IEnumerable<Bien> FindBineByInv(int id);
+        IEnumerable<Batiment> FindBatimentByDelegation(int id);
+
+        IEnumerable<Etage> FindEtageByBatiment(int id);
+
+        IEnumerable<Bien> FindBienByEtage(int id);
     }
 
+
+   
+
+
+
 }
+
+
+
+
+
+
+
+
+
+
 

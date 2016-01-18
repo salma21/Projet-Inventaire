@@ -62,7 +62,29 @@ namespace Service
         //    var dep = utOfWork.InventaireRepository.FindBineByInv(id);
         //    return dep;
         //}
-       
+
+        public IEnumerable<Etage> FindEtageByBatiment(int id)
+
+        {
+            var dep = utOfWork.InventaireRepository.FindEtageByBatiment(id);
+            return dep;
+        }
+
+
+        public IEnumerable<Batiment> FindBatimentByDelegation(int id)
+
+        {
+            var dep = utOfWork.InventaireRepository.FindBatimentByDelegation(id);
+            return dep;
+        }
+
+
+        public IEnumerable<Bien> FindBienByEtage(int id)
+
+        {
+            var dep = utOfWork.InventaireRepository.FindBienByEtage(id);
+            return dep;
+        }
 
 
 
@@ -76,11 +98,16 @@ namespace Service
         Inventaire GetInventaire(int id);
         void CreateInventaire(Inventaire Dept);
         void DeleteInventaire(int id);
-        //IEnumerable<Bien> FindBineByInv(int id);
+       
         void UpdateInventaireDetached(Inventaire e);
 
 
         void SaveInventaire();
+        IEnumerable<Batiment> FindBatimentByDelegation(int id);
+
+        IEnumerable<Etage> FindEtageByBatiment(int id);
+
+        IEnumerable<Bien> FindBienByEtage(int id);
 
 
 

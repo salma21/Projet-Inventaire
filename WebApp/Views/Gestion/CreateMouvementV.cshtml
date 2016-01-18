@@ -154,8 +154,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date derniére affectation </label>
                                 <div class="col-lg-6">
-
-                                    @Html.TextBoxFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
+                                   
+                                    @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -164,7 +164,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date prochaine affectation </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_prochaine_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_prochaine_affectation, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_prochaine_affectation, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -174,7 +174,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date renouvellement </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_renouvellement_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_renouvellement_prevue, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_renouvellement_prevue, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -184,7 +184,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date retour prévue </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_retour_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_retour_prevue, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_retour_prevue, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -194,7 +194,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date sortie</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Date_sortie, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Date_sortie, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_sortie, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
