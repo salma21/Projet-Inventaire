@@ -477,13 +477,13 @@
     <Content Include="Views\Categorie_materiel\EditCategorie_materiel.cshtml" />
     <Content Include="Views\Gestion\EditRegion.cshtml" />
     <Content Include="Views\ServiceD\EditServiceD.cshtml" />
-    <Content Include="Views\Gestion\CreateMouvement.cshtml" />
-    <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
+    <Content Include="Views\Gestion\CreateMouvementB.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
-    <Content Include="Views\Gestion\GetMouvement.cshtml" />
-    <Content Include="Views\Gestion\GetMouvementVehicule.cshtml" />
+    <Content Include="Views\Gestion\GetMouvementB.cshtml" />
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
     <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
+    <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
+    <Content Include="Views\Gestion\GetMouvement.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -77,4 +77,3 @@ C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.xml
 C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
 C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
 C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb
-C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

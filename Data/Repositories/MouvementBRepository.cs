@@ -20,49 +20,15 @@ namespace Data.Repositories
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-        public int FindOrganisationByBatiment(int id)
-        {
-
-            var pers = (from p in DataContext.Batiment
-                        where p.idOrganisation == id
-                        select p);
-            return (int)pers.FirstOrDefault().idOrganisation;
-        }
-
-        public int FindDelegationByBatiment(int id)
+        public IEnumerable<Batiment> FindBatimentByDelegation(int id)
         {
 
             var pers = (from p in DataContext.Batiment
                         where p.idDelegation == id
                         select p);
-            return pers.FirstOrDefault().idDelegation;
+            return pers.ToList();
         }
-        public int FindGouverneratByBatiment(int id)
-        {
-
-            var pers = (from p in DataContext.Batiment
-                        where p.idGouvernorat == id
-                        select p);
-            return (int)pers.FirstOrDefault().idGouvernorat;
-        }
-        public int FindRegionByBatiment(int id)
-        {
-
-            var pers = (from p in DataContext.Batiment
-                        where p.idRegion == id
-                        select p);
-            return (int)pers.FirstOrDefault().idRegion;
-        }
-
-        public int FindPaysByBatiment(int id)
-        {
-
-            var pers = (from p in DataContext.Batiment
-                        where p.idPays == id
-                        select p);
-            return (int)pers.FirstOrDefault().idPays;
-        }
-
+    
         public IEnumerable<Etage> FindEtageByBatiment(int id)
         {
             var pers = (from p in DataContext.Etage
@@ -92,12 +58,8 @@ namespace Data.Repositories
     {
 
         void UpdateMouvementBDetached(MouvementB e);
-        int FindDelegationByBatiment(int id);
-        int FindGouverneratByBatiment(int id);
-        int FindRegionByBatiment(int id);
-        int FindOrganisationByBatiment(int id);
-       
-        int FindPaysByBatiment(int id);
+        IEnumerable<Batiment> FindBatimentByDelegation(int id);
+
         IEnumerable<Etage> FindEtageByBatiment(int id);
        
         IEnumerable<Bien> FindBienByEtage(int id);

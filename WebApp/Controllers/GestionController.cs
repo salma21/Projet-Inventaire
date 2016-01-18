@@ -859,7 +859,146 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
-         
+
+
+
+
+        //MouvementBien
+
+        private IMouvementBService db8 = new MouvementBService();
+        // GET: Mouvement
+        public ActionResult Index8()
+        {
+            return View();
+        }
+
+        public ActionResult GetMouvementB()
+        {
+            var Mouvement = db8.GetMouvementBiens();
+            return View(Mouvement);
+        }
+        // GET: Vehicule/Details/6
+        public ActionResult Details8(int id)
+        {
+            try
+            {
+
+                var archive = BissInventaireEntities.Instance.MouvementB.Find(id);
+
+                return View(archive);
+            }
+            catch (Exception ex)
+            {
+
+
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+
+        }
+
+        // GET: Mouvement/Create
+        public ActionResult CreateMouvementB()
+        {
+
+
+
+            ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "description");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Num_serie");
+
+            return View();
+        }
+
+        // POST: Mouvement/Create
+        [HttpPost]
+        public ActionResult CreateMouvementB(MouvementB mou, FormCollection collection)
+        {
+
+            try
+            {
+                db8.CreateMouvementB(mou);
+                db8.SaveMouvementB();
+               
+                return RedirectToAction("GetMouvementB");
+            }
+            catch (DbEntityValidationException r)
+            {
+
+
+                foreach (var eve in r.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                            ve.PropertyName + " " + ve.ErrorMessage);
+                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+
+
+                    }
+                }
+
+                return RedirectToAction("Index", "Error");
+            }
+            catch (SqlException sq)
+            {
+                LogThread.WriteLine(sq.Message);
+                return RedirectToAction("Index", "Error");
+            }
+            catch (Exception ex)
+            {
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult FindBatimentByDelegation(int delegid)
+        {
+            List<Batiment> objcity = new List<Batiment>();
+            objcity = db8.FindBatimentByDelegation(delegid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "idBatiment", "description", 0);
+            return Json(obgcity);
+        }
+
+
+        [HttpPost]
+        public ActionResult GetEtageByBatiment(int batid)
+        {
+            List<Etage> objcity = new List<Etage>();
+            objcity = db8.FindEtageByBatiment(batid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Id_etage", "description", 0);
+            return Json(obgcity);
+        }
+
+
+        [HttpPost]
+        public ActionResult FindBienByEtage(int etid)
+        {
+            List<Bien> objcity = new List<Bien>();
+            objcity = db8.FindBienByEtage(etid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Id_bien", "Num_serie", 0);
+            return Json(obgcity);
+        }
+
+
+
+
+
+
+
+
 
         //MouvementVehicule
 
@@ -920,7 +1059,7 @@ namespace WebApp.Controllers
             db7.SaveMouvementV();
                 //BissInventaireEntities.Instance.MouvementV.Add(mouv);
                 //BissInventaireEntities.Instance.SaveChanges();
-               return RedirectToAction("CreateOrganisation");
+               return RedirectToAction("GetMouvement");
             }
             catch (DbEntityValidationException r)
             {
@@ -1046,5 +1185,7 @@ namespace WebApp.Controllers
         // POST: TPE/Create
 
     }
+
+
 
 }
