@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Mouvement>
+﻿@model IEnumerable<Domain.MouvementV>
 
 <!-- Start Row -->
 <div class="row">
@@ -12,8 +12,7 @@
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                            <th>Organisation</th>
-                            <th>Batiment</th>
+                            
                             <th>Parc</th>
                             <th>Vehicule</th>
                             <th>Nom Mouvement</th>
@@ -28,7 +27,7 @@
 
 
 
-                    <tbody>
+                    @*<tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
@@ -54,7 +53,38 @@
 
 
                         }
+                    </tbody>*@
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="center">@item.Vehicule.Parc_auto.Libelle</td>
+
+                                <td class="center">@item.Vehicule.Matricule</td>
+                                <td class="center">@item.Nom</td>
+                               
+                                <td class="center">@item.Date_derniere_affectation</td>
+                                <td class="center">@item.Date_prochaine_affectation</td>
+                                <td class="center">@item.Date_renouvellement_prevue</td>
+                                <td class="center">@item.Date_retour_prevue</td>
+                                <td class="center">@item.Date_sortie</td>
+
+
+                                <td>
+
+                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvementV })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+
+                                </td>
+
+                            </tr>
+
+
+                        }
                     </tbody>
+
+
+
                 </table>
                 <br /><p>
                     @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvement")
