@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Trace
     {
         public int Id_Trace { get; set; }
@@ -19,6 +19,7 @@ namespace Domain
         public string Actions { get; set; }
         public string Tables { get; set; }
         public string Champs { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Dates { get; set; }
     }
 }

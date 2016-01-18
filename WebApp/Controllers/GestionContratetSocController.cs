@@ -334,13 +334,13 @@ namespace WebApp.Controllers
 
         // POST: GestionContratetSoc/Edit/5
         [HttpPost]
-        public ActionResult EditAchat(Achat acht, FormCollection collection)
+        public ActionResult EditAchat(Achat achte, FormCollection collection)
         {
             try
             {
 
-                db1.UpdateAchatDetached(acht);
-                db.SaveChanges();
+                db1.UpdateAchatDetached(achte);
+                db1.SaveChange();
                 return RedirectToAction("GetAchat");
             }
             catch (Exception ex)
