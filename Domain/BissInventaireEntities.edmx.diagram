@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="db16a88e29a44c048792f17134499479" Name="Diagram1">
+      <Diagram DiagramId="a87c72d7008a4c7784cc744a97711d47" Name="Diagram1">
         <EntityTypeShape EntityType="BissInventaireDataModel.Achat" Width="1.5" PointX="3.75" PointY="36.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Association_30" Width="1.5" PointX="8.25" PointY="8.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Association_31" Width="1.5" PointX="11.25" PointY="15.75" IsExpanded="true" />
@@ -33,13 +33,13 @@
         <EntityTypeShape EntityType="BissInventaireDataModel.Pays" Width="1.5" PointX="1.5" PointY="30.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Personnel" Width="1.5" PointX="3.75" PointY="54.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Region" Width="1.5" PointX="1.5" PointY="23.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireDataModel.Role" Width="1.5" PointX="1.5" PointY="55.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissInventaireDataModel.Role" Width="1.5" PointX="1.5" PointY="55.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.ServiceD" Width="1.5" PointX="3" PointY="26.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Societe_assurance" Width="1.5" PointX="1.5" PointY="41.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Societe_maintenance" Width="1.5" PointX="1.5" PointY="46.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Sous_categorie" Width="1.5" PointX="8.25" PointY="36" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Trace" Width="1.5" PointX="8.75" PointY="2.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireDataModel.Utilisateur" Width="1.5" PointX="8.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissInventaireDataModel.Utilisateur" Width="1.5" PointX="6" PointY="55.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BissInventaireDataModel.Vehicule" Width="1.5" PointX="6" PointY="24" IsExpanded="true" />
         <AssociationConnector Association="BissInventaireDataModel.FK_ACHAT_ASSOCIATI_FOURNISS" ManuallyRouted="false" />
         <AssociationConnector Association="BissInventaireDataModel.FK_BIEN_ASSOCIATI_ACHAT" ManuallyRouted="false" />
@@ -86,6 +86,7 @@
         <AssociationConnector Association="BissInventaireDataModel.FK_VEHICULE_ASSOCIATI_PARC_AUT" ManuallyRouted="false" />
         <AssociationConnector Association="BissInventaireDataModel.FK_REGION_ASSOCIATI_PAYS" ManuallyRouted="false" />
         <AssociationConnector Association="BissInventaireDataModel.FK_PERSONNE_ASSOCIATI_ROLE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissInventaireDataModel.FK_UTILISAT_ASSOCIATI_PERSONNE" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

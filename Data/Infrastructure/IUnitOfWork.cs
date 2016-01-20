@@ -41,7 +41,8 @@ namespace Data.Infrastructure
         IPaysRepository PaysRepository { get; }
 
         IDirectionRepository DirectionRepository { get; }
-      
+        IInventaireBienRepository InventaireBienRepository { get; }
+
 
     }
 }

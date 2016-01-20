@@ -471,6 +471,7 @@
     <NavigationProperty Name="Batiment" Relationship="Self.FK_PERSONNE_ASSOCIATI_BATIMENT" FromRole="Personnel" ToRole="Batiment" />
     <NavigationProperty Name="Bien" Relationship="Self.FK_Bien_Bien" FromRole="Personnel" ToRole="Bien" />
     <NavigationProperty Name="Role" Relationship="Self.FK_PERSONNE_ASSOCIATI_ROLE" FromRole="Personnel" ToRole="Role" />
+    <NavigationProperty Name="Utilisateur" Relationship="Self.FK_UTILISAT_ASSOCIATI_PERSONNE" FromRole="Personnel" ToRole="Utilisateur" />
   </EntityType>
   <EntityType Name="Region">
     <Key>
@@ -567,12 +568,13 @@
     <Key>
       <PropertyRef Name="id" />
     </Key>
-    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="id" Type="Int32" Nullable="false" />
     <Property Name="idBatiment" Type="Int32" Nullable="false" />
     <Property Name="Per_id" Type="Int32" Nullable="false" />
     <Property Name="login" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="motDePasse" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="etatUtilisateur" Type="Boolean" />
+    <NavigationProperty Name="Personnel" Relationship="Self.FK_UTILISAT_ASSOCIATI_PERSONNE" FromRole="Utilisateur" ToRole="Personnel" />
   </EntityType>
   <EntityType Name="Vehicule">
     <Key>
@@ -1230,7 +1232,19 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissInventaireEntities" annotation:LazyLoadingEnabled="true">
+  <Association Name="FK_UTILISAT_ASSOCIATI_PERSONNE">
+    <End Role="Personnel" Type="Self.Personnel" Multiplicity="1" />
+    <End Role="Utilisateur" Type="Self.Utilisateur" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Personnel">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Utilisateur">
+        <PropertyRef Name="Per_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BissInventaireDataEntities1" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Achat" EntityType="Self.Achat" />
     <EntitySet Name="Association_30" EntityType="Self.Association_30" />
     <EntitySet Name="Association_31" EntityType="Self.Association_31" />
@@ -1446,6 +1460,10 @@
     <AssociationSet Name="FK_PERSONNE_ASSOCIATI_ROLE" Association="Self.FK_PERSONNE_ASSOCIATI_ROLE">
       <End Role="Role" EntitySet="Role" />
       <End Role="Personnel" EntitySet="Personnel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UTILISAT_ASSOCIATI_PERSONNE" Association="Self.FK_UTILISAT_ASSOCIATI_PERSONNE">
+      <End Role="Personnel" EntitySet="Personnel" />
+      <End Role="Utilisateur" EntitySet="Utilisateur" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireEntities">
+  <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities1">
     <EntitySetMapping Name="Achat">
       <EntityTypeMapping TypeName="BissInventaireDataModel.Achat">
         <MappingFragment StoreEntitySet="Achat">

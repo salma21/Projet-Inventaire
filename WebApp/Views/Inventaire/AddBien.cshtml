@@ -27,11 +27,6 @@
                             Batiment:     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
                       ViewBag.CurrentFilter as string)&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 
-                            Bureau :      @Html.DropDownList("bureaux", (SelectList)ViewData["bureaux"], "",
-                     ViewBag.CurrentFilter as string)
-
-                            &nbsp;&nbsp; &nbsp;&nbsp;
-                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 
                             Etage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
                      ViewBag.CurrentFilter as string)
@@ -64,11 +59,11 @@
                             <tr>
                                 <th>Designation </th>
                                 <th>Batiment </th>
-                                <th>Bureau</th>
+                             
                                 <th>Etage</th>
                                 <th>Region</th>
                                 <th>Ville </th>
-                                <th>Categorie </th><th>Desigantion </th>
+                              <th>Desigantion </th>
                                 <th>Achat</th>
                                 
                                 <th>Code</th>
@@ -86,14 +81,14 @@
 
                                     <td>@item.Designation</td>
                                     <td>@item.Etage.Batiment.description</td>
-                                    <td>@item.Bureau.Description</td>
+                                   
 
-                                    <td>@item.Bureau.Etage.description</td>
-                                    <td>@item.Bureau.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
-                                    <td>@item.Bureau.Etage.Batiment.Delegation.libelle</td>
-                                    <td>@item.Categorie_materiel.libelle</td>
+                                    <td>@item.Etage.description</td>
+                                    <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
+                                    <td>@item.Etage.Batiment.Delegation.libelle</td>
+                                  
                                     <td>@item.Designation</td>
-                                    <td>@item.Achat.Num_facture</td>
+                                  
                                     <td>@item.Code</td>
                                     <td>@item.Mode</td>
                                     <td>@item.Etat</td>

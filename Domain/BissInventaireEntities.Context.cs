@@ -27,11 +27,11 @@ namespace Domain
                 return instance;
             }
         }
-
         public BissInventaireEntities()
             : base("name=BissInventaireEntities")
         {
         }
+    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

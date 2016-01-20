@@ -46,6 +46,7 @@
     <Compile Include="EtageService.cs" />
     <Compile Include="FindService.cs" />
     <Compile Include="GouvernoratService.cs" />
+    <Compile Include="InventaireBienService.cs" />
     <Compile Include="InventaireService.cs" />
     <Compile Include="MouvementVService.cs" />
     <Compile Include="MouvementBService.cs" />

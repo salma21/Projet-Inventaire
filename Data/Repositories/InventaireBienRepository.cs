@@ -1,38 +1,33 @@
-﻿
-using Data.Infrastructure;
-using Domain;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Linq;
-
+using Domain;
+using Data.Infrastructure;
 
 namespace Data.Repositories
 {
-
-    public class InventaireRepository : RepositoryBase<Inventaire>, IInventaireRepository
+    class InventaireBienRepository : RepositoryBase<Association_30>, IInventaireBienRepository
     {
-        public InventaireRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateInventaireDetached(Inventaire e)
+        public InventaireBienRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        public void UpdateInventaireBienDetached(Association_30 e)
         {
-            Inventaire existing = this.DataContext.Inventaire.Find(e.Id_inventaire);
+            Association_30 existing = FindBienByID(e.Id_bien);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-        //public IEnumerable<Bien> FindBineByInv(int id)
-        //{
+        public Association_30 FindBienByID(int id)
+        {
 
-
-        //    var pers = (from p in DataContext.Bien
-        //                where p.Id_inventaire == id
-        //                select p).ToList();
-
-        //    return pers;
-        //}
-
-
+            var pers = (from p in DataContext.Association_30
+                        where p.Id_bien == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
         public IEnumerable<Batiment> FindBatimentByDelegation(int id)
         {
 
@@ -64,11 +59,10 @@ namespace Data.Repositories
 
     }
 
-
-    public interface IInventaireRepository : IRepository<Inventaire>
+    public interface IInventaireBienRepository : IRepository<Association_30>
     {
-
-        void UpdateInventaireDetached(Inventaire e);
+        void UpdateInventaireBienDetached(Association_30 e);
+       Association_30 FindBienByID(int id);
 
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
 
@@ -76,21 +70,4 @@ namespace Data.Repositories
 
         IEnumerable<Bien> FindBienByEtage(int id);
     }
-
-
-   
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
-

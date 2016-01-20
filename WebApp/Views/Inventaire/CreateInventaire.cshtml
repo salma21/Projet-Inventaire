@@ -20,14 +20,15 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
                         <div class="form-horizontal">
-                            <h4>Bureau</h4>
+                            <h4>Inventaire</h4>
                             <hr />
+                           
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom Inventaire </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Nom_, new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Nom_, new { @class = "form-control", required = "True" })
                                     
                                 </div>
                             </div>
@@ -37,12 +38,19 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Type </label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(model => model.Type    , new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Type    , new { @class = "form-control", required = "True" })
                                 </div>
                             </div>
 
 
-                      
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date </label>
+                                <div class="col-lg-6">
+                                    @Html.EditorFor(model => model.Date, new { @class = "form-control", required = "True" })
+                                </div>
+                            </div>
+
+
 
                         </div>
                         <div style="text-align: center;">
@@ -58,7 +66,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("Back to List", "GetBureuax")
+                    @Html.ActionLink("List", "GetInventaire")
                 </div>
 
             </div>
