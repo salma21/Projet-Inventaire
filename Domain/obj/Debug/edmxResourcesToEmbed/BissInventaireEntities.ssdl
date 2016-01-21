@@ -489,7 +489,7 @@
     <Property Name="Per_id" Type="int" Nullable="false" />
     <Property Name="login" Type="varchar" MaxLength="254" />
     <Property Name="motDePasse" Type="varchar" MaxLength="254" />
-    <Property Name="etatUtilisateur" Type="varchar" MaxLength="50" />
+    <Property Name="etatUtilisateur" Type="bit" />
   </EntityType>
   <EntityType Name="Vehicule">
     <Key>

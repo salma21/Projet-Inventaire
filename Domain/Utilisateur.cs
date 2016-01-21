@@ -18,7 +18,7 @@ namespace Domain
         public int Per_id { get; set; }
         public string login { get; set; }
         public string motDePasse { get; set; }
-        public string etatUtilisateur { get; set; }
+        public Nullable<bool> etatUtilisateur { get; set; }
     
         public virtual Personnel Personnel { get; set; }
     }

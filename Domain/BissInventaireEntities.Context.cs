@@ -15,7 +15,6 @@ namespace Domain
     
     public partial class BissInventaireEntities : DbContext
     {
-
         private static BissInventaireEntities instance;
         public static BissInventaireEntities Instance
         {

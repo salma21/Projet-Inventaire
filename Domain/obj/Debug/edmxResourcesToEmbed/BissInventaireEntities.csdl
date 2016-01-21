@@ -572,7 +572,7 @@
     <Property Name="Per_id" Type="Int32" Nullable="false" />
     <Property Name="login" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="motDePasse" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-    <Property Name="etatUtilisateur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="etatUtilisateur" Type="Boolean" />
     <NavigationProperty Name="Personnel" Relationship="Self.FK_UTILISAT_ASSOCIATI_PERSONNE" FromRole="Utilisateur" ToRole="Personnel" />
   </EntityType>
   <EntityType Name="Vehicule">
@@ -1243,7 +1243,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissInventaireDataEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BissInventaireDataEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Achat" EntityType="Self.Achat" />
     <EntitySet Name="Association_30" EntityType="Self.Association_30" />
     <EntitySet Name="Association_31" EntityType="Self.Association_31" />

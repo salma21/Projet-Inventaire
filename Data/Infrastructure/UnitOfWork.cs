@@ -19,14 +19,7 @@ namespace Data.Infrastructure
 
         }
 
-        private IUserRepository UserRepository;
-        IUserRepository IUnitOfWork.UserRepository
-        {
-            get
-            {
-                return UserRepository ?? (UserRepository = new UserRepository(dbFactory));
-            }
-        }
+       
 
         private IAchatRepository AchatRepository;
         IAchatRepository IUnitOfWork.AchatRepository

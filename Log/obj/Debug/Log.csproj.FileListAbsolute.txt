@@ -17,4 +17,3 @@ D:\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
 D:\ATB_SOLUTIONS\Log\obj\Debug\Log.csprojResolveAssemblyReference.cache
 D:\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
 D:\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb
-C:\ATB_SOLUTIONS\Log\obj\Debug\Log.csprojResolveAssemblyReference.cache

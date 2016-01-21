@@ -87,7 +87,6 @@
     <Compile Include="Repositories\AchatRepository.cs" />
     <Compile Include="Repositories\RegionRepository.cs" />
     <Compile Include="Repositories\BureauRepository.cs" />
-    <Compile Include="Repositories\UserRepository.cs" />
     <Compile Include="Repositories\UtilisateurRepository.cs" />
     <Compile Include="Repositories\VehiculeRepository.cs" />
   </ItemGroup>

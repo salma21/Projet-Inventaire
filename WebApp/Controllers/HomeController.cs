@@ -16,7 +16,7 @@ namespace WebApp.Controllers
 {
     public class HomeController : Controller
     {
-       private IUserService db = new UserService();
+       private IUtilisateurService db = new UtilisateurService();
 
        
         public ActionResult Index()

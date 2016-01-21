@@ -98,8 +98,8 @@ namespace WebApp.Controllers
 
         public ActionResult EditUser(int id)
         {
-            IUtilisateurService kk = new UtilisateurService();
-            var ise = kk.GetUtilisateurById(id);
+            
+            var ise = db1.GetUtilisateurById(id);
             ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
 
@@ -111,10 +111,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditUser(Utilisateur user, FormCollection collection)
         {
-            IUtilisateurService kk = new UtilisateurService();
-          
-               kk.UpdateUtilisateurDetached(user);
-               kk.SaveEmploye();
+           
+            db1.UpdateUtilisateurDetached(user);
+             db1.SaveEmploye();
 
                 return RedirectToAction("GetUsers");
             
@@ -266,36 +265,36 @@ namespace WebApp.Controllers
         }
 
         // POST: Admin/Create
-        //[HttpPost]
-        //public ActionResult ActDesactiveUsers(int id)
-        //{
+        [HttpPost]
+        public ActionResult ActDesactiveUsers(int id)
+        {
 
-        //    var test = db1.GetUtilisateurById(id);
-        //    try
-        //    {
-              
-        //        if (test.etatUtilisateur == true)
-        //        {
-        //            test.etatUtilisateur = false;
-        //            db1.UpdateUtilisateurDetached(test);
-        //            db1.SaveEmploye();
-        //        }
-        //        else
-        //        {
-        //            test.etatUtilisateur = true;
-        //            db1.UpdateUtilisateurDetached(test);
-        //            db1.SaveEmploye();
-        //        }
-               
+            var test = db1.GetUtilisateurById(id);
+            try
+            {
 
-        //        return RedirectToAction("GetUsers");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        LogThread.WriteLine(ex.Message);
-        //        return RedirectToAction("Index", "Error");
-        //    }
-        //}
+                if (test.etatUtilisateur == true)
+                {
+                    test.etatUtilisateur = false;
+                    db1.UpdateUtilisateurDetached(test);
+                    db1.SaveEmploye();
+                }
+                else
+                {
+                    test.etatUtilisateur = true;
+                    db1.UpdateUtilisateurDetached(test);
+                    db1.SaveEmploye();
+                }
+
+
+                return RedirectToAction("GetUsers");
+            }
+            catch (Exception ex)
+            {
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
 
         public ActionResult CreateUsers()
         {
@@ -310,6 +309,7 @@ namespace WebApp.Controllers
         {
             try
             {
+                user.etatUtilisateur = true;
                 db1.CreateUtilisateurs(user);
                 db1.SaveEmploye();
 
