@@ -490,7 +490,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Per_id" Type="int" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="254" />
           <Property Name="motDePasse" Type="varchar" MaxLength="254" />
@@ -1951,7 +1951,7 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Per_id" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="motDePasse" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
@@ -2626,7 +2626,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissInventaireDataEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireDataEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Association_30" EntityType="Self.Association_30" />
           <EntitySet Name="Association_31" EntityType="Self.Association_31" />
@@ -2853,7 +2853,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities2">
+        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities3">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissInventaireDataModel.Achat">
               <MappingFragment StoreEntitySet="Achat">

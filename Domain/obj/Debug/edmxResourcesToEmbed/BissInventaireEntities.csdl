@@ -569,7 +569,6 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" />
-    <Property Name="idBatiment" Type="Int32" Nullable="false" />
     <Property Name="Per_id" Type="Int32" Nullable="false" />
     <Property Name="login" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="motDePasse" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
@@ -1244,7 +1243,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissInventaireDataEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BissInventaireDataEntities2" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Achat" EntityType="Self.Achat" />
     <EntitySet Name="Association_30" EntityType="Self.Association_30" />
     <EntitySet Name="Association_31" EntityType="Self.Association_31" />

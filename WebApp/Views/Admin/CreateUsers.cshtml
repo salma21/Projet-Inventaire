@@ -2,7 +2,6 @@
 
 @{
 
-    List<string> listBat = new List<string>();
     List<string> listPers = new List<string>();
 
 }
@@ -66,7 +65,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Personnel</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Per_id, (SelectList)ViewData["personel"], "--Choisir--", new {@id = "Pers", @class = "form-control", required = "" })
+                                    @Html.DropDownListFor(model => model.Per_id, new SelectList(listPers), "--Choisir--", new {@id = "Pers", @class = "form-control", required = "" })
                                 </div>
                             </div>
                             <div class="form-group">

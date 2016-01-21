@@ -4,6 +4,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -131,7 +132,7 @@ namespace WebApp.Controllers
             List<Personnel> objcity = new List<Personnel>();
             objcity = db1.FindPersByBatiment(Persid).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "id", "nom", 0);
+            SelectList obgcity = new SelectList(objcity, "id", "Matricule", 0);
             return Json(obgcity);
         }
         public ActionResult CreateBien()
@@ -303,7 +304,7 @@ namespace WebApp.Controllers
 
         public ActionResult CreateUsers()
         {
-            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "nom");
+            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             return View();
         }
@@ -318,6 +319,35 @@ namespace WebApp.Controllers
                 db1.SaveEmploye();
 
                 return RedirectToAction("GetUsers");
+            }
+            catch (DbEntityValidationException r)
+            {
+
+
+                foreach (var eve in r.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                            ve.PropertyName + " " + ve.ErrorMessage);
+                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+
+
+                    }
+                }
+
+                return RedirectToAction("Index", "Error");
+            }
+            catch (SqlException sq)
+            {
+                LogThread.WriteLine(sq.Message);
+                return RedirectToAction("Index", "Error");
             }
             catch (Exception ex)
             {

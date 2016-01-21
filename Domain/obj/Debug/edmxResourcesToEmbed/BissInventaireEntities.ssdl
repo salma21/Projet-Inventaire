@@ -486,7 +486,6 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" Nullable="false" />
-    <Property Name="idBatiment" Type="int" Nullable="false" />
     <Property Name="Per_id" Type="int" Nullable="false" />
     <Property Name="login" Type="varchar" MaxLength="254" />
     <Property Name="motDePasse" Type="varchar" MaxLength="254" />
