@@ -131,7 +131,7 @@ namespace WebApp.Controllers
             List<Personnel> objcity = new List<Personnel>();
             objcity = db1.FindPersByBatiment(Persid).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "id", "Matricule", 0);
+            SelectList obgcity = new SelectList(objcity, "id", "nom", 0);
             return Json(obgcity);
         }
         public ActionResult CreateBien()
@@ -303,7 +303,7 @@ namespace WebApp.Controllers
 
         public ActionResult CreateUsers()
         {
-            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
+            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "nom");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             return View();
         }

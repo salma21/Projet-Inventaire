@@ -2626,7 +2626,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissInventaireDataEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireDataEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Association_30" EntityType="Self.Association_30" />
           <EntitySet Name="Association_31" EntityType="Self.Association_31" />
@@ -2853,7 +2853,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities1">
+        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities2">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissInventaireDataModel.Achat">
               <MappingFragment StoreEntitySet="Achat">
