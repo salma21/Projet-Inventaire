@@ -488,13 +488,13 @@
         </EntityType>
         <EntityType Name="Utilisateur">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_user" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_user" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Per_id" Type="int" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="254" />
           <Property Name="motDePasse" Type="varchar" MaxLength="254" />
-          <Property Name="etatUtilisateur" Type="bit" />
+          <Property Name="etatUtilisateur" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Vehicule">
           <Key>
@@ -1949,13 +1949,13 @@
         </EntityType>
         <EntityType Name="Utilisateur">
           <Key>
-            <PropertyRef Name="id" />
+            <PropertyRef Name="id_user" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id_user" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Per_id" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="motDePasse" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-          <Property Name="etatUtilisateur" Type="Boolean" />
+          <Property Name="etatUtilisateur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Personnel" Relationship="Self.FK_UTILISAT_ASSOCIATI_PERSONNE" FromRole="Utilisateur" ToRole="Personnel" />
         </EntityType>
         <EntityType Name="Vehicule">
@@ -2626,7 +2626,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissInventaireDataEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireDataEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Association_30" EntityType="Self.Association_30" />
           <EntitySet Name="Association_31" EntityType="Self.Association_31" />
@@ -2853,7 +2853,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities3">
+        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities1">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissInventaireDataModel.Achat">
               <MappingFragment StoreEntitySet="Achat">
@@ -3342,7 +3342,7 @@
           <EntitySetMapping Name="Utilisateur">
             <EntityTypeMapping TypeName="BissInventaireDataModel.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
-                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="id_user" ColumnName="id_user" />
                 <ScalarProperty Name="Per_id" ColumnName="Per_id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />

@@ -84,7 +84,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.ValidationMessageFor(model => model.motDePasse, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Etat</label>
+                                <div class="col-lg-6">
 
+                                    @Html.TextBoxFor(model => model.etatUtilisateur, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.etatUtilisateur, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
                         </div>
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />

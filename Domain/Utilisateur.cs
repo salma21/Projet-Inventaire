@@ -14,11 +14,11 @@ namespace Domain
     
     public partial class Utilisateur
     {
-        public int id { get; set; }
+        public int id_user { get; set; }
         public int Per_id { get; set; }
         public string login { get; set; }
         public string motDePasse { get; set; }
-        public Nullable<bool> etatUtilisateur { get; set; }
+        public string etatUtilisateur { get; set; }
     
         public virtual Personnel Personnel { get; set; }
     }

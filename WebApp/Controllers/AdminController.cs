@@ -112,18 +112,13 @@ namespace WebApp.Controllers
         public ActionResult EditUser(Utilisateur user, FormCollection collection)
         {
             IUtilisateurService kk = new UtilisateurService();
-            try
-            {
+          
                kk.UpdateUtilisateurDetached(user);
-                kk.SaveEmploye();
+               kk.SaveEmploye();
 
                 return RedirectToAction("GetUsers");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
+            
+           
         }
 
         [HttpPost]
@@ -271,36 +266,36 @@ namespace WebApp.Controllers
         }
 
         // POST: Admin/Create
-        [HttpPost]
-        public ActionResult ActDesactiveUsers(int id)
-        {
+        //[HttpPost]
+        //public ActionResult ActDesactiveUsers(int id)
+        //{
 
-            var test = db1.GetUtilisateurById(id);
-            try
-            {
+        //    var test = db1.GetUtilisateurById(id);
+        //    try
+        //    {
               
-                if (test.etatUtilisateur == true)
-                {
-                    test.etatUtilisateur = false;
-                    db1.UpdateUtilisateurDetached(test);
-                    db1.SaveEmploye();
-                }
-                else
-                {
-                    test.etatUtilisateur = true;
-                    db1.UpdateUtilisateurDetached(test);
-                    db1.SaveEmploye();
-                }
+        //        if (test.etatUtilisateur == true)
+        //        {
+        //            test.etatUtilisateur = false;
+        //            db1.UpdateUtilisateurDetached(test);
+        //            db1.SaveEmploye();
+        //        }
+        //        else
+        //        {
+        //            test.etatUtilisateur = true;
+        //            db1.UpdateUtilisateurDetached(test);
+        //            db1.SaveEmploye();
+        //        }
                
 
-                return RedirectToAction("GetUsers");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
+        //        return RedirectToAction("GetUsers");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        LogThread.WriteLine(ex.Message);
+        //        return RedirectToAction("Index", "Error");
+        //    }
+        //}
 
         public ActionResult CreateUsers()
         {

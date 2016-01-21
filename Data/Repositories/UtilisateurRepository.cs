@@ -12,7 +12,7 @@ namespace Data.Repositories
         public UtilisateurRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateUtilisateurDetached(Utilisateur e)
         {
-            Utilisateur existing = this.DataContext.Utilisateur.Find(e.id);
+            Utilisateur existing = this.DataContext.Utilisateur.Find(e.id_user);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
