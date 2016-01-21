@@ -52,138 +52,138 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Achat.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Association_30.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Association_31.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Association_32.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Association_49.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Association_50.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Batiment.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Bien.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="BissInventaireEntities.Context.cs">
+    <Compile Include="BiqqInventaireEntities.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BissInventaireEntities.Context.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="BissInventaireEntities.cs">
+    <Compile Include="BiqqInventaireEntities.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="BissInventaireEntities.Designer.cs">
+    <Compile Include="BiqqInventaireEntities.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.edmx</DependentUpon>
     </Compile>
     <Compile Include="Bureau.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="CategorieDesignation.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Categorie_materiel.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Contrat_assurance.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Contrat_garanti.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Contrat_maintenance.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Delegation.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Depot.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Direction.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Etage.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Fournisseur.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Gouvernorat.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Inventaire.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="MouvementB.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="MouvementV.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Organisation.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Parc_auto.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Pays.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Personnel.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Region.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Role.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="ServiceD.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Societe_assurance.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Societe_maintenance.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Sous_categorie.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Trace.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Utilisateur.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Vehicule.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+      <DependentUpon>BiqqInventaireEntities.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />
-    <EntityDeploy Include="BissInventaireEntities.edmx">
+    <EntityDeploy Include="BiqqInventaireEntities.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BissInventaireEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>BiqqInventaireEntities.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="BissInventaireEntities.edmx.diagram">
-      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
+    <None Include="BiqqInventaireEntities.edmx.diagram">
+      <DependentUpon>BiqqInventaireEntities.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -191,15 +191,15 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="BissInventaireEntities.Context.tt">
+    <Content Include="BiqqInventaireEntities.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
-      <LastGenOutput>BissInventaireEntities.Context.cs</LastGenOutput>
+      <DependentUpon>BiqqInventaireEntities.edmx</DependentUpon>
+      <LastGenOutput>BiqqInventaireEntities.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="BissInventaireEntities.tt">
+    <Content Include="BiqqInventaireEntities.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BissInventaireEntities.edmx</DependentUpon>
-      <LastGenOutput>BissInventaireEntities.cs</LastGenOutput>
+      <DependentUpon>BiqqInventaireEntities.edmx</DependentUpon>
+      <LastGenOutput>BiqqInventaireEntities.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -491,7 +491,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
-          <Property Name="idBatiment" Type="int" Nullable="false" />
           <Property Name="Per_id" Type="int" Nullable="false" />
           <Property Name="login" Type="varchar" MaxLength="254" />
           <Property Name="motDePasse" Type="varchar" MaxLength="254" />
@@ -1953,7 +1952,6 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" />
-          <Property Name="idBatiment" Type="Int32" Nullable="false" />
           <Property Name="Per_id" Type="Int32" Nullable="false" />
           <Property Name="login" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="motDePasse" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
@@ -2628,7 +2626,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissInventaireDataEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireDataEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Association_30" EntityType="Self.Association_30" />
           <EntitySet Name="Association_31" EntityType="Self.Association_31" />
@@ -2855,7 +2853,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities">
+        <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities1">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissInventaireDataModel.Achat">
               <MappingFragment StoreEntitySet="Achat">
@@ -3345,7 +3343,6 @@
             <EntityTypeMapping TypeName="BissInventaireDataModel.Utilisateur">
               <MappingFragment StoreEntitySet="Utilisateur">
                 <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
                 <ScalarProperty Name="Per_id" ColumnName="Per_id" />
                 <ScalarProperty Name="login" ColumnName="login" />
                 <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />

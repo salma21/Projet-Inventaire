@@ -15,7 +15,6 @@ namespace Domain
     public partial class Utilisateur
     {
         public int id { get; set; }
-     
         public int Per_id { get; set; }
         public string login { get; set; }
         public string motDePasse { get; set; }

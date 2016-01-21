@@ -72,7 +72,12 @@ namespace Service
 
         }
 
+        public IEnumerable<Personnel> FindPersByBatiment(int id)
 
+        {
+            var dep = utOfWork.UserRepository.FindPersByBatiment(id);
+            return dep;
+        }
 
     }
     public interface IUserService
@@ -83,7 +88,7 @@ namespace Service
         Utilisateur GetUserById(int id);
         Utilisateur Authentification(Utilisateur user);
         void SaveEmploye(); void UpdateUserDetached(Utilisateur e);
-
+        IEnumerable<Personnel> FindPersByBatiment(int id);
 
     }
 

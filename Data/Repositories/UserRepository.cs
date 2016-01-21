@@ -17,14 +17,20 @@ namespace Data.Repositories
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-      
+        public IEnumerable<Personnel> FindPersByBatiment(int id)
+        {
+            var pers = (from p in DataContext.Personnel
+                        where p.idBatiment == id
+                        select p);
+            return pers.ToList();
+        }
 
 
-       
-      
 
 
-       
+
+
+
     }
 
    
@@ -32,8 +38,10 @@ namespace Data.Repositories
     {
 
         void UpdateUserDetached(Utilisateur e);
-      
-        
+
+        IEnumerable<Personnel> FindPersByBatiment(int id);
+
+
 
 
 

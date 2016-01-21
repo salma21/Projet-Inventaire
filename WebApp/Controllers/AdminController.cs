@@ -124,6 +124,16 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+
+        [HttpPost]
+        public ActionResult FindPersByBatiment(int Persid)
+        {
+            List<Personnel> objcity = new List<Personnel>();
+            objcity = db1.FindPersByBatiment(Persid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "id", "Matricule", 0);
+            return Json(obgcity);
+        }
         public ActionResult CreateBien()
         {
             ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
@@ -338,6 +348,9 @@ namespace WebApp.Controllers
             }
         }
 
+
+
+
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
@@ -376,6 +389,7 @@ namespace WebApp.Controllers
         }
 
 
+      
 
 
 
