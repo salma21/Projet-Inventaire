@@ -48,6 +48,7 @@
     <Compile Include="GouvernoratService.cs" />
     <Compile Include="InventaireBienService.cs" />
     <Compile Include="InventaireService.cs" />
+    <Compile Include="InventaireVehService.cs" />
     <Compile Include="MouvementVService.cs" />
     <Compile Include="MouvementBService.cs" />
     <Compile Include="OrganisationService.cs" />

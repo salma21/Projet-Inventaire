@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities1">
+  <EntityContainerMapping StorageEntityContainer="BissInventaireDataModelStoreContainer" CdmEntityContainer="BissInventaireDataEntities2">
     <EntitySetMapping Name="Achat">
       <EntityTypeMapping TypeName="BissInventaireDataModel.Achat">
         <MappingFragment StoreEntitySet="Achat">
@@ -489,8 +489,7 @@
     <EntitySetMapping Name="Utilisateur">
       <EntityTypeMapping TypeName="BissInventaireDataModel.Utilisateur">
         <MappingFragment StoreEntitySet="Utilisateur">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="idBatiment" ColumnName="idBatiment" />
+          <ScalarProperty Name="id_user" ColumnName="id_user" />
           <ScalarProperty Name="Per_id" ColumnName="Per_id" />
           <ScalarProperty Name="login" ColumnName="login" />
           <ScalarProperty Name="motDePasse" ColumnName="motDePasse" />

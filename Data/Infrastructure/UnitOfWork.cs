@@ -295,6 +295,16 @@ namespace Data.Infrastructure
             }
         }
 
+        private IInventaireVehRepository InventaireVehRepository;
+        IInventaireVehRepository IUnitOfWork.InventaireVehRepository
+        {
+            get
+            {
+                return InventaireVehRepository ?? (InventaireVehRepository = new InventaireVehRepository(dbFactory));
+            }
+        }
+
+
         private IInventaireBienRepository InventaireBienRepository;
         IInventaireBienRepository IUnitOfWork.InventaireBienRepository
         {
@@ -303,6 +313,7 @@ namespace Data.Infrastructure
                 return InventaireBienRepository ?? (InventaireBienRepository = new InventaireBienRepository(dbFactory));
             }
         }
+
 
         protected BissInventaireEntities DataContext
         {

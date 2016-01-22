@@ -42,7 +42,7 @@ namespace Data.Infrastructure
 
         IDirectionRepository DirectionRepository { get; }
         IInventaireBienRepository InventaireBienRepository { get; }
-
+        IInventaireVehRepository InventaireVehRepository { get; }
 
     }
 }

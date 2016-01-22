@@ -8,14 +8,14 @@ using Data.Infrastructure;
 
 namespace Service
 {
-    class InventaireBienService : IInventaireBienService
+  public  class InventaireBienService : IInventaireBienService
     {
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);
 
         public InventaireBienService() { }
 
-        public IEnumerable<Association_30> GetInventaireBien()
+        public IEnumerable<Association_30> GetInventaireBiens()
         {
             var dep = utOfWork.InventaireBienRepository.GetAll();
             return dep;
@@ -76,7 +76,9 @@ namespace Service
         Association_30 FindBienByID(int id);
         void CreateInventaireBien(Association_30 InventaireBien);
         void SaveInventaireBien();
-       
+        IEnumerable<Association_30> GetInventaireBiens();
+
+
     }
 
 }

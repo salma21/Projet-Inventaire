@@ -209,6 +209,7 @@
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportExportController.cs" />
+    <Compile Include="Controllers\InventaireBienController.cs" />
     <Compile Include="Controllers\InventaireController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PersonnelController.cs" />
@@ -424,7 +425,6 @@
     <Content Include="Views\Gestion\CreateParcAuto.cshtml" />
     <Content Include="Views\Inventaire\CreateInventaire.cshtml" />
     <Content Include="Views\Inventaire\GetInventaire.cshtml" />
-    <Content Include="Views\Inventaire\AddBien.cshtml" />
     <Content Include="Views\Gestion\CreateDelegation.cshtml" />
     <Content Include="Views\Gestion\CreateDirection.cshtml" />
     <Content Include="Views\Gestion\CreateOrganisation.cshtml" />
@@ -484,10 +484,12 @@
     <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
+    <Content Include="Views\Inventaire\InventaireBien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\UploadedFolder\" />
+    <Folder Include="Views\InventaireBien\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
