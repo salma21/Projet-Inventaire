@@ -484,7 +484,8 @@
     <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
-    <Content Include="Views\Inventaire\InventaireBien.cshtml" />
+    <Content Include="Views\Inventaire\GetBiens1.cshtml" />
+    <Content Include="Views\Inventaire\GetBiens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

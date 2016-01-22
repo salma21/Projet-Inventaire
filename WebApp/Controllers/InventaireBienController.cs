@@ -19,7 +19,7 @@ namespace WebApp.Controllers
     {
         IInventaireBienService db = new InventaireBienService();
         // GET: InventaireBien
-        public ActionResult GetInventaireBien()
+        public ActionResult GetInventaireBiens()
         {
             var inv = db.GetInventaireBiens();
             return View(inv);

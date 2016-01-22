@@ -1,0 +1,177 @@
+﻿@model IEnumerable<Domain.Bien>
+
+@{
+    ViewBag.Title = "GetBiens";
+}
+
+<h2>GetBiens</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Designation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Marque)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Modele)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Num_Serie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valeur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Detail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Code_a_barre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Emploi_principal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_d_installation)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_d_inventaire)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fin_garantie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.id_bureau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Achat.Id_achat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorie_materiel.libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contrat_garanti.Type_garanti)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contrat_assurance.Type_assurance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Depot.libelle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Etage.description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Contrat_maintenance.Type_maintenance)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Personnel.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Direction.Libelle)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Designation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Marque)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Modele)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Num_Serie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valeur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Detail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Code_a_barre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Emploi_principal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_d_installation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_d_inventaire)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fin_garantie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.id_bureau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Achat.Id_achat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie_materiel.libelle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contrat_garanti.Type_garanti)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contrat_assurance.Type_assurance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Depot.libelle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Etage.description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Contrat_maintenance.Type_maintenance)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Personnel.nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Direction.Libelle)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
