@@ -7,12 +7,8 @@
             <div class="panel-title">
 
                 <h4 class="title" color="#58666e" font-weight="bold"> Ajout Societe Assurance</h4>
-                <ol class="breadcrumb">
-                    <li><class ="active">Societe Assurance</li>
+              
 
-                   
-                </ol>
-                @*alkld*@
 
                 <div class="panel-body">
                     <!-- Start Modal Code -->
@@ -31,7 +27,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     <div class="panel panel-default">
                         <fieldset>
 
-                            <legend>Contrat De Garantie</legend>
+                            <legend>Desciption De La Societe Assurance</legend>
 
                             <div class="form-group">
                                 <CENTER>
@@ -48,25 +44,17 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                 </div>
                                             </TD>
 
-                                            <TD width=34%>
-                                                <label class="col-sm-4 control-label form-label">Rue</label>
+                                            <TD width=35%>
+                                                <label class="col-sm-4 control-label form-label">Email </label>
 
                                                 <div class="col-sm-8">
-
-                                                    @Html.TextBoxFor(model => model.Rue, new { @class = "form-control", required = "" })
+                                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "" })
 
 
                                                 </div>
                                             </TD>
 
-                                            <TD width=33%>
-                                                <label class="col-sm-4 control-label form-label"> TEl</label>
-
-                                                <div class="col-sm-8">
-
-                                                    @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", required = "" })
-</div>
-                                            </TD>
+                                           
                                         </TR>
 
                                     </TABLE>
@@ -78,6 +66,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <CENTER>
                                     <TABLE width=100%>
                                         <TR>
+                                            <TD width=33%>
+                                                <label class="col-sm-4 control-label form-label"> TEl</label>
+
+                                                <div class="col-sm-8">
+
+                                                    @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", required = "" })
+                                                </div>
+                                            </TD>
                                             <TD width=35%>
                                                 <label class="col-sm-4 control-label form-label">Fax</label>
 
@@ -87,22 +83,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                   
                                                 </div>
                                             </TD>
-                                            <TD width=35%>
-                                                <label class="col-sm-4 control-label form-label">Email </label>
-
-                                                <div class="col-sm-8">
-                                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "" })
-
-                                                    
-                                                </div>
-                                            </TD>
+                                            
                                             <TD width=35%>
                                                 <label class="col-sm-4 control-label form-label">Autre</label>
 
                                                 <div class="col-sm-8">
 
 
-                                                    @Html.TextBoxFor(model => model.Commentaire, new { @class = "form-control", required = "" })
+                                                    @Html.TextBoxFor(model => model.Commentaire, new { @class = "form-control"})
                                                 </div>
                                             </TD>
                                         </TR>
@@ -113,7 +101,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                         </fieldset>
-
+                        <br/>
 
                         <fieldset>
 
@@ -123,6 +111,16 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <CENTER>
                                     <TABLE width=80%>
                                         <TR>
+                                            <TD width=50%>
+                                                <label class="col-sm-4 control-label form-label">Adresse</label>
+
+                                                <div class="col-sm-8">
+
+                                                    @Html.TextBoxFor(model => model.Rue, new { @class = "form-control", required = "" })
+
+
+                                                </div>
+                                            </TD>
                                             <TD width=40%>
                                                 <label class="col-sm-4 control-label form-label"> Ville</label>
 

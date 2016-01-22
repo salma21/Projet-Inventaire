@@ -67,6 +67,31 @@ namespace Service
             return Dept;
         }
 
+        //public int FindPaysBySocAssurence(int Id_societe_assurance)
+        //{
+        //    int Dept = utOfWork.ContratAssuranceRepository.FindPaysBySocAssurence(Id_societe_assurance);
+        //    return Dept;
+        //}
+        //public int FindRegionBySocAssurence(int Id_societe_assurance)
+        //{
+        //    int Dept = utOfWork.ContratAssuranceRepository.FindRegionBySocAssurence(Id_societe_assurance);
+        //    return Dept;
+
+        //}
+        //public int FindGouverneratBySocAssurence(int Id_societe_assurance)
+        //{
+        //    int Dept = utOfWork.ContratAssuranceRepository.FindGouverneratBySocAssurence(Id_societe_assurance);
+        //    return Dept;
+
+        //}
+        //public int FindDelegationBySocAssurence(int Id_societe_assurance)
+        //{
+        //    int Dept = utOfWork.EtageRepository.FindDelegationBySocAssurence(Id_societe_assurance);
+        //    return Dept;
+
+        //}
+
+
 
 
 
@@ -95,7 +120,11 @@ namespace Service
         void UpdateAchatDetached(Achat e);
         void UpdateContrat_assuranceDetached(Contrat_assurance e);
         void SaveChange();
-     }
+        //int FindPaysBySocAssurence(int Id_societe_assurance);
+        //int FindGouverneratBySocAssurence(int Id_societe_assurance);
+        //int FindOrganisationBySocAssurence(int Id_societe_assurance);
+        //int FindDelegationBySocAssurence(int Id_societe_assurance);
+    }
 
 }
 

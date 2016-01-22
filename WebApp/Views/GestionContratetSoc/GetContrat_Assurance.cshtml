@@ -21,8 +21,7 @@
                     <thead>
                         <tr>
 
-                            <th>Region</th>
-
+                            
                             <th>Délégation</th>
                             <th>Sociéte</th>
                             <th>Assurance</th>
@@ -36,7 +35,7 @@
 
                     <tfoot>
                         <tr>
-                            <th>Region</th>
+                           
                             <th>Délégation</th>
                             <th>Sociéte</th>
                             <th>Assurance</th>
@@ -54,7 +53,7 @@
                         {
                             <tr>
 
-                                <td class="center">@item.Societe_assurance.Delegation.Gouvernorat.Region.libelle</td>
+                               
                                 <td class="center">@item.Societe_assurance.Delegation.libelle</td>
                                 <td class="center">@item.Societe_assurance.Libelle</td>
                                 <td class="center">@item.Type_assurance</td>
@@ -66,7 +65,7 @@
 
                                 <td>
                                     <a href="@Url.Action("EditContrat_Assurance", new { id = item.Id_contrat_assurance })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                    <a href="@Url.Action("Delete", new { id = item.Id_contrat_assurance })">&nbsp;&nbsp;<i class="fa fa-trash" title="Effacer"></i></a>
+                                    <a href="@Url.Action("DetailsContrat_Assurance", new { id = item.Id_contrat_assurance })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Détails"></i></a>
                                 </td>
 
                             </tr>

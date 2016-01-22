@@ -84,8 +84,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                         <div class="col-sm-8">
 
-
-                                            @Html.TextBoxFor(model => model.Date_debut, new { @class = "form-control", required = "" })
+                                            @Html.EditorFor(model => model.Date_debut, new { @class = "form-control", required = "" })
+                                        
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -93,8 +93,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                         <div class="col-sm-8">
 
-
-                                            @Html.TextBoxFor(model => model.Date_fin, new { @class = "form-control", required = "" })
+                                            @Html.EditorFor(model => model.Date_fin, new { @class = "form-control", required = "" })
                                         </div>
                                     </div>
                                         </div>

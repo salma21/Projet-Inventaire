@@ -4,6 +4,7 @@ using Service;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -29,8 +30,10 @@ namespace WebApp.Controllers
             return View(bure);
         }
 
+        
         public ActionResult GetUsers()
         {
+            
             var users = db1.GetUtilisateurs();
             return View(users);
         }
@@ -95,8 +98,8 @@ namespace WebApp.Controllers
 
         public ActionResult EditUser(int id)
         {
-            IUtilisateurService kk = new UtilisateurService();
-            var ise = kk.GetUtilisateurById(id);
+            
+            var ise = db1.GetUtilisateurById(id);
             ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
 
@@ -108,19 +111,23 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditUser(Utilisateur user, FormCollection collection)
         {
-            IUtilisateurService kk = new UtilisateurService();
-            try
-            {
-               kk.UpdateUtilisateurDetached(user);
-                kk.SaveEmploye();
+           
+            db1.UpdateUtilisateurDetached(user);
+             db1.SaveEmploye();
 
                 return RedirectToAction("GetUsers");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
+            
+           
+        }
+
+        [HttpPost]
+        public ActionResult FindPersByBatiment(int Persid)
+        {
+            List<Personnel> objcity = new List<Personnel>();
+            objcity = db1.FindPersByBatiment(Persid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "id", "Matricule", 0);
+            return Json(obgcity);
         }
         public ActionResult CreateBien()
         {
@@ -265,7 +272,7 @@ namespace WebApp.Controllers
             var test = db1.GetUtilisateurById(id);
             try
             {
-              
+
                 if (test.etatUtilisateur == true)
                 {
                     test.etatUtilisateur = false;
@@ -278,7 +285,7 @@ namespace WebApp.Controllers
                     db1.UpdateUtilisateurDetached(test);
                     db1.SaveEmploye();
                 }
-               
+
 
                 return RedirectToAction("GetUsers");
             }
@@ -302,10 +309,40 @@ namespace WebApp.Controllers
         {
             try
             {
+                user.etatUtilisateur = true;
                 db1.CreateUtilisateurs(user);
                 db1.SaveEmploye();
 
                 return RedirectToAction("GetUsers");
+            }
+            catch (DbEntityValidationException r)
+            {
+
+
+                foreach (var eve in r.EntityValidationErrors)
+                {
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
+                    {
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                            ve.PropertyName + " " + ve.ErrorMessage);
+                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+
+
+                    }
+                }
+
+                return RedirectToAction("Index", "Error");
+            }
+            catch (SqlException sq)
+            {
+                LogThread.WriteLine(sq.Message);
+                return RedirectToAction("Index", "Error");
             }
             catch (Exception ex)
             {
@@ -335,6 +372,9 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+
+
+
 
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
@@ -374,6 +414,7 @@ namespace WebApp.Controllers
         }
 
 
+      
 
 
 

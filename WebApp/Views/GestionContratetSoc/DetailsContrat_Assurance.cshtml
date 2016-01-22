@@ -1,0 +1,66 @@
+﻿@model Domain.Contrat_assurance
+
+@{
+    ViewBag.Title = "DetailsContrat_Assurance";
+}
+
+<h2>DetailsContrat_Assurance</h2>
+
+<div>
+    <h4>Contrat_assurance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type_assurance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type_assurance)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_debut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_debut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_fin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_fin)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cout)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cout)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Societe_assurance.Libelle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Societe_assurance.Libelle)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

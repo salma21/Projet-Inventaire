@@ -1,6 +1,39 @@
 ﻿@model Domain.Utilisateur
 
+@{
 
+    List<string> listPers = new List<string>();
+
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+
+    function GetBat(_Persid) {
+        var procemessage = "<option value='0'>En cours</option>";
+        $("#Pers").html(procemessage).show();
+        var url = "/Admin/FindPersByBatiment/";
+
+        $.ajax({
+            url: url,
+            data: { Persid: _Persid },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#Pers").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
+</script>
 
 <div class="row">
     <div class="col-md-12">
@@ -19,13 +52,22 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
                         <div class="form-horizontal">
-                    
+
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-
-
-
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Batiment</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownList("Batiment", (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Personnel</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.Per_id, new SelectList(listPers), "--Choisir--", new {@id = "Pers", @class = "form-control", required = "" })
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Login </label>
                                 <div class="col-lg-6">
@@ -35,28 +77,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4">Description</label>
+                                <label class="control-label col-lg-4">Mot de passe</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.motDePasse, new { @class = "form-control", required = "" })
+                                    @Html.PasswordFor(model => model.motDePasse, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.motDePasse, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-lg-4">Personnel</label>
-                                <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Per_id, (SelectList)ViewData["personel"], "--Choisir--", new { @class = "form-control", required = "" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-lg-4">Batiment</label>
-                                <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
-                                </div>
-                            </div>
-
+                           
                         </div>
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />

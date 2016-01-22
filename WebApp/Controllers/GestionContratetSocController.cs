@@ -68,6 +68,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+        public ActionResult DetailsAssurence(int id )
+        {
+
+                var acht = BissInventaireEntities.Instance.Contrat_assurance.Find(id);
+                return View(acht);
+           
+        }
 
         // GET: GestionContratetSoc/Create
         public ActionResult CreateContrat_Assurance()
@@ -90,6 +97,7 @@ namespace WebApp.Controllers
             {
                 var soc = db1.FindSocAssByID(contrat.Id_societe_assurance);
                 contrat.idDelegation = soc.idDelegation;
+              
                 db.Contrat_assurance.Add(contrat);
                 db.SaveChanges();
 
@@ -121,26 +129,27 @@ namespace WebApp.Controllers
         public ActionResult EditContrat_Assurance(Contrat_assurance assur, FormCollection collection)
         {
             var bat = del.FindContrat_assuranceByID(assur.Id_contrat_assurance);
-            try
-            {
+           
                
                 db1.UpdateContrat_assuranceDetached(assur);
                 db.SaveChanges();
                 return RedirectToAction("GetContrat_assurance");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
+          
         }
+        //public ActionResult DetailsAssurence(int id)
+        //{
+
+        //    var acht = BissInventaireEntities.Instance.Contrat_assurance.Find(id);
+        //    return View(acht);
+
+        //}
 
         public ActionResult DetailsContrat_Assurance(int id)
         {
             try
             {
 
-                var acht = BissInventaireEntities.Instance.Achat.Find(id);
+                var acht = BissInventaireEntities.Instance.Contrat_assurance.Find(id);
 
                 return View(acht);
             }
