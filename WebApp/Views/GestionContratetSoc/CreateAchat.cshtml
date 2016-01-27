@@ -41,7 +41,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <div class="col-md-8">
 
                                         @Html.TextBoxFor(model => model.Num_facture, new { @class = "form-control", required = "" })
-
+                                        @Html.ValidationMessageFor(model => model.Num_facture)
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -62,7 +62,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <div class="col-md-8">
 
                                         @Html.TextBoxFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
-
+                                        @Html.ValidationMessageFor(model => model.Num_livraison)
 
                                     </div>
                                 </div>
@@ -80,6 +80,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                                         @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Num_commande)
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -88,7 +89,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <div class="col-md-8">
 
 
-                                        @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                        @Html.EditorFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Prix_d_achat)
                                     </div>
                                 </div>
 

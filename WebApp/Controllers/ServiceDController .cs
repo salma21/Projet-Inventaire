@@ -55,6 +55,8 @@ namespace WebApp.Controllers
             [HttpPost]
             public ActionResult CreateServiceD(ServiceD Catm, FormCollection collection)
             {
+            if (ModelState.IsValid)
+            {
                 try
                 {
                     BissInventaireEntities.Instance.ServiceD.Add(Catm);
@@ -67,6 +69,13 @@ namespace WebApp.Controllers
                     return RedirectToAction("Index", "Error");
                 }
             }
+            else
+
+            {
+                ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
+                return View();
+            }
+        }
         public ActionResult EditServiceD(int id)
         {
             var service = db.FindServByID(id);
@@ -78,7 +87,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditServiceD(ServiceD Catm, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 db.UpdateServiceDDetached(Catm);
                db.SaveServiceD();
@@ -90,7 +101,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
+                return View();
+            }
+        }
         // GET: ServiceD/Edit/5
         public ActionResult Edit(int Id_service)
             {

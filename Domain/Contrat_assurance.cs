@@ -9,6 +9,7 @@
 
 namespace Domain
 {
+    using System.ComponentModel.DataAnnotations;
     using System;
     using System.Collections.Generic;
     
@@ -26,7 +27,9 @@ namespace Domain
         public int Id_contrat_assurance { get; set; }
         public string Type_assurance { get; set; }
         public Nullable<int> Num { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_debut { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_fin { get; set; }
         public Nullable<decimal> Cout { get; set; }
     

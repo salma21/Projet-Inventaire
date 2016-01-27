@@ -30,15 +30,11 @@ namespace WebApp.Controllers
         {
             try
             {
-
                 var archive = BissInventaireEntities.Instance.Etage.Find(Etage);
-
                 return View(archive);
             }
             catch (Exception ex)
             {
-
-
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
             }
@@ -65,16 +61,29 @@ namespace WebApp.Controllers
            // int idorg = db.FindOrganisationByDelegation(etag.idBatiment);
             etag.idDelegation = iddelegation;
             IEtageService et = new EtageService();
-            try
+
+            if (ModelState.IsValid)
             {
+
+                try
+                {
                 et.CreateEtage(etag);
                 et.SaveEtage();
                 return RedirectToAction("GetEtage");
-            }
+                }
             catch (Exception ex)
-            {
+                {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+                }
+             }
+            else
+
+            {
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+
+                return View();
             }
         }
 
@@ -88,7 +97,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Edit(int Id_etage, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 // TODO: Add update logic here
 
@@ -96,6 +107,13 @@ namespace WebApp.Controllers
             }
             catch
             {
+                return View();
+            }
+        }
+            else
+
+            {
+
                 return View();
             }
         }

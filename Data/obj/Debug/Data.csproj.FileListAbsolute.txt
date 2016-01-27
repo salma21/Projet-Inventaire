@@ -82,3 +82,15 @@ C:\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.SqlServer.dll
 C:\ATB_SOLUTIONS\Data\bin\Debug\Domain.pdb
 C:\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.xml
 C:\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\Data.dll.config
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\Data.dll
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\Data.pdb
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\Domain.dll
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\obj\Debug\Data.dll
+C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Data\obj\Debug\Data.pdb
