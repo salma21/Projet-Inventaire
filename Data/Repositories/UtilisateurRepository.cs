@@ -25,6 +25,14 @@ namespace Data.Repositories
             return pers.ToList();
         }
 
+        public Bien FindBienBuId(int id)
+        {
+            var pers = (from p in DataContext.Bien
+                        where p.Id_bien == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
+
     }
       
    
@@ -33,7 +41,7 @@ namespace Data.Repositories
 
         void UpdateUtilisateurDetached(Utilisateur e);
         IEnumerable<Personnel> FindPersByBatiment(int id);
-
+        Bien FindBienBuId(int id);
 
 
 

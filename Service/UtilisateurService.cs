@@ -32,6 +32,12 @@ namespace Service
         
         }
 
+        public Bien GetBienById(int id )
+        {
+            return utOfWork.UtilisateurRepository.FindBienBuId(id);
+
+        }
+
 
 
         public Utilisateur GetUtilisateurById(int id)
@@ -89,7 +95,7 @@ namespace Service
         Utilisateur Authentification(Utilisateur user);
         void SaveEmploye(); void UpdateUtilisateurDetached(Utilisateur e);
         IEnumerable<Personnel> FindPersByBatiment(int id);
-
+        Bien GetBienById(int id);
     }
 
 }

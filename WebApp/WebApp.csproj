@@ -211,6 +211,7 @@
     <Compile Include="Controllers\ImportExportController.cs" />
     <Compile Include="Controllers\InventaireBienController.cs" />
     <Compile Include="Controllers\InventaireController.cs" />
+    <Compile Include="Controllers\InventaireVehiculeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PersonnelController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
@@ -484,13 +485,15 @@
     <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
-    <Content Include="Views\Inventaire\GetBiens1.cshtml" />
     <Content Include="Views\Inventaire\GetBiens.cshtml" />
+    <Content Include="Views\InventaireBien\GetInventaireBiens.cshtml" />
+    <Content Include="Views\Inventaire\GetVehicules.cshtml" />
+    <Content Include="Views\InventaireVehicule\GetInventaireVehicule.cshtml" />
+    <Content Include="Views\Admin\BudgetType.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\UploadedFolder\" />
-    <Folder Include="Views\InventaireBien\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

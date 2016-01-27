@@ -2,11 +2,13 @@
 using Log;
 using Service;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace WebApp.Controllers
@@ -26,6 +28,8 @@ namespace WebApp.Controllers
 
         public ActionResult GetBureuax()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var bure = db.GetBureaux();
             return View(bure);
         }
@@ -33,7 +37,9 @@ namespace WebApp.Controllers
         
         public ActionResult GetUsers()
         {
-            
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
             var users = db1.GetUtilisateurs();
             return View(users);
         }
@@ -49,6 +55,8 @@ namespace WebApp.Controllers
         // GET: Admin/Details/5
         public ActionResult DetailsBien(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
 
@@ -70,6 +78,8 @@ namespace WebApp.Controllers
         // GET: Admin/Create
         public ActionResult CreateBureaux()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
             ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
@@ -81,6 +91,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBureaux(Bureau Bur, FormCollection collection)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
                 db.CreateBureau(Bur);
@@ -98,7 +110,9 @@ namespace WebApp.Controllers
 
         public ActionResult EditUser(int id)
         {
-            
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
             var ise = db1.GetUtilisateurById(id);
             ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
@@ -111,7 +125,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditUser(Utilisateur user, FormCollection collection)
         {
-           
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             db1.UpdateUtilisateurDetached(user);
              db1.SaveEmploye();
 
@@ -414,7 +429,36 @@ namespace WebApp.Controllers
         }
 
 
-      
+
+        public ActionResult BudgetType()
+        {
+          
+            var pl =  BissInventaireEntities.Instance.Bien.ToList();
+            var CHARGES = "Bien";
+            var E = "Batiment";
+           
+
+
+
+            ArrayList xl = new ArrayList();
+            ArrayList yl = new ArrayList();
+
+            xl.Add(string.Concat(CHARGES, " ", pl, " Dt"));
+            
+           
+            yl.Add(E);
+            var mychart = new System.Web.Helpers.Chart(width: 1200, height: 900, theme: ChartTheme.Green)
+                .AddTitle("Budget Par Type")
+                .AddSeries(
+                chartType: "Pie",
+                // name: "CantidadServiciosPorDia",
+
+                xValue: xl,
+                yValues: yl)
+                .Write();
+            this.ViewBag.Chart = mychart;
+            return View();
+        }
 
 
 

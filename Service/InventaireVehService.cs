@@ -28,8 +28,14 @@ namespace Service
         {
             var Dept = utOfWork.InventaireVehRepository.FindVehByID(id);
             return Dept;
+           
         }
 
+        public Vehicule GetVehByID(int id)
+        {
+            return utOfWork.InventaireVehRepository.GetVehByID(id);
+
+        }
         public void CreateInventaireVeh(Association_31 InventaireVeh)
         {
             utOfWork.InventaireVehRepository.Add(InventaireVeh);
@@ -76,6 +82,8 @@ namespace Service
         IEnumerable<Vehicule> FindVehByParc(int id);
         Association_31 FindVehByID(int id);
         void SaveInventaireVeh();
-
+        void CreateInventaireVeh(Association_31 InventaireVeh);
+        IEnumerable<Association_31> GetInventaireVeh();
+        Vehicule GetVehByID(int id);
     }
 }

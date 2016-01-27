@@ -45,9 +45,9 @@ namespace WebApp.Controllers
                         if (result.etatUtilisateur == true)
                         {
 
-                            Session["identifiant"] = result.login;
-                         
-                           
+                            Session["identifiant"] = result;
+                            Session["Role"] = result.Personnel.Role.libelle ;
+
                             return RedirectToAction("RapportBien", "Admin");
                         }
                         else
@@ -158,6 +158,7 @@ namespace WebApp.Controllers
 
         
             db.SaveEmploye();
+            Session["identifiant"] = null;
             Session["id"] = null;
             Session["role"] = null;
            // LogThread.WriteLine(u.nom + " " + u.prenom + "de Matricule " + u.identifiant + " quitte  l'application");

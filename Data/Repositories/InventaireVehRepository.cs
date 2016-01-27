@@ -29,7 +29,14 @@ namespace Data.Repositories
             return pers.FirstOrDefault();
         }
 
+        public Vehicule GetVehByID(int id)
+        {
 
+            var pers = (from p in DataContext.Vehicule
+                        where p.Id_Vehicule == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
         public IEnumerable<Batiment> FindBatimentByDelegation(int id)
         {
 
@@ -70,5 +77,6 @@ namespace Data.Repositories
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
         IEnumerable<Parc_auto> FindParcByBatiment(int id);
         IEnumerable<Vehicule> FindVehByParc(int id);
+        Vehicule GetVehByID(int id);
     }
 }

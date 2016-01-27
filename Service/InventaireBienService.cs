@@ -31,6 +31,8 @@ namespace Service
 
         public void CreateInventaireBien(Association_30 InventaireBien)
         {
+           
+            
             utOfWork.InventaireBienRepository.Add(InventaireBien);
         }
        

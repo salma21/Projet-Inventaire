@@ -1,177 +1,133 @@
 ﻿@model IEnumerable<Domain.Bien>
 
-@{
-    ViewBag.Title = "GetBiens";
-}
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Biens
+            </div>
+           
 
-<h2>GetBiens</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Designation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Marque)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Modele)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Code)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Num_Serie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Etat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Valeur)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Mode)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Detail)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Code_a_barre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Emploi_principal)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date_d_installation)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date_d_inventaire)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fin_garantie)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.id_bureau)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Achat.Id_achat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Categorie_materiel.libelle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contrat_garanti.Type_garanti)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contrat_assurance.Type_assurance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Depot.libelle)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Etage.description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Contrat_maintenance.Type_maintenance)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Personnel.nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direction.Libelle)
-        </th>
-        <th></th>
-    </tr>
+                <div class="form-horizontal">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Designation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Marque)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Modele)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Num_Serie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Valeur)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Mode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Detail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Code_a_barre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Emploi_principal)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_d_installation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date_d_inventaire)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fin_garantie)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.id_bureau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Achat.Id_achat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categorie_materiel.libelle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contrat_garanti.Type_garanti)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contrat_assurance.Type_assurance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Depot.libelle)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Etage.description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Contrat_maintenance.Type_maintenance)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Personnel.nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Direction.Libelle)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
 
-</table>
+                    <style>
+                        select {
+                            height: 30px;
+                            width: 220px;
+                        }
+                    </style>
+                    <div style="margin-left:50px;">
+
+                        <center>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Ok" class="btn btn-default" />
+
+                            </div>
+                        </center>
+
+                    </div>
+                    <br /><br />
+                </div>
+          
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                                <th>Delegation </th>
+                                <th>Batiment </th>
+
+                                <th>Etage</th>
+                                <th>Direction</th>
+
+                                <th>Desigantion </th>
+
+                                <th>Catégorie</th>
+                                <th>Code a barre</th>
+                                <th>Num Serie</th>
+                                <th>Etat</th>
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+
+                                    <td>@item.Etage.Batiment.Delegation.libelle</td>
+                                    <td>@item.Etage.Batiment.description</td>
+
+                                    <td>@item.Etage.description</td>
+                                   <td>@item.Direction.Libelle</td>
+
+                                    <td>@item.Designation</td>
+                                    <th>@item.Categorie_materiel.Description</th>
+
+                                    <td>@item.Code_a_barre</td>
+                                    <td>@item.Num_Serie</td>
+                                    <td>@item.Etat</td>
+
+
+                                    <td>
+                                      
+                                        <a href="@Url.Action("ValiderBien", new { id = item.Id_bien })">&nbsp;<i class="fa fa-plus-square" data-toggle="modal" data-target="#myModal-@item.Id_bien" title="Activer"></i></a>
+
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="myModal-@item.Id_bien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+
+                                                <h4 class="modal-title" id="myModalLabel">Activation-Desactivaion Employé</h4>
+                                            </div>
+                                       
+
+
+                                           <div class="modal-body">
+                                                Vous êtes sur de vouloir Ajouter Cet Bien
+                                            
+                                            </div>
+                                            @using (Html.BeginForm("ValiderBien", "Inventaire", new { id = item.Id_bien }))
+                                            {
+                                                  <div class="modal-footer">
+                                                <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                <button type="submit" id="mySubmit" class="btn btn-primary">Confirmer</button>
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <br /><p>
+
+
+
+
+
+                    </p>
+                    <br /><p>
+                        @Html.ActionLink("List Inventaire Bien", "GetInventaireBien")
+
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
