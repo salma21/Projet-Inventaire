@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Domain.Bien>
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Biens
+            </div>
+           
+
+
+                <div class="form-horizontal">
+
+
+                    <style>
+                        select {
+                            height: 30px;
+                            width: 220px;
+                        }
+                    </style>
+                    <div style="margin-left:50px;">
+
+                        <center>
+                            <div class="form-actions no-color">
+                                <input type="submit" value="Ok" class="btn btn-default" />
+
+                            </div>
+                        </center>
+
+                    </div>
+                    <br /><br />
+                </div>
+          
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                                <th>Delegation </th>
+                                <th>Batiment </th>
+
+                                <th>Etage</th>
+                                <th>Direction</th>
+
+                                <th>Desigantion </th>
+
+                                <th>Catégorie</th>
+                                <th>Code a barre</th>
+                                <th>Num Serie</th>
+                                <th>Etat</th>
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+
+                                    <td>@item.Etage.Batiment.Delegation.libelle</td>
+                                    <td>@item.Etage.Batiment.description</td>
+
+                                    <td>@item.Etage.description</td>
+                                   <td>@item.Direction.Libelle</td>
+
+                                    <td>@item.Designation</td>
+                                    <th>@item.Categorie_materiel.Description</th>
+
+                                    <td>@item.Code_a_barre</td>
+                                    <td>@item.Num_Serie</td>
+                                    <td>@item.Etat</td>
+
+
+                                    <td>
+                                      
+                                        <a href="@Url.Action("ValiderBien", new { id = item.Id_bien })">&nbsp;<i class="fa fa-plus-square" data-toggle="modal" data-target="#myModal-@item.Id_bien" title="Activer"></i></a>
+
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="myModal-@item.Id_bien" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+
+                                                <h4 class="modal-title" id="myModalLabel">Activation-Desactivaion Employé</h4>
+                                            </div>
+                                       
+
+
+                                           <div class="modal-body">
+                                                Vous êtes sur de vouloir Ajouter Cet Bien
+                                            
+                                            </div>
+                                            @using (Html.BeginForm("ValiderBien", "Inventaire", new { id = item.Id_bien }))
+                                            {
+                                                  <div class="modal-footer">
+                                                <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                <button type="submit" id="mySubmit" class="btn btn-primary">Confirmer</button>
+                                            </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <br /><p>
+
+
+
+
+
+                    </p>
+                    <br /><p>
+                        @Html.ActionLink("List Inventaire Bien", "GetInventaireBien")
+
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

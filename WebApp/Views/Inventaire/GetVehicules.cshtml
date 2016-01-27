@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Domain.Vehicule>
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Biens
+            </div>
+
+
+
+            <div class="form-horizontal">
+
+
+                <style>
+                    select {
+                        height: 30px;
+                        width: 220px;
+                    }
+                </style>
+                <div style="margin-left:50px;">
+
+                    <center>
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Ok" class="btn btn-default" />
+
+                        </div>
+                    </center>
+
+                </div>
+                <br /><br />
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                                <th>Delegation </th>
+                                <th>Batiment </th>
+
+                                <th>Parc auto</th>
+                               
+
+                                <th>Matricule </th>
+
+                                <th>Modele</th>
+                                <th>Etat</th>
+                                <th>Num Sachet</th>
+                                
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+
+                                    <td>@item.Parc_auto.Batiment.Delegation.libelle</td>
+                                    <td>@item.Parc_auto.Batiment.description</td>
+
+                                    <td>@item.Parc_auto.Libelle</td>
+                                    <td>@item.Matricule</td>
+
+                                    <td>@item.Modele</td>
+                                    <th>@item.Etat</th>
+
+                                    <td>@item.Num_sachet</td>
+                                  
+
+
+                                    <td>
+                                       
+                                        <a href="@Url.Action("ValiderVeh", new { id = item.Id_Vehicule })">&nbsp;<i class="fa fa-plus-square" data-toggle="modal" data-target="#myModal-@item.Id_Vehicule" title="Activer"></i></a>
+
+                                    </td>
+                                </tr>
+
+                                <div class="modal fade" id="myModal-@item.Id_Vehicule" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                                    <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+
+                                                <h4 class="modal-title" id="myModalLabel">Activation-Desactivaion Employé</h4>
+                                            </div>
+
+
+
+                                            <div class="modal-body">
+                                                Vous êtes sur de vouloir Ajouter Cet Bien
+
+                                            </div>
+                                            @using (Html.BeginForm("ValiderVeh", "Inventaire", new { id = item.Id_Vehicule }))
+                                            {
+                                                <div class="modal-footer">
+                                                    <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                                    <button type="submit" id="mySubmit" class="btn btn-primary">Confirmer</button>
+                                                </div>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                            }
+                        </tbody>
+                    </table>
+
+                    <br /><p>
+
+
+
+
+
+                    </p>
+                    <br /><p>
+                        @Html.ActionLink("List Inventaire Vehicules", "GetInventaireBien")
+
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
