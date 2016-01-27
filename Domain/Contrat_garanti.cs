@@ -11,7 +11,8 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Contrat_garanti
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +27,9 @@ namespace Domain
         public int Id_fournisseur { get; set; }
         public string Type_garanti { get; set; }
         public Nullable<int> Num { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_debut { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_fin { get; set; }
         public Nullable<decimal> Cout { get; set; }
     

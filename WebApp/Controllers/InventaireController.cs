@@ -105,7 +105,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateInventaire(Inventaire reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 reg.Date = DateTime.Now;
                 db.CreateInventaire(reg);
@@ -117,6 +119,13 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                
+                return View();
             }
         }
 

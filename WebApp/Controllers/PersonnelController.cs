@@ -69,7 +69,10 @@ namespace WebApp.Controllers
             pers.idOrganisation = idorg;
             pers.idPays = idpays;
             pers.idGouvernorat = idgou;
-            try
+
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Personnel.Add(pers);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -81,7 +84,15 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
+
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                return View();
+            }
+        }
         // GET: Personnel/Edit/5
         public ActionResult Edit(int id)
         {
@@ -106,14 +117,24 @@ namespace WebApp.Controllers
             pers.idOrganisation = idorg;
             pers.idPays = idpays;
             pers.idGouvernorat = idgou;
-           
-               db.UpdatePersonnelDetached(pers);
+
+            if (ModelState.IsValid)
+            {
+                db.UpdatePersonnelDetached(pers);
                 db.SavePersonnel();
 
             TempData["msg"] = "Modification Avec Succe !!!";
             return RedirectToAction("GetPersonnel");
         }
+            else
 
+            {
+                ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
+
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                return View();
+            }
+        }
         // GET: Personnel/Delete/5
         public ActionResult Delete(int id)
         {

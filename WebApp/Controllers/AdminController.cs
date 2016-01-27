@@ -81,7 +81,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBureaux(Bureau Bur, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 db.CreateBureau(Bur);
                 db.SaveBureau();
@@ -92,6 +94,17 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
+                ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
+
+                return View();
             }
         }
 
@@ -111,13 +124,23 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditUser(Utilisateur user, FormCollection collection)
         {
-           
-            db1.UpdateUtilisateurDetached(user);
+            if (ModelState.IsValid)
+            {
+                db1.UpdateUtilisateurDetached(user);
              db1.SaveEmploye();
 
                 return RedirectToAction("GetUsers");
-            
-           
+        }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+
+
+                return View();
+            }
         }
 
         [HttpPost]
@@ -149,11 +172,15 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBien(Bien Bur, FormCollection collection)
         {
-            //int region = db2.FindRegionByDelegation(Bur.idDelegation);
-            //int gouv = db2.FindGouvByDelegation(Bur.idDelegation);
-            //int pays = db2.FindPaysByDelegation(Bur.idDelegation);
-            //int organisation = db2.FindOrganisationByDelegation(Bur.idBatiment);
-            int direct = db2.FindDirectionByDelegation((int)Bur.id_bureau);
+            if (ModelState.IsValid)
+            {
+
+
+                //int region = db2.FindRegionByDelegation(Bur.idDelegation);
+                //int gouv = db2.FindGouvByDelegation(Bur.idDelegation);
+                //int pays = db2.FindPaysByDelegation(Bur.idDelegation);
+                //int organisation = db2.FindOrganisationByDelegation(Bur.idBatiment);
+                int direct = db2.FindDirectionByDelegation((int)Bur.id_bureau);
 
             //Bur.idRegion = region;
             //Bur.idGouvernorat = gouv;
@@ -167,6 +194,23 @@ namespace WebApp.Controllers
                 return RedirectToAction("RapportBien");
         
         }
+            else
+
+            {
+                ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+                ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+                ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "Libelle");
+                ViewData["contratass"] = new SelectList(BissInventaireEntities.Instance.Contrat_assurance.ToList(), "Id_contrat_assurance", "Num");
+                ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Contrat_garanti.ToList(), "Id_contrat_garanti", "Num");
+                ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat_maintenance.ToList(), "Id_contrat_maintenance", "Num");
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+                ViewData["Depot"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "IdDepot", "libelle");
+
+
+                return View();
+            }
+        }
+
 
         public ActionResult CreateBienAdmin()
         {
@@ -178,19 +222,33 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBienAdmin(Bien Bur, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
             {
+
+                try
+                {
                 BissInventaireEntities.Instance.Bien.Add(Bur);
                 BissInventaireEntities.Instance.SaveChanges();
 
                 return RedirectToAction("RapportBien");
-            }
-            catch (Exception ex)
-            {
+                  }
+
+                catch (Exception ex)
+                 {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+                  }
+              }
+            else
+
+            {
+                ViewData["depts"] = new SelectList(db.GetBureaux(), "Id", "Description");
+                
+                return View();
             }
         }
+     
+
 
         public ActionResult RapportBien( string Delegation, string Etage, string Batiment)
         {
@@ -256,16 +314,28 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditBureaux(Bureau pers, FormCollection collection)
         {
+            if (ModelState.IsValid)
+            {
 
                 db.UpdateBureauDetached(pers);
                 db.SaveBureau();
 
                 return RedirectToAction("GetBureaux");
-          
-        }
 
-        // POST: Admin/Create
-        [HttpPost]
+        }
+         else
+
+            {
+                ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
+                ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
+
+                return View();
+    }
+}
+
+// POST: Admin/Create
+[HttpPost]
         public ActionResult ActDesactiveUsers(int id)
         {
 
@@ -307,7 +377,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateUsers(Utilisateur user, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 user.etatUtilisateur = true;
                 db1.CreateUtilisateurs(user);
@@ -350,7 +422,14 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                return View();
+            }
+        }
         // GET: Admin/Edit/5
         public ActionResult Edit(int id)
         {

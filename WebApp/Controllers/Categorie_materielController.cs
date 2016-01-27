@@ -57,6 +57,8 @@ namespace WebApp.Controllers
             [HttpPost]
             public ActionResult CreateCategorie_materiel(Categorie_materiel Catm, FormCollection collection)
             {
+            if (ModelState.IsValid)
+            {
                 try
                 {
                     BissInventaireEntities.Instance.Categorie_materiel.Add(Catm);
@@ -69,6 +71,13 @@ namespace WebApp.Controllers
                     return RedirectToAction("Index", "Error");
                 }
             }
+            else
+
+            {
+               
+                return View();
+            }
+        }
 
 
         public ActionResult EditCategorie_materiel(int id)
@@ -81,7 +90,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditCategorie_materiel(Categorie_materiel Catm)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 db.UpdateCategorie_materielDetached(Catm);
                db.SaveCategorie_materiel();
@@ -93,6 +104,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
+
+            {
+                return View();
+            }
+        }
+
 
         // GET: Categorie_materiel/Edit/5
         public ActionResult Edit(int Id_categorie)
@@ -103,6 +121,8 @@ namespace WebApp.Controllers
             // POST: Categorie_materiel/Edit/5
             [HttpPost]
             public ActionResult Edit(int Id_categorie, FormCollection collection)
+            {
+            if (ModelState.IsValid)
             {
                 try
                 {
@@ -115,9 +135,16 @@ namespace WebApp.Controllers
                     return View();
                 }
             }
+            else
 
-            // GET: Categorie_materiel/Delete/5
-            public ActionResult Delete(int Id_categorie)
+            {
+
+                return View();
+            }
+        }
+
+        // GET: Categorie_materiel/Delete/5
+        public ActionResult Delete(int Id_categorie)
             {
                 return View();
             }

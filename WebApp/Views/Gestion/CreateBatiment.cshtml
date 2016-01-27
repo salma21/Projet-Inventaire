@@ -30,8 +30,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.code, new { @class = "form-control", required = "" })
-                                    
+                                    @Html.EditorFor(model => model.code, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.code, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -39,8 +39,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Description</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.description, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
