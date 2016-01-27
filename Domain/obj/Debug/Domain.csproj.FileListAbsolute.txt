@@ -87,3 +87,4 @@ C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Domain\bin\Debug\Enti
 C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
 C:\Users\nesrine.BISS\Desktop\22-01-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb
+C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
