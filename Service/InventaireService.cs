@@ -15,6 +15,12 @@ namespace Service
 
         public InventaireService() { }
 
+        public Inventaire GetInvById(int id)
+        {
+            return utOfWork.InventaireRepository.FindInvById(id);
+
+        }
+
         public IEnumerable<Inventaire> GetInventaires()
         {
             var dep = utOfWork.InventaireRepository.GetAll();
@@ -44,7 +50,7 @@ namespace Service
 
         }
 
-
+       
 
         public void SaveInventaire()
         {
@@ -108,6 +114,7 @@ namespace Service
         IEnumerable<Etage> FindEtageByBatiment(int id);
 
         IEnumerable<Bien> FindBienByEtage(int id);
+        Inventaire GetInvById(int id);
 
 
 

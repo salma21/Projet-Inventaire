@@ -68,6 +68,7 @@
     <Compile Include="Repositories\GouvernoratRepository.cs" />
     <Compile Include="Repositories\InventaireBienRepository.cs" />
     <Compile Include="Repositories\InventaireRepository.cs" />
+    <Compile Include="Repositories\InventaireVehRepository.cs" />
     <Compile Include="Repositories\MouvementVRepository.cs" />
     <Compile Include="Repositories\MouvementBRepository.cs" />
     <Compile Include="Repositories\OrganisationRepository.cs" />

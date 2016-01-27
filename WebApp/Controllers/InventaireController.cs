@@ -3,7 +3,10 @@ using Log;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 
@@ -11,16 +14,43 @@ namespace WebApp.Controllers
 {
     public class InventaireController : Controller
     {
-        IInventaireService db = new InventaireService();
+        public static int idinv;
+        public static int idin;
         
+        IInventaireBienService db1 = new InventaireBienService();
+        IInventaireService db = new InventaireService();
+        IInventaireVehService db2 = new InventaireVehService();
         // GET: Inventaire
         public ActionResult GetInventaire()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
+            var Emp = (Utilisateur)Session["identifiant"];
+            var inv = db.GetInventaires();
+
+           
+            var ass = db1.GetInventaireBiens();
+            var ass2 = db2.GetInventaireVeh();
+            ViewBag.nbrvehicule = ass2.Count();
+            ViewBag.nbrbien = ass.Count();
+
+
+            return View(inv);
+        }
+     
+
+        public ActionResult GetBiens()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var inv = db.GetInventaires();
             return View(inv);
         }
         public ActionResult AddBien(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var bureaux = BissInventaireEntities.Instance.Bureau.ToList();
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
@@ -29,15 +59,42 @@ namespace WebApp.Controllers
 
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
+            ViewData["Idinv"] = id;
+            idinv = Convert.ToInt32(ViewData["Idinv"]);
            
-            //var inv = BissInventaireEntities.Instance.AtbDataTest.ToList(); 
+
             var inv = BissInventaireEntities.Instance.Bien.ToList();
-            return View(inv);
+            return View("GetBiens", inv);
         }
+
+
+        public ActionResult AddVeh(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
+            ViewData["Idin"] = id;
+            idin = Convert.ToInt32(ViewData["Idin"]);
+
+            var ass = db2.GetInventaireVeh();
+            var inv = BissInventaireEntities.Instance.Vehicule.ToList();
+
+            foreach (var hh in inv)
+            {
+                 List< Vehicule > ff = new List<Vehicule>();
+                //if (hh.Id_Vehicule) 
+
+            }
+            return View("GetVehicules", inv);
+        }
+
+
+
 
         public ActionResult RapportBien( string Etage, string Batiment)
         {
-
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
            
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
@@ -87,17 +144,96 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Ajouter(int id)
         {
-            
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             Association_30 ass = new Association_30();
             ass.Id_bien = id;
            
             return View();
         }
+        public ActionResult ValiderBien(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            IUtilisateurService kk = new UtilisateurService();
+
+            Association_30 nm = new Association_30();
+           nm.Id_bien = id;
+            nm.Id_inventaire = InventaireController.idinv;
+
+            try
+            {
+                db1.CreateInventaireBien(nm);
+                db1.SaveInventaireBien();
+
+                return RedirectToAction("GetInventaire");
+            }
+            catch (DbEntityValidationException ex)
+            {
+
+
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
+        [HttpPost]
+        public ActionResult AjouterVehicule(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
+            Association_31 asss = new Association_31();
+            asss.Id_Vehicule = id;
+
+            return View();
+        }
+        public ActionResult ValiderVeh(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var veh = db2.GetVehByID(id);
+            var Emp = (Utilisateur)Session["identifiant"];
+            Trace tr = new Trace();
+            tr.Dates = DateTime.Now;
+            tr.Actions = "Validation Vehicule";
+            tr.Champs = veh.Matricule;
+            tr.Tables = "Vehicule";
+            tr.Users = (Emp.Personnel.Matricule).ToString();
+            BissInventaireEntities.Instance.Trace.Add(tr);
+            BissInventaireEntities.Instance.SaveChanges();
+
+
+
+
+
+            IInventaireVehService kk = new InventaireVehService();
+
+            Association_31 nmm = new Association_31();
+            nmm.Id_Vehicule = id;
+            nmm.Id_inventaire = InventaireController.idin;
+
+            try
+            {
+                db2.CreateInventaireVeh(nmm);
+                db2.SaveInventaireVeh();
+
+                return RedirectToAction("GetInventaire");
+            }
+            catch (DbEntityValidationException ex)
+            {
+
+
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
+
 
 
         public ActionResult CreateInventaire()
         {
-
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
@@ -132,12 +268,16 @@ namespace WebApp.Controllers
         // GET: Inventaire/Details/5
         public ActionResult Details(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
         // GET: Inventaire/Create
         public ActionResult Create()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
@@ -145,6 +285,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
+
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
                 // TODO: Add insert logic here
@@ -160,6 +303,8 @@ namespace WebApp.Controllers
         // GET: Inventaire/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
@@ -167,6 +312,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
                 // TODO: Add update logic here
@@ -182,6 +329,8 @@ namespace WebApp.Controllers
         // GET: Inventaire/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
@@ -189,6 +338,8 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
                 // TODO: Add delete logic here

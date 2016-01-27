@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.AtbDataTest>
+﻿@model IEnumerable<Domain.Bien>
 
 
 
@@ -15,7 +15,7 @@
                         <table id="example0" class="table display">
                             <thead>
                                 <tr>
-                                    <th>Code Materiel </th>
+                                    @*<th>Code Materiel </th>
                                     <th>Num Serie </th>
                                     <th>Categorie</th>
                                     <th>Modele</th>
@@ -27,7 +27,19 @@
                                     <th>Date Inventaire</th>
                                     <th>Date Installation</th>
                                     <th>Localisation Complet</th>
-                                    <th>Entite Complet</th>
+                                    <th>Entite Complet</th>*@
+                                    <th>Delegation </th>
+                                    <th>Batiment </th>
+
+                                    <th>Etage</th>
+
+                                    <th>Desigantion </th>
+
+                                    <th>Catégorie</th>
+                                    <th>Code</th>
+                                    <th>Mode</th>
+                                    <th>Etat</th>
+                                  
                                     <th>Action</th>
 
 
@@ -38,7 +50,7 @@
                                 {
                                     <tr class="odd gradeX">
 
-                                        <td>@item.Code_materiel</td>
+                                        @*<td>@item.Code_materiel</td>
                                         <td>@item.Num_serie</td>
                                         <td>@item.Categorie</td>
                                         <td>@item.Modele</td>
@@ -50,9 +62,23 @@
                                         <td>@item.Date_inventaire</td>
                                         <td>@item.Date_installation</td>
                                         <td>@item.Localisation_complet</td>
-                                        <td>@item.Entite_complet</td>
+                                        <td>@item.Entite_complet</td>*@
+                                        <td>@item.Etage.Batiment.Delegation.libelle</td>
+                                        <td>@item.Etage.Batiment.description</td>
+
+                                        <td>@item.Etage.description</td>
+
+
+                                        <td>@item.Designation</td>
+                                        <th>@item.Categorie_materiel.Description</th>
+
+                                        <td>@item.Code</td>
+                                        <td>@item.Mode</td>
+                                        <td>@item.Etat</td>
+
+
                                         <td>
-                                            <a href="@Url.Action("DetailsBien", new { id = item.id })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
+                                            <a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
                                         </td>
                                     </tr>
                           
