@@ -119,8 +119,10 @@
 
                     </p>
                     <br /><p>
-                        @Html.ActionLink("List Inventaire Vehicules", "GetInventaireBien")
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
+                        @Html.ActionLink("List Inventaire Vehicules", "GetInventaireVehicule","InventaireVehicule")
+}
 
                     </p>
 

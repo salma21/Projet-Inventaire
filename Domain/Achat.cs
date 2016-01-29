@@ -9,8 +9,6 @@
 
 namespace Domain
 {
-
-    using System.ComponentModel.DataAnnotations;
     using System;
     using System.Collections.Generic;
     
@@ -26,17 +24,11 @@ namespace Domain
         public int Id_achat { get; set; }
         public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_livraison { get; set; }
-        [RegularExpression(@"[\d]{4}", ErrorMessage = "Numéro de facture invalide: il doit comprendre 4 chiffres")]
         public Nullable<int> Num_facture { get; set; }
-        [RegularExpression(@"[\d]{4}", ErrorMessage = "Numéro de facture invalide: il doit comprendre 4 chiffres")]
         public Nullable<int> Num_commande { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_d_achat { get; set; }
-        [RegularExpression(@"[\d]{4}", ErrorMessage = "Numéro de facture invalide: il doit comprendre 4 chiffres")]
         public Nullable<decimal> Prix_d_achat { get; set; }
-        [RegularExpression(@"[\d]{4}", ErrorMessage = "Numéro de facture invalide: il doit comprendre 4 chiffres")]
         public Nullable<int> Num_livraison { get; set; }
     
         public virtual Fournisseur Fournisseur { get; set; }

@@ -14,12 +14,16 @@ namespace WebApp.Controllers
         // GET: InventaireBien
         public ActionResult GetInventaireVehicule()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var inv = db.GetInventaireVeh();
             return View(inv);
         }
         // GET: InventaireVehicule
         public ActionResult Index()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
     }

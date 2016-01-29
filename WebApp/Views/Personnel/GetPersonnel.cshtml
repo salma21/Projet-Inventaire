@@ -27,25 +27,14 @@
                             <th>Region</th>
                             <th>Gouvernorat</th>
                             <th>Pays</th>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                             <th>Action</th>
+}
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-                            <th>Matricule</th>
-                            <th>Nom</th>
-                            <th>Prénom</th>
-                            <th>Rôle</th>
-                            <th>Organisation</th>
-                            <th>Batiment</th>
-                            <th>Ville</th>
-                            <th>Region</th>
-                            <th>Gouvernorat</th>
-                            <th>Pays</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+                  
 
                     <tbody>
                         @foreach (var item in Model)
@@ -65,10 +54,12 @@
 
 
                                 <td>
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                     <a href="@Url.Action("Edit", new { id = item.id })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
                                     <a href="@Url.Action("Delete", new { id = item.id })">&nbsp;&nbsp;<i class="fa fa-trash" title="Effacer"></i></a>
-                                </td>
+
+}  </td>
 
                             </tr>
 
@@ -77,7 +68,10 @@
                     </tbody>
                 </table>
                 <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                     @Html.ActionLink("Ajouter un nouveau personnel", "CreatePersonnel")
+}
                 </p>
 
             </div>

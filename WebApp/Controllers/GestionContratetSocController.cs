@@ -20,36 +20,48 @@ namespace WebApp.Controllers
         // GET: GestionContratetSoc
         public ActionResult GetContrat_Assurance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var test = db.Contrat_assurance.ToList();
             return View(test);
         }
 
         public ActionResult GetContrat_Garantie()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var test = db.Contrat_garanti.ToList();
             return View(test);
         }
 
         public ActionResult GetContrat_Maintenance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var test = db.Contrat_maintenance.ToList();
             return View(test);
         }
 
         public ActionResult GetSociete_Assurance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var test = db.Societe_assurance.ToList();
             return View(test);
         }
 
         public ActionResult GetSociete_Maintenance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var test = db.Societe_maintenance.ToList();
             return View(test);
         }
 
         public ActionResult GetAchat()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var test = db.Achat.ToList();
             return View(test);
         }
@@ -57,6 +69,8 @@ namespace WebApp.Controllers
         // GET: GestionContratetSoc/Details/5
         public ActionResult DetailsAchat(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
                 var acht = BissInventaireEntities.Instance.Achat.Find(id);
@@ -70,8 +84,10 @@ namespace WebApp.Controllers
         }
         public ActionResult DetailsAssurence(int id )
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
 
-                var acht = BissInventaireEntities.Instance.Contrat_assurance.Find(id);
+            var acht = BissInventaireEntities.Instance.Contrat_assurance.Find(id);
                 return View(acht);
            
         }
@@ -79,6 +95,8 @@ namespace WebApp.Controllers
         // GET: GestionContratetSoc/Create
         public ActionResult CreateContrat_Assurance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -127,6 +145,8 @@ namespace WebApp.Controllers
 
         public ActionResult EditContrat_Assurance(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -174,6 +194,8 @@ namespace WebApp.Controllers
 
         public ActionResult DetailsContrat_Assurance(int id)
         {
+             if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
 
@@ -192,6 +214,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateContrat_Maintenance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -239,6 +263,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateContrat_garanti()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -288,6 +314,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateSociete_assurance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -336,6 +364,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateSociete_maintenance()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -383,6 +413,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateAchat()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -438,6 +470,8 @@ namespace WebApp.Controllers
         // GET: GestionContratetSoc/Edit/5
         public ActionResult EditAchat(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -491,6 +525,8 @@ namespace WebApp.Controllers
         // GET: GestionContratetSoc/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 

@@ -96,7 +96,7 @@
         <ul class="top-right">
 
             <li class="dropdown link">
-                <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="~/Content/img/user1.png" alt="img"><b>User </b><span class="caret"></span></a>
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="~/Content/img/user1.png" alt="img"><b>@Session["Nom"] </b><span class="caret"></span></a>
                 <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right">
                     <li role="presentation" class="dropdown-header">Profil</li>
                
@@ -250,9 +250,6 @@
             <li class="col-sm-2">
                 <a href="~/ImportExport/Index"><i class="fa fa-folder-open"></i>Parcourir</a>
             </li>
-            @*<li class="col-sm-2">
-                <a href="#"><i class="fa fa-cogs"></i>Paramétre </a>
-            </li>*@
             <li class="col-sm-2">
                 <a href="~/Admin/GetUsers"><i class="fa fa-users"></i>Utilisateur</a>
             </li>
@@ -277,9 +274,11 @@
                 <a href="~/Gestion/GetBiens"><i class="fa fa-line-chart"></i>Statistiques</a>
             </li>
             <li class="col-sm-2">
-                <a href="~/Gestion/GetMouvement"><i class="fa fa-bar-chart"></i>Mouvement</a>
+                <a href="~/Gestion/GetMouvement"><i class="fa fa-bar-chart"></i>Mouvement Véhicules</a>
             </li>
-
+            <li class="col-sm-2">
+                <a href="~/Gestion/GetMouvementB"><i class="fa fa-bar-chart "></i>Mouvement Biens</a>
+            </li>
             <li class="col-sm-2">
                 <a href="~/Gestion/GetVehicule"><i class="fa fa-car"></i>Véhicule</a>
             </li>

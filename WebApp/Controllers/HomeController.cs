@@ -21,12 +21,12 @@ namespace WebApp.Controllers
        
         public ActionResult Index()
         {
-            
-
+           
                 return View();
+          
 
-           
-           
+
+
         }
 
         [HttpPost]
@@ -46,6 +46,7 @@ namespace WebApp.Controllers
                         {
 
                             Session["identifiant"] = result;
+                            Session["Nom"] = result.Personnel.nom +" "+ result.Personnel.prenom;
                             Session["Role"] = result.Personnel.Role.libelle ;
 
                             return RedirectToAction("RapportBien", "Admin");
@@ -79,89 +80,15 @@ namespace WebApp.Controllers
 
         }
 
-        //[HttpPost, ActionName("SaveUploadedFile")]
-
-        //public ActionResult SaveUploadedFile(string id)
-        //{
-        //    bool isSavedSuccessfully = true;
-        //    string fName = "";
-        //    string fileName1 = "";
-        //    string fileExtension = "";
-        //    string pathFile = "";
-        //    DataTable ds = new DataTable();
-        //    try
-        //    {
-        //        foreach (string fileName in Request.Files)
-        //        {
-        //            HttpPostedFileBase file = Request.Files[fileName];
-        //            //Save file content goes here
-        //            fName = file.FileName;
-        //            fileExtension = System.IO.Path.GetExtension(Request.Files["file"].FileName);
-        //            if (file != null && file.ContentLength > 0)
-        //            {
-        //                var originalDirectory = new DirectoryInfo(string.Format("{0}Fichiers", Server.MapPath(@"\")));
-        //                string pathString = System.IO.Path.Combine(originalDirectory.ToString(), "Files");
-        //                fileName1 = Path.GetFileName(file.FileName);
-        //                bool isExists = System.IO.Directory.Exists(pathString);
-        //                if (!isExists)
-        //                    System.IO.Directory.CreateDirectory(pathString);
-        //                pathFile = string.Format("{0}\\{1}", pathString, file.FileName);
-        //                file.SaveAs(pathFile);
-        //            }
-        //        }
-        //    }
-        //    catch
-        //    {
-        //        isSavedSuccessfully = false;
-        //    }
-
-        //    if (isSavedSuccessfully)
-        //    {
-        //        List<Bien> list = new List<Bien>();
-
-
-        //        ds = ExcelParser.Instance.ExcelParserToDataTable(pathFile, null);
-        //        foreach (DataRow row in ds.Rows)
-        //        {
-        //            Bien catalogue = new Bien();
-        //            catalogue.Code_materiel = (int)row["test1"];
-
-        //            catalogue.Num_serie = row["test2"].ToString();
-        //            catalogue.Categorie = row["test3"].ToString();
-        //            catalogue.Modele = row["test4"].ToString();
-        //            catalogue.Marque = row["test5"].ToString();
-        //            catalogue.Statut = row["test6"].ToString();
-        //            catalogue.Fin_garantie = row["test7"].ToString();
-        //            catalogue.Localisation_dernier = row["test8"].ToString();
-
-        //            catalogue.Entite_dernier = row["test9"].ToString();
-        //            catalogue.Date_inventaire = row["test10"].ToString();
-        //            catalogue.Date_installation = row["test11"].ToString();
-        //            catalogue.Localisation_complet = row["test12"].ToString();
-
-        //            catalogue.Entite_complet = row["test13"].ToString();
-        //            list.Add(catalogue);
-
-        //        }
-
-              
-        //        return View("Dashboard", "Admin");
-        //    }
-        //    return HttpNotFound();
-        //}
-
+       
         public ActionResult Logout()
         {
 
-            //User u = db.GetUser((Session["identifiant"].ToString()));
-
-
-        
+           
             db.SaveEmploye();
             Session["identifiant"] = null;
             Session["id"] = null;
             Session["role"] = null;
-           // LogThread.WriteLine(u.nom + " " + u.prenom + "de Matricule " + u.identifiant + " quitte  l'application");
             return RedirectToAction("Index", "Home");
 
 

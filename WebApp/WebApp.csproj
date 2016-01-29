@@ -357,7 +357,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -461,8 +463,6 @@
     <Content Include="Views\Role\Edit.cshtml" />
     <Content Include="Views\ImportExport\ImportTxt.cshtml" />
     <Content Include="Views\ImportExport\Cipherlab.cshtml" />
-    <Content Include="Views\Gestion\GetStock.cshtml" />
-    <Content Include="Views\Gestion\CreateStock.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
     <Content Include="Views\Gestion\EditBatiment.cshtml" />
     <Content Include="Views\Admin\EditBureaux.cshtml" />
@@ -481,7 +481,6 @@
     <Content Include="Views\Gestion\CreateMouvementB.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
     <Content Include="Views\Gestion\GetMouvementB.cshtml" />
-    <Content Include="Views\Gestion\GetVehicule.cshtml" />
     <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
@@ -490,6 +489,7 @@
     <Content Include="Views\Inventaire\GetVehicules.cshtml" />
     <Content Include="Views\InventaireVehicule\GetInventaireVehicule.cshtml" />
     <Content Include="Views\Admin\BudgetType.cshtml" />
+    <Content Include="Views\Gestion\GetVehicule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

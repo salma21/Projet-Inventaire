@@ -16,17 +16,23 @@ namespace WebApp.Controllers
         // GET: Role
         public ActionResult Index()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
         public ActionResult GetRole()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var Role = db.GetRoles();
             return View(Role);
         }
         // GET: Role/Details/5
         public ActionResult Details(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
 
@@ -47,6 +53,8 @@ namespace WebApp.Controllers
         // GET: Role/Create
         public ActionResult CreateRole()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
@@ -78,6 +86,8 @@ namespace WebApp.Controllers
         // GET: Role/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var role = db.GetRole(id);
           
             return View(role);

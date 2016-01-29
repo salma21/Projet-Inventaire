@@ -17,11 +17,15 @@ namespace WebApp.Controllers
         // GET: Personnel
         public ActionResult Index()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
         public ActionResult GetPersonnel()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var Personnel = db.GetPersonnels();
             return View(Personnel);
         }
@@ -48,6 +52,8 @@ namespace WebApp.Controllers
         // GET: Personnel/Create
         public ActionResult CreatePersonnel()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
 
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
@@ -96,6 +102,8 @@ namespace WebApp.Controllers
         // GET: Personnel/Edit/5
         public ActionResult Edit(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
 
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");

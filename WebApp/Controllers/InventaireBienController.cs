@@ -22,6 +22,8 @@ namespace WebApp.Controllers
         // GET: InventaireBien
         public ActionResult GetInventaireBiens()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var inv = db.GetInventaireBiens();
             return View(inv);
         }
@@ -29,7 +31,8 @@ namespace WebApp.Controllers
 
         public ActionResult GetDetailsInvBienBiens()
         {
-          
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var inv = db.GetInventaireBiens();
 
             return View(inv);
@@ -37,7 +40,8 @@ namespace WebApp.Controllers
 
         public ActionResult GetBiens()
         {
-
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var bien = BissInventaireEntities.Instance.Bien.ToList();
 
 
@@ -54,6 +58,8 @@ namespace WebApp.Controllers
        
         public ActionResult Index()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 

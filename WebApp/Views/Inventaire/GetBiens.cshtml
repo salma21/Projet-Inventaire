@@ -119,9 +119,11 @@
 
                     </p>
                     <br /><p>
-                        @Html.ActionLink("List Inventaire Bien", "GetInventaireBien")
+@if (@Session["Role"].ToString() == "ADMIN")
+{
+                        @Html.ActionLink("List Inventaire Bien","GetInventaireBiens", "InventaireBien")
 
-
+}
                     </p>
 
                 </div>

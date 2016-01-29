@@ -23,7 +23,7 @@
                         <label class="control-label col-lg-4" style="font-style:oblique;">Designation </label>
                         <div class="col-lg-6">
 
-                            @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBoxFor(model => model.Designation, new { @class = "form-control", @readonly = "readonly" })
 
                         </div>
                     </div>
@@ -31,7 +31,7 @@
                         <label class="control-label col-lg-4" style="font-style:oblique;">Batiment </label>
                         <div class="col-lg-6">
 
-                            @Html.TextBoxFor(model => model.Bureau.Etage.Batiment.description, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBoxFor(model => model.Etage.Batiment.description, new { @class = "form-control", @readonly = "readonly" })
 
                         </div>
                     </div>
@@ -39,7 +39,7 @@
                         <label class="control-label col-lg-4" style="font-style:oblique;">Etage </label>
                         <div class="col-lg-6">
 
-                            @Html.TextBoxFor(model => model.Bureau.Etage.description, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBoxFor(model => model.Etage.description, new { @class = "form-control", @readonly = "readonly" })
 
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         <label class="control-label col-lg-4" style="font-style:oblique;">Bureau </label>
                         <div class="col-lg-6">
 
-                            @Html.TextBoxFor(model => model.Bureau.Description, new { @class = "form-control", @readonly = "readonly" })
+                            @Html.TextBoxFor(model => model.Description, new { @class = "form-control", @readonly = "readonly" })
 
                         </div>
                     </div>

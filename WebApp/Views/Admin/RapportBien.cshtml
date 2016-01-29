@@ -67,18 +67,19 @@
                             <tr>
                                 <th>Designation </th>
                                 <th>Batiment </th>
-                                
+                                <th>Description</th>
                                 <th>Etage</th>
                                 <th>Region</th>
                                 <th>Ville </th>
                                 <th>Categorie </th>
                                 <th>Desigantion </th>
-                               
                                 <th>Code</th>
                                 <th>Mode</th>
                                 <th>Etat</th>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                 <th>Action</th>
-
+}
 
                             </tr>
                         </thead>
@@ -90,19 +91,22 @@
                                     <td>@item.Designation</td>
                                     <td>@item.Etage.Batiment.description</td>
                                     <td>@item.Description</td>
-
                                     <td>@item.Etage.description</td>
                                     <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
                                     <td>@item.Etage.Batiment.Delegation.libelle</td>
                                     <td>@item.Categorie_materiel.libelle</td>
                                     <td>@item.Designation</td>
-                                    
                                     <td>@item.Code</td>
                                     <td>@item.Mode</td>
                                     <td>@item.Etat</td>
+
                                     <td>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                         <a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
-                                    </td>
+}
+                                      </td>
+
                                 </tr>
 
 
@@ -121,9 +125,10 @@
 
                     </p>
                     <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                         @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
-
-                              
+}
                     </p>
                      
                 </div>

@@ -38,28 +38,14 @@
                                 <th>Date Debut</th>
                                 <th>Date Fin</th>
                                 <th>Coût</th>
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                 <th>Action</th>
+}
                             </tr>
                         </thead>
 
-                        <tfoot>
-                            <tr>
-
-                                <th>Region</th>
-
-                                <th>Délégation</th>
-                                <th>Sociéte</th>
-                                <th>Maintenance</th>
-                                <th>Date Debut</th>
-                                <th>Date Fin</th>
-                                <th>Coût</th>
-
-                                <th>Action</th>
-
-                                
-                            </tr>
-                        </tfoot>
+                      
 
                         <tbody>
                             @foreach (var item in Model)
@@ -77,8 +63,11 @@
 
 
                                     <td>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                         <a href="@Url.Action("Edit", new { id = item.Id_contrat_maintenance })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                     </td>
+
+}     </td>
 
                                 </tr>
 
@@ -87,7 +76,10 @@
                         </tbody>
                     </table>
                     <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                         @Html.ActionLink("Ajouter un nouveau Contrat de Maintenance", "CreateContrat_Maintenance")
+}
                     </p>
 
                 </div>

@@ -16,12 +16,16 @@ namespace WebApp.Controllers
             // GET: ServiceD
             public ActionResult Index()
             {
-                return View();
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            return View();
             }
 
             public ActionResult GetServiceD()
             {
-                var ServiceD = db.GetServiceDs();
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var ServiceD = db.GetServiceDs();
                 return View(ServiceD);
             }
             // GET: ServiceD/Details/5
@@ -47,6 +51,8 @@ namespace WebApp.Controllers
             // GET: ServiceD/Create
             public ActionResult CreateServiceD()
             {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
             return View();
             }
@@ -78,6 +84,8 @@ namespace WebApp.Controllers
         }
         public ActionResult EditServiceD(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var service = db.FindServByID(id);
             ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
             return View(service);

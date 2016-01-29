@@ -17,17 +17,23 @@ namespace WebApp.Controllers
         // GET: Etage
         public ActionResult Index()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
         public ActionResult GetEtage()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var Etage = db.GetEtages();
             return View(Etage);
         }
         // GET: Etage/Details/5
         public ActionResult Details(int Etage)
         {
+             if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
                 var archive = BissInventaireEntities.Instance.Etage.Find(Etage);
@@ -44,6 +50,8 @@ namespace WebApp.Controllers
         // GET: Etage/Create
         public ActionResult CreateEtage()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
 
@@ -54,12 +62,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateEtage(Etage etag, FormCollection collection)
         {
-           // int idregion = db.FindRegionByBatiment(etag.idBatiment);
-           // int idgou = db.FindGouverneratByBatiment(etag.idBatiment);
-          //  int idpays = db.FindPaysByBatiment(etag.idBatiment);
+           
             int iddelegation = db.FindDelegationByBatiment(etag.idBatiment);
-           // int idorg = db.FindOrganisationByDelegation(etag.idBatiment);
-            etag.idDelegation = iddelegation;
+          
             IEtageService et = new EtageService();
 
             if (ModelState.IsValid)
@@ -121,6 +126,8 @@ namespace WebApp.Controllers
         // GET: Etage/Delete/5
         public ActionResult Delete(int Id_etage)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 

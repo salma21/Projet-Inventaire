@@ -22,24 +22,14 @@
                             <th>Tel</th>
                             <th>Fax</th>
                             <th>Email</th>
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                             <th>Action</th>
+}
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-                           
-
-                            <th>Societe</th>
-                            <th>Rue</th>
-                            <th>Tel</th>
-                            <th>Fax</th>
-                            <th>Email</th>
-
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+                
 
                     <tbody>
                         @foreach (var item in Model)
@@ -56,9 +46,12 @@
 
 
                                 <td>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                     <a href="@Url.Action("Edit", new { id = item.Id_societe_maintenance })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
                                     <a href="@Url.Action("Delete", new { id = item.Id_societe_maintenance })">&nbsp;&nbsp;<i class="fa fa-trash" title="Effacer"></i></a>
-                                </td>
+
+} </td>
 
                             </tr>
 
@@ -67,7 +60,10 @@
                     </tbody>
                 </table>
                 <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                           @Html.ActionLink("Ajouter une Societe", "CreateSociete_maintenance")
+}
                 </p>
 
             </div>

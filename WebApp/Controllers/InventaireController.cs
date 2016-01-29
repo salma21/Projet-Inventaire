@@ -23,9 +23,9 @@ namespace WebApp.Controllers
         // GET: Inventaire
         public ActionResult GetInventaire()
         {
+
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-
             var Emp = (Utilisateur)Session["identifiant"];
             var inv = db.GetInventaires();
 
@@ -144,8 +144,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Ajouter(int id)
         {
-            if (Session["identifiant"] == null)
-            { return RedirectToAction("Index", "Home"); }
+            
             Association_30 ass = new Association_30();
             ass.Id_bien = id;
            
@@ -179,9 +178,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult AjouterVehicule(int id)
         {
-            if (Session["identifiant"] == null)
-            { return RedirectToAction("Index", "Home"); }
-
+          
             Association_31 asss = new Association_31();
             asss.Id_Vehicule = id;
 
@@ -286,8 +283,7 @@ namespace WebApp.Controllers
         public ActionResult Create(FormCollection collection)
         {
 
-            if (Session["identifiant"] == null)
-            { return RedirectToAction("Index", "Home"); }
+           
             try
             {
                 // TODO: Add insert logic here
@@ -312,8 +308,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            if (Session["identifiant"] == null)
-            { return RedirectToAction("Index", "Home"); }
+          
             try
             {
                 // TODO: Add update logic here
@@ -338,8 +333,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            if (Session["identifiant"] == null)
-            { return RedirectToAction("Index", "Home"); }
+           
             try
             {
                 // TODO: Add delete logic here
