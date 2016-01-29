@@ -20,6 +20,7 @@ namespace WebApp.Controllers
         IInventaireBienService db1 = new InventaireBienService();
         IInventaireService db = new InventaireService();
         IInventaireVehService db2 = new InventaireVehService();
+        IUtilisateurService db3 = new UtilisateurService();
         // GET: Inventaire
         public ActionResult GetInventaire()
         {
@@ -154,6 +155,17 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
+
+            var bien = db3.GetBienById(id);
+            var Emp = (Utilisateur)Session["identifiant"];
+            Trace tr = new Trace();
+            tr.Dates = DateTime.Now;
+            tr.Actions = "Ajouter Bien à un Inventaire";
+            tr.Champs = (bien.Code_a_barre).ToString();
+            tr.Tables = "Inventaire Bien";
+            tr.Users = (Emp.Personnel.Matricule).ToString();
+            BissInventaireEntities.Instance.Trace.Add(tr);
+            BissInventaireEntities.Instance.SaveChanges();
             IUtilisateurService kk = new UtilisateurService();
 
             Association_30 nm = new Association_30();
@@ -192,9 +204,9 @@ namespace WebApp.Controllers
             var Emp = (Utilisateur)Session["identifiant"];
             Trace tr = new Trace();
             tr.Dates = DateTime.Now;
-            tr.Actions = "Validation Vehicule";
+            tr.Actions = "Ajouter une Véhicule à un inventaire";
             tr.Champs = veh.Matricule;
-            tr.Tables = "Vehicule";
+            tr.Tables = "Inventaire Vehicule";
             tr.Users = (Emp.Personnel.Matricule).ToString();
             BissInventaireEntities.Instance.Trace.Add(tr);
             BissInventaireEntities.Instance.SaveChanges();

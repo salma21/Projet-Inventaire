@@ -490,6 +490,7 @@
     <Content Include="Views\InventaireVehicule\GetInventaireVehicule.cshtml" />
     <Content Include="Views\Admin\BudgetType.cshtml" />
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
+    <Content Include="Views\Admin\GetTrace.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

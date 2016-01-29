@@ -94,6 +94,5 @@ C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Domain\bin\Debug\E
 C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.xml
 C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
 C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb

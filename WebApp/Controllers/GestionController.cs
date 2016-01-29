@@ -1110,6 +1110,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
+
             ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
             ViewData["garanti"] = new SelectList(BissInventaireEntities.Instance.Contrat_garanti.ToList(), "Id_contrat_garanti", "Num");
             ViewData["assurance"] = new SelectList(BissInventaireEntities.Instance.Contrat_assurance.ToList(), "Id_contrat_assurance", "Num");
@@ -1141,10 +1142,19 @@ namespace WebApp.Controllers
 
                 try
             {
-                BissInventaireEntities.Instance.Vehicule.Add(veh);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetVehicule");
-            }
+                    BissInventaireEntities.Instance.Vehicule.Add(veh);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    var Emp = (Utilisateur)Session["identifiant"];
+                    Trace tr = new Trace();
+                    tr.Dates = DateTime.Now;
+                    tr.Actions = "Ajouter une Véhicule";
+                    tr.Champs = veh.Matricule;
+                    tr.Tables = "Vehicule";
+                    tr.Users = (Emp.Personnel.Matricule).ToString();
+                    BissInventaireEntities.Instance.Trace.Add(tr);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetVehicule");
+                }
             catch (Exception ex)
             {
                 LogThread.WriteLine(ex.Message);
@@ -1228,8 +1238,16 @@ namespace WebApp.Controllers
             {
                 db8.CreateMouvementB(mou);
                 db8.SaveMouvementB();
-               
-                return RedirectToAction("GetMouvementB");
+                    var Emp = (Utilisateur)Session["identifiant"];
+                    Trace tr = new Trace();
+                    tr.Dates = DateTime.Now;
+                    tr.Actions = "Ajout Mouvement Bien";
+                    tr.Champs = (mou.Bien.Code_a_barre).ToString();
+                    tr.Tables = "Mouvement Bien";
+                    tr.Users = (Emp.Personnel.Matricule).ToString();
+                    BissInventaireEntities.Instance.Trace.Add(tr);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetMouvementB");
             }
             catch (DbEntityValidationException r)
             {
@@ -1380,9 +1398,17 @@ namespace WebApp.Controllers
             {
                 db7.CreateMouvementV(mouv);
             db7.SaveMouvementV();
-                //BissInventaireEntities.Instance.MouvementV.Add(mouv);
-                //BissInventaireEntities.Instance.SaveChanges();
-               return RedirectToAction("GetMouvement");
+
+                    var Emp = (Utilisateur)Session["identifiant"];
+                    Trace tr = new Trace();
+                    tr.Dates = DateTime.Now;
+                    tr.Actions = "Ajout Mouvement Véhicule";
+                    tr.Champs = (mouv.Vehicule.Matricule).ToString();
+                    tr.Tables = "Mouvement Vehicule";
+                    tr.Users = (Emp.Personnel.Matricule).ToString();
+                    BissInventaireEntities.Instance.Trace.Add(tr);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetMouvement");
             }
             catch (DbEntityValidationException r)
             {

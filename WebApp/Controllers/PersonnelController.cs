@@ -80,9 +80,18 @@ namespace WebApp.Controllers
             {
                 try
             {
-                BissInventaireEntities.Instance.Personnel.Add(pers);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetPersonnel");
+                    BissInventaireEntities.Instance.Personnel.Add(pers);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    var Emp = (Utilisateur)Session["identifiant"];
+                    Trace tr = new Trace();
+                    tr.Dates = DateTime.Now;
+                    tr.Actions = "Ajout Personnel";
+                    tr.Champs = (pers.Matricule).ToString();
+                    tr.Tables = "Personnel";
+                    tr.Users = (Emp.Personnel.Matricule).ToString();
+                    BissInventaireEntities.Instance.Trace.Add(tr);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetPersonnel");
             }
             catch (Exception ex)
             {
@@ -130,8 +139,16 @@ namespace WebApp.Controllers
             {
                 db.UpdatePersonnelDetached(pers);
                 db.SavePersonnel();
-
-            TempData["msg"] = "Modification Avec Succe !!!";
+                var Emp = (Utilisateur)Session["identifiant"];
+                Trace tr = new Trace();
+                tr.Dates = DateTime.Now;
+                tr.Actions = "Modification Personnel";
+                tr.Champs = (pers.Matricule).ToString();
+                tr.Tables = "Personnel";
+                tr.Users = (Emp.Personnel.Matricule).ToString();
+                BissInventaireEntities.Instance.Trace.Add(tr);
+                BissInventaireEntities.Instance.SaveChanges();
+                TempData["msg"] = "Modification Avec Succe !!!";
             return RedirectToAction("GetPersonnel");
         }
             else

@@ -85,9 +85,10 @@
                   
                 </ul>
             </li>
-          
-
-
+          @if (@Session["Role"].ToString() == "ADMIN")
+          {
+            <li><a href="~/Admin/GetTrace">Historique </a></li>
+          }
         </ul>
         <!-- End Top Menu -->
         <!-- Start Sidepanel Show-Hide Button -->
@@ -246,9 +247,8 @@
             <li class="col-sm-2">
                 <a href="~/inventaire/CreateInventaire"><i class="fa fa-plus-circle"></i>Nouveau</a>
             </li>
-
             <li class="col-sm-2">
-                <a href="~/ImportExport/Index"><i class="fa fa-folder-open"></i>Parcourir</a>
+                <a href="~/Inventaire/GetInventaire"><i class="fa fa-outdent"></i>Inventaire</a>
             </li>
             <li class="col-sm-2">
                 <a href="~/Admin/GetUsers"><i class="fa fa-users"></i>Utilisateur</a>
@@ -274,18 +274,16 @@
                 <a href="~/Gestion/GetBiens"><i class="fa fa-line-chart"></i>Statistiques</a>
             </li>
             <li class="col-sm-2">
-                <a href="~/Gestion/GetMouvement"><i class="fa fa-bar-chart"></i>Mouvement Véhicules</a>
+                <a href="~/Gestion/GetMouvement"><i class="fa fa-arrows-h"></i>Mouvement Véhicules</a>
             </li>
             <li class="col-sm-2">
-                <a href="~/Gestion/GetMouvementB"><i class="fa fa-bar-chart "></i>Mouvement Biens</a>
+                <a href="~/Gestion/GetMouvementB"><i class="fa fa-arrows-h"></i>Mouvement Biens</a>
             </li>
             <li class="col-sm-2">
                 <a href="~/Gestion/GetVehicule"><i class="fa fa-car"></i>Véhicule</a>
             </li>
 
-            <li class="col-sm-2">
-                <a href="~/Inventaire/GetInventaire"><i class="fa fa-outdent"></i>Inventaire</a>
-            </li>
+           
         </ul>
 
         <!-- //////////////////////////////////////////////////////////////////////////// -->

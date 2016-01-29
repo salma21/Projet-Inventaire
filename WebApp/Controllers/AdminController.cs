@@ -34,6 +34,20 @@ namespace WebApp.Controllers
             return View(bure);
         }
 
+        public ActionResult GetTrace()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            if (Session["Role"].ToString() == "ADMIN")
+            {
+                var bure = BissInventaireEntities.Instance.Trace.ToList(); ;
+                return View(bure);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
+        }
 
         public ActionResult GetUsers()
         {
@@ -144,6 +158,15 @@ namespace WebApp.Controllers
             {
                 db1.UpdateUtilisateurDetached(user);
                 db1.SaveEmploye();
+                var Emp = (Utilisateur)Session["identifiant"];
+                Trace tr = new Trace();
+                tr.Dates = DateTime.Now;
+                tr.Actions = "Modification utilisateur";
+                tr.Champs = (user.Personnel.Matricule).ToString();
+                tr.Tables = "Utilisateur";
+                tr.Users = (Emp.Personnel.Matricule).ToString();
+                BissInventaireEntities.Instance.Trace.Add(tr);
+                BissInventaireEntities.Instance.SaveChanges();
 
                 return RedirectToAction("GetUsers");
             }
@@ -407,10 +430,21 @@ namespace WebApp.Controllers
             {
                 try
                 {
+                    
+                   
                     user.etatUtilisateur = true;
                     db1.CreateUtilisateurs(user);
                     db1.SaveEmploye();
-
+                    
+                    var Emp = (Utilisateur)Session["identifiant"];
+                    Trace tr = new Trace();
+                    tr.Dates = DateTime.Now;
+                    tr.Actions = "Ajout utilisateur";
+                    tr.Champs = (user.Personnel.Matricule).ToString();
+                    tr.Tables = "Utilisateur";
+                    tr.Users = (Emp.Personnel.Matricule).ToString();
+                    BissInventaireEntities.Instance.Trace.Add(tr);
+                    BissInventaireEntities.Instance.SaveChanges();
                     return RedirectToAction("GetUsers");
                 }
                 catch (DbEntityValidationException r)

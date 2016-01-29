@@ -288,6 +288,8 @@ namespace Data.Infrastructure
             }
         }
 
+
+        
         private IInventaireVehRepository InventaireVehRepository;
         IInventaireVehRepository IUnitOfWork.InventaireVehRepository
         {

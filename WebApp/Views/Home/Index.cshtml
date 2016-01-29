@@ -33,8 +33,9 @@
                     <img class="logo" src="~/Content/img/Nouveau/atb.png" alt="logo" style="margin-top:-30px;">
                 </a>
                 <h5>
-                    Sign in to continue to your<br />
-                    Application.
+                    Veuillez entrer votre login <br />
+                    et mot de passe
+                    
                 </h5>
             </div>
 @using (Html.BeginForm("Index", "Home", FormMethod.Post))
@@ -49,7 +50,7 @@
                     <i class="fa fa-envelope-o"></i>
                 </div>
                 <div class="form-control">
-                    @Html.PasswordFor(model => model.motDePasse, new { placeholder = "password", id = "user-pw", required = "" })
+                    @Html.PasswordFor(model => model.motDePasse, new { placeholder = "Mot de passe", id = "user-pw", required = "" })
 
 
                     <i class="fa fa-key"></i>
