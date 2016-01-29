@@ -125,14 +125,6 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">QTE</label>
-                                    <div class="col-lg-6">
-
-                                        @Html.EditorFor(model => model.Code, new { @class = "form-control", required = "" })
-                                       
-
-                                    </div>
                                 </div>
 
                                 <div class="form-group">
@@ -160,31 +152,40 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         <TABLE border=0 width=100%>
                                             <TR>
                                                 <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label">Code Bien</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        <input type="text" class="form-control" id="input2" style="width:220px;">
-                                                    </div>
-                                                </TD>
-                                                <TD width=34%>
                                                     <label class="col-sm-4 control-label form-label">Code à barre</label>
 
                                                     <div class="col-sm-8">
-
-                                                        <input type="text" class="form-control" id="input2" style="width:220px;">
+                                                        @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
                                                     </div>
                                                 </TD>
-                                                <TD width=33%>
+
+                                                <TD >
                                                     <label class="col-sm-4 control-label form-label"> N° de série</label>
 
                                                     <div class="col-sm-8">
 
-                                                        <input type="text" class="form-control" id="input2" style="width:220px;">
+                                                        @Html.EditorFor(model => model.Num_Serie, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Num_Serie, String.Empty, new { @class = "test" })
+                                                    </div>
+                                                </TD>
+
+                                                <TD width=33%>
+                                                    <label class="col-sm-4 control-label form-label"> Désignation</label>
+                                                  
+                                                    <div class="col-sm-8">
+                                                        @Html.EditorFor(model => model.Designation, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Designation, String.Empty, new { @class = "test" })
+                                                        @*<select class="selectpicker">
+                                                            <option>Table</option>
+                                                            <option>Chaise</option>
+                                                            <option>Pc</option>
+                                                            <option>Imprimante</option>
+                                                            <option>Clavier</option>
+                                                        </select>*@
                                                     </div>
                                                 </TD>
                                             </TR>
-
                                         </TABLE>
                                     </CENTER>
                                 </div>
@@ -193,33 +194,31 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <CENTER>
                                         <TABLE width=100%>
                                             <TR>
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label"> Désignation</label>
+                                                <TD width=34%>
+                                                    <label class="col-sm-4 control-label form-label">Quantité</label>
 
                                                     <div class="col-sm-8">
+                                                        @Html.EditorFor(model => model.Code, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Code, String.Empty, new { @class = "test" })
 
-                                                        <select class="selectpicker">
-                                                            <option>Table</option>
-                                                            <option>Chaise</option>
-                                                            <option>Pc</option>
-                                                            <option>Imprimante</option>
-                                                            <option>Clavier</option>
-                                                        </select>
                                                     </div>
                                                 </TD>
+                                               
                                                 <TD width=34%>
                                                     <label class="col-sm-4 control-label form-label">Marque</label>
 
                                                     <div class="col-sm-8">
 
-                                                        <input type="text" class="form-control" id="input2" style="width:220px;">
+                                                      @Html.EditorFor(model => model.Marque, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Marque, String.Empty, new { @class = "test" })
                                                     </div>
                                                 </TD>
                                                 <TD width=33%>
                                                     <label class="col-sm-4 control-label form-label">État</label>
 
                                                     <div class="col-sm-8">
-
+                                                        @Html.EditorFor(model => model.Etat, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Etat, String.Empty, new { @class = "test" })
                                                         <select class="selectpicker">
                                                             <option>Bon</option>
                                                             <option>Mouvais</option>
@@ -244,8 +243,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                     <label class="col-sm-4 control-label form-label"> Modéle</label>
 
                                                     <div class="col-sm-8">
-                                                        <input type="text" class="form-control" id="input2" style="width:220px;">
-
+                                                       @Html.EditorFor(model => model.Modele, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Modele, String.Empty, new { @class = "test" })
                                                     </div>
                                                 </TD>
                                                 <TD width=34%>
@@ -253,20 +252,23 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                     <div class="col-sm-8">
 
-                                                        <select class="selectpicker">
+                                                        @Html.EditorFor(model => model.Id_categorie, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Id_categorie, String.Empty, new { @class = "test" })
+                                                        @*<select class="selectpicker">
                                                             <option>Informatique</option>
                                                             <option>Bureautique</option>
                                                             <option>éléchtroménager</option>
                                                             <option>Hi-Tech</option>
                                                             <option>Téléphonie</option>
-                                                        </select>
+                                                        </select>*@
                                                     </div>
                                                 </TD>
                                                 <TD width=33%>
                                                     <label class="col-sm-4 control-label form-label">Mode</label>
 
                                                     <div class="col-sm-8">
-
+                                                        @Html.EditorFor(model => model.Mode, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Mode, String.Empty, new { @class = "test" })
                                                         <select class="selectpicker">
                                                             <option>En Service</option>
                                                             <option>Hors-Service</option>
@@ -301,14 +303,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                     <label class="col-sm-4 control-label form-label"> Ville</label>
 
                                                     <div class="col-sm-8">
-
-                                                        <select class="selectpicker">
-                                                            <option>Tunis</option>
-                                                            <option>Sfax</option>
-                                                            <option>Sousse</option>
-                                                            <option>Bizerte</option>
-                                                            <option>Nabeul</option>
-                                                        </select>
+                                                        @Html.DropDownListFor(m => m.idDelegation, (SelectList)ViewData["Delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
                                                     </div>
                                                 </TD>
                                                 <TD width=40%>
@@ -318,13 +313,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                         <div class="col-sm-8">
 
-                                                            <select class="selectpicker">
-                                                                <option>Local principal</option>
-                                                                <option>Agence sousse</option>
-                                                                <option>Annexe</option>
-                                                                <option>Parc automobile</option>
-
-                                                            </select>
+                                                            @Html.DropDownListFor(m => m.idBatiment, (SelectList)ViewData["Batiment"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
                                                         </div>
                                                     </div>
                                                 </TD>
@@ -343,14 +332,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                     <label class="col-sm-4 control-label form-label"> Étage</label>
 
                                                     <div class="col-sm-8">
-
-                                                        <select class="selectpicker">
-                                                            <option>RDC</option>
-                                                            <option>1 ére étage</option>
-                                                            <option>2 éme étage</option>
-                                                            <option>3 éme étage</option>
-                                                            <option>4 éme étage</option>
-                                                        </select>
+                                                        @Html.DropDownListFor(m => m.Id_etage, (SelectList)ViewData["Etage"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                                      
                                                     </div>
                                                 </TD>
                                                 <TD width=40%>
@@ -360,13 +343,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                         <div class="col-sm-8">
 
-                                                            <select class="selectpicker">
-                                                                <option>101</option>
-                                                                <option>201</option>
-                                                                <option>301</option>
-                                                                <option>Entrée</option>
-
-                                                            </select>
+                                                            @Html.DropDownListFor(m => m.id_bureau, (SelectList)ViewData["Bureau"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
                                                         </div>
                                                     </div>
                                                 </TD>
@@ -393,7 +370,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                     <div class="col-sm-8">
 
 
-                                                        <textarea name="textarea" class="form-control" style="width:600px;height:80px;"></textarea>
+                                                        @Html.EditorFor(model => model.Description, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Description, String.Empty, new { @class = "test" })
 
                                                     </div>
                                                 </TD>
@@ -413,7 +391,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                     <div class="col-sm-8">
 
-                                                        <textarea name="textarea" class="form-control" style="width:600px;height:80px;"></textarea>
+                                                        @Html.EditorFor(model => model.Detail, new { @class = "form-control", required = "" })
+                                                        @Html.ValidationMessageFor(model => model.Detail, String.Empty, new { @class = "test" })
                                                     </div>
                                                 </TD>
 
@@ -432,7 +411,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div style="text-align: center;">
                                 <input type="submit" value="Valider" class="btn btn-default" />
 
-                                <button type="reset" class="btn btn-white">Annuler</button>
+                                <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "RapportBien")</button>
 
                             </div>
 
@@ -441,7 +420,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                 </div>
 
-
+            <p>
+                @Html.ActionLink("Liste Des Biens", "RapportBien")
+            </p>
 
             </div>
         </div>
