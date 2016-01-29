@@ -6,8 +6,7 @@
         <div class="panel panel-default">
             <div class="panel-title">
 
-                <h4 class="title" color="#58666e" font-weight="bold"> Modification Contrat Achat</h4>
-                <ol class="breadcrumb"></ol>
+                <h4 class="title" color="#58666e" font-weight="bold"> Edit Contrat Maintenance</h4>
 
 
 
@@ -22,82 +21,132 @@
                 </ul>
             </div>
             <div class="panel-body">
-
-
                 @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
 
                     <div class="form-horizontal">
-                        <h4>Contrat_maintenance</h4>
-                        <hr />
+                       
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.idDelegation, "idDelegation", htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.DropDownList("idDelegation", null, htmlAttributes: new { @class = "form-control" })
-                                @Html.ValidationMessageFor(model => model.idDelegation, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        @Html.HiddenFor(model => model.Id_societe_maintenance)
-
                         @Html.HiddenFor(model => model.Id_contrat_maintenance)
+                        <div class="panel panel-default">
+                            <fieldset>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Type_maintenance, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Type_maintenance, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Type_maintenance, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                               
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Num, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Num, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Num, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">N° Contrat</label>
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Date_debut, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Date_debut, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Date_debut, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                                        <div class="col-md-8">
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Date_fin, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Date_fin, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Date_fin, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                                            @Html.TextBoxFor(model => model.Num, new { @class = "form-control", required = "" })
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Cout, htmlAttributes: new { @class = "control-label col-md-2" })
-                            <div class="col-md-10">
-                                @Html.EditorFor(model => model.Cout, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Cout, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
+                                        </div>
+                                    </div>
 
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Save" class="btn btn-default" />
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Sociéte</label>
+
+                                        <div class="col-sm-8">
+
+                                            @Html.DropDownListFor(model => model.Id_societe_maintenance, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+
+
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Type</label>
+
+                                        <div class="col-sm-8">
+
+                                            @Html.TextBoxFor(model => model.Type_maintenance, new { @class = "form-control", required = "" })
+
+
+                                        </div>
+                                    </div>
+
+
+                                    <br /><br />
+
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Coût</label>
+
+                                        <div class="col-sm-8">
+
+
+                                            @Html.TextBoxFor(model => model.Cout, new { @class = "form-control", required = "" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Date Debut </label>
+
+                                        <div class="col-sm-8">
+
+                                            @Html.EditorFor(model => model.Date_debut, new { @class = "form-control", required = "" })
+
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Date Fin</label>
+
+                                        <div class="col-sm-8">
+
+                                            @Html.EditorFor(model => model.Date_fin, new { @class = "form-control", required = "" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </fieldset>
+                            <br />
+
+
+                            <br>
+
+
+
+
+
+
+
+
+                            <div style="text-align: center;">
+
+                                <input type="submit" value="Valider" class="btn btn-default" /> &nbsp; &nbsp; &nbsp;
+                                <button type="reset" class="btn btn-white">Annuler</button>
+
+
+
+
                             </div>
+
+
+
+
+
+
+
                         </div>
                     </div>
                 }
+
+
+                <p>
+                    @Html.ActionLink("Liste des contrats de maintenance", "GetContrat_Maintenance")
+                </p>
+
             </div>
 
-            <p>
-                @Html.ActionLink("Liste des contrats", "GetContrat_Maintenance")
-            </p>
         </div>
 
     </div>
-
 </div>
+

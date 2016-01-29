@@ -167,7 +167,7 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
 
-                db1.UpdateContrat_assuranceDetached(assur);
+               con.UpdateContrat_assuranceDetached(assur);
                 db.SaveChanges();
                 return RedirectToAction("GetContrat_assurance");
             }
@@ -261,6 +261,56 @@ namespace WebApp.Controllers
             }
         }
 
+        public ActionResult EditContrat_Maintenance(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+            ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+            ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+            var vv = con.FindContrat_MaintenanceByID(id);
+            return View(vv);
+        }
+
+        // POST: GestionContratetSoc/Create
+        [HttpPost]
+        public ActionResult EditContrat_Maintenance(Contrat_maintenance contrat, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var soc = db1.FindSocMainByID(contrat.Id_societe_maintenance);
+                    contrat.idDelegation = soc.idDelegation;
+                    con.UpdateContrat_MaintenanceDetached(contrat);
+                    db.SaveChanges();
+
+                    return RedirectToAction("GetContrat_Maintenance");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+                ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+                ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+                return View();
+            }
+        }
+
         public ActionResult CreateContrat_garanti()
         {
             if (Session["identifiant"] == null)
@@ -296,6 +346,58 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
+
+            {
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+                ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+                ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+                return View();
+            }
+
+        }
+
+
+        public ActionResult EditContrat_garanti(int id )
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+            ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+            ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+            var jj = BissInventaireEntities.Instance.Contrat_garanti.Find(id);
+            return View(jj);
+        }
+
+        // POST: GestionContratetSoc/Create
+        [HttpPost]
+        public ActionResult EditContrat_garanti(Contrat_garanti contrat, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var fu = fourni.FindFourByID(contrat.Id_fournisseur);
+                    contrat.idDelegation = fu.idDelegation;
+                    con.UpdateContrat_GarantieDetached(contrat);
+                    db.SaveChanges();
+
+                    return RedirectToAction("GetContrat_Garantie");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
             else
 
             {
@@ -361,8 +463,58 @@ namespace WebApp.Controllers
 
         }
 
+        public ActionResult EditSociete_assurance(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+            ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+            ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+            var soc = con.FindSocAssByID(id);
+            return View(soc);
+        }
 
-        public ActionResult CreateSociete_maintenance()
+        // POST: GestionContratetSoc/Create
+        [HttpPost]
+        public ActionResult EditSociete_assurance(Societe_assurance societe, FormCollection collection)
+        {
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    con.UpdateSociete_assuranceDetached(societe);
+                    db.SaveChanges();
+
+                    return RedirectToAction("GetSociete_Assurance");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+                ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+                ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+                return View();
+            }
+
+        }
+
+
+        public ActionResult EditSociete_maintenance()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -375,16 +527,16 @@ namespace WebApp.Controllers
             ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
             return View();
         }
-
+        IGestionContratetSocService con  = new GestionContratetSocService();
         // POST: GestionContratetSoc/Create
         [HttpPost]
-        public ActionResult CreateSociete_maintenance(Societe_maintenance societe, FormCollection collection)
+        public ActionResult EditSociete_maintenance(Societe_maintenance societe, FormCollection collection)
         {
             if (ModelState.IsValid)
             {
                 try
             {
-                db.Societe_maintenance.Add(societe);
+                con.UpdateSociete_MaintenanceDetached(societe);
                 db.SaveChanges();
 
                 return RedirectToAction("GetSociete_Maintenance");
@@ -409,6 +561,57 @@ namespace WebApp.Controllers
             }
 
         }
+
+
+        public ActionResult CreateSociete_maintenance()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+            ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+            ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+            return View();
+        }
+
+        // POST: GestionContratetSoc/Create
+        [HttpPost]
+        public ActionResult CreateSociete_maintenance(Societe_maintenance societe, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.Societe_maintenance.Add(societe);
+                    db.SaveChanges();
+
+                    return RedirectToAction("GetSociete_Maintenance");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+                ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
+                ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "libelle");
+                return View();
+            }
+
+        }
+
+
 
 
         public ActionResult CreateAchat()
@@ -482,7 +685,7 @@ namespace WebApp.Controllers
             ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_garanti", "Num");
             ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_achat", "Num_facture");
             
-            var acht = db.Achat.Find(id);
+            var acht = BissInventaireEntities.Instance.Achat.Find(id);
             return View(acht);
 
         }

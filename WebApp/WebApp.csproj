@@ -419,7 +419,6 @@
     <Content Include="Views\GestionContratetSoc\GetAchat.cshtml" />
     <Content Include="Views\Gestion\CreateGouvernorat.cshtml" />
     <Content Include="Views\GestionContratetSoc\DetailsAchat.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditAchat.cshtml" />
     <Content Include="Views\Gestion\CreateBatiment.cshtml" />
     <Content Include="Views\Gestion\GetBatiment.cshtml" />
     <Content Include="Views\Gestion\CreateFournisseur.cshtml" />
@@ -481,7 +480,6 @@
     <Content Include="Views\Gestion\CreateMouvementB.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
     <Content Include="Views\Gestion\GetMouvementB.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
     <Content Include="Views\Gestion\GetMouvement.cshtml" />
     <Content Include="Views\Inventaire\GetBiens.cshtml" />
@@ -490,7 +488,19 @@
     <Content Include="Views\InventaireVehicule\GetInventaireVehicule.cshtml" />
     <Content Include="Views\Admin\BudgetType.cshtml" />
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
-    <Content Include="Views\Admin\GetTrace.cshtml" />
+    <Content Include="Views\Inventaire\EditInventaire.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditAchat.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditSociete_assurance.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditContrat_garanti.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditContrat_Maintenance.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
+    <Content Include="Views\GestionContratetSoc\EditSociete_maintenance.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_Model.cshtml" />
+    <Content Include="Views\Categorie_materiel\CreateCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\CreateCategorie_Modele.cshtml" />
+    <Content Include="Views\Categorie_materiel\EditCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\EditCategorie_Modele.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

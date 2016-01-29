@@ -26,13 +26,31 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             var Categorie_materiel = db.GetCategorie_materiels();
-                return View(Categorie_materiel);
+            return View(Categorie_materiel);
             }
 
 
-       
-            // GET: Categorie_materiel/Details/5
-            public ActionResult Details(int Id_categorie)
+        public ActionResult GetCategorie_Designation()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var Categorie_materiel = BissInventaireEntities.Instance.CategorieDesignation.ToList();
+            return View(Categorie_materiel);
+        }
+
+
+        public ActionResult GetCategorie_Model()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var Categorie_materiel = BissInventaireEntities.Instance.Sous_categorie.ToList();
+            return View(Categorie_materiel);
+        }
+
+
+
+        // GET: Categorie_materiel/Details/5
+        public ActionResult Details(int Id_categorie)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -85,6 +103,72 @@ namespace WebApp.Controllers
             }
         }
 
+        public ActionResult CreateCategorie_Designation()
+        {
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+
+            return View();
+        }
+
+        // POST: Categorie_materiel/Create
+        [HttpPost]
+        public ActionResult CreateCategorie_Designation(CategorieDesignation Catm, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    BissInventaireEntities.Instance.CategorieDesignation.Add(Catm);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetCategorie_Designation");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+
+                return View();
+            }
+        }
+
+        public ActionResult CreateCategorie_Modele()
+        {
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["des"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
+
+            return View();
+        }
+
+        // POST: Categorie_materiel/Create
+        [HttpPost]
+        public ActionResult CreateCategorie_Modele(Sous_categorie Catm, FormCollection collection)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    BissInventaireEntities.Instance.Sous_categorie.Add(Catm);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetCategorie_Modele");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+
+                return View();
+            }
+        }
 
         public ActionResult EditCategorie_materiel(int id)
         {
@@ -119,6 +203,76 @@ namespace WebApp.Controllers
             }
         }
 
+        public ActionResult EditCategorie_Designation(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+           
+            var cat = db.FindCategorie_DesignationById(id);
+            return View(cat);
+        }
+
+        // POST: Categorie_materiel/Create
+        [HttpPost]
+        public ActionResult EditCategorie_Designation(CategorieDesignation Catm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.UpdateCategorie_DesignationDetached(Catm);
+                    db.SaveCategorie_materiel();
+                    return RedirectToAction("GetCategorie_Designation");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                return View();
+            }
+        }
+        public ActionResult EditCategorie_Modele(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["des"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
+
+            var cat = db.FindCategorie_ModeleById(id);
+            return View(cat);
+        }
+
+        // POST: Categorie_materiel/Create
+        [HttpPost]
+        public ActionResult EditCategorie_Modele(Sous_categorie Catm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.UpdateCategorie_ModeleDetached(Catm);
+                    db.SaveCategorie_materiel();
+                    return RedirectToAction("GetCategorie_Modele");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                return View();
+            }
+        }
 
         // GET: Categorie_materiel/Edit/5
         public ActionResult Edit(int Id_categorie)
@@ -174,5 +328,18 @@ namespace WebApp.Controllers
                     return View();
                 }
             }
+
+
+        [HttpPost]
+        public ActionResult GetModeleBySousCat(int stateid)
+        {
+           
+            List<Sous_categorie> objcity = new List<Sous_categorie>();
+
+            objcity = db.FindModeleByIdDes(stateid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "id_categorie_Designation", "libelle", 0);
+            return Json(obgcity);
         }
+    }
     }

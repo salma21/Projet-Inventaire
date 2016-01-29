@@ -67,6 +67,13 @@ namespace Service
             return Dept;
         }
 
+        public Contrat_maintenance FindContrat_MaintenanceByID(int id)
+
+        {
+            var Dept = utOfWork.ContratMaintennaceRepository.FindContrat_MaintenanceByID(id);
+            return Dept;
+        }
+
         //public int FindPaysBySocAssurence(int Id_societe_assurance)
         //{
         //    int Dept = utOfWork.ContratAssuranceRepository.FindPaysBySocAssurence(Id_societe_assurance);
@@ -110,15 +117,46 @@ namespace Service
         {
             utOfWork.ContratAssuranceRepository.UpdateCont_AssuranceDetached(e);
         }
-        
+
+
+        public void UpdateSociete_assuranceDetached(Societe_assurance e)
+        {
+            utOfWork.SocieteAssuranceRepository.UpdateSoc_AssuranceDetached(e);
+        }
+        public void UpdateContrat_MaintenanceDetached(Contrat_maintenance e)
+        {
+            utOfWork.ContratMaintennaceRepository.UpdateCont_MaintenanceDetached(e);
+        }
+
+
+        public void UpdateSociete_MaintenanceDetached(Societe_maintenance e)
+        {
+            utOfWork.SocieteMaintenanceRepository.UpdateSoc_MaintenanceDetached(e);
+        }
+
+
+               public void UpdateContrat_GarantieDetached(Contrat_garanti e)
+        {
+            utOfWork.ContratGarantieRepository.UpdateCont_GarantieDetached(e);
+        }
+
+
+    }
+
     }
     public interface IGestionContratetSocService
     {
+    Contrat_maintenance FindContrat_MaintenanceByID(int id);
+    void UpdateContrat_assuranceDetached(Contrat_assurance e);
+    void UpdateSociete_assuranceDetached(Societe_assurance e);
+    void UpdateContrat_MaintenanceDetached(Contrat_maintenance e);
+    void UpdateSociete_MaintenanceDetached(Societe_maintenance e);
+    void UpdateContrat_GarantieDetached(Contrat_garanti e);
         Societe_maintenance FindSocMainByID(int id);
         Contrat_assurance FindContrat_assuranceByID(int id);
         Societe_assurance FindSocAssByID(int id);
         void UpdateAchatDetached(Achat e);
-        void UpdateContrat_assuranceDetached(Contrat_assurance e);
+       
         void SaveChange();
         //int FindPaysBySocAssurence(int Id_societe_assurance);
         //int FindGouverneratBySocAssurence(int Id_societe_assurance);
@@ -126,6 +164,6 @@ namespace Service
         //int FindDelegationBySocAssurence(int Id_societe_assurance);
     }
 
-}
+
 
 

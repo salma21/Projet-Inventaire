@@ -1,0 +1,177 @@
+﻿@model Domain.Societe_assurance
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+
+                <h4 class="title" color="#58666e" font-weight="bold"> Edit Societe Assurance</h4>
+
+
+
+                <div class="panel-body">
+                    <!-- Start Modal Code -->
+                    <!-- End Moda Code -->
+                </div>
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+                       
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        @Html.HiddenFor(model => model.Id_societe_assurance)
+                        <div class="panel panel-default">
+                            <fieldset>
+
+                              
+
+                                <div class="form-group">
+                                    <CENTER>
+                                        <TABLE border=0>
+                                            <TR>
+
+                                                <TD width=33%>
+                                                    <label class="col-sm-4 control-label form-label">Nom </label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control", required = "" })
+
+                                                    </div>
+                                                </TD>
+
+                                                <TD width=35%>
+                                                    <label class="col-sm-4 control-label form-label">Email </label>
+
+                                                    <div class="col-sm-8">
+                                                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "" })
+
+
+                                                    </div>
+                                                </TD>
+
+
+                                            </TR>
+
+                                        </TABLE>
+                                    </CENTER>
+
+                                </div>
+
+                                <div class="form-group">
+                                    <CENTER>
+                                        <TABLE width=100%>
+                                            <TR>
+                                                <TD width=33%>
+                                                    <label class="col-sm-4 control-label form-label"> TEl</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", required = "" })
+                                                    </div>
+                                                </TD>
+                                                <TD width=35%>
+                                                    <label class="col-sm-4 control-label form-label">Fax</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.TextBoxFor(model => model.Fax, new { @class = "form-control", required = "" })
+
+                                                    </div>
+                                                </TD>
+
+                                                <TD width=35%>
+                                                    <label class="col-sm-4 control-label form-label">Autre</label>
+
+                                                    <div class="col-sm-8">
+
+
+                                                        @Html.TextBoxFor(model => model.Commentaire, new { @class = "form-control" })
+                                                    </div>
+                                                </TD>
+                                            </TR>
+                                        </TABLE>
+                                    </CENTER>
+                                </div>
+
+
+
+                            </fieldset>
+                            <br />
+
+                            <fieldset>
+
+                                <legend>Localisation</legend>
+
+                                <div class="form-group">
+                                    <CENTER>
+                                        <TABLE width=80%>
+                                            <TR>
+                                                <TD width=50%>
+                                                    <label class="col-sm-4 control-label form-label">Adresse</label>
+
+                                                    <div class="col-sm-8">
+
+                                                        @Html.TextBoxFor(model => model.Rue, new { @class = "form-control", required = "" })
+
+
+                                                    </div>
+                                                </TD>
+                                                <TD width=40%>
+                                                    <label class="col-sm-4 control-label form-label"> Ville</label>
+
+                                                    <div class="col-sm-8">
+                                                        @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                                    </div>
+                                                </TD>
+
+
+                                            </TR>
+
+                                        </TABLE>
+                                    </CENTER>
+                                </div>
+
+
+
+                            </fieldset>
+                            <br>
+                            <div style="text-align: center;">
+
+                                <input type="submit" value="Valider" class="btn btn-default" />
+                                <button type="reset" class="btn btn-white">Annuler</button>
+
+
+
+                            </div>
+
+
+
+
+
+                        </div>
+
+                        </div>
+                        }
+
+                   
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
