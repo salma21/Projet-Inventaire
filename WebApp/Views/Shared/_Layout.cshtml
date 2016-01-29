@@ -47,7 +47,14 @@
         <!-- Start Top Menu -->
         <ul class="topmenu">
         
-          
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Materiels <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                    <li><a href="~/Categorie_materiel/GetCategorie_materiel">Categorie Materiel </a></li>
+                    <li><a href="~/Categorie_materiel/GetCategorie_Designation">Sous Categorie </a></li>
+                    <li><a href="~/Categorie_materiel/GetCategorie_Model">Modele </a></li>
+                     </ul>
+            </li>
             <li class="dropdown">
                 <a href="#" data-toggle="dropdown" class="dropdown-toggle">Contrat <span class="caret"></span></a>
                 <ul class="dropdown-menu">
@@ -247,9 +254,7 @@
                 <a href="~/inventaire/CreateInventaire"><i class="fa fa-plus-circle"></i>Nouveau</a>
             </li>
 
-            <li class="col-sm-2">
-                <a href="~/ImportExport/Index"><i class="fa fa-folder-open"></i>Parcourir</a>
-            </li>
+            
             <li class="col-sm-2">
                 <a href="~/Admin/GetUsers"><i class="fa fa-users"></i>Utilisateur</a>
             </li>
@@ -274,17 +279,17 @@
                 <a href="~/Gestion/GetBiens"><i class="fa fa-line-chart"></i>Statistiques</a>
             </li>
             <li class="col-sm-2">
-                <a href="~/Gestion/GetMouvement"><i class="fa fa-bar-chart"></i>Mouvement Véhicules</a>
+                <a href="~/Gestion/GetMouvement"><i class="fa fa-arrows"></i>Mouvement Véhicules</a>
             </li>
             <li class="col-sm-2">
-                <a href="~/Gestion/GetMouvementB"><i class="fa fa-bar-chart "></i>Mouvement Biens</a>
+                <a href="~/Gestion/GetMouvementB"><i class="fa fa-arrows-alt "></i>Mouvement Biens</a>
             </li>
             <li class="col-sm-2">
                 <a href="~/Gestion/GetVehicule"><i class="fa fa-car"></i>Véhicule</a>
             </li>
 
             <li class="col-sm-2">
-                <a href="~/Inventaire/GetInventaire"><i class="fa fa-outdent"></i>Inventaire</a>
+                <a href="~/Inventaire/GetInventaire"><i class="fa fa-tasks"></i>Inventaire</a>
             </li>
         </ul>
 

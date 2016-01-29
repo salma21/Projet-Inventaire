@@ -22,6 +22,18 @@ namespace Data.Repositories
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
+        public void UpdateCategorie_DesignationDetached(CategorieDesignation e)
+        {
+            CategorieDesignation existing = FindCategorie_DesignationById(e.Id_categorie);
+            ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
+            this.DataContext.Entry(e).State = EntityState.Modified;
+        }
+        public void UpdateCategorie_ModeleDetached(Sous_categorie e)
+        {
+            Sous_categorie existing = FindCategorie_ModeleById(e.Id_categorie);
+            ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
+            this.DataContext.Entry(e).State = EntityState.Modified;
+        }
         public Categorie_materiel FindCategorie_materielByNom(String  id)
         {
 
@@ -30,6 +42,27 @@ namespace Data.Repositories
                         select p);
             return pers.FirstOrDefault();
         }
+
+        public CategorieDesignation FindCategorie_DesignationById(int id)
+        {
+
+            var pers = (from p in DataContext.CategorieDesignation
+                        where p.id_categorie_Designation == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
+
+        public Sous_categorie FindCategorie_ModeleById(int id)
+        {
+
+            var pers = (from p in DataContext.Sous_categorie
+                        where p.IdSousCategorie == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
+
+
+
         public IEnumerable<CategorieDesignation> FindPorduitByID(int id)
         {
 
@@ -38,11 +71,25 @@ namespace Data.Repositories
                         select p);
             return pers.ToList();
         }
+
+        public IEnumerable<Sous_categorie> FindModeleByIdDes(int id)
+        {
+
+            var pers = (from p in DataContext.Sous_categorie
+                        where p.id_categorie_Designation == id
+                        select p);
+            return pers.ToList();
+        }
     }
 
 
     public interface ICategorie_materielRepository : IRepository<Categorie_materiel>
     {
+        void UpdateCategorie_ModeleDetached(Sous_categorie e);
+        void UpdateCategorie_DesignationDetached(CategorieDesignation e);
+        CategorieDesignation FindCategorie_DesignationById(int id);
+        Sous_categorie FindCategorie_ModeleById(int id);
+        IEnumerable<Sous_categorie> FindModeleByIdDes(int id);
         Categorie_materiel FindCategorie_materielByNom(String id);
         void UpdateCategorie_materielDetached(Categorie_materiel e);
         IEnumerable<CategorieDesignation> FindPorduitByID(int id);

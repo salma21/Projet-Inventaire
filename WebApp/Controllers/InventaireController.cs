@@ -262,6 +262,44 @@ namespace WebApp.Controllers
             }
         }
 
+
+        public ActionResult EditInventaire(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
+            var inv = db.GetInvById(id);
+            return View();
+        }
+
+        // POST: Gestion/Create
+        [HttpPost]
+        public ActionResult EditInventaire(Inventaire reg)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    
+                    db.UpdateInventaireDetached(reg);
+                    db.SaveInventaire();
+
+                    return RedirectToAction("GetInventaire");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+
+                return View();
+            }
+        }
+
         // GET: Inventaire/Details/5
         public ActionResult Details(int id)
         {

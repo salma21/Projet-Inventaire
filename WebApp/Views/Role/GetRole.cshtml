@@ -29,7 +29,7 @@
                         </tr>
                     </thead>
 
-                   
+
 
                     <tbody>
                         @foreach (var item in Model)
@@ -54,10 +54,7 @@
                     </tbody>
                 </table>
                 <br /><p>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                    @Html.ActionLink("Ajouter un nouveau Rôle", "CreateRole")
-}
+                    @Html.ActionLink("Ajouter un nouveau Rôles", "CreateRole")
                 </p>
 
             </div>

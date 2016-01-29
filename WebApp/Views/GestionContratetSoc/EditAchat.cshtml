@@ -1,17 +1,13 @@
 ﻿@model Domain.Achat
-
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
 
-                <h4 class="title" color="#58666e" font-weight="bold"> Modification Contrat Achat</h4>
-                <ol class="breadcrumb">
-                   
-
-
-                </ol>
+                <h4 class="title" color="#58666e" font-weight="bold"> Edit Contrat Achat</h4>
+                <ol class="breadcrumb"></ol>
 
 
 
@@ -26,139 +22,132 @@
                 </ul>
             </div>
             <div class="panel-body">
-                @using (@Html.BeginForm("EditAchat", "GestionContratetSoc", FormMethod.Post,
-new { @id = "frmId", @class = "fieldset-form" }))
+
+                @using (Html.BeginForm())
                 {
                     @Html.AntiForgeryToken()
 
-                   
-
-                        @Html.ValidationSummary(true)
+                    <div class="form-horizontal">
+                      
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         @Html.HiddenFor(model => model.Id_achat)
-                    
-                        <div class="panel panel-default">
-                           <fieldset>
 
-                            <legend>Acquisition (Achat)</legend>
-                               @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">N° facture</label>
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label">N° facture</label>
 
-                                    <div class="col-md-8">
+                                <div class="col-md-8">
 
-                                        @Html.EditorFor(model => model.Num_facture, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Num_facture, String.Empty, new { @class = "test" })
-                                    </div>
+                                    @Html.EditorFor(model => model.Num_facture, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Num_facture, String.Empty, new { @class = "test" })
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Fournisseur</label>
-
-                                    <div class="col-md-8">
-
-                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-
-
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> Num Livraison</label>
-
-                                    <div class="col-md-8">
-
-                                        @Html.EditorFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Num_livraison, String.Empty, new { @class = "test" })
-
-                                    </div>
-                                </div>
-
-                                        </div>
-
-                            <br />
-                            <br />
-                            <div class="form-group">
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">N° de commande</label>
-
-                                    <div class="col-md-8">
-
-                                        @Html.EditorFor(model => model.Num_commande, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Num_commande, String.Empty, new { @class = "test" })
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
-
-                                    <div class="col-md-8">
-                                        @Html.EditorFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Prix_d_achat, String.Empty, new { @class = "test" })
-                                
-                                    </div>
-                                </div>
-
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label"> Date Livraison</label>
-
-                                        <div class="col-md-8">
-
-
-                                            @Html.EditorFor(model => model.Date_livraison, new { @class = "form-control", required = "" } )
-                                        </div>
-                                    </div><br />
-                                    <br />
-                                    <br />
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> </label>
-
-                                    <div class="col-md-8">
-                                     
-                                    </div>
-                                </div>
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label"> Date d'Achat</label>
-
-                                        <div class="col-md-8">
-                                            @Html.EditorFor(model => model.Date_d_achat, new { @class = "form-control", required = ""})
-                                        </div>
-                                    </div>
-
                             </div>
-                        </fieldset>
-                            <br/>
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label">Fournisseur</label>
+
+                                <div class="col-md-8">
+
+                                    @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
 
 
-                            <br>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label"> N° Livraison</label>
 
+                                <div class="col-md-8">
 
-                            <div style="text-align: center;">
+                                    @Html.EditorFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Num_livraison, String.Empty, new { @class = "test" })
 
-                                <input type="submit" value="Valider" class="btn btn-default" />
-                              
-                                <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetAchat")</button>
-
-
-
+                                </div>
                             </div>
 
+                        </div>
+
+                        <br />
+                        <br />
+                        <div class="form-group">
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label">N° de commande</label>
+
+                                <div class="col-md-8">
 
 
 
+                                    @Html.EditorFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+
+                                    @Html.ValidationMessageFor(model => model.Num_commande, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
+
+                                <div class="col-md-8">
+
+
+                                    @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Prix_d_achat, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label"> Date Livraison</label>
+
+                                <div class="col-md-8">
+
+
+                                    @Html.EditorFor(model => model.Date_livraison, new { @class = "form-control", required = "" })
+                                </div>
+                            </div><br />
+                            <br />
+                            <br />
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label"> </label>
+
+                                <div class="col-md-8">
+
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-4 control-label form-label"> Date d'Achat</label>
+
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Date_d_achat, new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+
+                        </div>
+                      
+                        <br />
+
+
+                        <br /><br /> <div style="text-align: center;">
+
+                            <input type="submit" value="Valider" class="btn btn-default" /> &nbsp; &nbsp; &nbsp;
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetAchat")</button>
 
 
 
                         </div>
-                        }
+
+
+
+
+
+
+
                     </div>
+                }
+            </div>
 
             <p>
-                @Html.ActionLink("Retour", "GetAchat")
+                @Html.ActionLink("Liste des contrats d'achat", "GetAchat")
             </p>
         </div>
-        
+
     </div>
 
 </div>
