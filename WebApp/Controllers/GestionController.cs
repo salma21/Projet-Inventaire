@@ -52,7 +52,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBatiment(Batiment reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 batiment.CreateBatiment(reg);
                 batiment.SaveBatiment();
@@ -63,6 +65,19 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+
+                return View();
             }
         }
 
@@ -81,7 +96,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditBatiment(Batiment reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 var bat = batiment.FindBatimentByID(reg.idBatiment);
             //var bat2 = BissInventaireEntities.Instance.Batiment.Find(reg.idBatiment);
@@ -96,7 +113,20 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
     }
 
-}
+            }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+
+                return View();
+            }
+        }
 
         public ActionResult EditDelegation(int id)
          {
@@ -112,20 +142,34 @@ namespace WebApp.Controllers
         public ActionResult EditDelegation(Delegation reg)
         {
             var bat = del.FindDelByID(reg.idDelegation);
-            try
-            {
-                del.UpdateDelegationDetached(reg);
-            del.SaveDelegation();
 
-            return RedirectToAction("GetDelegation");
-            }
-            catch (Exception ex)
+            if (ModelState.IsValid)
             {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
+                try
+                {
+                    del.UpdateDelegationDetached(reg);
+                    del.SaveDelegation();
 
-        }
+                    return RedirectToAction("GetDelegation");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+
+                return View();
+            }
+            }
+        
 
         public ActionResult EditDirection(int id)
         {
@@ -138,9 +182,11 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditDirection(Direction reg)
         {
-           
-            try
+            if (ModelState.IsValid)
             {
+
+                try
+                {
                 dir.UpdateDirectionDetached(reg);
                 dir.SaveDirection();
 
@@ -152,6 +198,12 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
 
+        }
+            else
+
+            {
+               return View();
+            }
         }
         public ActionResult GetFournisseur()
         {
@@ -173,7 +225,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateFournisseur(Fournisseur reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 four.CreateFournisseur(reg);
                 four.SaveFournisseur();
@@ -184,6 +238,16 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                return View();
             }
         }
 
@@ -202,7 +266,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditFournisseur(Fournisseur reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 four.UpdateFournisseurDetached(reg);
                 four.SaveFournisseur();
@@ -213,6 +279,16 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                return View();
             }
         }
 
@@ -237,7 +313,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateParcAuto(Parc_auto reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
 
                 parc.CreateParc_auto(reg);
@@ -251,6 +329,18 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
 
+        }
+            else
+
+            {
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "code");
+                ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+                ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                return View();
+            }
         }
 
 
@@ -269,7 +359,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditParcAuto(Parc_auto reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
 
                 parc.UpdateParc_autoDetached(reg);
@@ -283,6 +375,15 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
 
+        }
+            else
+
+            {
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "code");
+
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                return View();
+            }
         }
         public ActionResult Details(int id)
         {
@@ -309,7 +410,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateRegion(Region reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Region.Add(reg);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -319,6 +422,13 @@ namespace WebApp.Controllers
             {
                  LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                return View();
             }
         }
         public ActionResult EditRegion(int id)
@@ -332,7 +442,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditRegion(Region reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
               db.UpdateRegionDetached(reg);
                db.SaveRegion();
@@ -344,7 +456,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                return View();
+            }
+        }
         public ActionResult GetBiens()
         {
          
@@ -419,7 +537,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateGouvernorat(Gouvernorat gouv)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -429,6 +549,14 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                return View();
             }
         }
 
@@ -443,7 +571,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateGouvernorat1(Gouvernorat gouv)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -453,6 +583,14 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                return View();
             }
         }
         public ActionResult EditGouvernorat(int id)
@@ -467,7 +605,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditGouvernorat(Gouvernorat gouv)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 db1.UpdateGouvernoratDetached(gouv);
                 db1.SaveGouvernorat();
@@ -479,7 +619,14 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                return View();
+            }
+        }
 
         //Delegation
 
@@ -515,16 +662,33 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateDelegation(Delegation deleg)
         {
-            try
+          if (ModelState.IsValid)
             {
-                BissInventaireEntities.Instance.Delegation.Add(deleg);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetDelegation");
+
+                try
+                {
+
+                    BissInventaireEntities.Instance.Delegation.Add(deleg);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetDelegation");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+
             }
-            catch (Exception ex)
+
+            else
+
             {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
+              //  ViewBag.msg = "Verifier l code postal";
+                ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+
+                return View();
             }
         }
 
@@ -561,7 +725,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateOrganisation(Organisation org)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Organisation.Add(org);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -571,6 +737,13 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+                
+                return View();
             }
         }
         public ActionResult EditOrganisation(int id)
@@ -584,7 +757,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditOrganisation(Organisation org)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 db3.UpdateOrganisationDetached(org);
                 db3.SaveOrganisation();
@@ -596,7 +771,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+
+                return View();
+            }
+        }
 
 
         //Pays
@@ -631,7 +812,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreatePays(Pays pay)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Pays.Add(pay);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -643,7 +826,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+
+                return View();
+            }
+        }
 
         //Direction
 
@@ -677,7 +866,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateDirection(Direction direction)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Direction.Add(direction);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -687,6 +878,13 @@ namespace WebApp.Controllers
             {
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
+            }
+        }
+            else
+
+            {
+
+                return View();
             }
         }
         public ActionResult GetEtage()
@@ -711,7 +909,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateEtage(Etage etg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Etage.Add(etg);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -723,7 +923,18 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                return View();
+            }
+        }
         public ActionResult EditEtage(int id)
         {
 
@@ -742,7 +953,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditEtage(Etage etg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 etage.UpdateEtageDetached(etg);
                 etage.SaveEtage();
@@ -754,7 +967,18 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                return View();
+            }
+        }
         public ActionResult Getmateriel()
         {
             var mat = con.Categorie_materiel.ToList();
@@ -770,7 +994,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Createmateriel(Categorie_materiel reg)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Categorie_materiel.Add(reg);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -782,7 +1008,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                
+                return View();
+            }
+        }
         //Vehicule
 
         private IVehiculeService db6 = new VehiculeService();
@@ -847,7 +1079,10 @@ namespace WebApp.Controllers
             veh.Id_societe_assurance = idSocA;
             veh.idBatiment = idBat;
 
-            try
+            if (ModelState.IsValid)
+            {
+
+                try
             {
                 BissInventaireEntities.Instance.Vehicule.Add(veh);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -859,7 +1094,17 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+                ViewData["garanti"] = new SelectList(BissInventaireEntities.Instance.Contrat_garanti.ToList(), "Id_contrat_garanti", "Num");
+                ViewData["assurance"] = new SelectList(BissInventaireEntities.Instance.Contrat_assurance.ToList(), "Id_contrat_assurance", "Num");
+                ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat_maintenance.ToList(), "Id_contrat_maintenance", "Num");
+                ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+                return View();
+            }
+        }
 
 
 
@@ -915,8 +1160,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateMouvementB(MouvementB mou, FormCollection collection)
         {
-
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 db8.CreateMouvementB(mou);
                 db8.SaveMouvementB();
@@ -958,7 +1204,17 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "description");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Num_serie");
+
+                return View();
+            }
+        }
 
         [HttpPost]
         public ActionResult FindBatimentByDelegation(int delegid)
@@ -993,12 +1249,7 @@ namespace WebApp.Controllers
         }
 
 
-
-
-
-
-
-
+        
 
         //MouvementVehicule
 
@@ -1052,8 +1303,10 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateMouvementV(MouvementV mouv, FormCollection collection)
         {
+            if (ModelState.IsValid)
+            {
 
-            try
+                try
             {
                 db7.CreateMouvementV(mouv);
             db7.SaveMouvementV();
@@ -1096,7 +1349,17 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["vehicule"] = new SelectList(BissInventaireEntities.Instance.Vehicule.ToList(), "Id_Vehicule", "Matricule");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+
+                return View();
+            }
+        }
         [HttpPost]
         public ActionResult GetBatimentByDelegation(int delegid)
         {

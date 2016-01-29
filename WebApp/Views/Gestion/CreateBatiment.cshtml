@@ -1,5 +1,5 @@
 ﻿@model Domain.Batiment
-
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-12">
@@ -30,8 +30,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.code, new { @class = "form-control", required = "" })
-                                    
+                                    @Html.EditorFor(model => model.code, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.code, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -40,7 +40,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <div class="col-lg-6">
 
                                     @Html.TextBoxFor(model => model.description, new { @class = "form-control", required = "" })
-
+                                    @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -80,7 +80,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetBatiment")</button>
 
                         </div>
 
@@ -88,7 +88,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                 </div>
-
+                <p>
+                    @Html.ActionLink("Liste Des Batiments", "GetBatiment")
+                </p>
              
 
             </div>

@@ -329,23 +329,23 @@ $.extend($.validator, {
 	},
 
 	messages: {
-		required: "This field is required.",
+	    required: "Ce champ est obligatoire.",
 		remote: "Please fix this field.",
-		email: "Please enter a valid email address.",
+		email: "S'il vous plaît, mettez une adresse email valide.",
 		url: "Please enter a valid URL.",
-		date: "Please enter a valid date.",
+		date: "S'il vous plaît,entrez une date valide.",
 		dateISO: "Please enter a valid date (ISO).",
-		number: "Please enter a valid number.",
+		number: "S'il vous plait, entrez un nombre valide.",
 		digits: "Please enter only digits.",
 		creditcard: "Please enter a valid credit card number.",
 		equalTo: "Please enter the same value again.",
 		accept: "Please enter a value with a valid extension.",
-		maxlength: $.validator.format("Please enter no more than {0} characters."),
-		minlength: $.validator.format("Please enter at least {0} characters."),
-		rangelength: $.validator.format("Please enter a value between {0} and {1} characters long."),
-		range: $.validator.format("Please enter a value between {0} and {1}."),
-		max: $.validator.format("Please enter a value less than or equal to {0}."),
-		min: $.validator.format("Please enter a value greater than or equal to {0}.")
+		maxlength: $.validator.format("S'il vous plaît entrez pas plus que {0} caractères."),
+		minlength: $.validator.format("S'il vous plaît entrer au moins {0} caractères."),
+		rangelength: $.validator.format("S'il vous plaît entrer une valeur comprise entre {0} et {1} caractères."),
+		range: $.validator.format("S'il vous plaît entrer une valeur comprise entre {0} et {1}."),
+		max: $.validator.format("S'il vous plaît entrer une valeur inférieure ou égale à {0}."),
+		min: $.validator.format("S'il vous plaît entrer une valeur supérieure ou égale à {0}.")
 	},
 	
 	autoCreateRanges: false,

@@ -11,7 +11,8 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Batiment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -28,7 +29,15 @@ namespace Domain
         public Nullable<int> idGouvernorat { get; set; }
         public int idDelegation { get; set; }
         public int idBatiment { get; set; }
+        [Required]
+   
+        [Range(1, 10000, ErrorMessage = "Le code est invalide")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le code est invalide")]
+        [Column]
         public Nullable<int> code { get; set; }
+        [Required]
+        [StringLength(50, MinimumLength = 4, ErrorMessage = "La description est invalide")]
+        [RegularExpression(@"^[a-zA-Z 0-9]+$+$", ErrorMessage = "La description est invalide")]
         public string description { get; set; }
     
         public virtual Delegation Delegation { get; set; }

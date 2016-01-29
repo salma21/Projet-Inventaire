@@ -54,7 +54,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateRole(Role Catm, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 BissInventaireEntities.Instance.Role.Add(Catm);
                 BissInventaireEntities.Instance.SaveChanges();
@@ -66,7 +68,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+               
+                return View();
+            }
+        }
         // GET: Role/Edit/5
         public ActionResult Edit(int id)
         {
@@ -79,7 +87,9 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Edit(Role role, FormCollection collection)
         {
-            try
+            if (ModelState.IsValid)
+            {
+                try
             {
                 db.UpdateRoleDetached(role);
                 db.SaveRole();
@@ -92,7 +102,13 @@ namespace WebApp.Controllers
                 return RedirectToAction("Index", "Error");
             }
         }
+            else
 
+            {
+               
+                return View();
+            }
+        }
         // GET: Role/Delete/5
         public ActionResult Delete(int id)
         {

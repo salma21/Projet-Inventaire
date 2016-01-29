@@ -1,5 +1,5 @@
 ﻿@model Domain.Achat
-
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 
 <div class="row">
     <div class="col-md-12">
@@ -33,6 +33,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <fieldset>
 
                             <legend>Acquisition (Achat)</legend>
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
 
                             <div class="form-group">
                                 <div class="col-md-4">
@@ -40,8 +43,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     <div class="col-md-8">
 
-                                        @Html.TextBoxFor(model => model.Num_facture, new { @class = "form-control", required = "" })
-
+                                        @Html.EditorFor(model => model.Num_facture, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Num_facture, String.Empty, new { @class = "test" })
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -57,12 +60,12 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     </div>
                                 </div>
                                 <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> Num Livraison</label>
+                                    <label class="col-sm-4 control-label form-label"> N° Livraison</label>
 
                                     <div class="col-md-8">
 
-                                        @Html.TextBoxFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
-
+                                        @Html.EditorFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Num_livraison, String.Empty, new { @class = "test" })
 
                                     </div>
                                 </div>
@@ -79,7 +82,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
 
-                                        @Html.TextBoxFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+                                        @Html.EditorFor(model => model.Num_commande, new { @class = "form-control", required = "" })
+
+                                        @Html.ValidationMessageFor(model => model.Num_commande, String.Empty, new { @class = "test" })
                                     </div>
                                 </div>
                                 <div class="col-md-4">
@@ -89,6 +94,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                                         @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Prix_d_achat, String.Empty, new { @class = "test" })
                                     </div>
                                 </div>
 
@@ -126,7 +132,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <br /><br /> <div style="text-align: center;">
 
                             <input type="submit" value="Valider" class="btn btn-default" /> &nbsp; &nbsp; &nbsp;
-                             <button type="reset" class="btn btn-white">Annuler</button>
+                                         <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetAchat")</button>
 
 
 
