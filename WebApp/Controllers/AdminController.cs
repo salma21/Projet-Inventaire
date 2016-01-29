@@ -21,34 +21,43 @@ namespace WebApp.Controllers
         // GET: Admin
         public ActionResult Index()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
         public ActionResult GetBureuax()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var bure = db.GetBureaux();
             return View(bure);
         }
 
-        
+
         public ActionResult GetUsers()
         {
-            
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var users = db1.GetUtilisateurs();
             return View(users);
         }
 
-       
+
 
         public ActionResult Dashboard()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
-           
+
         }
 
         // GET: Admin/Details/5
         public ActionResult DetailsBien(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             try
             {
 
@@ -70,6 +79,8 @@ namespace WebApp.Controllers
         // GET: Admin/Create
         public ActionResult CreateBureaux()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
             ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
@@ -81,21 +92,23 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBureaux(Bureau Bur, FormCollection collection)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
                 try
-            {
-                db.CreateBureau(Bur);
-                db.SaveBureau();
+                {
+                    db.CreateBureau(Bur);
+                    db.SaveBureau();
 
-                return RedirectToAction("GetBureuax");
+                    return RedirectToAction("GetBureuax");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch(Exception ex  )
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -111,7 +124,8 @@ namespace WebApp.Controllers
 
         public ActionResult EditUser(int id)
         {
-            
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var ise = db1.GetUtilisateurById(id);
             ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
@@ -124,13 +138,15 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditUser(Utilisateur user, FormCollection collection)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
                 db1.UpdateUtilisateurDetached(user);
-             db1.SaveEmploye();
+                db1.SaveEmploye();
 
                 return RedirectToAction("GetUsers");
-        }
+            }
             else
 
             {
@@ -146,6 +162,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult FindPersByBatiment(int Persid)
         {
+            
             List<Personnel> objcity = new List<Personnel>();
             objcity = db1.FindPersByBatiment(Persid).ToList();
 
@@ -154,6 +171,8 @@ namespace WebApp.Controllers
         }
         public ActionResult CreateBien()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
             ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
             ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_societe_maintenance", "Libelle");
@@ -172,28 +191,24 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBien(Bien Bur, FormCollection collection)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
 
 
-                //int region = db2.FindRegionByDelegation(Bur.idDelegation);
-                //int gouv = db2.FindGouvByDelegation(Bur.idDelegation);
-                //int pays = db2.FindPaysByDelegation(Bur.idDelegation);
-                //int organisation = db2.FindOrganisationByDelegation(Bur.idBatiment);
+                
                 int direct = db2.FindDirectionByDelegation((int)Bur.id_bureau);
 
-            //Bur.idRegion = region;
-            //Bur.idGouvernorat = gouv;
-            //Bur.idPays = pays;
-            //Bur.idOrganisation = organisation;
-            Bur.id_direction = direct;
+             
+                Bur.id_direction = direct;
 
-            BissInventaireEntities.Instance.Bien.Add(Bur);
+                BissInventaireEntities.Instance.Bien.Add(Bur);
                 BissInventaireEntities.Instance.SaveChanges();
 
                 return RedirectToAction("RapportBien");
-        
-        }
+
+            }
             else
 
             {
@@ -214,6 +229,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateBienAdmin()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["depts"] = new SelectList(db.GetBureaux(), "Id", "Description");
             return View();
         }
@@ -222,43 +239,47 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateBienAdmin(Bien Bur, FormCollection collection)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
 
                 try
                 {
-                BissInventaireEntities.Instance.Bien.Add(Bur);
-                BissInventaireEntities.Instance.SaveChanges();
+                    BissInventaireEntities.Instance.Bien.Add(Bur);
+                    BissInventaireEntities.Instance.SaveChanges();
 
-                return RedirectToAction("RapportBien");
-                  }
+                    return RedirectToAction("RapportBien");
+                }
 
                 catch (Exception ex)
-                 {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-                  }
-              }
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
             else
 
             {
                 ViewData["depts"] = new SelectList(db.GetBureaux(), "Id", "Description");
-                
+
                 return View();
             }
         }
-     
 
 
-        public ActionResult RapportBien( string Delegation, string Etage, string Batiment)
+
+        public ActionResult RapportBien(string Delegation, string Etage, string Batiment)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
 
             var delegation = BissInventaireEntities.Instance.Delegation.ToList();
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
-          
 
-           
+
+
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
             ViewData["delegation"] = new SelectList(delegation, "libelle", "libelle");
@@ -274,13 +295,13 @@ namespace WebApp.Controllers
             }
             else
             {
-               
+
                 var dep = from s in bien select s;
-                if ( String.IsNullOrEmpty(Etage) || (String.IsNullOrEmpty(Batiment)))
+                if (String.IsNullOrEmpty(Etage) || (String.IsNullOrEmpty(Batiment)))
                 {
-                    dep = dep.Where(s =>  (string.IsNullOrEmpty(Etage) || (s.Etage.description.ToString().StartsWith(Etage)))
+                    dep = dep.Where(s => (string.IsNullOrEmpty(Etage) || (s.Etage.description.ToString().StartsWith(Etage)))
                     && (string.IsNullOrEmpty(Batiment) || (s.Etage.Batiment.description.ToString().StartsWith(Batiment)))
-                  
+
                     );
 
                 }
@@ -288,7 +309,7 @@ namespace WebApp.Controllers
                 {
                     dep = dep.Where(s => (s.Etage.description.ToString().StartsWith(Etage))
                     && (s.Etage.Batiment.description.ToString().StartsWith(Batiment))
-                  
+
                         );
 
                 }
@@ -301,6 +322,8 @@ namespace WebApp.Controllers
         }
         public ActionResult EditBureaux(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var pers = db.FindBureauByID(id);
             ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
@@ -314,6 +337,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditBureaux(Bureau pers, FormCollection collection)
         {
+
             if (ModelState.IsValid)
             {
 
@@ -322,8 +346,8 @@ namespace WebApp.Controllers
 
                 return RedirectToAction("GetBureaux");
 
-        }
-         else
+            }
+            else
 
             {
                 ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
@@ -331,11 +355,11 @@ namespace WebApp.Controllers
                 ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
 
                 return View();
-    }
-}
+            }
+        }
 
-// POST: Admin/Create
-[HttpPost]
+        // POST: Admin/Create
+        [HttpPost]
         public ActionResult ActDesactiveUsers(int id)
         {
 
@@ -368,6 +392,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateUsers()
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             return View();
@@ -380,48 +406,48 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                user.etatUtilisateur = true;
-                db1.CreateUtilisateurs(user);
-                db1.SaveEmploye();
-
-                return RedirectToAction("GetUsers");
-            }
-            catch (DbEntityValidationException r)
-            {
-
-
-                foreach (var eve in r.EntityValidationErrors)
                 {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
-                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
-                            ve.PropertyName + " " + ve.ErrorMessage);
-                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+                    user.etatUtilisateur = true;
+                    db1.CreateUtilisateurs(user);
+                    db1.SaveEmploye();
 
-
-                    }
+                    return RedirectToAction("GetUsers");
                 }
+                catch (DbEntityValidationException r)
+                {
 
-                return RedirectToAction("Index", "Error");
+
+                    foreach (var eve in r.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                            eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                            LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                                ve.PropertyName + " " + ve.ErrorMessage);
+                            ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+
+
+                        }
+                    }
+
+                    return RedirectToAction("Index", "Error");
+                }
+                catch (SqlException sq)
+                {
+                    LogThread.WriteLine(sq.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (SqlException sq)
-            {
-                LogThread.WriteLine(sq.Message);
-                return RedirectToAction("Index", "Error");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -458,6 +484,8 @@ namespace WebApp.Controllers
         // GET: Admin/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             return View();
         }
 
@@ -483,7 +511,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult GetEtageByBatiment(int stateid)
         {
-          
+
             List<Bureau> objcity = new List<Bureau>();
 
             objcity = db.FindBureauByBatiment(stateid).ToList();
@@ -493,7 +521,7 @@ namespace WebApp.Controllers
         }
 
 
-      
+
 
 
 

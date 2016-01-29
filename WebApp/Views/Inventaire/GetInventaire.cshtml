@@ -1,5 +1,14 @@
 ﻿@model IEnumerable<Domain.Inventaire>
 
+@using Service
+@{ 
+    IInventaireBienService db1 = new InventaireBienService();
+    IInventaireService db = new InventaireService();
+    IInventaireVehService db2 = new InventaireVehService();
+    var inv = db.GetInventaires();
+    var ass = db1.GetInventaireBiens();
+    var ass2 = db2.GetInventaireVeh();
+}
 <div class="row">
     <!-- Start Panel -->
     <div class="col-md-12">
@@ -15,53 +24,59 @@
                             <th>Type</th>
                             <th>Date</th>
                             <th>Nombre Des Biens Affectes </th>
-
+                            <th>Nombre Des Vehicules Affectes </th>
                            
 
                             <th>Action</th>
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-                            <th>Nom </th>
-                            <th>Type</th>
-                            <th>Date</th>
-                            <th>Nombre Des Biens Affectes </th>
-
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+                   
 
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            
-                            <tr>
+                            int i = ass.Where(x => x.Id_inventaire == @item.Id_inventaire).Count();
+                            int j = ass2.Where(x => x.Id_inventaire == @item.Id_inventaire).Count();
 
+
+                            <tr>
+                          
+                         
+                            
                                 <td class="center">@item.Nom_</td>
                                 <td class="center">@item.Type</td>
                                 <td class="center">@item.Date</td>
-                                <td class="center">25</td>
-                               
+                                <td class="center">@i</td>
+                                <td class="center">@j</td>
+
+
                                 <td>
-                                    <a href="@Url.Action("AddBien", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-plus-square" title="Ajouter Des Biens"></i></a>
+                                    @if (@Session["Role"].ToString() == "ADMIN") {
+                                    <a href="@Url.Action("AddBien", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-life-bouy" title="Ajouter Des Biens"></i></a>
+                                    <a href="@Url.Action("AddVeh", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-automobile" title="Ajouter Des Vehicules"></i></a>
                                     <a href="@Url.Action("Edit", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                   
+                                    }
                                 </td>
 
                             </tr>
-
-
                         }
+
+
                     </tbody>
+
+
                 </table>
                 <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                     @Html.ActionLink("Ajouter un Nouveau Inventaire", "CreateInventaire")
+}
                 </p>
 
             </div>
         </div>
+       
     </div>
 
 
@@ -71,6 +86,4 @@
 
 
 
-<script>
-    $(document).tooltip();
-</script>
+

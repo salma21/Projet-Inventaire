@@ -47,11 +47,12 @@
                                     <td class="center">@item.Personnel.Role.libelle</td>
 
                                     <td>
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                         <a href="@Url.Action("EditUser", new { id = item.id_user })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                     
-                                   
-                                     
+
+}
+
                                     </td>
 
                                 </tr>
@@ -64,7 +65,10 @@
                         </tbody>
                     </table>
                     <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                         @Html.ActionLink("Ajouter un nouveau User", "CreateUsers")
+}
                     </p>
 
                 </div>

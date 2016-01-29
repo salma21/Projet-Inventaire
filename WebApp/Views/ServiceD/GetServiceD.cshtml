@@ -22,19 +22,13 @@
                             <th>Code Service</th>
                             <th>Nom Service</th>
                             <th>Direction</th>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                             <th>Action</th>
+}
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-                            <th>Code Service</th>
-                            <th>Nom Service</th>
-                            <th>Direction</th>
-                            <th>Action</th>
-
-                        </tr>
-                    </tfoot>
 
                     <tbody>
                         @foreach (var item in Model)
@@ -46,9 +40,10 @@
 
 
                                 <td>
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                     <a href="@Url.Action("EditServiceD", new { id = item.Id_service })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                     </td>
+}    </td>
 
                             </tr>
 
@@ -57,7 +52,10 @@
                     </tbody>
                 </table>
                 <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                     @Html.ActionLink("Ajouter un nouveau service", "CreateServiceD")
+}
                 </p>
 
             </div>

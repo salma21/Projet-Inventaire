@@ -16,12 +16,16 @@ namespace WebApp.Controllers
             // GET: Categorie_materiel
             public ActionResult Index()
             {
-                return View();
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            return View();
             }
 
             public ActionResult GetCategorie_materiel()
             {
-                var Categorie_materiel = db.GetCategorie_materiels();
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var Categorie_materiel = db.GetCategorie_materiels();
                 return View(Categorie_materiel);
             }
 
@@ -29,8 +33,10 @@ namespace WebApp.Controllers
        
             // GET: Categorie_materiel/Details/5
             public ActionResult Details(int Id_categorie)
-            {
-                try
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            try
                 {
 
                     var archive = BissInventaireEntities.Instance.Categorie_materiel.Find(Id_categorie);
@@ -82,6 +88,8 @@ namespace WebApp.Controllers
 
         public ActionResult EditCategorie_materiel(int id)
         {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
             var cat = db.GetCategorie_materiel(id);
             return View(cat);
         }
@@ -115,7 +123,9 @@ namespace WebApp.Controllers
         // GET: Categorie_materiel/Edit/5
         public ActionResult Edit(int Id_categorie)
             {
-                return View();
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            return View();
             }
 
             // POST: Categorie_materiel/Edit/5
@@ -145,7 +155,7 @@ namespace WebApp.Controllers
 
         // GET: Categorie_materiel/Delete/5
         public ActionResult Delete(int Id_categorie)
-            {
+            {   
                 return View();
             }
 

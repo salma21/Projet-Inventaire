@@ -47,9 +47,10 @@
 
 
                                 <td>
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                     <a href="@Url.Action("Edit", new { id = item.Id_mouvementB })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                    
+}
                                 </td>
 
                             </tr>
@@ -59,7 +60,10 @@
                     </tbody>
                 </table>
                 <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                     @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvementB")
+}
                 </p>
 
             </div>

@@ -40,9 +40,11 @@
                                
                                 
                                 <td>
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                                     <a href="@Url.Action("EditParcAuto", new { id = item.Id_parc })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                </td>
+
+}  </td>
 
                             </tr>
 
@@ -51,7 +53,10 @@
                     </tbody>
                 </table>
                 <br /><p>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
                     @Html.ActionLink("Ajouter un nouveaux Parc", "CreateParcAuto")
+}
                 </p>
 
             </div>

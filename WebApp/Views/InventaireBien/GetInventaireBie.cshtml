@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Domain.Association_30>
+
+<<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Inventaires Biens
+            </div>
+
+
+
+            <div class="form-horizontal">
+
+
+                <style>
+                    select {
+                        height: 30px;
+                        width: 220px;
+                    }
+                </style>
+                <div style="margin-left:50px;">
+
+                    <center>
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Ok" class="btn btn-default" />
+
+                        </div>
+                    </center>
+
+                </div>
+                <br /><br />
+            </div>
+
+            <div class="panel panel-default">
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+                               
+                                <th>Designation</th>
+                                <th>Date</th>
+                                <th>Action</th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+                                    @*<td>@Html.DisplayFor(modelItem => item.Bien.)</td>*@
+
+
+                              
+                                  
+                                    <td>@item.Inventaire.Date</td>
+                                    <td>@item.Bien.Designation</td>
+                                    </tr>
+
+
+
+                            }
+                        </tbody>
+                    </table>
+
+          
+                    <br /><p>
+                        @Html.ActionLink("List Inventaire Bien", "GetInventaireBien")
+
+
+                    </p>
+
+          
+</div>
+</div>
+</div>
+</div>
+</div>

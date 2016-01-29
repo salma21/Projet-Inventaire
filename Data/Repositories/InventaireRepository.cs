@@ -21,17 +21,7 @@ namespace Data.Repositories
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-        //public IEnumerable<Bien> FindBineByInv(int id)
-        //{
-
-
-        //    var pers = (from p in DataContext.Bien
-        //                where p.Id_inventaire == id
-        //                select p).ToList();
-
-        //    return pers;
-        //}
-
+     
 
         public IEnumerable<Batiment> FindBatimentByDelegation(int id)
         {
@@ -61,7 +51,13 @@ namespace Data.Repositories
             return pers.ToList();
         }
 
-
+        public Inventaire FindInvById(int id)
+        {
+            var pers = (from p in DataContext.Inventaire
+                        where p.Id_inventaire == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
     }
 
 
@@ -75,6 +71,7 @@ namespace Data.Repositories
         IEnumerable<Etage> FindEtageByBatiment(int id);
 
         IEnumerable<Bien> FindBienByEtage(int id);
+        Inventaire FindInvById(int id);
     }
 
 

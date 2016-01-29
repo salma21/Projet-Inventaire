@@ -1,0 +1,87 @@
+﻿@model IEnumerable<Domain.Association_30>
+@using Service
+@{
+
+    IUtilisateurService kk = new UtilisateurService();
+    IInventaireService InB = new InventaireService();
+
+}
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Inventaires Biens
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+                            <th>Nom Inventaire</th>
+                            <th>Date Inventaire</th>
+                            <th>Designation Bien</th>
+                            <th>Code à barre Bien</th>
+                           
+
+                           
+                        </tr>
+                    </thead>
+
+                    <tfoot>
+                        <tr>
+                            <th>Nom Inventaire</th>
+                            <th>Date Inventaire</th>
+                            <th>Designation Bien</th>
+                            <th>Code à barre Bien</th>
+                           
+                        </tr>
+                    </tfoot>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                @{
+
+                                    var cod = InB.GetInvById(@item.Id_inventaire);
+                                }
+                                <td class="center">@cod.Nom_</td>
+                                <td class="center">@cod.Date</td>
+
+                                @{ 
+
+                                    var code = kk.GetBienById(@item.Id_bien);
+                                }
+                                <td class="center">@code.Designation</td>
+                                <td class="center">@code.Code_a_barre</td>
+                              
+                               
+                               
+
+                            </tr>
+                        }
+
+
+                    </tbody>
+
+
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Affecter des Biens à un inventaire","GetInventaire", "Inventaire")
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+

@@ -46,9 +46,12 @@
                                 <td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>
                                
                                 <td>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
 
                                     <a href="@Url.Action("EditBatiment", new { id = item.idRegion })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                    </td>
+
+} </td>
 
                             </tr>
 
@@ -57,7 +60,10 @@
                     </tbody>
                 </table>
                 <br /><p>
-                    @Html.ActionLink("Ajouter Un Nouveau Batiment", "CreateBatiment")
+@if (@Session["Role"].ToString() == "ADMIN")
+{
+                    @Html.ActionLink("Ajouter une nouvelle Batiment", "CreateBatiment")
+}
                 </p>
 
             </div>
