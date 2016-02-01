@@ -72,6 +72,25 @@ namespace Data.Repositories
             return pers.ToList();
         }
 
+
+        public IEnumerable<CategorieDesignation> GetDesignationAll()
+        {
+
+            var pers = (from p in DataContext.CategorieDesignation
+                       
+                        select p);
+            return pers.ToList();
+        }
+
+        public IEnumerable<Sous_categorie> GetAllModele()
+        {
+
+            var pers = (from p in DataContext.Sous_categorie
+
+                        select p);
+            return pers.ToList();
+        }
+
         public IEnumerable<Sous_categorie> FindModeleByIdDes(int id)
         {
 
@@ -93,6 +112,8 @@ namespace Data.Repositories
         Categorie_materiel FindCategorie_materielByNom(String id);
         void UpdateCategorie_materielDetached(Categorie_materiel e);
         IEnumerable<CategorieDesignation> FindPorduitByID(int id);
+        IEnumerable<CategorieDesignation> GetDesignationAll();
+        IEnumerable<Sous_categorie> GetAllModele();
     }
 
 

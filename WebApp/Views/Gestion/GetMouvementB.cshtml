@@ -23,7 +23,7 @@
                             <th>Date renouvellementt</th>
                             <th>Date retour prévue</th>
                             <th>Date sortie</th>
-                            <th>Action</th>
+                       
                         </tr>
                     </thead>
 
@@ -46,12 +46,6 @@
                                 <td class="center">@item.Date_sortie</td>
 
 
-                                <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvementB })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-}
-                                </td>
 
                             </tr>
 

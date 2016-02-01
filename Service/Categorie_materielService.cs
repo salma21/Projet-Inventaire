@@ -21,6 +21,18 @@ namespace Service
             var Dept = utOfWork.Categorie_materielRepository.GetAll();
             return Dept;
         }
+
+        public IEnumerable<CategorieDesignation> GetCategorie_Designations()
+        {
+            var Dept = utOfWork.Categorie_materielRepository.GetDesignationAll();
+            return Dept;
+        }
+
+        public IEnumerable<Sous_categorie> GetAllModeles()
+        {
+            var Dept = utOfWork.Categorie_materielRepository.GetAllModele();
+            return Dept;
+        }
         public Categorie_materiel FindCategorie_materielByNom(String id)
 
         {
@@ -102,7 +114,8 @@ namespace Service
         Categorie_materiel GetCategorie_materiel(int Id_categorie);
         void CreateCategorie_materiel(Categorie_materiel Dept);
         void DeleteCategorie_materiel(int id);
-
+        IEnumerable<Sous_categorie> GetAllModeles();
+        IEnumerable<CategorieDesignation> GetCategorie_Designations();
         void UpdateCategorie_materielDetached(Categorie_materiel e);
         Categorie_materiel FindCategorie_materielByNom(String id);
         void SaveCategorie_materiel();

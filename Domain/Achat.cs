@@ -39,7 +39,7 @@ namespace Domain
         [Column]
         public Nullable<int> Num_facture { get; set; }
         [Required]
-        [Range(1, 100000, ErrorMessage = "Le numéro de la facture est invalide")]
+        [Range(1, 1000000, ErrorMessage = "Le numéro de commande est invalide")]
         [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le numéro de commande est invalide")]
         [Column]
         public Nullable<int> Num_commande { get; set; }

@@ -276,8 +276,8 @@ namespace WebApp.Controllers
             return View(vv);
         }
 
-        // POST: GestionContratetSoc/Create
-        [HttpPost]
+     
+       [HttpPost]
         public ActionResult EditContrat_Maintenance(Contrat_maintenance contrat, FormCollection collection)
         {
             if (ModelState.IsValid)
@@ -287,7 +287,7 @@ namespace WebApp.Controllers
                     var soc = db1.FindSocMainByID(contrat.Id_societe_maintenance);
                     contrat.idDelegation = soc.idDelegation;
                     con.UpdateContrat_MaintenanceDetached(contrat);
-                    db.SaveChanges();
+                    con.SaveChange();
 
                     return RedirectToAction("GetContrat_Maintenance");
                 }
@@ -694,12 +694,16 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult EditAchat(Achat achte, FormCollection collection)
         {
+           
             if (ModelState.IsValid)
             {
                 try
-            {
+                {
+                    var four = fourni.FindFourByID(achte.Id_fournisseur);
+                    //  achat.Date_d_achat = System.DateTime.Now;
+                    achte.idDelegation = four.idDelegation;
 
-                db1.UpdateAchatDetached(achte);
+                    db1.UpdateAchatDetached(achte);
                 db1.SaveChange();
                 return RedirectToAction("GetAchat");
             }

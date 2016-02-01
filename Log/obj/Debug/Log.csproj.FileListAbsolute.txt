@@ -21,7 +21,4 @@ C:\ATB_SOLUTIONS\Log\bin\Debug\Log.dll
 C:\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
 C:\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
 C:\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb
-C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Log\bin\Debug\Log.dll
-C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
-C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
-C:\Users\rawia\Desktop\27-01 atb\22-01-2016 atb\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb
+C:\ATB_SOLUTIONS\Log\obj\Debug\Log.csprojResolveAssemblyReference.cache

@@ -39,9 +39,10 @@
         <a href="#" class="sidebar-open-button-mobile"><i class="fa fa-bars"></i></a>
         <!-- End Sidebar Show Hide Button -->
         <!-- Start Searchbox -->
-        <form class="searchform">
-           
-            <span class="searchbutton"><i class="fa fa-home"></i></span>
+        <form class="searchform"style="margin-left:-80px;">
+           <span class="searchbutton"><a href="~/Admin/RapportBien"><i class="fa fa-home"></i></a></span>
+
+            
         </form>
         <!-- End Searchbox -->
         <!-- Start Top Menu -->
@@ -92,8 +93,6 @@
                   
                 </ul>
             </li>
-          
-
 
         </ul>
         <!-- End Top Menu -->
@@ -215,7 +214,13 @@
                 </ul>
             </li>
 
-      
+      @if (@Session["Role"].ToString() == "ADMIN")
+      {
+           
+        <li>
+            <a href="~/Admin/GetTrace"><span  class="icon color7"><i class="fa fa-file-text-o"></i></span>Historique</a></li>
+      }
+
             
         </ul>
         <div>
