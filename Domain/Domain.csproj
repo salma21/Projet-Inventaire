@@ -54,21 +54,6 @@
     <Compile Include="Achat.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Association_30.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Association_31.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Association_32.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Association_49.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Association_50.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Batiment.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
@@ -93,19 +78,16 @@
     <Compile Include="Bureau.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="CategorieDesignation.cs">
+    <Compile Include="Categorie.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Categorie_materiel.cs">
+    <Compile Include="Contrat.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contrat_assurance.cs">
+    <Compile Include="ContratBien.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Contrat_garanti.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Contrat_maintenance.cs">
+    <Compile Include="ContratVehicule.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Delegation.cs">
@@ -115,6 +97,9 @@
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Direction.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DirectionEtage.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Etage.cs">
@@ -129,10 +114,22 @@
     <Compile Include="Inventaire.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="MouvementB.cs">
+    <Compile Include="InventaireBien.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="MouvementV.cs">
+    <Compile Include="InventaireVehicule.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Marque.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Modele.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MouvementBien.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MouvementVehicule.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Organisation.cs">
@@ -147,6 +144,9 @@
     <Compile Include="Personnel.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="PersonnelVehicule.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Region.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
@@ -157,13 +157,10 @@
     <Compile Include="ServiceD.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="Societe_assurance.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Societe_maintenance.cs">
-      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
-    </Compile>
     <Compile Include="Sous_categorie.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Sous_modele.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
     <Compile Include="Trace.cs">

@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +20,7 @@ namespace Domain
             this.Personnel = new HashSet<Personnel>();
         }
     
-        public int id { get; set; }
+        public int id_Role { get; set; }
         public string libelle { get; set; }
         public string description { get; set; }
     

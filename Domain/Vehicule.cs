@@ -11,42 +11,33 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Vehicule
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Vehicule()
         {
-            this.Association_31 = new HashSet<Association_31>();
-            this.Association_50 = new HashSet<Association_50>();
-            this.MouvementV = new HashSet<MouvementV>();
+            this.MouvementVehicule = new HashSet<MouvementVehicule>();
         }
     
+        public Nullable<int> idPays { get; set; }
+        public Nullable<int> idRegion { get; set; }
+        public Nullable<int> idGouvernorat { get; set; }
+        public Nullable<int> idOrganisation { get; set; }
+        public Nullable<int> idDelegation { get; set; }
         public Nullable<int> idBatiment { get; set; }
         public int Id_parc { get; set; }
         public int Id_Vehicule { get; set; }
-        public Nullable<int> Id_societe_assurance { get; set; }
-        public Nullable<int> Id_contrat_assurance { get; set; }
-        public Nullable<int> Id_societe_maintenance { get; set; }
-        public Nullable<int> Id_contrat_maintenance { get; set; }
         public Nullable<int> Id_achat { get; set; }
-        public Nullable<int> Id_contrat_garanti { get; set; }
         public string Matricule { get; set; }
         public string Modele { get; set; }
         public string Etat { get; set; }
-        public string Num_sachet { get; set; }
+        public string Num_chassis { get; set; }
         public Nullable<decimal> Prix_d_achat { get; set; }
     
         public virtual Achat Achat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Association_31> Association_31 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Association_50> Association_50 { get; set; }
-        public virtual Contrat_assurance Contrat_assurance { get; set; }
-        public virtual Contrat_garanti Contrat_garanti { get; set; }
-        public virtual Contrat_maintenance Contrat_maintenance { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MouvementV> MouvementV { get; set; }
+        public virtual ICollection<MouvementVehicule> MouvementVehicule { get; set; }
         public virtual Parc_auto Parc_auto { get; set; }
     }
 }

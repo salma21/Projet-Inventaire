@@ -11,10 +11,11 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Utilisateur
     {
-        public int id_user { get; set; }
+        public int id { get; set; }
+        public int Id_service { get; set; }
         public int Per_id { get; set; }
         public string login { get; set; }
         public string motDePasse { get; set; }

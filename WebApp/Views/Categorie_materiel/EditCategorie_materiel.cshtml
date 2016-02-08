@@ -1,4 +1,4 @@
-﻿@model Domain.Categorie_materiel
+﻿@model Domain.Categorie
 
 
 <div class="row">
@@ -19,7 +19,7 @@
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                            <h4>Categorie_materiel</h4>
+                            <h4>Categorie</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             @Html.HiddenFor(model => model.Id_categorie)
@@ -52,7 +52,7 @@
                 </div>
 
                 <div>
-                    @Html.ActionLink("Afficher la liste des categories materiels", "GetCategorie_materiel")
+                    @Html.ActionLink("Afficher la liste des categories materiels", "GetCategorie")
                 </div>
 
             </div>

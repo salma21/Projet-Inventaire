@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Parc_auto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,10 +20,6 @@ namespace Domain
             this.Vehicule = new HashSet<Vehicule>();
         }
     
-        public Nullable<int> idPays { get; set; }
-        public Nullable<int> idRegion { get; set; }
-        public Nullable<int> idGouvernorat { get; set; }
-        public Nullable<int> idOrganisation { get; set; }
         public Nullable<int> idDelegation { get; set; }
         public int idBatiment { get; set; }
         public int Id_parc { get; set; }

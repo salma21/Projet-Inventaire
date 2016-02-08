@@ -10,26 +10,26 @@ using Data.Infrastructure;
 
 namespace Data.Repositories
 {
-    class InventaireVehRepository : RepositoryBase<Association_31>, IInventaireVehRepository
+    class InventaireVehiculeRepository : RepositoryBase<InventaireVehicule>, IInventaireVehRepository
     {
-        public InventaireVehRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateInventaireVehDetached(Association_31 e)
+        public InventaireVehiculeRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        public void UpdateInventaireVehDetached(InventaireVehicule e)
         {
-            Association_31 existing = FindVehByID(e.Id_Vehicule);
+            InventaireVehicule existing = FindVehiculeByID(e.Id_Vehicule);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-        public Association_31 FindVehByID(int id)
+        public InventaireVehicule FindVehiculeByID(int id)
         {
 
-            var pers = (from p in DataContext.Association_31
+            var pers = (from p in DataContext.InventaireVehicule
                         where p.Id_Vehicule == id
                         select p);
             return pers.FirstOrDefault();
         }
 
-        public Vehicule GetVehByID(int id)
+        public Vehicule GetVehiculeByID(int id)
         {
 
             var pers = (from p in DataContext.Vehicule
@@ -57,7 +57,7 @@ namespace Data.Repositories
 
 
 
-        public IEnumerable<Vehicule> FindVehByParc(int id)
+        public IEnumerable<Vehicule> FindVehiculeByParc(int id)
         {
             var pers = (from p in DataContext.Vehicule
                         where p.Id_parc == id
@@ -70,13 +70,13 @@ namespace Data.Repositories
 
 
     }
-    public interface IInventaireVehRepository : IRepository<Association_31>
+    public interface IInventaireVehiculeRepository : IRepository<InventaireVehicule>
     {
-        void UpdateInventaireVehDetached(Association_31 e);
-        Association_31 FindVehByID(int id);
+        void UpdateInventaireVehDetached(InventaireVehicule e);
+        InventaireVehicule FindVehiculeByID(int id);
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
         IEnumerable<Parc_auto> FindParcByBatiment(int id);
-        IEnumerable<Vehicule> FindVehByParc(int id);
-        Vehicule GetVehByID(int id);
+        IEnumerable<Vehicule> FindVehiculeByParc(int id);
+        Vehicule GetVehiculeByID(int id);
     }
 }

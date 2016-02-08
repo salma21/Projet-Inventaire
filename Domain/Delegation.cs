@@ -9,12 +9,9 @@
 
 namespace Domain
 {
-  
-
-    using System.ComponentModel.DataAnnotations;
     using System;
     using System.Collections.Generic;
-
+    
     public partial class Delegation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,20 +20,13 @@ namespace Domain
             this.Batiment = new HashSet<Batiment>();
             this.Depot = new HashSet<Depot>();
             this.Fournisseur = new HashSet<Fournisseur>();
-            this.Societe_maintenance = new HashSet<Societe_maintenance>();
-            this.Societe_assurance = new HashSet<Societe_assurance>();
         }
     
         public int idPays { get; set; }
         public int idRegion { get; set; }
         public int idGouvernorat { get; set; }
-        
-        [DataType(DataType.Currency)]
         public int idDelegation { get; set; }
-        [StringLength(10, MinimumLength = 4, ErrorMessage = "Champ invalide")]
-        [RegularExpression(@"^[a-zA-Z 0-9]+$", ErrorMessage = "Le nom de la délégation est invalide")]  
         public string libelle { get; set; }
-        [RegularExpression(@"[\d]{4}", ErrorMessage = "Le code postal est incorrect : il doit comprendre 4 chiffres")]
         public Nullable<int> Code_postal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -46,9 +36,5 @@ namespace Domain
         public virtual ICollection<Depot> Depot { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Fournisseur> Fournisseur { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Societe_maintenance> Societe_maintenance { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Societe_assurance> Societe_assurance { get; set; }
     }
 }

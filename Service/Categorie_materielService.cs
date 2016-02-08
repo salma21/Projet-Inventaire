@@ -9,88 +9,100 @@ using System.Threading.Tasks;
 namespace Service
 {
     
-    public class Categorie_materielService : ICategorie_materielService
+    public class CategorieService : ICategorieService
     {
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);
 
-        public Categorie_materielService() { }
+        public CategorieService() { }
 
-        public IEnumerable<Categorie_materiel> GetCategorie_materiels()
+        public IEnumerable<Categorie> GetCategories()
         {
-            var Dept = utOfWork.Categorie_materielRepository.GetAll();
-            return Dept;
-        }
-        public Categorie_materiel FindCategorie_materielByNom(String id)
-
-        {
-            var Dept = utOfWork.Categorie_materielRepository.FindCategorie_materielByNom(id);
-            return Dept;
-        }
-        public Categorie_materiel GetCategorie_materiel(int Id_categorie)
-        {
-            var Dept = utOfWork.Categorie_materielRepository.GetById(Id_categorie);
+            var Dept = utOfWork.CategorieRepository.GetAll();
             return Dept;
         }
 
-
-        public void CreateCategorie_materiel(Categorie_materiel Categorie_materiel)
+        public IEnumerable<CategorieDesignation> GetCategorie_Designations()
         {
-
-            utOfWork.Categorie_materielRepository.Add(Categorie_materiel);
-
-        }
-        public void DeleteCategorie_materiel(int Id_categorie)
-        {
-
-            var Dept = utOfWork.Categorie_materielRepository.GetById(Id_categorie);
-            utOfWork.Categorie_materielRepository.Delete(Dept);
-
+            var Dept = utOfWork.CategorieRepository.GetDesignationAll();
+            return Dept;
         }
 
+        public IEnumerable<Sous_categorie> GetAllModeles()
+        {
+            var Dept = utOfWork.CategorieRepository.GetAllModele();
+            return Dept;
+        }
+        public Categorie FindCategorieByNom(String id)
 
-        public void SaveCategorie_materiel()
+        {
+            var Dept = utOfWork.CategorieRepository.FindCategorieByNom(id);
+            return Dept;
+        }
+        public Categorie GetCategorie(int Id_categorie)
+        {
+            var Dept = utOfWork.CategorieRepository.GetById(Id_categorie);
+            return Dept;
+        }
+
+
+        public void CreateCategorie(Categorie Categorie)
+        {
+
+            utOfWork.CategorieRepository.Add(Categorie);
+
+        }
+        public void DeleteCategorie(int Id_categorie)
+        {
+
+            var Dept = utOfWork.CategorieRepository.GetById(Id_categorie);
+            utOfWork.CategorieRepository.Delete(Dept);
+
+        }
+
+
+        public void SaveCategorie()
         {
             utOfWork.Commit();
         }
 
-        public void UpdateCategorie_materielDetached(Categorie_materiel e)
+        public void UpdateCategorieDetached(Categorie e)
         {
-            utOfWork.Categorie_materielRepository.UpdateCategorie_materielDetached(e);
+            utOfWork.CategorieRepository.UpdateCategorieDetached(e);
         }
 
         public void UpdateCategorie_DesignationDetached(CategorieDesignation e)
         {
-            utOfWork.Categorie_materielRepository.UpdateCategorie_DesignationDetached(e);
+            utOfWork.CategorieRepository.UpdateCategorie_DesignationDetached(e);
         }
 
         public void UpdateCategorie_ModeleDetached(Sous_categorie e)
         {
-            utOfWork.Categorie_materielRepository.UpdateCategorie_ModeleDetached(e);
+            utOfWork.CategorieRepository.UpdateCategorie_ModeleDetached(e);
         }
         public IEnumerable<CategorieDesignation> FindPorduitByID(int id)
         {
-            var dep = utOfWork.Categorie_materielRepository.FindPorduitByID(id);
+            var dep = utOfWork.CategorieRepository.FindPorduitByID(id);
             return dep;
         }
         public IEnumerable<Sous_categorie> FindModeleByIdDes(int id)
         {
-            var dep = utOfWork.Categorie_materielRepository.FindModeleByIdDes(id);
+            var dep = utOfWork.CategorieRepository.FindModeleByIdDes(id);
             return dep;
         }
         public Sous_categorie FindCategorie_ModeleById(int Id_categorie)
         {
-            var Dept = utOfWork.Categorie_materielRepository.FindCategorie_ModeleById(Id_categorie);
+            var Dept = utOfWork.CategorieRepository.FindCategorie_ModeleById(Id_categorie);
             return Dept;
         }
         public CategorieDesignation FindCategorie_DesignationById(int Id_categorie)
         {
-            var Dept = utOfWork.Categorie_materielRepository.FindCategorie_DesignationById(Id_categorie);
+            var Dept = utOfWork.CategorieRepository.FindCategorie_DesignationById(Id_categorie);
             return Dept;
         }
 
     }
-    public interface ICategorie_materielService
+    public interface ICategorieService
     {
         CategorieDesignation FindCategorie_DesignationById(int Id_categorie);
         Sous_categorie FindCategorie_ModeleById(int Id_categorie);
@@ -98,14 +110,15 @@ namespace Service
         IEnumerable<CategorieDesignation> FindPorduitByID(int id);
         void UpdateCategorie_ModeleDetached(Sous_categorie e);
         void UpdateCategorie_DesignationDetached(CategorieDesignation e);
-        IEnumerable<Categorie_materiel> GetCategorie_materiels();
-        Categorie_materiel GetCategorie_materiel(int Id_categorie);
-        void CreateCategorie_materiel(Categorie_materiel Dept);
-        void DeleteCategorie_materiel(int id);
-
-        void UpdateCategorie_materielDetached(Categorie_materiel e);
-        Categorie_materiel FindCategorie_materielByNom(String id);
-        void SaveCategorie_materiel();
+        IEnumerable<Categorie> GetCategories();
+        Categorie GetCategorie(int Id_categorie);
+        void CreateCategorie(Categorie Dept);
+        void DeleteCategorie(int id);
+        IEnumerable<Sous_categorie> GetAllModeles();
+        IEnumerable<CategorieDesignation> GetCategorie_Designations();
+        void UpdateCategorieDetached(Categorie e);
+        Categorie FindCategorieByNom(String id);
+        void SaveCategorie();
        
 
     }

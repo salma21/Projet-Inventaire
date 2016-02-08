@@ -9,34 +9,25 @@
 
 namespace Domain
 {
-    using System.ComponentModel.DataAnnotations;
     using System;
     using System.Collections.Generic;
     
-    public partial class Contrat_assurance
+    public partial class Categorie
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Contrat_assurance()
+        public Categorie()
         {
             this.Bien = new HashSet<Bien>();
-            this.Vehicule = new HashSet<Vehicule>();
+            this.Sous_categorie = new HashSet<Sous_categorie>();
         }
     
-        public Nullable<int> idDelegation { get; set; }
-        public int Id_societe_assurance { get; set; }
-        public int Id_contrat_assurance { get; set; }
-        public string Type_assurance { get; set; }
-        public Nullable<int> Num { get; set; }
-        [DataType(DataType.Date)]
-        public Nullable<System.DateTime> Date_debut { get; set; }
-        [DataType(DataType.Date)]
-        public Nullable<System.DateTime> Date_fin { get; set; }
-        public Nullable<decimal> Cout { get; set; }
+        public int Id_categorie { get; set; }
+        public string libelle { get; set; }
+        public string Description { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bien> Bien { get; set; }
-        public virtual Societe_assurance Societe_assurance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vehicule> Vehicule { get; set; }
+        public virtual ICollection<Sous_categorie> Sous_categorie { get; set; }
     }
 }

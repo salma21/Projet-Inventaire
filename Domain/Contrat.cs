@@ -11,32 +11,30 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Contrat_garanti
+    
+    public partial class Contrat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Contrat_garanti()
+        public Contrat()
         {
-            this.Bien = new HashSet<Bien>();
-            this.Vehicule = new HashSet<Vehicule>();
+            this.ContratBien = new HashSet<ContratBien>();
+            this.ContratVehicule = new HashSet<ContratVehicule>();
         }
     
-        public int Id_contrat_garanti { get; set; }
+        public int Id_contrat { get; set; }
         public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
-        public string Type_garanti { get; set; }
+        public string Type_Contrat { get; set; }
         public Nullable<int> Num { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_debut { get; set; }
-        [DataType(DataType.Date)]
         public Nullable<System.DateTime> Date_fin { get; set; }
         public Nullable<decimal> Cout { get; set; }
+        public string Sous_Type_Contrat { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Bien> Bien { get; set; }
         public virtual Fournisseur Fournisseur { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vehicule> Vehicule { get; set; }
+        public virtual ICollection<ContratBien> ContratBien { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContratVehicule> ContratVehicule { get; set; }
     }
 }

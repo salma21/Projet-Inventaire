@@ -12,7 +12,7 @@
     function GetCity(_stateId) {
         var procemessage = "<option value='0'>Encours...</option>";
         $("#ddlcity").html(procemessage).show();
-        var url = "/Categorie_materiel/GetModeleBySousCat/";
+        var url = "/Categorie/GetModeleBySousCat/";
 
         $.ajax({
             url: url,

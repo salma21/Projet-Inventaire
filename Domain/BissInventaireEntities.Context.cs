@@ -13,22 +13,10 @@ namespace Domain
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BissInventaireEntities : DbContext
+    public partial class BissInventaireEntities3 : DbContext
     {
-        private static BissInventaireEntities instance;
-        public static BissInventaireEntities Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new BissInventaireEntities();
-                }
-                return instance;
-            }
-        }
-        public BissInventaireEntities()
-            : base("name=BissInventaireEntities")
+        public BissInventaireEntities3()
+            : base("name=BissInventaireEntities3")
         {
         }
     
@@ -38,38 +26,37 @@ namespace Domain
         }
     
         public virtual DbSet<Achat> Achat { get; set; }
-        public virtual DbSet<Association_30> Association_30 { get; set; }
-        public virtual DbSet<Association_31> Association_31 { get; set; }
-        public virtual DbSet<Association_32> Association_32 { get; set; }
-        public virtual DbSet<Association_49> Association_49 { get; set; }
-        public virtual DbSet<Association_50> Association_50 { get; set; }
         public virtual DbSet<Batiment> Batiment { get; set; }
         public virtual DbSet<Bien> Bien { get; set; }
         public virtual DbSet<Bureau> Bureau { get; set; }
-        public virtual DbSet<Categorie_materiel> Categorie_materiel { get; set; }
-        public virtual DbSet<CategorieDesignation> CategorieDesignation { get; set; }
-        public virtual DbSet<Contrat_assurance> Contrat_assurance { get; set; }
-        public virtual DbSet<Contrat_garanti> Contrat_garanti { get; set; }
-        public virtual DbSet<Contrat_maintenance> Contrat_maintenance { get; set; }
+        public virtual DbSet<Categorie> Categorie { get; set; }
+        public virtual DbSet<Contrat> Contrat { get; set; }
+        public virtual DbSet<ContratBien> ContratBien { get; set; }
+        public virtual DbSet<ContratVehicule> ContratVehicule { get; set; }
         public virtual DbSet<Delegation> Delegation { get; set; }
         public virtual DbSet<Depot> Depot { get; set; }
         public virtual DbSet<Direction> Direction { get; set; }
+        public virtual DbSet<DirectionEtage> DirectionEtage { get; set; }
         public virtual DbSet<Etage> Etage { get; set; }
         public virtual DbSet<Fournisseur> Fournisseur { get; set; }
         public virtual DbSet<Gouvernorat> Gouvernorat { get; set; }
         public virtual DbSet<Inventaire> Inventaire { get; set; }
-        public virtual DbSet<MouvementB> MouvementB { get; set; }
-        public virtual DbSet<MouvementV> MouvementV { get; set; }
+        public virtual DbSet<InventaireBien> InventaireBien { get; set; }
+        public virtual DbSet<InventaireVehicule> InventaireVehicule { get; set; }
+        public virtual DbSet<Marque> Marque { get; set; }
+        public virtual DbSet<Modele> Modele { get; set; }
+        public virtual DbSet<MouvementBien> MouvementBien { get; set; }
+        public virtual DbSet<MouvementVehicule> MouvementVehicule { get; set; }
         public virtual DbSet<Organisation> Organisation { get; set; }
         public virtual DbSet<Parc_auto> Parc_auto { get; set; }
         public virtual DbSet<Pays> Pays { get; set; }
         public virtual DbSet<Personnel> Personnel { get; set; }
+        public virtual DbSet<PersonnelVehicule> PersonnelVehicule { get; set; }
         public virtual DbSet<Region> Region { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<ServiceD> ServiceD { get; set; }
-        public virtual DbSet<Societe_assurance> Societe_assurance { get; set; }
-        public virtual DbSet<Societe_maintenance> Societe_maintenance { get; set; }
         public virtual DbSet<Sous_categorie> Sous_categorie { get; set; }
+        public virtual DbSet<Sous_modele> Sous_modele { get; set; }
         public virtual DbSet<Trace> Trace { get; set; }
         public virtual DbSet<Utilisateur> Utilisateur { get; set; }
         public virtual DbSet<Vehicule> Vehicule { get; set; }

@@ -15,7 +15,7 @@ namespace Service
 
         public InventaireBienService() { }
 
-        public IEnumerable<Association_30> GetInventaireBiens()
+        public IEnumerable<InventaireBien> GetInventaireBiens()
         {
             var dep = utOfWork.InventaireBienRepository.GetAll();
             return dep;
@@ -23,13 +23,13 @@ namespace Service
 
 
 
-        public Association_30 FindBienByID(int id)
+        public InventaireBien FindBienByID(int id)
         {
             var Dept = utOfWork.InventaireBienRepository.FindBienByID(id);
             return Dept;
         }
 
-        public void CreateInventaireBien(Association_30 InventaireBien)
+        public void CreateInventaireBien(InventaireBien InventaireBien)
         {
            
             
@@ -42,7 +42,7 @@ namespace Service
             utOfWork.Commit();
         }
 
-        public void UpdateInventaireBienDetached(Association_30 e)
+        public void UpdateInventaireBienDetached(InventaireBien e)
         {
             utOfWork.InventaireBienRepository.UpdateInventaireBienDetached(e);
         }
@@ -71,14 +71,14 @@ namespace Service
     }
     public interface IInventaireBienService
     {
-        void UpdateInventaireBienDetached(Association_30 e);
+        void UpdateInventaireBienDetached(InventaireBien e);
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
         IEnumerable<Etage> FindEtageByBatiment(int id);
         IEnumerable<Bien> FindBienByEtage(int id);
-        Association_30 FindBienByID(int id);
-        void CreateInventaireBien(Association_30 InventaireBien);
+        InventaireBien FindBienByID(int id);
+        void CreateInventaireBien(InventaireBien InventaireBien);
         void SaveInventaireBien();
-        IEnumerable<Association_30> GetInventaireBiens();
+        IEnumerable<InventaireBien> GetInventaireBiens();
 
 
     }

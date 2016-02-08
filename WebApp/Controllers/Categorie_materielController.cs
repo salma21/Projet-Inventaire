@@ -10,10 +10,10 @@ using System.Web.Mvc;
 
 namespace WebApp.Controllers
     {
-        public class Categorie_materielController : Controller
+        public class CategorieController : Controller
         {
-            private ICategorie_materielService db = new Categorie_materielService();
-            // GET: Categorie_materiel
+            private ICategorieService db = new CategorieService();
+            // GET: Categorie
             public ActionResult Index()
             {
             if (Session["identifiant"] == null)
@@ -21,12 +21,12 @@ namespace WebApp.Controllers
             return View();
             }
 
-            public ActionResult GetCategorie_materiel()
+            public ActionResult GetCategorie()
             {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var Categorie_materiel = db.GetCategorie_materiels();
-            return View(Categorie_materiel);
+            var Categorie = db.GetCategories();
+            return View(Categorie);
             }
 
 
@@ -34,8 +34,8 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var Categorie_materiel = BissInventaireEntities.Instance.CategorieDesignation.ToList();
-            return View(Categorie_materiel);
+            var Categorie = db.GetCategorie_Designations();
+            return View(Categorie);
         }
 
 
@@ -43,13 +43,13 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var Categorie_materiel = BissInventaireEntities.Instance.Sous_categorie.ToList();
-            return View(Categorie_materiel);
+            var Categorie = db.GetAllModeles();
+            return View(Categorie);
         }
 
 
 
-        // GET: Categorie_materiel/Details/5
+        // GET: Categorie/Details/5
         public ActionResult Details(int Id_categorie)
         {
             if (Session["identifiant"] == null)
@@ -57,7 +57,7 @@ namespace WebApp.Controllers
             try
                 {
 
-                    var archive = BissInventaireEntities.Instance.Categorie_materiel.Find(Id_categorie);
+                    var archive = BissInventaireEntities.Instance.Categorie.Find(Id_categorie);
 
                     return View(archive);
                 }
@@ -71,23 +71,23 @@ namespace WebApp.Controllers
 
             }
 
-            // GET: Categorie_materiel/Create
-            public ActionResult CreateCategorie_materiel()
+            // GET: Categorie/Create
+            public ActionResult CreateCategorie()
             {
                 return View();
             }
 
-            // POST: Categorie_materiel/Create
+            // POST: Categorie/Create
             [HttpPost]
-            public ActionResult CreateCategorie_materiel(Categorie_materiel Catm, FormCollection collection)
+            public ActionResult CreateCategorie(Categorie Catm, FormCollection collection)
             {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Categorie_materiel.Add(Catm);
+                    BissInventaireEntities.Instance.Categorie.Add(Catm);
                     BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetCategorie_materiel");
+                    return RedirectToAction("GetCategorie");
                 }
                 catch (Exception ex)
                 {
@@ -105,12 +105,12 @@ namespace WebApp.Controllers
 
         public ActionResult CreateCategorie_Designation()
         {
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
 
             return View();
         }
 
-        // POST: Categorie_materiel/Create
+        // POST: Categorie/Create
         [HttpPost]
         public ActionResult CreateCategorie_Designation(CategorieDesignation Catm, FormCollection collection)
         {
@@ -138,13 +138,13 @@ namespace WebApp.Controllers
 
         public ActionResult CreateCategorie_Modele()
         {
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
             ViewData["des"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
 
             return View();
         }
 
-        // POST: Categorie_materiel/Create
+        // POST: Categorie/Create
         [HttpPost]
         public ActionResult CreateCategorie_Modele(Sous_categorie Catm, FormCollection collection)
         {
@@ -170,25 +170,25 @@ namespace WebApp.Controllers
             }
         }
 
-        public ActionResult EditCategorie_materiel(int id)
+        public ActionResult EditCategorie(int id)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var cat = db.GetCategorie_materiel(id);
+            var cat = db.GetCategorie(id);
             return View(cat);
         }
 
-        // POST: Categorie_materiel/Create
+        // POST: Categorie/Create
         [HttpPost]
-        public ActionResult EditCategorie_materiel(Categorie_materiel Catm)
+        public ActionResult EditCategorie(Categorie Catm)
         {
             if (ModelState.IsValid)
             {
                 try
             {
-                db.UpdateCategorie_materielDetached(Catm);
-               db.SaveCategorie_materiel();
-                return RedirectToAction("GetCategorie_materiel");
+                db.UpdateCategorieDetached(Catm);
+               db.SaveCategorie();
+                return RedirectToAction("GetCategorie");
             }
             catch (Exception ex)
             {
@@ -207,13 +207,13 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
            
             var cat = db.FindCategorie_DesignationById(id);
             return View(cat);
         }
 
-        // POST: Categorie_materiel/Create
+        // POST: Categorie/Create
         [HttpPost]
         public ActionResult EditCategorie_Designation(CategorieDesignation Catm)
         {
@@ -222,7 +222,7 @@ namespace WebApp.Controllers
                 try
                 {
                     db.UpdateCategorie_DesignationDetached(Catm);
-                    db.SaveCategorie_materiel();
+                    db.SaveCategorie();
                     return RedirectToAction("GetCategorie_Designation");
                 }
                 catch (Exception ex)
@@ -242,14 +242,14 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
 
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
             ViewData["des"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
 
             var cat = db.FindCategorie_ModeleById(id);
             return View(cat);
         }
 
-        // POST: Categorie_materiel/Create
+        // POST: Categorie/Create
         [HttpPost]
         public ActionResult EditCategorie_Modele(Sous_categorie Catm)
         {
@@ -258,7 +258,7 @@ namespace WebApp.Controllers
                 try
                 {
                     db.UpdateCategorie_ModeleDetached(Catm);
-                    db.SaveCategorie_materiel();
+                    db.SaveCategorie();
                     return RedirectToAction("GetCategorie_Modele");
                 }
                 catch (Exception ex)
@@ -274,7 +274,7 @@ namespace WebApp.Controllers
             }
         }
 
-        // GET: Categorie_materiel/Edit/5
+        // GET: Categorie/Edit/5
         public ActionResult Edit(int Id_categorie)
             {
             if (Session["identifiant"] == null)
@@ -282,7 +282,7 @@ namespace WebApp.Controllers
             return View();
             }
 
-            // POST: Categorie_materiel/Edit/5
+            // POST: Categorie/Edit/5
             [HttpPost]
             public ActionResult Edit(int Id_categorie, FormCollection collection)
             {
@@ -307,13 +307,13 @@ namespace WebApp.Controllers
             }
         }
 
-        // GET: Categorie_materiel/Delete/5
+        // GET: Categorie/Delete/5
         public ActionResult Delete(int Id_categorie)
             {   
                 return View();
             }
 
-            // POST: Categorie_materiel/Delete/5
+            // POST: Categorie/Delete/5
             [HttpPost]
             public ActionResult Delete(int Id_categorie, FormCollection collection)
             {

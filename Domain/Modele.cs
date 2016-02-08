@@ -11,29 +11,22 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    public partial class Societe_assurance
+    
+    public partial class Modele
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Societe_assurance()
+        public Modele()
         {
-            this.Contrat_assurance = new HashSet<Contrat_assurance>();
+            this.Sous_modele = new HashSet<Sous_modele>();
         }
     
-        public Nullable<int> idPays { get; set; }
-        public Nullable<int> idRegion { get; set; }
-        public Nullable<int> idGouvernorat { get; set; }
-        public int idDelegation { get; set; }
-        public int Id_societe_assurance { get; set; }
-        public string Libelle { get; set; }
-        public string Rue { get; set; }
-        public Nullable<int> Tel { get; set; }
-        public Nullable<int> Fax { get; set; }
-        public string Email { get; set; }
-        public string Commentaire { get; set; }
+        public Nullable<int> Id_categorie { get; set; }
+        public int id_sous_categorie { get; set; }
+        public int IdModele { get; set; }
+        public string libelle { get; set; }
     
+        public virtual Sous_categorie Sous_categorie { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contrat_assurance> Contrat_assurance { get; set; }
-        public virtual Delegation Delegation { get; set; }
+        public virtual ICollection<Sous_modele> Sous_modele { get; set; }
     }
 }

@@ -42,21 +42,21 @@ namespace Data.Infrastructure
             }
         }
 
-        private IMouvementBRepository MouvementBRepository;
-        IMouvementBRepository IUnitOfWork.MouvementBRepository
+        private IMouvementBienRepository MouvementBienRepository;
+        IMouvementBienRepository IUnitOfWork.MouvementBienRepository
         {
             get
             {
-                return MouvementBRepository ?? (MouvementBRepository = new MouvementBRepository(dbFactory));
+                return MouvementBienRepository ?? (MouvementBienRepository = new MouvementBienRepository(dbFactory));
             }
         }
 
-        private IMouvementVRepository MouvementVRepository;
-        IMouvementVRepository IUnitOfWork.MouvementVRepository
+        private IMouvementVehiculeRepository MouvementVehiculeRepository;
+        IMouvementVehiculeRepository IUnitOfWork.MouvementVehiculeRepository
         {
             get
             {
-                return MouvementVRepository ?? (MouvementVRepository = new MouvementVRepository(dbFactory));
+                return MouvementVehiculeRepository ?? (MouvementVehiculeRepository = new MouvementVehiculeRepository(dbFactory));
             }
         }
 
@@ -87,14 +87,14 @@ namespace Data.Infrastructure
             }
         }
 
-        private ISocieteAssuranceRepository SocieteAssuranceRepository;
-        ISocieteAssuranceRepository IUnitOfWork.SocieteAssuranceRepository
-        {
-            get
-            {
-                return SocieteAssuranceRepository ?? (SocieteAssuranceRepository = new SocieteAssuranceRepository(dbFactory));
-            }
-        }
+        //private ISocieteAssuranceRepository SocieteAssuranceRepository;
+        //ISocieteAssuranceRepository IUnitOfWork.SocieteAssuranceRepository
+        //{
+        //    get
+        //    {
+        //        return SocieteAssuranceRepository ?? (SocieteAssuranceRepository = new SocieteAssuranceRepository(dbFactory));
+        //    }
+        //}
 
 
         private IContratMaintennaceRepository ContratMaintennaceRepository;
@@ -115,14 +115,14 @@ namespace Data.Infrastructure
             }
         }
 
-        private ISocieteMaintenanceRepository SocieteMaintenanceRepository;
-        ISocieteMaintenanceRepository IUnitOfWork.SocieteMaintenanceRepository
-        {
-            get
-            {
-                return SocieteMaintenanceRepository ?? (SocieteMaintenanceRepository = new SocieteMaintenanceRepository(dbFactory));
-            }
-        }
+        //private ISocieteMaintenanceRepository SocieteMaintenanceRepository;
+        //ISocieteMaintenanceRepository IUnitOfWork.SocieteMaintenanceRepository
+        //{
+        //    get
+        //    {
+        //        return SocieteMaintenanceRepository ?? (SocieteMaintenanceRepository = new SocieteMaintenanceRepository(dbFactory));
+        //    }
+        //}
 
 
         private IBatimentRepository BatimentRepository;
@@ -259,12 +259,12 @@ namespace Data.Infrastructure
         }
 
 
-        private ICategorie_materielRepository Categorie_materielRepository;
-        ICategorie_materielRepository IUnitOfWork.Categorie_materielRepository
+        private ICategorieRepository CategorieRepository;
+        ICategorieRepository IUnitOfWork.CategorieRepository
         {
             get
             {
-                return Categorie_materielRepository ?? (Categorie_materielRepository = new Categorie_materielRepository(dbFactory));
+                return CategorieRepository ?? (CategorieRepository = new CategorieRepository(dbFactory));
             }
         }
 
@@ -290,12 +290,12 @@ namespace Data.Infrastructure
 
 
         
-        private IInventaireVehRepository InventaireVehRepository;
-        IInventaireVehRepository IUnitOfWork.InventaireVehRepository
+        private IInventaireVehiculeRepository InventaireVehRepository;
+        IInventaireVehiculeRepository IUnitOfWork.InventaireVehiculeRepository
         {
             get
             {
-                return InventaireVehRepository ?? (InventaireVehRepository = new InventaireVehRepository(dbFactory));
+                return InventaireVehiculeRepository ?? (InventaireVehiculeRepository = new InventaireVehiculeRepository(dbFactory));
             }
         }
 

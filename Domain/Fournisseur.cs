@@ -11,14 +11,14 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Fournisseur
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Fournisseur()
         {
             this.Achat = new HashSet<Achat>();
-            this.Contrat_garanti = new HashSet<Contrat_garanti>();
+            this.Contrat = new HashSet<Contrat>();
         }
     
         public Nullable<int> idPays { get; set; }
@@ -36,7 +36,7 @@ namespace Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Achat> Achat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contrat_garanti> Contrat_garanti { get; set; }
+        public virtual ICollection<Contrat> Contrat { get; set; }
         public virtual Delegation Delegation { get; set; }
     }
 }

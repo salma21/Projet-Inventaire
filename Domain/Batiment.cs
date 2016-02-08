@@ -11,8 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    
     public partial class Batiment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,7 +19,6 @@ namespace Domain
         {
             this.Etage = new HashSet<Etage>();
             this.Parc_auto = new HashSet<Parc_auto>();
-            this.Personnel = new HashSet<Personnel>();
         }
     
         public Nullable<int> idOrganisation { get; set; }
@@ -29,15 +27,7 @@ namespace Domain
         public Nullable<int> idGouvernorat { get; set; }
         public int idDelegation { get; set; }
         public int idBatiment { get; set; }
-        [Required]
-   
-        [Range(1, 10000, ErrorMessage = "Le code est invalide")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le code est invalide")]
-        [Column]
-        public Nullable<int> code { get; set; }
-        [Required]
-        [StringLength(50, MinimumLength = 4, ErrorMessage = "La description est invalide")]
-        [RegularExpression(@"^[a-zA-Z 0-9]+$+$", ErrorMessage = "La description est invalide")]
+        public string code { get; set; }
         public string description { get; set; }
     
         public virtual Delegation Delegation { get; set; }
@@ -46,7 +36,5 @@ namespace Domain
         public virtual ICollection<Etage> Etage { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Parc_auto> Parc_auto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Personnel> Personnel { get; set; }
     }
 }
