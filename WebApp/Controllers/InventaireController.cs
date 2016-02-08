@@ -280,8 +280,8 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
 
-            var inv = db.GetInvById(id);
-            return View();
+            var inv = db.GetInventaire(id);
+            return View(inv);
         }
 
         // POST: Gestion/Create
