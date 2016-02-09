@@ -11,11 +11,9 @@ namespace Data.Infrastructure
        
         IBureauRepository BureauRepository { get; }
         IRegionRepository RegionRepository { get; }
-        //ISocieteAssuranceRepository SocieteAssuranceRepository { get; }
-        IContratMaintennaceRepository ContratMaintennaceRepository { get; }
-        IContratAssuranceRepository ContratAssuranceRepository { get; }
-        IContratGarantieRepository ContratGarantieRepository { get; }
-        //ISocieteMaintenanceRepository SocieteMaintenanceRepository { get; }
+     
+        IContratRepository ContratRepository { get; }
+        
         IAchatRepository AchatRepository { get; }
         IFournisseurRepository FournisseurRepository { get; }
         IBatimentRepository BatimentRepository { get; }
@@ -24,14 +22,14 @@ namespace Data.Infrastructure
         IServiceRepository ServiceRepository { get; }
         IParc_autoRepository Parc_autoRepository { get; }
         IGouvernoratRepository GouvernoratRepository { get; }
-        IMouvementBienRepository MouvementBienRepository { get; }
-        IMouvementVehiculeRepository MouvementVehiculeRepository { get; }
+        IMouvementBRepository MouvementBRepository { get; }
+        IMouvementVRepository MouvementVRepository { get; }
         IVehiculeRepository VehiculeRepository { get; }
         
         IEtageRepository EtageRepository { get; }
         IPersonnelRepository PersonnelRepository { get; }
         IRoleRepository RoleRepository { get; }
-        ICategorieRepository CategorieRepository { get; }
+        ICategorie_materielRepository Categorie_materielRepository { get; }
         IServiceDRepository ServiceDRepository { get; }
         IUtilisateurRepository UtilisateurRepository { get; }
         IDelegationRepository DelegationRepository { get; }
@@ -42,7 +40,7 @@ namespace Data.Infrastructure
 
         IDirectionRepository DirectionRepository { get; }
         IInventaireBienRepository InventaireBienRepository { get; }
-        IInventaireVehiculeRepository InventaireVehiculeRepository { get; }
+        IInventaireVehRepository InventaireVehRepository { get; }
      
 
     }

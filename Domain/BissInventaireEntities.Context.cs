@@ -12,14 +12,25 @@ namespace Domain
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
-    public partial class BissInventaireEntities3 : DbContext
+
+    public partial class BissInventaireEntities : DbContext
     {
-        public BissInventaireEntities3()
-            : base("name=BissInventaireEntities3")
+        private static BissInventaireEntities instance;
+        public static BissInventaireEntities Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new BissInventaireEntities();
+                }
+                return instance;
+            }
+        }
+        public BissInventaireEntities()
+            : base("name=BissInventaireEntities")
         {
         }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

@@ -78,51 +78,36 @@ namespace Data.Infrastructure
             }
         }
 
-        private IContratAssuranceRepository ContratAssuranceRepository;
-        IContratAssuranceRepository IUnitOfWork.ContratAssuranceRepository
+
+        private ISocieteAssuranceRepository SocieteAssuranceRepository;
+        ISocieteAssuranceRepository IUnitOfWork.SocieteAssuranceRepository
         {
             get
             {
-                return ContratAssuranceRepository ?? (ContratAssuranceRepository = new ContratAssuranceRepository(dbFactory));
+                return SocieteAssuranceRepository ?? (SocieteAssuranceRepository = new SocieteAssuranceRepository(dbFactory));
             }
         }
 
-        //private ISocieteAssuranceRepository SocieteAssuranceRepository;
-        //ISocieteAssuranceRepository IUnitOfWork.SocieteAssuranceRepository
-        //{
-        //    get
-        //    {
-        //        return SocieteAssuranceRepository ?? (SocieteAssuranceRepository = new SocieteAssuranceRepository(dbFactory));
-        //    }
-        //}
 
+       
 
-        private IContratMaintennaceRepository ContratMaintennaceRepository;
-        IContratMaintennaceRepository IUnitOfWork.ContratMaintennaceRepository
+        private IContratRepository ContratGarantieRepository;
+        IContratRepository IUnitOfWork.ContratRepository
         {
             get
             {
-                return ContratMaintennaceRepository ?? (ContratMaintennaceRepository = new ContratMaintennaceRepository(dbFactory));
+                return ContratGarantieRepository ?? (ContratGarantieRepository = new ContratRepository(dbFactory));
             }
         }
 
-        private IContratGarantieRepository ContratGarantieRepository;
-        IContratGarantieRepository IUnitOfWork.ContratGarantieRepository
+        private ISocieteMaintenanceRepository SocieteMaintenanceRepository;
+        ISocieteMaintenanceRepository IUnitOfWork.SocieteMaintenanceRepository
         {
             get
             {
-                return ContratGarantieRepository ?? (ContratGarantieRepository = new ContratGarantieRepository(dbFactory));
+                return SocieteMaintenanceRepository ?? (SocieteMaintenanceRepository = new SocieteMaintenanceRepository(dbFactory));
             }
         }
-
-        //private ISocieteMaintenanceRepository SocieteMaintenanceRepository;
-        //ISocieteMaintenanceRepository IUnitOfWork.SocieteMaintenanceRepository
-        //{
-        //    get
-        //    {
-        //        return SocieteMaintenanceRepository ?? (SocieteMaintenanceRepository = new SocieteMaintenanceRepository(dbFactory));
-        //    }
-        //}
 
 
         private IBatimentRepository BatimentRepository;
@@ -264,7 +249,7 @@ namespace Data.Infrastructure
         {
             get
             {
-                return CategorieRepository ?? (CategorieRepository = new CategorieRepository(dbFactory));
+                return Categorie_materielRepository ?? (Categorie_materielRepository = new Categorie_materielRepository(dbFactory));
             }
         }
 
