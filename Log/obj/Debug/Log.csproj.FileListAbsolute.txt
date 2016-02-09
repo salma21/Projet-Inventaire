@@ -30,3 +30,4 @@ C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement
 C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
 C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
 C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb
+C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Log\obj\Debug\Log.csprojResolveAssemblyReference.cache
