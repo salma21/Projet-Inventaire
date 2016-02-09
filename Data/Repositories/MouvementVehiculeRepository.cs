@@ -10,12 +10,12 @@ using System.Data.Entity.Infrastructure;
 
 namespace Data.Repositories
 {
-    public class MouvementVRepository : RepositoryBase<MouvementV>, IMouvementVRepository
+    public class MouvementVehiculeRepository : RepositoryBase<MouvementVehicule>, IMouvementVehiculeRepository
     {
-        public MouvementVRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateMouvementVDetached(MouvementV e)
+        public MouvementVehiculeRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        public void UpdateMouvementVehiculeDetached(MouvementVehicule e)
         {
-            MouvementV existing = this.DataContext.MouvementV.Find(e.Id_mouvementV);
+            MouvementVehicule existing = this.DataContext.MouvementVehicule.Find(e.Id_mouvementV);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
@@ -58,10 +58,10 @@ namespace Data.Repositories
 
 
     }
-    public interface IMouvementVRepository : IRepository<MouvementV>
+    public interface IMouvementVehiculeRepository : IRepository<MouvementVehicule>
     {
 
-        void UpdateMouvementVDetached(MouvementV e);
+        void UpdateMouvementVehiculeDetached(MouvementVehicule e);
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
         IEnumerable<Parc_auto> FindParcByBatiment(int id);
         IEnumerable<Vehicule> FindVehiculeByParc(int id);

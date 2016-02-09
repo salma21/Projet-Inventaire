@@ -19,7 +19,7 @@ namespace WebApp.Controllers
         
         IInventaireBienService db1 = new InventaireBienService();
         IInventaireService db = new InventaireService();
-        IInventaireVehService db2 = new InventaireVehService();
+        IInventaireVehiculeService db2 = new InventaireVehiculeService();
         IUtilisateurService db3 = new UtilisateurService();
         // GET: Inventaire
         public ActionResult GetInventaire()
@@ -146,7 +146,7 @@ namespace WebApp.Controllers
         public ActionResult Ajouter(int id)
         {
             
-            Association_30 ass = new Association_30();
+            InventaireBien ass = new InventaireBien();
             ass.Id_bien = id;
            
             return View();
@@ -168,7 +168,7 @@ namespace WebApp.Controllers
             BissInventaireEntities.Instance.SaveChanges();
             IUtilisateurService kk = new UtilisateurService();
 
-            Association_30 nm = new Association_30();
+            InventaireBien nm = new InventaireBien();
            nm.Id_bien = id;
             nm.Id_inventaire = InventaireController.idinv;
 
@@ -191,7 +191,7 @@ namespace WebApp.Controllers
         public ActionResult AjouterVehicule(int id)
         {
           
-            Association_31 asss = new Association_31();
+            InventaireVehicule asss = new InventaireVehicule();
             asss.Id_Vehicule = id;
 
             return View();
@@ -200,7 +200,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var veh = db2.GetVehByID(id);
+            var veh = db2.GetVehiculeByID(id);
             var Emp = (Utilisateur)Session["identifiant"];
             Trace tr = new Trace();
             tr.Dates = DateTime.Now;
@@ -215,9 +215,9 @@ namespace WebApp.Controllers
 
 
 
-            IInventaireVehService kk = new InventaireVehService();
+            IInventaireVehiculeService kk = new InventaireVehiculeService();
 
-            Association_31 nmm = new Association_31();
+            InventaireVehicule nmm = new InventaireVehicule();
             nmm.Id_Vehicule = id;
             nmm.Id_inventaire = InventaireController.idin;
 
@@ -280,8 +280,8 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
 
-            var inv = db.GetInvById(id);
-            return View();
+            var inv = db.GetInventaire(id);
+            return View(inv);
         }
 
         // POST: Gestion/Create

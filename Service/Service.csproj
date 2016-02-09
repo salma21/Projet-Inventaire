@@ -48,9 +48,9 @@
     <Compile Include="GouvernoratService.cs" />
     <Compile Include="InventaireBienService.cs" />
     <Compile Include="InventaireService.cs" />
-    <Compile Include="InventaireVehService.cs" />
-    <Compile Include="MouvementVService.cs" />
-    <Compile Include="MouvementBService.cs" />
+    <Compile Include="InventaireVehiculeService.cs" />
+    <Compile Include="MouvementVehiculeService.cs" />
+    <Compile Include="MouvementBienService.cs" />
     <Compile Include="OrganisationService.cs" />
     <Compile Include="PaysService.cs" />
     <Compile Include="PersonnelService.cs" />

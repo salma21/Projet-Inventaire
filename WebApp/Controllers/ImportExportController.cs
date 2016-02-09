@@ -22,7 +22,7 @@ namespace WebApp.Controllers
     
     public class ImportExportController : Controller
     {
-        private ICategorie_materielService db = new CategorieService();
+        private ICategorieService db = new CategorieService();
         public ActionResult Index()
         {
             if (Session["identifiant"] == null)
@@ -95,7 +95,7 @@ namespace WebApp.Controllers
                     catalogue.Code_a_barre = Convert.ToInt32(row["Code matériel "]);
 
                     catalogue.Num_Serie = row["N° de série "].ToString();
-                    ///var i = db.FindCategorie_materielByNom(row["Catégorie "].ToString());
+                    ///var i = db.FindCategorieByNom(row["Catégorie "].ToString());
                     //catalogue.Categorie = Convert.ToString(i.Id_categorie);
 
                     catalogue.Modele = row["Modèle "].ToString();
@@ -165,7 +165,7 @@ namespace WebApp.Controllers
                 sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\"",
                     DataTest.Code_a_barre,
                     DataTest.Num_Serie,
-                    DataTest.Categorie_materiel.libelle,
+                    DataTest.Categorie.libelle,
                     DataTest.Modele,
                     DataTest.Marque,
                     DataTest.Etat,

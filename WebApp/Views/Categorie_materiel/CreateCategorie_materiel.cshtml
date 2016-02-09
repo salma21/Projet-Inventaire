@@ -1,4 +1,4 @@
-﻿@model Domain.Categorie_materiel
+﻿@model Domain.Categorie
 
 
 <div class="row">
@@ -13,7 +13,7 @@
 
                 <div class="panel panel-default">
 
-                    @using (@Html.BeginForm("CreateCategorie_materiel", "Categorie_materiel", FormMethod.Post,
+                    @using (@Html.BeginForm("CreateCategorie", "Categorie", FormMethod.Post,
 new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
@@ -51,7 +51,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("Afficher la liste des categories materiels", "GetCategorie_materiel")
+                    @Html.ActionLink("Afficher la liste des categories materiels", "GetCategorie")
                 </div>
 
             </div>
