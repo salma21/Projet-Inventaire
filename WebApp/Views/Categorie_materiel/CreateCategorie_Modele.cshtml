@@ -12,7 +12,7 @@
     function GetCity(_stateId) {
         var procemessage = "<option value='0'>Encours...</option>";
         $("#ddlcity").html(procemessage).show();
-        var url = "/Categorie/GetModeleBySousCat/";
+        var url = "/Categorie_materiel/GetModeleBySousCat/";
 
         $.ajax({
             url: url,
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Sous Categorie  </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.id_categorie_Designation, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True"})
+                                    @Html.DropDownListFor(m => m.id_sous_categorie, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True"})
 
   </div>
                             </div>

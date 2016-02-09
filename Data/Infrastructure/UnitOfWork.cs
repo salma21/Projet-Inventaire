@@ -274,8 +274,8 @@ namespace Data.Infrastructure
         }
 
 
-        
-        private IInventaireVehiculeRepository InventaireVehRepository;
+
+        private IInventaireVehiculeRepository InventaireVehiculeRepository;
         IInventaireVehiculeRepository IUnitOfWork.InventaireVehiculeRepository
         {
             get
@@ -283,6 +283,7 @@ namespace Data.Infrastructure
                 return InventaireVehiculeRepository ?? (InventaireVehiculeRepository = new InventaireVehiculeRepository(dbFactory));
             }
         }
+
 
 
         private IInventaireBienRepository InventaireBienRepository;

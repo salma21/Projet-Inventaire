@@ -20,11 +20,11 @@
                             <th>Batiment</th>
 
                             <th>Fournisseur</th>
-                            <th>Contrat garanti</th>
+                            @*<th>Contrat garanti</th>
                             <th>Societe assurance</th>
                             <th>Contrat assurance</th>
                             <th>Societe maintenance</th>
-                            <th>Contrat maintenance</th>
+                            <th>Contrat maintenance</th>*@
                             <th>Prix achat</th>
                             <th>Action</th>
                         </tr>
@@ -40,16 +40,16 @@
                                 <td class="center">@item.Matricule</td>
                                 <td class="center">@item.Modele</td>
                                 <td class="center">@item.Etat</td>
-                                <td class="center">@item.Num_sachet </td>
+                                <td class="center">@item.Num_chassis </td>
                                 <td class="center">@item.Parc_auto.Libelle</td>
                                 <td class="center">@item.Parc_auto.Batiment.description</td>
 
-                                <td class="center">@item.Contrat_garanti.Fournisseur.Nom</td>
+                                @*<td class="center">@item.Contrat_garanti.Fournisseur.Nom</td>
                                 <td class="center">@item.Contrat_garanti.Type_garanti</td>
                                     <td class="center"> @item.Contrat_maintenance.Societe_maintenance.Libelle</td>
                                     <td class="center"> @item.Contrat_maintenance.Type_maintenance</td>
                                     <td class="center">@item.Contrat_assurance.Societe_assurance.Libelle </td>
-                                    <td class="center">@item.Contrat_assurance.Type_assurance </td>
+                                    <td class="center">@item.Contrat_assurance.Type_assurance </td>*@
                                     <td class="center">@item.Achat.Prix_d_achat</td>
 
 
