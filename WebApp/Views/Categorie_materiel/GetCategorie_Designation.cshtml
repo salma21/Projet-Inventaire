@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.CategorieDesignation>
+﻿@model IEnumerable<Domain.Sous_categorie>
 
 <h2>Liste des categories Designation</h2>
 
@@ -16,39 +16,30 @@
                     <thead>
                         <tr>
 
-                            <th>Id</th>
+                           
                             <th>Designation</th>
                             <th>Categorie</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-
-                            <th>Id</th>
-                            <th>Designation</th>
-                            <th>Categorie</th>
-                            <th>Action</th>
-
-                        </tr>
-                    </tfoot>
+                    
 
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
 
-                                <td class="center">@item.id_categorie_Designation</td>
+                                
                                 <td class="center">@item.libelle </td>
-                                <td class="center">@item.Categorie_materiel.libelle </td>
+                                <td class="center">@item.Categorie.libelle </td>
 
 
                                 <td>
                                     @if (@Session["Role"].ToString() == "ADMIN")
                                     {
 
-                                        <a href="@Url.Action("EditCategorie_Designation", new { id = item.id_categorie_Designation })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                        <a href="@Url.Action("EditCategorie_Designation", new { id = item.id_sous_categorie})">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
                                     }
                                 </td>
 
@@ -61,7 +52,7 @@
                 <br /><p>
                     @if (@Session["Role"].ToString() == "ADMIN")
                     {
-                        @Html.ActionLink("Ajouter une nouvelle Categorie Designation", "CreateCategorie_Designation")
+                        @Html.ActionLink("Ajouter une nouvelle Sous Categorie ", "CreateCategorie_Designation")
                     }
                 </p>
 

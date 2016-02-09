@@ -57,7 +57,7 @@ namespace WebApp.Controllers
             try
                 {
 
-                    var archive = BissInventaireEntities.Instance.Categorie_materiel.Find(Id_categorie);
+                    var archive = BissInventaireEntities.Instance.Categorie.Find(Id_categorie);
 
                     return View(archive);
                 }
@@ -79,13 +79,13 @@ namespace WebApp.Controllers
 
             // POST: Categorie_materiel/Create
             [HttpPost]
-            public ActionResult CreateCategorie_materiel(Categorie_materiel Catm, FormCollection collection)
+            public ActionResult CreateCategorie_materiel(Categorie Catm, FormCollection collection)
             {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Categorie_materiel.Add(Catm);
+                    BissInventaireEntities.Instance.Categorie.Add(Catm);
                     BissInventaireEntities.Instance.SaveChanges();
                     return RedirectToAction("GetCategorie_materiel");
                 }
@@ -105,20 +105,20 @@ namespace WebApp.Controllers
 
         public ActionResult CreateCategorie_Designation()
         {
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
 
             return View();
         }
 
         // POST: Categorie_materiel/Create
         [HttpPost]
-        public ActionResult CreateCategorie_Designation(CategorieDesignation Catm, FormCollection collection)
+        public ActionResult CreateCategorie_Designation(Sous_categorie Catm, FormCollection collection)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    BissInventaireEntities.Instance.CategorieDesignation.Add(Catm);
+                    BissInventaireEntities.Instance.Sous_categorie.Add(Catm);
                     BissInventaireEntities.Instance.SaveChanges();
                     return RedirectToAction("GetCategorie_Designation");
                 }
@@ -138,8 +138,8 @@ namespace WebApp.Controllers
 
         public ActionResult CreateCategorie_Modele()
         {
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
-            ViewData["des"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Sous_categorie.ToList(), "Id_categorie", "libelle");
+            ViewData["des"] = new SelectList(BissInventaireEntities.Instance.Sous_categorie.ToList(), "id_categorie_Designation", "libelle");
 
             return View();
         }
@@ -180,7 +180,7 @@ namespace WebApp.Controllers
 
         // POST: Categorie_materiel/Create
         [HttpPost]
-        public ActionResult EditCategorie_materiel(Categorie_materiel Catm)
+        public ActionResult EditCategorie_materiel(Categorie Catm)
         {
             if (ModelState.IsValid)
             {
@@ -207,7 +207,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
            
             var cat = db.FindCategorie_DesignationById(id);
             return View(cat);
@@ -215,7 +215,7 @@ namespace WebApp.Controllers
 
         // POST: Categorie_materiel/Create
         [HttpPost]
-        public ActionResult EditCategorie_Designation(CategorieDesignation Catm)
+        public ActionResult EditCategorie_Designation(Sous_categorie Catm)
         {
             if (ModelState.IsValid)
             {
@@ -242,8 +242,8 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
 
-            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie_materiel.ToList(), "Id_categorie", "libelle");
-            ViewData["des"] = new SelectList(BissInventaireEntities.Instance.CategorieDesignation.ToList(), "id_categorie_Designation", "libelle");
+            ViewData["cat"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+            ViewData["des"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "id_categorie_Designation", "libelle");
 
             var cat = db.FindCategorie_ModeleById(id);
             return View(cat);
@@ -251,7 +251,7 @@ namespace WebApp.Controllers
 
         // POST: Categorie_materiel/Create
         [HttpPost]
-        public ActionResult EditCategorie_Modele(Sous_categorie Catm)
+        public ActionResult EditCategorie_Modele(Modele Catm)
         {
             if (ModelState.IsValid)
             {
@@ -334,7 +334,7 @@ namespace WebApp.Controllers
         public ActionResult GetModeleBySousCat(int stateid)
         {
            
-            List<Sous_categorie> objcity = new List<Sous_categorie>();
+            List<Modele> objcity = new List<Modele>();
 
             objcity = db.FindModeleByIdDes(stateid).ToList();
 

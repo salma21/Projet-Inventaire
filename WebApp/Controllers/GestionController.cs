@@ -1031,7 +1031,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var mat = con.Categorie_materiel.ToList();
+            var mat = con.Categorie.ToList();
             return View(mat);
         }
 
@@ -1044,13 +1044,13 @@ namespace WebApp.Controllers
 
         // POST: Gestion/Create
         [HttpPost]
-        public ActionResult Createmateriel(Categorie_materiel reg)
+        public ActionResult Createmateriel(Categorie reg)
         {
             if (ModelState.IsValid)
             {
                 try
             {
-                BissInventaireEntities.Instance.Categorie_materiel.Add(reg);
+                BissInventaireEntities.Instance.Categorie.Add(reg);
                 BissInventaireEntities.Instance.SaveChanges();
                 return RedirectToAction("Getmateriel");
             }
@@ -1133,8 +1133,8 @@ namespace WebApp.Controllers
 
             veh.Prix_d_achat = ac.Prix_d_achat;
          
-            veh.Id_societe_maintenance = idSocM;
-            veh.Id_societe_assurance = idSocA;
+            //veh.Id_societe_maintenance = idSocM;
+            //veh.Id_societe_assurance = idSocA;
             veh.idBatiment = idBat;
 
             if (ModelState.IsValid)
@@ -1177,7 +1177,7 @@ namespace WebApp.Controllers
 
         //MouvementBien
 
-        private IMouvementBService db8 = new MouvementBService();
+        private IMouvementBienService db8 = new MouvementBienService();
         // GET: Mouvement
         public ActionResult Index8()
         {
@@ -1186,7 +1186,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-        public ActionResult GetMouvementB()
+        public ActionResult GetMouvementBien()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -1199,7 +1199,7 @@ namespace WebApp.Controllers
             try
             {
 
-                var archive = BissInventaireEntities.Instance.MouvementB.Find(id);
+                var archive = BissInventaireEntities.Instance.MouvementBien.Find(id);
 
                 return View(archive);
             }
@@ -1214,7 +1214,7 @@ namespace WebApp.Controllers
         }
 
         // GET: Mouvement/Create
-        public ActionResult CreateMouvementB()
+        public ActionResult CreateMouvementBien()
         {
 
             if (Session["identifiant"] == null)
@@ -1230,14 +1230,14 @@ namespace WebApp.Controllers
 
         // POST: Mouvement/Create
         [HttpPost]
-        public ActionResult CreateMouvementB(MouvementB mou, FormCollection collection)
+        public ActionResult CreateMouvementBien(MouvementBien mou, FormCollection collection)
         {
             if (ModelState.IsValid)
             {
                 try
             {
-                db8.CreateMouvementB(mou);
-                db8.SaveMouvementB();
+                db8.CreateMouvementBien(mou);
+                db8.SaveMouvementBien();
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();
                     tr.Dates = DateTime.Now;
@@ -1247,7 +1247,7 @@ namespace WebApp.Controllers
                     tr.Users = (Emp.Personnel.Matricule).ToString();
                     BissInventaireEntities.Instance.Trace.Add(tr);
                     BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetMouvementB");
+                    return RedirectToAction("GetMouvementBien");
             }
             catch (DbEntityValidationException r)
             {
@@ -1333,7 +1333,7 @@ namespace WebApp.Controllers
 
         //MouvementVehicule
 
-        private IMouvementVService db7 = new MouvementVService();
+        private IMouvementVehiculeService db7 = new MouvementVehiculeService();
         // GET: Mouvement
         public ActionResult Index7()
         {
@@ -1358,7 +1358,7 @@ namespace WebApp.Controllers
             try
             {
 
-                var archive = BissInventaireEntities.Instance.MouvementV.Find(id);
+                var archive = BissInventaireEntities.Instance.MouvementVehicule.Find(id);
 
                 return View(archive);
             }
@@ -1373,7 +1373,7 @@ namespace WebApp.Controllers
         }
 
         // GET: Mouvement/Create
-        public ActionResult CreateMouvementV()
+        public ActionResult CreateMouvementVehicule()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -1389,15 +1389,15 @@ namespace WebApp.Controllers
 
         // POST: Mouvement/Create
         [HttpPost]
-        public ActionResult CreateMouvementV(MouvementV mouv, FormCollection collection)
+        public ActionResult CreateMouvementVehicule(MouvementVehicule mouv, FormCollection collection)
         {
             if (ModelState.IsValid)
             {
 
                 try
             {
-                db7.CreateMouvementV(mouv);
-            db7.SaveMouvementV();
+                db7.CreateMouvementVehicule(mouv);
+            db7.SaveMouvementVehicule();
 
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();

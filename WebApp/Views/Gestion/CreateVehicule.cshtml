@@ -33,7 +33,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-lg-4" style="font-style:oblique;">Modéle </label>
+                            <label class="control-label col-lg-4" style="font-style:oblique;">Modèle </label>
                             <div class="col-lg-6">
 
                                 @Html.TextBoxFor(model => model.Modele, new { @class = "form-control", required = "True" })
@@ -41,7 +41,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-lg-4" style="font-style:oblique;">Etat </label>
+                            <label class="control-label col-lg-4" style="font-style:oblique;">État </label>
                             <div class="col-lg-6">
 
                                 @Html.TextBoxFor(model => model.Etat , new { @class = "form-control", required = "True" })
@@ -49,10 +49,10 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-lg-4" style="font-style:oblique;"> Num sachet </label>
+                            <label class="control-label col-lg-4" style="font-style:oblique;"> Num de châssis </label>
                             <div class="col-lg-6">
 
-                                @Html.TextBoxFor(model => model.Num_sachet, new { @class = "form-control", required = "True" })
+                                @Html.TextBoxFor(model => model.Num_chassis, new { @class = "form-control", required = "True" })
 
                             </div>
                         </div>
@@ -70,29 +70,13 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
 
-                        <div class="form-group">
-                            <label class="control-label col-lg-4" style="font-style:oblique;">Contrat garanti </label>
-                            <div class="col-lg-6">
-
-                                @Html.DropDownListFor(model => model.Id_contrat_garanti, (SelectList)ViewData["garanti"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-                            </div>
-                        </div>
+                      
 
                        
 
-                        <div class="form-group">
-                            <label class="control-label col-lg-4" style="font-style:oblique;">Contrat assurance </label>
-                            <div class="col-lg-6">
+                       
 
-                                @Html.DropDownListFor(model => model.Id_contrat_assurance, (SelectList)ViewData["assurance"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label class="control-label col-lg-4" style="font-style:oblique;">Contrat maintenance </label>
                             <div class="col-lg-6">
 
@@ -100,9 +84,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                             </div>
-                        </div>
+                        </div>*@
 
-                        <div class="form-group">
+                        @*<div class="form-group">
                             <label class="control-label col-lg-4" style="font-style:oblique;">Num facture</label>
                             <div class="col-lg-6">
 
@@ -110,7 +94,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                             </div>
-                        </div>
+                        </div>*@
                     </div>
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />

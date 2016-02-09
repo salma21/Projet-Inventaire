@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.MouvementV>
+﻿@model IEnumerable<Domain.MouvementVehicule>
 
 
 
@@ -24,7 +24,7 @@
                             <th>Date renouvellementt</th>
                             <th>Date retour prévue</th>
                             <th>Date sortie</th>
-                            <th>Action</th>
+                           
                         </tr>
                     </thead>
 
@@ -49,12 +49,6 @@
                                 <td class="center">@item.Date_sortie</td>
 
 
-                                <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvementV })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-}
-                                </td>
 
                             </tr>
 
@@ -68,7 +62,7 @@
                 <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                    @Html.ActionLink("Ajouter un nouveau Mouvement Véhicule", "CreateMouvementV")
+                    @Html.ActionLink("Ajouter un nouveau Mouvement Véhicule", "CreateMouvementVehicule")
 }
                 </p>
 

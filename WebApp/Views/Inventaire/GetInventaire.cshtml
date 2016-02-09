@@ -4,7 +4,7 @@
 @{ 
     IInventaireBienService db1 = new InventaireBienService();
     IInventaireService db = new InventaireService();
-    IInventaireVehService db2 = new InventaireVehService();
+    IInventaireVehiculeService db2 = new InventaireVehService();
     var inv = db.GetInventaires();
     var ass = db1.GetInventaireBiens();
     var ass2 = db2.GetInventaireVeh();
@@ -55,7 +55,7 @@
                                     @if (@Session["Role"].ToString() == "ADMIN") {
                                     <a href="@Url.Action("AddBien", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-life-bouy" title="Ajouter Des Biens"></i></a>
                                     <a href="@Url.Action("AddVeh", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-automobile" title="Ajouter Des Vehicules"></i></a>
-                                    <a href="@Url.Action("Edit", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("EditInventaire", new { id = item.Id_inventaire })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
                                     }
                                 </td>
 

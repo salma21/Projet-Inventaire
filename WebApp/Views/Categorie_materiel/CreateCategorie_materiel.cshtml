@@ -1,5 +1,4 @@
-﻿@model Domain.Categorie_materiel
-
+﻿@model Domain.Categorie
 
 <div class="row">
     <div class="col-md-12">
@@ -18,9 +17,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
                         <div class="form-horizontal">
-                          
+
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                          
+
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Nom categorie  </label>
                                 <div class="col-lg-6">
@@ -51,7 +50,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("Afficher la liste des categories materiels", "GetCategorie_materiel")
+                    @Html.ActionLink("Afficher la liste des categories ", "GetCategorie_materiel")
                 </div>
 
             </div>

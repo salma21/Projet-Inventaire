@@ -12,18 +12,18 @@ namespace Data.Repositories
         public UtilisateurRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateUtilisateurDetached(Utilisateur e)
         {
-            Utilisateur existing = this.DataContext.Utilisateur.Find(e.id_user);
+            Utilisateur existing = this.DataContext.Utilisateur.Find(e.id);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-        public IEnumerable<Personnel> FindPersByBatiment(int id)
-        {
-            var pers = (from p in DataContext.Personnel
-                        where p.idBatiment == id
-                        select p);
-            return pers.ToList();
-        }
+        //public IEnumerable<Personnel> FindPersByBatiment(int id)
+        //{
+        //    var pers = (from p in DataContext.Personnel
+        //                where p.idBatiment == id
+        //                select p);
+        //    return pers.ToList();
+        //}
 
         public Bien FindBienBuId(int id)
         {
@@ -40,7 +40,7 @@ namespace Data.Repositories
     {
 
         void UpdateUtilisateurDetached(Utilisateur e);
-        IEnumerable<Personnel> FindPersByBatiment(int id);
+        //IEnumerable<Personnel> FindPersByBatiment(int id);
         Bien FindBienBuId(int id);
 
 

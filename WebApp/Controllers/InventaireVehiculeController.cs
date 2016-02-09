@@ -9,14 +9,14 @@ namespace WebApp.Controllers
 {
     public class InventaireVehiculeController : Controller
     {
-        IInventaireVehService db = new InventaireVehService();
+        IInventaireVehiculeService db = new InventaireVehiculeService();
 
         // GET: InventaireBien
         public ActionResult GetInventaireVehicule()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var inv = db.GetInventaireVeh();
+            var inv = db.GetInventaireVehicule();
             return View(inv);
         }
         // GET: InventaireVehicule

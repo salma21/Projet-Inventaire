@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.MouvementB>
+﻿@model IEnumerable<Domain.MouvementBien>
 
 
 <!-- Start Row -->
@@ -23,7 +23,7 @@
                             <th>Date renouvellementt</th>
                             <th>Date retour prévue</th>
                             <th>Date sortie</th>
-                            <th>Action</th>
+                       
                         </tr>
                     </thead>
 
@@ -35,7 +35,6 @@
                             <tr>
                               
                                 <td class="center">@item.Bien.Etage.Batiment.description</td>
-                             
                                 <td class="center">@item.Bien.Etage.description</td>
                                 <td class="center">@item.Bien.Num_Serie</td>
                                 <td class="center">@item.Nom</td>
@@ -46,12 +45,6 @@
                                 <td class="center">@item.Date_sortie</td>
 
 
-                                <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                    <a href="@Url.Action("Edit", new { id = item.Id_mouvementB })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-}
-                                </td>
 
                             </tr>
 
@@ -62,7 +55,7 @@
                 <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                    @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvementB")
+                    @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvementBien")
 }
                 </p>
 

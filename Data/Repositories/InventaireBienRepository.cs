@@ -10,20 +10,20 @@ using Data.Infrastructure;
 
 namespace Data.Repositories
 {
-    class InventaireBienRepository : RepositoryBase<Association_30>, IInventaireBienRepository
+    class InventaireBienRepository : RepositoryBase<InventaireBien>, IInventaireBienRepository
     {
         public InventaireBienRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateInventaireBienDetached(Association_30 e)
+        public void UpdateInventaireBienDetached(InventaireBien e)
         {
-            Association_30 existing = FindBienByID(e.Id_bien);
+            InventaireBien existing = FindBienByID(e.Id_bien);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-        public Association_30 FindBienByID(int id)
+        public InventaireBien FindBienByID(int id)
         {
 
-            var pers = (from p in DataContext.Association_30
+            var pers = (from p in DataContext.InventaireBien
                         where p.Id_bien == id
                         select p);
             return pers.FirstOrDefault();
@@ -59,10 +59,10 @@ namespace Data.Repositories
 
     }
 
-    public interface IInventaireBienRepository : IRepository<Association_30>
+    public interface IInventaireBienRepository : IRepository<InventaireBien>
     {
-        void UpdateInventaireBienDetached(Association_30 e);
-       Association_30 FindBienByID(int id);
+        void UpdateInventaireBienDetached(InventaireBien e);
+       InventaireBien FindBienByID(int id);
 
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
 

@@ -443,8 +443,6 @@
     <Content Include="Views\Gestion\test.cshtml" />
     <Content Include="Views\Db\Index.cshtml" />
     <Content Include="Views\Db\Create1.cshtml" />
-    <Content Include="Views\Categorie_materiel\CreateCategorie_materiel.cshtml" />
-    <Content Include="Views\Categorie_materiel\GetCategorie_materiel.cshtml" />
     <Content Include="Views\Personnel\CreatePersonnel.cshtml" />
     <Content Include="Views\Personnel\GetPersonnel.cshtml" />
     <Content Include="Views\Role\CreateRole.cshtml" />
@@ -472,14 +470,13 @@
     <Content Include="Views\Gestion\CreateGouvernorat1.cshtml" />
     <Content Include="Views\Gestion\EditStock.cshtml" />
     <Content Include="Views\Gestion\EditParcAuto.cshtml" />
-    <Content Include="Views\Categorie_materiel\EditCategorie_materiel.cshtml" />
     <Content Include="Views\Gestion\EditRegion.cshtml" />
     <Content Include="Views\ServiceD\EditServiceD.cshtml" />
-    <Content Include="Views\Gestion\CreateMouvementB.cshtml" />
+    <Content Include="Views\Gestion\CreateMouvementBien.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
-    <Content Include="Views\Gestion\GetMouvementB.cshtml" />
-    <Content Include="Views\Gestion\CreateMouvementV.cshtml" />
-    <Content Include="Views\Gestion\GetMouvement.cshtml" />
+    <Content Include="Views\Gestion\GetMouvementBien.cshtml" />
+    <Content Include="Views\Gestion\CreateMouvementVehicule.cshtml" />
+    <Content Include="Views\Gestion\GetMouvementVehicule.cshtml" />
     <Content Include="Views\Inventaire\GetBiens.cshtml" />
     <Content Include="Views\InventaireBien\GetInventaireBiens.cshtml" />
     <Content Include="Views\Inventaire\GetVehicules.cshtml" />
@@ -493,13 +490,16 @@
     <Content Include="Views\GestionContratetSoc\EditContrat_Maintenance.cshtml" />
     <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
     <Content Include="Views\GestionContratetSoc\EditSociete_maintenance.cshtml" />
-    <Content Include="Views\Categorie_materiel\GetCategorie_Designation.cshtml" />
-    <Content Include="Views\Categorie_materiel\GetCategorie_Model.cshtml" />
+    <Content Include="Views\Admin\GetTrace.cshtml" />
     <Content Include="Views\Categorie_materiel\CreateCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\CreateCategorie_materiel.cshtml" />
     <Content Include="Views\Categorie_materiel\CreateCategorie_Modele.cshtml" />
     <Content Include="Views\Categorie_materiel\EditCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\EditCategorie_materiel.cshtml" />
     <Content Include="Views\Categorie_materiel\EditCategorie_Modele.cshtml" />
-    <Content Include="Views\Admin\GetTrace.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_materiel.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_Model.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

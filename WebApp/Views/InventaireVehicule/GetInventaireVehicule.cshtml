@@ -1,8 +1,8 @@
-﻿@model IEnumerable<Domain.Association_31>
+﻿@model IEnumerable<Domain.InventaireVehicule>
 @using Service
 @{
 
-    IInventaireVehService kk = new InventaireVehService();
+    IInventaireVehiculeService kk = new InventaireVehiculeService();
     IInventaireService InB = new InventaireService();
 
 }
@@ -44,7 +44,7 @@
 
                                 @{ 
                                     
-                                    var code = kk.GetVehByID(@item.Id_Vehicule);
+                                    var code = kk.GetVehiculeByID(@item.Id_Vehicule);
                                 }
                                 <td class="center">@code.Matricule</td>
                                 <td class="center">@code.Num_sachet</td>

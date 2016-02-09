@@ -22,7 +22,7 @@ namespace WebApp.Controllers
     
     public class ImportExportController : Controller
     {
-        private ICategorie_materielService db = new CategorieService();
+        private ICategorie_materielService db = new Categorie_materiel_materielService();
         public ActionResult Index()
         {
             if (Session["identifiant"] == null)
@@ -96,7 +96,7 @@ namespace WebApp.Controllers
 
                     catalogue.Num_Serie = row["N° de série "].ToString();
                     ///var i = db.FindCategorie_materielByNom(row["Catégorie "].ToString());
-                    //catalogue.Categorie = Convert.ToString(i.Id_categorie);
+                    //catalogue.Categorie_materiel = Convert.ToString(i.Id_Categorie_materiel);
 
                     catalogue.Modele = row["Modèle "].ToString();
                     catalogue.Marque = row["Marque "].ToString();
@@ -154,7 +154,7 @@ namespace WebApp.Controllers
         public void ExportToCSV()
         {
             StringWriter sw = new StringWriter();
-            sw.WriteLine("\"Code materiel\",\"Num de serie\",\"Categorie\",\"Modele\",\"Marque\",\"Statut\",\"Date instalation\",\"Localisation\"");
+            sw.WriteLine("\"Code materiel\",\"Num de serie\",\"Categorie_materiel\",\"Modele\",\"Marque\",\"Statut\",\"Date instalation\",\"Localisation\"");
             Response.ClearContent();
             String DateExp = DateTime.Now.ToString();
             Response.AddHeader("content-disposition", "attachment;filename=InventaireList_" + DateExp + ".csv");

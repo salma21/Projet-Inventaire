@@ -10,12 +10,12 @@ using System.Data.Entity.Infrastructure;
 
 namespace Data.Repositories
 {
-    public class MouvementBRepository : RepositoryBase<MouvementB>, IMouvementBRepository
+    public class MouvementBienRepository : RepositoryBase<MouvementBien>, IMouvementBienRepository
     {
-        public MouvementBRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateMouvementBDetached(MouvementB e)
+        public MouvementBienRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        public void UpdateMouvementBienDetached(MouvementBien e)
         {
-            MouvementB existing = this.DataContext.MouvementB.Find(e.Id_mouvementB);
+            MouvementBien existing = this.DataContext.MouvementBien.Find(e.Id_mouvementB);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
@@ -54,10 +54,10 @@ namespace Data.Repositories
 
 
     }
-    public interface IMouvementBRepository : IRepository<MouvementB>
+    public interface IMouvementBienRepository : IRepository<MouvementBien>
     {
 
-        void UpdateMouvementBDetached(MouvementB e);
+        void UpdateMouvementBienDetached(MouvementBien e);
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
 
         IEnumerable<Etage> FindEtageByBatiment(int id);

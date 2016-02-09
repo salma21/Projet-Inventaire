@@ -12,7 +12,7 @@ namespace Domain
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class BissInventaireEntities : DbContext
     {
         private static BissInventaireEntities instance;
@@ -31,7 +31,6 @@ namespace Domain
             : base("name=BissInventaireEntities")
         {
         }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

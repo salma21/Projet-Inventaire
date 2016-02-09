@@ -109,6 +109,4 @@ C:\ATB_SOLUTIONS\Data\obj\Debug\Data.pdb
 C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Data\obj\Debug\Data.dll
 C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Data\obj\Debug\Data.pdb
-C:\VERSION 08-02-2016 Version salma aprés changement de la base2\ATB_SOLUTIONS\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
-C:\VERSION 08-02-2016 Version salma aprés changement de la base2\ATB_SOLUTIONS\Data\obj\Debug\Data.dll
-C:\VERSION 08-02-2016 Version salma aprés changement de la base2\ATB_SOLUTIONS\Data\obj\Debug\Data.pdb
+C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache

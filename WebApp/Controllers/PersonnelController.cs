@@ -65,16 +65,16 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreatePersonnel(Personnel pers, FormCollection collection)
         {
-            int idregion = db.FindRegionByBatiment(pers.idBatiment);
-            int idgou = db.FindGouverneratByBatiment(pers.idBatiment);
-            int idpays = db.FindPaysByBatiment(pers.idBatiment);
-            int iddelegation = db.FindDelegationByBatiment(pers.idBatiment);
-            int idorg = db.FindOrganisationByDelegation(pers.idBatiment);
-            pers.idDelegation = iddelegation;
-            pers.idRegion = idregion;
-            pers.idOrganisation = idorg;
-            pers.idPays = idpays;
-            pers.idGouvernorat = idgou;
+            //int idregion = db.FindRegionByBatiment(pers.idBatiment);
+            //int idgou = db.FindGouverneratByBatiment(pers.idBatiment);
+            //int idpays = db.FindPaysByBatiment(pers.idBatiment);
+            //int iddelegation = db.FindDelegationByBatiment(pers.idBatiment);
+            //int idorg = db.FindOrganisationByDelegation(pers.idBatiment);
+            //pers.idDelegation = iddelegation;
+            //pers.idRegion = idregion;
+            //pers.idOrganisation = idorg;
+            //pers.idPays = idpays;
+            //pers.idGouvernorat = idgou;
 
             if (ModelState.IsValid)
             {
@@ -124,16 +124,16 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult Edit(Personnel pers, FormCollection collection)
         {
-            int idregion = db.FindRegionByBatiment(pers.idBatiment);
-            int idgou = db.FindGouverneratByBatiment(pers.idBatiment);
-            int idpays = db.FindPaysByBatiment(pers.idBatiment);
-            int iddelegation = db.FindDelegationByBatiment(pers.idBatiment);
-            int idorg = db.FindOrganisationByDelegation(pers.idBatiment);
-            pers.idDelegation = iddelegation;
-            pers.idRegion = idregion;
-            pers.idOrganisation = idorg;
-            pers.idPays = idpays;
-            pers.idGouvernorat = idgou;
+            //int idregion = db.FindRegionByBatiment(pers.idBatiment);
+            //int idgou = db.FindGouverneratByBatiment(pers.idBatiment);
+            //int idpays = db.FindPaysByBatiment(pers.idBatiment);
+            //int iddelegation = db.FindDelegationByBatiment(pers.idBatiment);
+            //int idorg = db.FindOrganisationByDelegation(pers.idBatiment);
+            //pers.idDelegation = iddelegation;
+            //pers.idRegion = idregion;
+            //pers.idOrganisation = idorg;
+            //pers.idPays = idpays;
+            //pers.idGouvernorat = idgou;
 
             if (ModelState.IsValid)
             {
