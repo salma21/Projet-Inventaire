@@ -8,62 +8,28 @@ using System.Threading.Tasks;
 
 namespace Service
 {
-    public class GestionContratetSocService : IGestionContratetSocService
+    public class GestionContratService : IGestionContratService
     {
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);
 
-        public GestionContratetSocService() { }
+        public GestionContratService() { }
 
-        //public IEnumerable<Contrat_maintenance> GetContrat_maintenances()
-        //{
-        //    var dep = utOfWork.ContratMaintennaceRepository.GetAll();
-        //    return dep;
-        //}
-        //public IEnumerable<Contrat_garanti> GetContrat_garantis()
-        //{
-        //    var dep = utOfWork.ContratGarantieRepository.GetAll();
-        //    return dep;
-        //}
-        //public IEnumerable<Contrat_assurance> GetContrat_assurances()
-        //{
-        //    var dep = utOfWork.ContratAssuranceRepository.GetAll();
-        //    return dep;
-        //}
-        //public IEnumerable<Societe_maintenance> GetSociete_maintenances()
-        //{
-        //    var dep = utOfWork.SocieteMaintenanceRepository.GetAll();
-        //    return dep;
-        //}
-        //public IEnumerable<Societe_assurance> GetSociete_assurances()
-        //{
-        //    var dep = utOfWork.SocieteAssuranceRepository.GetAll();
-        //    return dep;
-        //}
-        //public IEnumerable<Achat> GetAchat()
-        //{
-        //    var dep = utOfWork.AchatRepository.GetAll();
-        //    return dep;
-        //}
+      
 
-        //public Societe_maintenance FindSocMainByID(int id)
-
-        //{
-        //    var Dept = utOfWork.SocieteMaintenanceRepository.FindSocByID(id);
-        //    return Dept;
-        //}
-
-        //public Societe_assurance FindSocAssByID(int id)
-
-        //{
-        //    var Dept = utOfWork.SocieteAssuranceRepository.FindSocByID(id);
-        //    return Dept;
-        //}
-
-        public Contrat_assurance FindContrat_assuranceByID(int id)
+        public Fournisseur FindFournisseurByID(int id)
 
         {
-            var Dept = utOfWork.ContratAssuranceRepository.FindContrat_assuranceByID(id);
+            var Dept = utOfWork.FournisseurRepository.FindFournisseurByID(id);
+            return Dept;
+        }
+
+       
+
+        public Contrat FindContratByID(int id)
+
+        {
+            var Dept = utOfWork.ContratRepository.FindContratByID(id);
             return Dept;
         }
 
@@ -119,20 +85,20 @@ namespace Service
         }
 
 
-        //public void UpdateSociete_assuranceDetached(Societe_assurance e)
-        //{
-        //    utOfWork.SocieteAssuranceRepository.UpdateSoc_AssuranceDetached(e);
-        //}
+        public void UpdateSociete_assuranceDetached(Societe_assurance e)
+        {
+            utOfWork.SocieteAssuranceRepository.UpdateSoc_AssuranceDetached(e);
+        }
         public void UpdateContrat_MaintenanceDetached(Contrat_maintenance e)
         {
             utOfWork.ContratMaintennaceRepository.UpdateCont_MaintenanceDetached(e);
         }
 
 
-        //public void UpdateSociete_MaintenanceDetached(Societe_maintenance e)
-        //{
-        //    utOfWork.SocieteMaintenanceRepository.UpdateSoc_MaintenanceDetached(e);
-        //}
+        public void UpdateSociete_MaintenanceDetached(Societe_maintenance e)
+        {
+            utOfWork.SocieteMaintenanceRepository.UpdateSoc_MaintenanceDetached(e);
+        }
 
 
                public void UpdateContrat_GarantieDetached(Contrat_garanti e)
@@ -148,13 +114,13 @@ namespace Service
     {
     Contrat_maintenance FindContrat_MaintenanceByID(int id);
     void UpdateContrat_assuranceDetached(Contrat_assurance e);
-    //void UpdateSociete_assuranceDetached(Societe_assurance e);
+    void UpdateSociete_assuranceDetached(Societe_assurance e);
     void UpdateContrat_MaintenanceDetached(Contrat_maintenance e);
-    //void UpdateSociete_MaintenanceDetached(Societe_maintenance e);
+    void UpdateSociete_MaintenanceDetached(Societe_maintenance e);
     void UpdateContrat_GarantieDetached(Contrat_garanti e);
-        //Societe_maintenance FindSocMainByID(int id);
+        Societe_maintenance FindSocMainByID(int id);
         Contrat_assurance FindContrat_assuranceByID(int id);
-        //Societe_assurance FindSocAssByID(int id);
+        Societe_assurance FindSocAssByID(int id);
         void UpdateAchatDetached(Achat e);
        
         void SaveChange();

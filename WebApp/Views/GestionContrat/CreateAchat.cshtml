@@ -26,7 +26,7 @@
                 </ul>
             </div>
             <div class="panel-body">
-                @using (@Html.BeginForm("CreateAchat", "GestionContratetSoc", FormMethod.Post,
+                @using (@Html.BeginForm("CreateAchat", "GestionContrat", FormMethod.Post,
 new { @id = "frmId", @class = "fieldset-form" }))
                 {
                     <div class="panel panel-default">
@@ -149,7 +149,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
             </div>
 
             <p>
-                @Html.ActionLink("Liste des contrats d'achat", "GetAchat")
+                @Html.ActionLink("Liste des achats", "GetAchat")
             </p>
         </div>
 

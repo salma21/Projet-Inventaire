@@ -68,9 +68,6 @@
     <Compile Include="Repositories\GouvernoratRepository.cs" />
     <Compile Include="Repositories\InventaireBienRepository.cs" />
     <Compile Include="Repositories\InventaireRepository.cs" />
-    <Compile Include="Repositories\InventaireVehiculeRepository.cs" />
-    <Compile Include="Repositories\MouvementVehiculeRepository.cs" />
-    <Compile Include="Repositories\MouvementBienRepository.cs" />
     <Compile Include="Repositories\OrganisationRepository.cs" />
     <Compile Include="Repositories\PaysRepository.cs" />
     <Compile Include="Repositories\PersonnelRepository.cs" />
@@ -80,9 +77,7 @@
     <Compile Include="Repositories\Parc_AutoRepository.cs" />
     <Compile Include="Repositories\FournisseurRepository.cs" />
     <Compile Include="Repositories\BatimentRepository.cs" />
-    <Compile Include="Repositories\ContratMaintennaceRepository.cs" />
-    <Compile Include="Repositories\ContratAssuranceRepository.cs" />
-    <Compile Include="Repositories\ContratGarantieRepository.cs" />
+    <Compile Include="Repositories\ContratRepository.cs" />
     <Compile Include="Repositories\AchatRepository.cs" />
     <Compile Include="Repositories\RegionRepository.cs" />
     <Compile Include="Repositories\BureauRepository.cs" />
