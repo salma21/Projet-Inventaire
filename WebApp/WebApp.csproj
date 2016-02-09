@@ -201,11 +201,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\Categorie_materielController.cs" />
     <Compile Include="Controllers\DbController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EtageController.cs" />
-    <Compile Include="Controllers\GestionContratetSocController.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportExportController.cs" />
@@ -501,6 +499,7 @@
     <Content Include="Views\Categorie_materiel\CreateCategorie_Modele.cshtml" />
     <Content Include="Views\Categorie_materiel\EditCategorie_Designation.cshtml" />
     <Content Include="Views\Categorie_materiel\EditCategorie_Modele.cshtml" />
+    <Content Include="Views\Admin\GetTrace.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

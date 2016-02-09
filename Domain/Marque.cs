@@ -12,13 +12,16 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Trace
+    public partial class Marque
     {
-        public int Id_Trace { get; set; }
-        public string Users { get; set; }
-        public string Actions { get; set; }
-        public string Tables { get; set; }
-        public string Champs { get; set; }
-        public Nullable<System.DateTime> Dates { get; set; }
+        public Nullable<int> Id_categorie { get; set; }
+        public Nullable<int> id_sous_categorie { get; set; }
+        public Nullable<int> IdModele { get; set; }
+        public int Id_sous_Modele { get; set; }
+        public int IdMarque { get; set; }
+        public string Libelle { get; set; }
+        public string Description { get; set; }
+    
+        public virtual Sous_modele Sous_modele { get; set; }
     }
 }

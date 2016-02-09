@@ -94,6 +94,16 @@ C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.dll
 C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.dll
 C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.xml
 C:\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
-C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
 C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
 C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb
+C:\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\bin\Debug\Domain.dll.config
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\bin\Debug\Domain.dll
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\bin\Debug\Domain.pdb
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.dll
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.xml
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
+C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb

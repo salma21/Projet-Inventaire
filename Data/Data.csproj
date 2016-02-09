@@ -61,7 +61,7 @@
     <Compile Include="Infrastructure\RepositoryBase.cs" />
     <Compile Include="Infrastructure\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repositories\Categorie_materielRepository.cs" />
+    <Compile Include="Repositories\CategorieRepository.cs" />
     <Compile Include="Repositories\DelegationRepository.cs" />
     <Compile Include="Repositories\DirectionRepository.cs" />
     <Compile Include="Repositories\EtageRepository.cs" />
@@ -80,11 +80,7 @@
     <Compile Include="Repositories\Parc_AutoRepository.cs" />
     <Compile Include="Repositories\FournisseurRepository.cs" />
     <Compile Include="Repositories\BatimentRepository.cs" />
-    <Compile Include="Repositories\ContratMaintennaceRepository.cs" />
-    <Compile Include="Repositories\SocieteMaintenanceRepository.cs" />
-    <Compile Include="Repositories\SocieteAssuranceRepository.cs" />
-    <Compile Include="Repositories\ContratAssuranceRepository.cs" />
-    <Compile Include="Repositories\ContratGarantieRepository.cs" />
+    <Compile Include="Repositories\ContratRepository.cs" />
     <Compile Include="Repositories\AchatRepository.cs" />
     <Compile Include="Repositories\RegionRepository.cs" />
     <Compile Include="Repositories\BureauRepository.cs" />

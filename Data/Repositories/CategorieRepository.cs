@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 namespace Data.Repositories
 {
 
-    public class Categorie_materielRepository : RepositoryBase<Categorie_materiel>, ICategorie_materielRepository
+    public class CategorieRepository : RepositoryBase<Categorie>, ICategorieRepository
     {
-        public Categorie_materielRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
-        public void UpdateCategorie_materielDetached(Categorie_materiel e)
+        public CategorieRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        public void UpdateCategorie_materielDetached(Categorie e)
         {
-            Categorie_materiel existing = this.DataContext.Categorie_materiel.Find(e.Id_categorie);
+            Categorie existing = this.DataContext.Categorie.Find(e.Id_categorie);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
@@ -72,6 +72,25 @@ namespace Data.Repositories
             return pers.ToList();
         }
 
+
+        public IEnumerable<CategorieDesignation> GetDesignationAll()
+        {
+
+            var pers = (from p in DataContext.CategorieDesignation
+                       
+                        select p);
+            return pers.ToList();
+        }
+
+        public IEnumerable<Sous_categorie> GetAllModele()
+        {
+
+            var pers = (from p in DataContext.Sous_categorie
+
+                        select p);
+            return pers.ToList();
+        }
+
         public IEnumerable<Sous_categorie> FindModeleByIdDes(int id)
         {
 
@@ -93,6 +112,8 @@ namespace Data.Repositories
         Categorie_materiel FindCategorie_materielByNom(String id);
         void UpdateCategorie_materielDetached(Categorie_materiel e);
         IEnumerable<CategorieDesignation> FindPorduitByID(int id);
+        IEnumerable<CategorieDesignation> GetDesignationAll();
+        IEnumerable<Sous_categorie> GetAllModele();
     }
 
 

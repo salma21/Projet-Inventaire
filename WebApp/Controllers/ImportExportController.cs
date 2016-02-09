@@ -22,7 +22,7 @@ namespace WebApp.Controllers
     
     public class ImportExportController : Controller
     {
-        private ICategorie_materielService db = new Categorie_materielService();
+        private ICategorie_materielService db = new CategorieService();
         public ActionResult Index()
         {
             if (Session["identifiant"] == null)

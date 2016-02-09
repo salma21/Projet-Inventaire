@@ -11,14 +11,21 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Sous_categorie
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Sous_categorie()
+        {
+            this.Modele = new HashSet<Modele>();
+        }
+    
         public int Id_categorie { get; set; }
-        public int id_categorie_Designation { get; set; }
-        public int IdSousCategorie { get; set; }
+        public int id_sous_categorie { get; set; }
         public string libelle { get; set; }
     
-        public virtual CategorieDesignation CategorieDesignation { get; set; }
+        public virtual Categorie Categorie { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Modele> Modele { get; set; }
     }
 }

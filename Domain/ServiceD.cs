@@ -11,13 +11,21 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class ServiceD
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ServiceD()
+        {
+            this.Personnel = new HashSet<Personnel>();
+        }
+    
         public int Id_direction { get; set; }
         public int Id_service { get; set; }
         public string Libelle { get; set; }
     
         public virtual Direction Direction { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Personnel> Personnel { get; set; }
     }
 }

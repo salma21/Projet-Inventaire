@@ -12,13 +12,11 @@ namespace Domain
     using System;
     using System.Collections.Generic;
     
-    public partial class Trace
+    public partial class ContratVehicule
     {
-        public int Id_Trace { get; set; }
-        public string Users { get; set; }
-        public string Actions { get; set; }
-        public string Tables { get; set; }
-        public string Champs { get; set; }
-        public Nullable<System.DateTime> Dates { get; set; }
+        public int Id_contrat { get; set; }
+        public int Id_Vehicule { get; set; }
+    
+        public virtual Contrat Contrat { get; set; }
     }
 }

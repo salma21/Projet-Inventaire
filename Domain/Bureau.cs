@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Bureau
     {
         public Nullable<int> idPays { get; set; }
@@ -22,11 +22,12 @@ namespace Domain
         public Nullable<int> idBatiment { get; set; }
         public int Id_etage { get; set; }
         public int Id_bureau { get; set; }
-        public Nullable<int> Code_a_barre { get; set; }
+        public Nullable<int> Id_service { get; set; }
+        public Nullable<int> id { get; set; }
+        public string Code_a_barre { get; set; }
         public string Description { get; set; }
-        public int id { get; set; }
-        public Nullable<int> Id_direction { get; set; }
     
         public virtual Etage Etage { get; set; }
+        public virtual Personnel Personnel { get; set; }
     }
 }

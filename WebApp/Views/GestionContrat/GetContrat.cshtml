@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Contrat_maintenance>
+﻿@model IEnumerable<Domain.Contrat>
 
     <!-- Start Row -->
     <div class="row">
@@ -34,7 +34,8 @@
 
                                 <th>Délégation</th>
                                 <th>Sociéte</th>
-                                <th>Maintenance</th>
+                                <th>Type contrat</th>
+                                <th>Sous Type contrat</th>
                                 <th>Date Debut</th>
                                 <th>Date Fin</th>
                                 <th>Coût</th>
@@ -52,10 +53,11 @@
                             {
                                 <tr>
 
-                                    <td class="center">@item.Societe_maintenance.Delegation.Gouvernorat.Region.libelle</td>
-                                    <td class="center">@item.Societe_maintenance.Delegation.libelle</td>
-                                    <td class="center">@item.Societe_maintenance.Libelle  </td>
-                                    <td class="center">@item.Type_maintenance</td>
+                                    <td class="center">@item.Fournisseur.Delegation.Gouvernorat.Region.libelle</td>
+                                    <td class="center">@item.Fournisseur.Delegation.libelle</td>
+                                    <td class="center">@item.Fournisseur.Nom  </td>
+                                    <td class="center">@item.Type_Contrat</td>
+                                    <td class="center">@item.Sous_Type_Contrat</td>
 
                                     <td class="center">@item.Date_debut</td>
                                     <td class="center">@item.Date_fin</td>
@@ -65,7 +67,7 @@
                                     <td>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                                        <a href="@Url.Action("EditContrat_Maintenance", new { id = item.Id_contrat_maintenance })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                        <a href="@Url.Action("EditContrat", new { id = item.Id_contrat })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
 
 }     </td>
 
@@ -78,7 +80,7 @@
                     <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                        @Html.ActionLink("Ajouter un nouveau Contrat de Maintenance", "CreateContrat_Maintenance")
+                        @Html.ActionLink("Ajouter un nouveau Contrat", "CreateContrat")
 }
                     </p>
 

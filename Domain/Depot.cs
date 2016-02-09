@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Depot
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,9 +20,9 @@ namespace Domain
             this.Bien = new HashSet<Bien>();
         }
     
-        public int idPays { get; set; }
-        public int idRegion { get; set; }
-        public int idGouvernorat { get; set; }
+        public Nullable<int> idPays { get; set; }
+        public Nullable<int> idRegion { get; set; }
+        public Nullable<int> idGouvernorat { get; set; }
         public int idDelegation { get; set; }
         public int IdDepot { get; set; }
         public string libelle { get; set; }

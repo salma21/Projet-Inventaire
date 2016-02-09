@@ -11,11 +11,9 @@ namespace Data.Infrastructure
        
         IBureauRepository BureauRepository { get; }
         IRegionRepository RegionRepository { get; }
-        ISocieteAssuranceRepository SocieteAssuranceRepository { get; }
-        IContratMaintennaceRepository ContratMaintennaceRepository { get; }
-        IContratAssuranceRepository ContratAssuranceRepository { get; }
-        IContratGarantieRepository ContratGarantieRepository { get; }
-        ISocieteMaintenanceRepository SocieteMaintenanceRepository { get; }
+     
+        IContratRepository ContratRepository { get; }
+        
         IAchatRepository AchatRepository { get; }
         IFournisseurRepository FournisseurRepository { get; }
         IBatimentRepository BatimentRepository { get; }

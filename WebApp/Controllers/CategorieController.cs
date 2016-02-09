@@ -34,7 +34,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var Categorie_materiel = BissInventaireEntities.Instance.CategorieDesignation.ToList();
+            var Categorie_materiel = db.GetCategorie_Designations();
             return View(Categorie_materiel);
         }
 
@@ -43,7 +43,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var Categorie_materiel = BissInventaireEntities.Instance.Sous_categorie.ToList();
+            var Categorie_materiel = db.GetAllModeles();
             return View(Categorie_materiel);
         }
 

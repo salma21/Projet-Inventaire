@@ -92,8 +92,10 @@
                   
                 </ul>
             </li>
-          
-
+@if (@Session["Role"].ToString() == "ADMIN")
+{
+            <li><a href="~/Admin/GetTrace">Historique</a></li>
+}
 
         </ul>
         <!-- End Top Menu -->
