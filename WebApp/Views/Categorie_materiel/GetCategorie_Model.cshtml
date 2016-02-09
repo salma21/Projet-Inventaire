@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Domain.Sous_categorie>
+﻿@model IEnumerable<Domain.Modele>
 
 <h2>Liste des categories Designation</h2>
 
@@ -16,33 +16,24 @@
                     <thead>
                         <tr>
 
-                            <th>Id</th>
-                            <th>Designation</th>
+                            
+                            <th>Sous catégorie</th>
                             <th>Categorie</th>
                             <th>Modele</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-
-                            <th>Id</th>
-                            <th>Designation</th>
-                            <th>Categorie</th>
-                            <th>Modele</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+                   
 
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
 
-                                <td class="center">@item.IdSousCategorie</td>
-                                <td class="center">@item.CategorieDesignation.libelle </td>
-                                <td class="center">@item.CategorieDesignation.Categorie.libelle </td>
+                               
+                                <td class="center">@item.Sous_categorie.libelle </td>
+                                <td class="center">@item.Sous_categorie.Categorie.libelle </td>
                                 <td class="center">@item.libelle </td>
 
 
@@ -50,7 +41,7 @@
                                     @if (@Session["Role"].ToString() == "ADMIN")
                                     {
 
-                                        <a href="@Url.Action("EditCategorie_Modele", new { id = item.id_categorie_Designation })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                        <a href="@Url.Action("EditCategorie_Modele", new { id = item.id_sous_categorie })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
                                     }
                                 </td>
 
@@ -63,7 +54,7 @@
                 <br /><p>
                     @if (@Session["Role"].ToString() == "ADMIN")
                     {
-                        @Html.ActionLink("Ajouter un nouveaux Modele", "CreateCategorie_Modele")
+                        @Html.ActionLink("Ajouter un nouveaux Model", "CreateCategorie_Modele")
                     }
                 </p>
 

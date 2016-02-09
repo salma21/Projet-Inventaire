@@ -42,13 +42,13 @@ namespace WebApp.Controllers
             return View(test);
         }
 
-        public ActionResult GetSociete_Assurance()
-        {
-            if (Session["identifiant"] == null)
-            { return RedirectToAction("Index", "Home"); }
-            var test = db.Societe_assurance.ToList();
-            return View(test);
-        }
+        //public ActionResult GetSociete_Assurance()
+        //{
+        //    if (Session["identifiant"] == null)
+        //    { return RedirectToAction("Index", "Home"); }
+        //    var test = db.Societe_assurance.ToList();
+        //    return View(test);
+        //}
 
         public ActionResult GetSociete_Maintenance()
         {

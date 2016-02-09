@@ -17,7 +17,7 @@ namespace Data.Repositories
 
         public void UpdateRoleDetached(Role e)
         {
-            Role existing = this.DataContext.Role.Find(e.id);
+            Role existing = this.DataContext.Role.Find(e.id_Role);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }

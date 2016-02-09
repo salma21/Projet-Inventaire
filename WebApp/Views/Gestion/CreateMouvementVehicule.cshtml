@@ -1,4 +1,4 @@
-﻿@model Domain.MouvementV
+﻿@model Domain.MouvementVehicule
 
 @{
     List<string> listDeleg = new List<string>();
@@ -99,7 +99,7 @@
 
 
 
-                    @using (@Html.BeginForm("CreateMouvementV", "Gestion", FormMethod.Post,
+                    @using (@Html.BeginForm("CreateMouvementVehicule", "Gestion", FormMethod.Post,
 new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
@@ -216,7 +216,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("Liste des mouvements Véhicules", "GetMouvement")
+                    @Html.ActionLink("Liste des mouvements Véhicules", "GetMouvementVehicule")
                 </div>
 
             </div>
