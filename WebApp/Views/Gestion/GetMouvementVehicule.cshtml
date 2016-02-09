@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Domain.MouvementB>
+﻿@model IEnumerable<Domain.MouvementVehicule>
+
 
 
 <!-- Start Row -->
@@ -7,13 +8,13 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Liste des Mouvements Biens
+                Liste des Mouvements Vehicules
             </div>
             <div class="panel-body table-responsive">
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                            
+                          
                             <th>Batiment</th>
                             <th>Etage</th>
                             <th>Bien</th>
@@ -23,9 +24,10 @@
                             <th>Date renouvellementt</th>
                             <th>Date retour prévue</th>
                             <th>Date sortie</th>
-                       
+                           
                         </tr>
                     </thead>
+
 
 
 
@@ -33,12 +35,13 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                              
-                                <td class="center">@item.Bien.Etage.Batiment.description</td>
                              
-                                <td class="center">@item.Bien.Etage.description</td>
-                                <td class="center">@item.Bien.Num_Serie</td>
+                                <td class="center">@item.Vehicule.Parc_auto.Batiment.description</td>
+                                <td class="center">@item.Vehicule.Parc_auto.Libelle</td>
+
+                                <td class="center">@item.Vehicule.Matricule</td>
                                 <td class="center">@item.Nom</td>
+
                                 <td class="center">@item.Date_derniere_affectation</td>
                                 <td class="center">@item.Date_prochaine_affectation</td>
                                 <td class="center">@item.Date_renouvellement_prevue</td>
@@ -52,11 +55,14 @@
 
                         }
                     </tbody>
+
+
+
                 </table>
                 <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                    @Html.ActionLink("Ajouter un nouveau Mouvement Bien", "CreateMouvementB")
+                    @Html.ActionLink("Ajouter un nouveau Mouvement Véhicule", "CreateMouvementVehicule")
 }
                 </p>
 

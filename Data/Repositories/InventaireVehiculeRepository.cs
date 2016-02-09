@@ -10,7 +10,7 @@ using Data.Infrastructure;
 
 namespace Data.Repositories
 {
-    class InventaireVehiculeRepository : RepositoryBase<InventaireVehicule>, IInventaireVehRepository
+    class InventaireVehiculeRepository : RepositoryBase<InventaireVehicule>, IInventaireVehiculeRepository
     {
         public InventaireVehiculeRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateInventaireVehDetached(InventaireVehicule e)

@@ -122,5 +122,3 @@ C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Service\obj\Debug\Service.csprojResolv
 C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Service\obj\Debug\Service.dll
 C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\Service\obj\Debug\Service.pdb
 C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
-C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Service\obj\Debug\Service.dll
-C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\Service\obj\Debug\Service.pdb

@@ -59,13 +59,13 @@ namespace Service
             return dep;
         }
 
-        public void CreateMouvementVehicule(MouvementVehicule MouvementVehicule)
-        {
+        //public void CreateMouvementVehicule(MouvementVehicule MouvementVehicule)
+        //{
 
-            utOfWork.MouvementVehiculeRepository.Add(MouvementVehicule);
+        //    utOfWork.MouvementVehiculeRepository.Add(MouvementVehicule);
 
 
-        }
+        //}
         public void DeleteMouvementVehicule(int id)
         {
 

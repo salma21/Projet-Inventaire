@@ -22,7 +22,7 @@ namespace WebApp.Controllers
     
     public class ImportExportController : Controller
     {
-        private ICategorieService db = new CategorieService();
+        private ICategorie_materielService db = new Categorie_materiel_materielService();
         public ActionResult Index()
         {
             if (Session["identifiant"] == null)
@@ -95,8 +95,8 @@ namespace WebApp.Controllers
                     catalogue.Code_a_barre = Convert.ToInt32(row["Code matériel "]);
 
                     catalogue.Num_Serie = row["N° de série "].ToString();
-                    ///var i = db.FindCategorieByNom(row["Catégorie "].ToString());
-                    //catalogue.Categorie = Convert.ToString(i.Id_categorie);
+                    ///var i = db.FindCategorie_materielByNom(row["Catégorie "].ToString());
+                    //catalogue.Categorie_materiel = Convert.ToString(i.Id_Categorie_materiel);
 
                     catalogue.Modele = row["Modèle "].ToString();
                     catalogue.Marque = row["Marque "].ToString();
@@ -154,7 +154,7 @@ namespace WebApp.Controllers
         public void ExportToCSV()
         {
             StringWriter sw = new StringWriter();
-            sw.WriteLine("\"Code materiel\",\"Num de serie\",\"Categorie\",\"Modele\",\"Marque\",\"Statut\",\"Date instalation\",\"Localisation\"");
+            sw.WriteLine("\"Code materiel\",\"Num de serie\",\"Categorie_materiel\",\"Modele\",\"Marque\",\"Statut\",\"Date instalation\",\"Localisation\"");
             Response.ClearContent();
             String DateExp = DateTime.Now.ToString();
             Response.AddHeader("content-disposition", "attachment;filename=InventaireList_" + DateExp + ".csv");
@@ -165,7 +165,7 @@ namespace WebApp.Controllers
                 sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\",\"{3}\",\"{4}\",\"{5}\",\"{6}\",\"{7}\",\"{8}\"",
                     DataTest.Code_a_barre,
                     DataTest.Num_Serie,
-                    DataTest.Categorie.libelle,
+                    DataTest.Categorie_materiel.libelle,
                     DataTest.Modele,
                     DataTest.Marque,
                     DataTest.Etat,

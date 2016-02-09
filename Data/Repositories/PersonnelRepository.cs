@@ -22,7 +22,7 @@ namespace Data.Repositories
 
         public void UpdatePersonnelDetached(Personnel e)
         {
-            Personnel existing = FindPersByID(e.id);
+            Personnel existing = FindPersByID(e.id_pers);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
@@ -74,7 +74,7 @@ namespace Data.Repositories
         {
 
             var pers = (from p in this.DataContext.Personnel
-                        where p.id == id
+                        where p.id_pers == id
                         select p).ToList<Personnel>();
             return pers.FirstOrDefault();
 

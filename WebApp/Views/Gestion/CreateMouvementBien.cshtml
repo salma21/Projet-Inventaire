@@ -1,4 +1,4 @@
-﻿@model Domain.MouvementB
+﻿@model Domain.MouvementBien
 
 
 @{
@@ -100,7 +100,7 @@
 
 
 
-                    @using (@Html.BeginForm("CreateMouvementB", "Gestion", FormMethod.Post,
+                    @using (@Html.BeginForm("CreateMouvementBien", "Gestion", FormMethod.Post,
 new { @id = "frmId", @class = "fieldset-form" }))
                     {
 
@@ -128,7 +128,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Etage</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Étage</label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.Id_etage, (SelectList)ViewData["etage"], "--Choisir--", new { @id = "Etage", @class = "form-control", required = "True", @onchange = "javascript:GetBien(this.value);" })
                                 </div>
@@ -217,7 +217,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("Liste des mouvements", "GetMouvementB")
+                    @Html.ActionLink("Liste des mouvements", "GetMouvementBien")
                 </div>
 
             </div>

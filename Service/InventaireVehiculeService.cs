@@ -9,7 +9,7 @@ using Data.Infrastructure;
 
 namespace Service
 {
-   public class InventaireVehiculeService : IInventaireVehService
+   public class InventaireVehiculeService : IInventaireVehiculeService
     {
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);

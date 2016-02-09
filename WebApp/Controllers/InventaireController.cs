@@ -32,7 +32,7 @@ namespace WebApp.Controllers
 
            
             var ass = db1.GetInventaireBiens();
-            var ass2 = db2.GetInventaireVeh();
+            var ass2 = db2.GetInventaireVehicule();
             ViewBag.nbrvehicule = ass2.Count();
             ViewBag.nbrbien = ass.Count();
 
@@ -77,7 +77,7 @@ namespace WebApp.Controllers
             ViewData["Idin"] = id;
             idin = Convert.ToInt32(ViewData["Idin"]);
 
-            var ass = db2.GetInventaireVeh();
+            var ass = db2.GetInventaireVehicule();
             var inv = BissInventaireEntities.Instance.Vehicule.ToList();
 
             foreach (var hh in inv)
@@ -223,8 +223,8 @@ namespace WebApp.Controllers
 
             try
             {
-                db2.CreateInventaireVeh(nmm);
-                db2.SaveInventaireVeh();
+                db2.CreateInventaireVehicule(nmm);
+                db2.SaveInventaireVehicule();
 
                 return RedirectToAction("GetInventaire");
             }

@@ -87,7 +87,7 @@ public interface IMouvementBienService
     IEnumerable<MouvementBien> GetMouvementBiens();
     MouvementBien GetMouvementBien(int id);
 
-    void UpdateMouvementBDetached(MouvementBien e);
+    void UpdateMouvementBienDetached(MouvementBien e);
     void SaveMouvementBien();
     void CreateMouvementBien(MouvementBien MouvementBien);
     IEnumerable<Batiment> FindBatimentByDelegation(int id);
