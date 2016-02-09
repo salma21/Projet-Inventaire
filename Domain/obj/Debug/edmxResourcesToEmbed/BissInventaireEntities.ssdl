@@ -226,7 +226,6 @@
       <PropertyRef Name="Id_Vehicule" />
     </Key>
     <Property Name="Id_inventaire" Type="int" Nullable="false" />
-    <Property Name="Id_parc" Type="int" />
     <Property Name="Id_Vehicule" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Marque">
@@ -726,20 +725,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_INVENTAI_ASSOCIATI_VEHICULE">
-    <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="0..1" />
-    <End Role="InventaireVehicule" Type="Self.InventaireVehicule" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Vehicule">
-        <PropertyRef Name="Id_parc" />
-        <PropertyRef Name="Id_Vehicule" />
-      </Principal>
-      <Dependent Role="InventaireVehicule">
-        <PropertyRef Name="Id_parc" />
-        <PropertyRef Name="Id_Vehicule" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_MARQUE_ASSOCIATI_SOUS_MOD">
     <End Role="Sous_modele" Type="Self.Sous_modele" Multiplicity="0..1" />
     <End Role="Marque" Type="Self.Marque" Multiplicity="*" />
@@ -1048,10 +1033,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_INVENTAI_ASSOCIATI_INVENTAI" Association="Self.FK_INVENTAI_ASSOCIATI_INVENTAI">
       <End Role="Inventaire" EntitySet="Inventaire" />
-      <End Role="InventaireVehicule" EntitySet="InventaireVehicule" />
-    </AssociationSet>
-    <AssociationSet Name="FK_INVENTAI_ASSOCIATI_VEHICULE" Association="Self.FK_INVENTAI_ASSOCIATI_VEHICULE">
-      <End Role="Vehicule" EntitySet="Vehicule" />
       <End Role="InventaireVehicule" EntitySet="InventaireVehicule" />
     </AssociationSet>
     <AssociationSet Name="FK_MARQUE_ASSOCIATI_SOUS_MOD" Association="Self.FK_MARQUE_ASSOCIATI_SOUS_MOD">

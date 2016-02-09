@@ -18,7 +18,7 @@ namespace Domain
         public Inventaire()
         {
             this.InventaireBien = new HashSet<InventaireBien>();
-            this.Vehicule = new HashSet<Vehicule>();
+            this.InventaireVehicule = new HashSet<InventaireVehicule>();
         }
     
         public int Id_inventaire { get; set; }
@@ -29,6 +29,6 @@ namespace Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventaireBien> InventaireBien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Vehicule> Vehicule { get; set; }
+        public virtual ICollection<InventaireVehicule> InventaireVehicule { get; set; }
     }
 }

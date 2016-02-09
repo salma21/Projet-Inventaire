@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities2">
+  <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities3">
     <EntitySetMapping Name="Achat">
       <EntityTypeMapping TypeName="BissInventaireModel.Achat">
         <MappingFragment StoreEntitySet="Achat">
@@ -223,6 +223,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="InventaireVehicule">
+      <EntityTypeMapping TypeName="BissInventaireModel.InventaireVehicule">
+        <MappingFragment StoreEntitySet="InventaireVehicule">
+          <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
+          <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Marque">
       <EntityTypeMapping TypeName="BissInventaireModel.Marque">
         <MappingFragment StoreEntitySet="Marque">
@@ -421,14 +429,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="InventaireVehicule" TypeName="BissInventaireModel.InventaireVehicule" StoreEntitySet="InventaireVehicule">
-      <EndProperty Name="Inventaire">
-        <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
-      </EndProperty>
-      <EndProperty Name="Vehicule">
-        <ScalarProperty Name="Id_parc" ColumnName="Id_parc" />
-        <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>

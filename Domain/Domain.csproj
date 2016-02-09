@@ -117,6 +117,9 @@
     <Compile Include="InventaireBien.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
+    <Compile Include="InventaireVehicule.cs">
+      <DependentUpon>BissInventaireEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="Marque.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>

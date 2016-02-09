@@ -231,7 +231,6 @@
             <PropertyRef Name="Id_Vehicule" />
           </Key>
           <Property Name="Id_inventaire" Type="int" Nullable="false" />
-          <Property Name="Id_parc" Type="int" />
           <Property Name="Id_Vehicule" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Marque">
@@ -731,20 +730,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_INVENTAI_ASSOCIATI_VEHICULE">
-          <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="0..1" />
-          <End Role="InventaireVehicule" Type="Self.InventaireVehicule" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Vehicule">
-              <PropertyRef Name="Id_parc" />
-              <PropertyRef Name="Id_Vehicule" />
-            </Principal>
-            <Dependent Role="InventaireVehicule">
-              <PropertyRef Name="Id_parc" />
-              <PropertyRef Name="Id_Vehicule" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_MARQUE_ASSOCIATI_SOUS_MOD">
           <End Role="Sous_modele" Type="Self.Sous_modele" Multiplicity="0..1" />
           <End Role="Marque" Type="Self.Marque" Multiplicity="*" />
@@ -1055,10 +1040,6 @@
             <End Role="Inventaire" EntitySet="Inventaire" />
             <End Role="InventaireVehicule" EntitySet="InventaireVehicule" />
           </AssociationSet>
-          <AssociationSet Name="FK_INVENTAI_ASSOCIATI_VEHICULE" Association="Self.FK_INVENTAI_ASSOCIATI_VEHICULE">
-            <End Role="Vehicule" EntitySet="Vehicule" />
-            <End Role="InventaireVehicule" EntitySet="InventaireVehicule" />
-          </AssociationSet>
           <AssociationSet Name="FK_MARQUE_ASSOCIATI_SOUS_MOD" Association="Self.FK_MARQUE_ASSOCIATI_SOUS_MOD">
             <End Role="Sous_modele" EntitySet="Sous_modele" />
             <End Role="Marque" EntitySet="Marque" />
@@ -1361,7 +1342,7 @@
           <Property Name="Type" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="Date" Type="DateTime" Precision="0" />
           <NavigationProperty Name="InventaireBien" Relationship="Self.FK_ASSOCIATION_INVENTAIRE" FromRole="Inventaire" ToRole="InventaireBien" />
-          <NavigationProperty Name="Vehicule" Relationship="Self.InventaireVehicule" FromRole="Inventaire" ToRole="Vehicule" />
+          <NavigationProperty Name="InventaireVehicule" Relationship="Self.FK_INVENTAI_ASSOCIATI_INVENTAI" FromRole="Inventaire" ToRole="InventaireVehicule" />
         </EntityType>
         <EntityType Name="InventaireBien">
           <Key>
@@ -1384,6 +1365,15 @@
           <Property Name="Id_bien" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Bien" Relationship="Self.FK_INVENTAI_ASSOCIATI_BIEN" FromRole="InventaireBien" ToRole="Bien" />
           <NavigationProperty Name="Inventaire" Relationship="Self.FK_ASSOCIATION_INVENTAIRE" FromRole="InventaireBien" ToRole="Inventaire" />
+        </EntityType>
+        <EntityType Name="InventaireVehicule">
+          <Key>
+            <PropertyRef Name="Id_inventaire" />
+            <PropertyRef Name="Id_Vehicule" />
+          </Key>
+          <Property Name="Id_inventaire" Type="Int32" Nullable="false" />
+          <Property Name="Id_Vehicule" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Inventaire" Relationship="Self.FK_INVENTAI_ASSOCIATI_INVENTAI" FromRole="InventaireVehicule" ToRole="Inventaire" />
         </EntityType>
         <EntityType Name="Marque">
           <Key>
@@ -1602,7 +1592,6 @@
           <NavigationProperty Name="Achat" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Vehicule" ToRole="Achat" />
           <NavigationProperty Name="MouvementVehicule" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE" FromRole="Vehicule" ToRole="MouvementVehicule" />
           <NavigationProperty Name="Parc_auto" Relationship="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT" FromRole="Vehicule" ToRole="Parc_auto" />
-          <NavigationProperty Name="Inventaire" Relationship="Self.InventaireVehicule" FromRole="Vehicule" ToRole="Inventaire" />
         </EntityType>
         <Association Name="FK_ACHAT_ASSOCIATI_FOURNISS">
           <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
@@ -1962,6 +1951,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_INVENTAI_ASSOCIATI_INVENTAI">
+          <End Role="Inventaire" Type="Self.Inventaire" Multiplicity="1" />
+          <End Role="InventaireVehicule" Type="Self.InventaireVehicule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventaire">
+              <PropertyRef Name="Id_inventaire" />
+            </Principal>
+            <Dependent Role="InventaireVehicule">
+              <PropertyRef Name="Id_inventaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_MARQUE_ASSOCIATI_SOUS_MOD">
           <End Role="Sous_modele" Type="Self.Sous_modele" Multiplicity="0..1" />
           <End Role="Marque" Type="Self.Marque" Multiplicity="*" />
@@ -2084,11 +2085,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="InventaireVehicule">
-          <End Role="Inventaire" Type="Self.Inventaire" Multiplicity="*" />
-          <End Role="Vehicule" Type="Self.Vehicule" Multiplicity="*" />
-        </Association>
-        <EntityContainer Name="BissInventaireEntities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireEntities3" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Batiment" EntityType="Self.Batiment" />
           <EntitySet Name="Bien" EntityType="Self.Bien" />
@@ -2106,6 +2103,7 @@
           <EntitySet Name="Gouvernorat" EntityType="Self.Gouvernorat" />
           <EntitySet Name="Inventaire" EntityType="Self.Inventaire" />
           <EntitySet Name="InventaireBien" EntityType="Self.InventaireBien" />
+          <EntitySet Name="InventaireVehicule" EntityType="Self.InventaireVehicule" />
           <EntitySet Name="Marque" EntityType="Self.Marque" />
           <EntitySet Name="Modele" EntityType="Self.Modele" />
           <EntitySet Name="MouvementBien" EntityType="Self.MouvementBien" />
@@ -2227,6 +2225,10 @@
             <End Role="Inventaire" EntitySet="Inventaire" />
             <End Role="InventaireBien" EntitySet="InventaireBien" />
           </AssociationSet>
+          <AssociationSet Name="FK_INVENTAI_ASSOCIATI_INVENTAI" Association="Self.FK_INVENTAI_ASSOCIATI_INVENTAI">
+            <End Role="Inventaire" EntitySet="Inventaire" />
+            <End Role="InventaireVehicule" EntitySet="InventaireVehicule" />
+          </AssociationSet>
           <AssociationSet Name="FK_MARQUE_ASSOCIATI_SOUS_MOD" Association="Self.FK_MARQUE_ASSOCIATI_SOUS_MOD">
             <End Role="Sous_modele" EntitySet="Sous_modele" />
             <End Role="Marque" EntitySet="Marque" />
@@ -2263,17 +2265,13 @@
             <End Role="Personnel" EntitySet="Personnel" />
             <End Role="Utilisateur" EntitySet="Utilisateur" />
           </AssociationSet>
-          <AssociationSet Name="InventaireVehicule" Association="Self.InventaireVehicule">
-            <End Role="Inventaire" EntitySet="Inventaire" />
-            <End Role="Vehicule" EntitySet="Vehicule" />
-          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities2">
+        <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities3">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissInventaireModel.Achat">
               <MappingFragment StoreEntitySet="Achat">
@@ -2496,6 +2494,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="InventaireVehicule">
+            <EntityTypeMapping TypeName="BissInventaireModel.InventaireVehicule">
+              <MappingFragment StoreEntitySet="InventaireVehicule">
+                <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
+                <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Marque">
             <EntityTypeMapping TypeName="BissInventaireModel.Marque">
               <MappingFragment StoreEntitySet="Marque">
@@ -2694,15 +2700,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="InventaireVehicule" TypeName="BissInventaireModel.InventaireVehicule" StoreEntitySet="InventaireVehicule">
-            <EndProperty Name="Inventaire">
-              <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
-            </EndProperty>
-            <EndProperty Name="Vehicule">
-              <ScalarProperty Name="Id_parc" ColumnName="Id_parc" />
-              <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
-            </EndProperty>
-          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

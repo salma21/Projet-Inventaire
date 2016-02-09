@@ -18,7 +18,6 @@ namespace Domain
         public Vehicule()
         {
             this.MouvementVehicule = new HashSet<MouvementVehicule>();
-            this.Inventaire = new HashSet<Inventaire>();
         }
     
         public Nullable<int> idPays { get; set; }
@@ -40,7 +39,5 @@ namespace Domain
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MouvementVehicule> MouvementVehicule { get; set; }
         public virtual Parc_auto Parc_auto { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Inventaire> Inventaire { get; set; }
     }
 }

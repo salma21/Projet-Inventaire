@@ -54,6 +54,7 @@ namespace Domain
         public virtual DbSet<Gouvernorat> Gouvernorat { get; set; }
         public virtual DbSet<Inventaire> Inventaire { get; set; }
         public virtual DbSet<InventaireBien> InventaireBien { get; set; }
+        public virtual DbSet<InventaireVehicule> InventaireVehicule { get; set; }
         public virtual DbSet<Marque> Marque { get; set; }
         public virtual DbSet<Modele> Modele { get; set; }
         public virtual DbSet<MouvementBien> MouvementBien { get; set; }
