@@ -1,7 +1,7 @@
-﻿@model Domain.Contrat_assurance
+﻿@model Domain.Contrat
 
 @{
-    ViewBag.Title = "DetailsContrat_Assurance";
+    ViewBag.Title = "DetailsContrat";
 }
 
 <h2>DetailsContrat_Assurance</h2>
@@ -11,11 +11,11 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Type_assurance)
+            @Html.DisplayNameFor(model => model.Type_Contrat)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Type_assurance)
+            @Html.DisplayFor(model => model.Type_Contrat)
         </dd>
 
         <dt>
@@ -51,11 +51,11 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Societe_assurance.Libelle)
+            @Html.DisplayNameFor(model => model.Fournisseur.Nom)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Societe_assurance.Libelle)
+            @Html.DisplayFor(model => model.Fournisseur.Nom)
         </dd>
 
     </dl>

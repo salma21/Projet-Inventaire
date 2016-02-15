@@ -70,11 +70,11 @@ namespace Service
         }
 
 
-        public int FindDirectionByDelegation(int id)
-        {
-            int Dept = utOfWork.RegionRepository.FindDirectionByDelegation(id);
-            return Dept;
-        }
+        //public int FindDirectionByDelegation(int id)
+        //{
+        //    int Dept = utOfWork.RegionRepository.FindDirectionByDelegation(id);
+        //    return Dept;
+        //}
         //public int FindOrganisationByDelegation(int id)
         //{
         //    int Dept = utOfWork.RegionRepository.FindOrganisationByDelegation(id);
@@ -109,7 +109,7 @@ namespace Service
         int FindGouvByDelegation(int id);
         int FindPaysByDelegation(int id);
         int FindRegionByDelegation(int id);
-        int FindDirectionByDelegation(int id);
+        //int FindDirectionByDelegation(int id);
         IEnumerable<Region> GetRegionx();
         Region GetRegion(int id);
         void CreateRegion(Region Dept);

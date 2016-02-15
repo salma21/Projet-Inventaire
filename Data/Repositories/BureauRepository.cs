@@ -17,8 +17,8 @@ namespace Data.Repositories
         public BureauRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateBureauDetached(Bureau e)
         {
-            Bureau existing = FindBureauByID(e.id);
-            ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
+            //Bureau existing = FindBureauByID(e.id);
+            //((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
         public IEnumerable<Bureau> FindBureauByBatiment(int id)

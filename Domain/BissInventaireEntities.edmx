@@ -346,9 +346,9 @@
         </EntityType>
         <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="id_Role" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="id_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="libelle" Type="varchar" MaxLength="254" />
           <Property Name="description" Type="varchar" MaxLength="254" />
         </EntityType>
@@ -805,7 +805,7 @@
           <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
-              <PropertyRef Name="id_Role" />
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Personnel">
               <PropertyRef Name="Rol_id" />
@@ -1504,9 +1504,9 @@
         </EntityType>
         <EntityType Name="Role">
           <Key>
-            <PropertyRef Name="id_Role" />
+            <PropertyRef Name="id" />
           </Key>
-          <Property Name="id_Role" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Personnel" Relationship="Self.FK_PERSONNE_ASSOCIATI_ROLE" FromRole="Role" ToRole="Personnel" />
@@ -2050,7 +2050,7 @@
           <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Role">
-              <PropertyRef Name="id_Role" />
+              <PropertyRef Name="id" />
             </Principal>
             <Dependent Role="Personnel">
               <PropertyRef Name="Rol_id" />
@@ -2085,7 +2085,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissInventaireEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Batiment" EntityType="Self.Batiment" />
           <EntitySet Name="Bien" EntityType="Self.Bien" />
@@ -2271,7 +2271,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities3">
+        <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities1">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissInventaireModel.Achat">
               <MappingFragment StoreEntitySet="Achat">
@@ -2620,7 +2620,7 @@
           <EntitySetMapping Name="Role">
             <EntityTypeMapping TypeName="BissInventaireModel.Role">
               <MappingFragment StoreEntitySet="Role">
-                <ScalarProperty Name="id_Role" ColumnName="id_Role" />
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="libelle" ColumnName="libelle" />
                 <ScalarProperty Name="description" ColumnName="description" />
               </MappingFragment>

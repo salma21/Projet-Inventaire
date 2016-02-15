@@ -1112,9 +1112,8 @@ namespace WebApp.Controllers
             { return RedirectToAction("Index", "Home"); }
 
             ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-            ViewData["garanti"] = new SelectList(BissInventaireEntities.Instance.Contrat_garanti.ToList(), "Id_contrat_garanti", "Num");
-            ViewData["assurance"] = new SelectList(BissInventaireEntities.Instance.Contrat_assurance.ToList(), "Id_contrat_assurance", "Num");
-            ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat_maintenance.ToList(), "Id_contrat_maintenance", "Num");
+           
+            ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
             ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
 
 
@@ -1125,16 +1124,13 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateVehicule(Vehicule veh, FormCollection collection)
         {
-            int idfournisseur = db6.FindFournisseurByContratGaranti((int)veh.Id_contrat_garanti);
-            int idSocM = db6.FindSocieteMaintenanceByContratMaintenance((int)veh.Id_contrat_maintenance);
-            int idSocA = db6.FindSocieteAssuranceByContratAssurance((int)veh.Id_contrat_assurance);
+            //int idfournisseur = db6.FindFournisseurByContrat((int)veh.Id_contrat);
+          
             int idBat = db6.FindBatimentByParcAuto(veh.Id_parc);
             var ac = BissInventaireEntities.Instance.Achat.Find(veh.Id_achat);
 
             veh.Prix_d_achat = ac.Prix_d_achat;
          
-            //veh.Id_societe_maintenance = idSocM;
-            //veh.Id_societe_assurance = idSocA;
             veh.idBatiment = idBat;
 
             if (ModelState.IsValid)
@@ -1165,9 +1161,8 @@ namespace WebApp.Controllers
 
             {
                 ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-                ViewData["garanti"] = new SelectList(BissInventaireEntities.Instance.Contrat_garanti.ToList(), "Id_contrat_garanti", "Num");
-                ViewData["assurance"] = new SelectList(BissInventaireEntities.Instance.Contrat_assurance.ToList(), "Id_contrat_assurance", "Num");
-                ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat_maintenance.ToList(), "Id_contrat_maintenance", "Num");
+                
+                ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
                 ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
                 return View();
             }

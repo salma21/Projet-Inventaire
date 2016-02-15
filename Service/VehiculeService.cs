@@ -46,26 +46,15 @@ namespace Service
         }
 
 
-        public int FindFournisseurByContratGaranti(int id)
+        public int FindFournisseurByContrat(int id)
         {
 
-            int Dept = utOfWork.VehiculeRepository.FindFournisseurByContratGaranti(id);
+            int Dept = utOfWork.VehiculeRepository.FindFournisseurByContrat(id);
             return Dept;
         }
 
-        public int FindSocieteMaintenanceByContratMaintenance(int id)
-        {
+      
 
-            int Dept = utOfWork.VehiculeRepository.FindSocieteMaintenanceByContratMaintenance(id);
-            return Dept;
-        }
-
-        public int FindSocieteAssuranceByContratAssurance(int id)
-        {
-
-            int Dept = utOfWork.VehiculeRepository.FindSocieteAssuranceByContratAssurance(id);
-            return Dept;
-        }
 
         public int FindBatimentByParcAuto(int id)
         {
@@ -96,9 +85,8 @@ public interface IVehiculeService
     void CreateVehicule(Vehicule Dep);
     void DeleteVehicule(int id);
 
-    int FindFournisseurByContratGaranti(int id);
-    int FindSocieteMaintenanceByContratMaintenance(int id);
-    int FindSocieteAssuranceByContratAssurance(int id);
+    int FindFournisseurByContrat(int id);
+    
     int FindBatimentByParcAuto(int id);
     void UpdateVehiculeDetached(Vehicule e);
     void SaveVehicule();

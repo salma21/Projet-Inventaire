@@ -52,7 +52,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-        // POST: GestionContratetSoc/Create
+        // POST: GestionContrat/Create
         [HttpPost]
         public ActionResult CreateContrat(Contrat contrat, FormCollection collection)
         {
@@ -99,10 +99,9 @@ namespace WebApp.Controllers
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
             ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-            ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
-            ViewData["contratass"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_assurance", "Num");
-            ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_garanti", "Num");
-            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_achat", "Num_facture");
+           
+            ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
             return View();
         }
 
@@ -138,10 +137,9 @@ namespace WebApp.Controllers
                 ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
                 ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-                ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
-                ViewData["contratass"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_assurance", "Num");
-                ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_garanti", "Num");
-                ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_achat", "Num_facture");
+                
+                ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat_garanti", "Num");
+                ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
                 return View();
             }
 
@@ -180,10 +178,9 @@ namespace WebApp.Controllers
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
             ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-            ViewData["societeass"] = new SelectList(BissInventaireEntities.Instance.Societe_assurance.ToList(), "Id_societe_assurance", "libelle");
-            ViewData["contratass"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_assurance", "Num");
-            ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_garanti", "Num");
-            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_achat", "Num_facture");
+          
+            ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
             
             var acht = BissInventaireEntities.Instance.Achat.Find(id);
             return View(acht);
@@ -221,9 +218,9 @@ namespace WebApp.Controllers
                 ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
                 ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-               
-                //ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_contrat_garanti", "Num");
-                //ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Societe_maintenance.ToList(), "Id_achat", "Num_facture");
+
+                ViewData["contratgar"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+                ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
                 return View();
             }
 

@@ -341,9 +341,9 @@
   </EntityType>
   <EntityType Name="Role">
     <Key>
-      <PropertyRef Name="id_Role" />
+      <PropertyRef Name="id" />
     </Key>
-    <Property Name="id_Role" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="libelle" Type="varchar" MaxLength="254" />
     <Property Name="description" Type="varchar" MaxLength="254" />
   </EntityType>
@@ -800,7 +800,7 @@
     <End Role="Personnel" Type="Self.Personnel" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Role">
-        <PropertyRef Name="id_Role" />
+        <PropertyRef Name="id" />
       </Principal>
       <Dependent Role="Personnel">
         <PropertyRef Name="Rol_id" />

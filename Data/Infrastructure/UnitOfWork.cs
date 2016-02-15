@@ -79,33 +79,27 @@ namespace Data.Infrastructure
         }
 
 
-        private ISocieteAssuranceRepository SocieteAssuranceRepository;
-        ISocieteAssuranceRepository IUnitOfWork.SocieteAssuranceRepository
-        {
-            get
-            {
-                return SocieteAssuranceRepository ?? (SocieteAssuranceRepository = new SocieteAssuranceRepository(dbFactory));
-            }
-        }
 
 
        
 
-        private IContratRepository ContratGarantieRepository;
+        private IContratRepository ContratRepository;
         IContratRepository IUnitOfWork.ContratRepository
         {
             get
             {
-                return ContratGarantieRepository ?? (ContratGarantieRepository = new ContratRepository(dbFactory));
+                return ContratRepository ?? (ContratRepository = new ContratRepository(dbFactory));
             }
         }
 
-        private ISocieteMaintenanceRepository SocieteMaintenanceRepository;
-        ISocieteMaintenanceRepository IUnitOfWork.SocieteMaintenanceRepository
+
+
+        private IContratBienRepository ContratBienRepository;
+        IContratBienRepository IUnitOfWork.ContratBienRepository
         {
             get
             {
-                return SocieteMaintenanceRepository ?? (SocieteMaintenanceRepository = new SocieteMaintenanceRepository(dbFactory));
+                return ContratBienRepository ?? (ContratBienRepository = new ContratBienRepository(dbFactory));
             }
         }
 
@@ -249,7 +243,7 @@ namespace Data.Infrastructure
         {
             get
             {
-                return Categorie_materielRepository ?? (Categorie_materielRepository = new Categorie_materielRepository(dbFactory));
+                return CategorieRepository ?? (CategorieRepository = new CategorieRepository(dbFactory));
             }
         }
 

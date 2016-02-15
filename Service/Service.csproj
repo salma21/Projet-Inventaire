@@ -45,6 +45,7 @@
     <Compile Include="DirectionService.cs" />
     <Compile Include="EtageService.cs" />
     <Compile Include="FindService.cs" />
+    <Compile Include="GestionContratService.cs" />
     <Compile Include="GouvernoratService.cs" />
     <Compile Include="InventaireBienService.cs" />
     <Compile Include="InventaireService.cs" />
@@ -59,7 +60,6 @@
     <Compile Include="ServiceEtPArcAutoService.cs" />
     <Compile Include="FournisseurService.cs" />
     <Compile Include="BatimentService.cs" />
-    <Compile Include="GestionContratService.cs" />
     <Compile Include="RegionService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BureauService.cs" />

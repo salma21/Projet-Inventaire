@@ -204,6 +204,7 @@
     <Compile Include="Controllers\DbController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EtageController.cs" />
+    <Compile Include="Controllers\GestionContratController.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImportExportController.cs" />
@@ -403,20 +404,7 @@
     <Content Include="Views\Admin\CreateBienAdmin.cshtml" />
     <Content Include="Views\Gestion\CreateRegion.cshtml" />
     <Content Include="Views\Gestion\GetRegion.cshtml" />
-    <Content Include="Views\GestionContratetSoc\CreateContrat_Assurance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\CreateContrat_Maintenance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\CreateContrat_garanti.cshtml" />
-    <Content Include="Views\GestionContratetSoc\CreateSociete_assurance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\CreateSociete_maintenance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\CreateAchat.cshtml" />
-    <Content Include="Views\GestionContratetSoc\GetContrat_Assurance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\GetContrat_Garantie.cshtml" />
-    <Content Include="Views\GestionContratetSoc\GetContrat_Maintenance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\GetSociete_Assurance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\GetSociete_Maintenance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\GetAchat.cshtml" />
     <Content Include="Views\Gestion\CreateGouvernorat.cshtml" />
-    <Content Include="Views\GestionContratetSoc\DetailsAchat.cshtml" />
     <Content Include="Views\Gestion\CreateBatiment.cshtml" />
     <Content Include="Views\Gestion\GetBatiment.cshtml" />
     <Content Include="Views\Gestion\CreateFournisseur.cshtml" />
@@ -484,12 +472,6 @@
     <Content Include="Views\Admin\BudgetType.cshtml" />
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
     <Content Include="Views\Inventaire\EditInventaire.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditAchat.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditSociete_assurance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditContrat_garanti.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditContrat_Maintenance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditContrat_Assurance.cshtml" />
-    <Content Include="Views\GestionContratetSoc\EditSociete_maintenance.cshtml" />
     <Content Include="Views\Admin\GetTrace.cshtml" />
     <Content Include="Views\Categorie_materiel\CreateCategorie_Designation.cshtml" />
     <Content Include="Views\Categorie_materiel\CreateCategorie_materiel.cshtml" />
@@ -500,6 +482,14 @@
     <Content Include="Views\Categorie_materiel\GetCategorie_Designation.cshtml" />
     <Content Include="Views\Categorie_materiel\GetCategorie_materiel.cshtml" />
     <Content Include="Views\Categorie_materiel\GetCategorie_Model.cshtml" />
+    <Content Include="Views\GestionContrat\CreateAchat.cshtml" />
+    <Content Include="Views\GestionContrat\DetailsAchat.cshtml" />
+    <Content Include="Views\GestionContrat\DetailsContrat.cshtml" />
+    <Content Include="Views\GestionContrat\EditAchat.cshtml" />
+    <Content Include="Views\GestionContrat\EditContrat.cshtml" />
+    <Content Include="Views\GestionContrat\GetAchat.cshtml" />
+    <Content Include="Views\GestionContrat\GetContrat.cshtml" />
+    <Content Include="Views\GestionContrat\CreateContrat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

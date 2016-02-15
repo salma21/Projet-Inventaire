@@ -28,7 +28,7 @@
                     <div class="form-horizontal">
                        
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        @Html.HiddenFor(model => model.Id_contrat_maintenance)
+                        @Html.HiddenFor(model => model.Id_contrat)
                         <div class="panel panel-default">
                             <fieldset>
 
@@ -50,7 +50,7 @@
 
                                         <div class="col-sm-8">
 
-                                            @Html.DropDownListFor(model => model.Id_societe_maintenance, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
+                                            @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
 
@@ -63,7 +63,7 @@
 
                                         <div class="col-sm-8">
 
-                                            @Html.TextBoxFor(model => model.Type_maintenance, new { @class = "form-control", required = "" })
+                                            @Html.TextBoxFor(model => model.Type_Contrat, new { @class = "form-control", required = "" })
 
 
                                         </div>
