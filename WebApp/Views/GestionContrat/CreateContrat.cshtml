@@ -6,12 +6,8 @@
         <div class="panel panel-default">
             <div class="panel-title">
 
-                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat Assurance</h4>
-                <ol class="breadcrumb">
-               
-
-                  
-                </ol>
+                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat</h4>
+                <ol class="breadcrumb"></ol>
 
 
                 <div class="panel-body">
@@ -28,10 +24,10 @@
                 @using (@Html.BeginForm("CreateContrat", "GestionContrat", FormMethod.Post,
 new { @id = "frmId", @class = "fieldset-form" }))
                 {
-<div class="panel panel-default">
+                    <div class="panel panel-default">
                         <fieldset>
 
-                            <legend>Contrat d'Assurance</legend>
+                            <legend>Contrat </legend>
 
                             <div class="form-group">
                                 <div class="col-md-4">
@@ -49,7 +45,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Societe</label>
 
-                                    <div class="col-sm-8">
+                                    <div class="col-sm-8" >
 
                                         @Html.DropDownListFor(model => model.Fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
 
@@ -61,39 +57,39 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     <div class="col-sm-8">
 
-                                        @{
+                                       
 
-                                            var listItems = new List<SelectListItem>()
-                            {
-                                new SelectListItem {Text = "Bon",   Value = "Bon"},
-                                new SelectListItem {Text = "Mauvais", Value = "Mauvais"},
-                                new SelectListItem {Text = "Moyenne", Value = "Moyenne"},
-                                 new SelectListItem {Text = "Trés Bien", Value = "Trés Bien"}
-
-
-                            };
-
-                                            @Html.DropDownListFor(m => m.Type_Contrat, listItems, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Type_Contrat, String.Empty, new { @class = "test" })
-                                        }
+                                            @Html.EditorFor(m => m.Type_Contrat, new { @class = "form-control", required = "" })
+                                          
+                                       
 
 
                                     </div>
 
                                 </div>
-                                                
-                </div>
-                            <div class="form-group">
-                                
-                                <br/>
 
-                                
+                            </div>
+                            <div class="form-group">
+
+                                <br />
+
+
 
                             </div>
 
                             <div class="form-group">
-                                
 
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Sous Type</label>
+
+                                    <div class="col-sm-8">
+
+                                        @Html.EditorFor(model => model.Sous_Type_Contrat, new { @class = "form-control", required = "" })
+
+
+                                    </div>
+
+                                </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Coût</label>
 
@@ -111,32 +107,41 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     <div class="col-sm-8">
                                         @Html.EditorFor(model => model.Date_debut, new { @class = "form-control", required = "" })
-                                 
+
 
                                     </div>
 
                                 </div>
+                              
+
+                            </div>
+
+                            <div class="form-group">
+
+                                <br />
+
+                                <br />
+
+                            </div>
+                            <div class="form-group">
+
+
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Date Fin</label>
 
                                     <div class="col-sm-8">
 
                                         @Html.EditorFor(model => model.Date_fin, new { @class = "form-control", required = "" })
-                                      
 
                                     </div>
 
                                 </div>
 
-                            </div>
 
+                             </div>
+</fieldset>
 
-               
-
-
-                        </fieldset>
-
-                        <br/>
+                        <br />
                         <fieldset>
 
                             <legend>Localisation</legend>
@@ -166,7 +171,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                         </div>
 
-                        
+
 
 
 
@@ -180,9 +185,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 @Html.ActionLink("Liste des contrats ", "GetContrat")
             </p>
         </div>
-        
+
     </div>
-    
+
 </div>
 
 
