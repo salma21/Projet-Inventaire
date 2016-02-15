@@ -49,7 +49,7 @@ namespace Service
 
         public void UpdateInventaireVehiculeDetached(InventaireVehicule e)
         {
-            utOfWork.InventaireVehiculeRepository.UpdateInventaireVehiculeDetached(e);
+            utOfWork.InventaireVehiculeRepository.UpdateInventaireVehDetached(e);
         }
 
         public IEnumerable<Batiment> FindBatimentByDelegation(int id)

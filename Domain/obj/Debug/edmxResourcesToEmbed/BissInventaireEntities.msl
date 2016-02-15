@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities3">
+  <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities1">
     <EntitySetMapping Name="Achat">
       <EntityTypeMapping TypeName="BissInventaireModel.Achat">
         <MappingFragment StoreEntitySet="Achat">
@@ -349,7 +349,7 @@
     <EntitySetMapping Name="Role">
       <EntityTypeMapping TypeName="BissInventaireModel.Role">
         <MappingFragment StoreEntitySet="Role">
-          <ScalarProperty Name="id_Role" ColumnName="id_Role" />
+          <ScalarProperty Name="id" ColumnName="id" />
           <ScalarProperty Name="libelle" ColumnName="libelle" />
           <ScalarProperty Name="description" ColumnName="description" />
         </MappingFragment>

@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-               
+
             </div>
             <div class="panel-body">
 
@@ -24,7 +24,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <fieldset>
 
                                 <legend>  Ajout personnel</legend>
-                               
+
                                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
@@ -52,49 +52,107 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     </div>
                                 </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">CIN </label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.CIN, new { @class = "form-control", required = "True" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Date de naissance </label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Date_anniv, new { @class = "form-control", required = "True" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Tél </label>
+                                    <div class="col-lg-6">
+
+                                        @Html.TextBoxFor(model => model.Num_tel, new { @class = "form-control", required = "True" })
+
+                                    </div>
+                                </div>
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Rôle </label>
                                     <div class="col-lg-6">
 
-                                        @Html.DropDownListFor(model => model.Rol_id, (SelectList)ViewData["role"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.DropDownListFor(model => model.Role, (SelectList)ViewData["role"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
                                     </div>
                                 </div>
-
-
-
                                 <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Direction </label>
+                                    <div class="col-lg-6">
+
+                                        @Html.DropDownListFor(model => model.ServiceD.Direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Service </label>
+                                    <div class="col-lg-6">
+
+                                        @Html.DropDownListFor(model => model.ServiceD, (SelectList)ViewData["service"], "--Choisir--", new { @class = "form-control", required = "" })
+
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Batiment </label>
                                     <div class="col-lg-6">
 
-                                        @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.DropDownListFor(model => model.Bureau., (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                    </div>
+                                </div>*@
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Étage </label>
+                                    <div class="col-lg-6">
+
+                                        @Html.DropDownListFor(model => model.ServiceD.Direction.DirectionEtage, (SelectList)ViewData["etage"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Bureau</label>
+                                    <div class="col-lg-6">
+
+                                        @Html.DropDownListFor(model => model.Bureau, (SelectList)ViewData["bureau"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
                                     </div>
                                 </div>
 
 
+
+                                </fieldset>
 </div>
-                    <br>
+                        <br>
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetPersonnel")</button>
 
                         </div>
 
-                        }
+                    }
 
 
-</div>
+                </div>
 
-              
-                    <div>
-                        @Html.ActionLink("List du personnel", "GetPersonnel")
-                    </div>
 
-</div>
+                <div>
+                    @Html.ActionLink("List du personnel", "GetPersonnel")
+                </div>
+
+            </div>
         </div>
     </div>
 </div>

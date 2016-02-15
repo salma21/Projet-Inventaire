@@ -55,9 +55,11 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
-
+            ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
+            ViewData["service"] = new SelectList(BissInventaireEntities.Instance.ServiceD.ToList(), "Id_service", "Libelle");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
-
+            ViewData["bureau"] = new SelectList(BissInventaireEntities.Instance.Bureau.ToList(), "Id_bureau", "Description");
+            ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Bureau.ToList(), "Id_etage", "description");
             return View();
         }
 

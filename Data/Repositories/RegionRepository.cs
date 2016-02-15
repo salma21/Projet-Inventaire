@@ -77,14 +77,14 @@ namespace Data.Repositories
 
      
 
-        public int FindDirectionByDelegation(int id)
-        {
+        //public int FindDirectionByDelegation(int id)
+        //{
 
-            var pers = (from p in DataContext.Bureau
-                        where p.Id_bureau == id
-                        select p);
-            return (int)pers.FirstOrDefault().Id_direction;
-        }
+        //    var pers = (from p in DataContext.Bureau
+        //                where p.Id_bureau == id
+        //                select p);
+        //    return (int)pers.FirstOrDefault().Id_direction;
+        //}
 
 
     }
@@ -95,7 +95,7 @@ namespace Data.Repositories
         IEnumerable<Region> FindRegByIDPays(int id);
         Region FindRegByID(int id);
         int FindPaysByDelegation(int id);
-        int FindDirectionByDelegation(int id);
+        //int FindDirectionByDelegation(int id);
         void UpdateRegionDetached(Region e);
         int FindGouvByDelegation(int id);
         int FindRegionByDelegation(int id);

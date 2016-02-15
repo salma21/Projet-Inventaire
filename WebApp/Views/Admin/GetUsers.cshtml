@@ -18,12 +18,13 @@
                                
                                 <th>Login</th>
 
-                                <th>Password</th>
+                                @*<th>Password</th>*@
                                 <th>Nom</th>
-
-                                <th>Prenom</th>
+                                <th>Prénom</th>
+                               
                                 <th>Matricule</th>
-                                <th>Etat</th>
+                                <th>Service</th>
+                                <th>État</th>
                                 <th>Role</th>
                                 <th>Action</th>
                             </tr>
@@ -38,18 +39,19 @@
 
                                    
                                     <td class="center">@item.login</td>
-                                    <td class="center">@item.motDePasse</td>
-                                    <td class="center">@item.Personnel.Matricule</td>
-
-                                    <td class="center">@item.Personnel.Matricule</td>
+                                    @*<td class="center">@item.motDePasse</td>*@
+                                    <td class="center">@item.Personnel.nom</td>
                                     <td class="center">@item.Personnel.prenom</td>
+                                   
+                                    <td class="center">@item.Personnel.Matricule</td>
+                                    <td class="center">@item.Personnel.ServiceD.Libelle</td>
                                     <td class="center">@item.etatUtilisateur</td>
                                     <td class="center">@item.Personnel.Role.libelle</td>
 
                                     <td>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                                        <a href="@Url.Action("EditUser", new { id = item.id_user })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                        <a href="@Url.Action("EditUser", new { id = item.id })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
 
 }
 
@@ -67,7 +69,7 @@
                     <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                        @Html.ActionLink("Ajouter un nouveau User", "CreateUsers")
+                        @Html.ActionLink("Ajouter un nouveau utilisateur", "CreateUsers")
 }
                     </p>
 

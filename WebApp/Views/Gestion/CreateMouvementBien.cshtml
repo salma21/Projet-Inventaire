@@ -109,8 +109,27 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
+
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Delegation</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre </label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
+                                <div class="col-lg-6">
+
+                                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation</label>
                                 <div class="col-lg-6">
                                     @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })*@
                                     @Html.DropDownList("Delegation", (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })
@@ -150,7 +169,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Derniére affectation </label>
+                                <div class="col-lg-6">
 
+                                    @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date derniére affectation </label>

@@ -18,18 +18,18 @@ namespace Data.Infrastructure
         IFournisseurRepository FournisseurRepository { get; }
         IBatimentRepository BatimentRepository { get; }
         IInventaireRepository InventaireRepository { get; }
-        //IBiensRepository BiensRepository { get; }
+        
         IServiceRepository ServiceRepository { get; }
         IParc_autoRepository Parc_autoRepository { get; }
         IGouvernoratRepository GouvernoratRepository { get; }
-        IMouvementBRepository MouvementBRepository { get; }
-        IMouvementVRepository MouvementVRepository { get; }
+       
         IVehiculeRepository VehiculeRepository { get; }
-        
+        ICategorieRepository CategorieRepository { get; }
         IEtageRepository EtageRepository { get; }
         IPersonnelRepository PersonnelRepository { get; }
         IRoleRepository RoleRepository { get; }
-        ICategorie_materielRepository Categorie_materielRepository { get; }
+        IMouvementBienRepository MouvementBienRepository { get; }
+        IMouvementVehiculeRepository MouvementVehiculeRepository { get; }
         IServiceDRepository ServiceDRepository { get; }
         IUtilisateurRepository UtilisateurRepository { get; }
         IDelegationRepository DelegationRepository { get; }
@@ -40,8 +40,9 @@ namespace Data.Infrastructure
 
         IDirectionRepository DirectionRepository { get; }
         IInventaireBienRepository InventaireBienRepository { get; }
-        IInventaireVehRepository InventaireVehRepository { get; }
-     
+        IInventaireVehiculeRepository InventaireVehiculeRepository { get; }
+
+
 
     }
 }
