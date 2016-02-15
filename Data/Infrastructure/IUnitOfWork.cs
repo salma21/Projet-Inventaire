@@ -13,7 +13,7 @@ namespace Data.Infrastructure
         IRegionRepository RegionRepository { get; }
      
         IContratRepository ContratRepository { get; }
-        
+        IContratBienRepository ContratBienRepository { get; }
         IAchatRepository AchatRepository { get; }
         IFournisseurRepository FournisseurRepository { get; }
         IBatimentRepository BatimentRepository { get; }

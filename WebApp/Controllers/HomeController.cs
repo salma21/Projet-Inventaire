@@ -47,7 +47,7 @@ namespace WebApp.Controllers
 
                             Session["identifiant"] = result;
                             Session["Nom"] = result.Personnel.nom +" "+ result.Personnel.prenom;
-                            Session["Role"] = result.Personnel.Role.libelle ;
+                            Session["Role"] = result.Personnel.Role.libelle;
 
                             return RedirectToAction("RapportBien", "Admin");
                         }

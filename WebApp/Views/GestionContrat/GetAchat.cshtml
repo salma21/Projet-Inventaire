@@ -25,7 +25,7 @@
                     <thead>
                         <tr>
                            
-                            <th>Délégation</th>
+                           
                             <th>Fournisseur</th>
                             <th>Date Livraison</th>
                             <th>Num Facture</th>
@@ -38,19 +38,8 @@
                         </tr>
                     </thead>
 
-                    <tfoot>
-                        <tr>
-                            <th>Délégation</th>
-                            <th>Fournisseur</th>
-                            <th>Date Livraison</th>
-                            <th>Num Facture</th>
-                            <th>Num Commande</th>
-                            <th>Date D'achat</th>
-                            <th>Prix</th>
-                            <th>Num livraison</th>
-                            <th>Action</th>
-                        </tr>
-                    </tfoot>
+                  
+                 
 
                     <tbody>
                         @foreach (var item in Model)
@@ -58,7 +47,7 @@
                             <tr>
 
                               
-                                <td class="center">@item.Fournisseur.Delegation.libelle</td>
+                               
                                 <td class="center">@item.Fournisseur.Nom   </td>
                                 <td class="center">@item.Date_livraison</td>
                                 <td class="center">@item.Num_facture</td>
@@ -85,7 +74,7 @@
                 <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                    @Html.ActionLink("Ajouter un nouveau Contrat d'achat", "CreateAchat")
+                    @Html.ActionLink("Ajouter un nouveau achat", "CreateAchat")
 
 }</p>
 

@@ -52,7 +52,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-        // POST: GestionContratetSoc/Create
+        // POST: GestionContrat/Create
         [HttpPost]
         public ActionResult CreateContrat(Contrat contrat, FormCollection collection)
         {

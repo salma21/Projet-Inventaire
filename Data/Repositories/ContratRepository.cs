@@ -22,6 +22,8 @@ namespace Data.Repositories
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
+       
+
         public Contrat FindContratByID(int id)
         {
 
