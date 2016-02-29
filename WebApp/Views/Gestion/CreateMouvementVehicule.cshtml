@@ -109,7 +109,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Delegation</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation</label>
                                 <div class="col-lg-6">
                                     @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })*@
                                     @Html.DropDownList("Delegation", (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })

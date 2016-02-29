@@ -12,7 +12,7 @@
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                           
+                            <th>Code </th>
                             <th>Direction</th>
                             <th>Action</th>
                         </tr>
@@ -24,17 +24,18 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-
+                                <td class="center">@item.Id_direction</td>
                                 <td class="center">@item.Libelle</td>
-                                
+
 
 
                                 <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                    <a href="@Url.Action("EditDirection", new { id = item.Id_direction })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    @if (@Session["Role"].ToString() == "ADMIN")
+                                    {
+                                        <a href="@Url.Action("EditDirection", new { id = item.Id_direction })">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
 
-}  </td>
+                                    }
+                                </td>
 
                             </tr>
 

@@ -303,7 +303,7 @@ namespace WebApp.Controllers
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
 
-
+            //sqs
 
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");

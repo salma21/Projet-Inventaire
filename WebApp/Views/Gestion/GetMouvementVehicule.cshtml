@@ -14,17 +14,20 @@
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                          
+
+
+                            <th>Matricule</th>
                             <th>Batiment</th>
-                            <th>Etage</th>
-                            <th>Bien</th>
-                            <th>Nom Mouvement</th>
+                            <th>Parc Auto</th>
+                            <th>Désignation</th>
+                            @*<th>Derniére affectation</th>*@
                             <th>Date derniére affectation</th>
                             <th>Date prochaine affectation</th>
-                            <th>Date renouvellementt</th>
+                            <th>Date renouvellement</th>
                             <th>Date retour prévue</th>
                             <th>Date sortie</th>
-                           
+
+                            <th>Action</th>
                         </tr>
                     </thead>
 
@@ -35,13 +38,12 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                             
-                                <td class="center">@item.Vehicule.Parc_auto.Batiment.description</td>
-                                <td class="center">@item.Vehicule.Parc_auto.Libelle</td>
 
                                 <td class="center">@item.Vehicule.Matricule</td>
+                                <td class="center">@item.Vehicule.Parc_auto.Batiment.description</td>
+                                <td class="center">@item.Vehicule.Parc_auto.Libelle</td>
                                 <td class="center">@item.Nom</td>
-
+                                @*<td class="center">@item.Vehicule.</td>*@
                                 <td class="center">@item.Date_derniere_affectation</td>
                                 <td class="center">@item.Date_prochaine_affectation</td>
                                 <td class="center">@item.Date_renouvellement_prevue</td>
@@ -49,6 +51,12 @@
                                 <td class="center">@item.Date_sortie</td>
 
 
+                                <td>
+                                    @if (@Session["Role"].ToString() == "ADMIN")
+                                    {
+                                        <a href="@Url.Action("Edit", new { id = item.Id_mouvementV })">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    }
+                                </td>
 
                             </tr>
 

@@ -76,7 +76,7 @@ namespace WebApp.Controllers
             else
 
             {
-                //  ViewBag.msg = "Verifier l code postal";
+              
                 ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
                 ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
                 ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
@@ -1341,7 +1341,7 @@ namespace WebApp.Controllers
             
         }
 
-        public ActionResult GetMouvement()
+        public ActionResult GetMouvementVehicule()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -1404,7 +1404,7 @@ namespace WebApp.Controllers
                     tr.Users = (Emp.Personnel.Matricule).ToString();
                     BissInventaireEntities.Instance.Trace.Add(tr);
                     BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetMouvement");
+                    return RedirectToAction("GetMouvementVehicule");
             }
             catch (DbEntityValidationException r)
             {

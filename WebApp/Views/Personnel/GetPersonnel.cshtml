@@ -45,19 +45,19 @@
                                 <td class="center">@item.nom</td>
                                 <td class="center">@item.prenom</td>
                                 <td class="center">@item.Role.libelle</td>
-                                <td class="center">@item.Batiment.Organisation.libelle</td>
+                                @*<td class="center">@item.Batiment.Organisation.libelle</td>
                                 <td class="center">@item.Batiment.description</td>
                                 <td class="center">@item.Batiment.Delegation.libelle</td>
                                 <td class="center">@item.Batiment.Delegation.Gouvernorat.Region.libelle</td>
                                 <td class="center">@item.Batiment.Delegation.Gouvernorat.libelle</td>
-                                <td class="center">@item.Batiment.Delegation.Gouvernorat.Region.Pays.libelle</td>
+                                <td class="center">@item.Batiment.Delegation.Gouvernorat.Region.Pays.libelle</td>*@
 
 
                                 <td>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
     
-                                    <a href="@Url.Action("Edit", new { id = item.id })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("Edit", new { id = item.id_pers })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
 
 }  </td>
 

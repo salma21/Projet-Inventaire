@@ -15,29 +15,33 @@
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                            <th>Code étage</th>
                             <th>Code à barre</th>
+                            <th>Code étage</th>
+
                             <th>Description</th>
-                            <th>Organisation</th>
+
                             <th>Batiment</th>
                             <th>Ville</th>
-                            <th>Region</th>
+                            <th>Région</th>
                             <th>Gouvernorat</th>
-                            <th>Pays</th><th>Action</th>
+                            <th>Pays</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
 
                     <tfoot>
                         <tr>
-                            <th>Code étage</th>
                             <th>Code à barre</th>
+                            <th>Code étage</th>
+
                             <th>Description</th>
-                            <th>Organisation</th>
+
                             <th>Batiment</th>
                             <th>Ville</th>
                             <th>Region</th>
                             <th>Gouvernorat</th>
-                            <th>Pays</th><th>Action</th>
+                            <th>Pays</th>
+                            <th>Action</th>
                         </tr>
                     </tfoot>
 
@@ -45,11 +49,11 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-
-                                <td class="center">@item.Id_etage</td>
                                 <td class="center">@item.code</td>
+                                <td class="center">@item.Id_etage</td>
+
                                 <td class="center">@item.description</td>
-                                <td class="center">@item.Batiment.Organisation.libelle</td>
+
                                 <td class="center">@item.Batiment.description</td>
                                 <td class="center">@item.Batiment.Delegation.libelle</td>
                                 <td class="center">@item.Batiment.Delegation.Gouvernorat.Region.libelle</td>
@@ -58,11 +62,12 @@
 
 
                                 <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
+                                    @if (@Session["Role"].ToString() == "ADMIN")
+                                    {
 
-                                    <a href="@Url.Action("EditEtage", new { id = item.Id_etage })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-}                              </td>
+                                        <a href="@Url.Action("EditEtage", new { id = item.Id_etage })">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    }
+                                </td>
 
                             </tr>
 
@@ -71,10 +76,10 @@
                     </tbody>
                 </table>
                 <br /><p>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                    @Html.ActionLink("Ajouter un nouveau étage", "CreateEtage")
-}
+                    @if (@Session["Role"].ToString() == "ADMIN")
+                    {
+                        @Html.ActionLink("Ajouter un nouveau étage", "CreateEtage")
+                    }
                 </p>
 
             </div>
