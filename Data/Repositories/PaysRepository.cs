@@ -15,12 +15,20 @@ namespace Data.Repositories
         public PaysRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdatePaysDetached(Pays e)
         {
-            Pays existing = this.DataContext.Pays.Find(e.idPays);
+           
+            Pays existing = FindPaysByID(e.idPays);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
+        public Pays FindPaysByID(int id)
+        {
 
+            var pers = (from p in DataContext.Pays
+                        where p.idPays == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
     }
 
 
@@ -28,6 +36,7 @@ namespace Data.Repositories
     {
 
         void UpdatePaysDetached(Pays e);
+        Pays FindPaysByID(int id);
 
     }
 

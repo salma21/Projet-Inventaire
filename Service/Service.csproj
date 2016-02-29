@@ -58,6 +58,7 @@
     <Compile Include="PersonnelService.cs" />
     <Compile Include="RoleService.cs" />
     <Compile Include="ServiceD.cs" />
+    <Compile Include="ServiceDirectionService.cs" />
     <Compile Include="ServiceEtPArcAutoService.cs" />
     <Compile Include="FournisseurService.cs" />
     <Compile Include="BatimentService.cs" />

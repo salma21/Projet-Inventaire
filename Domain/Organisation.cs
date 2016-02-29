@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Organisation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,12 +21,32 @@ namespace Domain
         }
     
         public int idOrganisation { get; set; }
+        [Required(ErrorMessage = "Le nom est obligatoire")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom doit comporter entre 2 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom est invalide")]
         public string libelle { get; set; }
+        [Required(ErrorMessage = "La description est obligatoire")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide: exemple Bureau 1")]
         public string description { get; set; }
+
+        [Required(ErrorMessage = "Le numéro de téléphone est obligatoire")]
+        [Range(10000000, 99999999, ErrorMessage = "Le numéro de téléphone est invalide!")]
         public string tel { get; set; }
+
         public byte[] logo { get; set; }
+
+        [Required(ErrorMessage = "Le numéro du fax est obligatoire")]
+        [Range(10000000, 99999999, ErrorMessage = "Le numéro du fax est invalide!")]
         public string fax { get; set; }
+
+        [Required(ErrorMessage = "L'adresse est obligatoire")]
+        [StringLength(50, MinimumLength = 4, ErrorMessage = "L'adresse doit comporter entre 4 et 50 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le'adresse est invalide")]
         public string adresse { get; set; }
+        [Required(ErrorMessage = "Le matricule fiscal est obligatoire")]
+        [StringLength(8, MinimumLength = 8, ErrorMessage = "Le matricule fiscal doit comporter 8 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le matricule fiscal est invalide")]
         public string Matricule_fiscale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

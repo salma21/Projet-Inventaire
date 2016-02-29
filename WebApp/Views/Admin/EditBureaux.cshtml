@@ -1,4 +1,5 @@
 ﻿@model Domain.Bureau
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -23,20 +24,20 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Code_a_Barres </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Code Etage </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code bureau </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Id_bureau, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.id, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.id, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -56,14 +57,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiments"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label class="control-label col-lg-4">Ville</label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.Id_direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="form-group">
-                                <label class="control-label col-lg-4">Etage</label>
+                                <label class="control-label col-lg-4">Étage</label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.Id_etage, (SelectList)ViewData["etages"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
@@ -73,7 +74,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetBureau")</button>
 
                         </div>
 

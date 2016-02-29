@@ -15,13 +15,20 @@ namespace Data.Repositories
         public DirectionRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateDirectionDetached(Direction e)
         {
-            Direction existing = this.DataContext.Direction.Find(e.Id_direction);
+            Direction existing = FindDirectionByID(e.Id_direction);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
+        public Direction FindDirectionByID(int id)
+        {
 
-     
+            var pers = (from p in DataContext.Direction
+                        where p.Id_direction == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
+
     }
 
 
@@ -29,7 +36,7 @@ namespace Data.Repositories
     {
 
         void UpdateDirectionDetached(Direction e);
-        
+        Direction FindDirectionByID(int id);
 
     }
 

@@ -100,7 +100,7 @@
           <Property Name="Num" Type="int" />
           <Property Name="Date_debut" Type="date" />
           <Property Name="Date_fin" Type="date" />
-          <Property Name="Cout" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Cout" Type="float" />
           <Property Name="Sous_Type_Contrat" Type="varchar" MaxLength="254" />
         </EntityType>
         <EntityType Name="ContratBien">
@@ -432,7 +432,7 @@
           <Property Name="Modele" Type="varchar" MaxLength="254" />
           <Property Name="Etat" Type="varchar" MaxLength="254" />
           <Property Name="Num_chassis" Type="varchar" MaxLength="254" />
-          <Property Name="Prix_d_achat" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="Prix_d_achat" Type="float" />
         </EntityType>
         <Association Name="FK_ACHAT_ASSOCIATI_FOURNISS">
           <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
@@ -1225,7 +1225,7 @@
           <Property Name="Num" Type="Int32" />
           <Property Name="Date_debut" Type="DateTime" Precision="0" />
           <Property Name="Date_fin" Type="DateTime" Precision="0" />
-          <Property Name="Cout" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Cout" Type="Double" />
           <Property Name="Sous_Type_Contrat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Fournisseur" Relationship="Self.FK_CONTRAT_ASSOCIATI_FOURNISS" FromRole="Contrat" ToRole="Fournisseur" />
           <NavigationProperty Name="ContratBien" Relationship="Self.FK_CONTRATB_ASSOCIATI_CONTRAT" FromRole="Contrat" ToRole="ContratBien" />
@@ -1608,7 +1608,7 @@
           <Property Name="Modele" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="Etat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="Num_chassis" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-          <Property Name="Prix_d_achat" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Prix_d_achat" Type="Double" />
           <NavigationProperty Name="Achat" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Vehicule" ToRole="Achat" />
           <NavigationProperty Name="MouvementVehicule" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE" FromRole="Vehicule" ToRole="MouvementVehicule" />
           <NavigationProperty Name="Parc_auto" Relationship="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT" FromRole="Vehicule" ToRole="Parc_auto" />
@@ -2105,7 +2105,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissInventaireEntities3" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Batiment" EntityType="Self.Batiment" />
           <EntitySet Name="Bien" EntityType="Self.Bien" />
@@ -2291,7 +2291,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities3">
+        <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissInventaireModel.Achat">
               <MappingFragment StoreEntitySet="Achat">

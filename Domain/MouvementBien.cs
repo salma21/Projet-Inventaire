@@ -11,12 +11,15 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class MouvementBien
     {
         public int Id_mouvementB { get; set; }
         public int Id_etage { get; set; }
         public int Id_bien { get; set; }
+        [Required(ErrorMessage = "Le nom est obligatoire")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom doit comporter entre 2 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom est invalide")]
         public string Nom { get; set; }
         public Nullable<System.DateTime> Date_derniere_affectation { get; set; }
         public Nullable<System.DateTime> Date_prochaine_affectation { get; set; }

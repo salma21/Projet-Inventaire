@@ -30,8 +30,8 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom Inventaire </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Nom_, new { @class = "form-control", required = "True" })
-
+                                    @Html.EditorFor(model => model.Nom_, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Nom_, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -40,7 +40,8 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Type </label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(model => model.Type, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Type, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Type, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -49,6 +50,7 @@
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <input type="submit" value="Save" class="btn btn-default" />
+                                    <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetInventaire")</button>
                                 </div>
                             </div>
                         </div>

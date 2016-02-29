@@ -27,7 +27,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Libelle, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Libelle , String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -38,9 +38,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                         </div>
                         <div style="text-align: center;">
-                            <input type="submit" value="Valider" class="btn btn-default" />
-
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="submit" class="btn btn-default">Oui</button>
+                            <button type="reset" class="btn btn-white"> @Html.ActionLink("Annuler", "GetDirection")</button>
 
                         </div>
 
@@ -50,7 +49,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("List", "GetDirection")
+                    @Html.ActionLink("Liste des directions", "GetDirection")
                 </div>
 
             </div>

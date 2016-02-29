@@ -90,8 +90,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                 <div class="col-lg-6">
 
                                                     @Html.EditorFor(model => model.libelle, new { @class = "form-control", required = "True" })
-                                                 
-                                                        @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
+                                                  @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
 </div>
                                             </div>
 
@@ -100,8 +99,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                 <div class="col-lg-6">
 
                                                     @Html.EditorFor(model => model.Code_postal, new { @class = "form-control", required = "True" })
-                                                 
-                                                        @Html.ValidationMessageFor(model => model.Code_postal, String.Empty, new { @class = "test" })
+                                                  @Html.ValidationMessageFor(model => model.Code_postal, String.Empty, new { @class = "test" })
 </div>
                                             </div>
 

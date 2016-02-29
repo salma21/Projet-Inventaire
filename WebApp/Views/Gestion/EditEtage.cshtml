@@ -1,5 +1,37 @@
 ﻿@model Domain.Etage
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
+@{
 
+
+    List<string> listbatiment = new List<string>();
+    List<string> listetage = new List<string>();
+}
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Gestion/GetBatiemntByDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlcity").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -36,7 +68,7 @@
 
                           
                             <div class="form-group">
-                                <label class="control-label col-lg-4">Code à barre de l'ÉTAGE</label>
+                                <label class="control-label col-lg-4">Code étage</label>
                                 <div class="col-lg-6">
                                     @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control" } })
                                     @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
@@ -57,7 +89,7 @@
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetEtage")</button>
 
                         </div>
 

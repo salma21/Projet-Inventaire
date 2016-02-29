@@ -89,7 +89,7 @@
                                 <div class="col-md-8">
 
 
-                                    @Html.TextBoxFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.Prix_d_achat, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -101,6 +101,7 @@
 
 
                                     @Html.EditorFor(model => model.Date_livraison, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Date_livraison, String.Empty, new { @class = "test" })
                                 </div>
                             </div><br />
                             <br />
@@ -117,6 +118,7 @@
 
                                 <div class="col-md-8">
                                     @Html.EditorFor(model => model.Date_d_achat, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Date_d_achat, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 

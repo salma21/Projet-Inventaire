@@ -115,7 +115,7 @@ namespace WebApp.Controllers
                 try
             {
                 var four = fourni.FindFourByID(achat.Id_fournisseur);
-              //  achat.Date_d_achat = System.DateTime.Now;
+              //achat.Date_d_achat = System.DateTime.Now;
                 achat.idDelegation = four.idDelegation;
                 db.Achat.Add(achat);
                 db.SaveChanges();
@@ -196,6 +196,8 @@ namespace WebApp.Controllers
             {
                 try
                 {
+                   DateTime jj = Convert.ToDateTime(achte.Date_d_achat);
+                    String hh = jj.ToString("dd-MM-yyyy");
                     var four = fourni.FindFourByID(achte.Id_fournisseur);
                     //  achat.Date_d_achat = System.DateTime.Now;
                     achte.idDelegation = four.idDelegation;

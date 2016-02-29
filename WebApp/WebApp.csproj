@@ -201,7 +201,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
-    <Compile Include="Controllers\CategorieController.cs" />
     <Compile Include="Controllers\DbController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EtageController.cs" />
@@ -216,6 +215,7 @@
     <Compile Include="Controllers\PersonnelController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ServiceDController .cs" />
+    <Compile Include="Controllers\ServiceDirectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -459,7 +459,6 @@
     <Content Include="Views\Gestion\CreateGouvernorat1.cshtml" />
     <Content Include="Views\Gestion\EditStock.cshtml" />
     <Content Include="Views\Gestion\EditParcAuto.cshtml" />
-    <Content Include="Views\Gestion\EditRegion.cshtml" />
     <Content Include="Views\ServiceD\EditServiceD.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementBien.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
@@ -474,12 +473,15 @@
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
     <Content Include="Views\Inventaire\EditInventaire.cshtml" />
     <Content Include="Views\Admin\GetTrace.cshtml" />
-    <Content Include="Views\Categorie\createSousCategorie.cshtml" />
-    <Content Include="Views\Categorie\createCategorie.cshtml" />
-    <Content Include="Views\Categorie\editSousCategorie.cshtml" />
-    <Content Include="Views\Categorie\getSousCategorie.cshtml" />
-    <Content Include="Views\Categorie\getCategorie.cshtml" />
-    <Content Include="Views\Categorie\getModele.cshtml" />
+    <Content Include="Views\Categorie_materiel\CreateCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\CreateCategorie_materiel.cshtml" />
+    <Content Include="Views\Categorie_materiel\CreateCategorie_Modele.cshtml" />
+    <Content Include="Views\Categorie_materiel\EditCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\EditCategorie_materiel.cshtml" />
+    <Content Include="Views\Categorie_materiel\EditCategorie_Modele.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_Designation.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_materiel.cshtml" />
+    <Content Include="Views\Categorie_materiel\GetCategorie_Model.cshtml" />
     <Content Include="Views\GestionContrat\CreateAchat.cshtml" />
     <Content Include="Views\GestionContrat\DetailsAchat.cshtml" />
     <Content Include="Views\GestionContrat\DetailsContrat.cshtml" />
@@ -488,16 +490,13 @@
     <Content Include="Views\GestionContrat\GetAchat.cshtml" />
     <Content Include="Views\GestionContrat\GetContrat.cshtml" />
     <Content Include="Views\GestionContrat\CreateContrat.cshtml" />
-    <Content Include="Views\Categorie\createModele.cshtml" />
-    <Content Include="Views\Categorie\createSousModele.cshtml" />
-    <Content Include="Views\Categorie\getSousModele.cshtml" />
-    <Content Include="Views\Categorie\createMarque.cshtml" />
-    <Content Include="Views\Categorie\getMarque.cshtml" />
-    <Content Include="Views\Categorie\editCategorie.cshtml" />
+    <Content Include="Views\Gestion\editPays.cshtml" />
+    <Content Include="Views\Gestion\EditRegion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\UploadedFolder\" />
+    <Folder Include="Views\ServiceDirection\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

@@ -95,7 +95,7 @@
     <Property Name="Num" Type="int" />
     <Property Name="Date_debut" Type="date" />
     <Property Name="Date_fin" Type="date" />
-    <Property Name="Cout" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Cout" Type="float" />
     <Property Name="Sous_Type_Contrat" Type="varchar" MaxLength="254" />
   </EntityType>
   <EntityType Name="ContratBien">
@@ -427,7 +427,7 @@
     <Property Name="Modele" Type="varchar" MaxLength="254" />
     <Property Name="Etat" Type="varchar" MaxLength="254" />
     <Property Name="Num_chassis" Type="varchar" MaxLength="254" />
-    <Property Name="Prix_d_achat" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Prix_d_achat" Type="float" />
   </EntityType>
   <Association Name="FK_ACHAT_ASSOCIATI_FOURNISS">
     <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
