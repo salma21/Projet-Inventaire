@@ -52,6 +52,15 @@ namespace Data.Repositories
                         select p);
             return pers.FirstOrDefault();
         }
+
+        public IEnumerable<Etage> findEtageByBatiment(int id)
+        {
+
+            var pers = (from p in DataContext.Etage
+                        where p.idBatiment == id
+                        select p);
+            return pers;
+        }
     }
 
 
@@ -61,6 +70,7 @@ namespace Data.Repositories
         void UpdateBureauDetached(Bureau e);
         void UpdatePaysDetached(Pays e);
         IEnumerable<Bureau> FindBureauByBatiment(int id);
+        IEnumerable<Etage> findEtageByBatiment(int id);
 void UpdateGouvernoratDetached(Gouvernorat e);
     }
 

@@ -41,6 +41,10 @@ namespace Domain
         public Nullable<int> Code_a_barre { get; set; }
         public string Emploi_principal { get; set; }
         public Nullable<System.DateTime> Date_d_installation { get; set; }
+        public string Sous_categorie { get; set; }
+        public string Modele { get; set; }
+        public string Sous_Modele { get; set; }
+        public string Marque { get; set; }
     
         public virtual Achat Achat { get; set; }
         public virtual Categorie Categorie { get; set; }

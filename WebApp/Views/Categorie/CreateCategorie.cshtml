@@ -1,5 +1,4 @@
-﻿@model Domain.Categorie_materiel
-
+﻿@model Domain.Categorie
 
 <div class="row">
     <div class="col-md-12">
@@ -13,16 +12,13 @@
 
                 <div class="panel panel-default">
 
-
-                    @using (Html.BeginForm())
+                    @using (@Html.BeginForm("createCategorie", "Categorie", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
                     {
-                        @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                            <h4>Categorie_materiel</h4>
-                            <hr />
+
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            @Html.HiddenFor(model => model.Id_categorie)
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Nom categorie  </label>
@@ -47,12 +43,14 @@
                             <button type="reset" class="btn btn-white">Annuler</button>
 
                         </div>
+
                     }
+
 
                 </div>
 
                 <div>
-                    @Html.ActionLink("Afficher la liste des categories materiels", "GetCategorie_materiel")
+                    @Html.ActionLink("Afficher la liste des categories ", "getCategorie")
                 </div>
 
             </div>

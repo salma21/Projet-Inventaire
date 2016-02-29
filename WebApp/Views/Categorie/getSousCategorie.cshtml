@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Domain.Sous_categorie>
+
+<h2>Liste des sous catégories </h2>
+
+
+<!-- Start Row -->
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+
+            </div>
+            <div class="panel-body table-responsive">
+                <table id="example0" class="table display">
+                    <thead>
+                        <tr>
+
+                           
+                            <th>Sous catégorie</th>
+                            <th>Catégorie</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+
+                    
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+
+                                
+                                <td class="center">@item.libelle </td>
+                                <td class="center">@item.Categorie.libelle </td>
+
+
+                                <td>
+                                    @if (@Session["Role"].ToString() == "ADMIN")
+                                    {
+
+                                        <a href="@Url.Action("editSousCategorie", new { id = item.id_sous_categorie})">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    }
+                                </td>
+
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+                <br /><p>
+                    @if (@Session["Role"].ToString() == "ADMIN")
+                    {
+                        @Html.ActionLink("Ajouter une nouvelle Sous Catégorie ", "createSousCategorie")
+                    }
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>

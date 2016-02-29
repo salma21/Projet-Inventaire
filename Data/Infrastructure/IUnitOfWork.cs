@@ -41,6 +41,7 @@ namespace Data.Infrastructure
         IDirectionRepository DirectionRepository { get; }
         IInventaireBienRepository InventaireBienRepository { get; }
         IInventaireVehiculeRepository InventaireVehiculeRepository { get; }
+        IDepotRepository DepotRepository { get; }
 
 
 

@@ -1,14 +1,16 @@
-﻿@model Domain.Modele
+﻿@model Domain.Sous_modele
 
 
 @{
 
 
     List<string> listSousCategorie = new List<string>();
+    List<string> listModele = new List<string>();
 
 }
 <link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
 <script language="javascript" type="text/javascript">
     function GetCity(_stateId) {
         var procemessage = "<option value='0'>Encours...</option>";
@@ -33,12 +35,39 @@
         });
 
     }
+    </script>
+
+<script language="javascript" type="text/javascript">
+    function getModele(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlmodele").html(procemessage).show();
+        var url = "/Categorie/getModeleBySousCategorie/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlmodele").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Ajout Modele
+                Ajout Sous Modèle
             </div>
             <div class="panel-body">
 
@@ -46,12 +75,15 @@
 
                 <div class="panel panel-default">
 
-                    @using (Html.BeginForm())
-                    {
+                    
+@using (@Html.BeginForm("createSousModele", "Categorie", FormMethod.Post,
+            new { @id = "frmId", @class = "fieldset-form" }))
+
+    {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                            <h4>Modele</h4>
+                            <h4>Sous Modèle</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
@@ -68,7 +100,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Sous Categorie </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.id_sous_categorie, new SelectList(listSousCategorie), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
+                                    @Html.DropDownListFor(m => m.id_sous_categorie, new SelectList(listSousCategorie), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" , @onchange = "javascript:getModele(this.value);" })
 
                                 </div>
                             </div>
@@ -76,8 +108,22 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Modele  </label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(model => model.libelle, new { @class = "form-control", required = "" })
-                                    @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
+                                    @Html.DropDownListFor(m => m.IdModele, new SelectList(listModele), "--Choisir--", new { @id = "ddlmodele", @class = "form-control", required = "True" })
+                                   
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Sous Modele  </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(m => m.Libelle, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(m => m.Libelle, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Description </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(m => m.Description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -87,10 +133,11 @@
                             </div>
                         </div>
                     }
+                   
                 </div>
 
                 <div>
-                    @Html.ActionLink("Afficher la liste des Modeles", "getModele")
+                    @Html.ActionLink("Afficher la liste des Sous  Modeles", "getSousModele")
                 </div>
 
             </div>

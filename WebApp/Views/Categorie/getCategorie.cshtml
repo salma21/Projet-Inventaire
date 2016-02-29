@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Domain.Categorie>
 
 @{
-    ViewBag.Title = "GetCategorie_materiel";
+    ViewBag.Title = "getCategorie";
 }
 
 <h2>Liste des categories materiels</h2>
@@ -49,7 +49,7 @@
 @if (@Session["Role"].ToString() == "ADMIN")
 {
 
-                                    <a href="@Url.Action("EditCategorie_materiel", new { id = item.Id_categorie })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("editCategorie", new { id = item.Id_categorie })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
 }
                                 </td>
 
@@ -62,7 +62,7 @@
                 <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                    @Html.ActionLink("Ajouter une nouvelle Categorie", "CreateCategorie_materiel")
+                    @Html.ActionLink("Ajouter une nouvelle Categorie", "createCategorie")
 }
                 </p>
 

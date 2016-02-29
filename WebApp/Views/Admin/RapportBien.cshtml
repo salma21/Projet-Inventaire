@@ -66,16 +66,24 @@
                         <thead>
                             <tr>
                                 <th>Designation </th>
-                                <th>Batiment </th>
                                 <th>Description</th>
-                                <th>Etage</th>
-                                <th>Region</th>
-                                <th>Ville </th>
-                                <th>Categorie </th>
-                                <th>Desigantion </th>
                                 <th>Code</th>
                                 <th>Mode</th>
                                 <th>Etat</th>
+                                
+                                <th>Categorie </th>
+                                <th>Sous categorie</th>
+                                <th>Modéle</th>
+                                <th>Sous modéle</th>
+                                <th>Marque</th>
+                              
+                                <th>Batiment </th>
+                                <th>Etage</th>
+                                <th>Region</th>
+                                <th>Ville </th>
+                               
+                                
+                               
 @if (@Session["Role"].ToString() == "ADMIN")
 {
                                 <th>Action</th>
@@ -89,16 +97,22 @@
                                 <tr class="odd gradeX">
 
                                     <td>@item.Designation</td>
-                                    <td>@item.Etage.Batiment.description</td>
                                     <td>@item.Description</td>
-                                    <td>@item.Etage.description</td>
-                                    <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
-                                    <td>@item.Etage.Batiment.Delegation.libelle</td>
-                                    <td>@item.Categorie.libelle</td>
-                                    <td>@item.Designation</td>
                                     <td>@item.Code</td>
                                     <td>@item.Mode</td>
                                     <td>@item.Etat</td>
+                                    <td>@item.Categorie.libelle</td>
+                                    <td>@item.Sous_categorie</td>
+                                    <td>@item.Modele</td>
+                                    <td>@item.Sous_Modele</td>
+                                    <td>@item.Marque</td>
+                                    <td>@item.Etage.Batiment.description</td>
+                                    <td>@item.Etage.description</td>
+                                    <td>@item.Etage.Batiment.Delegation.libelle</td>
+                                    <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
+                                 
+                                   
+                                  
 
                                     <td>
 @if (@Session["Role"].ToString() == "ADMIN")

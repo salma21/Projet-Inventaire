@@ -27,6 +27,7 @@ namespace WebApp.Controllers
         private IDirectionService dir = new DirectionService();
         private IDelegationService del = new DelegationService();
         private IOrganisationService orga = new OrganisationService();
+      
         // GET: Gestion
         public ActionResult Index()
         {
@@ -1129,7 +1130,7 @@ namespace WebApp.Controllers
             int idBat = db6.FindBatimentByParcAuto(veh.Id_parc);
             var ac = BissInventaireEntities.Instance.Achat.Find(veh.Id_achat);
 
-            veh.Prix_d_achat = ac.Prix_d_achat;
+            veh.Prix_d_achat =(decimal) ac.Prix_d_achat;
          
             veh.idBatiment = idBat;
 
@@ -1452,7 +1453,7 @@ namespace WebApp.Controllers
             }
         }
         [HttpPost]
-        public ActionResult GetBatimentByDelegation(int delegid)
+        public ActionResult getBatimentByDelegation(int delegid)
         {
             List<Batiment> objcity = new List<Batiment>();
             objcity = db7.FindBatimentByDelegation(delegid).ToList();
@@ -1527,6 +1528,7 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
         // POST: TPE/Create
+      
 
     }
 

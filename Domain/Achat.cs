@@ -28,7 +28,7 @@ namespace Domain
         public Nullable<int> Num_facture { get; set; }
         public Nullable<int> Num_commande { get; set; }
         public Nullable<System.DateTime> Date_d_achat { get; set; }
-        public Nullable<decimal> Prix_d_achat { get; set; }
+        public Nullable<double> Prix_d_achat { get; set; }
         public Nullable<int> Num_livraison { get; set; }
     
         public virtual Fournisseur Fournisseur { get; set; }

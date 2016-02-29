@@ -11,7 +11,7 @@
     <Property Name="Num_facture" Type="int" />
     <Property Name="Num_commande" Type="int" />
     <Property Name="Date_d_achat" Type="date" />
-    <Property Name="Prix_d_achat" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Prix_d_achat" Type="float" />
     <Property Name="Num_livraison" Type="int" />
   </EntityType>
   <EntityType Name="Batiment">
@@ -53,6 +53,10 @@
     <Property Name="Code_a_barre" Type="int" />
     <Property Name="Emploi_principal" Type="varchar" MaxLength="254" />
     <Property Name="Date_d_installation" Type="date" />
+    <Property Name="Sous_categorie" Type="nvarchar" MaxLength="50" />
+    <Property Name="Modele" Type="nvarchar" MaxLength="50" />
+    <Property Name="Sous_Modele" Type="nvarchar" MaxLength="50" />
+    <Property Name="Marque" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Bureau">
     <Key>
@@ -286,7 +290,11 @@
     <Property Name="idOrganisation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="libelle" Type="varchar" MaxLength="254" />
     <Property Name="description" Type="varchar" MaxLength="254" />
-    <Property Name="Logo" Type="varchar" MaxLength="254" />
+    <Property Name="tel" Type="nvarchar" MaxLength="50" />
+    <Property Name="logo" Type="image" />
+    <Property Name="fax" Type="nvarchar" MaxLength="50" />
+    <Property Name="adresse" Type="nvarchar" MaxLength="50" />
+    <Property Name="Matricule_fiscale" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Parc_auto">
     <Key>
@@ -327,7 +335,9 @@
       <PropertyRef Name="id" />
       <PropertyRef Name="Id_Vehicule" />
     </Key>
+    <Property Name="Id_service" Type="int" />
     <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Id_parc" Type="int" />
     <Property Name="Id_Vehicule" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Region">

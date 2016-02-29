@@ -1,17 +1,79 @@
 ﻿@model Domain.Bien
-
 @{
 
 
-    List<string> listProduit = new List<string>();
+    //List<string> listProduit = new List<string>();
+    List<string> listSousCategorie = new List<string>();
     List<string> listModele = new List<string>();
-}
+    List<string> listSousModele = new List<string>();
+    List<string> listMarque = new List<string>();
+    List<string> listBatment = new List<string>();
+    List<string> listEtage = new List<string>();
+    List<string> listDepot = new List<string>();
+ }
+
+
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+   <script language="javascript" type="text/javascript">
+
+        function GetCity(_stateId) {
+            var procemessage = "<option value='0'>Encours...</option>";
+            $("#ddlcity").html(procemessage).show();
+            var url = "/Admin/getSousCategorieByCategorie/";
+
+            $.ajax({
+                url: url,
+                data: { stateid: _stateId },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='0'>--Choisir--</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlcity").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
+                }
+            });
+
+        }
+    
+</script>
+
 <script language="javascript" type="text/javascript">
-    function GetCity(_stateId) {
-        var procemessage = "<option value='0'>EnCours....</option>";
-        $("#ddlcity").html(procemessage).show();
-        var url = "/Gestion/GetProduitByCAt/";
+    function getModele(_libelleId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlmodele").html(procemessage).show();
+        var url = "/Admin/getModeleBySousCategorie/";
+
+        $.ajax({
+            url: url,
+            data: { libelle: _libelleId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlmodele").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+
+<script language="javascript" type="text/javascript">
+    function getSousModele(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlSousmodele").html(procemessage).show();
+        var url = "/Categorie/getSousModeleByModele/";
 
         $.ajax({
             url: url,
@@ -21,9 +83,9 @@
             success: function (data) {
                 var markup = "<option value='0'>--Choisir--</option>";
                 for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Text + ">" + data[x].Text + "</option>";
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                 }
-                $("#ddlcity").html(markup).show();
+                $("#ddlSousmodele").html(markup).show();
             },
             error: function (reponse) {
                 alert("error : " + reponse);
@@ -32,399 +94,555 @@
 
     }
 </script>
+<script language="javascript" type="text/javascript">
+    function getMarque(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlMarque").html(procemessage).show();
+        var url = "/Categorie/getMarqueBySousModele/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlMarque").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+        
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    function GetBatiment(_delegId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlBatiment").html(procemessage).show();
+        var url = "/Gestion/FindBatimentByDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlBatiment").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    function GetEtage(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlEtage").html(procemessage).show();
+        var url = "/Admin/getEtageByBatiment/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlEtage").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    function GetDepot(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlDepot").html(procemessage).show();
+        var url = "/Admin/getDepotByDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlDepot").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Ajout Produit
+                Ajout d'un bien
+
+                <ol class="breadcrumb"></ol>
+
+
+
+                <div class="panel-body">
+                    <!-- Start Modal Code -->
+                    <!-- End Moda Code -->
+                </div>
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
             <div class="panel-body">
 
+               @using (Html.BeginForm())
+               {
+                @Html.AntiForgeryToken()
+               
+                    <div class="panel panel-default">
+                    <fieldset>
+
+                        <legend> Description de Biens</legend>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE border=0 width=100%>
+                                    <TR>
+                                        <TD width=33% >
+                                            <label class="col-sm-4 control-label form-label">Code à barre</label>
+
+                                            <div class="col-sm-8" style="padding-left:6% ; width:60%">
+                                                @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
+                                            </div>
+                                        </TD>
+
+                                        <TD width=34%>
+                                            <label class="col-sm-4 control-label form-label">N° de série</label>
+
+                                            <div class="col-sm-8" style="padding-left:6% ; width:60%">
+
+                                                @Html.EditorFor(model => model.Num_Serie, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Num_Serie, String.Empty, new { @class = "test" })
+                                            </div>
+                                        </TD>
+
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label">Statut</label>
+
+                                            <div class="col-sm-8" style="padding-left:7% ; width:55%">
+                                                @{
+
+                                                    var listItems2 = new List<SelectListItem>()
+                            {
+                                 new SelectListItem {Text = "--Choisir--"},
+                                new SelectListItem {Text = "En Service",   Value = "En Service"},
+                                new SelectListItem {Text = "Hors-Service", Value = "Hors-Service"},
+                                new SelectListItem {Text = "En Panne", Value = "En Panne"},
+                                 new SelectListItem {Text = "Volé", Value = "Volé"},
+                                 new SelectListItem {Text = "Détruit",   Value = "Détruit"},
+                                new SelectListItem {Text = "Vendu", Value = "Vendu"},
+                                new SelectListItem {Text = "Loué", Value = "Loué"},
+                                new SelectListItem {Text = "Prêté", Value = "Prêté"},
+                                  new SelectListItem {Text = "En stock", Value = "En stock"}
 
 
-                <div class="panel panel-default">
+                            };
+
+                                                    @Html.DropDownListFor(m => m.Mode, listItems2, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Etat, String.Empty, new { @class = "test" })
+                                                }
+
+                                            </div>
+                                        </TD>
+
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE width=100%>
+                                    <TR>
 
 
 
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label">État</label>
 
-                    @using (@Html.BeginForm("CreateBien", "Admin", FormMethod.Post,
-new { @id = "frmId", @class = "fieldset-form" }))
-                    {
+                                            <div class="col-sm-8" style="padding-left:5% ; width:54%">
+                                                @{
 
-                        <div class="form-horizontal">
-                            <h4>Nouvelle Reception</h4>
-                            <hr />
-                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                                    var listItems = new List<SelectListItem>()
+                            {
+                                new SelectListItem {Text = "--Choisir--"},
+                                new SelectListItem {Text = "Bon",   Value = "Bon"},
+                                new SelectListItem {Text = "Mauvais", Value = "Mauvais"},
+                                new SelectListItem {Text = "Moyenne", Value = "Moyenne"},
+                                 new SelectListItem {Text = "Trés Bien", Value = "Trés Bien"}
 
 
-                          
+                            };
 
-                               
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Contrat d'Achat</label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_achat, (SelectList)ViewData["achats"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
-                                </div>
+                                                    @Html.DropDownListFor(m => m.Etat, listItems, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Etat, String.Empty, new { @class = "test" })
+                                                }
+                                            </div>
+                                        </TD>
+                                        <td width=33% style="padding-left:1% ">
+                                            <label class="col-sm-4 control-label form-label">Quantité</label>
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Societe d'assurance</label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_societe_assurance, (SelectList)ViewData["societeass"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Societe de maintenance</label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_societe_maintenance, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
-                                </div>
+                                            <div class="col-sm-8" style="padding-left:5% ; width:55%">
+                                                @Html.EditorFor(model => model.Code, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Code, String.Empty, new { @class = "test" })
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Contrat d'assurance</label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_contrat_assurance, (SelectList)ViewData["contratass"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Contrat de Maintennace</label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_contrat_maintenance, (SelectList)ViewData["contratmain"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
-                                </div>
+                                            </div>
+                                        </td>
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Contrat de Garantie</label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_contrat_garanti, (SelectList)ViewData["contratgar"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Categorie </label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(m => m.Id_categorie, (SelectList)ViewData["categorie"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                        <TD width=33% style="padding-left:1% ">
+                                            <label class="col-sm-4 control-label form-label">Catégorie</label>
+
+                                            <div class="col-sm-8" style="padding-left:7% ; width:55%">
+
+                                                @Html.DropDownListFor(m => m.Id_categorie, (SelectList)ViewData["categorie"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                            </div>
+                                        </TD>
+
+
+
+                                    </TR>
+
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE border=0 width=100%>
+                                    <TR>
+                                        <TD width=33%>
+                                            <label class="col-sm-4 control-label form-label">Désignation</label>
+
+                                            <div class="col-sm-8" style="padding-left:5% ; width:54%">
+                                                @Html.DropDownListFor(m => m.Sous_categorie, new SelectList(listSousCategorie), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True", @onchange = "javascript:getModele(this.value);" })
+
+                                            </div>
+                                        </TD>
+                                        <TD width=33% style="padding-left:1%">
+                                            <label class="col-sm-4 control-label form-label">Modéle</label>
+
+                                            <div class="col-sm-8" style="padding-left:5% ; width:55%">
+
+                                                @Html.DropDownListFor(m => m.Modele, new SelectList(listModele), "--Choisir--", new { @id = "ddlmodele", @class = "form-control", required = "True", @onchange = "javascript:getSousModele(this.value);" })
+                                            </div>
+
+                                        </TD>
+
+                                        <TD width=33% style="padding-left:1%">
+                                            <label class="col-sm-4 control-label form-label">Sous Modéle</label>
+
+                                            <div class="col-sm-8" style="padding-left:6% ; width:55%">
+                                                @Html.DropDownListFor(m => m.Sous_Modele, new SelectList(listSousModele), "--Choisir--", new { @id = "ddlSousmodele", @class = "form-control", required = "True", @onchange = "javascript:getMarque(this.value);" })
+
                                       
+
+                                      </div>
+                                       </TD>
+                   
+                                    </TR>
+
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+
+                        <div class="form-group">
+                            
+                                <table border=0 width=33%>
+                                    <tr>
+                                        <Td style="padding-left:1%">
+                                            <label class="col-sm-4 control-label form-label">Marque</label>
+                                            <div class="col-sm-8" style="padding-left:5% ; width:55%">
+                                                @Html.DropDownListFor(m => m.Marque, new SelectList(listMarque), "--Choisir--", new { @id = "ddlMarque", @class = "form-control", required = "True" })
+                                            </div>
+                                        </Td>
+                                    </tr>
+                                </table>
+                            
+                        </div>
+
+                        
+                    </fieldset>
+
+                    <br>
+
+                    <fieldset>
+
+                        <legend>Localisation</legend>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE width=100%>
+                                    <TR>
+
+                                        <TD style="padding-left:10%">
+                                            <label class="col-sm-4 control-label form-label" style="padding-left:25%"> Ville</label>
+
+
+                                            @Html.DropDownListFor(m => m.idDelegation, (SelectList)ViewData["Delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBatiment(this.value);javascript:GetDepot(this.value)" })
+
+                                        </TD>
+
+                                    </TR>
+                                    </TABLE>
+                                </CENTER>
+                            </div>
+                        <br />
+                                    <div class="form-group">
+                                        <CENTER>
+                                            <TABLE border=0 width=100%>
+                                                <TR>
+                                                    <TD>
+                                                        <div class="col-6">
+                                                            <label class="col-sm-4 control-label form-label">Batiment</label>
+
+
+
+
+
+                                                            @Html.DropDownListFor(m => m.idBatiment, new SelectList(listBatment), "--Choisir--", new { @id = "ddlBatiment", @class = "form-control", required = "", @onchange = "javascript:GetEtage(this.value);" })
+
+                                                        </div>
+                                                        <br />
+                                                        <label class="col-sm-4 control-label form-label"> Étage</label>
+
+
+                                                        @Html.DropDownListFor(m => m.Id_etage, new SelectList(listEtage), "--Choisir--", new { @id = "ddlEtage", @class = "form-control", required = "" })
+
+
+                                                    </TD>
+                                                    <TD width="20%">
+                                                       
+                                                        </TD>
+                                                    <TD>
+                                                        <div class="col-6">
+                                                            <label class="col-sm-4 control-label form-label">Dépôt</label>
+
+
+
+                                                            @Html.DropDownListFor(model => model.IdDepot, new SelectList(listDepot), "--Choisir--", new { @id = "ddlDepot", @class = "form-control", required = "" })
+
+
+                                                        </div>
+                                                    </TD>
+                                                </TR>
+
+
+
+
+                                            </TABLE>
+                                        </CENTER>
                                     </div>
-                                </div>
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Produit </label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(m => m.Designation, new SelectList(listProduit), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
-                                    </div>
-                                </div>
+                                    @*<div class="form-group">
+                                        <CENTER>
+                                            <TABLE width=80%>
 
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Modéle </label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(m => m.Modele, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
-                                    </div>
-                                </div>
+                                                <TR>
+                                                    <TD width=40%>
 
+                                                        <label class="col-sm-4 control-label form-label">Dépôt</label>
 
-
-                                </div>
-
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Emplacement</label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.IdDepot, (SelectList)ViewData["Depot"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-
-
-                                    </div>
-                                </div>
-
-
-
-                          
-                            <fieldset>
-
-                                <legend> Description de Biens</legend>
-
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE border=0 width=100%>
-                                            <TR>
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label">Code à barre</label>
-
-                                                    <div class="col-sm-8">
-                                                        @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
-                                                    </div>
-                                                </TD>
-
-                                                <TD >
-                                                    <label class="col-sm-4 control-label form-label"> N° de série</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        @Html.EditorFor(model => model.Num_Serie, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Num_Serie, String.Empty, new { @class = "test" })
-                                                    </div>
-                                                </TD>
-
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label"> Désignation</label>
-                                                  
-                                                    <div class="col-sm-8">
-                                                        @Html.EditorFor(model => model.Designation, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Designation, String.Empty, new { @class = "test" })
-                                                        @*<select class="selectpicker">
-                                                            <option>Table</option>
-                                                            <option>Chaise</option>
-                                                            <option>Pc</option>
-                                                            <option>Imprimante</option>
-                                                            <option>Clavier</option>
-                                                        </select>*@
-                                                    </div>
-                                                </TD>
-                                            </TR>
-                                        </TABLE>
-                                    </CENTER>
-                                </div>
-
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=100%>
-                                            <TR>
-                                                <TD width=34%>
-                                                    <label class="col-sm-4 control-label form-label">Quantité</label>
-
-                                                    <div class="col-sm-8">
-                                                        @Html.EditorFor(model => model.Code, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Code, String.Empty, new { @class = "test" })
-
-                                                    </div>
-                                                </TD>
-                                               
-                                                <TD width=34%>
-                                                    <label class="col-sm-4 control-label form-label">Marque</label>
-
-                                                    <div class="col-sm-8">
-
-                                                      @Html.EditorFor(model => model.Marque, new { @class = "form-control", required = "" })
-                                                    @Html.ValidationMessageFor(model => model.Marque, String.Empty, new { @class = "test" })
-                                                    </div>
-                                                </TD>
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label">État</label>
-
-                                                    <div class="col-sm-8">
-                                                        @Html.EditorFor(model => model.Etat, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Etat, String.Empty, new { @class = "test" })
-                                                        <select class="selectpicker">
-                                                            <option>Bon</option>
-                                                            <option>Mouvais</option>
-                                                            <option>Moyenne</option>
-                                                            <option>Trés Bien</option>
-                                                            <option>Activeden</option>
-                                                        </select>
-                                                    </div>
-                                                </TD>
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE border=0 width=100%>
-                                            <TR>
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label"> Modéle</label>
-
-                                                    <div class="col-sm-8">
-                                                       @Html.EditorFor(model => model.Modele, new { @class = "form-control", required = "" })
-                                                    @Html.ValidationMessageFor(model => model.Modele, String.Empty, new { @class = "test" })
-                                                    </div>
-                                                </TD>
-                                                <TD width=34%>
-                                                    <label class="col-sm-4 control-label form-label">Catégorie</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        @Html.EditorFor(model => model.Id_categorie, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Id_categorie, String.Empty, new { @class = "test" })
-                                                        @*<select class="selectpicker">
-                                                            <option>Informatique</option>
-                                                            <option>Bureautique</option>
-                                                            <option>éléchtroménager</option>
-                                                            <option>Hi-Tech</option>
-                                                            <option>Téléphonie</option>
-                                                        </select>*@
-                                                    </div>
-                                                </TD>
-                                                <TD width=33%>
-                                                    <label class="col-sm-4 control-label form-label">Mode</label>
-
-                                                    <div class="col-sm-8">
-                                                        @Html.EditorFor(model => model.Mode, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Mode, String.Empty, new { @class = "test" })
-                                                        <select class="selectpicker">
-                                                            <option>En Service</option>
-                                                            <option>Hors-Service</option>
-                                                            <option>En Panne</option>
-                                                            <option>Volé</option>
-                                                            <option>Détruit</option>
-                                                            <option>Vendu</option>
-                                                            <option>Loué</option>
-                                                            <option>Prêté</option>
-                                                        </select>
-                                                    </div>
-                                                </TD>
-
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
-
-                            </fieldset>
-
-                            <br>
-
-                            <fieldset>
-
-                                <legend>Localisation</legend>
-
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=80%>
-                                            <TR>
-                                                <TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label"> Ville</label>
-
-                                                    <div class="col-sm-8">
-                                                        @Html.DropDownListFor(m => m.idDelegation, (SelectList)ViewData["Delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
-                                                    </div>
-                                                </TD>
-                                                <TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label">Batiment</label>
-
-                                                    <div class="col-sm-8">
 
                                                         <div class="col-sm-8">
+                                                            @Html.DropDownListFor(model => model.IdDepot, new SelectList(listDepot), "--Choisir--", new { @id = "ddlDepot", @class = "form-control", required = "True" })
 
-                                                            @Html.DropDownListFor(m => m.idBatiment, (SelectList)ViewData["Batiment"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+
                                                         </div>
-                                                    </div>
-                                                </TD>
-
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
-                                </div>
-
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=80%>
-                                            <TR>
-                                                <TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label"> Étage</label>
-
-                                                    <div class="col-sm-8">
-                                                        @Html.DropDownListFor(m => m.Id_etage, (SelectList)ViewData["Etage"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
-                                                      
-                                                    </div>
-                                                </TD>
-                                                <TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label">Bureau</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        <div class="col-sm-8">
-
-                                                            @Html.DropDownListFor(m => m.id_bureau, (SelectList)ViewData["Bureau"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
-                                                        </div>
-                                                    </div>
-                                                </TD>
-
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
-
-                            </fieldset>
-                            <br>
-                            <fieldset>
-
-                                <legend>Information Supplémentaire</legend>
+                                                    </TD>
+                                                </TR>
+                                            </TABLE>
+                                        </CENTER>
+                                    </div>*@
+</fieldset>
+                    <br>
 
 
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=100%>
-                                            <TR>
-                                                <TD>
-                                                    <label class="col-sm-4 control-label form-label"> Description (Signet particuliére permetant d'identifier le bien)</label>
+                    <fieldset>
 
-                                                    <div class="col-sm-8">
+                        <legend> Administation</legend>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-                                                        @Html.EditorFor(model => model.Description, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Description, String.Empty, new { @class = "test" })
 
-                                                    </div>
-                                                </TD>
+                        <div class="form-group">
 
-                                            </TR>
-
-                                        </TABLE>
-                                    </CENTER>
-                                </div>
-
-                                <div class="form-group">
-                                    <CENTER>
-                                        <TABLE width=100%>
-                                            <TR>
-                                                <TD>
-                                                    <label class="col-sm-4 control-label form-label">Détail</label>
-
-                                                    <div class="col-sm-8">
-
-                                                        @Html.EditorFor(model => model.Detail, new { @class = "form-control", required = "" })
-                                                        @Html.ValidationMessageFor(model => model.Detail, String.Empty, new { @class = "test" })
-                                                    </div>
-                                                </TD>
+                            <CENTER>
+                                <TABLE width=80%>
+                                    <TR>
+                                        <TD width=40%>
 
 
-                                            </TR>
 
-                                        </TABLE>
-                                    </CENTER>
-                                </div>
-                            </fieldset>	
-                            <br />
-                       
-                       
-                        <br />                            <br />
+                                            <label class="col-sm-4 control-label form-label">Achat</label>
+                                            <div class="col-sm-8">
+                                                @Html.DropDownListFor(model => model.Id_achat, (SelectList)ViewData["achats"], "--Choisir--", new { @class = "form-control", required = "" })
+                                            </div>
 
-                            <div style="text-align: center;">
-                                <input type="submit" value="Valider" class="btn btn-default" />
+                                        </TD>
+                                        @*<TD width=40%>
+                                            <label class="col-sm-4 control-label form-label">Contrat de Garantie</label>
+                                            <div class="col-md-8">
+                                                    @Html.DropDownListFor(model => model., (SelectList)ViewData["contratgar"], "--Choisir--", new { @class = "form-control", required = "" })
+                                                </div>
+                                        </TD>*@
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
 
-                                <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "RapportBien")</button>
+
+
+                        @*<div class="form-group">
+                            <CENTER>
+                                <TABLE width=80%>
+                                    <TR>
+                                        <TD width=40%>
+                                            <label class="col-sm-4 control-label form-label">Societe d'assurance</label>
+                                            <div class="col-md-8">
+                                                    @Html.DropDownListFor(model => model.Id_societe_assurance, (SelectList)ViewData["societeass"], "--Choisir--", new { @class = "form-control", required = "" })
+                                                </div>
+                                        </TD>
+                                        <TD width=40%>
+                                            <label class="col-sm-4 control-label form-label">Contrat d'assurance</label>
+                                            <div class="col-md-8">
+                                                    @Html.DropDownListFor(model => model.Id_contrat_assurance, (SelectList)ViewData["contratass"], "--Choisir--", new { @class = "form-control", required = "" })
+                                                </div>
+
+                                        </TD>
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>
+
+                        <div class="form-group">
+                            <CENTER>
+                                <TABLE width=80%>
+                                    <TR>
+                                        <TD width=40%>
+                                            <label class="col-sm-4 control-label form-label">Societe de maintenance</label>
+                                            <div class="col-md-8">
+                                                    @Html.DropDownListFor(model => model.Id_societe_maintenance, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
+                                                </div>
+                                        </TD>
+                                        <TD width=40%>
+
+
+                                            <label class="col-sm-4 control-label form-label">Contrat de Maintennace</label>
+                                            <div class="col-md-8">
+                                                    @Html.DropDownListFor(model => model.Id_contrat_maintenance, (SelectList)ViewData["contratmain"], "--Choisir--", new { @class = "form-control", required = "" })
+                                                </div>
+
+                                        </TD>
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                        </div>*@
+
+
+
+
+                    </fieldset>
+                    <br />
+                    <fieldset>
+
+                        <legend>Information Supplémentaire</legend>
+                        <div class="form-group" width="100%">
+
+                            <label class="col-sm-4 control-label form-label">Affecté à</label>
+                            <div class="col-md-8">
+                                 @Html.DropDownListFor(model => model.id, (SelectList)ViewData["personnel"], "--Choisir--", new { @class = "form-control", required = "" })
 
                             </div>
 
-                    }
+                        </div>
+                        <br /><br />
+                        <div class="form-group" width="100%">
+
+                            <label class="col-sm-4 control-label form-label"> Description (Signet particuliére permetant d'identifier le bien)</label>
+
+                            @Html.TextAreaFor(model => model.Description, 3, 3, htmlAttributes: new { style = "width: 65%; max-width: 70%;" })
+
+                            @Html.ValidationMessageFor(model => model.Description, String.Empty, new { @class = "test" })
+
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <label class="col-sm-4 control-label form-label">Détail</label>
+
+
+                            @Html.TextAreaFor(model => model.Detail, 3, 3, htmlAttributes: new { style = "width: 65%; max-width: 70%;" })
+
+                            @Html.ValidationMessageFor(model => model.Detail, String.Empty, new { @class = "test" })
+
+
+                        </div>
+                    </fieldset>
+                    <br />
+
+
+
+
+                    <div style="text-align: center;">
+                        <input type="submit" value="Valider" class="btn btn-default" />
+
+                        <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "RapportBien")</button>
+
+                    </div>
+
+
+
+
+
 
 
                 </div>
+                                                    }
+            </div>
 
             <p>
-                @Html.ActionLink("Liste Des Biens", "RapportBien")
+                @Html.ActionLink("Liste des biens", "RapportBien")
             </p>
-
-            </div>
         </div>
+
     </div>
+
 </div>
-
-

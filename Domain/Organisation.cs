@@ -23,7 +23,11 @@ namespace Domain
         public int idOrganisation { get; set; }
         public string libelle { get; set; }
         public string description { get; set; }
-        public string Logo { get; set; }
+        public string tel { get; set; }
+        public byte[] logo { get; set; }
+        public string fax { get; set; }
+        public string adresse { get; set; }
+        public string Matricule_fiscale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batiment> Batiment { get; set; }

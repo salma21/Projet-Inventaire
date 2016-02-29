@@ -1,10 +1,9 @@
-﻿@model Domain.Sous_categorie
-
+﻿@model Domain.Categorie
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Ajout de sous categorie 
+                Modifier categorie materiel
             </div>
             <div class="panel-body">
 
@@ -18,12 +17,13 @@
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                            <h4>Categorie Designation</h4>
+                            <h4>Categorie_materiel</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id_categorie)
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4">Desigantion  </label>
+                                <label class="control-label col-lg-4">Nom categorie  </label>
                                 <div class="col-lg-6">
                                     @Html.TextBoxFor(model => model.libelle, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
@@ -31,27 +31,26 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4">Categorie  </label>
+                                <label class="control-label col-lg-4">Description  </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.Id_categorie, (SelectList)ViewData["cat"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
-
-
+                                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-default" />
-                                </div>
-                            </div>
+                        </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">Annuler</button>
+
                         </div>
                     }
-
 
                 </div>
 
                 <div>
-                    @Html.ActionLink("Afficher la liste des sous categories", "GetCategorie_Designation")
+                    @Html.ActionLink("Afficher la liste des categories materiels", "getCategorie")
                 </div>
 
             </div>
