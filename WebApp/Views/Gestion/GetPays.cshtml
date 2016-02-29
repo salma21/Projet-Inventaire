@@ -32,7 +32,7 @@
                                 <td>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                                    <a href="@Url.Action("Edit", new { id = item.idPays })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("EditPays", new { id = item.idPays })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
                                     
 } </td>
 
@@ -45,7 +45,7 @@
                 <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                    @Html.ActionLink("Ajouter un nouveau pay", "CreatePays")
+                    @Html.ActionLink("Ajouter un nouveau pays", "CreatePays")
 }
                 </p>
 

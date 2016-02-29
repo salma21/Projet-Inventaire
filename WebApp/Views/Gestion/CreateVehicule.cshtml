@@ -28,15 +28,16 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <label class="control-label col-lg-4" style="font-style:oblique;">Matricule</label>
                             <div class="col-lg-6">
 
-                                @Html.TextBoxFor(model => model.Matricule, new { @class = "form-control", required = "True" })
-
+                                @Html.EditorFor(model => model.Matricule, new { @class = "form-control", required = "True" })
+                                @Html.ValidationMessageFor(model => model.Matricule, String.Empty, new { @class = "test" })
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-lg-4" style="font-style:oblique;">Modèle </label>
                             <div class="col-lg-6">
 
-                                @Html.TextBoxFor(model => model.Modele, new { @class = "form-control", required = "True" })
+                                @Html.EditorFor(model => model.Modele, new { @class = "form-control", required = "True" })
+                                @Html.ValidationMessageFor(model => model.Modele, String.Empty, new { @class = "test" })
 
                             </div>
                         </div>
@@ -44,7 +45,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <label class="control-label col-lg-4" style="font-style:oblique;">État </label>
                             <div class="col-lg-6">
 
-                                @Html.TextBoxFor(model => model.Etat , new { @class = "form-control", required = "True" })
+                                @Html.EditorFor(model => model.Etat , new { @class = "form-control", required = "True" })
+                                @Html.ValidationMessageFor(model => model.Etat, String.Empty, new { @class = "test" })
 
                             </div>
                         </div>
@@ -52,7 +54,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <label class="control-label col-lg-4" style="font-style:oblique;"> Num de châssis </label>
                             <div class="col-lg-6">
 
-                                @Html.TextBoxFor(model => model.Num_chassis, new { @class = "form-control", required = "True" })
+                                @Html.EditorFor(model => model.Num_chassis, new { @class = "form-control", required = "True" })
+                                @Html.ValidationMessageFor(model => model.Num_chassis, String.Empty, new { @class = "test" })
 
                             </div>
                         </div>
@@ -99,7 +102,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetVehicule")</button>
 
                         </div>
 
@@ -109,7 +112,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
             </div>
 
             <div>
-                @Html.ActionLink("List", "GetVehicule")
+                @Html.ActionLink("Liste des véhicules", "GetVehicule")
             </div>
 
         </div>

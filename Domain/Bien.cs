@@ -11,7 +11,8 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
     public partial class Bien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -30,17 +31,50 @@ namespace Domain
         public Nullable<int> Id_achat { get; set; }
         public Nullable<int> Id_service { get; set; }
         public Nullable<int> id { get; set; }
+
+        [Required(ErrorMessage = "La désignation est obligatoire")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "La désignation doit contenir entre 3 et 30 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La désignation est invalide: exemple table")]
         public string Designation { get; set; }
+
+        [Range(1, 1000000, ErrorMessage = "La quantité est invalide")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le quantité est invalide")]
+        [Column]
+        [Required]
         public Nullable<int> Code { get; set; }
+
+        [Required(ErrorMessage = "Le numéro de série est obligatoire")]
+        [StringLength(30, MinimumLength = 4, ErrorMessage = "Champ invalide")]
+        [RegularExpression(@"^[a-zA-Z 0-9_]+$", ErrorMessage = "Le numéro de série est invalide")]
         public Nullable<int> Num_Serie { get; set; }
         public string Etat { get; set; }
         public string Valeur { get; set; }
         public string Mode { get; set; }
+        [Required(ErrorMessage = "La description est obligatoire")]
+
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide: exemple Bureau 1")]
         public string Description { get; set; }
+
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "Le détail doit contenir au minimum 3 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le champ est invalide: exemple Bien 1")]
         public string Detail { get; set; }
+
+        [Required(ErrorMessage = "Le code à barre est obligatoire")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "Le code à barre est invalide : il doit contenir 13 chiffres")]
+        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "Le code à barre est invalide")]
         public Nullable<int> Code_a_barre { get; set; }
+        [StringLength(50, MinimumLength = 3, ErrorMessage = "L'emploi principal doit contenir au minimum 5 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le champ est invalide: photocopie")]
         public string Emploi_principal { get; set; }
+
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "La date d'installation est obligatoire")]
         public Nullable<System.DateTime> Date_d_installation { get; set; }
+        public string Sous_categorie { get; set; }
+        public string Modele { get; set; }
+        public string Sous_Modele { get; set; }
+        public string Marque { get; set; }
     
         public virtual Achat Achat { get; set; }
         public virtual Categorie Categorie { get; set; }

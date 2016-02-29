@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Modification du Batiment
+                Modification du Bâtiment
             </div>
             <div class="panel-body">
 
@@ -22,33 +22,17 @@
                     @Html.HiddenFor(model => model.idBatiment)
 
                         <div class="form-horizontal">
-                            <h4>Batiment</h4>
+                            <h4>Bâtiment</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Code</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.code, new { @class = "form-control", required = "" })
-                                    @Html.ValidationMessageFor(model => model.code, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Description</label>
-                                <div class="col-lg-6">
-
-                                    @Html.TextBoxFor(model => model.description, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
-                                <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -58,7 +42,23 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Adresse</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.code, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.code, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Région </label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
@@ -70,7 +70,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Delegation </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>

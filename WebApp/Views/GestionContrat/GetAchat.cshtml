@@ -7,63 +7,68 @@
     <!-- Start Panel -->
     <div class="col-md-12">
         <div class="panel panel-default">
-         
+
 
             <div class="panel-title">
 
                 Liste des Contrats d'Achat
-                
+
                 <ul class="panel-tools">
                     <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
                     <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
                     <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
                 </ul>
             </div>
-            <hr/>
+            <hr />
             <div class="panel-body table-responsive">
                 <table id="example0" class="table display">
                     <thead>
-                        <tr>
-                           
-                           
+                        <tr align="center">
+                            @*<th>Code bien</th>
+                            <th>Nom bien</th>*@
                             <th>Fournisseur</th>
-                            <th>Date Livraison</th>
-                            <th>Num Facture</th>
-                            <th>Num Commande</th>
                             <th>Date D'achat</th>
+                            <th>Date Livraison</th>
+                            <th>N° Facture</th>
+                            <th>N° Commande</th>
                             <th>Prix</th>
-                            <th>Num livraison</th>
-
+                            <th>N° livraison</th>
+                            @*<th>Position</th>
+                            <th>Utilisateur</th>*@
                             <th>Action</th>
                         </tr>
                     </thead>
 
-                  
-                 
-
+                   
                     <tbody>
                         @foreach (var item in Model)
                         {
-                            <tr>
+                           
 
-                              
-                               
+                            <tr align="center">
+                                @*<td class="center">@item.Fournisseur.Nom   </td>
+                                <td class="center">@item.Fournisseur.Nom  </td>*@
+
                                 <td class="center">@item.Fournisseur.Nom   </td>
+
+                                <td class="center">@item.Date_d_achat.Value.ToShortDateString("dd-MM-yyyy")</td>
                                 <td class="center">@item.Date_livraison</td>
                                 <td class="center">@item.Num_facture</td>
                                 <td class="center">@item.Num_commande</td>
-                                <td class="center">@item.Date_d_achat</td>
                                 <td class="center">@item.Prix_d_achat</td>
                                 <td class="center">@item.Num_livraison</td>
+                                <td class="center">@item.Fournisseur.idDelegation  </td>
+                                <td class="center">@item.Fournisseur.Nom   </td>
 
 
                                 <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                    <a href="@Url.Action("EditAchat", new { id = item.Id_achat })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
-                                    <a href="@Url.Action("DetailsAchat", new { id = item.Id_achat })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
+                                    @if (@Session["Role"].ToString() == "ADMIN")
+                                    {
+                                        <a href="@Url.Action("EditAchat", new { id = item.Id_achat })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                        @*<a href="@Url.Action("DetailsAchat", new { id = item.Id_achat })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>*@
 
-} </td>
+                                    }
+                                </td>
 
                             </tr>
 
@@ -72,11 +77,12 @@
                     </tbody>
                 </table>
                 <br /><p>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                    @Html.ActionLink("Ajouter un nouveau achat", "CreateAchat")
+                    @if (@Session["Role"].ToString() == "ADMIN")
+                    {
+                        @Html.ActionLink("Ajouter un nouveau Contrat d'achat", "CreateAchat")
 
-}</p>
+                    }
+                </p>
 
             </div>
 

@@ -5,7 +5,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Liste des Regions
+                Liste des Régions
             </div>
             <div class="panel-body table-responsive">
                 <table id="example0" class="table display">
@@ -31,7 +31,7 @@
                                 <td>
                                   @if (@Session["Role"].ToString() == "ADMIN")
                                   {
-                                    <a href="@Url.Action("EditRegion", new { id = item.idRegion })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("EditRegion", new { id = item.idRegion})">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
 
                                   }  </td>
 
@@ -44,7 +44,7 @@
                 <br /><p>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
-                    @Html.ActionLink("Ajouter une nouvelle Region", "CreateRegion")
+                    @Html.ActionLink("Ajouter une nouvelle Région", "CreateRegion")
 }
                 </p>
 

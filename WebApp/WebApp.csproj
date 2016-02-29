@@ -215,6 +215,7 @@
     <Compile Include="Controllers\PersonnelController.cs" />
     <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\ServiceDController .cs" />
+    <Compile Include="Controllers\ServiceDirectionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -458,7 +459,6 @@
     <Content Include="Views\Gestion\CreateGouvernorat1.cshtml" />
     <Content Include="Views\Gestion\EditStock.cshtml" />
     <Content Include="Views\Gestion\EditParcAuto.cshtml" />
-    <Content Include="Views\Gestion\EditRegion.cshtml" />
     <Content Include="Views\ServiceD\EditServiceD.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementBien.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
@@ -490,10 +490,13 @@
     <Content Include="Views\GestionContrat\GetAchat.cshtml" />
     <Content Include="Views\GestionContrat\GetContrat.cshtml" />
     <Content Include="Views\GestionContrat\CreateContrat.cshtml" />
+    <Content Include="Views\Gestion\editPays.cshtml" />
+    <Content Include="Views\Gestion\EditRegion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\UploadedFolder\" />
+    <Folder Include="Views\ServiceDirection\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

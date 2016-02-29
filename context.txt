@@ -1,0 +1,17 @@
+ private static BissInventaireEntities instance;
+        public static BissInventaireEntities Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new BissInventaireEntities();
+                }
+                return instance;
+            }
+        }
+        public BissInventaireEntities()
+            : base("name=BissInventaireEntities")
+        {
+        }
+    

@@ -91,7 +91,7 @@
                                 <tr class="odd gradeX">
                                     <td>@item.Code_a_barre</td>
                                     <td>@item.Designation</td>
-
+                                    <td>@item.Achat.Id_achat</td>
                                     <td>@item.Description</td>
                                     <td>@item.Etage.Batiment.description</td>
                                     <td>@item.Etage.description</td>
@@ -101,6 +101,7 @@
                                     <td>@item.Categorie.Description</td>
                                     <td>@item.Mode</td>
                                     <td>@item.Etat</td>
+                                    
 
                                     <td>
                                         @if (@Session["Role"].ToString() == "ADMIN")

@@ -123,3 +123,16 @@ C:\10-02-2016 atb\ATB_SOLUTIONS\Service\bin\Debug\Log.pdb
 C:\10-02-2016 atb\ATB_SOLUTIONS\Service\bin\Debug\EntityFramework.xml
 C:\10-02-2016 atb\ATB_SOLUTIONS\Service\obj\Debug\Service.dll
 C:\10-02-2016 atb\ATB_SOLUTIONS\Service\obj\Debug\Service.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Service.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Service.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Data.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Domain.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Log.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Data.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\Log.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\bin\Debug\EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\obj\Debug\Service.csprojResolveAssemblyReference.cache
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\obj\Debug\Service.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Service\obj\Debug\Service.pdb

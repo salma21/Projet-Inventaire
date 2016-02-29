@@ -30,6 +30,8 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
+             ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
             var bure = db.GetBureaux();
             return View(bure);
         }
@@ -110,18 +112,12 @@ namespace WebApp.Controllers
             { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
-                try
-                {
+               
                     db.CreateBureau(Bur);
                     db.SaveBureau();
 
                     return RedirectToAction("GetBureuax");
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
+              
             }
             else
 

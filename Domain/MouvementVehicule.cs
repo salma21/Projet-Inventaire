@@ -11,15 +11,24 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class MouvementVehicule
     {
         public int Id_mouvementV { get; set; }
         public int Id_parc { get; set; }
         public int Id_Vehicule { get; set; }
+        [Required(ErrorMessage = "Le nom est obligatoire")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom doit comporter entre 2 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom est invalide")]
         public string Nom { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "La date de la dernière affectation est obligatoire")]
         public Nullable<System.DateTime> Date_derniere_affectation { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "La date de la prochaine affectation est obligatoire")]
         public Nullable<System.DateTime> Date_prochaine_affectation { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "La date de renouvellement_prevue est obligatoire")]
         public Nullable<System.DateTime> Date_renouvellement_prevue { get; set; }
         public Nullable<System.DateTime> Date_retour_prevue { get; set; }
         public Nullable<System.DateTime> Date_sortie { get; set; }

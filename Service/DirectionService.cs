@@ -40,12 +40,14 @@ namespace Service
 
             var Dept = utOfWork.DirectionRepository.GetById(id);
             utOfWork.DirectionRepository.Delete(Dept);
-
-
-
+            
         }
 
-
+        public Direction FindDirectionByID(int id)
+        {
+            var Dept = utOfWork.DirectionRepository.FindDirectionByID(id);
+            return Dept;
+        }
 
         public void SaveDirection()
         {
@@ -57,7 +59,7 @@ namespace Service
         {
             utOfWork.DirectionRepository.UpdateDirectionDetached(e);
         }
-
+       
 
     }
     public interface IDirectionService
@@ -66,9 +68,9 @@ namespace Service
         Direction GetDirection(int id);
         void CreateDirection(Direction Dep);
         void DelelteDirection(int id);
-
+      
         void UpdateDirectionDetached(Direction e);
-
+        Direction FindDirectionByID(int id);
 
         void SaveDirection();
 

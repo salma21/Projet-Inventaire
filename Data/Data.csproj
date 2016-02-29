@@ -76,6 +76,7 @@
     <Compile Include="Repositories\PaysRepository.cs" />
     <Compile Include="Repositories\PersonnelRepository.cs" />
     <Compile Include="Repositories\RoleRepository.cs" />
+    <Compile Include="Repositories\ServiceDirectionRepository.cs" />
     <Compile Include="Repositories\ServiceDRepository.cs" />
     <Compile Include="Repositories\ServiceRepository.cs" />
     <Compile Include="Repositories\Parc_AutoRepository.cs" />

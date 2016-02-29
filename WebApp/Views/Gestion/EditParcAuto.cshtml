@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Edition Parc
+                Edition Parc automobile
             </div>
             <div class="panel-body">
 
@@ -18,15 +18,15 @@
                         @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.Id_parc)
                         <div class="form-horizontal">
-                            <h4>Parc_auto</h4>
+                            <h4>Parc automobile</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Libelle, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -34,14 +34,14 @@
 
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Delegation </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Batiment </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Bâtiment </label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
@@ -51,7 +51,7 @@
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetParcAuto")</button>
 
                         </div>
 

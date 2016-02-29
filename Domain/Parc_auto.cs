@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Parc_auto
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,6 +23,9 @@ namespace Domain
         public Nullable<int> idDelegation { get; set; }
         public int idBatiment { get; set; }
         public int Id_parc { get; set; }
+        [Required(ErrorMessage = "Le nom du parc automobile est obligatoire")]
+        [StringLength(3, MinimumLength = 30, ErrorMessage = "Le nom du parc automobile doit comporter entre 3 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom du parc automobile est invalide")]
         public string Libelle { get; set; }
     
         public virtual Batiment Batiment { get; set; }

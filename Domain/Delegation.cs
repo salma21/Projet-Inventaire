@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Delegation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,7 +26,13 @@ namespace Domain
         public int idRegion { get; set; }
         public int idGouvernorat { get; set; }
         public int idDelegation { get; set; }
+        [Required(ErrorMessage = "Le nom de la délégation est obligatoire")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "Le nom de la délégation doit contenir entre 3 et 20 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom de la délégation  est invalide: exemple Tunis")]
         public string libelle { get; set; }
+        [Required(ErrorMessage = "Le code postal est obligatoire")]
+        [Range(1000, 9999, ErrorMessage = "Le code postal est invalide")]
+        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le code postal est incorrect : il doit comprendre 4 chiffres")]
         public Nullable<int> Code_postal { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

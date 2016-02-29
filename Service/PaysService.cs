@@ -44,7 +44,11 @@ namespace Service
 
         }
 
-
+        public Pays FindPaysByID(int id)
+        {
+            var Dept = utOfWork.PaysRepository.FindPaysByID(id);
+            return Dept;
+        }
 
         public void SavePays()
         {
@@ -57,7 +61,8 @@ namespace Service
             utOfWork.PaysRepository.UpdatePaysDetached(e);
         }
 
-       
+      
+
     }
     public interface IPaysService
     {
@@ -68,7 +73,7 @@ namespace Service
 
         void UpdatePaysDetached(Pays e);
 
-
+        Pays FindPaysByID(int id);
         void SavePays();
 
     }

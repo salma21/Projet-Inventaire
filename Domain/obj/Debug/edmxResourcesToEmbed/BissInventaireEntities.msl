@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities1">
+  <EntityContainerMapping StorageEntityContainer="BissInventaireModelStoreContainer" CdmEntityContainer="BissInventaireEntities">
     <EntitySetMapping Name="Achat">
       <EntityTypeMapping TypeName="BissInventaireModel.Achat">
         <MappingFragment StoreEntitySet="Achat">
@@ -53,6 +53,10 @@
           <ScalarProperty Name="Code_a_barre" ColumnName="Code_a_barre" />
           <ScalarProperty Name="Emploi_principal" ColumnName="Emploi_principal" />
           <ScalarProperty Name="Date_d_installation" ColumnName="Date_d_installation" />
+          <ScalarProperty Name="Sous_categorie" ColumnName="Sous_categorie" />
+          <ScalarProperty Name="Modele" ColumnName="Modele" />
+          <ScalarProperty Name="Sous_Modele" ColumnName="Sous_Modele" />
+          <ScalarProperty Name="Marque" ColumnName="Marque" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -290,7 +294,11 @@
           <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
           <ScalarProperty Name="libelle" ColumnName="libelle" />
           <ScalarProperty Name="description" ColumnName="description" />
-          <ScalarProperty Name="Logo" ColumnName="Logo" />
+          <ScalarProperty Name="tel" ColumnName="tel" />
+          <ScalarProperty Name="logo" ColumnName="logo" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="adresse" ColumnName="adresse" />
+          <ScalarProperty Name="Matricule_fiscale" ColumnName="Matricule_fiscale" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -332,7 +340,9 @@
     <EntitySetMapping Name="PersonnelVehicule">
       <EntityTypeMapping TypeName="BissInventaireModel.PersonnelVehicule">
         <MappingFragment StoreEntitySet="PersonnelVehicule">
+          <ScalarProperty Name="Id_service" ColumnName="Id_service" />
           <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="Id_parc" ColumnName="Id_parc" />
           <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
         </MappingFragment>
       </EntityTypeMapping>

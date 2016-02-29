@@ -70,33 +70,33 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Societe d'assurance</label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_societe_assurance, (SelectList)ViewData["societeass"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @*@Html.DropDownListFor(model => model.Id_societe_assurance, (SelectList)ViewData["societeass"], "--Choisir--", new { @class = "form-control", required = "" })*@
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Societe de maintenance</label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_societe_maintenance, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @*@Html.DropDownListFor(model => model.Id_societe_maintenance, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })*@
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Contrat d'assurance</label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_contrat_assurance, (SelectList)ViewData["contratass"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @*@Html.DropDownListFor(model => model.Id_contrat_assurance, (SelectList)ViewData["contratass"], "--Choisir--", new { @class = "form-control", required = "" })*@
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Contrat de Maintennace</label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_contrat_maintenance, (SelectList)ViewData["contratmain"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @*@Html.DropDownListFor(model => model.Id_contrat_maintenance, (SelectList)ViewData["contratmain"], "--Choisir--", new { @class = "form-control", required = "" })*@
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Contrat de Garantie</label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.Id_contrat_garanti, (SelectList)ViewData["contratgar"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @*@Html.DropDownListFor(model => model.Id_contrat_garanti, (SelectList)ViewData["contratgar"], "--Choisir--", new { @class = "form-control", required = "" })*@
                                     </div>
                                 </div>
 
@@ -119,7 +119,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Modéle </label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(m => m.Modele, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
+                                        @*@Html.DropDownListFor(m => m.Modele, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })*@
                                     </div>
                                 </div>
 
@@ -207,8 +207,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                     <div class="col-sm-8">
 
-                                                      @Html.EditorFor(model => model.Marque, new { @class = "form-control", required = "" })
-                                                    @Html.ValidationMessageFor(model => model.Marque, String.Empty, new { @class = "test" })
+                                                      @*@Html.EditorFor(model => model.Marque, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Marque, String.Empty, new { @class = "test" })*@
                                                     </div>
                                                 </TD>
                                                 <TD width=33%>
@@ -241,8 +241,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                     <label class="col-sm-4 control-label form-label"> Modéle</label>
 
                                                     <div class="col-sm-8">
-                                                       @Html.EditorFor(model => model.Modele, new { @class = "form-control", required = "" })
-                                                    @Html.ValidationMessageFor(model => model.Modele, String.Empty, new { @class = "test" })
+                                                       @*@Html.EditorFor(model => model.Modele, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Modele, String.Empty, new { @class = "test" })*@
                                                     </div>
                                                 </TD>
                                                 <TD width=34%>
@@ -301,7 +301,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                     <label class="col-sm-4 control-label form-label"> Ville</label>
 
                                                     <div class="col-sm-8">
-                                                        @Html.DropDownListFor(m => m.idDelegation, (SelectList)ViewData["Delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                                        @*@Html.DropDownListFor(m => m.idDelegation, (SelectList)ViewData["Delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })*@
                                                     </div>
                                                 </TD>
                                                 <TD width=40%>
@@ -311,7 +311,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                         <div class="col-sm-8">
 
-                                                            @Html.DropDownListFor(m => m.idBatiment, (SelectList)ViewData["Batiment"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                                            @*@Html.DropDownListFor(m => m.idBatiment, (SelectList)ViewData["Batiment"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })*@
                                                         </div>
                                                     </div>
                                                 </TD>
@@ -330,7 +330,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                                     <label class="col-sm-4 control-label form-label"> Étage</label>
 
                                                     <div class="col-sm-8">
-                                                        @Html.DropDownListFor(m => m.Id_etage, (SelectList)ViewData["Etage"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                                        @*@Html.DropDownListFor(m => m.Id_etage, (SelectList)ViewData["Etage"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })*@
                                                       
                                                     </div>
                                                 </TD>
@@ -341,7 +341,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                                         <div class="col-sm-8">
 
-                                                            @Html.DropDownListFor(m => m.id_bureau, (SelectList)ViewData["Bureau"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                                            @*@Html.DropDownListFor(m => m.id_bureau, (SelectList)ViewData["Bureau"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })*@
                                                         </div>
                                                     </div>
                                                 </TD>

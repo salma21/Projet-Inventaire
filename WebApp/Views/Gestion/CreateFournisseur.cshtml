@@ -1,5 +1,5 @@
 ﻿@model Domain.Fournisseur
-
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -27,8 +27,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" >Désignation</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -38,8 +38,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" >Adresse</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Rue ,new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Rue ,new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Rue, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -47,8 +47,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" >Téléphone</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Tel, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Tel, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -56,17 +56,16 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" >Fax</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Fax, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Fax, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Fax, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" >Email</label>
                                 <div class="col-lg-6">
-
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Email, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Email, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -75,8 +74,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" >Autre</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Commentaire, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Commentaire, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Commentaire, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -111,7 +110,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetFournisseur")</button>
 
                         </div>
 

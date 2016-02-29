@@ -11,13 +11,19 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Utilisateur
     {
         public int id { get; set; }
         public int Id_service { get; set; }
+        
         public int Per_id { get; set; }
+        [Required(ErrorMessage = "La login est obligatoire")]
+        [StringLength(20, MinimumLength = 3, ErrorMessage = "La login doit comporter entre 3 et 20 caractéres.")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Chiffres et lettres uniquement !")]
         public string login { get; set; }
+        [Required(ErrorMessage = "Le mot de passe est obligatoire")]
+      [StringLength(20, MinimumLength = 5, ErrorMessage = "Le mot de passe doit comporter 5 caractères minimum et maximum 20.")]
         public string motDePasse { get; set; }
         public Nullable<bool> etatUtilisateur { get; set; }
     

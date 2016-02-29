@@ -98,9 +98,9 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                db.UpdateServiceDDetached(Catm);
-               db.SaveServiceD();
+                {
+                    db.UpdateServiceDDetached(Catm);
+                    BissInventaireEntities.Instance.SaveChanges();
                 return RedirectToAction("GetServiceD");
             }
             catch (Exception ex)

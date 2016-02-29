@@ -54,10 +54,13 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            //ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
+            ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
 
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
-
+            ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_direction", "Libelle");
+            ViewData["service"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_servicet", "Libelle");
+            ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_etage", "description");
+            ViewData["bureau"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_bureau", "Description");
             return View();
         }
 
@@ -105,6 +108,10 @@ namespace WebApp.Controllers
                 ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
 
                 ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_direction", "Libelle");
+                ViewData["service"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_servicet", "Libelle");
+                ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_etage", "description");
+                ViewData["bureau"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_bureau", "Description");
                 return View();
             }
         }
@@ -116,6 +123,10 @@ namespace WebApp.Controllers
             ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
 
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_direction", "Libelle");
+            ViewData["service"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_servicet", "Libelle");
+            ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_etage", "description");
+            ViewData["bureau"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_bureau", "Description");
             var pers =db.FindPersByID(id);
             return View(pers);
         }
@@ -137,6 +148,7 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
+               
                 db.UpdatePersonnelDetached(pers);
                 db.SavePersonnel();
                 var Emp = (Utilisateur)Session["identifiant"];
@@ -157,6 +169,10 @@ namespace WebApp.Controllers
                 ViewData["role"] = new SelectList(BissInventaireEntities.Instance.Role.ToList(), "id", "libelle");
 
                 ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_direction", "Libelle");
+                ViewData["service"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_servicet", "Libelle");
+                ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_etage", "description");
+                ViewData["bureau"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "Id_bureau", "Description");
                 return View();
             }
         }

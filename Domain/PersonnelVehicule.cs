@@ -14,7 +14,9 @@ namespace Domain
     
     public partial class PersonnelVehicule
     {
+        public Nullable<int> Id_service { get; set; }
         public int id { get; set; }
+        public Nullable<int> Id_parc { get; set; }
         public int Id_Vehicule { get; set; }
     }
 }

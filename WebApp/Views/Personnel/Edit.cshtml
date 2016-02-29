@@ -16,11 +16,11 @@
 
 
 
-                    @using (@Html.BeginForm("Edit", "Personnel", FormMethod.Post,
-new { @id = "frmId", @class = "fieldset-form" }))
-                    {@Html.ValidationSummary(true)
-                        @Html.HiddenFor(model => model.id)
-
+                    @using (@Html.BeginForm())
+                    {
+                        @Html.ValidationSummary(true)
+                        @Html.HiddenFor(model => model.id_pers)
+                        @Html.HiddenFor(model => model.Id_service)
                         <div class="form-horizontal">
                             <h4>Direction</h4>
                             <hr />
@@ -31,43 +31,107 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.nom, new { @class = "form-control", required = "True" })
-
+                                    @Html.EditorFor(model => model.nom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.nom, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Prenom </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Prénom </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.prenom, new { @class = "form-control", required = "True" })
-
+                                    @Html.EditorFor(model => model.prenom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.prenom, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Matricule </label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Matricule, new { @class = "form-control", required = "True" })
+                                    @Html.EditorFor(model => model.Matricule, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Matricule, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">CIN </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.CIN, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.CIN, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Role </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date de naissance </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_anniv, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_anniv, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Tél </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Num_tel, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Num_tel, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Email </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Email, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Email, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Rôle </label>
                                 <div class="col-lg-6">
 
                                     @Html.DropDownListFor(model => model.Rol_id, (SelectList)ViewData["role"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Role, String.Empty, new { @class = "test" })
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Direction </label>
+                                <div class="col-lg-6">
+
+                                   @* @Html.DropDownListFor(model => model.ServiceD.Direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" })*@
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Service </label>
+                                <div class="col-lg-6">
+
+                                   @* @Html.DropDownListFor(model => model.ServiceD, (SelectList)ViewData["service"], "--Choisir--", new { @class = "form-control", required = "" })*@
+
+                                </div>
+                            </div>
+                            @*<div class="form-group">
+            <label class="control-label col-lg-4" style="font-style:oblique;">Batiment </label>
+            <div class="col-lg-6">
+
+                @Html.DropDownListFor(model => model.Bureau., (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+            </div>
+        </div>*@
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Étage </label>
+                                <div class="col-lg-6">
+
+                                @*    @Html.DropDownListFor(model => model.ServiceD.Direction.DirectionEtage, (SelectList)ViewData["etage"], "--Choisir--", new { @class = "form-control", required = "" })*@
 
 
                                 </div>
                             </div>
-
-
-
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Batiment </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Bureau</label>
                                 <div class="col-lg-6">
 
-                                    @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+                                @*    @Html.DropDownListFor(model => model.Bureau, (SelectList)ViewData["bureau"], "--Choisir--", new { @class = "form-control", required = "" })*@
 
 
                                 </div>
@@ -77,7 +141,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetPersonnel")</button>
 
                         </div>
 
@@ -87,7 +151,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                 </div>
 
                 <div>
-                    @Html.ActionLink("List", "GetDirection")
+                    @Html.ActionLink("Liste du personnel", "GetPersonnel")
                 </div>
 
             </div>

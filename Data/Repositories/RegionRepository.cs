@@ -17,8 +17,12 @@ namespace Data.Repositories
         public RegionRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateRegionDetached(Region e)
         {
+            //Region pays = FindRegionByIDPays(e.idPays);
             Region existing = FindRegByID(e.idRegion);
+
+           
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
+            
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
@@ -37,6 +41,15 @@ namespace Data.Repositories
                         where p.idPays == id
                         select p);
             return pers.ToList();
+        }
+
+        public Region FindRegionByIDPays(int id)
+        {
+
+            var pers = (from p in DataContext.Region
+                        where p.idPays == id
+                        select p);
+            return pers.FirstOrDefault();
         }
 
         public int FindRegionByDelegation(int id)
@@ -94,6 +107,7 @@ namespace Data.Repositories
     {
         IEnumerable<Region> FindRegByIDPays(int id);
         Region FindRegByID(int id);
+        Region FindRegionByIDPays(int id);
         int FindPaysByDelegation(int id);
         //int FindDirectionByDelegation(int id);
         void UpdateRegionDetached(Region e);

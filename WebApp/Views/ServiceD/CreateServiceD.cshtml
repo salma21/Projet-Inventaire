@@ -34,7 +34,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Nom Service</label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(model => model.Libelle, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.Libelle, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.Libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -51,7 +51,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetServiceD")</button>
 
                         </div>
 

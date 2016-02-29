@@ -126,3 +126,13 @@ C:\10-02-2016 atb\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.xml
 C:\10-02-2016 atb\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
 C:\10-02-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
 C:\10-02-2016 atb\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\bin\Debug\Domain.dll.config
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\bin\Debug\Domain.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\bin\Debug\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\obj\Debug\Domain.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\obj\Debug\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Domain\obj\Debug\Domain.csprojResolveAssemblyReference.cache

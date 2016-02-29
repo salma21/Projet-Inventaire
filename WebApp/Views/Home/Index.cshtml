@@ -44,14 +44,14 @@
        
                 <div class="form-control">
 
-                    @Html.TextBoxFor(model => model.login, new { placeholder = "Login", id = "user-email", required = "" })
-
+                    @Html.EditorFor(model => model.login, new { placeholder = "Login", id = "user-email", required = "" })
+                    @Html.ValidationMessageFor(model => model.login, String.Empty, new { @class = "test" })
 
                     <i class="fa fa-envelope-o"></i>
                 </div>
                 <div class="form-control">
                     @Html.PasswordFor(model => model.motDePasse, new { placeholder = "Mot de passe", id = "user-pw", required = "" })
-
+                    @Html.ValidationMessageFor(model => model.motDePasse, String.Empty, new { @class = "test" })
 
                     <i class="fa fa-key"></i>
                 </div>

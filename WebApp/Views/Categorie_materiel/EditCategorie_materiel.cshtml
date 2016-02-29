@@ -1,4 +1,4 @@
-﻿@model Domain.Categorie_materiel
+﻿@model Domain.Categorie
 
 
 <div class="row">
@@ -27,7 +27,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Nom categorie  </label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(model => model.libelle, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.libelle, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -35,7 +35,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Description  </label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(model => model.Description, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.Description, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.Description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -44,8 +44,7 @@
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
-
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetCategorie_materiel")</button>
                         </div>
                     }
 

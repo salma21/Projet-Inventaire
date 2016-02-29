@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Depot
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,7 +25,13 @@ namespace Domain
         public Nullable<int> idGouvernorat { get; set; }
         public int idDelegation { get; set; }
         public int IdDepot { get; set; }
+        [Required(ErrorMessage = "Le dépôt est obligatoire")]
+        [StringLength(30, MinimumLength = 4, ErrorMessage = "Le dépôt doit comporter entre 4 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le dépôt est invalide")]
         public string libelle { get; set; }
+        [Required(ErrorMessage = "L'adresse est obligatoire")]
+        [StringLength(50, MinimumLength = 4, ErrorMessage = "L'adresse doit comporter entre 4 et 50 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "L'adresse est invalide")]
         public string Rue { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

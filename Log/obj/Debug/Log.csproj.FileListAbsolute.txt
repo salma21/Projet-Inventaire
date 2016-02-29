@@ -36,3 +36,7 @@ C:\10-02-2016 atb\ATB_SOLUTIONS\Log\bin\Debug\Log.dll
 C:\10-02-2016 atb\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
 C:\10-02-2016 atb\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
 C:\10-02-2016 atb\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Log\bin\Debug\Log.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
+C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb

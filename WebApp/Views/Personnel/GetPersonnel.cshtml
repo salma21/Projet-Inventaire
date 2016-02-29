@@ -20,13 +20,13 @@
                             <th>Matricule</th>
                             <th>Nom</th>
                             <th>Prénom</th>
-                            <th>Rôle</th>
-                            <th>Organisation</th>
-                            <th>Batiment</th>
-                            <th>Ville</th>
-                            <th>Region</th>
-                            <th>Gouvernorat</th>
-                            <th>Pays</th>
+                            <th>Email</th>
+                            <th>CIN</th>
+                            <th>Date de naissance</th>
+                            <th>Direction</th>
+                            <th>Service</th>
+                            <th>Role</th>
+                           
 @if (@Session["Role"].ToString() == "ADMIN")
 {
                             <th>Action</th>
@@ -44,6 +44,11 @@
                                 <td class="center">@item.Matricule</td>
                                 <td class="center">@item.nom</td>
                                 <td class="center">@item.prenom</td>
+                                <td class="center">@item.Email</td>
+                                <td class="center">@item.CIN</td>
+                                <td class="center">@item.Date_anniv</td>
+                                <td class="center">@item.Id_direction</td>
+                                <td class="center">@item.Id_service</td>
                                 <td class="center">@item.Role.libelle</td>
                                 @*<td class="center">@item.Batiment.Organisation.libelle</td>
                                 <td class="center">@item.Batiment.description</td>

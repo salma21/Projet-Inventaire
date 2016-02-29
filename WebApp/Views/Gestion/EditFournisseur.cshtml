@@ -24,8 +24,8 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Nom, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -35,8 +35,8 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Adresse</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Rue, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Rue, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Rue, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -44,8 +44,8 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Telephone</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Tel, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Tel, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Tel, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -53,8 +53,8 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Fax</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Fax, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Fax, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Fax, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -62,8 +62,8 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Email</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Email, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Email, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Email, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -72,8 +72,8 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Autre</label>
                                 <div class="col-lg-6">
 
-                                    @Html.TextBoxFor(model => model.Commentaire, new { @class = "form-control", required = "" })
-
+                                    @Html.EditorFor(model => model.Commentaire, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Commentaire, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
@@ -85,7 +85,7 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Région </label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
@@ -107,8 +107,8 @@
                         </div>
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetFournisseur")</button>
 
-                            <button type="reset" class="btn btn-white">Annuler</button>
 
                         </div>
                     }

@@ -53,7 +53,7 @@
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                            @Html.HiddenFor(model => model.IdSousCategorie)
+                            @Html.HiddenFor(model => model.id_sous_categorie)
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Categorie  </label>
@@ -67,7 +67,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Sous Categorie  </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.id_categorie_Designation, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
+                                    @Html.DropDownListFor(m => m.id_sous_categorie, new SelectList(listModele), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
 
 
                                 </div>
@@ -76,14 +76,15 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Modele  </label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(model => model.libelle, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.libelle, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
+                                    <input type="submit" value="Valider" class="btn btn-default" />
+                                    <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetCategorie_Model")</button>
                                 </div>
                             </div>
                         </div>
