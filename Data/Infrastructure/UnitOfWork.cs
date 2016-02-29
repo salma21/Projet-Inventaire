@@ -290,6 +290,15 @@ namespace Data.Infrastructure
         }
 
 
+        private IDepotRepository DepotRepository;
+        IDepotRepository  IUnitOfWork.DepotRepository
+        {
+            get
+            {
+                return DepotRepository ?? (DepotRepository = new DepotRepository(dbFactory));
+            }
+        }
+
         protected BissInventaireEntities DataContext
         {
             get

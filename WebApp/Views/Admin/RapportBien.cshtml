@@ -8,7 +8,7 @@
                 Liste des Biens
             </div>
             @using (Html.BeginForm("RapportBien", "Admin", FormMethod.Get))
-            {
+                    {
 
 
 
@@ -24,22 +24,22 @@
                         }
                     </style>
                     <div style="margin-left:50px;">
-                        <table>
-
-
-                            Délegation :      @Html.DropDownList("delegation", (SelectList)ViewData["delegation"], "",
+                        <table>          
+                        
+                        
+                        Delegation :      @Html.DropDownList("delegation", (SelectList)ViewData["delegation"], "",
                      ViewBag.CurrentFilter as string)&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 
+                   
 
-
-                            Batiment :     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
+                            Batiment:     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
                       ViewBag.CurrentFilter as string)&nbsp;&nbsp; &nbsp;&nbsp;
                             &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 
-                            Étage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
+                     Etage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
                      ViewBag.CurrentFilter as string)
 
-
+                    
 
 
 
@@ -65,23 +65,29 @@
                     <table id="example0" class="table display">
                         <thead>
                             <tr>
-                                <th>Code</th>
-                                <th>Désignation </th>
-
+                                <th>Designation </th>
                                 <th>Description</th>
+                                <th>Code</th>
+                                <th>Mode</th>
+                                <th>Etat</th>
+                                
+                                <th>Categorie </th>
+                                <th>Sous categorie</th>
+                                <th>Modéle</th>
+                                <th>Sous modéle</th>
+                                <th>Marque</th>
+                              
                                 <th>Batiment </th>
-                                <th>Étage</th>
-                                <th>Région</th>
+                                <th>Etage</th>
+                                <th>Region</th>
                                 <th>Ville </th>
-                                <th>Catégorie </th>
-                                <th>Sous-catégorie</th>
-
-                                <th>Statut</th>
-                                <th>État</th>
-                                @if (@Session["Role"].ToString() == "ADMIN")
-                                {
-                                    <th>Action</th>
-                                }
+                               
+                                
+                               
+@if (@Session["Role"].ToString() == "ADMIN")
+{
+                                <th>Action</th>
+}
 
                             </tr>
                         </thead>
@@ -89,26 +95,31 @@
                             @foreach (var item in Model)
                             {
                                 <tr class="odd gradeX">
-                                    <td>@item.Code_a_barre</td>
+
                                     <td>@item.Designation</td>
-                                    <td>@item.Achat.Id_achat</td>
                                     <td>@item.Description</td>
-                                    <td>@item.Etage.Batiment.description</td>
-                                    <td>@item.Etage.description</td>
-                                    <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
-                                    <td>@item.Etage.Batiment.Delegation.libelle</td>
-                                    <td>@item.Categorie.libelle</td>
-                                    <td>@item.Categorie.Description</td>
+                                    <td>@item.Code</td>
                                     <td>@item.Mode</td>
                                     <td>@item.Etat</td>
-                                    
+                                    <td>@item.Categorie.libelle</td>
+                                    <td>@item.Sous_categorie</td>
+                                    <td>@item.Modele</td>
+                                    <td>@item.Sous_Modele</td>
+                                    <td>@item.Marque</td>
+                                    <td>@item.Etage.Batiment.description</td>
+                                    <td>@item.Etage.description</td>
+                                    <td>@item.Etage.Batiment.Delegation.libelle</td>
+                                    <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
+                                 
+                                   
+                                  
 
                                     <td>
-                                        @if (@Session["Role"].ToString() == "ADMIN")
-                                        {
-                                            <a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
-                                        }
-                                    </td>
+@if (@Session["Role"].ToString() == "ADMIN")
+{
+                                        <a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
+}
+                                      </td>
 
                                 </tr>
 
@@ -128,12 +139,12 @@
 
                     </p>
                     <br /><p>
-                        @if (@Session["Role"].ToString() == "ADMIN")
-                        {
-                            @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
-                        }
+@if (@Session["Role"].ToString() == "ADMIN")
+{
+                        @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
+}
                     </p>
-
+                     
                 </div>
             </div>
         </div>

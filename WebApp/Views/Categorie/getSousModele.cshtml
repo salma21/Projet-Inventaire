@@ -1,6 +1,6 @@
-﻿@model IEnumerable<Domain.Modele>
+﻿@model IEnumerable<Domain.Sous_modele>
 
-<h2>Liste des categories Designation</h2>
+<h2>Liste des sous modeles</h2>
 
 
 <!-- Start Row -->
@@ -16,26 +16,28 @@
                     <thead>
                         <tr>
 
-                            
-                            <th>Sous catégorie</th>
                             <th>Categorie</th>
+                            <th>Sous catégorie</th>
                             <th>Modele</th>
+                            <th>Libelle</th>
+                            <th>Description </th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
-                   
+
 
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
 
-                               
-                                <td class="center">@item.Sous_categorie.libelle </td>
-                                <td class="center">@item.Sous_categorie.Categorie.libelle </td>
-                                <td class="center">@item.libelle </td>
-
+                                <td class="center">@item.Modele.Sous_categorie.Categorie.libelle </td>
+                                <td class="center">@item.Modele.Sous_categorie.libelle </td>
+                                
+                                <td class="center">@item.Modele.libelle </td>
+                                <td class="center">@item.Libelle </td>
+                                <td class="center">@item.Description </td>
 
                                 <td>
                                     @if (@Session["Role"].ToString() == "ADMIN")
@@ -54,7 +56,7 @@
                 <br /><p>
                     @if (@Session["Role"].ToString() == "ADMIN")
                     {
-                        @Html.ActionLink("Ajouter un nouveaux Model", "CreateCategorie_Modele")
+                        @Html.ActionLink("Ajouter un nouveaux Sous Modele", "createSousModele")
                     }
                 </p>
 

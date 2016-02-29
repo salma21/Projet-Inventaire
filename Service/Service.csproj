@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="CategorieService.cs" />
     <Compile Include="DelegationService.cs" />
+    <Compile Include="DepotService.cs" />
     <Compile Include="DirectionService.cs" />
     <Compile Include="EtageService.cs" />
     <Compile Include="FindService.cs" />

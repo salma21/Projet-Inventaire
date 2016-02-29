@@ -64,6 +64,7 @@
     <Compile Include="Repositories\CategorieRepository.cs" />
     <Compile Include="Repositories\ContratBienRepository.cs" />
     <Compile Include="Repositories\DelegationRepository.cs" />
+    <Compile Include="Repositories\DepotRepository.cs" />
     <Compile Include="Repositories\DirectionRepository.cs" />
     <Compile Include="Repositories\EtageRepository.cs" />
     <Compile Include="Repositories\GouvernoratRepository.cs" />

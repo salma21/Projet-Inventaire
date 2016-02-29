@@ -814,7 +814,6 @@ C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
 C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
 C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -902,6 +901,7 @@ C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
 C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
 C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache

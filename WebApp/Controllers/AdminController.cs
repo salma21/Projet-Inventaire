@@ -16,6 +16,9 @@ namespace WebApp.Controllers
         private IBureauService db = new BureauService();
         private IUtilisateurService db1 = new UtilisateurService();
         private IRegionService db2 = new RegionService();
+        private IDepotService depo = new DepotService();
+        private ICategorieService db3 = new CategorieService();
+
 
         //private IEnumerable<Bureau> depts = InventaireBiss2015Entities.Instance.Bureau.ToList();
         // GET: Admin
@@ -193,47 +196,48 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-           
-            ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_societe_maintenance", "Libelle");
-           
-            ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+
+            //ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_societe_maintenance", "Libelle");
+
+            //ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+
+            ViewData["personnel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
             ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
-            ViewData["Depot"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "IdDepot", "libelle");
-
-
-
+            ViewData["Delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+          
             return View();
         }
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult CreateBien(Bien Bur, FormCollection collection)
+        public ActionResult CreateBien(Bien bien, FormCollection collection)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
 
+                try
+                {
+                    BissInventaireEntities.Instance.Bien.Add(bien);
+                    BissInventaireEntities.Instance.SaveChanges();
 
-                
-                //int direct = db2.FindDirectionByDelegation((int)Bur.id_bureau);
+                    return RedirectToAction("RapportBien");
 
-             
-                //Bur.id_direction = direct;
-
-                BissInventaireEntities.Instance.Bien.Add(Bur);
-                BissInventaireEntities.Instance.SaveChanges();
-
-                return RedirectToAction("RapportBien");
-
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
             else
 
             {
                 ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-                
+
                 ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Libelle");
-                
+
                 ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat_maintenance", "Num");
                 ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
                 ViewData["Depot"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "IdDepot", "libelle");
@@ -537,21 +541,51 @@ namespace WebApp.Controllers
         //
         // POST: /Admin/Create
         [HttpPost]
-        public ActionResult GetEtageByBatiment(int stateid)
+        public ActionResult getEtageByBatiment(int stateid)
         {
 
-            List<Bureau> objcity = new List<Bureau>();
+            List<Etage> objcity = new List<Etage>();
 
-            objcity = db.FindBureauByBatiment(stateid).ToList();
+            objcity = db.findEtageByBatiment(stateid).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
+            SelectList obgcity = new SelectList(objcity, "Id_etage", "description", 0);
             return Json(obgcity);
         }
 
+        [HttpPost]
+        public ActionResult getDepotByDelegation(int stateid)
+        {
 
+            List<Depot> objcity = new List<Depot>();
 
+            objcity = depo.findDepotByDelegation(stateid).ToList();
 
+            SelectList obgcity = new SelectList(objcity, "IdDepot", "libelle", 0);
+            return Json(obgcity);
+        }
 
+        [HttpPost]
+        public ActionResult getSousCategorieByCategorie(int stateid)
+        {
+
+            List<Sous_categorie> objcity = new List<Sous_categorie>();
+
+            objcity = db3.FindPorduitByID(stateid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
+            return Json(obgcity);
+        }
+        [HttpPost]
+        public ActionResult getModeleBySousCategorie(string libelle)
+        {
+
+            List<Modele> objcity = new List<Modele>();
+
+            objcity = db3.findModeleBySousCategorie(libelle).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
+            return Json(obgcity);
+        }
 
     }
 }

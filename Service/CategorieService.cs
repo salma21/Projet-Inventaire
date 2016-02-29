@@ -16,6 +16,115 @@ namespace Service
 
         public CategorieService() { }
 
+
+
+
+        public Categorie GetCategorie_materiel(int Id_categorie)
+        {
+            var Dept = utOfWork.CategorieRepository.GetById(Id_categorie);
+            return Dept;
+        }
+
+
+
+        public void UpdateCategorie_materielDetached(Categorie e)
+        {
+            utOfWork.CategorieRepository.UpdateCategorie_materielDetached(e);
+        }
+
+        public void UpdateCategorie_DesignationDetached(Sous_categorie e)
+        {
+            utOfWork.CategorieRepository.UpdateCategorie_DesignationDetached(e);
+        }
+
+        public void UpdateCategorie_ModeleDetached(Modele e)
+        {
+            utOfWork.CategorieRepository.UpdateCategorie_ModeleDetached(e);
+        }
+
+
+      public  void UpdateSous_ModeleDetached(Sous_modele e)
+        {
+            utOfWork.CategorieRepository.UpdateSous_ModeleDetached(e);
+        }
+       public void UpdateMarqueDetached(Marque e)
+        {
+            utOfWork.CategorieRepository.UpdateMarqueDetached(e);
+        }
+       
+
+
+        public Categorie FindCategorie_materielByNom(String id)
+
+        {
+            var Dept = utOfWork.CategorieRepository.FindCategorie_materielByNom(id);
+            return Dept;
+        }
+
+        public Sous_categorie FindCategorie_DesignationById(int id_sous_categorie)
+        {
+            var Dept = utOfWork.CategorieRepository.FindCategorie_DesignationById(id_sous_categorie);
+            return Dept;
+         
+        }
+        public Modele FindCategorie_ModeleById(int Id_categorie)
+        {
+            var Dept = utOfWork.CategorieRepository.FindCategorie_ModeleById(Id_categorie);
+            return Dept;
+        }
+
+
+        public Sous_modele FindSous_ModeleById(int Id_categorie)
+        {
+            var Dept = utOfWork.CategorieRepository.FindSous_ModeleById(Id_categorie);
+            return Dept;
+        }
+
+        public Marque FindMarqueById(int Id_categorie)
+        {
+            var Dept = utOfWork.CategorieRepository.FindMarqueById(Id_categorie);
+            return Dept;
+        }
+
+
+
+
+
+
+        public IEnumerable<Sous_categorie> FindPorduitByID(int id)
+        {
+            var dep = utOfWork.CategorieRepository.FindPorduitByID(id);
+            return dep;
+        }
+
+       public IEnumerable<Modele> findModeleBySousCategorie(string libelle)
+        {
+            var dep = utOfWork.CategorieRepository.findModeleByIdDes1(libelle);
+            return dep;
+        }
+        public IEnumerable<Modele> FindModeleByIdDes(int id)
+        {
+            var dep = utOfWork.CategorieRepository.FindModeleByIdDes(id);
+            return dep;
+        }
+
+        public IEnumerable<Sous_modele> FindSousModeleByIdModele(int id)
+        {
+            var dep = utOfWork.CategorieRepository.FindSousModeleByIdModele(id);
+            return dep;
+        }
+        public IEnumerable<Marque> FindMarqueByIdSousModele(int id)
+        {
+            var dep = utOfWork.CategorieRepository.FindMarqueByIdSousModele(id);
+            return dep;
+        }
+
+
+
+
+
+
+
         public IEnumerable<Categorie> GetCategorie_materiels()
         {
             var Dept = utOfWork.CategorieRepository.GetAll();
@@ -33,16 +142,36 @@ namespace Service
             var Dept = utOfWork.CategorieRepository.GetAllModele();
             return Dept;
         }
-        public Categorie FindCategorie_materielByNom(String id)
-
+        public IEnumerable<Sous_modele> GetAllSousModele()
         {
-            var Dept = utOfWork.CategorieRepository.FindCategorie_materielByNom(id);
+            var Dept = utOfWork.CategorieRepository.GetAllSousModele();
             return Dept;
         }
-        public Categorie GetCategorie_materiel(int Id_categorie)
+
+        public IEnumerable<Marque> GetAllMarque()
         {
-            var Dept = utOfWork.CategorieRepository.GetById(Id_categorie);
+            var Dept = utOfWork.CategorieRepository.GetAllMarque();
             return Dept;
+        }
+
+
+
+
+
+
+        public void SaveSousCategorie()
+        {
+            
+            utOfWork.Commit();
+        }
+
+
+
+
+
+        public void SaveCategorie_materiel()
+        {
+            utOfWork.Commit();
         }
 
 
@@ -61,66 +190,40 @@ namespace Service
         }
 
 
-        public void SaveCategorie_materiel()
-        {
-            utOfWork.Commit();
-        }
-
-        public void UpdateCategorie_materielDetached(Categorie e)
-        {
-            utOfWork.CategorieRepository.UpdateCategorie_materielDetached(e);
-        }
-
-        public void UpdateCategorie_DesignationDetached(Sous_categorie e)
-        {
-            utOfWork.CategorieRepository.UpdateCategorie_DesignationDetached(e);
-        }
-
-        public void UpdateCategorie_ModeleDetached(Modele e)
-        {
-            utOfWork.CategorieRepository.UpdateCategorie_ModeleDetached(e);
-        }
-        public IEnumerable<Sous_categorie> FindPorduitByID(int id)
-        {
-            var dep = utOfWork.CategorieRepository.FindPorduitByID(id);
-            return dep;
-        }
-        public IEnumerable<Modele> FindModeleByIdDes(int id)
-        {
-            var dep = utOfWork.CategorieRepository.FindModeleByIdDes(id);
-            return dep;
-        }
-        public Modele FindCategorie_ModeleById(int Id_categorie)
-        {
-            var Dept = utOfWork.CategorieRepository.FindCategorie_ModeleById(Id_categorie);
-            return Dept;
-        }
-        public Sous_categorie FindCategorie_DesignationById(int Id_categorie)
-        {
-            var Dept = utOfWork.CategorieRepository.FindCategorie_DesignationById(Id_categorie);
-            return Dept;
-        }
 
     }
     public interface ICategorieService
     {
-        Sous_categorie FindCategorie_DesignationById(int Id_categorie);
-        Modele FindCategorie_ModeleById(int Id_categorie);
-        IEnumerable<Modele> FindModeleByIdDes(int id);
-        IEnumerable<Sous_categorie> FindPorduitByID(int id);
-        void UpdateCategorie_ModeleDetached(Modele e);
-        void UpdateCategorie_DesignationDetached(Sous_categorie e);
-        IEnumerable<Categorie> GetCategorie_materiels();
         Categorie GetCategorie_materiel(int Id_categorie);
-        void CreateCategorie_materiel(Categorie Dept);
-        void DeleteCategorie_materiel(int id);
-        IEnumerable<Modele> GetAllModeles();
-        IEnumerable<Sous_categorie> GetCategorie_Designations();
         void UpdateCategorie_materielDetached(Categorie e);
+        void UpdateCategorie_DesignationDetached(Sous_categorie e);
+        void UpdateCategorie_ModeleDetached(Modele e);
+        void UpdateSous_ModeleDetached(Sous_modele e);
+        void UpdateMarqueDetached(Marque e);
         Categorie FindCategorie_materielByNom(String id);
-        void SaveCategorie_materiel();
-       
+        Sous_categorie FindCategorie_DesignationById(int id);
+        Modele FindCategorie_ModeleById(int id);
+        Sous_modele FindSous_ModeleById(int id);
+        Marque FindMarqueById(int id);
 
+        
+        IEnumerable<Sous_categorie> FindPorduitByID(int id);
+        
+        IEnumerable<Modele> findModeleBySousCategorie(string libelle);
+        IEnumerable<Modele> FindModeleByIdDes(int id);
+        IEnumerable<Sous_modele> FindSousModeleByIdModele(int id);
+        IEnumerable<Marque> FindMarqueByIdSousModele(int id);
+
+        IEnumerable<Categorie> GetCategorie_materiels();
+        IEnumerable<Sous_categorie> GetCategorie_Designations();
+        IEnumerable<Modele> GetAllModeles();
+        IEnumerable<Sous_modele> GetAllSousModele();
+        IEnumerable<Marque> GetAllMarque();
+
+        void SaveCategorie_materiel();
+        void SaveSousCategorie();
+        void CreateCategorie_materiel(Categorie Categorie);
+        void DeleteCategorie_materiel(int Id_categorie);
     }
 
 }

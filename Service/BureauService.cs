@@ -55,6 +55,12 @@ namespace Service
 
         }
 
+        public IEnumerable<Etage> findEtageByBatiment(int id)
+        {
+            var Dept = utOfWork.BureauRepository.findEtageByBatiment(id);
+            return Dept;
+
+        }
 
 
         public void SaveBureau()
@@ -86,7 +92,7 @@ namespace Service
         void DeleteBureau(int id);
 
         void UpdateBureauDetached(Bureau e);
-
+        IEnumerable<Etage> findEtageByBatiment(int id);
 
         void SaveBureau();
 

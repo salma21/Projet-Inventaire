@@ -246,6 +246,7 @@ namespace WebApp.Controllers
         // GET: /Manage/SetPassword
         public ActionResult SetPassword()
         {
+           
             return View();
         }
 
