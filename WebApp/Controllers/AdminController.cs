@@ -5,9 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
+
 
 namespace WebApp.Controllers
 {
@@ -18,6 +24,8 @@ namespace WebApp.Controllers
         private IRegionService db2 = new RegionService();
         private IDepotService depo = new DepotService();
         private ICategorieService db3 = new CategorieService();
+        private IBienService db4 = new BienService();
+
 
 
         //private IEnumerable<Bureau> depts = InventaireBiss2015Entities.Instance.Bureau.ToList();
@@ -210,26 +218,29 @@ namespace WebApp.Controllers
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult CreateBien(Bien bien, FormCollection collection)
+        public ActionResult CreateBien(Bien bien, FormCollection collection )
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
 
-                try
-                {
+                //try
+                //{
+                    HttpPostedFileBase file = Request.Files["ImageData"];
+                    bien.Photo = ConvertToBytes(file);
+                    var photo = bien.Photo;
                     BissInventaireEntities.Instance.Bien.Add(bien);
                     BissInventaireEntities.Instance.SaveChanges();
 
                     return RedirectToAction("RapportBien");
 
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    LogThread.WriteLine(ex.Message);
+                //    return RedirectToAction("Index", "Error");
+                //}
             }
             else
 
@@ -251,7 +262,57 @@ namespace WebApp.Controllers
             }
         }
 
+        //[HttpPost]
+        //public ActionResult Create(Bien bien)
+        //{
+        //    HttpPostedFileBase file = Request.Files["ImageData"];
 
+        //    bien.Photo = ConvertToBytes(file);
+        //    var photo = bien.Photo;
+
+        //    //int i = UploadImageInDataBase(file, bien);
+        //    //if (i == 1)
+        //    //{
+        //    //    return RedirectToAction("Index");
+        //    //}
+        //    return View(bien);
+       // }
+
+        //public int UploadImageInDataBase(HttpPostedFileBase file, Bien bien)
+        //{
+        //    bien.Photo = ConvertToBytes(file);
+        //    var img = bien.Photo;
+            
+        //    int i = db.SaveChanges();
+        //    if (i == 1)
+        //    {
+        //        return 1;
+        //    }
+        //    else
+        //    {
+        //        return 0;
+        //    }
+
+        //}
+        public byte[] ConvertToBytes(HttpPostedFileBase photo)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(photo.InputStream);
+            imageBytes = reader.ReadBytes((int)photo.ContentLength);
+            return imageBytes;
+        }
+        //public FileContentResult GetThumbnailImage(int artworkId)
+        //{
+        //    ArtWork art = db.ArtWorks.FirstOrDefault(p => p.ArtWorkId == artworkId);
+        //    if (art != null)
+        //    {
+        //        return File(art.ArtworkThumbnail, art.ImageMimeType.ToString());
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
         public ActionResult CreateBienAdmin()
         {
             if (Session["identifiant"] == null)
@@ -293,7 +354,24 @@ namespace WebApp.Controllers
             }
         }
 
-
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            var q = from temp in BissInventaireEntities.Instance.Bien where temp.Id_bien == Id select temp.Photo;
+            byte[] cover = q.First();
+            return cover;
+        }
+        public ActionResult RetrieveImage(int id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public ActionResult RapportBien(string Delegation, string Etage, string Batiment)
         {
@@ -304,11 +382,11 @@ namespace WebApp.Controllers
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
 
-            //sqs
-
+          
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
             ViewData["delegation"] = new SelectList(delegation, "libelle", "libelle");
+           
             var bien = BissInventaireEntities.Instance.Bien.ToList();
             int nbr = bien.ToList().Count();
             ViewBag.nbr = nbr;
@@ -342,9 +420,10 @@ namespace WebApp.Controllers
 
                 int nbr2 = dep.ToList().Count();
                 ViewBag.nbr = nbr2;
-                return View(dep.ToList())
-                    ;
+                return View(dep.ToList());
+
             }
+            
         }
         public ActionResult EditBureaux(int id)
         {
@@ -568,6 +647,18 @@ namespace WebApp.Controllers
         //    SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
         //    return Json(obgcity);
         //}
+
+        [HttpPost]
+        public ActionResult getBureauByEtage(int stateid)
+        {
+
+            List<Bureau> objcity = new List<Bureau>();
+
+            objcity = db.findBureauByEtage(stateid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
+            return Json(obgcity);
+        }
 
         [HttpPost]
         public ActionResult getDepotByDelegation(int stateid)

@@ -29,7 +29,7 @@ namespace WebApp.Controllers
         private IOrganisationService orga = new OrganisationService();
         private IVehiculeService vs = new VehiculeService();
         private IBureauService br = new BureauService();
-
+      
 
         // GET: Gestion
         public ActionResult Index()
@@ -749,8 +749,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "libelle", "libelle");
-            ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+
             ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
            
             return View();
@@ -777,8 +776,7 @@ namespace WebApp.Controllers
             else
 
             {
-                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
-                ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                
                 ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 return View();
             }
@@ -1197,36 +1195,12 @@ namespace WebApp.Controllers
             return View(vehi);
         }
 
+        //public ActionResult EditVehicule(int id)
+        //{
+        //    if (Session["identifiant"] == null)
+        //    { return RedirectToAction("Index", "Home"); }
 
-        [HttpPost]
-        public ActionResult EditVehicule(Vehicule veh)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    IVehiculeService jj = new VehiculeService();
-                    jj.UpdateVehiculeDetached(veh);
-                    jj.SaveVehicule();
-
-                    return RedirectToAction("GetVehicule");
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
-            }
-            else
-
-            {
-                ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-
-                ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
-                ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-                return View();
-            }
-        }
+            
 
 
         //MouvementBien
@@ -1371,11 +1345,6 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
-        //[HttpPost]
-        //public ActionResult GetBureauByEtage(int batid)
-        //{
-        //    List<Bureau> objcity = new List<Bureau>();
-        //    objcity = db8.FindBureauByEtage(burid).ToList();
 
         //    SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
         //    return Json(obgcity);
@@ -1577,7 +1546,7 @@ namespace WebApp.Controllers
             List<Gouvernorat> objcity = new List<Gouvernorat>();
 
             objcity = bat.findGouverneratByLibellePays(stateid).ToList();
-
+      
             SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
         }
@@ -1601,7 +1570,7 @@ namespace WebApp.Controllers
 
             objcity = bat.findDelegationtByGouvernerat(libelle).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
+            SelectList obgcity = new SelectList(objcity, "idDelegation", "libelle", 0);
             return Json(obgcity);
         }
         // POST: TPE/Create

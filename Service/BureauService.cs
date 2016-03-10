@@ -61,12 +61,12 @@ namespace Service
             return Dept;
 
         }
-        //public IEnumerable<Bureau>findBureauByEtage(int id)
-        //{
-        //    var Dept = utOfWork.BureauRepository.findBureauByEtage(id);
-        //    return Dept;
+        public IEnumerable<Bureau> findBureauByEtage(int id)
+        {
+            var Dept = utOfWork.BureauRepository.findBureauByEtage(id);
+            return Dept;
 
-        //}
+        }
 
         public void SaveBureau()
         {
@@ -94,7 +94,7 @@ namespace Service
 
         void UpdateBureauDetached(Bureau e);
         IEnumerable<Etage> findEtageByBatiment(int id);
-        //IEnumerable<Bureau> findBureauByEtage(int id);
+        IEnumerable<Bureau> findBureauByEtage(int id);
         void SaveBureau();
 
 

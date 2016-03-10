@@ -223,13 +223,41 @@
     }
 </script>
 
-@*<script language="javascript" type="text/javascript">
-    function checkLength(el) {
-      if (el.value.length != 13) {
-        alert("length must be exactly 13 characters")
-      }
+
+<script language="javascript" type="text/javascript">
+    function GetBureau(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlBureau").html(procemessage).show();
+        var url = "/Admin/getBureauByEtage/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlBureau").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
     }
-    </script>*@
+</script>
+<script type="text/javascript">
+    function fileCheck(obj) {
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+        }
+    }
+</script>
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -252,7 +280,8 @@
             </div>
             <div class="panel-body">
 
-                @using (Html.BeginForm())
+                @using (Html.BeginForm("CreateBien", "Admin", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" }))
                 {
                     @Html.AntiForgeryToken()
                     <div class="panel panel-default">
@@ -272,12 +301,12 @@
                                                 </div>
                                             </TD>
                                             <TD width=34%>
-                                                <label class="col-sm-4 control-label form-label">N° model</label>
+                                                <label class="col-sm-4 control-label form-label">N° modele</label>
 
                                                 <div class="col-sm-8" style="padding-left:7% ; width:54%">
 
-                                                    @Html.EditorFor(model => model.Code, new { @class = "form-control" })
-                                                    @Html.ValidationMessageFor(model => model.Code, String.Empty, new { @class = "test" })
+                                                    @Html.EditorFor(model => model.Num_Modele, new { @class = "form-control" })
+                                                    @Html.ValidationMessageFor(model => model.Num_Modele, String.Empty, new { @class = "test" })
                                                 </div>
                                             </TD>
                                             <TD width=33%>
@@ -420,8 +449,8 @@
                                                 <label class="col-sm-4 control-label form-label">Quantité</label>
 
                                                 <div class="col-sm-8" style="padding-left:7% ; width:55%">
-                                                    @Html.EditorFor(model => model.Valeur, new { @class = "form-control", required = "" })
-                                                    @Html.ValidationMessageFor(model => model.Valeur, String.Empty, new { @class = "test" })
+                                                    @Html.EditorFor(model => model.Quantite, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Quantite, String.Empty, new { @class = "test" })
 
                                                 </div>
                                             </td>
@@ -430,7 +459,34 @@
                                     </TABLE>
                                 </CENTER>
                             </div>
+                            <div class="form-group">
+                                <CENTER>
+                                    <TABLE border=0 width=100%>
+                                        <TR>
+                                            <TD width=33%>
+                                                <label class="col-sm-4 control-label form-label">Code immobilisation</label>
+
+                                                <div class="col-sm-8" style="padding-left:7% ; width:55%">
+                                                    @Html.EditorFor(model => model.Code_immobilisation, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Code_immobilisation, String.Empty, new { @class = "test" })
+
+                                                </div>
+                                            </TD>
+                                            <td width=33%>
+                                                
+                                                    @Html.LabelFor(model => model.Photo, new { @class = "control-label col-md-2" })
+                                                    <div class="col-md-10">
+                                                        <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
+                                                        @Html.ValidationMessageFor(model => model.Photo)
+                                                    </div>
+                                                
+                                            </td>
+                                            </TR>
+                                        </TABLE>
+                                    </CENTER>
+                                </div>
                         </fieldset>
+                       
                         <br />
                         <fieldset>
 
@@ -465,17 +521,19 @@
                                                 <label class="col-sm-4 control-label form-label"> Étage</label>
 
 
-                                                @Html.DropDownListFor(m => m.Id_etage, new SelectList(listEtage), "--Choisir--", new { @id = "ddlEtage", @class = "form-control", required = "" })
+                                                @Html.DropDownListFor(m => m.Id_etage, new SelectList(listEtage), "--Choisir--", new { @id = "ddlEtage", @class = "form-control", required = "" , @onchange = "javascript:GetBureau(this.value);" })
 
-                                            </TD>
-                                            <TD width="20%"></TD>
-                                            <TD>
+                                                <br />
                                                 <div class="col-6">
                                                     <label class="col-sm-4 control-label form-label">Bureau</label>
 
-                                                    @Html.DropDownListFor(model => model.Id_bureau, new SelectList(listBureau), "--Choisir--", new { @id = "ddlbureau", @class = "form-control" })
+                                                    @Html.DropDownListFor(model => model.Id_bureau, new SelectList(listBureau), "--Choisir--", new { @id = "ddlBureau", @class = "form-control" })
 
                                                 </div>
+                                            </TD>
+                                            <TD width="20%"></TD>
+                                            <TD>
+                                               
                                                 <div class="col-6">
                                                     <label class="col-sm-4 control-label form-label">Dépôt</label>
 
@@ -512,13 +570,7 @@
 
                                             </TD>
 
-                                            @*<TD width=40%>
-                                                    <label class="col-sm-4 control-label form-label">Service</label>
-                                                    <div class="col-sm-8">
-                                                        @Html.DropDownListFor(model => model.Id_service, (SelectList)ViewData["service"], "--Choisir--", new { @class = "form-control", required = "False" })
-                                                    </div>
-
-                                                </TD>*@
+                                          
                                         </TR>
                                     </TABLE>
                                 </CENTER>
@@ -600,7 +652,7 @@
                                         <td width="34%">
                                             <label class="col-sm-4 control-label form-label">Emploi principal</label>
                                             <div class="col-sm-8">
-                                                @Html.EditorFor(model => model.Emploi_principal, new { @class = "form-control" })
+                                                @Html.EditorFor(model => model.Emploi_principal, new { @class = "form-control", required = "" })
                                                 @Html.ValidationMessageFor(model => model.Emploi_principal, String.Empty, new { @class = "test" })
                                             </div>
                                         </td>
