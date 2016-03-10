@@ -29,7 +29,7 @@
                     <table id="example0" class="table display">
                         <thead>
                             <tr>
-
+                                <th>Code à barres</th>
                               
                                 <th>Société</th>
                                 <th>Type contrat</th>
@@ -51,7 +51,7 @@
                             {
                                 <tr>
 
-                                   
+                                    <td class="center">@item.code_a_barre</td>
                                     <td class="center">@item.Fournisseur.Nom  </td>
                                     <td class="center">@item.Type_Contrat</td>
                                     <td class="center">@item.Sous_Type_Contrat</td>
@@ -62,11 +62,13 @@
 
 
                                     <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                        <a href="@Url.Action("EditContrat", new { id = item.Id_contrat })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+               @if (@Session["Role"].ToString() == "ADMIN")
 
-}     </td>
+               {
+                   <a href="@Url.Action("EditContrat", new { id = item.Id_contrat })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                    
+
+                               }     </td>
 
                                 </tr>
 

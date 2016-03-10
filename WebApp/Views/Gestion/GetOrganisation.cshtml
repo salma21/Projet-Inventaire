@@ -13,35 +13,38 @@
                     <thead>
                         <tr>
                             <th>Nom</th>
-                            <th>Description</th>
-                            <th>Adresse</th>
-                            <th>Tél</th>
-                            <th>Fax</th>
                             <th>Matricule fiscale</th>
+                            <th>N° Registre de coomerce</th>
+                            <th>Email</th>
+                           <th>Tél</th>
+                            <th>Fax</th>
+                            <th>Site Web</th>
+                            <th>Adresse</th>
+                            <th>Ville</th>
+                            <th>Gouvernerat</th>
+                            <th>Pays</th>
                             <th>Logo</th>
                             <th>Action</th>
                         </tr>
                     </thead>
-
-
-
                     <tbody>
                         @foreach (var item in Model)
                         {
                             <tr>
 
                                 <td class="center">@item.libelle</td>
-                                <td class="center">@item.description</td>
-                                <td class="center">@item.adresse</td>
+                                <td class="center">@item.Matricule_fiscale</td>
+                                <td class="center">@item.Registre_de_commerce</td>
+                                <td class="center">@item.Email</td>
                                 <td class="center">@item.tel</td>
                                 <td class="center">@item.fax</td>
-                                <td class="center">@item.Matricule_fiscale</td>
-                                &nbsp; &nbsp; <td class="center">@item.logo</td>
+                                <td class="center">@item.Site_web</td>
+                                <td class="center">@item.adresse</td> 
+                                <td class="center">@item.ville</td>
+                                <td class="center">@item.gouvernorat</td>
+                                <td class="center">@item.pays</td> 
+                                <td class="center">@item.Logo</td>
                                
-
-
-
-
                                 <td>
 @if (@Session["Role"].ToString() == "ADMIN")
 {

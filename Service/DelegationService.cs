@@ -58,6 +58,11 @@ namespace Service
             return dep;
         }
 
+        public IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle)
+        {
+            var dep = utOfWork.DelegationRepository.findDelegationtByGouvernerat(libelle);
+            return dep;
+        }
         public void UpdateDelegationDetached(Delegation e)
         {
             utOfWork.DelegationRepository.UpdateDelegationDetached(e);
@@ -77,7 +82,7 @@ namespace Service
 
         Delegation FindDelByID(int id);
         void SaveDelegation();
-
+        IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle);
     }
 }
 

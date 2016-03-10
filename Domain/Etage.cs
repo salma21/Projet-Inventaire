@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Etage
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,11 +25,8 @@ namespace Domain
         public int idBatiment { get; set; }
         public int Id_etage { get; set; }
         public string code { get; set; }
-
-        [Required(ErrorMessage = "La description est obligatoire")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide: exemple Bureau 1")]
         public string description { get; set; }
+        public string code_a_barre { get; set; }
     
         public virtual Batiment Batiment { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

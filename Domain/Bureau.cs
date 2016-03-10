@@ -11,9 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-
+    
     public partial class Bureau
     {
         public Nullable<int> idPays { get; set; }
@@ -25,21 +23,10 @@ namespace Domain
         public int Id_etage { get; set; }
         public int Id_bureau { get; set; }
         public Nullable<int> Id_service { get; set; }
-        [Required(ErrorMessage = "Le code bureau est obligatoire")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le code est invalide")]
-        [Range(1, 1000, ErrorMessage = "Le code bureau est invalide")]
         public Nullable<int> id { get; set; }
-        [Required(ErrorMessage = "Le code à barre est obligatoire")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "Le code à barre est invalide : il doit contenir 13 chiffres")]
-        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "Le code à barre est invalide")]
-
-        public string Code_a_barre { get; set; }
-        [Required(ErrorMessage = "La description est obligatoire")]
-
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide: exemple Bureau 1")]
         public string Description { get; set; }
-
+        public string Code_a_barre { get; set; }
+    
         public virtual Etage Etage { get; set; }
         public virtual Personnel Personnel { get; set; }
     }

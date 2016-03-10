@@ -201,6 +201,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CategorieController.cs" />
     <Compile Include="Controllers\DbController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EtageController.cs" />
@@ -473,15 +474,6 @@
     <Content Include="Views\Gestion\GetVehicule.cshtml" />
     <Content Include="Views\Inventaire\EditInventaire.cshtml" />
     <Content Include="Views\Admin\GetTrace.cshtml" />
-    <Content Include="Views\Categorie_materiel\CreateCategorie_Designation.cshtml" />
-    <Content Include="Views\Categorie_materiel\CreateCategorie_materiel.cshtml" />
-    <Content Include="Views\Categorie_materiel\CreateCategorie_Modele.cshtml" />
-    <Content Include="Views\Categorie_materiel\EditCategorie_Designation.cshtml" />
-    <Content Include="Views\Categorie_materiel\EditCategorie_materiel.cshtml" />
-    <Content Include="Views\Categorie_materiel\EditCategorie_Modele.cshtml" />
-    <Content Include="Views\Categorie_materiel\GetCategorie_Designation.cshtml" />
-    <Content Include="Views\Categorie_materiel\GetCategorie_materiel.cshtml" />
-    <Content Include="Views\Categorie_materiel\GetCategorie_Model.cshtml" />
     <Content Include="Views\GestionContrat\CreateAchat.cshtml" />
     <Content Include="Views\GestionContrat\DetailsAchat.cshtml" />
     <Content Include="Views\GestionContrat\DetailsContrat.cshtml" />
@@ -492,6 +484,19 @@
     <Content Include="Views\GestionContrat\CreateContrat.cshtml" />
     <Content Include="Views\Gestion\editPays.cshtml" />
     <Content Include="Views\Gestion\EditRegion.cshtml" />
+    <Content Include="Views\Categorie\CreateCategorie.cshtml" />
+    <Content Include="Views\Categorie\createMarque.cshtml" />
+    <Content Include="Views\Categorie\createModele.cshtml" />
+    <Content Include="Views\Categorie\createSousCategorie.cshtml" />
+    <Content Include="Views\Categorie\createSousModele.cshtml" />
+    <Content Include="Views\Categorie\editCategorie.cshtml" />
+    <Content Include="Views\Categorie\editSousCategorie.cshtml" />
+    <Content Include="Views\Categorie\getCategorie.cshtml" />
+    <Content Include="Views\Categorie\getMarque.cshtml" />
+    <Content Include="Views\Categorie\getModele.cshtml" />
+    <Content Include="Views\Categorie\getSousCategorie.cshtml" />
+    <Content Include="Views\Categorie\getSousModele.cshtml" />
+    <Content Include="Views\Gestion\EditVehicule.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

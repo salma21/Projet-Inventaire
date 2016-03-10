@@ -67,12 +67,6 @@ namespace Service
         }
 
 
-
-
-
-
-
-
     }
     public interface IBatimentService
     {

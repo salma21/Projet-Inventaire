@@ -54,6 +54,12 @@
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.Batiment.idGouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-lg-4">Ville</label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @class = "form-control", required = "" })
@@ -65,7 +71,13 @@
                                     @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Code à barres </label>
+                                <div class="col-lg-6">
+                                    @Html.EditorFor(model => model.code_a_barre, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.code_a_barre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
                           
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Code étage</label>

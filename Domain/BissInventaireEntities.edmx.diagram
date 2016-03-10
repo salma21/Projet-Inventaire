@@ -4,78 +4,78 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="d6089628d7454ebc83021ee93a9f00d2" Name="Diagram1">
-        <EntityTypeShape EntityType="BissInventaireModel.Achat" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Batiment" Width="1.5" PointX="6" PointY="28.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Bien" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Bureau" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Categorie" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Contrat" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.ContratBien" Width="1.5" PointX="10.5" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.ContratVehicule" Width="1.5" PointX="10.5" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Delegation" Width="1.5" PointX="3.75" PointY="6" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Depot" Width="1.5" PointX="8.25" PointY="19.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Direction" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.DirectionEtage" Width="1.5" PointX="3" PointY="10.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Etage" Width="1.5" PointX="8.25" PointY="28.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Fournisseur" Width="1.5" PointX="6" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Gouvernorat" Width="1.5" PointX="1.5" PointY="6.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Inventaire" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.InventaireBien" Width="1.5" PointX="12.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.InventaireVehicule" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Marque" Width="1.5" PointX="17.25" PointY="24.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Modele" Width="1.5" PointX="12.75" PointY="24.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.MouvementBien" Width="1.5" PointX="12.75" PointY="17" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.MouvementVehicule" Width="1.5" PointX="12.75" PointY="20.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Organisation" Width="1.5" PointX="3.75" PointY="28.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Parc_auto" Width="1.5" PointX="8.25" PointY="32.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Pays" Width="1.5" PointX="1.5" PointY="18.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Personnel" Width="1.5" PointX="5.25" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.PersonnelVehicule" Width="1.5" PointX="3.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Region" Width="1.5" PointX="1.5" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Role" Width="1.5" PointX="3" PointY="15.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.ServiceD" Width="1.5" PointX="3" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Sous_categorie" Width="1.5" PointX="10.5" PointY="25" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Sous_modele" Width="1.5" PointX="15" PointY="24.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Trace" Width="1.5" PointX="12.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Utilisateur" Width="1.5" PointX="7.5" PointY="24.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissInventaireModel.Vehicule" Width="1.5" PointX="10.5" PointY="18.25" IsExpanded="true" />
-        <AssociationConnector Association="BissInventaireModel.FK_ACHAT_ASSOCIATI_FOURNISS" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BIEN_ASSOCIATI_ACHAT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_VEHICULE_ASSOCIATI_ACHAT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BATIMENT_ASSOCIATI_DELEGATI" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BATIMENT_ASSOCIATI_ORGANISA" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_ETAGE_ASSOCIATI_BATIMENT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_PARC_AUT_ASSOCIATI_BATIMENT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BIEN_ASSOCIATI_CATEGORI" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BIEN_ASSOCIATI_DEPOT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BIEN_ASSOCIATI_ETAGE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BIEN_ASSOCIATI_PERSONNE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_INVENTAI_ASSOCIATI_BIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_MOUVEMEN_ASSOCIATI_BIEN" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BUREAU_ASSOCIATI_ETAGE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_BUREAU_ASSOCIATI_PERSONNE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_SOUS_CAT_ASSOCIATI_CATEGORI" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_CONTRAT_ASSOCIATI_FOURNISS" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_CONTRATB_ASSOCIATI_CONTRAT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_CONTRATV_ASSOCIATI_CONTRAT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_DELEGATI_ASSOCIATI_GOUVERNO" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_DEPOT_ASSOCIATI_DELEGATI" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_FOURNISS_ASSOCIATI_DELEGATI" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_DIRECTIO_ASSOCIATI_DIRECTIO" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_SERVICED_ASSOCIATI_DIRECTIO" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_GOUVERNO_ASSOCIATI_REGION" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_ASSOCIATION_INVENTAIRE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_INVENTAI_ASSOCIATI_INVENTAI" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_MARQUE_ASSOCIATI_SOUS_MOD" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_MODELE_ASSOCIATI_SOUS_CAT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_SOUS_MOD_ASSOCIATI_MODELE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_MOUVEMEN_ASSOCIATI_VEHICULE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_VEHICULE_ASSOCIATI_PARC_AUT" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_REGION_ASSOCIATI_PAYS" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_PERSONNE_ASSOCIATI_ROLE" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_PERSONNE_ASSOCIATI_SERVICED" ManuallyRouted="false" />
-        <AssociationConnector Association="BissInventaireModel.FK_UTILISAT_ASSOCIATI_PERSONNE" ManuallyRouted="false" />
+      <Diagram DiagramId="58f777de00294dc8a21b5fc9b0b3a21b" Name="Diagram1">
+        <EntityTypeShape EntityType="BissTestModel.Achat" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Batiment" Width="1.5" PointX="6" PointY="29.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Bien" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Bureau" Width="1.5" PointX="7.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Categorie" Width="1.5" PointX="8.25" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Contrat" Width="1.5" PointX="8.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.ContratBien" Width="1.5" PointX="10.5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.ContratVehicule" Width="1.5" PointX="10.5" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Delegation" Width="1.5" PointX="3.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Depot" Width="1.5" PointX="8.25" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Direction" Width="1.5" PointX="0.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.DirectionEtage" Width="1.5" PointX="3" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Etage" Width="1.5" PointX="8.25" PointY="29.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Fournisseur" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Gouvernorat" Width="1.5" PointX="1.5" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Inventaire" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.InventaireBien" Width="1.5" PointX="12.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.InventaireVehicule" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Marque" Width="1.5" PointX="17.25" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Modele" Width="1.5" PointX="12.75" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.MouvementBien" Width="1.5" PointX="12.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.MouvementVehicule" Width="1.5" PointX="12.75" PointY="22.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Organisation" Width="1.5" PointX="3.75" PointY="29.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Parc_auto" Width="1.5" PointX="8.25" PointY="34.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Pays" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Personnel" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.PersonnelVehicule" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Region" Width="1.5" PointX="1.5" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Role" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.ServiceD" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Sous_categorie" Width="1.5" PointX="10.5" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Sous_modele" Width="1.5" PointX="15" PointY="27.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Trace" Width="1.5" PointX="12.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Utilisateur" Width="1.5" PointX="7.5" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Vehicule" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
+        <AssociationConnector Association="BissTestModel.FK_ACHAT_ASSOCIATI_FOURNISS" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BIEN_ASSOCIATI_ACHAT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_VEHICULE_ASSOCIATI_ACHAT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BATIMENT_ASSOCIATI_DELEGATI" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BATIMENT_ASSOCIATI_ORGANISA" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_ETAGE_ASSOCIATI_BATIMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_PARC_AUT_ASSOCIATI_BATIMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BIEN_ASSOCIATI_CATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BIEN_ASSOCIATI_DEPOT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BIEN_ASSOCIATI_ETAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BIEN_ASSOCIATI_PERSONNE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_INVENTAI_ASSOCIATI_BIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_MOUVEMEN_ASSOCIATI_BIEN" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BUREAU_ASSOCIATI_ETAGE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_BUREAU_ASSOCIATI_PERSONNE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_SOUS_CAT_ASSOCIATI_CATEGORI" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_CONTRAT_ASSOCIATI_FOURNISS" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_CONTRATB_ASSOCIATI_CONTRAT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_CONTRATV_ASSOCIATI_CONTRAT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_DELEGATI_ASSOCIATI_GOUVERNO" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_DEPOT_ASSOCIATI_DELEGATI" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_FOURNISS_ASSOCIATI_DELEGATI" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_DIRECTIO_ASSOCIATI_DIRECTIO" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_SERVICED_ASSOCIATI_DIRECTIO" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_GOUVERNO_ASSOCIATI_REGION" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_ASSOCIATION_INVENTAIRE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_INVENTAI_ASSOCIATI_INVENTAI" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_MARQUE_ASSOCIATI_SOUS_MOD" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_MODELE_ASSOCIATI_SOUS_CAT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_SOUS_MOD_ASSOCIATI_MODELE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_MOUVEMEN_ASSOCIATI_VEHICULE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_VEHICULE_ASSOCIATI_PARC_AUT" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_REGION_ASSOCIATI_PAYS" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_PERSONNE_ASSOCIATI_ROLE" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_PERSONNE_ASSOCIATI_SERVICED" ManuallyRouted="false" />
+        <AssociationConnector Association="BissTestModel.FK_UTILISAT_ASSOCIATI_PERSONNE" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

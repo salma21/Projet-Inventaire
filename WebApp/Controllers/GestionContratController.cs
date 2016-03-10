@@ -58,36 +58,80 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-            {
+
                 var soc = db1.FindFournisseurByID(contrat.Id_fournisseur);
                 contrat.idDelegation = soc.idDelegation;
-              
+
                 db.Contrat.Add(contrat);
                 db.SaveChanges();
 
                 return RedirectToAction("GetContrat");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-            }
+          
+        }
             else
 
             {
-                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
-                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
-                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
-                ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
-                ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
+                var errors1 = ModelState.Values.SelectMany(v => v.Errors);
+                var errors2 = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors }).ToArray();
+                //ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                //ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                //ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                //ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                //ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
                 
                 return View();
             }
         }
 
-    
+        public ActionResult EditContrat(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+            var cont = BissInventaireEntities.Instance.Contrat.Find(id);
+            return View(cont);
+
+        }
+
+        // POST: GestionContratetSoc/Edit/5
+        [HttpPost]
+        public ActionResult EditContrat(Contrat cont, FormCollection collection)
+        {
+
+            if (ModelState.IsValid)
+            {
+               
+                DateTime jj = Convert.ToDateTime(cont.Date_debut);
+                DateTime df = Convert.ToDateTime(cont.Date_fin);
+                String hh = jj.ToString("dd-MM-yyyy");
+                String kk = df.ToString("dd-MM-yyyy");
+                var soc = db1.FindFournisseurByID(cont.Id_fournisseur);
+                cont.idDelegation = soc.idDelegation;
+              
+                    //  achat.Date_d_achat = System.DateTime.Now;
+                 
+
+                    db1.UpdateContratDetached(cont);
+                    db1.SaveChange();
+                    return RedirectToAction("GetContrat");
+                
+               
+            }
+            else
+
+            {
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
+                var errors1 = ModelState.Values.SelectMany(v => v.Errors);
+                var errors2 = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors }).ToArray();
+                return View();
+            }
+
+        }
 
 
         public ActionResult CreateAchat()

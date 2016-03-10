@@ -113,13 +113,22 @@ namespace Service
             var dep = utOfWork.CategorieRepository.FindSousModeleByIdModele(id);
             return dep;
         }
+        public IEnumerable<Sous_modele> findSousModeleByLibelleModele(string libelle)
+        {
+            var dep = utOfWork.CategorieRepository.findSousModeleByLibelleModele(libelle);
+            return dep;
+        }
         public IEnumerable<Marque> FindMarqueByIdSousModele(int id)
         {
             var dep = utOfWork.CategorieRepository.FindMarqueByIdSousModele(id);
             return dep;
         }
 
-
+        public IEnumerable<Marque> findMarqueBylibelleSousModele(string libelle)
+        {
+            var dep = utOfWork.CategorieRepository.findMarqueByLibelleSousModele(libelle);
+            return dep;
+        }
 
 
 
@@ -212,12 +221,14 @@ namespace Service
         IEnumerable<Modele> findModeleBySousCategorie(string libelle);
         IEnumerable<Modele> FindModeleByIdDes(int id);
         IEnumerable<Sous_modele> FindSousModeleByIdModele(int id);
+        IEnumerable<Sous_modele> findSousModeleByLibelleModele(string libelle);
         IEnumerable<Marque> FindMarqueByIdSousModele(int id);
-
+        IEnumerable<Marque> findMarqueBylibelleSousModele(string libelle);
         IEnumerable<Categorie> GetCategorie_materiels();
         IEnumerable<Sous_categorie> GetCategorie_Designations();
         IEnumerable<Modele> GetAllModeles();
         IEnumerable<Sous_modele> GetAllSousModele();
+       
         IEnumerable<Marque> GetAllMarque();
 
         void SaveCategorie_materiel();

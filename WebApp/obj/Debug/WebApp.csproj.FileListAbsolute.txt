@@ -814,96 +814,6 @@ C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
 C:\VERSION 01-02-2016 11h16\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
 C:\Users\nesrine.BISS\Desktop\VERSION 08-02-2016 Version salma aprés changement de la base\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Collections.Immutable.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Reflection.Metadata.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\vbc.exe
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe.config
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebApp.dll.config
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebApp.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebApp.pdb
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Domain.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Log.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Web.Infrastructure.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Owin.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Service.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebGrease.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Data.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Domain.pdb
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Log.pdb
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Service.pdb
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.pdb
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Data.pdb
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
-C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
 C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
 C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
@@ -994,3 +904,543 @@ C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin
 C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\bin\Data.pdb
 C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
 C:\Users\nesrine.BISS\Desktop\12-02-2016\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\vbc.exe
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebApp.dll.config
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebApp.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebApp.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Domain.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Log.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Owin.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Service.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\WebGrease.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Data.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Domain.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Log.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Service.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
+C:\10-02-2016 atb\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\vbc.exe
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\WebApp.dll.config
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\WebApp.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\WebApp.pdb
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Domain.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Log.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Owin.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Service.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\WebGrease.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Data.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Log.pdb
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Service.pdb
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.pdb
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
+C:\Users\nesrine.BISS\Desktop\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\vbc.exe
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebApp.dll.config
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebApp.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebApp.pdb
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Domain.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Log.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Owin.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Service.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebGrease.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Data.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Domain.pdb
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Log.pdb
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Service.pdb
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.pdb
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
+C:\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\vbc.exe
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebApp.dll.config
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebApp.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebApp.pdb
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Domain.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Log.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Owin.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Service.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\WebGrease.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Data.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Log.pdb
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Service.pdb
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.pdb
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
+C:\Users\nesrine.BISS\Desktop\Version sa et ness\Version Nesrine et salma\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\vbc.exe
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\WebApp.dll.config
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\WebApp.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\WebApp.pdb
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Domain.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\EntityFramework.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Log.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Owin.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Service.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\WebGrease.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Data.dll
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Domain.pdb
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Log.pdb
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Service.pdb
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.pdb
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\EntityFramework.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\vbc.exe
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\WebApp.dll.config
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\WebApp.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\WebApp.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Domain.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Log.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Owin.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Service.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\WebGrease.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Data.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Log.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Service.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.Web.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.ApplicationInsights.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Helpers.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Mvc.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Optimization.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.Razor.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Deployment.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\System.Web.WebPages.Razor.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Antlr3.Runtime.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Newtonsoft.Json.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\EntityFramework.SqlServer.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb

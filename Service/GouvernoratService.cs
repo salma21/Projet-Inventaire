@@ -58,6 +58,17 @@ namespace Service
             var dep = utOfWork.GouvernoratRepository.FindGouverneratByRegion(id);
             return dep;
         }
+        public IEnumerable<Gouvernorat> FindGouverneratByPays(int id)
+        {
+            var dep = utOfWork.GouvernoratRepository.FindGouverneratByPays(id);
+            return dep;
+        }
+
+        public IEnumerable<Gouvernorat> findGouverneratByLibellePays(string libelle)
+        {
+            var dep = utOfWork.GouvernoratRepository.findGouverneratByLibellePays(libelle);
+            return dep;
+        }
     }
     public interface IGouvernoratService
     {
@@ -71,5 +82,7 @@ namespace Service
         Gouvernorat FindGouvByID(int id);
         void SaveGouvernorat();
         IEnumerable<Gouvernorat> FindGouverneratByRegion(int id);
+        IEnumerable<Gouvernorat> FindGouverneratByPays(int id);
+        IEnumerable<Gouvernorat> findGouverneratByLibellePays(string libelle);
     }
 }

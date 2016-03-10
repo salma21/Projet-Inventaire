@@ -35,14 +35,75 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div class="form-group">
                             <label class="control-label col-lg-4" style="font-style:oblique;">Modèle </label>
                             <div class="col-lg-6">
+@{
 
-                                @Html.EditorFor(model => model.Modele, new { @class = "form-control", required = "True" })
+    var listItems2 = new List<SelectListItem>()
+                            {
+                                 new SelectListItem {Text = "--Choisir--"},
+                                new SelectListItem {Text = "ABARTH",   Value = "ABARTH"},
+                                new SelectListItem {Text = "ALFA ROMEO", Value = "ALFA ROMEO"},
+                                new SelectListItem {Text = "ASTON MARTIN", Value = "ASTON MARTIN"},
+                                 new SelectListItem {Text = "AUDI", Value = "AUDI"},
+                                 new SelectListItem {Text = "BENTLEY",   Value = "BENTLEY"},
+                                new SelectListItem {Text = "BMW", Value = "BMW"},
+                                new SelectListItem {Text = "CHEVROLET", Value = "CHEVROLET"},
+                                new SelectListItem {Text = "CITROEN", Value = "CITROEN"},
+                                  new SelectListItem {Text = "DACIA", Value = "DACIA"},
+                                new SelectListItem {Text = "DS",   Value = "DS"},
+                                new SelectListItem {Text = "FERRARI", Value = "FERRARI"},
+                                new SelectListItem {Text = "FIAT", Value = "FIAT"},
+                                new SelectListItem {Text = "FORD", Value = "FORD"},
+                                  new SelectListItem {Text = "HONDA", Value = "HONDA"},
+                             new SelectListItem {Text = "HYUNDAI",   Value = "HYUNDAI"},
+                                new SelectListItem {Text = "INFINITI", Value = "INFINITI"},
+                                new SelectListItem {Text = "JAGUAR", Value = "JAGUAR"},
+                                new SelectListItem {Text = "JEEP", Value = "JEEP"},
+                                  new SelectListItem {Text = "KIA", Value = "KIA"},
+                                  new SelectListItem {Text = "LADA", Value = "LADA"},
+                                new SelectListItem {Text = "LAMBORGHINI", Value = "LAMBORGHINI"},
+                                new SelectListItem {Text = "LANCIA", Value = "LANCIA"},
+                                  new SelectListItem {Text = "LAND ROVER", Value = "LAND ROVER"},
+                                  new SelectListItem {Text = "LEXUS", Value = "LEXUS"},
+                                new SelectListItem {Text = "LOTUS", Value = "LOTUS"},
+                                new SelectListItem {Text = "MASERATI", Value = "MASERATI"},
+                                  new SelectListItem {Text = "MAZDA", Value = "MAZDA"},
+                                  new SelectListItem {Text = "MCLAREN", Value = "MCLAREN"},
+                                new SelectListItem {Text = "MERCEDES-BENZ", Value = "MERCEDES-BENZ"},
+                                new SelectListItem {Text = "MINI", Value = "MINI"},
+                                  new SelectListItem {Text = "MITSUBISHI", Value = "MITSUBISHI"},
+                                  new SelectListItem {Text = "NISSAN", Value = "NISSAN"},
+                                new SelectListItem {Text = "OPEL", Value = "OPEL"},
+                                new SelectListItem {Text = "PEUGEOT", Value = "PEUGEOT"},
+                                  new SelectListItem {Text = "PORSCHE", Value = "PORSCHE"},
+                                  new SelectListItem {Text = "RENAULT", Value = "RENAULT"},
+                                new SelectListItem {Text = "ROLLS ROYCE", Value = "ROLLS ROYCE"},
+                                new SelectListItem {Text = "SEAT", Value = "SEAT"},
+                                  new SelectListItem {Text = "SKODA", Value = "SKODA"},
+                                   new SelectListItem {Text = "SMART", Value = "SMART"},
+                                  new SelectListItem {Text = "SSANGYONG", Value = "SSANGYONG"},
+                                  new SelectListItem {Text = "SUBARU", Value = "SUBARU"},
+                                new SelectListItem {Text = "SUZUKI", Value = "SUZUKI"},
+                                new SelectListItem {Text = "TESLA", Value = "TESLA"},
+                                  new SelectListItem {Text = "TOYOTA", Value = "TOYOTA"},
+                                  new SelectListItem {Text = "VOLKSWAGEN", Value = "VOLKSWAGEN"},
+                                new SelectListItem {Text = "VOLVO", Value = "VOLVO"},
+                         
+
+
+
+                            };
+
+
+                                @Html.DropDownListFor(m => m.Modele, listItems2, new { @class = "form-control", required = "" })
+                                
                                 @Html.ValidationMessageFor(model => model.Modele, String.Empty, new { @class = "test" })
+     }
 
+                                            </div>
                             </div>
-                        </div>
+                        
                         <div class="form-group">
-                            <label class="control-label col-lg-4" style="font-style:oblique;">État </label>
+                            <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
                             <div class="col-lg-6">
 
                                 @Html.EditorFor(model => model.Etat , new { @class = "form-control", required = "True" })
@@ -59,7 +120,15 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                             </div>
                         </div>
-                       
+                        <div class="form-group">
+                            <label class="control-label col-lg-4" style="font-style:oblique;">Prix d'achat </label>
+                            <div class="col-lg-6">
+
+                                @Html.EditorFor(model => model.Prix_d_achat, new { @class = "form-control", required = "True" })
+                                @Html.ValidationMessageFor(model => model.Prix_d_achat, String.Empty, new { @class = "test" })
+
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="control-label col-lg-4" style="font-style:oblique;">Parc </label>

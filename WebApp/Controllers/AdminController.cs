@@ -200,11 +200,11 @@ namespace WebApp.Controllers
             //ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_societe_maintenance", "Libelle");
 
             //ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
-
+            ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
             ViewData["personnel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
             ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
             ViewData["Delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
-          
+            ViewData["service"] = new SelectList(BissInventaireEntities.Instance.ServiceD.ToList(), "Id_service", "Libelle");
             return View();
         }
 
@@ -238,10 +238,14 @@ namespace WebApp.Controllers
 
                 ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Libelle");
 
+                ViewData["personnel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+                ViewData["Delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["service"] = new SelectList(BissInventaireEntities.Instance.ServiceD.ToList(), "Id_service", "Libelle");
                 ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat_maintenance", "Num");
                 ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
                 ViewData["Depot"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "IdDepot", "libelle");
-
+                ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
 
                 return View();
             }
@@ -253,6 +257,7 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             ViewData["depts"] = new SelectList(db.GetBureaux(), "Id", "Description");
+            ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
             return View();
         }
 
@@ -283,7 +288,7 @@ namespace WebApp.Controllers
 
             {
                 ViewData["depts"] = new SelectList(db.GetBureaux(), "Id", "Description");
-
+                ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
                 return View();
             }
         }
@@ -552,6 +557,18 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
+        //[HttpPost]
+        //public ActionResult getBureauByEtage(int stateid)
+        //{
+
+        //    List<Bureau> objcity = new List<Bureau>();
+
+        //    objcity = db.findBureauByEtage(stateid).ToList();
+
+        //    SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
+        //    return Json(obgcity);
+        //}
+
         [HttpPost]
         public ActionResult getDepotByDelegation(int stateid)
         {
@@ -587,5 +604,28 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
+        [HttpPost]
+        public ActionResult getSousModeleByModele(string libelle)
+        {
+
+            List<Sous_modele> objcity = new List<Sous_modele>();
+
+            objcity = db3.findSousModeleByLibelleModele(libelle).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Libelle", "Libelle", 0);
+            return Json(obgcity);
+        }
+
+        [HttpPost]
+        public ActionResult getMarqueBySousModele(string libelle)
+        {
+
+            List<Marque> objcity = new List<Marque>();
+
+            objcity = db3.findMarqueBylibelleSousModele(libelle).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Libelle", "Libelle", 0);
+            return Json(obgcity);
+        }
     }
 }

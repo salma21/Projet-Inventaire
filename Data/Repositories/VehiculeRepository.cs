@@ -29,7 +29,7 @@ namespace Data.Repositories
             return (int)veh.FirstOrDefault().Id_fournisseur;
         }
 
-     
+
 
 
         public int FindBatimentByParcAuto(int id)
@@ -38,10 +38,23 @@ namespace Data.Repositories
             var veh = (from v in DataContext.Parc_auto
                        where v.Id_parc == id
                        select v);
-            return veh.FirstOrDefault().idBatiment;
+
+           
+            return (int)veh.FirstOrDefault().idBatiment;
+
         }
 
-      
+
+        public Vehicule findVehiculeByID(int id)
+        {
+
+            var pers = (from p in this.DataContext.Vehicule
+                        where p.Id_Vehicule == id
+                        select p).ToList<Vehicule>();
+            return pers.FirstOrDefault();
+
+
+        }
     }
 
 
@@ -50,9 +63,9 @@ namespace Data.Repositories
 
         void UpdateVehiculeDetached(Vehicule e);
         int FindFournisseurByContrat(int id);
-       
-        int FindBatimentByParcAuto(int id);
 
+        int FindBatimentByParcAuto(int id);
+        Vehicule findVehiculeByID(int id);
     }
 
 }

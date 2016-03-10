@@ -126,10 +126,11 @@
                                     @Html.ValidationMessageFor(m => m.Description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Create" class="btn btn-default" />
-                                </div>
+                            <div style="text-align: center;">
+                                <input type="submit" value="Valider" class="btn btn-default" />
+
+                                <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "getSousModele")</button>
+
                             </div>
                         </div>
                     }

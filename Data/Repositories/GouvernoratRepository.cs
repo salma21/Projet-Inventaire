@@ -36,6 +36,26 @@ namespace Data.Repositories
 
             return pers;
         }
+        public IEnumerable<Gouvernorat> FindGouverneratByPays(int id)
+        {
+
+            var pers = (from p in DataContext.Gouvernorat
+                        where p.idPays == id
+                        select p).ToList();
+
+            return pers;
+        }
+
+
+        public IEnumerable<Gouvernorat> findGouverneratByLibellePays(string libelle)
+        {
+
+            var pers = (from p in DataContext.Gouvernorat
+                        where p.Region.Pays.libelle == libelle
+                        select p).ToList();
+
+            return pers;
+        }
     }
 
 
@@ -46,7 +66,8 @@ namespace Data.Repositories
         void UpdateGouvernoratDetached(Gouvernorat e);
 
         IEnumerable<Gouvernorat> FindGouverneratByRegion(int id);
-
+        IEnumerable<Gouvernorat> FindGouverneratByPays(int id);
+        IEnumerable<Gouvernorat> findGouverneratByLibellePays(string libelle);
     }
 
 }

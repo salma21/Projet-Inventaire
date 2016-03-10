@@ -6,7 +6,7 @@
         <div class="panel panel-default">
             <div class="panel-title">
 
-                <h4 class="title" color="#58666e" font-weight="bold"> Edit Contrat Maintenance</h4>
+                <h4 class="title" color="#58666e" font-weight="bold"> Edit Contrat </h4>
 
 
 
@@ -32,49 +32,75 @@
                         <div class="panel panel-default">
                             <fieldset>
 
-                               
+                                <legend>Contrat </legend>
 
                                 <div class="form-group">
                                     <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">N° Contrat</label>
+                                        <label class="col-sm-4 control-label form-label">Code à barres</label>
 
-                                        <div class="col-md-8">
+                                        <div class="col-sm-8">
+
+                                            @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
+                                            @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Référence (N° Contrat)</label>
+
+                                        <div class="col-sm-8">
 
                                             @Html.EditorFor(model => model.Num, new { @class = "form-control", required = "" })
                                             @Html.ValidationMessageFor(model => model.Num, String.Empty, new { @class = "test" })
+
                                         </div>
+
                                     </div>
+
 
                                     <div class="col-md-4">
                                         <label class="col-sm-4 control-label form-label">Sociéte</label>
 
                                         <div class="col-sm-8">
 
-                                            @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-
+                                            @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
 
                                         </div>
+
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Type</label>
-
-                                        <div class="col-sm-8">
-
-                                            @Html.EditorFor(model => model.Type_Contrat, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Type_Contrat, String.Empty, new { @class = "test" })
-
-                                        </div>
-                                    </div>
-
-
-                                    <br /><br />
 
                                 </div>
 
+
+                              
+
                                 <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label"> Type</label>
+
+                                        <div class="col-sm-8">
+
+
+
+                                            @Html.EditorFor(m => m.Type_Contrat, new { @class = "form-control", required = "" })
+                                            @Html.ValidationMessageFor(model => model.Type_Contrat, String.Empty, new { @class = "test" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Sous Type</label>
+
+                                        <div class="col-sm-8">
+
+                                            @Html.EditorFor(model => model.Sous_Type_Contrat, new { @class = "form-control", required = "" })
+                                            @Html.ValidationMessageFor(model => model.Sous_Type_Contrat, String.Empty, new { @class = "test" })
+
+                                        </div>
+
+                                    </div>
                                     <div class="col-md-4">
                                         <label class="col-sm-4 control-label form-label">Coût</label>
 
@@ -83,16 +109,32 @@
                                             @Html.EditorFor(model => model.Cout, new { @class = "form-control", required = "" })
                                             @Html.ValidationMessageFor(model => model.Cout, String.Empty, new { @class = "test" })
                                         </div>
+
                                     </div>
+
+
+                                </div>
+
+
+
+                                <div class="form-group">
+
+                                 
+
+                                </div>
+                                <div class="form-group">
+
                                     <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Date Debut </label>
+                                        <label class="col-sm-4 control-label form-label">Date Début </label>
 
                                         <div class="col-sm-8">
-
                                             @Html.EditorFor(model => model.Date_debut, new { @class = "form-control", required = "" })
                                             @Html.ValidationMessageFor(model => model.Date_debut, String.Empty, new { @class = "test" })
+
                                         </div>
+
                                     </div>
+
                                     <div class="col-md-4">
                                         <label class="col-sm-4 control-label form-label">Date Fin</label>
 
@@ -100,22 +142,35 @@
 
                                             @Html.EditorFor(model => model.Date_fin, new { @class = "form-control", required = "" })
                                             @Html.ValidationMessageFor(model => model.Date_fin, String.Empty, new { @class = "test" })
+
                                         </div>
+
                                     </div>
+
+
                                 </div>
-
-
-
                             </fieldset>
+
                             <br />
+                            @*<fieldset>
+
+                <legend>Localisation</legend>
+
+                <div class="form-group">
+                    <div class="col-md-4">
+                        <label class="col-sm-4 control-label form-label"> Ville</label>
+
+                        <div class="col-sm-8">
+                            @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
-                            <br>
+                        </div>
 
+                    </div>
+                </div>
 
-
-
-
+            </fieldset>*@
+                            
 
 
 
@@ -129,19 +184,13 @@
 
                             </div>
 
-
-
-
-
-
-
                         </div>
                     </div>
                 }
 
 
                 <p>
-                    @Html.ActionLink("Liste des contrats de maintenance", "GetContrat_Maintenance")
+                    @Html.ActionLink("Liste des contrats", "GetContrat")
                 </p>
 
             </div>

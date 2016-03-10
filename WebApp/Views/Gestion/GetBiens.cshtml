@@ -15,17 +15,18 @@
                         <table id="example0" class="table display">
                             <thead>
                                 <tr>
-                                    <th>Delegation </th>
+                                    <th>Code à barres</th>
+                                    <th>Délégation </th>
                                     <th>Batiment </th>
 
-                                    <th>Etage</th>
+                                    <th>Étage</th>
 
                                     <th>Desigantion </th>
 
                                     <th>Catégorie</th>
-                                    <th>Code</th>
+                                    
                                     <th>Mode</th>
-                                    <th>Etat</th>
+                                    <th>État</th>
                                   
                                     <th>Action</th>
 
@@ -36,7 +37,7 @@
                                 @foreach (var item in Model)
                                 {
                                     <tr class="odd gradeX">
-
+                                        <td>@item.Code_a_barre</td>
                                         <td>@item.Etage.Batiment.Delegation.libelle</td>
                                         <td>@item.Etage.Batiment.description</td>
 
@@ -46,7 +47,7 @@
                                         <td>@item.Designation</td>
                                         <th>@item.Categorie.Description</th>
 
-                                        <td>@item.Code</td>
+                                        
                                         <td>@item.Mode</td>
                                         <td>@item.Etat</td>
 

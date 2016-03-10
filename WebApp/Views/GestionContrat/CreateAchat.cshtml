@@ -7,7 +7,7 @@
         <div class="panel panel-default">
             <div class="panel-title">
 
-                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat Achat</h4>
+                <h4 class="title" color="#58666e" font-weight="bold"> Ajout Achat</h4>
                 <ol class="breadcrumb">
                   
 
@@ -42,16 +42,22 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                             <div class="form-group">
 
-                                
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Code à barres</label>
+
+                                    <div class="col-sm-8">
+
+                                        @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
+
+                                    </div>
+                                </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Code bien</label>
 
                                     <div class="col-md-8">
 
                                         @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-
 
                                     </div>
                                 </div>
@@ -62,11 +68,12 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                         @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
 
-
-
-
                                     </div>
                                 </div>
+                            </div>
+                                <br />
+                                <br />
+                            <div class="form-group">
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label"> N° Livraison</label>
 
@@ -78,11 +85,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     </div>
                                 </div>
 
-                                        </div>
 
-                            <br />
-                            <br />
-                            <div class="form-group">
+
+
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">N° facture</label>
 
@@ -104,21 +109,22 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         @Html.ValidationMessageFor(model => model.Num_commande, String.Empty, new { @class = "test" })
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
-
-                                    <div class="col-md-8">
-
-
-                                        @Html.EditorFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Prix_d_achat, String.Empty, new { @class = "test" })
-                                    </div>
-                                </div>
+                              
 
                             </div>
                             <br />
                             <br />
                                 <div class="form-group">
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label"> Prix d'achat</label>
+
+                                        <div class="col-md-8">
+
+
+                                            @Html.EditorFor(model => model.Prix_d_achat, new { @class = "form-control", required = "" })
+                                            @Html.ValidationMessageFor(model => model.Prix_d_achat, String.Empty, new { @class = "test" })
+                                        </div>
+                                    </div>
                                     <div class="col-md-4">
                                         <label class="col-sm-4 control-label form-label"> Date Livraison</label>
 

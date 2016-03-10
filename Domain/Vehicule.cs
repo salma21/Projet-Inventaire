@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Vehicule
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -33,9 +33,7 @@ namespace Domain
         public string Modele { get; set; }
         public string Etat { get; set; }
         public string Num_chassis { get; set; }
-        [Required(ErrorMessage = "Le prix d'achat est obligatoire")]
-        [RegularExpression(@"[0-9]+([,][0-9]{0,2})?", ErrorMessage = "Le prix d'achat est invalid.Exemlpe: 20000,000")]
-        public Nullable<double> Prix_d_achat { get; set; }
+        public double Prix_d_achat { get; set; }
     
         public virtual Achat Achat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

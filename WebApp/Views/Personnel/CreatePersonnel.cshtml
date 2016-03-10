@@ -98,7 +98,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Direction </label>
                                     <div class="col-lg-6">
 
-                                     @*   @Html.DropDownListFor(model => model.ServiceD.Direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" })*@
+                                        @Html.DropDownListFor(model => model.Id_direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" })
 
                                     </div>
                                 </div>
@@ -106,7 +106,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Service </label>
                                     <div class="col-lg-6">
 
-                                 @*       @Html.DropDownListFor(model => model.ServiceD, (SelectList)ViewData["service"], "--Choisir--", new { @class = "form-control", required = "" })*@
+                                        @Html.DropDownListFor(model => model.Id_service, (SelectList)ViewData["service"], "--Choisir--", new { @class = "form-control", required = "" })
 
                                     </div>
                                 </div>
@@ -114,16 +114,16 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Batiment </label>
                                     <div class="col-lg-6">
 
-                                        @Html.DropDownListFor(model => model.Bureau., (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.DropDownListFor(model => model., (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
                                     </div>
-                                </div>*@
+                                </div>
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Étage </label>
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-6">*@
 
-                                   @*     @Html.DropDownListFor(model => model.ServiceD.Direction.DirectionEtage, (SelectList)ViewData["etage"], "--Choisir--", new { @class = "form-control", required = "" })*@
+                                   @*     @Html.DropDownListFor(model => model.ServiceD.Direction.DirectionEtage, (SelectList)ViewData["etage"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
                                     </div>
@@ -135,8 +135,8 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                        @* @Html.DropDownListFor(model => model.Bureau, (SelectList)ViewData["bureau"], "--Choisir--", new { @class = "form-control", required = "" })*@
 
 
-                                    </div>
-                                </div>
+                                    @*</div>
+                                </div>*@
 
 
 

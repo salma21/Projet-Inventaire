@@ -1,5 +1,66 @@
 ﻿@model Domain.Organisation
+@{
 
+
+    List<string> listdelegation = new List<string>();
+    List<string> listGouvernorat = new List<string>();
+}
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+
+<script language="javascript" type="text/javascript">
+
+        function GetCity(_stateId) {
+            var procemessage = "<option value='0'>Encours...</option>";
+            $("#ddlcity").html(procemessage).show();
+            var url = "/Gestion/GetGouvernoratByPays/";
+
+            $.ajax({
+                url: url,
+                data: { stateid: _stateId },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='0'>--Choisir--</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlcity").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
+                }
+            });
+
+        }
+
+</script>
+
+<script language="javascript" type="text/javascript">
+    function getdeleg(_libelleId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddldeleg").html(procemessage).show();
+        var url = "/Gestion/GetDelegationByGouvernorat/";
+
+        $.ajax({
+            url: url,
+            data: { libelle: _libelleId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddldeleg").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -30,12 +91,31 @@
                                     @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
+
+
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Adresse </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Matricule fiscale </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.adresse, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.adresse, String.Empty, new { @class = "test" })
+                                    @Html.EditorFor(model => model.Matricule_fiscale, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Matricule_fiscale, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">N° Registre de commerce </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Registre_de_commerce, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Registre_de_commerce, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Email </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Email, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Email, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -55,34 +135,79 @@
                                     @Html.ValidationMessageFor(model => model.fax, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Matricule fiscale </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Site web </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.Matricule_fiscale, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Matricule_fiscale, String.Empty, new { @class = "test" })
+                                    @Html.EditorFor(model => model.Site_web, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Site_web, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Description </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Logo</label>
+                                <div class="col-lg-6">
+                                    <input type="file" id="fileToUpload" name="file" />
+                                    @Html.EditorFor(model => model.Logo, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Logo, String.Empty, new { @class = "test" })
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Adresse </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.adresse, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.adresse, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
                                 <div class="col-lg-6">
 
                                     @Html.EditorFor(model => model.description, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.pays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.gouvernorat, new SelectList(listGouvernorat), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "", @onchange = "javascript:getdeleg(this.value);" })
+
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Ville </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.ville, new SelectList(listdelegation), "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "" })
+
+                                </div>
+                            </div>
+
+
 
 
                         </div>
+
+
+
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
                             <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetOrganisation")</button>
 
                         </div>
+
                     }
+
+
                 </div>
 
                 <div>

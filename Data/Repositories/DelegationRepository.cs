@@ -72,6 +72,14 @@ namespace Data.Repositories
             return pers;
         }
 
+        public IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle)
+        {
+            var pers = (from p in DataContext.Delegation
+                        where p.Gouvernorat.libelle == libelle
+                        select p).ToList();
+
+            return pers;
+        }
 
         public IEnumerable<Batiment> FindBatimentByDelegation(int id)
         {
@@ -106,7 +114,7 @@ namespace Data.Repositories
         void UpdateDelegationDetached(Delegation e);
 
 
-
+        IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle);
     }
 }
 

@@ -31,6 +31,17 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                             <div class="form-group">
                                 <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Code à barres</label>
+
+                                    <div class="col-sm-8">
+
+                                        @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
+
+                                    </div>
+
+                                </div>
+                                <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Référence (N° Contrat)</label>
 
                                     <div class="col-sm-8">
@@ -48,28 +59,16 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     <div class="col-sm-8" >
 
-                                        @Html.DropDownListFor(model => model.Fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
 
                                     </div>
 
                                 </div>
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label"> Type</label>
-
-                                    <div class="col-sm-8">
-
-                                       
-
-                                            @Html.EditorFor(m => m.Type_Contrat, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Type_Contrat, String.Empty, new { @class = "test" })
-                                       
-
-
-                                    </div>
+                               
 
                                 </div>
 
-                            </div>
+                          
                             <div class="form-group">
 
                                 <br />
@@ -79,29 +78,54 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             </div>
 
                             <div class="form-group">
-
                                 <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Sous Type</label>
+                                    <label class="col-sm-4 control-label form-label"> Type</label>
 
                                     <div class="col-sm-8">
 
-                                        @Html.EditorFor(model => model.Sous_Type_Contrat, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Sous_Type_Contrat, String.Empty, new { @class = "test" })
+
+
+                                        @Html.EditorFor(m => m.Type_Contrat, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Type_Contrat, String.Empty, new { @class = "test" })
 
                                     </div>
 
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Coût</label>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Sous Type</label>
 
-                                    <div class="col-sm-8">
+                                        <div class="col-sm-8">
 
-                                        @Html.EditorFor(model => model.Cout, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Cout, String.Empty, new { @class = "test" })
+                                            @Html.EditorFor(model => model.Sous_Type_Contrat, new { @class = "form-control", required = "" })
+                                            @Html.ValidationMessageFor(model => model.Sous_Type_Contrat, String.Empty, new { @class = "test" })
+
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label class="col-sm-4 control-label form-label">Coût</label>
+
+                                        <div class="col-sm-8">
+
+                                            @Html.EditorFor(model => model.Cout, new { @class = "form-control", required = "" })
+                                            @Html.ValidationMessageFor(model => model.Cout, String.Empty, new { @class = "test" })
+                                        </div>
+
                                     </div>
 
+
                                 </div>
 
+                                
+
+                            <div class="form-group">
+
+                                <br />
+
+                                <br />
+
+                            </div>
+                            <div class="form-group">
 
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Date Début </label>
@@ -113,19 +137,6 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     </div>
 
                                 </div>
-                              
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <br />
-
-                                <br />
-
-                            </div>
-                            <div class="form-group">
-
 
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Date Fin</label>
@@ -144,7 +155,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 </fieldset>
 
                         <br />
-                        <fieldset>
+                        @*<fieldset>
 
                             <legend>Localisation</legend>
 
@@ -161,7 +172,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 </div>
                             </div>
 
-                        </fieldset>
+                        </fieldset>*@
                         <br>
 
 

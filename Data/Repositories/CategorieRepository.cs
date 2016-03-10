@@ -129,11 +129,30 @@ namespace Data.Repositories
             return pers.ToList();
         }
 
+        public IEnumerable<Sous_modele> findSousModeleByLibelleModele(string libe)
+        {
+
+            var pers = (from p in DataContext.Sous_modele
+                        where p.Modele.libelle == libe
+                        select p);
+            return pers.ToList();
+        }
+
+
         public IEnumerable<Marque> FindMarqueByIdSousModele(int id)
         {
 
             var pers = (from p in DataContext.Marque
                         where p.Id_sous_Modele == id
+                        select p);
+            return pers.ToList();
+        }
+
+        public IEnumerable<Marque> findMarqueByLibelleSousModele(string libe)
+        {
+
+            var pers = (from p in DataContext.Marque
+                        where p.Sous_modele.Libelle == libe
                         select p);
             return pers.ToList();
         }
@@ -191,7 +210,9 @@ namespace Data.Repositories
         IEnumerable<Modele> findModeleByIdDes1(string libe);
         IEnumerable<Modele> FindModeleByIdDes(int id);
         IEnumerable<Sous_modele> FindSousModeleByIdModele(int id);
+        IEnumerable<Sous_modele> findSousModeleByLibelleModele(string libe);
         IEnumerable<Marque> FindMarqueByIdSousModele(int id);
+        IEnumerable<Marque> findMarqueByLibelleSousModele(string libe);
         IEnumerable<Sous_categorie> GetDesignationAll();
         IEnumerable<Modele> GetAllModele();
         IEnumerable<Sous_modele> GetAllSousModele();

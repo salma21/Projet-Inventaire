@@ -26,6 +26,7 @@
                         <tr align="center">
                             @*<th>Code bien</th>
                             <th>Nom bien</th>*@
+                            <th>Code à barres</th>
                             <th>Fournisseur</th>
                             <th>Date D'achat</th>
                             <th>Date Livraison</th>
@@ -33,8 +34,8 @@
                             <th>N° Commande</th>
                             <th>Prix</th>
                             <th>N° livraison</th>
-                            @*<th>Position</th>
-                            <th>Utilisateur</th>*@
+                            @*<th>Position</th>*@
+                       
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -48,17 +49,17 @@
                             <tr align="center">
                                 @*<td class="center">@item.Fournisseur.Nom   </td>
                                 <td class="center">@item.Fournisseur.Nom  </td>*@
-
+                                <td class="center">@item.code_a_barre</td>
                                 <td class="center">@item.Fournisseur.Nom   </td>
 
-                                <td class="center">@item.Date_d_achat.Value.ToShortDateString("dd-MM-yyyy")</td>
+                                <td class="center">@item.Date_d_achat.Value</td>
                                 <td class="center">@item.Date_livraison</td>
                                 <td class="center">@item.Num_facture</td>
                                 <td class="center">@item.Num_commande</td>
                                 <td class="center">@item.Prix_d_achat</td>
                                 <td class="center">@item.Num_livraison</td>
-                                <td class="center">@item.Fournisseur.idDelegation  </td>
-                                <td class="center">@item.Fournisseur.Nom   </td>
+                                @*<td class="center">@item.Fournisseur.idDelegation  </td>
+                                <td class="center">@item.Fournisseur.Nom   </td>*@
 
 
                                 <td>
@@ -79,7 +80,7 @@
                 <br /><p>
                     @if (@Session["Role"].ToString() == "ADMIN")
                     {
-                        @Html.ActionLink("Ajouter un nouveau Contrat d'achat", "CreateAchat")
+                        @Html.ActionLink("Ajouter un nouveau Achat", "CreateAchat")
 
                     }
                 </p>

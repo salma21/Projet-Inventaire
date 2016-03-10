@@ -36,6 +36,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code à barres</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Organisation </label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.idOrganisation, (SelectList)ViewData["organisation"], "--Choisir--", new { @class = "form-control", required = "" })
@@ -49,7 +57,14 @@
                                     @Html.ValidationMessageFor(model => model.code, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
+                                <div class="col-lg-6">
 
+                                    @Html.EditorFor(model => model.Delegation.Code_postal, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Delegation.Code_postal, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">

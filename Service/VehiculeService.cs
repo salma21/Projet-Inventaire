@@ -63,13 +63,21 @@ namespace Service
             return Dept;
         }
 
-
+        public Vehicule getVehicule(int id)
+        {
+            var Dept = utOfWork.VehiculeRepository.GetById(id);
+            return Dept;
+        }
 
         public void SaveVehicule()
         {
             utOfWork.Commit();
         }
-
+        public Vehicule findVehiculeByID(int id)
+        {
+            var Dept = utOfWork.VehiculeRepository.findVehiculeByID(id);
+            return Dept;
+        }
 
         public void UpdateVehiculeDetached(Vehicule e)
         {
@@ -89,6 +97,9 @@ public interface IVehiculeService
     
     int FindBatimentByParcAuto(int id);
     void UpdateVehiculeDetached(Vehicule e);
+    Vehicule getVehicule(int id);
     void SaveVehicule();
-   
+    Vehicule findVehiculeByID(int id);
+
+
 }

@@ -3,6 +3,8 @@ using Log;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -89,6 +91,7 @@ namespace WebApp.Controllers
             // GET: Categorie/Create
             public ActionResult createCategorie()
             {
+               
                 return View();
             }
 
