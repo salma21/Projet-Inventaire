@@ -13,8 +13,8 @@
                     <thead>
                         <tr>
                             <th>Matricule</th>
-                            <th>Modele</th>
-                            <th>Etat</th>
+                            <th>Modèle</th>
+                            <th>Désignation</th>
                             <th>N° châssis</th>
                             <th>Parc</th>
                             <th>Batiment</th>
@@ -41,7 +41,7 @@
                                 <td class="center">@item.Modele</td>
                                 <td class="center">@item.Etat</td>
                                 <td class="center">@item.Num_chassis </td>
-                                <td class="center">@item.Parc_auto.Libelle</td>
+                                <td class="center">@item.Parc_auto.Libelle </td>
                                 <td class="center">@item.Parc_auto.Batiment.description</td>
 
                                 @*<td class="center">@item.Contrat_garanti.Fournisseur.Nom</td>
@@ -50,7 +50,7 @@
                                     <td class="center"> @item.Contrat_maintenance.Type_maintenance</td>
                                     <td class="center">@item.Contrat_assurance.Societe_assurance.Libelle </td>
                                     <td class="center">@item.Contrat_assurance.Type_assurance </td>*@
-                                    <td class="center">@item.Achat.Prix_d_achat</td>
+                                    <td class="center">@item.Prix_d_achat</td>
 
 
 

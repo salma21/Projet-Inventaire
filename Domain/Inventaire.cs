@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Inventaire
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,16 +22,8 @@ namespace Domain
         }
     
         public int Id_inventaire { get; set; }
-        [Required(ErrorMessage = "Le nom de l'inventaire est obligatoire")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom de l'inventaire  doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom de l'inventaire est invalide")]
         public string Nom_ { get; set; }
-        [Required(ErrorMessage = "Le type de l'inventaire est obligatoire")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le type de la governorat doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le type de la governorat est invalide")]
         public string Type { get; set; }
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage = "La date est obligatoire")]
         public Nullable<System.DateTime> Date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

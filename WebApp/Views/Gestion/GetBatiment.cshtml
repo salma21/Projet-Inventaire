@@ -11,11 +11,14 @@
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
+                            <th>Code à barres</th>
                             <th>Désignation</th>
+                            
                             <th>Adresse</th>
+                            <th>Code postal</th>
                             <th>Organisation</th>
                             <th>Délégation </th>
-                            
+                           
                             <th>Région </th>
                            
                             <th>Action</th>
@@ -28,9 +31,11 @@
                         @foreach (var item in Model)
                         {
                             <tr>
+                                <td class="center">@item.code_a_barre</td>
                                 <td class="center">@item.description</td>
+                               
                                 <td class="center">@item.code</td>
-                             
+                                <td class="center">@item.Delegation.Code_postal</td>
                                 <td class="center">@item.Organisation.libelle</td>
                                 <td class="center">@item.Delegation.libelle</td>
                                 <td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>
@@ -40,6 +45,7 @@
 {
 
                                     <a href="@Url.Action("EditBatiment", new { id = item.idBatiment })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                    <a href="@Url.Action("DeleteBatiment", new { id = item.idBatiment })">&nbsp;<i class="fa fa-delete" title="Supprimer"></i></a>
 
 } </td>
 

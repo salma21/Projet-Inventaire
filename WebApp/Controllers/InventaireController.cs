@@ -121,7 +121,8 @@ namespace WebApp.Controllers
                 var dep = from s in bien select s;
                 if (String.IsNullOrEmpty(Etage) || (String.IsNullOrEmpty(Batiment)))
                 {
-                    dep = dep.Where(s =>  (string.IsNullOrEmpty(Etage) || (s.Etage.description.ToString().StartsWith(Etage)))
+                    dep = dep.Where(s => (string.IsNullOrEmpty(Etage) || (s.Etage.description.ToString().StartsWith(Etage)))
+
                     && (string.IsNullOrEmpty(Batiment) || (s.Etage.Batiment.description.ToString().StartsWith(Batiment)))
 
                     );
@@ -129,7 +130,7 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    dep = dep.Where(s => ( s.Etage.description.ToString().StartsWith(Etage))
+                    dep = dep.Where(s => (s.Etage.description.ToString().StartsWith(Etage))
                     && (s.Etage.Batiment.description.ToString().StartsWith(Batiment))
 
                         );

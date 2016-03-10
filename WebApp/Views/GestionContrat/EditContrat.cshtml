@@ -32,81 +32,89 @@
                         <div class="panel panel-default">
                             <fieldset>
 
-                               
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Code à barres</label>
 
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">N° Contrat</label>
+                                    <div class="col-sm-8">
 
-                                        <div class="col-md-8">
+                                        @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
 
-                                            @Html.EditorFor(model => model.Num, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Num, String.Empty, new { @class = "test" })
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">N° Contrat</label>
+
+                                            <div class="col-md-8">
+
+                                                @Html.EditorFor(model => model.Num, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Num, String.Empty, new { @class = "test" })
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Sociéte</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+
+
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Type</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.EditorFor(model => model.Type_Contrat, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Type_Contrat, String.Empty, new { @class = "test" })
+
+                                            </div>
+                                        </div>
+
+
+                                        <br /><br />
+
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Coût</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.EditorFor(model => model.Cout, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Cout, String.Empty, new { @class = "test" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Date Debut </label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.EditorFor(model => model.Date_debut, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Date_debut, String.Empty, new { @class = "test" })
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Date Fin</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.EditorFor(model => model.Date_fin, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Date_fin, String.Empty, new { @class = "test" })
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Sociéte</label>
-
-                                        <div class="col-sm-8">
-
-                                            @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["societemain"], "--Choisir--", new { @class = "form-control", required = "" })
 
 
-
-
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Type</label>
-
-                                        <div class="col-sm-8">
-
-                                            @Html.EditorFor(model => model.Type_Contrat, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Type_Contrat, String.Empty, new { @class = "test" })
-
-                                        </div>
-                                    </div>
-
-
-                                    <br /><br />
-
-                                </div>
-
-                                <div class="form-group">
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Coût</label>
-
-                                        <div class="col-sm-8">
-
-                                            @Html.EditorFor(model => model.Cout, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Cout, String.Empty, new { @class = "test" })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Date Debut </label>
-
-                                        <div class="col-sm-8">
-
-                                            @Html.EditorFor(model => model.Date_debut, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Date_debut, String.Empty, new { @class = "test" })
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <label class="col-sm-4 control-label form-label">Date Fin</label>
-
-                                        <div class="col-sm-8">
-
-                                            @Html.EditorFor(model => model.Date_fin, new { @class = "form-control", required = "" })
-                                            @Html.ValidationMessageFor(model => model.Date_fin, String.Empty, new { @class = "test" })
-                                        </div>
-                                    </div>
-                                </div>
-
-
-
-                            </fieldset>
+</fieldset>
                             <br />
 
 

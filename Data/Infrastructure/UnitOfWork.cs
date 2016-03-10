@@ -289,6 +289,15 @@ namespace Data.Infrastructure
             }
         }
 
+        private IBienRepository BienRepository;
+        IBienRepository IUnitOfWork.BienRepository
+        {
+            get
+            {
+                return BienRepository ?? (BienRepository = new BienRepository(dbFactory));
+            }
+        }
+
 
         private IDepotRepository DepotRepository;
         IDepotRepository  IUnitOfWork.DepotRepository

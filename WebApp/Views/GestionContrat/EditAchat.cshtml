@@ -34,39 +34,59 @@
                       
 
                         <div class="form-group">
+
                             <div class="col-md-4">
-                                <label class="col-sm-4 control-label form-label">N° facture</label>
+                                <label class="col-sm-4 control-label form-label">Code à barres</label>
 
-                                <div class="col-md-8">
+                                <div class="col-sm-8">
 
-                                    @Html.EditorFor(model => model.Num_facture, new { @class = "form-control", required = "" })
-                                    @Html.ValidationMessageFor(model => model.Num_facture, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="col-sm-4 control-label form-label">Fournisseur</label>
-
-                                <div class="col-md-8">
-
-                                    @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
-
-
-
+                                    @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
 
                                 </div>
-                            </div>
-                            <div class="col-md-4">
-                                <label class="col-sm-4 control-label form-label"> N° Livraison</label>
 
-                                <div class="col-md-8">
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Code bien</label>
 
-                                    @Html.EditorFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
-                                    @Html.ValidationMessageFor(model => model.Num_livraison, String.Empty, new { @class = "test" })
+                                    <div class="col-md-8">
 
+                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
+
+                                    </div>
                                 </div>
-                            </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">N° facture</label>
 
-                        </div>
+                                    <div class="col-md-8">
+
+                                        @Html.EditorFor(model => model.Num_facture, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Num_facture, String.Empty, new { @class = "test" })
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Fournisseur</label>
+
+                                    <div class="col-md-8">
+
+                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
+
+
+
+
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label"> N° Livraison</label>
+
+                                    <div class="col-md-8">
+
+                                        @Html.EditorFor(model => model.Num_livraison, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Num_livraison, String.Empty, new { @class = "test" })
+
+                                    </div>
+                                </div>
+
+                            </div>
 
                         <br />
                         <br />

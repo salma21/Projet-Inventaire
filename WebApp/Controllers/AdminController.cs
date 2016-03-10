@@ -5,9 +5,15 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+
+
 
 namespace WebApp.Controllers
 {
@@ -18,6 +24,8 @@ namespace WebApp.Controllers
         private IRegionService db2 = new RegionService();
         private IDepotService depo = new DepotService();
         private ICategorieService db3 = new CategorieService();
+        private IBienService db4 = new BienService();
+
 
 
         //private IEnumerable<Bureau> depts = InventaireBiss2015Entities.Instance.Bureau.ToList();
@@ -200,36 +208,39 @@ namespace WebApp.Controllers
             //ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_societe_maintenance", "Libelle");
 
             //ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
-
+            ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
             ViewData["personnel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
             ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
             ViewData["Delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
-          
+            ViewData["service"] = new SelectList(BissInventaireEntities.Instance.ServiceD.ToList(), "Id_service", "Libelle");
             return View();
         }
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult CreateBien(Bien bien, FormCollection collection)
+        public ActionResult CreateBien(Bien bien, FormCollection collection )
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
 
-                try
-                {
+                //try
+                //{
+                    HttpPostedFileBase file = Request.Files["ImageData"];
+                    bien.Photo = ConvertToBytes(file);
+                    var photo = bien.Photo;
                     BissInventaireEntities.Instance.Bien.Add(bien);
                     BissInventaireEntities.Instance.SaveChanges();
 
                     return RedirectToAction("RapportBien");
 
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
+                //}
+                //catch (Exception ex)
+                //{
+                //    LogThread.WriteLine(ex.Message);
+                //    return RedirectToAction("Index", "Error");
+                //}
             }
             else
 
@@ -238,21 +249,76 @@ namespace WebApp.Controllers
 
                 ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Libelle");
 
+                ViewData["personnel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+                ViewData["Delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["service"] = new SelectList(BissInventaireEntities.Instance.ServiceD.ToList(), "Id_service", "Libelle");
                 ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat_maintenance", "Num");
                 ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
                 ViewData["Depot"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "IdDepot", "libelle");
-
+                ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
 
                 return View();
             }
         }
 
+        //[HttpPost]
+        //public ActionResult Create(Bien bien)
+        //{
+        //    HttpPostedFileBase file = Request.Files["ImageData"];
 
+        //    bien.Photo = ConvertToBytes(file);
+        //    var photo = bien.Photo;
+
+        //    //int i = UploadImageInDataBase(file, bien);
+        //    //if (i == 1)
+        //    //{
+        //    //    return RedirectToAction("Index");
+        //    //}
+        //    return View(bien);
+       // }
+
+        //public int UploadImageInDataBase(HttpPostedFileBase file, Bien bien)
+        //{
+        //    bien.Photo = ConvertToBytes(file);
+        //    var img = bien.Photo;
+            
+        //    int i = db.SaveChanges();
+        //    if (i == 1)
+        //    {
+        //        return 1;
+        //    }
+        //    else
+        //    {
+        //        return 0;
+        //    }
+
+        //}
+        public byte[] ConvertToBytes(HttpPostedFileBase photo)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(photo.InputStream);
+            imageBytes = reader.ReadBytes((int)photo.ContentLength);
+            return imageBytes;
+        }
+        //public FileContentResult GetThumbnailImage(int artworkId)
+        //{
+        //    ArtWork art = db.ArtWorks.FirstOrDefault(p => p.ArtWorkId == artworkId);
+        //    if (art != null)
+        //    {
+        //        return File(art.ArtworkThumbnail, art.ImageMimeType.ToString());
+        //    }
+        //    else
+        //    {
+        //        return null;
+        //    }
+        //}
         public ActionResult CreateBienAdmin()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             ViewData["depts"] = new SelectList(db.GetBureaux(), "Id", "Description");
+            ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
             return View();
         }
 
@@ -283,12 +349,29 @@ namespace WebApp.Controllers
 
             {
                 ViewData["depts"] = new SelectList(db.GetBureaux(), "Id", "Description");
-
+                ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
                 return View();
             }
         }
 
-
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            var q = from temp in BissInventaireEntities.Instance.Bien where temp.Id_bien == Id select temp.Photo;
+            byte[] cover = q.First();
+            return cover;
+        }
+        public ActionResult RetrieveImage(int id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
+        }
 
         public ActionResult RapportBien(string Delegation, string Etage, string Batiment)
         {
@@ -299,11 +382,11 @@ namespace WebApp.Controllers
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
 
-            //sqs
-
+          
             ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
             ViewData["delegation"] = new SelectList(delegation, "libelle", "libelle");
+           
             var bien = BissInventaireEntities.Instance.Bien.ToList();
             int nbr = bien.ToList().Count();
             ViewBag.nbr = nbr;
@@ -337,9 +420,10 @@ namespace WebApp.Controllers
 
                 int nbr2 = dep.ToList().Count();
                 ViewBag.nbr = nbr2;
-                return View(dep.ToList())
-                    ;
+                return View(dep.ToList());
+
             }
+            
         }
         public ActionResult EditBureaux(int id)
         {
@@ -553,6 +637,18 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
+        public ActionResult getBureauByEtage(int stateid)
+        {
+
+            List<Bureau> objcity = new List<Bureau>();
+
+            objcity = db.findBureauByEtage(stateid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
+            return Json(obgcity);
+        }
+
+        [HttpPost]
         public ActionResult getDepotByDelegation(int stateid)
         {
 
@@ -587,5 +683,28 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
+        [HttpPost]
+        public ActionResult getSousModeleByModele(string libelle)
+        {
+
+            List<Sous_modele> objcity = new List<Sous_modele>();
+
+            objcity = db3.findSousModeleByLibelleModele(libelle).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Libelle", "Libelle", 0);
+            return Json(obgcity);
+        }
+
+        [HttpPost]
+        public ActionResult getMarqueBySousModele(string libelle)
+        {
+
+            List<Marque> objcity = new List<Marque>();
+
+            objcity = db3.findMarqueBylibelleSousModele(libelle).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Libelle", "Libelle", 0);
+            return Json(obgcity);
+        }
     }
 }

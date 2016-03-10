@@ -51,7 +51,7 @@
 
                                 <td class="center">@item.Fournisseur.Nom   </td>
 
-                                <td class="center">@item.Date_d_achat.Value.ToShortDateString("dd-MM-yyyy")</td>
+                                <td class="center">@item.Date_d_achat.Value</td>
                                 <td class="center">@item.Date_livraison</td>
                                 <td class="center">@item.Num_facture</td>
                                 <td class="center">@item.Num_commande</td>
@@ -79,7 +79,7 @@
                 <br /><p>
                     @if (@Session["Role"].ToString() == "ADMIN")
                     {
-                        @Html.ActionLink("Ajouter un nouveau Contrat d'achat", "CreateAchat")
+                        @Html.ActionLink("Ajouter un nouveau Achat", "CreateAchat")
 
                     }
                 </p>

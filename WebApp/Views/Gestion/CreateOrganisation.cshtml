@@ -40,6 +40,42 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.code_postal, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.code_postal, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Ville </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.libelle, (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.gouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.pays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Email </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.email, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.email, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Téléphone </label>
                                 <div class="col-lg-6">
 
@@ -66,19 +102,27 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Logo</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Registre de commerce </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.logo, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.logo, String.Empty, new { @class = "test" })
+                                    @Html.EditorFor(model => model.registre_de_commerce, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.registre_de_commerce, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Description </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Logo</label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
+                                    @Html.EditorFor(model => model.Logo, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Logo, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Site web </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.site_web, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.site_web, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                            
@@ -93,9 +137,18 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                     }
 
-
+                    <table>
+                        <tr>
+                            <td>
+                                <input type="file" id="fileToUpload" name="file" />
+                            </td>
+                            <td align="right" colspan="2">
+                                <input type="submit" class="btn btn-default" value="Charger le fichier" />
+                            </td>
+                        </tr>
+                    </table>
                 </div>
-
+            
                 <div>
                     @Html.ActionLink("Liste des soiciétés", "GetOrganisation")
                 </div>

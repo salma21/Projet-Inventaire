@@ -73,10 +73,13 @@ namespace WebApp.Controllers
                 LogThread.WriteLine(ex.Message);
                 return RedirectToAction("Index", "Error");
             }
-            }
+        }
             else
 
             {
+                var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
+                var errors1 = ModelState.Values.SelectMany(v => v.Errors);
+                var errors2 = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors }).ToArray();
                 ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
                 ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
                 ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");

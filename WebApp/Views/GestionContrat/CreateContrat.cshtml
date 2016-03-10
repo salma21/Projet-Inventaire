@@ -1,9 +1,9 @@
-﻿@model Domain.Contrat
+﻿51@model Domain.Contrat
 
 
 <div class="row">
     <div class="col-md-12">
-        <div class="panel panel-default">
+1        <div class="panel panel-default">
             <div class="panel-title">
 
                 <h4 class="title" color="#58666e" font-weight="bold"> Ajout Contrat</h4>
@@ -30,6 +30,17 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <legend>Contrat </legend>
 
                             <div class="form-group">
+                                <div class="col-md-4">
+                                    <label class="col-sm-4 control-label form-label">Code à barres</label>
+
+                                    <div class="col-sm-8">
+
+                                        @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                        @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
+
+                                    </div>
+
+                                </div>
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Référence (N° Contrat)</label>
 

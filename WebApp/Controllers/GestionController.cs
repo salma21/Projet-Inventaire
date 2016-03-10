@@ -27,7 +27,10 @@ namespace WebApp.Controllers
         private IDirectionService dir = new DirectionService();
         private IDelegationService del = new DelegationService();
         private IOrganisationService orga = new OrganisationService();
-      
+        private IVehiculeService vs = new VehiculeService();
+        private IBureauService br = new BureauService();
+
+
         // GET: Gestion
         public ActionResult Index()
         {
@@ -38,7 +41,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-
+            GetOrganisation();
             var bat = batiment.GetBatiments();
             return View(bat);
         }
@@ -746,7 +749,10 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+           
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+           
             return View();
         }
 
@@ -771,7 +777,9 @@ namespace WebApp.Controllers
             else
 
             {
-                
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 return View();
             }
         }
@@ -1083,6 +1091,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
+            GetParcAuto();
             var Vehicule = db6.GetVehicules();
             return View(Vehicule);
         }
@@ -1130,7 +1139,7 @@ namespace WebApp.Controllers
             int idBat = db6.FindBatimentByParcAuto(veh.Id_parc);
             var ac = BissInventaireEntities.Instance.Achat.Find(veh.Id_achat);
 
-            veh.Prix_d_achat =(decimal) ac.Prix_d_achat;
+            //veh.Prix_d_achat = (double)ac.Prix_d_achat;
          
             veh.idBatiment = idBat;
 
@@ -1169,6 +1178,51 @@ namespace WebApp.Controllers
             }
         }
 
+        //public ActionResult EditVehicule(int id)
+        //{
+        //    if (Session["identifiant"] == null)
+        //    { return RedirectToAction("Index", "Home"); }
+
+            
+
+        //    ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+
+        //    ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+        //    ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+
+        //    return View(vehi);
+        //}
+
+
+        [HttpPost]
+        public ActionResult EditVehicule(Vehicule veh)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    IVehiculeService jj = new VehiculeService();
+                    jj.UpdateVehiculeDetached(veh);
+                    jj.SaveVehicule();
+
+                    return RedirectToAction("GetVehicule");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+
+                ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+                ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+                return View();
+            }
+        }
 
 
         //MouvementBien
@@ -1313,6 +1367,15 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
+        //[HttpPost]
+        //public ActionResult GetBureauByEtage(int batid)
+        //{
+        //    List<Bureau> objcity = new List<Bureau>();
+        //    objcity = db8.FindBureauByEtage(burid).ToList();
+
+        //    SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
+        //    return Json(obgcity);
+        //}
 
         [HttpPost]
         public ActionResult FindBienByEtage(int etid)

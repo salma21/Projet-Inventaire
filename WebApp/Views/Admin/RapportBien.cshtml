@@ -67,7 +67,7 @@
                             <tr>
                                 <th>Designation </th>
                                 <th>Description</th>
-                                <th>Code</th>
+                                <th>N° modele</th>
                                 <th>Mode</th>
                                 <th>Etat</th>
                                 
@@ -79,8 +79,10 @@
                               
                                 <th>Batiment </th>
                                 <th>Etage</th>
-                                <th>Region</th>
                                 <th>Ville </th>
+                                <th>Region</th>
+                                <th>Image</th>
+                               
                                
                                 
                                
@@ -98,7 +100,7 @@
 
                                     <td>@item.Designation</td>
                                     <td>@item.Description</td>
-                                    <td>@item.Code</td>
+                                    <td>@item.Num_Modele</td>
                                     <td>@item.Mode</td>
                                     <td>@item.Etat</td>
                                     <td>@item.Categorie.libelle</td>
@@ -110,6 +112,7 @@
                                     <td>@item.Etage.description</td>
                                     <td>@item.Etage.Batiment.Delegation.libelle</td>
                                     <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
+                                    <td><img src="/Admin/RetrieveImage/@item.Id_bien" alt="" height=100 width=200 /></td>
                                  
                                    
                                   

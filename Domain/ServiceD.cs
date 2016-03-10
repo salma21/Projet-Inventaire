@@ -11,8 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-   
+    
     public partial class ServiceD
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +22,6 @@ namespace Domain
     
         public int Id_direction { get; set; }
         public int Id_service { get; set; }
-        [Required(ErrorMessage = "Le nom du service est obligatoire")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom du service doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom du service est invalide")]
         public string Libelle { get; set; }
     
         public virtual Direction Direction { get; set; }
