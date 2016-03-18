@@ -83,6 +83,28 @@
         });
 
     }
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/Gestion/GenerateCAbatiment(/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 
 <div class="row">
@@ -123,7 +145,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre</label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.code_a_barre, new { @id = "tt", @class = "form-control", required = "", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
                                 </div>
                                 <div class="col col-md-4">

@@ -90,6 +90,11 @@ namespace Service
             return Dept;
 
         }
+        public int FindMaxIDEtage()
+        {
+            int i = utOfWork.EtageRepository.FindMaxIDEtage();
+            return i;
+        }
     }
 
 }
@@ -107,7 +112,7 @@ public interface IEtageService
 
     void UpdateEtageDetached(Etage e);
     Etage FindEtageByID(int id);
-
+    int FindMaxIDEtage();
     void SaveEtage();
 
 

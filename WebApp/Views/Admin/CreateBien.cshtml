@@ -145,6 +145,28 @@
         });
 
     }
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/Admin/GenerateCABien/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 <script language="javascript" type="text/javascript">
     function GetEtage(_stateId) {
@@ -313,8 +335,14 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                                                 <label class="col-sm-4 control-label form-label">Code à barre</label>
 
                                                 <div class="col-sm-8" style="padding-left:6% ; width:60%">
-                                                    @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                                    @Html.EditorFor(model => model.Code_a_barre, new { @id = "tt", @class = "form-control", required = "", @readonly = "readonly" })
                                                     @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
+                                                </div>
+
+                                                <div class="col col-md-4">
+
+                                                    <input type="button" value="Générer Code A barres" onclick="GetBat()" class="btn btn-option5" />
+
                                                 </div>
                                             </TD>
                                         </TR>

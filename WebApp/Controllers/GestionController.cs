@@ -1725,7 +1725,19 @@ namespace WebApp.Controllers
 
             return Json(kk);
         }
+        public ActionResult GenerateCAEtage()
+        {
+            IEtageService kk55 = new EtageService();
 
+            double maxj = kk55.FindMaxIDEtage();
+            maxj = maxj + 1;
+            double jj = 3503010000000;
+
+            double kk = jj + maxj;
+
+
+            return Json(kk);
+        }
     }
 
 
