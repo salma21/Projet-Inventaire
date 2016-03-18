@@ -15,10 +15,10 @@
                             <th>Désignation</th>
                             
                             <th>Adresse</th>
-                            <th>Code postal</th>
+                            
                             <th>Organisation</th>
                             <th>Délégation </th>
-                           
+                            <th>Code postal</th>
                             <th>Région </th>
                            
                             <th>Action</th>
@@ -35,10 +35,12 @@
                                 <td class="center">@item.description</td>
                                
                                 <td class="center">@item.code</td>
-                                <td class="center">@item.Delegation.Code_postal</td>
+                                
                                 <td class="center">@item.Organisation.libelle</td>
                                 <td class="center">@item.Delegation.libelle</td>
+                                <td class="center">@item.Delegation.Code_postal</td>
                                 <td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>
+                                
                                
                                 <td>
 @if (@Session["Role"].ToString() == "ADMIN")

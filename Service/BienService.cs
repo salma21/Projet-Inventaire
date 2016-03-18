@@ -52,8 +52,12 @@ namespace Service
         //    var Dept = utOfWork.BienRepository.FindBienByID(id);
         //    return Dept;
         //}
+        public int FindMaxIDBien()
+        {
+            int i = utOfWork.BienRepository.FindMaxIDBien();
+            return i;
+        }
 
-      
 
         public void SaveBien()
         {
@@ -77,7 +81,7 @@ namespace Service
         Bien GetBien(int id);
         void CreateBien(Bien Dept);
         void DeleteBien(int id);
-
+        int FindMaxIDBien();
         void UpdateBienDetached(Bien e);
 
         //IEnumerable<Bien> FindBienByDelgation(int id);

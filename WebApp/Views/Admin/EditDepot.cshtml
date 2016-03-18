@@ -1,89 +1,6 @@
-﻿@*@model Domain.Depot
+﻿@model Domain.Depot
 
-@{
-    ViewBag.Title = "EditDepot";
-    List<string> listRegion = new List<string>();
-    List<string> listGouvernorat = new List<string>();
-    List<string> listdelegation = new List<string>();
-}
-<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script language="javascript" type="text/javascript">
-    function GetCity(_stateId) {
-        var procemessage = "<option value='0'>Encours...</option>";
-        $("#ddlcity").html(procemessage).show();
-        var url = "/Gestion/GetRegionByPays/";
 
-        $.ajax({
-            url: url,
-            data: { stateid: _stateId },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                var markup = "<option value='0'>--Choisir--</option>";
-                for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                }
-                $("#ddlcity").html(markup).show();
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-
-    }
-</script>
-
-<script language="javascript" type="text/javascript">
-    function GetGouvernorat(_stateId) {
-        var procemessage = "<option value='0'>Encours...</option>";
-        $("#ddlgouv").html(procemessage).show();
-        var url = "/Gestion/GetGouvernoratByRegion/";
-
-        $.ajax({
-            url: url,
-            data: { stateid: _stateId },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                var markup = "<option value='0'>--Choisir--</option>";
-                for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                }
-                $("#ddlgouv").html(markup).show();
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-
-    }
-</script>
-<script language="javascript" type="text/javascript">
-    function getdeleg(_libelleId) {
-        var procemessage = "<option value='0'>Encours...</option>";
-        $("#ddldeleg").html(procemessage).show();
-        var url = "/Gestion/GetDelegationByGouvernorat/";
-
-        $.ajax({
-            url: url,
-            data: { libelle: _libelleId },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                var markup = "<option value='0'>--Choisir--</option>";
-                for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                }
-                $("#ddldeleg").html(markup).show();
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-
-    }
-</script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -120,14 +37,14 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                    @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "", readOnly="True"})
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.idRegion, new SelectList(listRegion), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True", @onchange = "javascript:GetGouvernorat(this.value);" })
+                                    @Html.DropDownListFor(m => m.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "", readOnly="True" })
                                 </div>
                             </div>
 
@@ -135,13 +52,13 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernorat </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.idGouvernorat, new SelectList(listGouvernorat), "--Choisir--", new { @id = "ddlgouv", @class = "form-control", required = "True" })
+                                    @Html.DropDownListFor(m => m.idGouvernorat, (SelectList)ViewData["gouvernourat"], "--Choisir--", new { @id = "ddlgouv", @class = "form-control", required = "" , readOnly = "True" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Ville </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idDelegation, new SelectList(listdelegation), "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "" })
+                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "" , readOnly = "True" })
 
                                 </div>
                             </div>
@@ -181,4 +98,4 @@
             </div>
         </div>
     </div>
-</div>*@
+</div>

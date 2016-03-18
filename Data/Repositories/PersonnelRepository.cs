@@ -80,6 +80,26 @@ namespace Data.Repositories
 
 
         }
+
+        public IEnumerable<ServiceD> findServiceByDirection(int id)
+        {
+
+            var pers = (from p in DataContext.ServiceD
+                        where p.Id_direction == id
+                        select p).ToList();
+           
+               return pers;
+        }
+
+        public IEnumerable<Personnel> findPersByService(int id)
+        {
+
+            var pers = (from p in DataContext.Personnel
+                        where p.Id_service == id
+                        select p).ToList();
+
+            return pers;
+        }
     }
 
 
@@ -92,6 +112,8 @@ namespace Data.Repositories
         void UpdatePersonnelDetached(Personnel e);
         int FindPaysByBatiment(int id);
         Personnel FindPersByID(int id);
+        IEnumerable<ServiceD> findServiceByDirection(int id);
+        IEnumerable<Personnel> findPersByService(int id);
     }
 
 

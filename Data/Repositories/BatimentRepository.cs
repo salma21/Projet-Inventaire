@@ -31,7 +31,15 @@ namespace Data.Repositories
 
 
         }
+        public int FindMaxIDBat()
+        {
 
+            var pers = (from p in DataContext.Batiment
+
+                        select p.idBatiment).Max();
+
+            return pers;
+        }
         public IEnumerable<Batiment> FindBatimentByDelgation(int id)
         {
 
@@ -51,7 +59,7 @@ namespace Data.Repositories
         Batiment FindBatimentByID(int id);
         void UpdateBatimentDetached(Batiment e);
         IEnumerable<Batiment> FindBatimentByDelgation(int id);
-
+        int FindMaxIDBat();
     }
 
 }

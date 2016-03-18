@@ -3,38 +3,67 @@
 @{
 
     List<string> listPers = new List<string>();
+    List<string> listService = new List<string>();
 
 }
 
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript">
 
-    function GetBat(_Persid) {
-        var procemessage = "<option value='0'>En cours</option>";
-        $("#Pers").html(procemessage).show();
-        var url = "/Admin/FindPersByBatiment/";
+    function getService(_stateId) {
+            var procemessage = "<option value='0'>Encours...</option>";
+            $("#ddlcity").html(procemessage).show();
+            var url = "/Personnel/getSeviceByDirection/";
 
-        $.ajax({
-            url: url,
-            data: { Persid: _Persid },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                var markup = "<option value='0'>--Choisir--</option>";
-                for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+            $.ajax({
+                url: url,
+                data: { stateid: _stateId },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='0'>--Choisir--</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#ddlcity").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
                 }
-                $("#Pers").html(markup).show();
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
+            });
 
-    }
+        }
 
 </script>
 
+<script language="javascript" type="text/javascript">
+
+    function getPers(_stateId) {
+            var procemessage = "<option value='0'>Encours...</option>";
+            $("#Pers").html(procemessage).show();
+            var url = "/Personnel/getPersByService/";
+
+            $.ajax({
+                url: url,
+                data: { stateid: _stateId },
+                cache: false,
+                type: "POST",
+                success: function (data) {
+                    var markup = "<option value='0'>--Choisir--</option>";
+                    for (var x = 0; x < data.length; x++) {
+                        markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                    }
+                    $("#Pers").html(markup).show();
+                },
+                error: function (reponse) {
+                    alert("error : " + reponse);
+                }
+            });
+
+        }
+
+</script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -55,11 +84,16 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                             <div class="form-group">
-                                <label class="control-label col-lg-4">Batiment</label>
+                                <label class="control-label col-lg-4">Direction</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownList("Batiment", (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })
+                                    @Html.DropDownList("Direction", (SelectList)ViewData["Direction"], "--Choisir--", new { @class = "form-control", required = "True", @onchange = "javascript:getService(this.value);" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Service</label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.Id_service, new SelectList(listService), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True", @onchange = "javascript:getPers(this.value);" })
                                 </div>
                             </div>
                             <div class="form-group">

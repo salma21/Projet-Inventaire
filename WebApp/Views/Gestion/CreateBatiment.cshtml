@@ -1,5 +1,89 @@
 ﻿@model Domain.Batiment
+@{
+
+
+    List<string> listRegion = new List<string>();
+    List<string> listGouvernorat = new List<string>();
+    List<string> listDelegation = new List<string>();
+}
 <link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Gestion/GetRegionByPays/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlcity").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+
+<script language="javascript" type="text/javascript">
+    function GetGouvernorat(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlgouv").html(procemessage).show();
+        var url = "/Gestion/GetGouvernoratByRegion/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlgouv").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    function getDeleg(_stateId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddldeleg").html(procemessage).show();
+        var url = "/Gestion/findDelegationByGouvernorat/";
+
+        $.ajax({
+            url: url,
+            data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddldeleg").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
 
 <div class="row">
     <div class="col-md-12">
@@ -42,6 +126,11 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
                                 </div>
+                                <div class="col col-md-4">
+
+                                    <input type="button" value="Générer Code A barres" onclick="GetBat()" class="btn btn-option5" />
+
+                                </div>
                             </div>
                             
                             <div class="form-group">
@@ -58,40 +147,49 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.ValidationMessageFor(model => model.code, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
                                 <div class="col-lg-6">
 
                                     @Html.EditorFor(model => model.Delegation.Code_postal, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Delegation.Code_postal, String.Empty, new { @class = "test" })
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "", @onchange = "javascript:GetCity(this.value);" })
                                 </div>
                             </div>
-                         
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Région </label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.idRegion, new SelectList(listRegion), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "", @onchange = "javascript:GetGouvernorat(this.value);" })
                                 </div>
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
-                                    <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.idGouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
-                                    </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernorat </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.idGouvernorat, new SelectList(listGouvernorat), "--Choisir--", new { @id = "ddlgouv", @class = "form-control", required = "" , @onchange= "javascript:getDeleg(this.value);" })
                                 </div>
+                            </div>
+
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
                                     <div class="col-lg-6">
-                                        @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.DropDownListFor(model => model.idDelegation,new SelectList(listDelegation), "--Choisir--", new {@id= "ddldeleg", @class = "form-control", required = "" })
                                     </div>
                                 </div>
-                            
+                           
+                            @*<div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+                                </div>
+                            </div>*@
 
                         </div>
                         <div style="text-align: center;">

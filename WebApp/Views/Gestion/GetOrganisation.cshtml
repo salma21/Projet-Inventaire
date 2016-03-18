@@ -16,7 +16,7 @@
                             <th>Matricule fiscale</th>
                             <th>N° Registre de coomerce</th>
                             <th>Email</th>
-                           <th>Tél</th>
+                            <th>Tél</th>
                             <th>Fax</th>
                             <th>Site Web</th>
                             <th>Adresse</th>
@@ -39,18 +39,20 @@
                                 <td class="center">@item.tel</td>
                                 <td class="center">@item.fax</td>
                                 <td class="center">@item.Site_web</td>
-                                <td class="center">@item.adresse</td> 
+                                <td class="center">@item.adresse</td>
                                 <td class="center">@item.ville</td>
                                 <td class="center">@item.gouvernorat</td>
-                                <td class="center">@item.pays</td> 
-                                <td class="center">@item.Logo</td>
-                               
-                                <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                    <a href="@Url.Action("EditOrganisation", new { id = item.idOrganisation })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                <td class="center">@item.pays</td>
 
-}     </td>
+                                <td><img src="/Gestion/RetrieveImage/@item.idOrganisation" alt="" height=100 width=200 /></td>
+
+                                <td>
+                                    @if (@Session["Role"].ToString() == "ADMIN")
+                                    {
+                                        <a href="@Url.Action("EditOrganisation", new { id = item.idOrganisation })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+
+                                    }
+                                </td>
 
                             </tr>
 
@@ -59,10 +61,10 @@
                     </tbody>
                 </table>
                 <br /><p>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                    @Html.ActionLink("Ajouter une nouvelle société", "CreateOrganisation")
-}
+                    @if (@Session["Role"].ToString() == "ADMIN")
+                    {
+                        @Html.ActionLink("Ajouter une nouvelle société", "CreateOrganisation")
+                    }
                 </p>
 
             </div>

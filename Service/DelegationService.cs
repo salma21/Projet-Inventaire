@@ -63,6 +63,7 @@ namespace Service
             var dep = utOfWork.DelegationRepository.findDelegationtByGouvernerat(libelle);
             return dep;
         }
+     
         public void UpdateDelegationDetached(Delegation e)
         {
             utOfWork.DelegationRepository.UpdateDelegationDetached(e);

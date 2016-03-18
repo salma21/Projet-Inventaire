@@ -311,8 +311,8 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
 
-                //try
-                //{
+                try
+                {
                     HttpPostedFileBase file = Request.Files["ImageData"];
                     bien.Photo = ConvertToBytes(file);
                     var photo = bien.Photo;
@@ -321,12 +321,12 @@ namespace WebApp.Controllers
 
                     return RedirectToAction("RapportBien");
 
-                //}
-                //catch (Exception ex)
-                //{
-                //    LogThread.WriteLine(ex.Message);
-                //    return RedirectToAction("Index", "Error");
-                //}
+            }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
             else
 
@@ -585,8 +585,9 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
+            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
             return View();
         }
 
@@ -601,8 +602,10 @@ namespace WebApp.Controllers
                     
                    
                     user.etatUtilisateur = true;
-                    db1.CreateUtilisateurs(user);
-                    db1.SaveEmploye();
+                    //db1.CreateUtilisateurs(user);
+                    //db1.SaveEmploye();
+                    BissInventaireEntities.Instance.Utilisateur.Add(user);
+                    BissInventaireEntities.Instance.SaveChanges();
                     
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();
@@ -639,22 +642,23 @@ namespace WebApp.Controllers
 
                     return RedirectToAction("Index", "Error");
                 }
-                catch (SqlException sq)
-                {
-                    LogThread.WriteLine(sq.Message);
-                    return RedirectToAction("Index", "Error");
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
+            //catch (SqlException sq)
+            //{
+            //    LogThread.WriteLine(sq.Message);
+            //    return RedirectToAction("Index", "Error");
+            //}
+            //catch (Exception ex)
+            //{
+            //    LogThread.WriteLine(ex.Message);
+            //    return RedirectToAction("Index", "Error");
+            //}
             }
             else
 
             {
-                ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
+                ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
                 ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
                 return View();
             }
         }
@@ -919,21 +923,32 @@ namespace WebApp.Controllers
             SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
         }
-
         [HttpPost]
         public ActionResult GenerateCA()
         {
             IBureauService kk55 = new BureauService();
 
-            double maxj =    kk55.FindMaxID();
+            double maxj = kk55.FindMaxID();
             maxj = maxj + 1;
             double jj = 6506010000000;
 
-            double kk =  jj  + maxj;
+            double kk = jj + maxj;
 
-           
+
             return Json(kk);
         }
+        public ActionResult GenerateCABien()
+        {
+            IBienService kk55 = new BienService();
 
+            double maxj = kk55.FindMaxIDBien();
+            maxj = maxj + 1;
+            double jj = 5505010000000;
+
+            double kk = jj + maxj;
+
+
+            return Json(kk);
+        }
     }
 }

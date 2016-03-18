@@ -1,13 +1,18 @@
 ﻿@model Domain.Depot
+
 @{
+
+
     List<string> listRegion = new List<string>();
     List<string> listGouvernorat = new List<string>();
     List<string> listDelegation = new List<string>();
 }
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript">
     function GetCity(_stateId) {
         var procemessage = "<option value='0'>Encours...</option>";
-        $("#ddlbounya").html(procemessage).show();
+        $("#ddlcity").html(procemessage).show();
         var url = "/Gestion/GetRegionByPays/";
 
         $.ajax({
@@ -20,7 +25,7 @@
                 for (var x = 0; x < data.length; x++) {
                     markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                 }
-                $("#ddlbounya").html(markup).show();
+                $("#ddlcity").html(markup).show();
             },
             error: function (reponse) {
                 alert("error : " + reponse);
@@ -80,65 +85,98 @@
 
     }
 </script>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Dépôt
+            </div>
+            <div class="panel-body">
 
-<h2>CreateDepot</h2>
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Depot</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
-            <div class="col-lg-6">
-                @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "", @onchange = "javascript:GetCity(this.value);" })
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
-            <div class="col-lg-6">
-                @Html.DropDownListFor(m => m.idRegion, new SelectList(listRegion), "--Choisir--", new { @id = "ddlbounya", @class = "form-control", required = "", @onchange = "javascript:GetGouvernorat(this.value);" })
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernorat </label>
-            <div class="col-lg-6">
-                @Html.DropDownListFor(m => m.idGouvernorat, new SelectList(listGouvernorat), "--Choisir--", new { @id = "ddlgouv", @class = "form-control", required = "" , @onchange= "javascript:getDeleg(this.value);" })
-            </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
-            <div class="col-lg-6">
-                @Html.DropDownListFor(model => model.idDelegation,new SelectList(listDelegation), "--Choisir--", new {@id= "ddldeleg", @class = "form-control", required = "" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.libelle, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.libelle, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.libelle, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Rue, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Rue, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Rue, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                <div class="panel panel-default">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                    <h2>Ajout Dépôt</h2>
+
+                    @using (Html.BeginForm("CreateDepot", "Admin", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            <hr />
+
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Désignation </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.libelle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.libelle, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "", @onchange = "javascript:GetCity(this.value);" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.idRegion, new SelectList(listRegion), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "", @onchange = "javascript:GetGouvernorat(this.value);" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernorat </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(m => m.idGouvernorat, new SelectList(listGouvernorat), "--Choisir--", new { @id = "ddlgouv", @class = "form-control", required = "", @onchange = "javascript:getDeleg(this.value);" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
+                                <div class="col-lg-6">
+                                    @Html.DropDownListFor(model => model.idDelegation, new SelectList(listDelegation), "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "" })
+                                </div>
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Adresse </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Rue, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.Rue, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+
+
+                            <div style="text-align: center;">
+                                <input type="submit" value="Valider" class="btn btn-default" />
+
+                                <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "getDepots")</button>
+
+                            </div>
+                        </div>
+
+
+
+                    }
+
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("Liste des dépôts", "getDepots")
+                </div>
+
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>

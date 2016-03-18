@@ -30,7 +30,7 @@ namespace WebApp.Controllers
         private IVehiculeService vs = new VehiculeService();
         private IBureauService br = new BureauService();
 
-
+        public bool etat = false;
         // GET: Gestion
         public ActionResult Index()
         {
@@ -42,6 +42,7 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             GetOrganisation();
+            GetDelegation();
             var bat = batiment.GetBatiments();
             return View(bat);
         }
@@ -63,19 +64,19 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                //try
-                //{
+                try
+                {
                     batiment.CreateBatiment(reg);
                     batiment.SaveBatiment();
 
                     return RedirectToAction("GetBatiment");
             }
-            //    catch (Exception ex)
-            //    {
-            //        LogThread.WriteLine(ex.Message);
-            //        return RedirectToAction("Index", "Error");
-            //    }
-            //}
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
             else
 
             {
@@ -442,7 +443,6 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                /*var hh = db.FindRegByID(reg.idRegion)*/;
                 try
                 {
                     BissInventaireEntities.Instance.Region.Add(reg);
@@ -719,6 +719,7 @@ namespace WebApp.Controllers
 
 
 
+
         //Organisation
 
         private IOrganisationService db3 = new OrganisationService();
@@ -735,6 +736,25 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             var organisation = db3.GetOrganisation(); return View(organisation);
+        }
+
+        public byte[] GetImageFromDataBase(int Id)
+        {
+            var q = from temp in BissInventaireEntities.Instance.Organisation where temp.idOrganisation == Id select temp.Logo;
+            byte[] cover = q.First();
+            return cover;
+        }
+        public ActionResult RetrieveImage(int id)
+        {
+            byte[] cover = GetImageFromDataBase(id);
+            if (cover != null)
+            {
+                return File(cover, "image/jpg");
+            }
+            else
+            {
+                return null;
+            }
         }
 
         // GET: Gestion/Details/5
@@ -759,12 +779,15 @@ namespace WebApp.Controllers
 
         // POST: Gestion/Create
         [HttpPost]
-        public ActionResult CreateOrganisation(Organisation org)
+        public ActionResult CreateOrganisation(Organisation org, FormCollection collection)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
+                    HttpPostedFileBase file1 = Request.Files["Image"];
+                    org.Logo = ConvertToBytes(file1);
+                    var logo = org.Logo;
                     BissInventaireEntities.Instance.Organisation.Add(org);
                     BissInventaireEntities.Instance.SaveChanges();
                     return RedirectToAction("GetOrganisation");
@@ -783,6 +806,15 @@ namespace WebApp.Controllers
                 ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 return View();
             }
+        }
+
+
+        public byte[] ConvertToBytes(HttpPostedFileBase logo)
+        {
+            byte[] imageBytes = null;
+            BinaryReader reader = new BinaryReader(logo.InputStream);
+            imageBytes = reader.ReadBytes((int)logo.ContentLength);
+            return imageBytes;
         }
         public ActionResult EditOrganisation(int id)
         {
@@ -966,6 +998,9 @@ namespace WebApp.Controllers
             return View();
         }
 
+
+        //employer user = BissInventaireEntities.Instance.employers.FirstOrDefault(u => u.identifiant.ToLower() == e.identifiant.ToLower());
+        //    if (user == null) {
         // POST: Gestion/Create
         [HttpPost]
         public ActionResult CreateEtage(Etage etg)
@@ -974,9 +1009,17 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Etage.Add(etg);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetEtage");
+                   
+                    if(etat)
+                    {
+                        BissInventaireEntities.Instance.Etage.Add(etg);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetEtage");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -995,6 +1038,19 @@ namespace WebApp.Controllers
                 ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
                 return View();
             }
+        }
+        public string OpenPopup()
+        {
+            Etage etg = new Etage();
+            var user = BissInventaireEntities.Instance.Etage.FirstOrDefault(u => u.code.ToLower() == etg.code.ToLower());
+            if (user == null)
+            {
+                etat = true;
+            }
+            
+            return "<h1> Ce code existe déja !!</h1>";
+            
+           
         }
         public ActionResult EditEtage(int id)
         {
@@ -1645,8 +1701,30 @@ namespace WebApp.Controllers
             SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
         }
-        // POST: TPE/Create
+        [HttpPost]
+        public ActionResult findDelegationByGouvernorat(int stateid)
+       {
+            IDelegationService bat = new DelegationService();
+            List<Delegation> objcity = new List<Delegation>();
 
+            objcity = bat.FindDelegationtByGouvernerat(stateid).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "idDelegation", "libelle", 0);
+            return Json(obgcity);
+        }
+        public ActionResult GenerateCAbatiment()
+        {
+            IBatimentService kk55 = new BatimentService();
+
+            double maxj = kk55.FindMaxIDBat();
+            maxj = maxj + 1;
+            double jj = 4504010000000;
+
+            double kk = jj + maxj;
+
+
+            return Json(kk);
+        }
 
     }
 

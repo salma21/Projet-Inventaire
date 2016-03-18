@@ -28,6 +28,15 @@ namespace Data.Repositories
                         select p);
             return pers.FirstOrDefault();
         }
+        public int FindMaxIDBien()
+        {
+
+            var pers = (from p in DataContext.Bien
+
+                        select p.Id_bien).Max();
+
+            return pers;
+        }
     }
 
 
@@ -36,5 +45,6 @@ namespace Data.Repositories
 
         void UpdateBienDetached(Bien e);
         Bien FindBienByID(int id);
+        int FindMaxIDBien();
     }
 }

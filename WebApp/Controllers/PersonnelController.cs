@@ -115,6 +115,32 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+
+
+        [HttpPost]
+        public ActionResult getSeviceByDirection(int stateId)
+        {
+
+            List<ServiceD> objcity = new List<ServiceD>();
+
+            objcity = db.findServiceByDirection(stateId).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "Id_service", "Libelle", 0);
+            return Json(obgcity);
+        }
+
+        [HttpPost]
+        public ActionResult getPersByService(int stateId)
+        {
+
+            List<Personnel> objcity = new List<Personnel>();
+
+            objcity = db.findPersByService(stateId).ToList();
+
+            SelectList obgcity = new SelectList(objcity, "id_pers", "Matricule", 0);
+            return Json(obgcity);
+        }
+
         // GET: Personnel/Edit/5
         public ActionResult Edit(int id)
         {

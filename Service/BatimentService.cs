@@ -54,7 +54,11 @@ namespace Service
         }
 
 
-
+        public int FindMaxIDBat()
+        {
+            int i = utOfWork.BatimentRepository.FindMaxIDBat();
+            return i;
+        }
         public void SaveBatiment()
         {
             utOfWork.Commit();
@@ -75,7 +79,7 @@ namespace Service
         Batiment GetBatiment(int id);
         void CreateBatiment(Batiment Dept);
         void DeleteBatiment(int id);
-
+        int FindMaxIDBat();
         void UpdateBatimentDetached(Batiment e);
 
         IEnumerable<Batiment> FindBatimentByDelgation(int id);

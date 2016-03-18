@@ -1,10 +1,5 @@
 ﻿@model IEnumerable<Domain.Depot>
 
-@{
-    ViewBag.Title = "getDepots";
-}
-
-
 <div class="inner">
     <!-- Start Row -->
     <div class="row">
@@ -26,9 +21,9 @@
                                 <th>Adresse</th>
                                 <th>Délégation</th>
 
-                                @*<th>Gouvernourat</th>
-                                    <th>Region</th>
-                                    <th>Pays</th>*@
+                                <th>Gouvernourat</th>
+                                <th>Region</th>
+                                <th>Pays</th>
 
                                 <th>Action</th>
                             </tr>
@@ -47,10 +42,10 @@
                                     <td class="center">@item.Rue</td>
                                     <td class="center">@item.Delegation.libelle</td>
 
-                                    @*<td class="center">@item.Gouvernorat.</td>
-                                        <td class="center">@item.Personnel.ServiceD.Libelle</td>
-                                        <td class="center">@item.etatUtilisateur</td>
-                                        <td class="center">@item.Personnel.Role.libelle</td>*@
+                                    <td class="center">@item.Delegation.Gouvernorat.libelle</td>
+                                    <td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>
+                                    <td class="center">@item.Delegation.Gouvernorat.Region.Pays.libelle</td>
+                                       
 
                                     <td>
                                         @if (@Session["Role"].ToString() == "ADMIN")
@@ -65,20 +60,20 @@
 
 
 
-                }
-                </tbody>
-                </table>
-                <br /><p>
-                    @if (@Session["Role"].ToString() == "ADMIN")
-                    {
-                        @Html.ActionLink("Ajouter un nouveau dépôt", "Createdepot")
-                    }
-                </p>
+                            }
+                        </tbody>
+                    </table>
+                    <br /><p>
+                        @if (@Session["Role"].ToString() == "ADMIN")
+                        {
+                            @Html.ActionLink("Ajouter un nouveau dépôt", "Createdepot")
+                        }
+                    </p>
 
+                </div>
             </div>
         </div>
+
+
     </div>
-
-
-</div>
 </div>
