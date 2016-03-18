@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Service
 {
- public  class DepotService : IDepotService
+    public class DepotService : IDepotService
     {
         static DatabaseFactory dbFactory = new DatabaseFactory();
         IUnitOfWork utOfWork = new UnitOfWork(dbFactory);
@@ -34,7 +34,7 @@ namespace Service
 
 
         }
-       
+
 
         public IEnumerable<Depot> findDepotByDelegation(int id)
         {

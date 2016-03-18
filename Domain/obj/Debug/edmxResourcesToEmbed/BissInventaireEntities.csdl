@@ -348,7 +348,7 @@
     <Property Name="idOrganisation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-    <Property Name="Logo" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -1007,7 +1007,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissTestEntities1" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BissTestEntities4" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Achat" EntityType="Self.Achat" />
     <EntitySet Name="Batiment" EntityType="Self.Batiment" />
     <EntitySet Name="Bien" EntityType="Self.Bien" />

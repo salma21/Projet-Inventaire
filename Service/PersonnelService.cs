@@ -90,6 +90,18 @@ namespace Service
             return Dept;
 
         }
+        public IEnumerable<ServiceD> findServiceByDirection(int id)
+        {
+            var Dep = utOfWork.PersonnelRepository.findServiceByDirection(id);
+            return Dep;
+
+        }
+        public IEnumerable<Personnel> findPersByService(int id)
+        {
+            var Dep = utOfWork.PersonnelRepository.findPersByService(id);
+            return Dep;
+
+        }
     }
 
 }
@@ -110,6 +122,8 @@ public interface IPersonnelService
 
 
     void SavePersonnel();
+    IEnumerable<ServiceD> findServiceByDirection(int id);
+    IEnumerable<Personnel> findPersByService(int id);
 
 
 }

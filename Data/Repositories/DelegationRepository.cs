@@ -81,6 +81,8 @@ namespace Data.Repositories
             return pers;
         }
 
+      
+
         public IEnumerable<Batiment> FindBatimentByDelegation(int id)
         {
             var pers = (from p in DataContext.Batiment
@@ -115,6 +117,7 @@ namespace Data.Repositories
 
 
         IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle);
+       
     }
 }
 

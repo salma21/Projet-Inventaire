@@ -56,3 +56,7 @@ C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\Log\bin\
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb
+C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\bin\Debug\Log.dll
+C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
+C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
+C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb

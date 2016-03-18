@@ -192,7 +192,7 @@ namespace WebApp.Controllers
         //[HttpPost]
         //public ActionResult FindPersByBatiment(int Persid)
         //{
-            
+
         //    List<Personnel> objcity = new List<Personnel>();
         //    objcity = db1.FindPersByBatiment(Persid).ToList();
 
@@ -225,8 +225,8 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
 
-                //try
-                //{
+                try
+                {
                     HttpPostedFileBase file = Request.Files["ImageData"];
                     bien.Photo = ConvertToBytes(file);
                     var photo = bien.Photo;
@@ -235,12 +235,12 @@ namespace WebApp.Controllers
 
                     return RedirectToAction("RapportBien");
 
-                //}
-                //catch (Exception ex)
-                //{
-                //    LogThread.WriteLine(ex.Message);
-                //    return RedirectToAction("Index", "Error");
-                //}
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
             else
 
@@ -499,8 +499,9 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
+            ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
             return View();
         }
 
@@ -512,12 +513,14 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    
-                   
+
+
                     user.etatUtilisateur = true;
-                    db1.CreateUtilisateurs(user);
-                    db1.SaveEmploye();
-                    
+                    //db1.CreateUtilisateurs(user);
+                    //db1.SaveEmploye();
+                    BissInventaireEntities.Instance.Utilisateur.Add(user);
+                    BissInventaireEntities.Instance.SaveChanges();
+
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();
                     tr.Dates = DateTime.Now;
@@ -530,45 +533,46 @@ namespace WebApp.Controllers
                     return RedirectToAction("GetUsers");
                 }
                 catch (DbEntityValidationException r)
+            {
+
+
+                foreach (var eve in r.EntityValidationErrors)
                 {
-
-
-                    foreach (var eve in r.EntityValidationErrors)
+                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                    foreach (var ve in eve.ValidationErrors)
                     {
-                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                        LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
-                            eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
-                        foreach (var ve in eve.ValidationErrors)
-                        {
-                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                                ve.PropertyName, ve.ErrorMessage);
-                            LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
-                                ve.PropertyName + " " + ve.ErrorMessage);
-                            ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                            ve.PropertyName, ve.ErrorMessage);
+                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                            ve.PropertyName + " " + ve.ErrorMessage);
+                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
 
 
-                        }
                     }
+                }
 
-                    return RedirectToAction("Index", "Error");
-                }
-                catch (SqlException sq)
-                {
-                    LogThread.WriteLine(sq.Message);
-                    return RedirectToAction("Index", "Error");
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
+                return RedirectToAction("Index", "Error");
             }
+            //catch (SqlException sq)
+            //{
+            //    LogThread.WriteLine(sq.Message);
+            //    return RedirectToAction("Index", "Error");
+            //}
+            //catch (Exception ex)
+            //{
+            //    LogThread.WriteLine(ex.Message);
+            //    return RedirectToAction("Index", "Error");
+            //}
+        }
             else
 
             {
-                ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id", "Matricule");
+                ViewData["personel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
                 ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
                 return View();
             }
         }
@@ -718,5 +722,96 @@ namespace WebApp.Controllers
             SelectList obgcity = new SelectList(objcity, "Libelle", "Libelle", 0);
             return Json(obgcity);
         }
+
+
+        public ActionResult CreateDepot()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            return View();
+        }
+        // POST: Admin/Create
+        [HttpPost]
+        public ActionResult CreateDepot(Depot dep, FormCollection collection)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            if (ModelState.IsValid)
+            {
+
+                depo.createDepot(dep);
+                depo.SaveDepot();
+
+                return RedirectToAction("getDepots");
+
+            }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "libelle", "libelle");
+                ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+
+                return View();
+            }
+        }
+        public ActionResult EditDepot(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var dep = depo.findDepotById(id);
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+
+            return View(dep);
+
+        }
+
+        // POST: Bureau/Edit/5
+        [HttpPost]
+        public ActionResult EditDepot(Depot dep, FormCollection collection)
+        {
+
+            if (ModelState.IsValid)
+            {
+
+                depo.UpdateDepotDetached(dep);
+                depo.SaveDepot();
+
+                return RedirectToAction("getDepots");
+
+            }
+            else
+
+            {
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+
+                return View();
+            }
+        }
+        public ActionResult getDepots()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            var bure = depo.getDepots();
+            return View(bure);
+        }
+
+
     }
 }

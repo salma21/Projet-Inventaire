@@ -102,7 +102,6 @@
     <Compile Include="DirectionEtage.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>
-    <Compile Include="ErrorMessage.cs" />
     <Compile Include="Etage.cs">
       <DependentUpon>BissInventaireEntities.tt</DependentUpon>
     </Compile>

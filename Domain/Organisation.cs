@@ -23,7 +23,7 @@ namespace Domain
         public int idOrganisation { get; set; }
         public string libelle { get; set; }
         public string description { get; set; }
-        public string Logo { get; set; }
+        public byte[] Logo { get; set; }
         public string tel { get; set; }
         public string fax { get; set; }
         public string adresse { get; set; }

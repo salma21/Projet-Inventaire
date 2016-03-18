@@ -4,7 +4,7 @@
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Ajout Inventaire
+              Modification Inventaire
             </div>
             <div class="panel-body">
 
@@ -45,13 +45,12 @@
                                 </div>
                             </div>
 
+                            <div style="text-align: center;">
 
-                        
-                            <div class="form-group">
-                                <div class="col-md-offset-2 col-md-10">
-                                    <input type="submit" value="Save" class="btn btn-default" />
-                                    <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetInventaire")</button>
-                                </div>
+                              
+                                        <input type="submit" value="Save" class="btn btn-default" />
+                                        <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetInventaire")</button>
+                                    
                             </div>
                         </div>
                     }
@@ -60,7 +59,7 @@
                 </div>
 
                 <div>
-                    @Html.ActionLink("List", "GetInventaire")
+                    @Html.ActionLink("Liste des inventaires", "GetInventaire")
                 </div>
 
             </div>

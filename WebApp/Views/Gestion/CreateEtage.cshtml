@@ -1,23 +1,47 @@
 ﻿@model Domain.Etage
-<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
-
 
 @{
 
-
     List<string> listbatiment = new List<string>();
-    List<string> listetage = new List<string>();
+    List<string> listdeleg = new List<string>();
 }
+
+<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script language="javascript" type="text/javascript">
-    function GetCity(_stateId) {
+    function getDeleg(_stateId) {
         var procemessage = "<option value='0'>Encours...</option>";
-        $("#ddlcity").html(procemessage).show();
-        var url = "/Gestion/GetBatiemntByDelegation/";
+        $("#ddldeleg").html(procemessage).show();
+        var url = "/Gestion/findDelegationByGouvernorat/";
 
         $.ajax({
             url: url,
             data: { stateid: _stateId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddldeleg").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+<script language="javascript" type="text/javascript">
+    function GetCity(_delegId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlcity").html(procemessage).show();
+        var url = "/Gestion/getBatimentByDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
             cache: false,
             type: "POST",
             success: function (data) {
@@ -34,6 +58,22 @@
 
     }
 </script>
+<script type="text/javascript">
+
+    ShowPopup = function () {
+        window.alert('/Gestion/OpenPopup', "PopupWindow", 'width=300px,height=300px,center');
+    }
+
+</script>
+@*function myFunction() {
+    var x;
+    if (confirm("Press a button!") == true) {
+        x = "You pressed OK!";
+    } else {
+        x = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = x;
+}*@
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -55,24 +95,24 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-                            <div class="form-group">
+                            @*<div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Batiment.idGouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.DropDownList( (SelectList)ViewData["gouvernorat"], "--Choisir--", new { @class = "form-control", required = "" , @onchange = "javascript:getDeleg(this.value);" })
                                 </div>
-                            </div>
+                            </div>*@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Ville</label>
                                 <div class="col-lg-6">
-                                       @Html.DropDownListFor(m => m.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
-
+                                       @Html.DropDownListFor(m => m.idDelegation , (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "True", @onchange = "javascript:GetCity(this.value);" })
+                                    
 
                                 </div>
                             </div>
                                 <div class="form-group">
                                     <label class="control-label col-lg-4">Batiment</label>
                                     <div class="col-lg-6">
-                                         @Html.DropDownListFor(m => m.idBatiment, new SelectList(listbatiment), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True" })
+                                         @Html.DropDownListFor(m => m.idBatiment, new SelectList(listbatiment), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True"  })
 
 
                                     </div>
@@ -90,8 +130,9 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Code étage </label>
                                 <div class="col-lg-6">
-                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new {@id= "btnpopu", @class = "form-control" , @onchange = "ShowPopup();" } })
                                     @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
+                                    @*<input type="button" id="btnpopu" value="Open Modeless popup" onclick="ShowPopup();" />*@
                                 </div>
                             </div>
 
