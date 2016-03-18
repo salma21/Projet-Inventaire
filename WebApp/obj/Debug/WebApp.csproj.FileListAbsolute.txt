@@ -1354,7 +1354,6 @@ C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.G
 C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
 C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\version 08-03-2015 nesrine\ATB_SOLUTIONS\WebApp\bin\Data.pdb
-C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\ApplicationInsights.config
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\csc.exe
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -1442,5 +1441,6 @@ C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\b
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\bin\Data.pdb
+C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.csprojResolveAssemblyReference.cache
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.dll
 C:\Users\nesrine.BISS\Desktop\Version 08-03-2016 version2\ATB_SOLUTIONS\WebApp\obj\Debug\WebApp.pdb

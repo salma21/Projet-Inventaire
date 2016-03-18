@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BissInventaireModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="BissTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Achat">
     <Key>
       <PropertyRef Name="Id_achat" />
@@ -11,8 +11,9 @@
     <Property Name="Num_facture" Type="int" />
     <Property Name="Num_commande" Type="int" />
     <Property Name="Date_d_achat" Type="date" />
-    <Property Name="Prix_d_achat" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Prix_d_achat" Type="float" />
     <Property Name="Num_livraison" Type="int" />
+    <Property Name="code_a_barre" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Batiment">
     <Key>
@@ -27,6 +28,7 @@
     <Property Name="idBatiment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="code" Type="varchar" MaxLength="254" />
     <Property Name="description" Type="varchar" MaxLength="254" />
+    <Property Name="code_a_barre" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Bien">
     <Key>
@@ -43,16 +45,24 @@
     <Property Name="Id_service" Type="int" />
     <Property Name="id" Type="int" />
     <Property Name="Designation" Type="varchar" MaxLength="254" />
-    <Property Name="Code" Type="int" />
-    <Property Name="Num_Serie" Type="int" />
+    <Property Name="Num_Modele" Type="varchar" MaxLength="50" />
+    <Property Name="Num_Serie" Type="varchar" MaxLength="50" />
     <Property Name="Etat" Type="varchar" MaxLength="254" />
-    <Property Name="Valeur" Type="varchar" MaxLength="254" />
+    <Property Name="Quantite" Type="varchar" MaxLength="254" />
     <Property Name="Mode" Type="varchar" MaxLength="254" />
     <Property Name="Description" Type="varchar" MaxLength="254" />
     <Property Name="Detail" Type="varchar" MaxLength="254" />
-    <Property Name="Code_a_barre" Type="int" />
+    <Property Name="Code_a_barre" Type="varchar" MaxLength="50" />
     <Property Name="Emploi_principal" Type="varchar" MaxLength="254" />
     <Property Name="Date_d_installation" Type="date" />
+    <Property Name="Sous_categorie" Type="varchar" MaxLength="254" />
+    <Property Name="Modele" Type="varchar" MaxLength="254" />
+    <Property Name="Sous_Modele" Type="varchar" MaxLength="254" />
+    <Property Name="Marque" Type="varchar" MaxLength="254" />
+    <Property Name="Id_bureau" Type="int" />
+    <Property Name="Photo" Type="image" />
+    <Property Name="Code_immobilisation" Type="varchar" MaxLength="50" />
+    <Property Name="Thumbnail" Type="image" />
   </EntityType>
   <EntityType Name="Bureau">
     <Key>
@@ -69,8 +79,8 @@
     <Property Name="Id_bureau" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Id_service" Type="int" />
     <Property Name="id" Type="int" />
-    <Property Name="Code_a_barre" Type="varchar" MaxLength="254" />
     <Property Name="Description" Type="varchar" MaxLength="254" />
+    <Property Name="Code_a_barre" Type="varchar" MaxLength="254" />
   </EntityType>
   <EntityType Name="Categorie">
     <Key>
@@ -91,8 +101,9 @@
     <Property Name="Num" Type="int" />
     <Property Name="Date_debut" Type="date" />
     <Property Name="Date_fin" Type="date" />
-    <Property Name="Cout" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Cout" Type="float" />
     <Property Name="Sous_Type_Contrat" Type="varchar" MaxLength="254" />
+    <Property Name="code_a_barre" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="ContratBien">
     <Key>
@@ -162,6 +173,7 @@
     <Property Name="Id_etage" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="code" Type="varchar" MaxLength="254" />
     <Property Name="description" Type="varchar" MaxLength="254" />
+    <Property Name="code_a_barre" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Fournisseur">
     <Key>
@@ -286,11 +298,17 @@
     <Property Name="idOrganisation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="libelle" Type="varchar" MaxLength="254" />
     <Property Name="description" Type="varchar" MaxLength="254" />
-    <Property Name="tel" Type="nvarchar" MaxLength="50" />
-    <Property Name="logo" Type="image" />
-    <Property Name="fax" Type="nvarchar" MaxLength="50" />
-    <Property Name="adresse" Type="nvarchar" MaxLength="50" />
-    <Property Name="Matricule_fiscale" Type="nvarchar" MaxLength="50" />
+    <Property Name="Logo" Type="image" />
+    <Property Name="tel" Type="varchar" MaxLength="50" />
+    <Property Name="fax" Type="varchar" MaxLength="50" />
+    <Property Name="adresse" Type="varchar" MaxLength="50" />
+    <Property Name="Matricule_fiscale" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Registre_de_commerce" Type="varchar" MaxLength="50" />
+    <Property Name="Site_web" Type="varchar" MaxLength="50" />
+    <Property Name="ville" Type="varchar" MaxLength="50" />
+    <Property Name="pays" Type="varchar" MaxLength="50" />
+    <Property Name="gouvernorat" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Parc_auto">
     <Key>
@@ -331,7 +349,9 @@
       <PropertyRef Name="id" />
       <PropertyRef Name="Id_Vehicule" />
     </Key>
+    <Property Name="Id_service" Type="int" />
     <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="Id_parc" Type="int" />
     <Property Name="Id_Vehicule" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Region">
@@ -421,7 +441,7 @@
     <Property Name="Modele" Type="varchar" MaxLength="254" />
     <Property Name="Etat" Type="varchar" MaxLength="254" />
     <Property Name="Num_chassis" Type="varchar" MaxLength="254" />
-    <Property Name="Prix_d_achat" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Prix_d_achat" Type="float" Nullable="false" />
   </EntityType>
   <Association Name="FK_ACHAT_ASSOCIATI_FOURNISS">
     <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
@@ -915,7 +935,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissInventaireModelStoreContainer">
+  <EntityContainer Name="BissTestModelStoreContainer">
     <EntitySet Name="Achat" EntityType="Self.Achat" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Batiment" EntityType="Self.Batiment" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Bien" EntityType="Self.Bien" Schema="dbo" store:Type="Tables" />

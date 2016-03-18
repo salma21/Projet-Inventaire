@@ -13,9 +13,16 @@ namespace Data.Repositories
   public  class VehiculeRepository : RepositoryBase<Vehicule>, IVehiculeRepository
     {
         public VehiculeRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+        //public void UpdateVehiculeDetached(Vehicule e)
+        //{
+        //    Vehicule existing = this.DataContext.Vehicule.Find(e.Id_Vehicule);
+        //    ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
+        //    this.DataContext.Entry(e).State = EntityState.Modified;
+        //}
+
         public void UpdateVehiculeDetached(Vehicule e)
         {
-            Vehicule existing = this.DataContext.Vehicule.Find(e.Id_Vehicule);
+            Vehicule existing = findVehiculeByID(e.Id_Vehicule);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
@@ -50,8 +57,8 @@ namespace Data.Repositories
 
             var pers = (from p in this.DataContext.Vehicule
                         where p.Id_Vehicule == id
-                        select p).ToList<Vehicule>();
-            return pers.FirstOrDefault();
+                        select p).FirstOrDefault();
+            return pers;
 
 
         }

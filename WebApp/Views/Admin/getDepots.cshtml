@@ -1,0 +1,84 @@
+﻿@model IEnumerable<Domain.Depot>
+
+@{
+    ViewBag.Title = "getDepots";
+}
+
+
+<div class="inner">
+    <!-- Start Row -->
+    <div class="row">
+        <!-- Start Panel -->
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-title">
+                    Liste des dépôts
+
+                </div>
+                <div class="panel-body table-responsive">
+                    <table id="example0" class="table display">
+                        <thead>
+                            <tr>
+
+                                <th>Désignation</th>
+
+
+                                <th>Adresse</th>
+                                <th>Délégation</th>
+
+                                @*<th>Gouvernourat</th>
+                                    <th>Region</th>
+                                    <th>Pays</th>*@
+
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+
+
+                        <tbody>
+                            @foreach (var item in Model)
+            {
+                                <tr>
+
+
+                                    <td class="center">@item.libelle</td>
+
+                                    <td class="center">@item.Rue</td>
+                                    <td class="center">@item.Delegation.libelle</td>
+
+                                    @*<td class="center">@item.Gouvernorat.</td>
+                                        <td class="center">@item.Personnel.ServiceD.Libelle</td>
+                                        <td class="center">@item.etatUtilisateur</td>
+                                        <td class="center">@item.Personnel.Role.libelle</td>*@
+
+                                    <td>
+                                        @if (@Session["Role"].ToString() == "ADMIN")
+                                        {
+                                            <a href="@Url.Action("EditDepot", new { id = item.IdDepot })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+
+                                        }
+
+                                    </td>
+
+                                </tr>
+
+
+
+                }
+                </tbody>
+                </table>
+                <br /><p>
+                    @if (@Session["Role"].ToString() == "ADMIN")
+                    {
+                        @Html.ActionLink("Ajouter un nouveau dépôt", "Createdepot")
+                    }
+                </p>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+</div>

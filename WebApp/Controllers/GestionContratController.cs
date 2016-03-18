@@ -78,8 +78,8 @@ namespace WebApp.Controllers
                 //ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
                 //ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 //ViewData["gouvers"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
-                //ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
-                
+                ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
+
                 return View();
             }
         }
@@ -105,11 +105,11 @@ namespace WebApp.Controllers
 
             if (ModelState.IsValid)
             {
-               
-                DateTime jj = Convert.ToDateTime(cont.Date_debut);
-                DateTime df = Convert.ToDateTime(cont.Date_fin);
-                String hh = jj.ToString("dd-MM-yyyy");
-                String kk = df.ToString("dd-MM-yyyy");
+
+                //DateTime jj = Convert.ToDateTime(cont.Date_debut);
+                //DateTime df = Convert.ToDateTime(cont.Date_fin);
+                //String hh = jj.ToString("dd-MM-yyyy");
+                //String kk = df.ToString("dd-MM-yyyy");
                 var soc = db1.FindFournisseurByID(cont.Id_fournisseur);
                 cont.idDelegation = soc.idDelegation;
               
@@ -125,6 +125,7 @@ namespace WebApp.Controllers
             else
 
             {
+                ViewData["fournisseurs"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Nom");
                 var errors = ModelState.SelectMany(x => x.Value.Errors.Select(z => z.Exception));
                 var errors1 = ModelState.Values.SelectMany(v => v.Errors);
                 var errors2 = ModelState.Where(x => x.Value.Errors.Count > 0).Select(x => new { x.Key, x.Value.Errors }).ToArray();

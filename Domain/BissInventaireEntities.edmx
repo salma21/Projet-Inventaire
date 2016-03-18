@@ -303,7 +303,7 @@
           <Property Name="idOrganisation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="libelle" Type="varchar" MaxLength="254" />
           <Property Name="description" Type="varchar" MaxLength="254" />
-          <Property Name="Logo" Type="varchar" MaxLength="254" />
+          <Property Name="Logo" Type="image" />
           <Property Name="tel" Type="varchar" MaxLength="50" />
           <Property Name="fax" Type="varchar" MaxLength="50" />
           <Property Name="adresse" Type="varchar" MaxLength="50" />
@@ -1474,7 +1474,7 @@
           <Property Name="idOrganisation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-          <Property Name="Logo" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
@@ -2133,7 +2133,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissTestEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissTestEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Batiment" EntityType="Self.Batiment" />
           <EntitySet Name="Bien" EntityType="Self.Bien" />
@@ -2319,7 +2319,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissTestModelStoreContainer" CdmEntityContainer="BissTestEntities1">
+        <EntityContainerMapping StorageEntityContainer="BissTestModelStoreContainer" CdmEntityContainer="BissTestEntities">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissTestModel.Achat">
               <MappingFragment StoreEntitySet="Achat">

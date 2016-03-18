@@ -29,12 +29,12 @@ namespace WebApp.Controllers
         private IOrganisationService orga = new OrganisationService();
         private IVehiculeService vs = new VehiculeService();
         private IBureauService br = new BureauService();
-      
+
 
         // GET: Gestion
         public ActionResult Index()
         {
-            
+
             return View();
         }
         public ActionResult GetBatiment()
@@ -63,23 +63,23 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-            {
-                batiment.CreateBatiment(reg);
-                batiment.SaveBatiment();
-              
-                return RedirectToAction("GetBatiment");
+                //try
+                //{
+                    batiment.CreateBatiment(reg);
+                    batiment.SaveBatiment();
+
+                    return RedirectToAction("GetBatiment");
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
+            //    catch (Exception ex)
+            //    {
+            //        LogThread.WriteLine(ex.Message);
+            //        return RedirectToAction("Index", "Error");
+            //    }
+            //}
             else
 
             {
-              
+
                 ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
                 ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
                 ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
@@ -90,7 +90,7 @@ namespace WebApp.Controllers
             }
         }
 
-        public ActionResult EditBatiment(int id )
+        public ActionResult EditBatiment(int id)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -109,22 +109,22 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
-                try
-            {
-                var bat = batiment.FindBatimentByID(reg.idBatiment);
-            //var bat2 = BissInventaireEntities.Instance.Batiment.Find(reg.idBatiment);
-            batiment.UpdateBatimentDetached(reg);
-                batiment.SaveBatiment();
+                //try
+                //{
+                    var bat = batiment.FindBatimentByID(reg.idBatiment);
+                    //var bat2 = BissInventaireEntities.Instance.Batiment.Find(reg.idBatiment);
+                    batiment.UpdateBatimentDetached(reg);
+                    batiment.SaveBatiment();
 
-                return RedirectToAction("GetBatiment");
-        }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-    }
+                    return RedirectToAction("GetBatiment");
+                }
+            //    catch (Exception ex)
+            //    {
+            //        LogThread.WriteLine(ex.Message);
+            //        return RedirectToAction("Index", "Error");
+            //    }
 
-            }
+            //}
             else
 
             {
@@ -181,15 +181,15 @@ namespace WebApp.Controllers
 
                 return View();
             }
-            }
-        
+        }
+
 
         public ActionResult EditDirection(int id)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             var bat = BissInventaireEntities.Instance.Direction.Find(id);
-          
+
             return View(bat);
         }
 
@@ -202,22 +202,22 @@ namespace WebApp.Controllers
 
                 try
                 {
-                dir.UpdateDirectionDetached(reg);
-                dir.SaveDirection();
+                    dir.UpdateDirectionDetached(reg);
+                    dir.SaveDirection();
 
-                return RedirectToAction("GetDirection");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
+                    return RedirectToAction("GetDirection");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
 
-        }
+            }
             else
 
             {
-               return View();
+                return View();
             }
         }
         public ActionResult GetFournisseur()
@@ -235,7 +235,7 @@ namespace WebApp.Controllers
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
-           
+
             return View();
         }
 
@@ -246,18 +246,18 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                four.CreateFournisseur(reg);
-                four.SaveFournisseur();
+                {
+                    four.CreateFournisseur(reg);
+                    four.SaveFournisseur();
 
-                return RedirectToAction("GetFournisseur");
+                    return RedirectToAction("GetFournisseur");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -289,18 +289,18 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                four.UpdateFournisseurDetached(reg);
-                four.SaveFournisseur();
+                {
+                    four.UpdateFournisseurDetached(reg);
+                    four.SaveFournisseur();
 
-                return RedirectToAction("GetFournisseur");
+                    return RedirectToAction("GetFournisseur");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -340,20 +340,20 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
+                {
 
-                parc.CreateParc_auto(reg);
-                parc.SaveParc_auto();
+                    parc.CreateParc_auto(reg);
+                    parc.SaveParc_auto();
 
-                return RedirectToAction("GetParcAuto");
+                    return RedirectToAction("GetParcAuto");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-
-        }
             else
 
             {
@@ -374,7 +374,7 @@ namespace WebApp.Controllers
             { return RedirectToAction("Index", "Home"); }
             var par = parc.FindParcByID(id);
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "code");
-        
+
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
 
             return View(par);
@@ -387,20 +387,20 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
+                {
 
-                parc.UpdateParc_autoDetached(reg);
-                parc.SaveParc_auto();
+                    parc.UpdateParc_autoDetached(reg);
+                    parc.SaveParc_auto();
 
-                return RedirectToAction("GetParcAuto");
+                    return RedirectToAction("GetParcAuto");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-
-        }
             else
 
             {
@@ -421,18 +421,18 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
 
-            var region = db.GetRegionx();            return View(region);
+            var region = db.GetRegionx(); return View(region);
         }
 
         // GET: Gestion/Details/5
-       
+
 
         // GET: Gestion/Create
         public ActionResult CreateRegion()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList() ,"idPays", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             return View();
         }
 
@@ -442,18 +442,19 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                /*var hh = db.FindRegByID(reg.idRegion)*/;
                 try
-            {
-                BissInventaireEntities.Instance.Region.Add(reg);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetRegion");
+                {
+                    BissInventaireEntities.Instance.Region.Add(reg);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetRegion");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                 LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -477,17 +478,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-              db.UpdateRegionDetached(reg);
-               db.SaveRegion();
-                return RedirectToAction("GetRegion");
+                {
+                    db.UpdateRegionDetached(reg);
+                    db.SaveRegion();
+                    return RedirectToAction("GetRegion");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -500,13 +501,13 @@ namespace WebApp.Controllers
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
             var bien = BissInventaireEntities.Instance.Bien.ToList();
-          
-            
-              
-                return View(bien.ToList())
-                    ;
-            }
-        
+
+
+
+            return View(bien.ToList())
+                ;
+        }
+
 
 
 
@@ -536,7 +537,7 @@ namespace WebApp.Controllers
             return View();
         }
 
-      
+
         public ActionResult CreateGouvernorat()
         {
             if (Session["identifiant"] == null)
@@ -553,17 +554,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetGouvernorat");
+                {
+                    BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetGouvernorat");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -589,17 +590,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetGouvernorat1");
+                {
+                    BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetGouvernorat1");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -625,17 +626,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                db1.UpdateGouvernoratDetached(gouv);
-                db1.SaveGouvernorat();
-                return RedirectToAction("GetGouvernorat");
+                {
+                    db1.UpdateGouvernoratDetached(gouv);
+                    db1.SaveGouvernorat();
+                    return RedirectToAction("GetGouvernorat");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -686,7 +687,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult CreateDelegation(Delegation deleg)
         {
-          if (ModelState.IsValid)
+            if (ModelState.IsValid)
             {
 
                 try
@@ -707,7 +708,7 @@ namespace WebApp.Controllers
             else
 
             {
-              //  ViewBag.msg = "Verifier l code postal";
+                //  ViewBag.msg = "Verifier l code postal";
                 ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
                 ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
                 ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
@@ -749,9 +750,10 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "libelle", "libelle");
+            ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
             ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
-           
+
             return View();
         }
 
@@ -762,21 +764,22 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                BissInventaireEntities.Instance.Organisation.Add(org);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetOrganisation");
+                {
+                    BissInventaireEntities.Instance.Organisation.Add(org);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetOrganisation");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
-                
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["gouvernourat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
                 ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 return View();
             }
@@ -799,17 +802,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                db3.UpdateOrganisationDetached(org);
-                db3.SaveOrganisation();
-                return RedirectToAction("GetOrganisation");
+                {
+                    db3.UpdateOrganisationDetached(org);
+                    db3.SaveOrganisation();
+                    return RedirectToAction("GetOrganisation");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -861,17 +864,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                BissInventaireEntities.Instance.Pays.Add(pay);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetPays");
+                {
+                    BissInventaireEntities.Instance.Pays.Add(pay);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetPays");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -923,17 +926,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                BissInventaireEntities.Instance.Direction.Add(direction);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetDirection");
+                {
+                    BissInventaireEntities.Instance.Direction.Add(direction);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetDirection");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -970,17 +973,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                BissInventaireEntities.Instance.Etage.Add(etg);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetEtage");
+                {
+                    BissInventaireEntities.Instance.Etage.Add(etg);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetEtage");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -1015,17 +1018,17 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                etage.UpdateEtageDetached(etg);
-                etage.SaveEtage();
-                return RedirectToAction("GetEtage");
+                {
+                    etage.UpdateEtageDetached(etg);
+                    etage.SaveEtage();
+                    return RedirectToAction("GetEtage");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -1060,21 +1063,21 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                BissInventaireEntities.Instance.Categorie.Add(reg);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("Getmateriel");
+                {
+                    BissInventaireEntities.Instance.Categorie.Add(reg);
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("Getmateriel");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
-                
+
                 return View();
             }
         }
@@ -1124,7 +1127,7 @@ namespace WebApp.Controllers
             { return RedirectToAction("Index", "Home"); }
 
             ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-           
+
             ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
             ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
 
@@ -1137,19 +1140,19 @@ namespace WebApp.Controllers
         public ActionResult CreateVehicule(Vehicule veh, FormCollection collection)
         {
             //int idfournisseur = db6.FindFournisseurByContrat((int)veh.Id_contrat);
-          
+
             int idBat = db6.FindBatimentByParcAuto(veh.Id_parc);
             var ac = BissInventaireEntities.Instance.Achat.Find(veh.Id_achat);
 
             //veh.Prix_d_achat = (double)ac.Prix_d_achat;
-         
+
             veh.idBatiment = idBat;
 
             if (ModelState.IsValid)
             {
 
                 try
-            {
+                {
                     BissInventaireEntities.Instance.Vehicule.Add(veh);
                     BissInventaireEntities.Instance.SaveChanges();
                     var Emp = (Utilisateur)Session["identifiant"];
@@ -1163,17 +1166,17 @@ namespace WebApp.Controllers
                     BissInventaireEntities.Instance.SaveChanges();
                     return RedirectToAction("GetVehicule");
                 }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-        }
             else
 
             {
                 ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-                
+
                 ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
                 ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
                 return View();
@@ -1182,25 +1185,89 @@ namespace WebApp.Controllers
 
         public ActionResult EditVehicule(int id)
         {
+
+
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-
-            var vehi = Vehicule.findVehiculeByID(id);
+            var vehi = vs.findVehiculeByID(id);
 
             ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
 
             ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
             ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
-
             return View(vehi);
+            
         }
 
-        //public ActionResult EditVehicule(int id)
-        //{
-        //    if (Session["identifiant"] == null)
-        //    { return RedirectToAction("Index", "Home"); }
+        [HttpPost]
+        public ActionResult EditVehicule(Vehicule vehi)
+        {
+           
+            if (ModelState.IsValid)
+            {
+                //try
+                //{
+                    int idBat = db6.FindBatimentByParcAuto(vehi.Id_parc);
+                    var ac = BissInventaireEntities.Instance.Achat.Find(vehi.Id_achat);
 
-            
+
+
+                    vehi.idBatiment = idBat;
+                    var bat = vs.findVehiculeByID(vehi.Id_Vehicule);
+
+                    vs.UpdateVehiculeDetached(vehi);
+                    vs.SaveVehicule();
+
+                    return RedirectToAction("GetVehicule");
+                //}
+                //catch (Exception ex)
+                //{
+                //    LogThread.WriteLine(ex.Message);
+                //    return RedirectToAction("Index", "Error");
+                //}
+            }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+
+                ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+                ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+
+                return View();
+            }
+        }
+
+        //[HttpPost]
+        //public ActionResult EditVehicule(Vehicule veh)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        try
+        //        {
+        //            IVehiculeService jj = new VehiculeService();
+        //            jj.UpdateVehiculeDetached(veh);
+        //            jj.SaveVehicule();
+
+        //            return RedirectToAction("GetVehicule");
+        //        }
+        //        catch (Exception ex)
+        //        {
+        //            LogThread.WriteLine(ex.Message);
+        //            return RedirectToAction("Index", "Error");
+        //        }
+        //    }
+        //    else
+
+        //    {
+        //        ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+
+        //        ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
+        //        ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+        //        return View();
+        //    }
+        //}
 
 
         //MouvementBien
@@ -1263,9 +1330,9 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-            {
-                db8.CreateMouvementBien(mou);
-                db8.SaveMouvementBien();
+                {
+                    db8.CreateMouvementBien(mou);
+                    db8.SaveMouvementBien();
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();
                     tr.Dates = DateTime.Now;
@@ -1276,42 +1343,42 @@ namespace WebApp.Controllers
                     BissInventaireEntities.Instance.Trace.Add(tr);
                     BissInventaireEntities.Instance.SaveChanges();
                     return RedirectToAction("GetMouvementBien");
-            }
-            catch (DbEntityValidationException r)
-            {
-
-
-                foreach (var eve in r.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
-                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
-                            ve.PropertyName + " " + ve.ErrorMessage);
-                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
-
-
-                    }
                 }
+                catch (DbEntityValidationException r)
+                {
 
-                return RedirectToAction("Index", "Error");
+
+                    foreach (var eve in r.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                            eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                            LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                                ve.PropertyName + " " + ve.ErrorMessage);
+                            ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+
+
+                        }
+                    }
+
+                    return RedirectToAction("Index", "Error");
+                }
+                catch (SqlException sq)
+                {
+                    LogThread.WriteLine(sq.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (SqlException sq)
-            {
-                LogThread.WriteLine(sq.Message);
-                return RedirectToAction("Index", "Error");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -1345,6 +1412,11 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
+        //[HttpPost]
+        //public ActionResult GetBureauByEtage(int batid)
+        //{
+        //    List<Bureau> objcity = new List<Bureau>();
+        //    objcity = db8.FindBureauByEtage(burid).ToList();
 
         //    SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
         //    return Json(obgcity);
@@ -1361,7 +1433,7 @@ namespace WebApp.Controllers
         }
 
 
-        
+
 
         //MouvementVehicule
 
@@ -1374,7 +1446,7 @@ namespace WebApp.Controllers
             else {
                 return View();
             }
-            
+
         }
 
         public ActionResult GetMouvementVehicule()
@@ -1415,7 +1487,7 @@ namespace WebApp.Controllers
             ViewData["vehicule"] = new SelectList(BissInventaireEntities.Instance.Vehicule.ToList(), "Id_Vehicule", "Matricule");
             ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-          
+
             return View();
         }
 
@@ -1427,9 +1499,9 @@ namespace WebApp.Controllers
             {
 
                 try
-            {
-                db7.CreateMouvementVehicule(mouv);
-            db7.SaveMouvementVehicule();
+                {
+                    db7.CreateMouvementVehicule(mouv);
+                    db7.SaveMouvementVehicule();
 
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();
@@ -1441,42 +1513,42 @@ namespace WebApp.Controllers
                     BissInventaireEntities.Instance.Trace.Add(tr);
                     BissInventaireEntities.Instance.SaveChanges();
                     return RedirectToAction("GetMouvementVehicule");
-            }
-            catch (DbEntityValidationException r)
-            {
-               
-
-                foreach (var eve in r.EntityValidationErrors)
-                {
-                    Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
-                        eve.Entry.Entity.GetType().Name, eve.Entry.State);
-                    LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
-                        eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
-                    foreach (var ve in eve.ValidationErrors)
-                    {
-                        Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
-                            ve.PropertyName, ve.ErrorMessage);
-                        LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
-                            ve.PropertyName + " " + ve.ErrorMessage);
-                        ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
-
-
-                    }
                 }
+                catch (DbEntityValidationException r)
+                {
 
-                return RedirectToAction("Index", "Error");
+
+                    foreach (var eve in r.EntityValidationErrors)
+                    {
+                        Console.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors:",
+                            eve.Entry.Entity.GetType().Name, eve.Entry.State);
+                        LogThread.WriteLine("Entity of type \"{0}\" in state \"{1}\" has the following validation errors: " +
+                            eve.Entry.Entity.GetType().Name + " " + eve.Entry.State);
+                        foreach (var ve in eve.ValidationErrors)
+                        {
+                            Console.WriteLine("- Property: \"{0}\", Error: \"{1}\"",
+                                ve.PropertyName, ve.ErrorMessage);
+                            LogThread.WriteLine("- Property: \"{0}\", Error: \"{1}\" " +
+                                ve.PropertyName + " " + ve.ErrorMessage);
+                            ViewBag.msg2 = "Exeption:  " + ve.ErrorMessage;
+
+
+                        }
+                    }
+
+                    return RedirectToAction("Index", "Error");
+                }
+                catch (SqlException sq)
+                {
+                    LogThread.WriteLine(sq.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (SqlException sq)
-            {
-                LogThread.WriteLine(sq.Message);
-                return RedirectToAction("Index", "Error");
-            }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -1516,14 +1588,14 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
-        
+
         [HttpPost]
         public ActionResult GetRegionByPays(int stateid)
         {
             List<Region> objcity = new List<Region>();
-         
+
             objcity = db.FindRegByIDPays(stateid).ToList();
-      
+
             SelectList obgcity = new SelectList(objcity, "idRegion", "libelle", 0);
             return Json(obgcity);
         }
@@ -1533,9 +1605,9 @@ namespace WebApp.Controllers
         {
             IBatimentService bat = new BatimentService();
             List<Batiment> objcity = new List<Batiment>();
-           
+
             objcity = bat.FindBatimentByDelgation(stateid).ToList();
-         
+
             SelectList obgcity = new SelectList(objcity, "idBatiment", "description", 0);
             return Json(obgcity);
         }
@@ -1546,7 +1618,7 @@ namespace WebApp.Controllers
             List<Gouvernorat> objcity = new List<Gouvernorat>();
 
             objcity = bat.findGouverneratByLibellePays(stateid).ToList();
-      
+
             SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
         }
@@ -1570,11 +1642,11 @@ namespace WebApp.Controllers
 
             objcity = bat.findDelegationtByGouvernerat(libelle).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "idDelegation", "libelle", 0);
+            SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
         }
         // POST: TPE/Create
-      
+
 
     }
 

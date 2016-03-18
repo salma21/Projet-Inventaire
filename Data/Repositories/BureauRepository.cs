@@ -32,6 +32,17 @@ namespace Data.Repositories
         }
 
 
+        public int FindMaxID()
+        {
+
+            var pers = (from p in DataContext.Bureau
+                        
+                        select p.Id_bureau).Max();
+
+            return pers;
+        }
+
+
         public void UpdateGouvernoratDetached(Gouvernorat e)
         {
             Gouvernorat existing = this.DataContext.Gouvernorat.Find(e.idGouvernorat);
@@ -83,6 +94,7 @@ namespace Data.Repositories
         IEnumerable<Bureau> findBureauByEtage(int id);
         void UpdateGouvernoratDetached(Gouvernorat e);
         //object findBureauByEtage(int id);
+        int FindMaxID();
     }
 
 }

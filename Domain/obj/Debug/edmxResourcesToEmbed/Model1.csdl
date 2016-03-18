@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="BissInventaireModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="BissTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="Achat">
     <Key>
       <PropertyRef Name="Id_achat" />
@@ -11,8 +11,9 @@
     <Property Name="Num_facture" Type="Int32" />
     <Property Name="Num_commande" Type="Int32" />
     <Property Name="Date_d_achat" Type="DateTime" Precision="0" />
-    <Property Name="Prix_d_achat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Prix_d_achat" Type="Double" />
     <Property Name="Num_livraison" Type="Int32" />
+    <Property Name="code_a_barre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Fournisseur" Relationship="Self.FK_ACHAT_ASSOCIATI_FOURNISS" FromRole="Achat" ToRole="Fournisseur" />
     <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_ACHAT" FromRole="Achat" ToRole="Bien" />
     <NavigationProperty Name="Vehicule" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Achat" ToRole="Vehicule" />
@@ -30,6 +31,7 @@
     <Property Name="idBatiment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="code" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="code_a_barre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Delegation" Relationship="Self.FK_BATIMENT_ASSOCIATI_DELEGATI" FromRole="Batiment" ToRole="Delegation" />
     <NavigationProperty Name="Organisation" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Batiment" ToRole="Organisation" />
     <NavigationProperty Name="Etage" Relationship="Self.FK_ETAGE_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Etage" />
@@ -50,16 +52,24 @@
     <Property Name="Id_service" Type="Int32" />
     <Property Name="id" Type="Int32" />
     <Property Name="Designation" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-    <Property Name="Code" Type="Int32" />
-    <Property Name="Num_Serie" Type="Int32" />
+    <Property Name="Num_Modele" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Num_Serie" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Etat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-    <Property Name="Valeur" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Quantite" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Mode" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Detail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-    <Property Name="Code_a_barre" Type="Int32" />
+    <Property Name="Code_a_barre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Emploi_principal" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Date_d_installation" Type="DateTime" Precision="0" />
+    <Property Name="Sous_categorie" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Modele" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Sous_Modele" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Marque" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Id_bureau" Type="Int32" />
+    <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Code_immobilisation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
     <NavigationProperty Name="Achat" Relationship="Self.FK_BIEN_ASSOCIATI_ACHAT" FromRole="Bien" ToRole="Achat" />
     <NavigationProperty Name="Categorie" Relationship="Self.FK_BIEN_ASSOCIATI_CATEGORI" FromRole="Bien" ToRole="Categorie" />
     <NavigationProperty Name="Depot" Relationship="Self.FK_BIEN_ASSOCIATI_DEPOT" FromRole="Bien" ToRole="Depot" />
@@ -83,8 +93,8 @@
     <Property Name="Id_bureau" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Id_service" Type="Int32" />
     <Property Name="id" Type="Int32" />
-    <Property Name="Code_a_barre" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="Code_a_barre" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Etage" Relationship="Self.FK_BUREAU_ASSOCIATI_ETAGE" FromRole="Bureau" ToRole="Etage" />
     <NavigationProperty Name="Personnel" Relationship="Self.FK_BUREAU_ASSOCIATI_PERSONNE" FromRole="Bureau" ToRole="Personnel" />
   </EntityType>
@@ -109,8 +119,9 @@
     <Property Name="Num" Type="Int32" />
     <Property Name="Date_debut" Type="DateTime" Precision="0" />
     <Property Name="Date_fin" Type="DateTime" Precision="0" />
-    <Property Name="Cout" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Cout" Type="Double" />
     <Property Name="Sous_Type_Contrat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="code_a_barre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Fournisseur" Relationship="Self.FK_CONTRAT_ASSOCIATI_FOURNISS" FromRole="Contrat" ToRole="Fournisseur" />
     <NavigationProperty Name="ContratBien" Relationship="Self.FK_CONTRATB_ASSOCIATI_CONTRAT" FromRole="Contrat" ToRole="ContratBien" />
     <NavigationProperty Name="ContratVehicule" Relationship="Self.FK_CONTRATV_ASSOCIATI_CONTRAT" FromRole="Contrat" ToRole="ContratVehicule" />
@@ -194,6 +205,7 @@
     <Property Name="Id_etage" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="code" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+    <Property Name="code_a_barre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Batiment" Relationship="Self.FK_ETAGE_ASSOCIATI_BATIMENT" FromRole="Etage" ToRole="Batiment" />
     <NavigationProperty Name="Bien" Relationship="Self.FK_BIEN_ASSOCIATI_ETAGE" FromRole="Etage" ToRole="Bien" />
     <NavigationProperty Name="Bureau" Relationship="Self.FK_BUREAU_ASSOCIATI_ETAGE" FromRole="Etage" ToRole="Bureau" />
@@ -336,11 +348,17 @@
     <Property Name="idOrganisation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="logo" Type="Binary" MaxLength="Max" FixedLength="false" />
-    <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="Matricule_fiscale" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Logo" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="fax" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="adresse" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Matricule_fiscale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Registre_de_commerce" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Site_web" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="pays" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="gouvernorat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Batiment" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Organisation" ToRole="Batiment" />
   </EntityType>
   <EntityType Name="Parc_auto">
@@ -390,7 +408,9 @@
       <PropertyRef Name="id" />
       <PropertyRef Name="Id_Vehicule" />
     </Key>
+    <Property Name="Id_service" Type="Int32" />
     <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="Id_parc" Type="Int32" />
     <Property Name="Id_Vehicule" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Region">
@@ -490,7 +510,7 @@
     <Property Name="Modele" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Etat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Num_chassis" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
-    <Property Name="Prix_d_achat" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Prix_d_achat" Type="Double" Nullable="false" />
     <NavigationProperty Name="Achat" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Vehicule" ToRole="Achat" />
     <NavigationProperty Name="MouvementVehicule" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE" FromRole="Vehicule" ToRole="MouvementVehicule" />
     <NavigationProperty Name="Parc_auto" Relationship="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT" FromRole="Vehicule" ToRole="Parc_auto" />
@@ -987,7 +1007,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissInventaireEntities3" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BissTestEntities6" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Achat" EntityType="Self.Achat" />
     <EntitySet Name="Batiment" EntityType="Self.Batiment" />
     <EntitySet Name="Bien" EntityType="Self.Bien" />

@@ -1,0 +1,90 @@
+﻿@model Domain.Utilisateur
+
+@{
+
+    List<string> listPers = new List<string>();
+
+}
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script language="javascript" type="text/javascript">
+
+
+
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/Admin/GenerateCA/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+       
+
+              selectElmt.value = data
+              
+               
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
+</script>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Ajout Utilisateur
+            </div>
+            <div class="panel-body">
+
+
+
+                <div class="panel panel-default">
+
+                    @using (@Html.BeginForm("CreateUsers", "Admin", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                  
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Login </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.login, new { @id = "tt", @class = "form-control", required = "" , @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.login, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div style="text-align: center;">
+                           
+                            <input type="button" value="Valider" onclick="GetBat()" />
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetUsers")</button>
+
+                        </div>
+
+                    }
+
+
+                </div>
+
+                <div>
+                    @Html.ActionLink("Afficher la liste des Utlisateurs", "GetUsers")
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -32,6 +32,32 @@
         });
 
     }
+
+
+
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/Admin/GenerateCA/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
 </script>
 
 <div class="row">
@@ -57,17 +83,27 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <h4> Ajout de Bureau</h4>
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        
                         <div class="form-group">
                             <label class="control-label col-lg-4" >Code à Barres </label>
-                            <div class="col-lg-6">
+                            <div class="col col-md-4">
 
-                                @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                @Html.TextBoxFor(model => model.Code_a_barre, new { @id = "tt", @class = "form-control", required = "", @readonly = "readonly" })
                                 @Html.ValidationMessageFor(model => model.Code_a_barre, "", new { @class = "text-danger" })
+
                             </div>
+                            <div class="col col-md-4">
+
+                                <input type="button" value="Générer Code A barres" onclick="GetBat()" class="btn btn-option5" />
+
+                            </div>
+         
+                          
                         </div>
+                      
                         <div class="form-group">
                             <label class="control-label col-lg-4">Code bureau </label>
-                            <div class="col-lg-6">
+                            <div class="col col-md-4">
                                 @Html.EditorFor(model => model.id, new { @class = "form-control", required = "" })
                                 @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
                             </div>
