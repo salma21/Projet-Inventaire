@@ -74,6 +74,15 @@ namespace Data.Repositories
                         select p);
             return pers.FirstOrDefault();
         }
+        public int FindMaxIDEtage()
+        {
+
+            var pers = (from p in DataContext.Etage
+
+                        select p.Id_etage).Max();
+
+            return pers;
+        }
     }
 
 
@@ -86,6 +95,7 @@ namespace Data.Repositories
         int FindOrganisationByBatiment(int id);
         void UpdateEtageDetached(Etage e);
         int FindPaysByBatiment(int id);
+        int FindMaxIDEtage();
 
     }
 

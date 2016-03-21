@@ -145,6 +145,28 @@
         });
 
     }
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/Admin/GenerateCABien/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 <script language="javascript" type="text/javascript">
     function GetEtage(_stateId) {
@@ -301,7 +323,7 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                                                 </div>
                                             </TD>
                                             <TD width=34%>
-                                                <label class="col-sm-4 control-label form-label">N° modele</label>
+                                                <label class="col-sm-4 control-label form-label">N° modéle</label>
 
                                                 <div class="col-sm-8" style="padding-left:7% ; width:54%">
 
@@ -310,12 +332,16 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                                                 </div>
                                             </TD>
                                             <TD width=33%>
-                                                <label class="col-sm-4 control-label form-label">Code à barre</label>
 
-                                                <div class="col-sm-8" style="padding-left:6% ; width:60%">
-                                                    @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
-                                                    @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
+                                                <label class="col-sm-4 control-label form-label">Code immobilisation</label>
+
+                                                <div class="col-sm-8" style="padding-left:7% ; width:55%">
+
+                                                    @Html.EditorFor(model => model.Code_immobilisation, new { @class = "form-control", required = "" })
+                                                    @Html.ValidationMessageFor(model => model.Code_immobilisation, String.Empty, new { @class = "test" })
+
                                                 </div>
+                                                
                                             </TD>
                                         </TR>
                                     </TABLE>
@@ -407,7 +433,7 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                                             </TD>
 
                                             <TD width=34%>
-                                                <label class="col-sm-4 control-label form-label">Désignation</label>
+                                                <label class="col-sm-4 control-label form-label">Sous-Catégorie</label>
 
                                                 <div class="col-sm-8" style="padding-left:7% ; width:54%">
                                                     @Html.DropDownListFor(m => m.Sous_categorie, new SelectList(listSousCategorie), "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "True", @onchange = "javascript:getModele(this.value);" })
@@ -463,24 +489,38 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                                 <CENTER>
                                     <TABLE border=0 width=100%>
                                         <TR>
-                                            <TD width=33%>
-                                                <label class="col-sm-4 control-label form-label">Code immobilisation</label>
+                                            <TD width=35%>
 
-                                                <div class="col-sm-8" style="padding-left:7% ; width:55%">
-                                                    @Html.EditorFor(model => model.Code_immobilisation, new { @class = "form-control", required = "" })
-                                                    @Html.ValidationMessageFor(model => model.Code_immobilisation, String.Empty, new { @class = "test" })
+                                                <div class="form-group">
+                                                    <label class="col-sm-4 control-label form-label">Code à Barres </label>
+                                                    <div class="col col-md-4">
+
+                                                        @Html.TextBoxFor(model => model.Code_a_barre, new { @id = "tt", @class = "form-control", required = "", @readonly = "readonly" })
+                                                        @Html.ValidationMessageFor(model => model.Code_a_barre, "", new { @class = "text-danger" })
+
+                                                    </div>
+                                                    <div class="col col-md-4">
+
+                                                        <input type="button" value="Générer Code A barres" onclick="GetBat()" class="btn btn-option5" />
+
+                                                    </div>
+
 
                                                 </div>
+                                               
                                             </TD>
-                                            <td width=33%>
-                                                
-                                                    @Html.LabelFor(model => model.Photo, new { @class = "control-label col-md-2" })
-                                                    <div class="col-md-10">
-                                                        <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
-                                                        @Html.ValidationMessageFor(model => model.Photo)
-                                                    </div>
-                                                
-                                            </td>
+                                            <td width=2%>
+
+                                                </td>
+                                            <TD width=33%>
+                                          
+                                                @Html.LabelFor(model => model.Photo, new { @class = "col-sm-4 control-label form-label" })
+                                                <div >
+                                                    <input type="file" name="ImageData" id="ImageData" onchange="fileCheck(this);" />
+                                                    @Html.ValidationMessageFor(model => model.Photo)
+                                                </div>
+
+                                            </TD>
                                             </TR>
                                         </TABLE>
                                     </CENTER>

@@ -32,6 +32,28 @@
         });
 
     }
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/Gestion/GenerateCAEtage/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 <script language="javascript" type="text/javascript">
     function GetCity(_delegId) {
@@ -57,33 +79,14 @@
         });
 
     }
-
-
-    function GetBatTest(_delegId) {
-       
-        var url = "/Gestion/OpenPopup/";
-
-        $.ajax({
-            url: url,
-            data: { delegid: _delegId },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-
-                if (data !="")
-                {
-                alert (data)}
-
-
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-
-    }
 </script>
+<script type="text/javascript">
 
+    ShowPopup = function () {
+        window.open('/Gestion/OpenPopup', "PopupWindow", 'width=350px,height=100px,center');
+    }
+
+</script>
 @*function myFunction() {
     var x;
     if (confirm("Press a button!") == true) {
@@ -94,7 +97,7 @@
     document.getElementById("demo").innerHTML = x;
 }*@
 
-@*kioiuiou*@
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -141,19 +144,28 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                               
 
-                                <div class="form-group">
-                                    <label class="control-label col-lg-4">Code à barres </label>
-                                    <div class="col-lg-6">
-                                        @Html.EditorFor(model => model.code_a_barre, new { htmlAttributes = new { @class = "form-control" } })
-                                        @Html.ValidationMessageFor(model => model.code_a_barre, "", new { @class = "text-danger" })
-                                    </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Code à Barres </label>
+                                <div class="col col-md-4">
+                        
+                                    @Html.TextBoxFor(model => model.code_a_barre, new { @id = "tt", @class = "form-control", required = "", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.code_a_barre, "", new { @class = "text-danger" })
+
                                 </div>
+                                <div class="col col-md-4">
+
+                                    <input type="button" value="Générer Code A barres" onclick="GetBat()" class="btn btn-option5" />
+
+                                </div>
+
+
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Code étage </label>
                                 <div class="col-lg-6">
-                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new {@id= "btnpopu", @class = "form-control" , @onchange = "javascript:GetBatTest(this.value)" } })
+                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new {@id= "btnpopu", @class = "form-control" , @onchange = "ShowPopup();" } })
                                     @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
-                                    @*<input type="button" id="btnpopu" value="Open Modeless popup" onclick="ShowPopup();" />*@
+                              
                                 </div>
                             </div>
 

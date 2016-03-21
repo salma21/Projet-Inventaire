@@ -1744,14 +1744,26 @@ namespace WebApp.Controllers
 
             double maxj = kk55.FindMaxIDBat();
             maxj = maxj + 1;
-            double jj = 4504010000000;
+            double jj = 4500000000000;
 
             double kk = jj + maxj;
 
 
             return Json(kk);
         }
+        public ActionResult GenerateCAEtage()
+        {
+            IEtageService kk55 = new EtageService();
 
+            double maxj = kk55.FindMaxIDEtage();
+            maxj = maxj + 1;
+            double jj = 3500000000000;
+
+            double kk = jj + maxj;
+
+
+            return Json(kk);
+        }
     }
 
 

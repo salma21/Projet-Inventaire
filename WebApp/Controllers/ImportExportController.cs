@@ -154,7 +154,7 @@ namespace WebApp.Controllers
         public void ExportToCSV()
         {
             StringWriter sw = new StringWriter();
-            sw.WriteLine("\"Code a barres\",\"Designation\",\"Num de serie\",\"Bureau\",\"Marque\",\"Etat\",\"Quantite\"");
+            //sw.WriteLine("\"Code a barres\",\"Designation\",\"Num de serie\",\"Bureau\",\"Marque\",\"Etat\",\"Quantite\"");
             Response.ClearContent();
             String DateExp = DateTime.Now.ToString();
             Response.AddHeader("content-disposition", "attachment;filename=InventaireList_" + DateExp + ".csv");

@@ -312,6 +312,7 @@
     <Content Include="Content\js\full-calendar\fullcalendar.js" />
     <Content Include="Content\js\gmaps\gmaps-plugin.js" />
     <Content Include="Content\js\gmaps\gmaps.js" />
+    <Content Include="Content\js\jquery-barcode.js" />
     <Content Include="Content\js\jquery-ui\jquery-ui.min.js" />
     <Content Include="Content\js\jquery.datetimepicker.js" />
     <Content Include="Content\js\jquery.min.js" />
