@@ -30,7 +30,7 @@ namespace WebApp.Controllers
         private IVehiculeService vs = new VehiculeService();
         private IBureauService br = new BureauService();
 
-        public bool etat = false;
+        public bool etat = true;
         // GET: Gestion
         public ActionResult Index()
         {
@@ -1039,19 +1039,45 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-        public string OpenPopup()
+        //public OpenPopup()
+        //{
+        //    Etage etg = new Etage();
+        //    var user = BissInventaireEntities.Instance.Etage.FirstOrDefault(u => u.code.ToLower() == etg.code.ToLower());
+        //    if (user != null)
+
+        //        etat = false;
+
+        //}
+
+        [HttpPost]
+        public ActionResult OpenPopup(string delegid)
         {
-            Etage etg = new Etage();
-            var user = BissInventaireEntities.Instance.Etage.FirstOrDefault(u => u.code.ToLower() == etg.code.ToLower());
-            if (user == null)
-            {
-                etat = true;
-            }
-            
-            return "<h1> Ce code existe déja !!</h1>";
-            
+            String Mess = "";
            
+              var objcity = BissInventaireEntities.Instance.Etage.FirstOrDefault(u => u.code.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess="Le code étage existe déja!!";
+            }
+          
+            //iuoiy
+            return Json(Mess);
         }
+        [HttpPost]
+        public ActionResult OpenPopupBatiment(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Batiment.FirstOrDefault(u => u.description.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce Batiment existe déja!!";
+            }
+
+
+            return Json(Mess);
+        }
+
         public ActionResult EditEtage(int id)
         {
             if (Session["identifiant"] == null)

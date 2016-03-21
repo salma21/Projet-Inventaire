@@ -60,6 +60,33 @@
 
 </script>
 
+<script language="javascript" type="text/javascript">
+    function GetBatT(_delegId) {
+
+        var url = "/Admin/OpenPopup/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
+
+
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -104,7 +131,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div class="form-group">
                             <label class="control-label col-lg-4">Code bureau </label>
                             <div class="col col-md-4">
-                                @Html.EditorFor(model => model.id, new { @class = "form-control", required = "" })
+                                @Html.EditorFor(model => model.id, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
                                 @Html.ValidationMessageFor(model => model.id, "", new { @class = "text-danger" })
                             </div>
                         </div>
