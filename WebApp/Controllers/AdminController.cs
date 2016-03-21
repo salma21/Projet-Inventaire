@@ -26,7 +26,7 @@ namespace WebApp.Controllers
         private ICategorieService db3 = new CategorieService();
         private IBienService db4 = new BienService();
 
-
+        public bool etat = true;
 
         //private IEnumerable<Bureau> depts = InventaireBiss2015Entities.Instance.Bureau.ToList();
         // GET: Admin
@@ -209,12 +209,18 @@ namespace WebApp.Controllers
             { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
-               
+                if (etat)
+                {
                     db.CreateBureau(Bur);
                     db.SaveBureau();
 
                     return RedirectToAction("GetBureuax");
-              
+                }
+                else
+                {
+                    return  RedirectToAction("Index", "Error");
+                }
+
             }
             else
 
@@ -228,7 +234,21 @@ namespace WebApp.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult OpenPopup(int delegid)
+        {
+            String Mess = "";
 
+            var objcity = BissInventaireEntities.Instance.Bureau.FirstOrDefault(u => u.id == delegid);
+            if (objcity != null)
+            {
+                Mess = "Le code Bureau existe déja!!";
+                etat = false;
+            }
+
+
+            return Json(Mess);
+        }
         public ActionResult EditUser(int id)
         {
             if (Session["identifiant"] == null)
