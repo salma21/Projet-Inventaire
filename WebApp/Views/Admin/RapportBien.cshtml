@@ -27,16 +27,16 @@
                         <table>          
                         
                         
-                        Delegation :      @Html.DropDownList("delegation", (SelectList)ViewData["delegation"], "",
+                        Délégation :      @Html.DropDownList("delegation", (SelectList)ViewData["delegation"], "",
                      ViewBag.CurrentFilter as string)&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 
                    
 
-                            Batiment:     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
+                            Bâtiment:     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
                       ViewBag.CurrentFilter as string)&nbsp;&nbsp; &nbsp;&nbsp;
                             &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 
-                     Etage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
+                     Étage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
                      ViewBag.CurrentFilter as string)
 
                     
@@ -65,22 +65,23 @@
                     <table id="example0" class="table display">
                         <thead>
                             <tr>
-                                <th>Designation </th>
+                                <th>Code à barres</th>
+                                <th>Désignation </th>
                                 <th>Description</th>
-                                <th>N° modele</th>
+                                <th>N° modéle</th>
                                 <th>Mode</th>
-                                <th>Etat</th>
+                                <th>État</th>
                                 
-                                <th>Categorie </th>
-                                <th>Sous categorie</th>
+                                <th>Catégorie </th>
+                                <th>Sous catégorie</th>
                                 <th>Modéle</th>
                                 <th>Sous modéle</th>
                                 <th>Marque</th>
                               
                                 <th>Batiment </th>
-                                <th>Etage</th>
+                                <th>Étage</th>
                                 <th>Ville </th>
-                                <th>Region</th>
+                                <th>Région</th>
                                 <th>Image</th>
                                
                                
@@ -97,7 +98,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr class="odd gradeX">
-
+                                    <td>@item.Code_a_barre</td>
                                     <td>@item.Designation</td>
                                     <td>@item.Description</td>
                                     <td>@item.Num_Modele</td>

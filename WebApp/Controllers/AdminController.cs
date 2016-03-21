@@ -930,7 +930,7 @@ namespace WebApp.Controllers
 
             double maxj = kk55.FindMaxID();
             maxj = maxj + 1;
-            double jj = 6506010000000;
+            double jj = 6500000000000;
 
             double kk = jj + maxj;
 
@@ -943,7 +943,7 @@ namespace WebApp.Controllers
 
             double maxj = kk55.FindMaxIDBien();
             maxj = maxj + 1;
-            double jj = 5505010000000;
+            double jj = 5500000000000;
 
             double kk = jj + maxj;
 

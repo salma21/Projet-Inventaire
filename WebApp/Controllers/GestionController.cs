@@ -1718,7 +1718,7 @@ namespace WebApp.Controllers
 
             double maxj = kk55.FindMaxIDBat();
             maxj = maxj + 1;
-            double jj = 4504010000000;
+            double jj = 4500000000000;
 
             double kk = jj + maxj;
 
@@ -1731,7 +1731,7 @@ namespace WebApp.Controllers
 
             double maxj = kk55.FindMaxIDEtage();
             maxj = maxj + 1;
-            double jj = 3503010000000;
+            double jj = 3500000000000;
 
             double kk = jj + maxj;
 
