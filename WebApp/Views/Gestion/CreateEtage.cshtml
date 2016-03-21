@@ -79,14 +79,31 @@
         });
 
     }
-</script>
-<script type="text/javascript">
+    function GetBatTest(_delegId) {
 
-    ShowPopup = function () {
-        window.open('/Gestion/OpenPopup', "PopupWindow", 'width=350px,height=100px,center');
+        var url = "/Gestion/OpenPopup/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
     }
-
 </script>
+
 @*function myFunction() {
     var x;
     if (confirm("Press a button!") == true) {
@@ -163,7 +180,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Code étage </label>
                                 <div class="col-lg-6">
-                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new {@id= "btnpopu", @class = "form-control" , @onchange = "ShowPopup();" } })
+                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatTest(this.value)" } })
                                     @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
                               
                                 </div>

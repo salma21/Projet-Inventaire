@@ -111,6 +111,29 @@
         });
 
     }
+    function GetBatT(_delegId) {
+
+        var url = "/Gestion/OpenPopupBatiment/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 
 <div class="row">
@@ -145,7 +168,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
                                     @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
