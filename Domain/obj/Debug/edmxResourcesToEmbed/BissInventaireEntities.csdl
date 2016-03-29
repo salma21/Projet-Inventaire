@@ -273,6 +273,7 @@
     <Property Name="idDelegation" Type="Int32" />
     <Property Name="IdDepot" Type="Int32" />
     <Property Name="Id_bien" Type="Int32" Nullable="false" />
+    <Property Name="qte" Type="Int32" />
     <NavigationProperty Name="Bien" Relationship="Self.FK_INVENTAI_ASSOCIATI_BIEN" FromRole="InventaireBien" ToRole="Bien" />
     <NavigationProperty Name="Inventaire" Relationship="Self.FK_ASSOCIATION_INVENTAIRE" FromRole="InventaireBien" ToRole="Inventaire" />
   </EntityType>

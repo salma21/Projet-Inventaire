@@ -3,6 +3,7 @@ using Log;
 using Service;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,6 +14,7 @@ namespace WebApp.Controllers
         public class ServiceDController : Controller
         {
             private IServiceDService db = new ServiceDService();
+            public bool etat = true;
             // GET: ServiceD
             public ActionResult Index()
             {
@@ -65,9 +67,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.ServiceD.Add(Catm);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetServiceD");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.ServiceD.Add(Catm);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetServiceD");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -81,6 +90,21 @@ namespace WebApp.Controllers
                 ViewData["Direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
                 return View();
             }
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopup(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.ServiceD.FirstOrDefault(u => u.Libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce service existe déja!!";
+            }
+
+            //iuoiy
+            return Json(Mess);
         }
         public ActionResult EditServiceD(int id)
         {
@@ -101,14 +125,14 @@ namespace WebApp.Controllers
                 {
                     db.UpdateServiceDDetached(Catm);
                     BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetServiceD");
+                    return RedirectToAction("GetServiceD");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
-            catch (Exception ex)
-            {
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
-        }
             else
 
             {
@@ -116,6 +140,19 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EditServiceD([Bind(Include = "Id_direction,Id_service,Libelle")] ServiceD service)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        BissInventaireEntities.Instance.Entry(service).State = EntityState.Modified;
+        //        BissInventaireEntities.Instance.SaveChanges();
+        //        return RedirectToAction("GetServiceD");
+        //    }
+        //    return View(service);
+        //}
         // GET: ServiceD/Edit/5
         public ActionResult Edit(int Id_service)
             {

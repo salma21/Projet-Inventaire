@@ -13,6 +13,7 @@ namespace WebApp.Controllers
     public class RoleController : Controller
     {
         private IRoleService db = new RoleService();
+        public bool etat = true;
         // GET: Role
         public ActionResult Index()
         {
@@ -66,9 +67,16 @@ namespace WebApp.Controllers
             {
                 try
             {
-                BissInventaireEntities.Instance.Role.Add(Catm);
-                BissInventaireEntities.Instance.SaveChanges();
-                return RedirectToAction("GetRole");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Role.Add(Catm);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetRole");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
             }
             catch (Exception ex)
             {
@@ -82,6 +90,22 @@ namespace WebApp.Controllers
                
                 return View();
             }
+        }
+
+
+        [HttpPost]
+        public ActionResult OpenPopupRole(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Role.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce rôle existe déja!!";
+            }
+
+            //iuoiy
+            return Json(Mess);
         }
         // GET: Role/Edit/5
         public ActionResult Edit(int id)

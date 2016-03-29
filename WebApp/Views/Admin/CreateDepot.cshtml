@@ -84,6 +84,29 @@
         });
 
     }
+    function GetBatT(_delegId) {
+
+        var url = "/Admin/OpenPopupDepot/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 <div class="row">
     <div class="col-md-12">
@@ -115,7 +138,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Désignation </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.libelle, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.libelle, new { htmlAttributes = new { @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
                                     @Html.ValidationMessageFor(model => model.libelle, "", new { @class = "text-danger" })
                                 </div>
                             </div>

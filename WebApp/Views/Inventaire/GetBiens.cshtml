@@ -1,5 +1,29 @@
 ﻿@model IEnumerable<Domain.Bien>
+<script language="javascript" type="text/javascript">
+ function GetBatT(_delegId) {
 
+     var url = "/Gestion/OpenPopupPays/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
 <div class="row">
     <!-- Start Panel -->
     <div class="col-md-12">
@@ -49,8 +73,9 @@
                                 <th>Code a barre</th>
                                 <th>Num Serie</th>
                                 <th>Etat</th>
+                                
                                 <th>Action</th>
-
+                                
 
                             </tr>
                         </thead>
@@ -75,8 +100,8 @@
 
                                     <td>
                                       
-                                        <a href="@Url.Action("ValiderBien", new { id = item.Id_bien })">&nbsp;<i class="fa fa-plus-square" data-toggle="modal" data-target="#myModal-@item.Id_bien" title="Activer"></i></a>
-
+                                        @*<a href="@Url.Action("ValiderBien", new { id = item.Id_bien })">&nbsp;<i class="fa fa-plus-square" data-toggle="modal" data-target="#myModal-@item.Id_bien" title="Activer"></i></a>*@
+                                        <a  id="item.Id_bien " class="fa fa-plus-square" data-toggle="modal" data-target="#myModal-@item.Id_bien" title="Activer" onclick="" />
                                     </td>
                                 </tr>
 
@@ -85,22 +110,22 @@
                                         <div class="modal-content">
                                             <div class="modal-header">
 
-                                                <h4 class="modal-title" id="myModalLabel">Activation-Desactivaion Employé</h4>
+                                                <h4 class="modal-title" id="myModalLabel">Ajout Bien</h4>
                                             </div>
                                        
 
 
                                            <div class="modal-body">
-                                                Vous êtes sur de vouloir Ajouter Cet Bien
+                                                Vous êtes sur de vouloir Ajouter Ce Bien
                                             
                                             </div>
-                                            @using (Html.BeginForm("ValiderBien", "Inventaire", new { id = item.Id_bien }))
+                                            @*@using (Html.BeginForm("ValiderBien", "Inventaire", new { id = item.Id_bien }))
                                             {
-                                                  <div class="modal-footer">
-                                                <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                                                <button type="submit" id="mySubmit" class="btn btn-primary">Confirmer</button>
-                                            </div>
-                                            }
+
+                                              <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                                              <button type="submit" id="mySubmit" class="btn btn-primary">Confirmer</button>
+                                            }*@
+
                                         </div>
                                     </div>
                                 </div>

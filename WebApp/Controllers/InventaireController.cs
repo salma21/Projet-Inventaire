@@ -172,21 +172,23 @@ namespace WebApp.Controllers
             InventaireBien nm = new InventaireBien();
            nm.Id_bien = id;
             nm.Id_inventaire = InventaireController.idinv;
+            BissInventaireEntities.Instance.InventaireBien.Add(nm);
+            BissInventaireEntities.Instance.SaveChanges();
+            return RedirectToAction("GetInventaire");
+            //try
+            //{
+            //db1.CreateInventaireBien(nm);
+            //    db1.SaveInventaireBien();
 
-            try
-            {
-                db1.CreateInventaireBien(nm);
-                db1.SaveInventaireBien();
-
-                return RedirectToAction("GetInventaire");
-            }
-            catch (DbEntityValidationException ex)
-            {
+            //    return RedirectToAction("GetInventaire");
+            //}
+            //catch (DbEntityValidationException ex)
+            //{
 
 
-                LogThread.WriteLine(ex.Message);
-                return RedirectToAction("Index", "Error");
-            }
+            //    LogThread.WriteLine(ex.Message);
+            //    return RedirectToAction("Index", "Error");
+            //}
         }
         [HttpPost]
         public ActionResult AjouterVehicule(int id)

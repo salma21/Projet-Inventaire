@@ -32,6 +32,29 @@ List<string> listService = new List<string>();
 
         }
 
+    function GetBatT(_delegId) {
+
+        var url = "/Personnel/OpenPopupPersonnel/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 <div class="row">
     <div class="col-md-12">
@@ -81,7 +104,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Matricule </label>
                                     <div class="col-lg-6">
 
-                                        @Html.EditorFor(model => model.Matricule, new { @class = "form-control", required = "True" })
+                                        @Html.EditorFor(model => model.Matricule, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
                                         @Html.ValidationMessageFor(model => model.Matricule, String.Empty, new { @class = "test" })
                                     </div>
                                 </div>

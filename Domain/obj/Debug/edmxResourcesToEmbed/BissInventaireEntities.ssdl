@@ -231,6 +231,7 @@
     <Property Name="idDelegation" Type="int" />
     <Property Name="IdDepot" Type="int" />
     <Property Name="Id_bien" Type="int" Nullable="false" />
+    <Property Name="qte" Type="int" />
   </EntityType>
   <EntityType Name="InventaireVehicule">
     <Key>

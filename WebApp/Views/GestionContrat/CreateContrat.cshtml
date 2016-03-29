@@ -1,5 +1,30 @@
 ﻿@model Domain.Contrat
 
+<script language="javascript" type="text/javascript">
+  function GetBatT(_delegId) {
+
+      var url = "/GestionContrat/OpenPopupContrat/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+</script>
 
 <div class="row">
     <div class="col-md-12">
@@ -46,7 +71,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     <div class="col-sm-8">
 
-                                        @Html.EditorFor(model => model.Num, new { @class = "form-control", required = "" })
+                                        @Html.EditorFor(model => model.Num, new { htmlAttributes = new { @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
                                         @Html.ValidationMessageFor(model => model.Num, String.Empty, new { @class = "test" })
 
                                     </div>

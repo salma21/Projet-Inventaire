@@ -167,6 +167,28 @@
         });
 
     }
+    function getNom(_Id) {
+        var selectElmt = document.getElementById("nom");
+        var url = "/Admin/getNom/";
+
+        $.ajax({
+            url: url,
+            data: { id: _Id },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 <script language="javascript" type="text/javascript">
     function GetEtage(_stateId) {
@@ -278,6 +300,17 @@
             alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
         }
     }
+
+    function stoppedTyping() {
+
+        var selectElmt = document.getElementById("ns");
+        var selectElmt1 = document.getElementById("quantite");
+
+        if (selectElmt.value != "") {
+            selectElmt1.disabled = 'true';
+        }
+    }
+
 </script>
 
 <div class="row">
@@ -359,7 +392,7 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
 
                                                 <div class="col-sm-8" style="padding-left:6% ; width:60%">
 
-                                                    @Html.EditorFor(model => model.Num_Serie, new { @class = "form-control", required = "" })
+                                                    @Html.EditorFor(model => model.Num_Serie, new { htmlAttributes = new {@id="ns", @class = "form-control", @onchange = "stoppedTyping()" } })
                                                     @Html.ValidationMessageFor(model => model.Num_Serie, String.Empty, new { @class = "test" })
                                                 </div>
                                             </TD>
@@ -475,7 +508,7 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                                                 <label class="col-sm-4 control-label form-label">Quantité</label>
 
                                                 <div class="col-sm-8" style="padding-left:7% ; width:55%">
-                                                    @Html.EditorFor(model => model.Quantite, new { @class = "form-control", required = "" })
+                                                    @Html.EditorFor(model => model.Quantite, new { htmlAttributes = new { @id = "quantite", @class = "form-control" } })
                                                     @Html.ValidationMessageFor(model => model.Quantite, String.Empty, new { @class = "test" })
 
                                                 </div>
@@ -681,22 +714,38 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                             <CENTER>
                                 <TABLE border=0 width=100%>
                                     <TR>
-                                        <TD width="33%">
+                                        <TD width="50%">
 
 
                                             <label class="col-sm-4 control-label form-label">Affecté à</label>
                                             <div class="col-md-8" style="width: 200px">
-                                                @Html.DropDownListFor(model => model.id, (SelectList)ViewData["personnel"], "--Choisir--", new { @class = "form-control", required = "" })
+                                                @Html.DropDownListFor(model => model.id, (SelectList)ViewData["personnel"], "--Choisir--", new { @class = "form-control", required = "" , @onchange= "javascript:getNom(this.value);" })
                                             </div>
                                         </TD>
-                                        <td width="34%">
+                                        <TD width="50%">
+
+
+                                            <label class="col-sm-4 control-label form-label">Nom et prenom</label>
+                                            <div class="col-md-8" style="width: 200px">
+                                            <input  type="text" id="nom" disabled  />
+                                            </div>
+                                        </TD>
+                                    </TR>
+                                </TABLE>
+                            </CENTER>
+                            <br /><br />
+                            <CENTER>
+                                <TABLE border=0 width=100%>
+
+                                    <tr>
+                                        <td width="50%">
                                             <label class="col-sm-4 control-label form-label">Emploi principal</label>
                                             <div class="col-sm-8">
                                                 @Html.EditorFor(model => model.Emploi_principal, new { @class = "form-control", required = "" })
                                                 @Html.ValidationMessageFor(model => model.Emploi_principal, String.Empty, new { @class = "test" })
                                             </div>
                                         </td>
-                                        <td width="33%">
+                                        <td width="50%">
 
                                             <label class="col-sm-4 control-label form-label">Date d'installation</label>
                                             <div class="col-md-8" style="padding-left:6% ; width:55%">
@@ -704,7 +753,7 @@ new { @id = "frmId", @class = "fieldset-form" , enctype = "multipart/form-data" 
                                                 @Html.ValidationMessageFor(model => model.Date_d_installation, String.Empty, new { @class = "test" })
                                             </div>
                                         </td>
-                                    </TR>
+                                    </tr>
                                 </TABLE>
                             </CENTER>
                             <br /><br />

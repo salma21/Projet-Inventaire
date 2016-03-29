@@ -66,10 +66,17 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    batiment.CreateBatiment(reg);
-                    batiment.SaveBatiment();
+                    if (etat)
+                    {
+                        batiment.CreateBatiment(reg);
+                        batiment.SaveBatiment();
 
-                    return RedirectToAction("GetBatiment");
+                        return RedirectToAction("GetBatiment");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
             }
                 catch (Exception ex)
                 {
@@ -317,6 +324,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
+            GetBatiment();
             var bat = parc.GetParc_autos();
             return View(bat);
         }
@@ -343,10 +351,20 @@ namespace WebApp.Controllers
                 try
                 {
 
-                    parc.CreateParc_auto(reg);
-                    parc.SaveParc_auto();
+                    //parc.CreateParc_auto(reg);
+                    //parc.SaveParc_auto();
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Parc_auto.Add(reg);
+                        BissInventaireEntities.Instance.SaveChanges();
 
-                    return RedirectToAction("GetParcAuto");
+                        return RedirectToAction("GetParcAuto");
+                    }
+                  
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -445,9 +463,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Region.Add(reg);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetRegion");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Region.Add(reg);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetRegion");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -555,9 +580,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetGouvernorat");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Gouvernorat.Add(gouv);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetGouvernorat");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index","Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -692,10 +724,16 @@ namespace WebApp.Controllers
 
                 try
                 {
-
-                    BissInventaireEntities.Instance.Delegation.Add(deleg);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetDelegation");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Delegation.Add(deleg);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetDelegation");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -897,9 +935,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Pays.Add(pay);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetPays");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Pays.Add(pay);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetPays");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index" ,"Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -959,9 +1004,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Direction.Add(direction);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetDirection");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Direction.Add(direction);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetDirection");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -1058,11 +1110,14 @@ namespace WebApp.Controllers
             if (objcity != null)
             {
                 Mess="Le code étage existe déja!!";
+                etat = false;
             }
           
             //iuoiy
             return Json(Mess);
         }
+
+       
         [HttpPost]
         public ActionResult OpenPopupBatiment(string delegid)
         {
@@ -1071,13 +1126,142 @@ namespace WebApp.Controllers
             var objcity = BissInventaireEntities.Instance.Batiment.FirstOrDefault(u => u.description.ToLower() == delegid);
             if (objcity != null)
             {
-                Mess = "Ce Batiment existe déja!!";
+                Mess = "Ce batiment existe déja!!";
             }
 
 
             return Json(Mess);
         }
 
+        [HttpPost]
+        public ActionResult OpenPopupOrganisation(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Organisation.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette organisation existe déja!!";
+                etat = false;
+            }
+
+
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupPays(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Pays.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce pays existe déja!!";
+                etat = false;
+            }
+
+
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupRegion(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Region.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette région existe déja!!";
+                etat = false;
+            }
+
+
+            return Json(Mess);
+        }
+
+
+
+        [HttpPost]
+        public ActionResult OpenPopupGouvernorat(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Gouvernorat.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce gouvernorat existe déja!!";
+                etat = false;
+            }
+
+
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupDelegation(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Delegation.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette delegation existe déja!!";
+                etat = false;
+            }
+
+
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupDirection(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Direction.FirstOrDefault(u => u.Libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette direction existe déja!!";
+                etat = false;
+            }
+
+            //iuoiy
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupVehicule(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Vehicule.FirstOrDefault(u => u.Matricule.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette vehicule existe déja!!";
+                etat = false;
+            }
+
+            //iuoiy
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupParc(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Parc_auto.FirstOrDefault(u => u.Libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce parc existe déja!!";
+                etat = false;
+            }
+
+            //iuoiy
+            return Json(Mess);
+        }
         public ActionResult EditEtage(int id)
         {
             if (Session["identifiant"] == null)

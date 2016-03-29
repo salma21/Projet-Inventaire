@@ -14,6 +14,7 @@ namespace WebApp.Controllers
     {
         private BissInventaireEntities con = new BissInventaireEntities();
         private IPersonnelService db = new PersonnelService();
+        public bool etat = true;
         // GET: Personnel
         public ActionResult Index()
         {
@@ -83,18 +84,25 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Personnel.Add(pers);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    var Emp = (Utilisateur)Session["identifiant"];
-                    Trace tr = new Trace();
-                    tr.Dates = DateTime.Now;
-                    tr.Actions = "Ajout Personnel";
-                    tr.Champs = (pers.Matricule).ToString();
-                    tr.Tables = "Personnel";
-                    tr.Users = (Emp.Personnel.Matricule).ToString();
-                    BissInventaireEntities.Instance.Trace.Add(tr);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("GetPersonnel");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Personnel.Add(pers);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        var Emp = (Utilisateur)Session["identifiant"];
+                        Trace tr = new Trace();
+                        tr.Dates = DateTime.Now;
+                        tr.Actions = "Ajout Personnel";
+                        tr.Champs = (pers.Matricule).ToString();
+                        tr.Tables = "Personnel";
+                        tr.Users = (Emp.Personnel.Matricule).ToString();
+                        BissInventaireEntities.Instance.Trace.Add(tr);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetPersonnel");
+                    }
+                  else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -117,6 +125,24 @@ namespace WebApp.Controllers
         }
 
 
+
+
+
+
+        [HttpPost]
+        public ActionResult OpenPopupPersonnel(int delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Personnel.FirstOrDefault(u => u.Matricule == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette matricule existe déja!!";
+            }
+
+            //iuoiy
+            return Json(Mess);
+        }
         [HttpPost]
         public ActionResult getSeviceByDirection(int stateId)
         {

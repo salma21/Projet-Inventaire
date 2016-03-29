@@ -232,6 +232,7 @@
           <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
           <ScalarProperty Name="IdDepot" ColumnName="IdDepot" />
           <ScalarProperty Name="Id_bien" ColumnName="Id_bien" />
+          <ScalarProperty Name="qte" ColumnName="qte" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

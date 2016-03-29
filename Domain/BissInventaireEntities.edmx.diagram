@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="02e5a43e249e453cb462c70829d34129" Name="Diagram1">
+      <Diagram DiagramId="ee208c50a80c4805a3f36c7db9e8c882" Name="Diagram1">
         <EntityTypeShape EntityType="BissTestModel.Achat" Width="1.5" PointX="8.25" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Batiment" Width="1.5" PointX="6" PointY="29.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Bien" Width="1.5" PointX="10.5" PointY="10.125" IsExpanded="true" />
@@ -21,23 +21,23 @@
         <EntityTypeShape EntityType="BissTestModel.Fournisseur" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Gouvernorat" Width="1.5" PointX="1.5" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Inventaire" Width="1.5" PointX="10.5" PointY="6.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissTestModel.InventaireBien" Width="1.5" PointX="12.75" PointY="11.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.InventaireBien" Width="1.5" PointX="12.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.InventaireVehicule" Width="1.5" PointX="12.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Marque" Width="1.5" PointX="17.25" PointY="27.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Modele" Width="1.5" PointX="12.75" PointY="28" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissTestModel.MouvementBien" Width="1.5" PointX="12.75" PointY="17.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.MouvementBien" Width="1.5" PointX="12.75" PointY="17.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.MouvementVehicule" Width="1.5" PointX="12.75" PointY="22.625" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Organisation" Width="1.5" PointX="3.75" PointY="29.375" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Parc_auto" Width="1.5" PointX="8.25" PointY="34.25" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Pays" Width="1.5" PointX="1.5" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Personnel" Width="1.5" PointX="5.25" PointY="11.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissTestModel.PersonnelVehicule" Width="1.5" PointX="3.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.PersonnelVehicule" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Region" Width="1.5" PointX="1.5" PointY="3.5" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Role" Width="1.5" PointX="3" PointY="16" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.ServiceD" Width="1.5" PointX="3" PointY="13" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Sous_categorie" Width="1.5" PointX="10.5" PointY="28.125" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Sous_modele" Width="1.5" PointX="15" PointY="27.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="BissTestModel.Trace" Width="1.5" PointX="12.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="BissTestModel.Trace" Width="1.5" PointX="12.75" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Utilisateur" Width="1.5" PointX="7.5" PointY="25.75" IsExpanded="true" />
         <EntityTypeShape EntityType="BissTestModel.Vehicule" Width="1.5" PointX="10.5" PointY="21.875" IsExpanded="true" />
         <AssociationConnector Association="BissTestModel.FK_ACHAT_ASSOCIATI_FOURNISS" ManuallyRouted="false" />
