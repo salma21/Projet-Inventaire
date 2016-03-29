@@ -43,6 +43,16 @@ namespace Service
             utOfWork.AchatRepository.UpdateAchatDetached(e);
         }
 
+        public int FindMaxIDContrat()
+        {
+            int i = utOfWork.ContratRepository.FindMaxIDContrat();
+            return i;
+        }
+        public int FindMaxIDAchat()
+        {
+            int i = utOfWork.AchatRepository.FindMaxIDAchat();
+            return i;
+        }
 
 
         public void UpdateContratDetached(Contrat e)
@@ -68,7 +78,8 @@ namespace Service
         void UpdateFournisseurDetached(Fournisseur e);
         void SaveChange();
         Fournisseur FindFournisseurByID(int id);
-
+    int FindMaxIDContrat();
+    int FindMaxIDAchat();
 
     }
 

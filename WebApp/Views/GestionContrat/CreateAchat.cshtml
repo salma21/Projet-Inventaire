@@ -1,6 +1,31 @@
 ﻿@model Domain.Achat
 <link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
+<script language="javascript" type="text/javascript">
 
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/GestionContrat/GenerateCAchat/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
+</script>
 
 <div class="row">
     <div class="col-md-12">
@@ -41,18 +66,23 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                             <div class="form-group">
-
                                 <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Code à barres</label>
+                                    <label class="col-sm-4 control-label form-label">Code à Barres</label>
 
                                     <div class="col-sm-8">
+                                        @Html.TextBoxFor(model => model.code_a_barre, new { @id = "tt", @class = "form-control", required = "", @readonly = "readonly" })
+                                        @Html.ValidationMessageFor(model => model.code_a_barre, "", new { @class = "text-danger" })
 
-                                        @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
+                                        <br />
+
+
+                                        <input type="button" value="Générer Code À Barres" onclick="GetBat()" class="btn btn-option5" />
 
                                     </div>
+
+
                                 </div>
-                                <div class="col-md-4">
+                                @*<div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Code bien</label>
 
                                     <div class="col-md-8">
@@ -60,7 +90,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
 
                                     </div>
-                                </div>
+                                </div>*@
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Fournisseur</label>
 
@@ -70,10 +100,6 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     </div>
                                 </div>
-                            </div>
-                                <br />
-                                <br />
-                            <div class="form-group">
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label"> N° Livraison</label>
 
@@ -84,6 +110,11 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     </div>
                                 </div>
+                            </div>
+                                <br />
+                                <br />
+                            <div class="form-group">
+                                
 
 
 

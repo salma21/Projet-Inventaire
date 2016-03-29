@@ -15,19 +15,23 @@ namespace Data.Repositories
    public class BatimentRepository : RepositoryBase<Batiment>, IBatimentRepository
     {
         public BatimentRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
+
         public void UpdateBatimentDetached(Batiment e)
         {
             Batiment existing = FindBatimentByID(e.idBatiment);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
+
+
+      
         public Batiment FindBatimentByID(int id)
         {
 
             var pers = (from p in this.DataContext.Batiment
                         where p.idBatiment == id
-                        select p).ToList<Batiment>();
-            return pers.FirstOrDefault();
+                        select p).FirstOrDefault();
+            return pers;
 
 
         }

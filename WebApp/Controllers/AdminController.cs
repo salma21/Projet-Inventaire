@@ -555,7 +555,7 @@ namespace WebApp.Controllers
                 db.UpdateBureauDetached(pers);
                 db.SaveBureau();
 
-                return RedirectToAction("GetBureaux");
+                return RedirectToAction("GetBureuax");
 
             }
             else

@@ -1,10 +1,9 @@
 ﻿@model Domain.ServiceD
-
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-               Modification de service
+                Modifiction service
             </div>
             <div class="panel-body">
 
@@ -12,29 +11,35 @@
 
                 <div class="panel panel-default">
 
+
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                                                       
+                            <h4>Service</h4>
+                            <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
                             @Html.HiddenFor(model => model.Id_service)
 
+                            @Html.HiddenFor(model => model.Id_direction)
+
                             <div class="form-group">
-                                <label class="control-label col-lg-4">Nom Service</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Nom service </label>
                                 <div class="col-lg-6">
+
                                     @Html.EditorFor(model => model.Libelle, new { @class = "form-control", required = "" })
                                     @Html.ValidationMessageFor(model => model.Libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="control-label col-lg-4">Nom Direction</label>
-                                <div class="col-lg-6">
 
-                                    @Html.DropDownListFor(model => model.Id_direction, (SelectList)ViewData["Direction"], "--Choisir--", new { @class = "form-control", required = "" })
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Direction </label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Direction.Libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @*@Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], new { @class = "form-control", required = "" })*@
                                 </div>
                             </div>
 
@@ -52,7 +57,7 @@
                 </div>
 
                 <div>
-                    @Html.ActionLink("Afficher la liste des service", "GetServiceD")
+                    @Html.ActionLink("Liste des services", "GetServiceD")
                 </div>
 
             </div>

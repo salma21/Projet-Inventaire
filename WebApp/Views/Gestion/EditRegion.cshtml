@@ -38,7 +38,8 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Pays.libelle ,new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @*@Html.DropDownListFor(model => model.idPays, (SelectList)ViewData["pays"], new { @class = "form-control", required = "" })*@
                                 </div>
                             </div>
 

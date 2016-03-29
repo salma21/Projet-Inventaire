@@ -29,6 +29,7 @@ namespace WebApp.Controllers
         private IOrganisationService orga = new OrganisationService();
         private IVehiculeService vs = new VehiculeService();
         private IBureauService br = new BureauService();
+        private IPaysService pays = new PaysService();
 
         public bool etat = true;
         // GET: Gestion
@@ -41,8 +42,9 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            GetOrganisation();
-            GetDelegation();
+            //GetOrganisation();
+            //GetDelegation();
+           
             var bat = batiment.GetBatiments();
             return View(bat);
         }
@@ -95,50 +97,96 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var bat = batiment.FindBatimentByID(id);
+            var reg = batiment.FindBatimentByID(id);
             ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
             ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
-            return View(bat);
+            return View(reg);
         }
 
         // POST: Gestion/Create
         [HttpPost]
-        public ActionResult EditBatiment(Batiment reg)
+        public ActionResult EditBatiment(Batiment bat)
         {
             if (ModelState.IsValid)
             {
                 //try
                 //{
-                    var bat = batiment.FindBatimentByID(reg.idBatiment);
-                    //var bat2 = BissInventaireEntities.Instance.Batiment.Find(reg.idBatiment);
-                    batiment.UpdateBatimentDetached(reg);
-                    batiment.SaveBatiment();
-
-                    return RedirectToAction("GetBatiment");
-                }
-            //    catch (Exception ex)
-            //    {
-            //        LogThread.WriteLine(ex.Message);
-            //        return RedirectToAction("Index", "Error");
-            //    }
-
-            //}
+                batiment.UpdateBatimentDetached(bat);
+                batiment.SaveBatiment();
+                return RedirectToAction("GetBatiment");
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        LogThread.WriteLine(ex.Message);
+                //        return RedirectToAction("Index", "Error");
+                //    }
+                //}
+            }
             else
 
             {
-                //  ViewBag.msg = "Verifier l code postal";
                 ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
                 ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
                 ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
                 ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
-
                 return View();
             }
         }
+
+
+
+
+       
+        public ActionResult EditBatimentTest(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var reg = batiment.FindBatimentByID(id);
+            ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+            return View(reg);
+        }
+
+        // POST: Gestion/Create
+        [HttpPost]
+        public ActionResult EditBatimentTest(Batiment bat)
+        {
+            if (ModelState.IsValid)
+            {
+                //try
+                //{
+                batiment.UpdateBatimentDetached(bat);
+                batiment.SaveBatiment();
+                return RedirectToAction("GetBatiment");
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        LogThread.WriteLine(ex.Message);
+                //        return RedirectToAction("Index", "Error");
+                //    }
+                //}
+            }
+            else
+
+            {
+                ViewData["gouv"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+                return View();
+            }
+        }
+
+
+
 
         public ActionResult EditDelegation(int id)
         {
@@ -148,6 +196,7 @@ namespace WebApp.Controllers
             ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
             ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
             ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             return View(bat);
         }
 
@@ -482,13 +531,13 @@ namespace WebApp.Controllers
                     db.UpdateRegionDetached(reg);
                     db.SaveRegion();
                     return RedirectToAction("GetRegion");
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
             }
+                catch (Exception ex)
+            {
+                LogThread.WriteLine(ex.Message);
+                return RedirectToAction("Index", "Error");
+            }
+        }
             else
 
             {
@@ -731,11 +780,13 @@ namespace WebApp.Controllers
             return View();
         }
 
+    
         public ActionResult GetOrganisation()
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var organisation = db3.GetOrganisation(); return View(organisation);
+            var organisation = orga.GetOrganisation();
+            return View(organisation);
         }
 
         public byte[] GetImageFromDataBase(int Id)
@@ -872,6 +923,42 @@ namespace WebApp.Controllers
             { return RedirectToAction("Index", "Home"); }
             var pays = db4.GetPays(); return View(pays);
         }
+        public ActionResult EditPays(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var pay = pays.FindPaysByID(id);
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            return View(pay);
+        }
+
+        // POST: Gestion/Create
+        [HttpPost]
+        public ActionResult EditPays(Pays pay)
+        {
+            if (ModelState.IsValid)
+            {
+
+                try
+                {
+                    pays.UpdatePaysDetached(pay);
+                    pays.SavePays();
+                    BissInventaireEntities.Instance.SaveChanges();
+                    return RedirectToAction("GetPays");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+
+            }
+            else
+
+            {
+                return View();
+            }
+        }
 
         // GET: Gestion/Details/5
         public ActionResult Details4(int id)
@@ -918,7 +1005,6 @@ namespace WebApp.Controllers
         //Direction
 
 
-        private IDirectionService db5 = new DirectionService();
         // GET: Gestion
         public ActionResult Index5()
         {
@@ -931,7 +1017,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var direction = db5.GetDirection(); return View(direction);
+            var direction = dir.GetDirection(); return View(direction);
         }
 
         // GET: Gestion/Details/5
@@ -980,8 +1066,10 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var etg = con.Etage.ToList();
+            var etg = etage.GetEtages();
             return View(etg);
+            //var etg = con.Etage.ToList();
+            //return View(etg);
         }
 
         public ActionResult CreateEtage()

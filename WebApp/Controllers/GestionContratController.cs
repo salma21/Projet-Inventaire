@@ -272,6 +272,31 @@ namespace WebApp.Controllers
             }
 
         }
-      
+        public ActionResult GenerateCAContrat()
+        {
+            IGestionContratService kk55 = new GestionContratService();
+
+            double maxj = kk55.FindMaxIDContrat();
+            maxj = maxj + 1;
+            double jj = 2500000000000;
+
+            double kk = jj + maxj;
+
+
+            return Json(kk);
+        }
+        public ActionResult GenerateCAchat()
+        {
+            IGestionContratService kk55 = new GestionContratService();
+
+            double maxj = kk55.FindMaxIDContrat();
+            maxj = maxj + 1;
+            double jj = 1500000000000;
+
+            double kk = jj + maxj;
+
+
+            return Json(kk);
+        }
     }
 }

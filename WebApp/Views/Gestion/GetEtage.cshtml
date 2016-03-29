@@ -1,9 +1,6 @@
 ﻿@model IEnumerable<Domain.Etage>
 
-@{
-    ViewBag.Title = "GetEtage";
-}
-
+<!-- Start Row -->
 <div class="row">
     <!-- Start Panel -->
     <div class="col-md-12">
@@ -15,22 +12,20 @@
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
+
                             <th>Code à barres</th>
                             <th>Code étage</th>
-
                             <th>Description</th>
-
                             <th>Batiment</th>
                             <th>Ville</th>
                             <th>Gouvernorat</th>
                             <th>Région</th>
-                            
                             <th>Pays</th>
                             <th>Action</th>
                         </tr>
                     </thead>
 
-                   
+
 
                     <tbody>
                         @foreach (var item in Model)
@@ -38,10 +33,7 @@
                             <tr>
                                 <td class="center">@item.code_a_barre</td>
                                 <td class="center">@item.code</td>
-                              
-
                                 <td class="center">@item.description</td>
-
                                 <td class="center">@item.Batiment.description</td>
                                 <td class="center">@item.Batiment.Delegation.libelle</td>
                                 <td class="center">@item.Batiment.Delegation.Gouvernorat.libelle</td>

@@ -23,11 +23,15 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <h4>Bureau</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                          
+                            @Html.HiddenFor(model => model.Id_etage)
+                            @Html.HiddenFor(model => model.idBatiment)
+                            @Html.HiddenFor(model => model.Id_bureau)
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.Code_a_barre, new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Code_a_barre, new { @class = "form-control", required = "", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
@@ -54,7 +58,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Batiment</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiments"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Etage.Batiment.description, new { @class = "form-control", disabled = "disabled" })
                                 </div>
                             </div>
                             @*<div class="form-group">
@@ -66,7 +70,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Étage</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Id_etage, (SelectList)ViewData["etages"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Etage.description, new { @class = "form-control", disabled = "disabled" })
                                 </div>
                             </div>
 
@@ -74,7 +78,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />
 
-                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetBureau")</button>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetBureuax")</button>
 
                         </div>
 

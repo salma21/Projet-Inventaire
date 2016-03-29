@@ -88,8 +88,8 @@
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Rôle </label>
                                     <div class="col-lg-6">
-
-                                        @Html.DropDownListFor(model => model.Rol_id, (SelectList)ViewData["role"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.TextBoxFor(model => model.Role.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                        @*@Html.DropDownListFor(model => model.Rol_id, (SelectList)ViewData["role"], "--Choisir--", new { @class = "form-control", required = "" })*@
 
 
                                     </div>
@@ -97,16 +97,16 @@
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Direction </label>
                                     <div class="col-lg-6">
-
-                                        @Html.DropDownListFor(model => model.Id_direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.TextBoxFor(model => model.ServiceD.Direction.Libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                       @* @Html.DropDownListFor(model => model.Id_direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" })*@
 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Service </label>
                                     <div class="col-lg-6">
-
-                                        @Html.DropDownListFor(model => model.Id_service, (SelectList)ViewData["service"], "--Choisir--", new { @class = "form-control", required = "" })
+                                        @Html.TextBoxFor(model => model.ServiceD.Libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                       @* @Html.DropDownListFor(model => model.Id_service, (SelectList)ViewData["service"], "--Choisir--", new { @class = "form-control", required = "" })*@
 
                                     </div>
                                 </div>
@@ -131,8 +131,8 @@
                                 <div class="form-group">
                                         <label class="control-label col-lg-4" style="font-style:oblique;">Bureau</label>
                                         <div class="col-lg-6">
-
-                                            @Html.DropDownListFor(model => model.Bureau, (SelectList)ViewData["bureau"], "--Choisir--", new { @class = "form-control", required = "" })
+                                           @* @Html.TextBoxFor(model => model.Bureau., new { @class = "form-control", required = "", disabled = "disabled" })*@
+                                           @* @Html.DropDownListFor(model => model.Bureau, (SelectList)ViewData["bureau"], "--Choisir--", new { @class = "form-control", required = "" })*@
 
 
                                         </div>

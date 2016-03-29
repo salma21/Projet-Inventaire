@@ -40,7 +40,7 @@
 
                                         <div class="col-sm-8">
 
-                                            @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
+                                            @Html.TextBoxFor(model => model.code_a_barre, new { @class = "form-control", required = "", @readonly = "readonly" })
                                             @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
 
                                         </div>

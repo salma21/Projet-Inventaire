@@ -1,5 +1,53 @@
 ﻿@model Domain.Contrat
+<script language="javascript" type="text/javascript">
 
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/Admin/GenerateCA/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
+    function GetBat() {
+        var selectElmt = document.getElementById("tt");
+        var url = "/GestionContrat/GenerateCAContrat/";
+
+        $.ajax({
+            url: url,
+            data: {},
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+
+                selectElmt.value = data
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+
+</script>
 
 <div class="row">
     <div class="col-md-12">
@@ -30,43 +78,48 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <legend>Contrat </legend>
 
                             <div class="form-group">
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Code à barres</label>
+                              
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Code à Barres</label>
 
-                                    <div class="col-sm-8">
+                                            <div class="col-sm-8">
+                                                @Html.TextBoxFor(model => model.code_a_barre, new { @id = "tt", @class = "form-control", required = "", @readonly = "readonly" })
+                                                @Html.ValidationMessageFor(model => model.code_a_barre, "", new { @class = "text-danger" })
 
-                                        @Html.EditorFor(model => model.code_a_barre, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
+                                                <br />
+
+                                                <input type="button" value="Générer Code À Barres" onclick="GetBat()" class="btn btn-option5" />
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Référence (N° Contrat)</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.EditorFor(model => model.Num, new { @class = "form-control", required = "" })
+                                                @Html.ValidationMessageFor(model => model.Num, String.Empty, new { @class = "test" })
+
+                                            </div>
+
+                                        </div>
+
+
+                                        <div class="col-md-4">
+                                            <label class="col-sm-4 control-label form-label">Sociéte</label>
+
+                                            <div class="col-sm-8">
+
+                                                @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
+
+                                            </div>
+
+                                        </div>
+
 
                                     </div>
-
-                                </div>
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Référence (N° Contrat)</label>
-
-                                    <div class="col-sm-8">
-
-                                        @Html.EditorFor(model => model.Num, new { @class = "form-control", required = "" })
-                                        @Html.ValidationMessageFor(model => model.Num, String.Empty, new { @class = "test" })
-
-                                    </div>
-
-                                </div>
-
-
-                                <div class="col-md-4">
-                                    <label class="col-sm-4 control-label form-label">Sociéte</label>
-
-                                    <div class="col-sm-8" >
-
-                                        @Html.DropDownListFor(model => model.Id_fournisseur, (SelectList)ViewData["fournisseurs"], "--Choisir--", new { @class = "form-control", required = "" })
-
-                                    </div>
-
-                                </div>
-                               
-
-                                </div>
 
                           
                             <div class="form-group">
@@ -102,6 +155,21 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         </div>
 
                                     </div>
+                              </div>
+
+                          
+
+                                
+
+                            <div class="form-group">
+
+                                <br />
+
+                                <br />
+
+                            </div>
+                            <div class="form-group">
+                               
                                     <div class="col-md-4">
                                         <label class="col-sm-4 control-label form-label">Coût</label>
 
@@ -114,19 +182,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     </div>
 
 
-                                </div>
-
-                                
-
-                            <div class="form-group">
-
-                                <br />
-
-                                <br />
-
-                            </div>
-                            <div class="form-group">
-
+                             
                                 <div class="col-md-4">
                                     <label class="col-sm-4 control-label form-label">Date Début </label>
 

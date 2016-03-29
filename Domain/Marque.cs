@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Marque
     {
         public Nullable<int> Id_categorie { get; set; }
@@ -19,7 +19,12 @@ namespace Domain
         public Nullable<int> IdModele { get; set; }
         public int Id_sous_Modele { get; set; }
         public int IdMarque { get; set; }
+        [Required(ErrorMessage = "La marque est obligatoire")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "La marque doit comporter entre 2 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le marque est invalide")]
         public string Libelle { get; set; }
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide.Exemple : Bureau 1")]
         public string Description { get; set; }
     
         public virtual Sous_modele Sous_modele { get; set; }

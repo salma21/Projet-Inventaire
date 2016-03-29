@@ -195,3 +195,15 @@ C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.SqlSe
 C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
 C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Data\obj\Debug\Data.dll
 C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Data\obj\Debug\Data.pdb
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\Data.dll.config
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\Data.dll
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\Data.pdb
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\Domain.dll
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.dll
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\Domain.pdb
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.xml
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\obj\Debug\Data.csprojResolveAssemblyReference.cache
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\obj\Debug\Data.dll
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Data\obj\Debug\Data.pdb

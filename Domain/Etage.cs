@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Etage
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,8 +24,17 @@ namespace Domain
         public Nullable<int> idDelegation { get; set; }
         public int idBatiment { get; set; }
         public int Id_etage { get; set; }
+        [Required(ErrorMessage = "Le code de l'étage est obligatoire")]
+        [StringLength(10, MinimumLength = 1, ErrorMessage = "Le code de l'étage doit contenir au minimum 1 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ-]+$", ErrorMessage = "Le code de l'étage est invalide.Exemple: 01")]
         public string code { get; set; }
+        [Required(ErrorMessage = "La description est obligatoire")]
+        [StringLength(30, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide.Exemple: étage 1")]
         public string description { get; set; }
+        [Required(ErrorMessage = "Le code à barre est obligatoire")]
+        [StringLength(13, MinimumLength = 13, ErrorMessage = "Le code à barre est invalide : il doit contenir 13 chiffres")]
+        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "Le code à barre est invalide")]
         public string code_a_barre { get; set; }
     
         public virtual Batiment Batiment { get; set; }

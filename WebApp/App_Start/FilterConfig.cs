@@ -9,7 +9,7 @@ namespace WebApp
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
-            filters.Add(new DisableCache());
+           filters.Add(new DisableCache());
         }
     }
 

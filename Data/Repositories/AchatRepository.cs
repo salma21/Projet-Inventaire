@@ -21,8 +21,17 @@ namespace Data.Repositories
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
+        public int FindMaxIDAchat()
+        {
 
-       
+            var pers = (from p in DataContext.Achat
+
+                        select p.Id_achat).Max();
+
+            return pers;
+        }
+
+
     }
 
 
@@ -30,7 +39,7 @@ namespace Data.Repositories
     {
 
         void UpdateAchatDetached(Achat e);
-       
+        int FindMaxIDAchat();
     }
 
 }

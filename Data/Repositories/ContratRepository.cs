@@ -22,7 +22,16 @@ namespace Data.Repositories
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
 
-       
+        public int FindMaxIDContrat()
+        {
+
+            var pers = (from p in DataContext.Contrat
+
+                        select p.Id_contrat).Max();
+
+            return pers;
+        }
+
 
         public Contrat FindContratByID(int id)
         {
@@ -40,8 +49,9 @@ namespace Data.Repositories
     public interface IContratRepository : IRepository<Contrat>
     {
         Contrat FindContratByID(int id);
+        int FindMaxIDContrat();
 
-    
+
         void UpdateContratDetached(Contrat e);
     }
 

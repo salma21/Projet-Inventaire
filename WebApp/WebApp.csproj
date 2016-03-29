@@ -339,7 +339,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Start\data.csv" />
     <Content Include="Content\fonts\fontawesome-webfontd41d.eot" />
     <Content Include="Content\fonts\fontawesome-webfonte0a5.eot" />
     <Content Include="Content\fonts\fontawesome-webfonte0a5.ttf" />
@@ -452,18 +451,16 @@
     <Content Include="Views\ImportExport\ImportTxt.cshtml" />
     <Content Include="Views\ImportExport\Cipherlab.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
-    <Content Include="Views\Gestion\EditBatiment.cshtml" />
+    <Content Include="Views\Gestion\EditBatiment1.cshtml" />
     <Content Include="Views\Admin\EditBureaux.cshtml" />
     <Content Include="Views\Gestion\EditDirection.cshtml" />
     <Content Include="Views\Gestion\EditDelegation.cshtml" />
     <Content Include="Views\Gestion\EditEtage.cshtml" />
     <Content Include="Views\Gestion\EditFournisseur.cshtml" />
-    <Content Include="Views\Gestion\EditGouvernorat.cshtml" />
     <Content Include="Views\Gestion\EditOrganisation.cshtml" />
-    <Content Include="Views\Gestion\CreateGouvernorat1.cshtml" />
     <Content Include="Views\Gestion\EditStock.cshtml" />
     <Content Include="Views\Gestion\EditParcAuto.cshtml" />
-    <Content Include="Views\ServiceD\EditServiceD.cshtml" />
+    <Content Include="Views\ServiceD\EditServiceD1.cshtml" />
     <Content Include="Views\Gestion\CreateMouvementBien.cshtml" />
     <Content Include="Views\Gestion\CreateVehicule.cshtml" />
     <Content Include="Views\Gestion\GetMouvementBien.cshtml" />
@@ -506,6 +503,12 @@
     <Content Include="Views\Admin\getDepots.cshtml" />
     <Content Include="Views\Admin\CreateDepot.cshtml" />
     <Content Include="Views\Admin\CreateUsersTest.cshtml" />
+    <Content Include="Views\Gestion\EditGouvernorat.cshtml" />
+    <Content Include="Views\Gestion\EditBatiment2.cshtml" />
+    <Content Include="Views\ServiceD\EditServiceD.cshtml" />
+    <Content Include="Views\ServiceD\EditServiceDTest.cshtml" />
+    <Content Include="Views\Gestion\EditBatiment.cshtml" />
+    <Content Include="Views\Gestion\EditEtage2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

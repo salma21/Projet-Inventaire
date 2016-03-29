@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class Region
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +22,9 @@ namespace Domain
     
         public int idPays { get; set; }
         public int idRegion { get; set; }
+        [Required(ErrorMessage = "Le nom de la région est obligatoire")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom de la région doit comporter entre 2 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom de la région est invalide")]
         public string libelle { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

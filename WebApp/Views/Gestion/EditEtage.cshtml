@@ -1,42 +1,10 @@
 ﻿@model Domain.Etage
-<link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
-@{
 
-
-    List<string> listbatiment = new List<string>();
-    List<string> listetage = new List<string>();
-}
-<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script language="javascript" type="text/javascript">
-    function GetCity(_stateId) {
-        var procemessage = "<option value='0'>Encours...</option>";
-        $("#ddlcity").html(procemessage).show();
-        var url = "/Gestion/GetBatiemntByDelegation/";
-
-        $.ajax({
-            url: url,
-            data: { stateid: _stateId },
-            cache: false,
-            type: "POST",
-            success: function (data) {
-                var markup = "<option value='0'>--Choisir--</option>";
-                for (var x = 0; x < data.length; x++) {
-                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
-                }
-                $("#ddlcity").html(markup).show();
-            },
-            error: function (reponse) {
-                alert("error : " + reponse);
-            }
-        });
-
-    }
-</script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-               étage
+                Modification étage
             </div>
             <div class="panel-body">
 
@@ -46,43 +14,53 @@
 
                     @using (Html.BeginForm())
                     {
-                        @Html.HiddenFor(mpdel=>Model.Id_etage)
                         @Html.AntiForgeryToken()
 
                         <div class="form-horizontal">
-                            <h4> Modification d'étage</h4>
+                            <h4>Étage</h4>
                             <hr />
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
-                                <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Batiment.idGouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
-                                </div>
-                            </div>
+                            @Html.HiddenFor(model => model.idDelegation)
+
+                            @Html.HiddenFor(model => model.idBatiment)
+
+                            @Html.HiddenFor(model => model.Id_etage)
+
+                           
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @*<div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernerat </label>
+                                    <div class="col-lg-6">
+                                        @Html.DropDownListFor(model => model.Batiment.idGouvernorat, (SelectList)ViewData["gouv"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    </div>
+                                </div>*@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Ville</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Batiment.Delegation.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.idDelegation, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Batiment</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Batiment.description, new { @class = "form-control", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.idBatiment, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Code à barres </label>
                                 <div class="col-lg-6">
-                                    @Html.EditorFor(model => model.code_a_barre, new { htmlAttributes = new { @class = "form-control" } })
-                                    @Html.ValidationMessageFor(model => model.code_a_barre, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(model => model.code_a_barre, new { @class = "form-control", required = "", @readonly = "readonly" })
+                                    @Html.ValidationMessageFor(model => model.code_a_barre, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-                          
+
+
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Code étage</label>
                                 <div class="col-lg-6">
-                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.code, new { htmlAttributes = new { @class = "form-control", required = "" } })
                                     @Html.ValidationMessageFor(model => model.code, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -91,8 +69,9 @@
                                 <label class="control-label col-lg-4">Description</label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control", required = "" } })
                                     @Html.ValidationMessageFor(model => model.description, "", new { @class = "text-danger" })
+
 
                                 </div>
                             </div>
@@ -117,6 +96,3 @@
     </div>
 
 </div>
-
-
-

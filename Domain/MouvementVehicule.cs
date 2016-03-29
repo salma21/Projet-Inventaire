@@ -11,19 +11,32 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
     public partial class MouvementVehicule
     {
         public int Id_mouvementV { get; set; }
         public int Id_parc { get; set; }
         public int Id_Vehicule { get; set; }
+        [Required(ErrorMessage = "La désignation est obligatoire")]
+        [StringLength(30, MinimumLength = 2, ErrorMessage = "La désignation doit comporter entre 2 et 30 caractéres")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La désignation est invalide")]
         public string Nom { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Date dernière affectation est obligatoire")]
         public Nullable<System.DateTime> Date_derniere_affectation { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Date prochaine affectation est obligatoire")]
         public Nullable<System.DateTime> Date_prochaine_affectation { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Date renouvellement pévue est obligatoire")]
         public Nullable<System.DateTime> Date_renouvellement_prevue { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Date retour prévue est obligatoire")]
         public Nullable<System.DateTime> Date_retour_prevue { get; set; }
+        [DataType(DataType.Date)]
+        [Required(ErrorMessage = "Date sortie est obligatoire")]
         public Nullable<System.DateTime> Date_sortie { get; set; }
-    
+
         public virtual Vehicule Vehicule { get; set; }
     }
 }

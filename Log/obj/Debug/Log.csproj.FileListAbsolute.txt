@@ -60,3 +60,8 @@ C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\bin\Debug\Log.dll
 C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
 C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
 C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Log\bin\Debug\Log.dll
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Log\bin\Debug\Log.pdb
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Log\obj\Debug\Log.csprojResolveAssemblyReference.cache
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Log\obj\Debug\Log.dll
+C:\Users\nesrine.BISS\Desktop\version 21-03-2016 nesrine\ATB_SOLUTIONS\Log\obj\Debug\Log.pdb

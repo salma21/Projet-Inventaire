@@ -20,7 +20,7 @@
                             <th>Délégation </th>
                             <th>Code postal</th>
                             <th>Région </th>
-                           
+                            <th>Pays </th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -40,9 +40,9 @@
                                 <td class="center">@item.Delegation.libelle</td>
                                 <td class="center">@item.Delegation.Code_postal</td>
                                 <td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>
-                                
-                               
-                                <td>
+                                <td class="center">@item.Delegation.Gouvernorat.Region.Pays.libelle</td>
+
+<td>
 @if (@Session["Role"].ToString() == "ADMIN")
 {
 
