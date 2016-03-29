@@ -61,6 +61,29 @@
         });
 
     }
+    function GetBatT(_delegId) {
+
+        var url = "/Categorie/OpenPopupSousModéle/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 
 <div class="row">
@@ -115,7 +138,7 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4">Sous Modele  </label>
                                 <div class="col-lg-6">
-                                    @Html.TextBoxFor(m => m.Libelle, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(m => m.Libelle, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
                                     @Html.ValidationMessageFor(m => m.Libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>

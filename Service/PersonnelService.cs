@@ -42,6 +42,11 @@ namespace Service
 
         }
 
+        public String findNomByMatricule(int id)
+        {
+            var pers = utOfWork.PersonnelRepository.findNomByMatricule(id);
+            return pers;
+        }
         public void DeletePersonnel(int id)
         {
 
@@ -125,7 +130,7 @@ public interface IPersonnelService
     IEnumerable<ServiceD> findServiceByDirection(int id);
     IEnumerable<Personnel> findPersByService(int id);
 
-
+    String findNomByMatricule(int id);
 }
 
 

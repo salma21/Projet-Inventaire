@@ -28,6 +28,7 @@ namespace Domain
         public Nullable<int> idDelegation { get; set; }
         public Nullable<int> IdDepot { get; set; }
         public int Id_bien { get; set; }
+        public Nullable<int> qte { get; set; }
     
         public virtual Bien Bien { get; set; }
         public virtual Inventaire Inventaire { get; set; }

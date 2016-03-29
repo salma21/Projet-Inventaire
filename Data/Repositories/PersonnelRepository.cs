@@ -36,6 +36,15 @@ namespace Data.Repositories
             return (int)pers.FirstOrDefault().idOrganisation;
         }
 
+        public String findNomByMatricule(int id)
+        {
+
+            var pers = (from p in DataContext.Personnel
+                        where p.id_pers == id
+                        select p);
+            return pers.FirstOrDefault().nom + " " + pers.FirstOrDefault().prenom;
+        }
+
         public int FindDelegationByBatiment(int id)
         {
 
@@ -114,6 +123,7 @@ namespace Data.Repositories
         Personnel FindPersByID(int id);
         IEnumerable<ServiceD> findServiceByDirection(int id);
         IEnumerable<Personnel> findPersByService(int id);
+        String findNomByMatricule(int id);
     }
 
 

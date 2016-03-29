@@ -30,6 +30,29 @@
         });
 
     }
+    function GetBatT(_delegId) {
+
+        var url = "/Gestion/OpenPopupParc/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 
 <div class="row">

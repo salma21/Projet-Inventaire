@@ -120,11 +120,17 @@ namespace WebApp.Controllers
             { return RedirectToAction("Index", "Home"); }
             if (ModelState.IsValid)
             {
+                if (etat)
+                {
+                    depo.createDepot(dep);
+                    depo.SaveDepot();
 
-                depo.createDepot(dep);
-                depo.SaveDepot();
-
-                return RedirectToAction("getDepots");
+                    return RedirectToAction("getDepots");
+                }
+                else
+                {
+                    return RedirectToAction("Index" , "Error");
+                }
 
             }
             else
@@ -138,6 +144,20 @@ namespace WebApp.Controllers
 
                 return View();
             }
+        }
+        [HttpPost]
+        public ActionResult OpenPopupDepot(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Depot.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce depot existe déja!!";
+            }
+
+            //iuoiy
+            return Json(Mess);
         }
         public ActionResult EditDepot(int id)
         {
@@ -236,7 +256,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         public ActionResult OpenPopup(int delegid)
-        {
+         {
             String Mess = "";
 
             var objcity = BissInventaireEntities.Instance.Bureau.FirstOrDefault(u => u.id == delegid);
@@ -483,6 +503,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
+          
 
             var delegation = BissInventaireEntities.Instance.Delegation.ToList();
             var etage = BissInventaireEntities.Instance.Etage.ToList();
@@ -932,6 +953,7 @@ namespace WebApp.Controllers
             SelectList obgcity = new SelectList(objcity, "idGouvernorat", "libelle", 0);
             return Json(obgcity);
         }
+
         [HttpPost]
         public ActionResult GetDelegationByGouvernorat(string libelle)
         {
@@ -943,6 +965,17 @@ namespace WebApp.Controllers
             SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
         }
+        [HttpPost]
+        public ActionResult getNom(int id)
+        {
+            IPersonnelService pers = new PersonnelService();
+
+
+            string objcity = pers.findNomByMatricule(id);
+
+            return Json(objcity);
+        }
+
         [HttpPost]
         public ActionResult GenerateCA()
         {

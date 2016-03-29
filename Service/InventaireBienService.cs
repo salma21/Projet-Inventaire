@@ -66,7 +66,7 @@ namespace Service
         }
 
 
-
+       
 
     }
     public interface IInventaireBienService
@@ -79,7 +79,7 @@ namespace Service
         void CreateInventaireBien(InventaireBien InventaireBien);
         void SaveInventaireBien();
         IEnumerable<InventaireBien> GetInventaireBiens();
-
+       
 
     }
 

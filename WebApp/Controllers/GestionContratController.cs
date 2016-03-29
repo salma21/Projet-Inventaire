@@ -17,6 +17,9 @@ namespace WebApp.Controllers
         IGestionContratService db1 = new GestionContratService();
         IFournisseurService fourni = new FournisseurService();
         private IGestionContratService del = new GestionContratService();
+        public bool etat = true;
+
+
         // GET: GestionContratetSoc
       
 
@@ -84,6 +87,20 @@ namespace WebApp.Controllers
             }
         }
 
+        [HttpPost]
+        public ActionResult OpenPopupContrat(int delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Contrat.FirstOrDefault(u => u.Num == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce numéro de référence existe déja!!";
+            }
+
+            //iuoiy
+            return Json(Mess);
+        }
         public ActionResult EditContrat(int id)
         {
             if (Session["identifiant"] == null)

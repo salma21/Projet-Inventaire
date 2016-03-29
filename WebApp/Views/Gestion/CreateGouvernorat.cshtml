@@ -29,6 +29,29 @@
         });
 
     }
+    function GetBatT(_delegId) {
+
+        var url = "/Gestion/OpenPopupGouvernorat/";
+
+        $.ajax({
+            url: url,
+            data: { delegid: _delegId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+
+                if (data != "") {
+                    alert(data)
+                }
+
+
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
 </script>
 <div class="row">
     <div class="col-md-12">
@@ -50,7 +73,7 @@
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom Gouvernorat </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.libelle, new { @class = "form-control", style = "width:300px;height:30px;color:black", required = "True" })
+                                    @Html.EditorFor(model => model.libelle, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
                                     @Html.ValidationMessageFor(model => model.libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>

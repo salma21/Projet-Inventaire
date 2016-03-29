@@ -15,8 +15,9 @@ namespace WebApp.Controllers
         public class CategorieController : Controller
         {
             private ICategorieService db = new CategorieService();
-            // GET: Categorie_materiel
-            public ActionResult index()
+            public bool etat = true;
+        // GET: Categorie_materiel
+        public ActionResult index()
             {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -102,10 +103,16 @@ namespace WebApp.Controllers
             if (ModelState.IsValid)
             {
                 try
-                {
-                    BissInventaireEntities.Instance.Categorie.Add(categorie);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("getCategorie");
+                { if (etat)
+                    {
+                        BissInventaireEntities.Instance.Categorie.Add(categorie);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("getCategorie");
+                    }
+                 else
+                    {
+                        return RedirectToAction("Index" ,"Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -179,9 +186,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Sous_categorie.Add(sousCategorie);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("getSousCategorie");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Sous_categorie.Add(sousCategorie);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("getSousCategorie");
+                    }
+                   else
+                    {
+                        return RedirectToAction("Index","Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -318,9 +332,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Modele.Add(modele);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("getModele");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Modele.Add(modele);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("getModele");
+                    }
+                  else
+                    {
+                        return RedirectToAction("Index","Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -351,7 +372,80 @@ namespace WebApp.Controllers
         }
 
 
-       
+
+        [HttpPost]
+        public ActionResult OpenPopupCategorie(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Categorie.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette catégorie existe déja!!";
+            }
+
+            //iuoiy
+            return Json(Mess);
+        }
+        [HttpPost]
+        public ActionResult OpenPopupSousCategorie(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Sous_categorie.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette sous catégorie existe déja!!";
+            }
+
+
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupModele(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Modele.FirstOrDefault(u => u.libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce modéle existe déja!!";
+            }
+
+
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupSousModéle(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Sous_modele.FirstOrDefault(u => u.Libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Ce sous modéle existe déja!!";
+            }
+
+
+            return Json(Mess);
+        }
+
+        [HttpPost]
+        public ActionResult OpenPopupMarque(string delegid)
+        {
+            String Mess = "";
+
+            var objcity = BissInventaireEntities.Instance.Marque.FirstOrDefault(u => u.Libelle.ToLower() == delegid);
+            if (objcity != null)
+            {
+                Mess = "Cette marque existe déja!!";
+            }
+
+
+            return Json(Mess);
+        }
 
         //Create SousModele
 
@@ -372,9 +466,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Sous_modele.Add(sousModele);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("getSousModele");
+                    if(etat)
+                    {
+                        BissInventaireEntities.Instance.Sous_modele.Add(sousModele);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("getSousModele");
+                    }
+                  else
+                    {
+                        return RedirectToAction("Index","Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -422,9 +523,16 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    BissInventaireEntities.Instance.Marque.Add(marque);
-                    BissInventaireEntities.Instance.SaveChanges();
-                    return RedirectToAction("getMarque");
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Marque.Add(marque);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("getMarque");
+                    }
+                   else
+                    {
+                        return RedirectToAction("Index","Error");
+                    }
                 }
                 catch (Exception ex)
                 {
@@ -563,8 +671,9 @@ namespace WebApp.Controllers
                 }
             }
 
+      
 
 
 
     }
-    }
+}
