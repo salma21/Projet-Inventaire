@@ -30,7 +30,7 @@ namespace WebApp.Controllers
         private IVehiculeService vs = new VehiculeService();
         private IBureauService br = new BureauService();
         private IPaysService pays = new PaysService();
-
+       private PersonnelController p = new PersonnelController();
         public bool etat = true;
         // GET: Gestion
         public ActionResult Index()
@@ -1639,7 +1639,10 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
+
+            
             var Mouvement = db8.GetMouvementBiens();
+          
             return View(Mouvement);
         }
         // GET: Vehicule/Details/6

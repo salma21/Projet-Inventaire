@@ -24,6 +24,7 @@
 
     }
 </script>
+
 <div class="row">
     <!-- Start Panel -->
     <div class="col-md-12">
@@ -116,15 +117,17 @@
 
 
                                            <div class="modal-body">
-                                                Vous êtes sur de vouloir Ajouter Ce Bien
+                                                Insérer la quantité
                                             
                                             </div>
-                                            @*@using (Html.BeginForm("ValiderBien", "Inventaire", new { id = item.Id_bien }))
+                                            @using (Html.BeginForm("ValiderBien", "Inventaire", new { id = item.Id_bien }))
                                             {
 
+                                                
+                                               @Html.TextBox("lolz")
                                               <button type="button" id="cancel" class="btn btn-default" data-dismiss="modal">Annuler</button>
                                               <button type="submit" id="mySubmit" class="btn btn-primary">Confirmer</button>
-                                            }*@
+                                            }
 
                                         </div>
                                     </div>

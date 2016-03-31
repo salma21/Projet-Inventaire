@@ -35,7 +35,7 @@ namespace Domain
         [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le prénom est invalide")]
         public string prenom { get; set; }
         [Required(ErrorMessage = "La matricule est obligatoire")]
-        [StringLength(4, MinimumLength = 4, ErrorMessage = "La matricule est invalide : il doit contenir 4 chiffres")]
+        [Range(0001, 9999, ErrorMessage = "La matricule est invalide : il doit contenir 4 chiffres")]
         [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "La matricule est invalide")]
         public Nullable<int> Matricule { get; set; }
         [Display(Name = "Email address")]
