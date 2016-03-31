@@ -63,7 +63,7 @@ namespace WebApp.Controllers
             ViewData["Idinv"] = id;
             idinv = Convert.ToInt32(ViewData["Idinv"]);
            
-
+            
             var inv = BissInventaireEntities.Instance.Bien.ToList();
             return View("GetBiens", inv);
         }
@@ -152,7 +152,7 @@ namespace WebApp.Controllers
            
             return View();
         }
-        public ActionResult ValiderBien(int id)
+        public ActionResult ValiderBien(int id , int lolz)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -170,7 +170,8 @@ namespace WebApp.Controllers
             IUtilisateurService kk = new UtilisateurService();
 
             InventaireBien nm = new InventaireBien();
-           nm.Id_bien = id;
+            nm.Id_bien = id;
+            nm.qte = lolz;
             nm.Id_inventaire = InventaireController.idinv;
             BissInventaireEntities.Instance.InventaireBien.Add(nm);
             BissInventaireEntities.Instance.SaveChanges();
