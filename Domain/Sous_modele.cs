@@ -19,19 +19,19 @@ namespace Domain
         {
             this.Marque = new HashSet<Marque>();
         }
-    
+
         public Nullable<int> Id_categorie { get; set; }
         public Nullable<int> id_sous_categorie { get; set; }
         public int IdModele { get; set; }
         public int Id_sous_Modele { get; set; }
         [Required(ErrorMessage = "Le sous-modèle est obligatoire")]
         [StringLength(30, MinimumLength = 2, ErrorMessage = "La sous-modèle doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La sous-modèle est invalide")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le sous-modèle est invalide")]
         public string Libelle { get; set; }
         [Required(ErrorMessage = "La description est obligatoire")]
 
         [StringLength(30, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide.Exemple : Bureau 1")]
+        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide.Exemple : sous-modèle 1")]
         public string Description { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

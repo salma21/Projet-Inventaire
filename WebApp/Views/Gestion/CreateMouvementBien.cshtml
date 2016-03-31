@@ -110,14 +110,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
 
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre </label>
-                                <div class="col-lg-6">
+                            @*<div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre </label>
+                                    <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.Id_bien, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Id_bien, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>
+                                        @Html.EditorFor(model => model.Id_bien, new { @class = "form-control", required = "True" })
+                                        @Html.ValidationMessageFor(model => model.Id_bien, String.Empty, new { @class = "test" })
+                                    </div>
+                                </div>*@
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
@@ -154,7 +154,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Bien</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre</label>
                                 <div class="col-lg-6">
                                     @Html.DropDownListFor(model => model.Id_bien, new SelectList(listBien), "--Choisir--", new { @id = "Bien", @class = "form-control", required = "True" })
                                 </div>
@@ -162,13 +162,13 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
 
                             @*<div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
-                                <div class="col-lg-6">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
+                                    <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
-                                </div>
-                            </div*@>
+                                        @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                        @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                    </div>
+                                </div*@>
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Derniére affectation </label>
                                 <div class="col-lg-6">

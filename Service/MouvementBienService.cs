@@ -53,12 +53,17 @@ namespace Service
             var dep = utOfWork.MouvementBienRepository.FindBatimentByDelegation(id);
             return dep;
         }
-
-
         public IEnumerable<Bien> FindBienByEtage(int id)
 
         {
             var dep = utOfWork.MouvementBienRepository.FindBienByEtage(id);
+            return dep;
+        }
+
+        public IEnumerable<MouvementBien> FindMouvementBienByID(int id)
+
+        {
+            var dep = utOfWork.MouvementBienRepository.FindMouvementBienByID(id);
             return dep;
         }
 
@@ -96,7 +101,7 @@ public interface IMouvementBienService
 
     IEnumerable<Bien> FindBienByEtage(int id);
 
-
+    IEnumerable<Bien> FindMouvementBienByID(int id);
 
 
 

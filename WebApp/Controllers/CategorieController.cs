@@ -163,14 +163,7 @@ namespace WebApp.Controllers
             }
         }
 
-
-
-
-
-
-
-
-
+        
         public ActionResult createSousCategorie()
         {
             ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
@@ -206,7 +199,7 @@ namespace WebApp.Controllers
             else
 
             {
-
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
                 return View();
             }
         }
@@ -282,19 +275,15 @@ namespace WebApp.Controllers
             return View(cat);
         }
 
-        //POST: SousCategorie/Edit
-        [HttpPost]
+    
+
         public ActionResult editSousCategorie(Sous_categorie sousCategorie)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-
-                    //DeleteRelationship(oldCategorie , oldSousCategorieId);
-                    //InsertWithData(newCategorieId, newSousCategorieId);
                     db.UpdateCategorie_DesignationDetached(sousCategorie);
-                    //UpdateModel(sousCategorie);
                     db.SaveSousCategorie();
                     return RedirectToAction("getSousCategorie");
                 }
@@ -307,11 +296,10 @@ namespace WebApp.Controllers
             else
 
             {
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
                 return View();
             }
         }
-
-
 
 
 
@@ -490,6 +478,43 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+        public ActionResult EditSousModele(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
+            ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+
+            var cat = db.FindSous_ModeleById(id);
+            return View(cat);
+        }
+
+        // POST: Categorie_materiel/Create
+        [HttpPost]
+        public ActionResult EditSousModele(Sous_modele sousModele)
+        {
+            if (ModelState.IsValid)
+            {
+                //try
+                //{
+                    db.UpdateSous_ModeleDetached(sousModele);
+                    db.SaveSousModele();
+                    return RedirectToAction("getSousModele");
+                //}
+                //catch (Exception ex)
+                //{
+                //    LogThread.WriteLine(ex.Message);
+                //    return RedirectToAction("Index", "Error");
+                //}
+            }
+            else
+
+            {
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+                return View();
+            }
+        }
+
 
         //getModeleBySousCategorie
         [HttpPost]
@@ -543,11 +568,46 @@ namespace WebApp.Controllers
             else
 
             {
-
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
                 return View();
             }
         }
+        public ActionResult EditMarque(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
 
+            ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+
+            var cat = db.FindMarqueById(id);
+            return View(cat);
+        }
+
+        // POST: Categorie_materiel/Create
+        [HttpPost]
+        public ActionResult EditMarque(Marque Catm)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db.UpdateMarqueDetached(Catm);
+                    db.SaveMarque();
+                    return RedirectToAction("getMarque");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+                return View();
+            }
+        }
 
         //getModeleBySousCategorie
         [HttpPost]
@@ -601,7 +661,7 @@ namespace WebApp.Controllers
                 {
                     db.UpdateCategorie_ModeleDetached(Catm);
                     db.SaveCategorie_materiel();
-                    return RedirectToAction("GetCategorie_Modele");
+                    return RedirectToAction("getModele");
                 }
                 catch (Exception ex)
                 {

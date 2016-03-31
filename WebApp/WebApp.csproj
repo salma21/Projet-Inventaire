@@ -509,6 +509,10 @@
     <Content Include="Views\ServiceD\EditServiceDTest.cshtml" />
     <Content Include="Views\Gestion\EditBatiment.cshtml" />
     <Content Include="Views\Gestion\EditEtage2.cshtml" />
+    <Content Include="Views\Categorie\EditCategorie_Modele.cshtml" />
+    <Content Include="Views\Categorie\EditSousModele.cshtml" />
+    <Content Include="Views\Categorie\EditMarque.cshtml" />
+    <Content Include="Views\Gestion\EditMouvementBien.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -174,8 +174,16 @@ namespace Service
             utOfWork.Commit();
         }
 
+        public void SaveSousModele()
+        {
 
+            utOfWork.Commit();
+        }
+        public void SaveMarque()
+        {
 
+            utOfWork.Commit();
+        }
 
 
         public void SaveCategorie_materiel()
@@ -230,7 +238,8 @@ namespace Service
         IEnumerable<Sous_modele> GetAllSousModele();
        
         IEnumerable<Marque> GetAllMarque();
-
+        void SaveMarque();
+        void SaveSousModele();
         void SaveCategorie_materiel();
         void SaveSousCategorie();
         void CreateCategorie_materiel(Categorie Categorie);

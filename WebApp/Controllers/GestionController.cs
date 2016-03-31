@@ -84,6 +84,8 @@ namespace WebApp.Controllers
                 {
                     LogThread.WriteLine(ex.Message);
                     return RedirectToAction("Index", "Error");
+
+                    //MsgBox("An exception occurred:"+ ex.Message);
                 }
             }
             else
@@ -1530,7 +1532,6 @@ namespace WebApp.Controllers
 
             {
                 ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
-
                 ViewData["maintenance"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
                 ViewData["achat"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
                 return View();
@@ -1668,11 +1669,12 @@ namespace WebApp.Controllers
 
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-
+        
+            ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Code_a_barre");
             ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "description");
             ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
-            ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Num_serie");
+            //ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Num_serie");
 
             return View();
         }
@@ -1739,12 +1741,52 @@ namespace WebApp.Controllers
                 ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
                 ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "description");
                 ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
-                ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Num_serie");
-
+                //ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Num_serie");
+                ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Code_a_barre");
                 return View();
             }
         }
+        public ActionResult EditMouvementBien(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var movb = db8.FindMouvementBienByID(id);
+            ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Code_a_barre");
+            ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "description");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
 
+            return View(movb);
+        }
+
+        // POST: Gestion/Create
+        [HttpPost]
+        public ActionResult EditMouvementBien(MouvementBien mou)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    db8.UpdateMouvementBienDetached(mou);
+                    db8.SaveMouvementBien();
+                    return RedirectToAction("GetMouvementBien");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                ViewData["bien"] = new SelectList(BissInventaireEntities.Instance.Bien.ToList(), "Id_bien", "Code_a_barre");
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["etage"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "description");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                return View();
+            }
+        }
         [HttpPost]
         public ActionResult FindBatimentByDelegation(int delegid)
         {
@@ -1782,7 +1824,7 @@ namespace WebApp.Controllers
             List<Bien> objcity = new List<Bien>();
             objcity = db8.FindBienByEtage(etid).ToList();
 
-            SelectList obgcity = new SelectList(objcity, "Id_bien", "Num_serie", 0);
+            SelectList obgcity = new SelectList(objcity, "Id_bien", "Code_a_barre", 0);
             return Json(obgcity);
         }
 

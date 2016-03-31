@@ -99,7 +99,7 @@ namespace WebApp.Controllers
                         BissInventaireEntities.Instance.SaveChanges();
                         return RedirectToAction("GetPersonnel");
                     }
-                  else
+                    else
                     {
                         return RedirectToAction("Index", "Error");
                     }
@@ -123,8 +123,6 @@ namespace WebApp.Controllers
                 return View();
             }
         }
-
-
 
 
 

@@ -1,7 +1,7 @@
 ﻿@model Domain.Personnel
-    @{
+@{
 
-List<string> listService = new List<string>();
+    List<string> listService = new List<string>();
 }
 
 <link type="text/css" href="../../Content/Site.css" rel="stylesheet" />
@@ -100,7 +100,6 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         @Html.ValidationMessageFor(model => model.prenom, String.Empty, new { @class = "test" })
                                     </div>
                                 </div>
-                                @*kkk*@
                                 <div class="form-group">
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Matricule </label>
                                     <div class="col-lg-6">
@@ -155,7 +154,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     <label class="control-label col-lg-4" style="font-style:oblique;">Direction </label>
                                     <div class="col-lg-6">
 
-                                        @Html.DropDownListFor(model => model.Id_direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "" , @onchange = "javascript:getService(this.value);" })
+                                        @Html.DropDownListFor(model => model.Id_direction, (SelectList)ViewData["direction"], "--Choisir--", new { @class = "form-control", required = "", @onchange = "javascript:getService(this.value);" })
 
                                     </div>
                                 </div>
@@ -167,10 +166,10 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                                     </div>
                                 </div>
-                              
+                     
 
-                                </fieldset>
-</div>
+                            </fieldset>
+                        </div>
                         <br>
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />

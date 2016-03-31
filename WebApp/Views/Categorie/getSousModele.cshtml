@@ -43,7 +43,7 @@
                                     @if (@Session["Role"].ToString() == "ADMIN")
                                     {
 
-                                        <a href="@Url.Action("EditCategorie_Modele", new { id = item.id_sous_categorie })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
+                                        <a href="@Url.Action("EditSousModele", new { id = item.Id_sous_Modele })">&nbsp;<i class="fa fa-edit" title="Modifer"></i></a>
                                     }
                                 </td>
 

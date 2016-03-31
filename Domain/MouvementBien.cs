@@ -16,6 +16,7 @@ namespace Domain
     {
         public int Id_mouvementB { get; set; }
         public int Id_etage { get; set; }
+        [Required(ErrorMessage = "Le champs code à barres est obligatoire")]
         public int Id_bien { get; set; }
         [Required(ErrorMessage = "La désignation est obligatoire")]
         [StringLength(30, MinimumLength = 2, ErrorMessage = "La désignation doit comporter entre 2 et 30 caractéres")]
@@ -36,7 +37,7 @@ namespace Domain
         [DataType(DataType.Date)]
         [Required(ErrorMessage = "Date sortie est obligatoire")]
         public Nullable<System.DateTime> Date_sortie { get; set; }
-    
+
         public virtual Bien Bien { get; set; }
     }
 }
