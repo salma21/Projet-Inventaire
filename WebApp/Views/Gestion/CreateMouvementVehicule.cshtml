@@ -109,6 +109,15 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
                             <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Délégation</label>
                                 <div class="col-lg-6">
                                     @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.Delegation.idDelegation, (SelectList)ViewData["delegation"] ,"--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "True", @onchange = "javascript:GetBat(this.value);" })*@
@@ -121,40 +130,39 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Batiment</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownList("Batiment", (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })
+                                    @Html.DropDownList("Batiment", (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetEtage(this.value);" })
                                     @*@Html.DropDownListFor(model => model.Vehicule.Parc_auto.Batiment.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @id = "Bat", @class = "form-control", required = "True", @onchange = "javascript:GetParc(this.value);" })*@
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Parc auto</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Étage</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Id_parc, (SelectList)ViewData["parc"], "--Choisir--", new { @id = "Parc", @class = "form-control", required = "True", @onchange = "javascript:GetVeh(this.value);" })
+                                    @Html.DropDownListFor(model => model.Id_etage, (SelectList)ViewData["etage"], "--Choisir--", new { @id = "Etage", @class = "form-control", required = "True", @onchange = "javascript:GetBien(this.value);" })
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Vehicule</label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.Id_Vehicule, new SelectList(listVehicule), "--Choisir--", new { @id = "Veh", @class = "form-control", required = "True" })
+                                    @Html.DropDownListFor(model => model.Id_bien, new SelectList(listBien), "--Choisir--", new { @id = "Bien", @class = "form-control", required = "True" })
                                 </div>
                             </div>
 
 
                             <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Derniére affectation </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                    @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Date derniére affectation </label>
                                 <div class="col-lg-6">
-                                   
+
                                     @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
                                     @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
                                 </div>
@@ -203,11 +211,12 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                         </div>
 
-                            <div style="text-align: center;">
-                                <input type="submit" value="Valider" class="btn btn-default" />
-                                <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetMouvementVehicule")</button>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
 
-                            </div>
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "GetMouvementVehicule")</button>
+
+                        </div>
 
                     }
 

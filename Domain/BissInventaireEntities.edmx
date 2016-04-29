@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BissTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BissTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Achat">
           <Key>
             <PropertyRef Name="Id_achat" />
@@ -34,6 +34,8 @@
           <Property Name="code" Type="varchar" MaxLength="254" />
           <Property Name="description" Type="varchar" MaxLength="254" />
           <Property Name="code_a_barre" Type="varchar" MaxLength="50" />
+          <Property Name="localité" Type="varchar" MaxLength="50" />
+          <Property Name="code_postale" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Bien">
           <Key>
@@ -68,6 +70,10 @@
           <Property Name="Photo" Type="image" />
           <Property Name="Code_immobilisation" Type="varchar" MaxLength="50" />
           <Property Name="Thumbnail" Type="image" />
+          <Property Name="Qte_inv1" Type="int" />
+          <Property Name="Qte_inv2" Type="int" />
+          <Property Name="Qte_inv3" Type="int" />
+          <Property Name="Qte_inv4" Type="int" />
         </EntityType>
         <EntityType Name="Bureau">
           <Key>
@@ -139,6 +145,7 @@
           <Property Name="idDelegation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="libelle" Type="varchar" MaxLength="254" />
           <Property Name="Code_postal" Type="int" />
+          <Property Name="Localité" Type="varchar" MaxLength="254" />
         </EntityType>
         <EntityType Name="Depot">
           <Key>
@@ -196,6 +203,8 @@
           <Property Name="Fax" Type="int" />
           <Property Name="Email" Type="varchar" MaxLength="254" />
           <Property Name="Commentaire" Type="varchar" MaxLength="254" />
+          <Property Name="localité" Type="varchar" MaxLength="50" />
+          <Property Name="code_postale" Type="int" />
         </EntityType>
         <EntityType Name="Gouvernorat">
           <Key>
@@ -245,6 +254,15 @@
           </Key>
           <Property Name="Id_inventaire" Type="int" Nullable="false" />
           <Property Name="Id_Vehicule" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Localité">
+          <Key>
+            <PropertyRef Name="Id_localité" />
+          </Key>
+          <Property Name="CP" Type="int" />
+          <Property Name="delegation" Type="varchar" MaxLength="50" />
+          <Property Name="Localité" Type="varchar" MaxLength="50" />
+          <Property Name="Id_localité" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Marque">
           <Key>
@@ -315,6 +333,7 @@
           <Property Name="ville" Type="varchar" MaxLength="50" />
           <Property Name="pays" Type="varchar" MaxLength="50" />
           <Property Name="gouvernorat" Type="varchar" MaxLength="50" />
+          <Property Name="localié" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Parc_auto">
           <Key>
@@ -448,6 +467,7 @@
           <Property Name="Etat" Type="varchar" MaxLength="254" />
           <Property Name="Num_chassis" Type="varchar" MaxLength="254" />
           <Property Name="Prix_d_achat" Type="float" Nullable="false" />
+          <Property Name="Annee_achat" Type="date" />
         </EntityType>
         <Association Name="FK_ACHAT_ASSOCIATI_FOURNISS">
           <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
@@ -568,6 +588,20 @@
             <Dependent Role="Bien">
               <PropertyRef Name="Id_service" />
               <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bien_Bien">
+          <End Role="Bien" Type="Self.Bien" Multiplicity="1" />
+          <End Role="Bien1" Type="Self.Bien" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bien">
+              <PropertyRef Name="Id_etage" />
+              <PropertyRef Name="Id_bien" />
+            </Principal>
+            <Dependent Role="Bien1">
+              <PropertyRef Name="Id_etage" />
+              <PropertyRef Name="Id_bien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -752,6 +786,18 @@
             </Principal>
             <Dependent Role="InventaireVehicule">
               <PropertyRef Name="Id_inventaire" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Localité_Localité">
+          <End Role="Localité" Type="Self.Localité" Multiplicity="1" />
+          <End Role="Localité1" Type="Self.Localité" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Localité">
+              <PropertyRef Name="Id_localité" />
+            </Principal>
+            <Dependent Role="Localité1">
+              <PropertyRef Name="Id_localité" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -960,6 +1006,7 @@
           <EntitySet Name="Inventaire" EntityType="Self.Inventaire" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InventaireBien" EntityType="Self.InventaireBien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="InventaireVehicule" EntityType="Self.InventaireVehicule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localité" EntityType="Self.Localité" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Marque" EntityType="Self.Marque" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Modele" EntityType="Self.Modele" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MouvementBien" EntityType="Self.MouvementBien" Schema="dbo" store:Type="Tables" />
@@ -1013,6 +1060,10 @@
             <End Role="Personnel" EntitySet="Personnel" />
             <End Role="Bien" EntitySet="Bien" />
           </AssociationSet>
+          <AssociationSet Name="FK_Bien_Bien" Association="Self.FK_Bien_Bien">
+            <End Role="Bien" EntitySet="Bien" />
+            <End Role="Bien1" EntitySet="Bien" />
+          </AssociationSet>
           <AssociationSet Name="FK_BUREAU_ASSOCIATI_ETAGE" Association="Self.FK_BUREAU_ASSOCIATI_ETAGE">
             <End Role="Etage" EntitySet="Etage" />
             <End Role="Bureau" EntitySet="Bureau" />
@@ -1064,6 +1115,10 @@
           <AssociationSet Name="FK_INVENTAI_ASSOCIATI_INVENTAI" Association="Self.FK_INVENTAI_ASSOCIATI_INVENTAI">
             <End Role="Inventaire" EntitySet="Inventaire" />
             <End Role="InventaireVehicule" EntitySet="InventaireVehicule" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Localité_Localité" Association="Self.FK_Localité_Localité">
+            <End Role="Localité" EntitySet="Localité" />
+            <End Role="Localité1" EntitySet="Localité" />
           </AssociationSet>
           <AssociationSet Name="FK_MARQUE_ASSOCIATI_SOUS_MOD" Association="Self.FK_MARQUE_ASSOCIATI_SOUS_MOD">
             <End Role="Sous_modele" EntitySet="Sous_modele" />
@@ -1122,8 +1177,7 @@
             <End Role="Vehicule" EntitySet="Vehicule" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BissTestModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -1159,10 +1213,12 @@
           <Property Name="code" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="code_a_barre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="localité" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Delegation" Relationship="Self.FK_BATIMENT_ASSOCIATI_DELEGATI" FromRole="Batiment" ToRole="Delegation" />
           <NavigationProperty Name="Organisation" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Batiment" ToRole="Organisation" />
           <NavigationProperty Name="Etage" Relationship="Self.FK_ETAGE_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Etage" />
           <NavigationProperty Name="Parc_auto" Relationship="Self.FK_PARC_AUT_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Parc_auto" />
+          <Property Name="code_postale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Bien">
           <Key>
@@ -1197,11 +1253,17 @@
           <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="Code_immobilisation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Qte_inv1" Type="Int32" />
+          <Property Name="Qte_inv2" Type="Int32" />
+          <Property Name="Qte_inv3" Type="Int32" />
+          <Property Name="Qte_inv4" Type="Int32" />
           <NavigationProperty Name="Achat" Relationship="Self.FK_BIEN_ASSOCIATI_ACHAT" FromRole="Bien" ToRole="Achat" />
           <NavigationProperty Name="Categorie" Relationship="Self.FK_BIEN_ASSOCIATI_CATEGORI" FromRole="Bien" ToRole="Categorie" />
           <NavigationProperty Name="Depot" Relationship="Self.FK_BIEN_ASSOCIATI_DEPOT" FromRole="Bien" ToRole="Depot" />
           <NavigationProperty Name="Etage" Relationship="Self.FK_BIEN_ASSOCIATI_ETAGE" FromRole="Bien" ToRole="Etage" />
           <NavigationProperty Name="Personnel" Relationship="Self.FK_BIEN_ASSOCIATI_PERSONNE" FromRole="Bien" ToRole="Personnel" />
+          <NavigationProperty Name="Bien1" Relationship="Self.FK_Bien_Bien" FromRole="Bien" ToRole="Bien1" />
+          <NavigationProperty Name="Bien2" Relationship="Self.FK_Bien_Bien" FromRole="Bien1" ToRole="Bien" />
           <NavigationProperty Name="InventaireBien" Relationship="Self.FK_INVENTAI_ASSOCIATI_BIEN" FromRole="Bien" ToRole="InventaireBien" />
           <NavigationProperty Name="MouvementBien" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_BIEN" FromRole="Bien" ToRole="MouvementBien" />
         </EntityType>
@@ -1284,6 +1346,7 @@
           <Property Name="idDelegation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="Code_postal" Type="Int32" />
+          <Property Name="Localité" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Batiment" Relationship="Self.FK_BATIMENT_ASSOCIATI_DELEGATI" FromRole="Delegation" ToRole="Batiment" />
           <NavigationProperty Name="Gouvernorat" Relationship="Self.FK_DELEGATI_ASSOCIATI_GOUVERNO" FromRole="Delegation" ToRole="Gouvernorat" />
           <NavigationProperty Name="Depot" Relationship="Self.FK_DEPOT_ASSOCIATI_DELEGATI" FromRole="Delegation" ToRole="Depot" />
@@ -1356,6 +1419,8 @@
           <NavigationProperty Name="Achat" Relationship="Self.FK_ACHAT_ASSOCIATI_FOURNISS" FromRole="Fournisseur" ToRole="Achat" />
           <NavigationProperty Name="Contrat" Relationship="Self.FK_CONTRAT_ASSOCIATI_FOURNISS" FromRole="Fournisseur" ToRole="Contrat" />
           <NavigationProperty Name="Delegation" Relationship="Self.FK_FOURNISS_ASSOCIATI_DELEGATI" FromRole="Fournisseur" ToRole="Delegation" />
+          <Property Name="localité" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="code_postale" Type="Int32" />
         </EntityType>
         <EntityType Name="Gouvernorat">
           <Key>
@@ -1413,6 +1478,15 @@
           <Property Name="Id_Vehicule" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Inventaire" Relationship="Self.FK_INVENTAI_ASSOCIATI_INVENTAI" FromRole="InventaireVehicule" ToRole="Inventaire" />
         </EntityType>
+        <EntityType Name="Localité">
+          <Key>
+            <PropertyRef Name="Id_localité" />
+          </Key>
+          <Property Name="CP" Type="Int32" />
+          <Property Name="delegation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Localité1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Id_localité" Type="Int32" Nullable="false" />
+          </EntityType>
         <EntityType Name="Marque">
           <Key>
             <PropertyRef Name="Id_sous_Modele" />
@@ -1487,6 +1561,7 @@
           <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="pays" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="gouvernorat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="localié" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Batiment" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Organisation" ToRole="Batiment" />
         </EntityType>
         <EntityType Name="Parc_auto">
@@ -1639,6 +1714,7 @@
           <Property Name="Etat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="Num_chassis" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
           <Property Name="Prix_d_achat" Type="Double" Nullable="false" />
+          <Property Name="Annee_achat" Type="DateTime" Precision="0" />
           <NavigationProperty Name="Achat" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Vehicule" ToRole="Achat" />
           <NavigationProperty Name="MouvementVehicule" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE" FromRole="Vehicule" ToRole="MouvementVehicule" />
           <NavigationProperty Name="Parc_auto" Relationship="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT" FromRole="Vehicule" ToRole="Parc_auto" />
@@ -1790,6 +1866,20 @@
             <Dependent Role="Bien">
               <PropertyRef Name="Id_service" />
               <PropertyRef Name="id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bien_Bien">
+          <End Role="Bien" Type="Self.Bien" Multiplicity="1" />
+          <End Role="Bien1" Type="Self.Bien" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bien">
+              <PropertyRef Name="Id_etage" />
+              <PropertyRef Name="Id_bien" />
+            </Principal>
+            <Dependent Role="Bien1">
+              <PropertyRef Name="Id_etage" />
+              <PropertyRef Name="Id_bien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2135,7 +2225,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BissTestEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BissInventaireEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Achat" EntityType="Self.Achat" />
           <EntitySet Name="Batiment" EntityType="Self.Batiment" />
           <EntitySet Name="Bien" EntityType="Self.Bien" />
@@ -2154,6 +2244,7 @@
           <EntitySet Name="Inventaire" EntityType="Self.Inventaire" />
           <EntitySet Name="InventaireBien" EntityType="Self.InventaireBien" />
           <EntitySet Name="InventaireVehicule" EntityType="Self.InventaireVehicule" />
+          <EntitySet Name="Localité" EntityType="Self.Localité" />
           <EntitySet Name="Marque" EntityType="Self.Marque" />
           <EntitySet Name="Modele" EntityType="Self.Modele" />
           <EntitySet Name="MouvementBien" EntityType="Self.MouvementBien" />
@@ -2214,6 +2305,10 @@
           <AssociationSet Name="FK_BIEN_ASSOCIATI_PERSONNE" Association="Self.FK_BIEN_ASSOCIATI_PERSONNE">
             <End Role="Personnel" EntitySet="Personnel" />
             <End Role="Bien" EntitySet="Bien" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bien_Bien" Association="Self.FK_Bien_Bien">
+            <End Role="Bien" EntitySet="Bien" />
+            <End Role="Bien1" EntitySet="Bien" />
           </AssociationSet>
           <AssociationSet Name="FK_INVENTAI_ASSOCIATI_BIEN" Association="Self.FK_INVENTAI_ASSOCIATI_BIEN">
             <End Role="Bien" EntitySet="Bien" />
@@ -2321,7 +2416,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BissTestModelStoreContainer" CdmEntityContainer="BissTestEntities">
+        <EntityContainerMapping StorageEntityContainer="BissTestModelStoreContainer" CdmEntityContainer="BissInventaireEntities">
           <EntitySetMapping Name="Achat">
             <EntityTypeMapping TypeName="BissTestModel.Achat">
               <MappingFragment StoreEntitySet="Achat">
@@ -2341,6 +2436,7 @@
           <EntitySetMapping Name="Batiment">
             <EntityTypeMapping TypeName="BissTestModel.Batiment">
               <MappingFragment StoreEntitySet="Batiment">
+                <ScalarProperty Name="code_postale" ColumnName="code_postale" />
                 <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
                 <ScalarProperty Name="idPays" ColumnName="idPays" />
                 <ScalarProperty Name="idRegion" ColumnName="idRegion" />
@@ -2350,6 +2446,7 @@
                 <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="description" ColumnName="description" />
                 <ScalarProperty Name="code_a_barre" ColumnName="code_a_barre" />
+                <ScalarProperty Name="localité" ColumnName="localité" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2384,6 +2481,10 @@
                 <ScalarProperty Name="Photo" ColumnName="Photo" />
                 <ScalarProperty Name="Code_immobilisation" ColumnName="Code_immobilisation" />
                 <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+                <ScalarProperty Name="Qte_inv1" ColumnName="Qte_inv1" />
+                <ScalarProperty Name="Qte_inv2" ColumnName="Qte_inv2" />
+                <ScalarProperty Name="Qte_inv3" ColumnName="Qte_inv3" />
+                <ScalarProperty Name="Qte_inv4" ColumnName="Qte_inv4" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2455,6 +2556,7 @@
                 <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
                 <ScalarProperty Name="libelle" ColumnName="libelle" />
                 <ScalarProperty Name="Code_postal" ColumnName="Code_postal" />
+                <ScalarProperty Name="Localité" ColumnName="Localité" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2502,6 +2604,8 @@
           <EntitySetMapping Name="Fournisseur">
             <EntityTypeMapping TypeName="BissTestModel.Fournisseur">
               <MappingFragment StoreEntitySet="Fournisseur">
+                <ScalarProperty Name="code_postale" ColumnName="code_postale" />
+                <ScalarProperty Name="localité" ColumnName="localité" />
                 <ScalarProperty Name="idPays" ColumnName="idPays" />
                 <ScalarProperty Name="idRegion" ColumnName="idRegion" />
                 <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
@@ -2562,6 +2666,16 @@
               <MappingFragment StoreEntitySet="InventaireVehicule">
                 <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
                 <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localité">
+            <EntityTypeMapping TypeName="BissTestModel.Localité">
+              <MappingFragment StoreEntitySet="Localité">
+                <ScalarProperty Name="CP" ColumnName="CP" />
+                <ScalarProperty Name="delegation" ColumnName="delegation" />
+                <ScalarProperty Name="Localité1" ColumnName="Localité" />
+                <ScalarProperty Name="Id_localité" ColumnName="Id_localité" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2635,6 +2749,7 @@
                 <ScalarProperty Name="ville" ColumnName="ville" />
                 <ScalarProperty Name="pays" ColumnName="pays" />
                 <ScalarProperty Name="gouvernorat" ColumnName="gouvernorat" />
+                <ScalarProperty Name="localié" ColumnName="localié" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2772,6 +2887,7 @@
                 <ScalarProperty Name="Etat" ColumnName="Etat" />
                 <ScalarProperty Name="Num_chassis" ColumnName="Num_chassis" />
                 <ScalarProperty Name="Prix_d_achat" ColumnName="Prix_d_achat" />
+                <ScalarProperty Name="Annee_achat" ColumnName="Annee_achat" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

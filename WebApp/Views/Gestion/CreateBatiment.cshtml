@@ -156,7 +156,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                     {
                         <div id="bcTarget"></div>
 
-                        <input type="button" onclick='$("#bcTarget").barcode("1234567890128", "ean13",{barWidth:2, barHeight:30});' value="ean13">
+                        
 
                         <div class="form-horizontal">
                             <h4>Bâtiment</h4>
@@ -204,14 +204,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.ValidationMessageFor(model => model.code, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-                            @*<div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
-                                <div class="col-lg-6">
-
-                                    @Html.EditorFor(model => model.Delegation.Code_postal, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Delegation.Code_postal, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>*@
+                   
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
@@ -240,13 +233,22 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                         @Html.DropDownListFor(model => model.idDelegation,new SelectList(listDelegation), "--Choisir--", new {@id= "ddldeleg", @class = "form-control", required = "" })
                                     </div>
                                 </div>
-                            
-                            @*<div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">localité</label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegations"], "--Choisir--", new { @class = "form-control", required = "" })
+
+                                    @Html.EditorFor(model => model.localité, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.localité, String.Empty, new { @class = "test" })
                                 </div>
-                            </div>*@
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.code_postale, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.code_postale, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
 
                         </div>
                         <div style="text-align: center;">

@@ -141,7 +141,7 @@ namespace WebApp.Controllers
             grid.DataBind();
             Response.ClearContent();
             String DateExp = DateTime.Now.ToString();
-            Response.AddHeader("content-disposition", "attachment;filename=InventaireList_" + DateExp + ".xls");
+            Response.AddHeader("content-disposition", "attachment;filename=InventaireListBien_" + DateExp + ".xls");
             Response.ContentType = "text/excel";
             StringWriter sw = new StringWriter();
             HtmlTextWriter htmltexxt = new HtmlTextWriter(sw);
@@ -151,6 +151,7 @@ namespace WebApp.Controllers
 
 
         }
+
         public void ExportToCSV()
         {
             StringWriter sw = new StringWriter();

@@ -53,14 +53,21 @@ namespace Data.Repositories
                         select p);
             return pers.ToList();
         }
+      
 
+        public MouvementVehicule FindMouvementVehiculeByID(int id)
+        {
 
-
+            var pers = (from p in DataContext.MouvementVehicule
+                        where p.Id_mouvementV == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
 
     }
     public interface IMouvementVehiculeRepository : IRepository<MouvementVehicule>
     {
-
+        MouvementVehicule FindMouvementVehiculeByID(int id);
         void UpdateMouvementVehiculeDetached(MouvementVehicule e);
         IEnumerable<Batiment> FindBatimentByDelegation(int id);
         IEnumerable<Parc_auto> FindParcByBatiment(int id);

@@ -29,10 +29,7 @@ namespace Service
 
         public void CreateDelegation(Delegation Delegation)
         {
-
             utOfWork.DelegationRepository.Add(Delegation);
-
-
         }
         public void DeleteDelegation(int id)
         {
@@ -57,13 +54,13 @@ namespace Service
             var dep = utOfWork.DelegationRepository.FindDelegationtByGouvernerat(id);
             return dep;
         }
-
         public IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle)
         {
             var dep = utOfWork.DelegationRepository.findDelegationtByGouvernerat(libelle);
             return dep;
         }
-     
+       
+
         public void UpdateDelegationDetached(Delegation e)
         {
             utOfWork.DelegationRepository.UpdateDelegationDetached(e);
@@ -72,7 +69,7 @@ namespace Service
     }
     public interface IDelegationService
     {
-        IEnumerable<Delegation> FindDelegationtByGouvernerat(int id);
+       
 
         IEnumerable<Delegation> GetDelegation();
         Delegation GetDelegation(int id);
@@ -83,7 +80,12 @@ namespace Service
 
         Delegation FindDelByID(int id);
         void SaveDelegation();
+        IEnumerable<Delegation> FindDelegationtByGouvernerat(int id);
         IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle);
+
+     
+   
+
     }
 }
 

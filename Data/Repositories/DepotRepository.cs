@@ -14,11 +14,12 @@ namespace Data.Repositories
         public DepotRepository(DatabaseFactory dbFactory) : base(dbFactory) { }
         public void UpdateDepotDetached(Depot e)
         {
-            Depot existing = this.DataContext.Depot.Find(e.IdDepot);
+            Depot existing = findDepotById(e.IdDepot);
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
-
+      
+     
         public IEnumerable<Depot> findDepotByDelegation(int id)
         {
 

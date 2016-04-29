@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Vehicule
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -29,25 +29,13 @@ namespace Domain
         public int Id_parc { get; set; }
         public int Id_Vehicule { get; set; }
         public Nullable<int> Id_achat { get; set; }
-        [Required(ErrorMessage = "La matricule est obligatoire")]
-        [StringLength(10, MinimumLength = 6, ErrorMessage = "La matricule doit contenir au maximum 10 caractéres")]
-        [RegularExpression(@"^([0-9]{2,3})+([TUN|tun]{1})+([0-9]{1,4})+$", ErrorMessage = "La matricule est invalide.Exemple: 117TUN2016")]
         public string Matricule { get; set; }
-        [Required(ErrorMessage = "Le modèle est obligatoire")]
-        [StringLength(15, MinimumLength = 2, ErrorMessage = "Le modèle doit contenir au minimum 2 caractéres")]
-        [RegularExpression(@"^[a-zA-Z -_' 0-9]+$", ErrorMessage = "Le modèle est invalide.Exemple: CITROEN")]
         public string Modele { get; set; }
-        [Required(ErrorMessage = "La designation est obligatoire")]
-
         public string Etat { get; set; }
-        [Required(ErrorMessage = "Le numéro de châssis est obligatoire")]
-        [StringLength(17, MinimumLength = 17, ErrorMessage = "Le numéro de châssis doit contenir 17 caractéres")]
-        [RegularExpression(@"^[A-Z0-9]+$", ErrorMessage = "Le numéro de châssis est invalide.Exemple: JMZMA18P200411817")]
         public string Num_chassis { get; set; }
-        [Required(ErrorMessage = "Le prix d'achat est obligatoire")]
-        [RegularExpression(@"[0-9]+([,][0-9]{0,3})?", ErrorMessage = "Le prix d'achat est invalid.Exemlpe: 200000,000")]
-        public Nullable<double> Prix_d_achat { get; set; }
-
+        public double Prix_d_achat { get; set; }
+        public Nullable<System.DateTime> Annee_achat { get; set; }
+    
         public virtual Achat Achat { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<MouvementVehicule> MouvementVehicule { get; set; }

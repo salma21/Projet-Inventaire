@@ -204,9 +204,43 @@ namespace WebApp.Controllers
             }
         }
 
+        public ActionResult EditSousCategorie(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
 
+            ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
 
-       public void DeleteRelationship(int idCategorie, int idSousCategorie)
+            var cat = db.FindSous_categorieById(id);
+            return View(cat);
+        }
+
+        // POST: Categorie_materiel/Create
+        [HttpPost]
+        public ActionResult EditSousCategorie(Sous_categorie Sous_categorie)
+        {
+            if (ModelState.IsValid)
+            {
+                //try
+                //{
+                db.UpdateSous_categorieDetached(Sous_categorie);
+                db.SaveSousCategorie();
+                return RedirectToAction("getSousCategorie");
+                //catch (Exception ex)
+                //{
+                //    LogThread.WriteLine(ex.Message);
+                //    return RedirectToAction("Index", "Error");
+                //}
+            }
+            else
+
+            {
+                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
+                return View();
+            }
+        }
+
+        public void DeleteRelationship(int idCategorie, int idSousCategorie)
         {
             using (BissInventaireEntities conn = new BissInventaireEntities())
             {
@@ -254,55 +288,7 @@ namespace WebApp.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult editSousCategorie(int oldSousCategorieId, int oldCategorie , int newCategorieId ,int newSousCategorieId)
-        //{
-        //    DeleteRelationship(oldSousCategorieId , oldCategorie);
-        //    InsertWithData(newCategorieId;
-
-        //    return View();
-        //}
-
-        // POST: SousCategorie/Edit
-
-        public ActionResult editSousCategorie(int id)
-        {
-            if (Session["identifiant"] == null)
-            { return RedirectToAction("Index", "Home"); }
-            ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
-
-            var cat = db.FindCategorie_DesignationById(id);
-            return View(cat);
-        }
-
-    
-
-        public ActionResult editSousCategorie(Sous_categorie sousCategorie)
-        {
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    db.UpdateCategorie_DesignationDetached(sousCategorie);
-                    db.SaveSousCategorie();
-                    return RedirectToAction("getSousCategorie");
-                }
-                catch (Exception ex)
-                {
-                    LogThread.WriteLine(ex.Message);
-                    return RedirectToAction("Index", "Error");
-                }
-            }
-            else
-
-            {
-                ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
-                return View();
-            }
-        }
-
-
-
+     
 
         public ActionResult createModele()
         {

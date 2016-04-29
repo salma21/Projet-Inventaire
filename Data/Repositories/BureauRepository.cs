@@ -31,8 +31,16 @@ namespace Data.Repositories
 
             return pers;
         }
+        public int FindMaxIDBureau()
+        {
 
+            int pers = (from p in this.DataContext.Bureau
 
+                        select p.Id_bureau).Max();
+
+            return pers;
+        }
+       
         public int FindMaxID()
         {
 
@@ -96,6 +104,7 @@ namespace Data.Repositories
         void UpdateGouvernoratDetached(Gouvernorat e);
         //object findBureauByEtage(int id);
         int FindMaxID();
+        int FindMaxIDBureau();
     }
 
 }

@@ -52,6 +52,7 @@
     <Compile Include="InventaireBienService.cs" />
     <Compile Include="InventaireService.cs" />
     <Compile Include="InventaireVehiculeService.cs" />
+    <Compile Include="LocalitéService.cs" />
     <Compile Include="MouvementVehiculeService.cs" />
     <Compile Include="MouvementBienService.cs" />
     <Compile Include="OrganisationService.cs" />

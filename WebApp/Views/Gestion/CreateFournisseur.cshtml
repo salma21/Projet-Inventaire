@@ -119,14 +119,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 
                             
 
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" >Adresse</label>
-                                <div class="col-lg-6">
-
-                                    @Html.EditorFor(model => model.Rue ,new { @class = "form-control", required = "" })
-                                    @Html.ValidationMessageFor(model => model.Rue, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>
+                          
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" >Téléphone</label>
@@ -163,7 +156,14 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.ValidationMessageFor(model => model.Commentaire, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4">Adresse</label>
+                                <div class="col-lg-6">
 
+                                    @Html.EditorFor(model => model.Rue, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.Rue, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
@@ -192,7 +192,22 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                     @Html.DropDownListFor(model => model.idDelegation, new SelectList(listDelegation), "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "" })
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Localité </label>
+                                <div class="col-lg-6">
 
+                                    @Html.EditorFor(model => model.localité, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
+                                    @Html.ValidationMessageFor(model => model.localité, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.code_postale, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.code_postale, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
                         </div>
                         <div style="text-align: center;">
                             <input type="submit" value="Valider" class="btn btn-default" />

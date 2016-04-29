@@ -17,8 +17,8 @@ namespace WebApp.Controllers
     public class HomeController : Controller
     {
        private IUtilisateurService db = new UtilisateurService();
-
        
+
         public ActionResult Index()
         {
            
@@ -30,7 +30,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Index(Utilisateur g)
+        public async Task<ActionResult> Index(Utilisateur g )
         {
 
             Utilisateur result;
@@ -40,7 +40,7 @@ namespace WebApp.Controllers
                 if (ModelState.IsValid)
                 {
 
-                    if ((result = db.Authentification(g)) != null)
+                    if ((result = db.Authentification(g)) != null )
                     {
                         if (result.etatUtilisateur == true)
                         {
@@ -48,8 +48,8 @@ namespace WebApp.Controllers
                             Session["identifiant"] = result;
                             Session["Nom"] = result.Personnel.nom +" "+ result.Personnel.prenom;
                             Session["Role"] = result.Personnel.Role.libelle;
-
-                            return RedirectToAction("RapportBien", "Admin");
+                           
+                            return RedirectToAction("InventaireBiens", "Admin");
                         }
                         else
                         {

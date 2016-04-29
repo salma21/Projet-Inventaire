@@ -44,7 +44,22 @@ namespace Data.Repositories
                         select p);
             return pers.FirstOrDefault().nom + " " + pers.FirstOrDefault().prenom;
         }
+        //public String findMatriculeByNom(int id)
+        //{
 
+        //    var pers = (from p in DataContext.Personnel
+        //                where p.id_pers == id
+        //                select p);
+        //    return pers.FirstOrDefault().Matricule;
+        //}
+        public String findPrenomByNom(int id)
+        {
+
+            var pers = (from p in DataContext.Personnel
+                        where p.id_pers == id
+                        select p);
+            return pers.FirstOrDefault().prenom;
+        }
         public int FindDelegationByBatiment(int id)
         {
 
@@ -124,6 +139,9 @@ namespace Data.Repositories
         IEnumerable<ServiceD> findServiceByDirection(int id);
         IEnumerable<Personnel> findPersByService(int id);
         String findNomByMatricule(int id);
+
+
+        String findPrenomByNom(int id);
     }
 
 

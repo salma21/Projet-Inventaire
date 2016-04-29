@@ -17,6 +17,8 @@ namespace WebApp.Controllers
 {
     public class GestionController : Controller
     {
+        private IMouvementVehiculeService dbv = new MouvementVehiculeService();
+        private ILocalitéService loc = new LocalitéService();
         private IRegionService db = new RegionService();
         private IEtageService etage = new EtageService();
         private IBatimentService batiment = new BatimentService();
@@ -238,6 +240,50 @@ namespace WebApp.Controllers
                 ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
                 ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
 
+                return View();
+            }
+        }
+        public ActionResult EditLocalité(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var bat = loc.FindlocalByID(id);
+            ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            return View(bat);
+        }
+
+        // POST: Gestion/Create
+        [HttpPost]
+        public ActionResult EditLocalité(Localité reg)
+        {
+            var bat = loc.FindlocalByID(reg.Id_localité);
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    loc.UpdateLocalitéDetached(reg);
+                    loc.SaveLocalité();
+
+                    return RedirectToAction("GetLocalité");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegations"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
                 return View();
             }
         }
@@ -805,8 +851,54 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+        public ActionResult CreateLocalité()
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            return View();
+        }
+        [HttpPost]
+        public ActionResult CreateLocalité(Localité local)
+        {
+            if (ModelState.IsValid)
+            {
 
+                try
+                {
+                    if (etat)
+                    {
+                        BissInventaireEntities.Instance.Localité.Add(local);
+                        BissInventaireEntities.Instance.SaveChanges();
+                        return RedirectToAction("GetLocalité");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Error");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
 
+            }
+
+            else
+
+            {
+                //  ViewBag.msg = "Verifier l code postal";
+                ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                return View();
+            }
+        }
 
 
         //Organisation
@@ -1790,6 +1882,51 @@ namespace WebApp.Controllers
                 return View();
             }
         }
+
+        
+
+        public ActionResult EditMouvementVehicule(int id)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+            var movb = dbv.FindMouvementVehiculeByID(id);
+            ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["vehicule"] = new SelectList(BissInventaireEntities.Instance.Vehicule.ToList(), "Id_Vehicule", "Matricule");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle");
+
+
+            return View(movb);
+        }
+
+        // POST: Gestion/Create
+        [HttpPost]
+        public ActionResult EditMouvementVehicule(MouvementVehicule mou)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    dbv.UpdateMouvementVehiculeDetached(mou);
+                    dbv.SaveMouvementVehicule();
+                    return RedirectToAction("GetMouvementVehicule");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
+            }
+            else
+
+            {
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["vehicule"] = new SelectList(BissInventaireEntities.Instance.Vehicule.ToList(), "Id_Vehicule", "Matricule");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["parc"] = new SelectList(BissInventaireEntities.Instance.Parc_auto.ToList(), "Id_parc", "Libelle"); ;
+                return View();
+            }
+        }
         [HttpPost]
         public ActionResult FindBatimentByDelegation(int delegid)
         {
@@ -1836,7 +1973,6 @@ namespace WebApp.Controllers
 
         //MouvementVehicule
 
-        private IMouvementVehiculeService db7 = new MouvementVehiculeService();
         // GET: Mouvement
         public ActionResult Index7()
         {
@@ -1852,7 +1988,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var Mouvement = db7.GetMouvementVehicules();
+            var Mouvement = dbv.GetMouvementVehicules();
             return View(Mouvement);
         }
         // GET: Vehicule/Details/6
@@ -1899,8 +2035,8 @@ namespace WebApp.Controllers
 
                 try
                 {
-                    db7.CreateMouvementVehicule(mouv);
-                    db7.SaveMouvementVehicule();
+                    dbv.CreateMouvementVehicule(mouv);
+                    dbv.SaveMouvementVehicule();
 
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();
@@ -1963,7 +2099,7 @@ namespace WebApp.Controllers
         public ActionResult getBatimentByDelegation(int delegid)
         {
             List<Batiment> objcity = new List<Batiment>();
-            objcity = db7.FindBatimentByDelegation(delegid).ToList();
+            objcity = dbv.FindBatimentByDelegation(delegid).ToList();
 
             SelectList obgcity = new SelectList(objcity, "idBatiment", "description", 0);
             return Json(obgcity);
@@ -1972,7 +2108,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult GetParcByBatiment(int batid)
         {
-            List<Parc_auto> objcity = new List<Parc_auto>(); objcity = db7.FindParcByBatiment(batid).ToList();
+            List<Parc_auto> objcity = new List<Parc_auto>(); objcity = dbv.FindParcByBatiment(batid).ToList();
 
             SelectList obgcity = new SelectList(objcity, "Id_parc", "Libelle", 0);
             return Json(obgcity);
@@ -1981,7 +2117,7 @@ namespace WebApp.Controllers
         [HttpPost]
         public ActionResult GetVehiculeByParc(int parcid)
         {
-            List<Vehicule> objcity = new List<Vehicule>(); objcity = db7.FindVehiculeByParc(parcid).ToList();
+            List<Vehicule> objcity = new List<Vehicule>(); objcity = dbv.FindVehiculeByParc(parcid).ToList();
 
             SelectList obgcity = new SelectList(objcity, "Id_Vehicule", "Matricule", 0);
             return Json(obgcity);
@@ -2034,6 +2170,7 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
         [HttpPost]
+        
         public ActionResult GetDelegationByGouvernorat(string libelle)
         {
             IDelegationService bat = new DelegationService();
@@ -2043,6 +2180,24 @@ namespace WebApp.Controllers
 
             SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
+        }
+        [HttpPost]
+        public ActionResult GetLocByIdDelegation(string local)
+        {
+            List<Localité> objcity = new List<Localité>();
+            objcity = loc.GetLocByIdDelegation(local);
+
+            SelectList obgcity = new SelectList(objcity, "Id_localité", "Localité", 0);
+            return Json(obgcity);
+        }
+        [HttpPost]
+        public ActionResult GetCPByLocalite(int code)
+        {
+           int objcity;
+            objcity = loc.GetCPByLocalite(code);
+
+           
+            return Json(objcity);
         }
         [HttpPost]
         public ActionResult findDelegationByGouvernorat(int stateid)

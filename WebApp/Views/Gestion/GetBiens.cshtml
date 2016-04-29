@@ -8,81 +8,66 @@
             <div class="panel panel-default">
                 <div class="panel-title">
                     Liste des Biens
+
+                    <ul class="panel-tools">
+                        <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                        <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                        <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                    </ul>
                 </div>
-       
-                <div class="panel panel-default">
-                    <div class="panel-body table-responsive">
-                        <table id="example0" class="table display">
-                            <thead>
-                                <tr>
-                                    <th>Code à barres</th>
-                                    <th>Délégation </th>
-                                    <th>Batiment </th>
+                <div style="text-align:center;"><a href="~/Export/PrintCode"> <i class="fa fa-print"></i>&nbsp; &nbsp;  Imprimer les codes à barres</a></div> 
+                </div>
+                    <div class="panel panel-default">
+                        <div class="panel-body table-responsive">
+                            <table id="example0" class="table display">
+                                <thead>
+                                    <tr>
+                                        <th>Code à barres</th>
 
-                                    <th>Étage</th>
+                                        <th>Désigantion </th>
 
-                                    <th>Desigantion </th>
-
-                                    <th>Catégorie</th>
-                                    
-                                    <th>Mode</th>
-                                    <th>État</th>
-                                  
-                                    <th>Action</th>
+                                       
 
 
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (var item in Model)
-                                {
-                                    <tr class="odd gradeX">
-                                        <td>@item.Code_a_barre</td>
-                                        <td>@item.Etage.Batiment.Delegation.libelle</td>
-                                        <td>@item.Etage.Batiment.description</td>
-
-                                        <td>@item.Etage.description</td>
-
-
-                                        <td>@item.Designation</td>
-                                        <th>@item.Categorie.Description</th>
-
-                                        
-                                        <td>@item.Mode</td>
-                                        <td>@item.Etat</td>
-
-
-                                        <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                            <a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
-
-} </td>
                                     </tr>
-                          
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr class="odd gradeX">
+                                            <td>@item.Code_a_barre</td>
+
+                                            <td>@item.Designation</td>
+
+
+                                        </tr>
+
 
                                     }
-                                    </tbody>
-</table>
+                                </tbody>
+                            </table>
 
-                        <br /><p>
-
-
+                            <br /><p>
 
 
 
-                        </p>
-                        <br /><p>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                            @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
 
-}
-                        </p>
 
+                            </p>
+                            <br /><p>
+                                @if (@Session["Role"].ToString() == "ADMIN")
+                                {
+                                    @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
+
+                                }
+                            </p>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+
+
+
 
 
         </div>

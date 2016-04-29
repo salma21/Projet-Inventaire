@@ -1,7 +1,7 @@
 ﻿@model Domain.Organisation
 @{
-
-
+    List<string> listCodeP = new List<string>();
+    List<string> listlocalité = new List<string>();
     List<string> listdelegation = new List<string>();
     List<string> listGouvernorat = new List<string>();
 }
@@ -53,6 +53,52 @@
                     markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
                 }
                 $("#ddldeleg").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+    function getlocalite(_localId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlloca").html(procemessage).show();
+        var url = "/Gestion/GetLocByIdDelegation/";
+
+        $.ajax({
+            url: url,
+            data: { local: _localId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlloca").html(markup).show();
+            },
+            error: function (reponse) {
+                alert("error : " + reponse);
+            }
+        });
+
+    }
+    function getCodePost(_codeId) {
+        var procemessage = "<option value='0'>Encours...</option>";
+        $("#ddlCodep").html(procemessage).show();
+        var url = "/Gestion/GetCPByLocalite/";
+
+        $.ajax({
+            url: url,
+            data: { code: _codeId },
+            cache: false,
+            type: "POST",
+            success: function (data) {
+                var markup = "<option value='0'>--Choisir--</option>";
+                for (var x = 0; x < data.length; x++) {
+                    markup += "<option value=" + data[x].Value + ">" + data[x].Text + "</option>";
+                }
+                $("#ddlloca").html(markup).show();
             },
             error: function (reponse) {
                 alert("error : " + reponse);
@@ -187,14 +233,7 @@ new { @id = "frmId", @class = "fieldset-form", enctype = "multipart/form-data" }
                                     @Html.ValidationMessageFor(model => model.adresse, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
-                                <div class="col-lg-6">
-
-                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>
+                            
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
@@ -212,13 +251,28 @@ new { @id = "frmId", @class = "fieldset-form", enctype = "multipart/form-data" }
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Ville </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.ville, new SelectList(listdelegation), "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "" })
+                                    @Html.DropDownListFor(model => model.ville, new SelectList(listdelegation), "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "", @onchange = "javascript:getlocalite(this.value);" })
 
                                 </div>
                             </div>
 
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Localité </label>
+                                <div class="col-lg-6">
+                                    @Html.EditorFor(model => model.localié, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.localié, String.Empty, new { @class = "test" })
+                                   @* @Html.DropDownListFor(model => model.localié, new SelectList(listlocalité), "--Choisir--", new { @id = "ddlloca", @class = "form-control", required = "", @onchange = "javascript:getCodePost(this.value);" })*@
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
+                                <div class="col-lg-6">
 
-
+                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
+                                  @*  @Html.DropDownListFor(model => model.description, new SelectList(listCodeP), "--Choisir--", new { @id = "ddlCodeP", @class = "form-control", required = "" })*@
+                                </div>
+                            </div>
 
                         </div>
 

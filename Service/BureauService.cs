@@ -81,9 +81,13 @@ namespace Service
         public int FindMaxID()
         {
            int i = utOfWork.BureauRepository.FindMaxID();
-            return i; 
+           return i; 
         }
-
+        public int FindMaxIDBureau()
+        {
+            int i = utOfWork.BureauRepository.FindMaxIDBureau();
+            return i;
+        }
 
 
     }
@@ -96,6 +100,7 @@ namespace Service
         void CreateBureau(Bureau Dept);
         void DeleteBureau(int id);
         int FindMaxID();
+        int FindMaxIDBureau();
         void UpdateBureauDetached(Bureau e);
         IEnumerable<Etage> findEtageByBatiment(int id);
         IEnumerable<Bureau> findBureauByEtage(int id);

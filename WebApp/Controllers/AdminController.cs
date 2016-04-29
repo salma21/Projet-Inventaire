@@ -41,7 +41,7 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-             ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
             var bure = db.GetBureaux();
             return View(bure);
@@ -129,7 +129,7 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index" , "Error");
+                    return RedirectToAction("Index", "Error");
                 }
 
             }
@@ -238,7 +238,7 @@ namespace WebApp.Controllers
                 }
                 else
                 {
-                    return  RedirectToAction("Index", "Error");
+                    return RedirectToAction("Index", "Error");
                 }
 
             }
@@ -256,7 +256,7 @@ namespace WebApp.Controllers
 
         [HttpPost]
         public ActionResult OpenPopup(int delegid)
-         {
+        {
             String Mess = "";
 
             var objcity = BissInventaireEntities.Instance.Bureau.FirstOrDefault(u => u.id == delegid);
@@ -318,7 +318,7 @@ namespace WebApp.Controllers
         //[HttpPost]
         //public ActionResult FindPersByBatiment(int Persid)
         //{
-            
+
         //    List<Personnel> objcity = new List<Personnel>();
         //    objcity = db1.FindPersByBatiment(Persid).ToList();
 
@@ -329,13 +329,14 @@ namespace WebApp.Controllers
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+            ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_livraison");
 
             //ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_societe_maintenance", "Libelle");
 
             //ViewData["contratmain"] = new SelectList(BissInventaireEntities.Instance.Contrat.ToList(), "Id_contrat", "Num");
             ViewData["Bureau"] = new SelectList(BissInventaireEntities.Instance.Depot.ToList(), "id", "Description");
             ViewData["personnel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
+            ViewData["pers"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "nom");
             ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
             ViewData["Delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
             ViewData["service"] = new SelectList(BissInventaireEntities.Instance.ServiceD.ToList(), "Id_service", "Libelle");
@@ -344,7 +345,7 @@ namespace WebApp.Controllers
 
         // POST: Admin/Create
         [HttpPost]
-        public ActionResult CreateBien(Bien bien, FormCollection collection )
+        public ActionResult CreateBien(Bien bien, FormCollection collection)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
@@ -361,7 +362,7 @@ namespace WebApp.Controllers
 
                     return RedirectToAction("RapportBien");
 
-            }
+                }
                 catch (Exception ex)
                 {
                     LogThread.WriteLine(ex.Message);
@@ -371,10 +372,10 @@ namespace WebApp.Controllers
             else
 
             {
-                ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_facture");
+                ViewData["achats"] = new SelectList(BissInventaireEntities.Instance.Achat.ToList(), "Id_achat", "Num_livraison");
 
                 ViewData["societemain"] = new SelectList(BissInventaireEntities.Instance.Fournisseur.ToList(), "Id_fournisseur", "Libelle");
-
+                ViewData["pers"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "nom", "prenom");
                 ViewData["personnel"] = new SelectList(BissInventaireEntities.Instance.Personnel.ToList(), "id_pers", "Matricule");
                 ViewData["categorie"] = new SelectList(BissInventaireEntities.Instance.Categorie.ToList(), "Id_categorie", "libelle");
                 ViewData["Delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
@@ -402,13 +403,13 @@ namespace WebApp.Controllers
         //    //    return RedirectToAction("Index");
         //    //}
         //    return View(bien);
-       // }
+        // }
 
         //public int UploadImageInDataBase(HttpPostedFileBase file, Bien bien)
         //{
         //    bien.Photo = ConvertToBytes(file);
         //    var img = bien.Photo;
-            
+
         //    int i = db.SaveChanges();
         //    if (i == 1)
         //    {
@@ -498,28 +499,147 @@ namespace WebApp.Controllers
                 return null;
             }
         }
-
-        public ActionResult RapportBien(string Delegation, string Etage, string Batiment)
+        public ActionResult InventaireBiens(string Delegation, string Etage, string Batiment, string Organisation,
+           string Bureau, string Direction, string Service, string Depot, string Categorie, string Sous_categorie,
+           string modele, string Sous_modele, string Marque, string Personnel, string Fournisseur, string n_livraison)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-          
-
-            var delegation = BissInventaireEntities.Instance.Delegation.ToList();
             var etage = BissInventaireEntities.Instance.Etage.ToList();
             var batiment = BissInventaireEntities.Instance.Batiment.ToList();
+            var delegation = BissInventaireEntities.Instance.Delegation.ToList();
+            var organisation = BissInventaireEntities.Instance.Organisation.ToList();
+            var bureau = BissInventaireEntities.Instance.Bureau.ToList();
+            var direction = BissInventaireEntities.Instance.Direction.ToList();
+            var service = BissInventaireEntities.Instance.ServiceD.ToList();
+            var depot = BissInventaireEntities.Instance.Depot.ToList();
 
-          
-            ViewData["etage"] = new SelectList(etage, "Description", "Description   ");
+            var categorie = BissInventaireEntities.Instance.Categorie.ToList();
+            var sous_categorie = BissInventaireEntities.Instance.Sous_categorie.ToList();
+            var model = BissInventaireEntities.Instance.Modele.ToList();
+            var sous_model = BissInventaireEntities.Instance.Sous_modele.ToList();
+            var marque = BissInventaireEntities.Instance.Marque.ToList();
+            var personnel = BissInventaireEntities.Instance.Personnel.ToList();
+            var fournisseur = BissInventaireEntities.Instance.Fournisseur.ToList();
+            var N_livraison = BissInventaireEntities.Instance.Achat.ToList();
+
+            ViewData["etage"] = new SelectList(etage, "Description", "Description");
             ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
             ViewData["delegation"] = new SelectList(delegation, "libelle", "libelle");
-           
+            ViewData["organisation"] = new SelectList(organisation, "libelle", "libelle");
+            ViewData["bureau"] = new SelectList(bureau, "Id_bureau", "Description");
+            ViewData["direction"] = new SelectList(direction, "libelle", "libelle");
+            ViewData["service"] = new SelectList(service, "Libelle", "Libelle");
+            ViewData["Depot"] = new SelectList(depot, "libelle", "libelle");
+            ViewData["categorie"] = new SelectList(categorie, "libelle", "libelle");
+            ViewData["sous_categorie"] = new SelectList(sous_categorie, "libelle", "libelle");
+            ViewData["modele"] = new SelectList(model, "libelle", "libelle");
+            ViewData["Sous_modele"] = new SelectList(sous_model, "Libelle", "Libelle");
+            ViewData["marque"] = new SelectList(marque, "Libelle", "Libelle");
+            ViewData["personnel"] = new SelectList(personnel, "Matricule", "Matricule");
+            ViewData["fournisseur"] = new SelectList(fournisseur, "Nom", "Nom");
+            ViewData["n_livraison"] = new SelectList(N_livraison, "Num_livraison", "Num_livraison");
+
             var bien = BissInventaireEntities.Instance.Bien.ToList();
             int nbr = bien.ToList().Count();
             ViewBag.nbr = nbr;
 
 
-            if (string.IsNullOrEmpty(Etage) && string.IsNullOrEmpty(Batiment))
+            if (string.IsNullOrEmpty(Etage) && string.IsNullOrEmpty(Batiment) && string.IsNullOrEmpty(Delegation)
+                && string.IsNullOrEmpty(Organisation) && string.IsNullOrEmpty(Bureau) && string.IsNullOrEmpty(Direction)
+                && string.IsNullOrEmpty(Service) && string.IsNullOrEmpty(Depot) && string.IsNullOrEmpty(Categorie)
+                && string.IsNullOrEmpty(Sous_categorie) && string.IsNullOrEmpty(modele) && string.IsNullOrEmpty(Sous_modele)
+                && string.IsNullOrEmpty(Marque) && string.IsNullOrEmpty(Personnel) && string.IsNullOrEmpty(Fournisseur)
+                && string.IsNullOrEmpty(n_livraison) && string.IsNullOrEmpty(Batiment) && string.IsNullOrEmpty(Batiment))
+            {
+                return View(bien.ToList());
+
+            }
+            else
+            {
+
+                var dep = from s in bien select s;
+                if (String.IsNullOrEmpty(Etage) || (String.IsNullOrEmpty(Batiment)) || (String.IsNullOrEmpty(Bureau))
+                    || (String.IsNullOrEmpty(Delegation)) || (String.IsNullOrEmpty(Organisation)) || (String.IsNullOrEmpty(Direction))
+                    || (String.IsNullOrEmpty(Service)) || (String.IsNullOrEmpty(Depot)) || (String.IsNullOrEmpty(Categorie))
+                    || (String.IsNullOrEmpty(Sous_categorie)) || (String.IsNullOrEmpty(modele)) || (String.IsNullOrEmpty(Sous_modele))
+                    || (String.IsNullOrEmpty(Marque)) || (String.IsNullOrEmpty(Personnel)) || (String.IsNullOrEmpty(Fournisseur))
+                    || (String.IsNullOrEmpty(n_livraison)))
+                {
+                    dep = dep.Where(s => (string.IsNullOrEmpty(Etage) || (s.Etage.description.ToString().StartsWith(Etage)))
+
+                    && (string.IsNullOrEmpty(Batiment) || (s.Etage.Batiment.description.ToString().StartsWith(Batiment)))
+                     && (string.IsNullOrEmpty(Delegation) || (s.Etage.Batiment.Delegation.libelle.ToString().StartsWith(Delegation)))
+                     && (string.IsNullOrEmpty(Organisation) || (s.Etage.Batiment.Organisation.libelle.ToString().StartsWith(Organisation)))
+                     && (string.IsNullOrEmpty(Bureau) || (s.Id_bureau.ToString().StartsWith(Bureau)))
+                     && (string.IsNullOrEmpty(Direction) || (s.Personnel.ServiceD.Direction.Libelle.ToString().StartsWith(Direction)))
+                     && (string.IsNullOrEmpty(Service) || (s.Personnel.ServiceD.Libelle.ToString().StartsWith(Service)))
+                     && (string.IsNullOrEmpty(Depot) || (s.Depot.libelle.ToString().StartsWith(Depot)))
+                     && (string.IsNullOrEmpty(Categorie) || (s.Categorie.libelle.ToString().StartsWith(Categorie)))
+                     && (string.IsNullOrEmpty(Sous_categorie) || (s.Sous_categorie.ToString().StartsWith(Sous_categorie)))
+                     && (string.IsNullOrEmpty(modele) || (s.Modele.ToString().StartsWith(modele)))
+                     && (string.IsNullOrEmpty(Sous_modele) || (s.Sous_Modele.ToString().StartsWith(Sous_modele)))
+                     && (string.IsNullOrEmpty(Marque) || (s.Marque.ToString().StartsWith(Marque)))
+                     && (string.IsNullOrEmpty(Personnel) || (s.Personnel.Matricule.ToString().StartsWith(Personnel)))
+                     && (string.IsNullOrEmpty(Fournisseur) || (s.Achat.Fournisseur.Nom.ToString().StartsWith(Fournisseur)))
+                     && (string.IsNullOrEmpty(n_livraison) || (s.Achat.Num_livraison.ToString().StartsWith(n_livraison)))
+                    );
+
+                }
+                else
+                {
+                    dep = dep.Where(s => (s.Etage.description.ToString().StartsWith(Etage))
+                    && (s.Etage.Batiment.description.ToString().StartsWith(Batiment))
+                    && (s.Etage.Batiment.Organisation.libelle.ToString().StartsWith(Organisation))
+                   && (s.Etage.Bureau.ToString().StartsWith(Bureau))
+                   && (s.Personnel.ServiceD.Direction.Libelle.ToString().StartsWith(Direction))
+                   && (s.Personnel.ServiceD.Libelle.ToString().StartsWith(Service))
+                   && (s.Depot.libelle.ToString().StartsWith(Depot))
+                   && (s.Categorie.libelle.ToString().StartsWith(Categorie))
+                   && (s.Sous_categorie.ToString().StartsWith(Sous_categorie))
+                   && (s.Modele.ToString().StartsWith(modele))
+                   && (s.Sous_Modele.ToString().StartsWith(Sous_modele))
+                   && (s.Marque.ToString().StartsWith(Marque))
+                   && (s.Marque.ToString().StartsWith(Marque))
+                   && (s.Personnel.Matricule.ToString().StartsWith(Personnel))
+                   && (s.Achat.Fournisseur.Nom.ToString().StartsWith(Fournisseur))
+                   && (s.Achat.Num_livraison.ToString().StartsWith(n_livraison))
+
+
+
+                        );
+
+                }
+
+                int nbr2 = dep.ToList().Count();
+                ViewBag.nbr = nbr2;
+                return View(dep.ToList())
+                    ;
+            }
+        }
+        public ActionResult RapportBien(string Delegation, string Etage, string Batiment)
+        {
+            if (Session["identifiant"] == null)
+            { return RedirectToAction("Index", "Home"); }
+
+
+            var etage = BissInventaireEntities.Instance.Etage.ToList();
+            var batiment = BissInventaireEntities.Instance.Batiment.ToList();
+            var delegation = BissInventaireEntities.Instance.Delegation.ToList();
+           
+
+
+            ViewData["etage"] = new SelectList(etage, "Description", "Description");
+            ViewData["batiment"] = new SelectList(batiment, "Description", "Description");
+            ViewData["delegation"] = new SelectList(delegation, "libelle", "libelle");
+          
+            var bien = BissInventaireEntities.Instance.Bien.ToList();
+            int nbr = bien.ToList().Count();
+            ViewBag.nbr = nbr;
+
+
+            if (string.IsNullOrEmpty(Etage) && string.IsNullOrEmpty(Batiment) && string.IsNullOrEmpty(Delegation))
+              
             {
                 return View(bien.ToList());
 
@@ -532,17 +652,18 @@ namespace WebApp.Controllers
                 {
                     dep = dep.Where(s => (string.IsNullOrEmpty(Etage) || (s.Etage.description.ToString().StartsWith(Etage)))
                     && (string.IsNullOrEmpty(Batiment) || (s.Etage.Batiment.description.ToString().StartsWith(Batiment)))
-
+                     && (string.IsNullOrEmpty(Delegation) || (s.Etage.Batiment.Delegation.libelle.ToString().StartsWith(Delegation)))
+                   
                     );
 
                 }
                 else
                 {
                     dep = dep.Where(s => (s.Etage.description.ToString().StartsWith(Etage))
-                    && (s.Etage.Batiment.description.ToString().StartsWith(Batiment))
+                     && (s.Etage.Batiment.description.ToString().StartsWith(Batiment))
+                     && (s.Etage.Batiment.Delegation.libelle.ToString().StartsWith(Delegation))
 
-                        );
-
+                    );
                 }
 
                 int nbr2 = dep.ToList().Count();
@@ -550,42 +671,53 @@ namespace WebApp.Controllers
                 return View(dep.ToList());
 
             }
-            
+
         }
+
         public ActionResult EditBureaux(int id)
         {
             if (Session["identifiant"] == null)
             { return RedirectToAction("Index", "Home"); }
-            var pers = db.FindBureauByID(id);
-            ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+            var eta = db.FindBureauByID(id);
+            ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+            ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+            ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+            ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+            ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+            ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
             ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
-            ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
 
-            return View(pers);
-
+            return View(eta);
         }
 
-        // POST: Bureau/Edit/5
+        // POST: Gestion/Create
         [HttpPost]
-        public ActionResult EditBureaux(Bureau pers, FormCollection collection)
+        public ActionResult EditBureaux(Bureau etg)
         {
-
             if (ModelState.IsValid)
             {
-
-                db.UpdateBureauDetached(pers);
-                db.SaveBureau();
-
-                return RedirectToAction("GetBureuax");
-
+                try
+                {
+                    db.UpdateBureauDetached(etg);
+                    db.SaveBureau();
+                    return RedirectToAction("GetBureuax");
+                }
+                catch (Exception ex)
+                {
+                    LogThread.WriteLine(ex.Message);
+                    return RedirectToAction("Index", "Error");
+                }
             }
             else
 
             {
-                ViewData["batiments"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
+                ViewData["pays"] = new SelectList(BissInventaireEntities.Instance.Pays.ToList(), "idPays", "libelle");
+                ViewData["region"] = new SelectList(BissInventaireEntities.Instance.Region.ToList(), "idRegion", "libelle");
+                ViewData["gouvernorat"] = new SelectList(BissInventaireEntities.Instance.Gouvernorat.ToList(), "idGouvernorat", "libelle");
+                ViewData["organisation"] = new SelectList(BissInventaireEntities.Instance.Organisation.ToList(), "idOrganisation", "libelle");
+                ViewData["delegation"] = new SelectList(BissInventaireEntities.Instance.Delegation.ToList(), "idDelegation", "libelle");
+                ViewData["batiment"] = new SelectList(BissInventaireEntities.Instance.Batiment.ToList(), "idBatiment", "description");
                 ViewData["etages"] = new SelectList(BissInventaireEntities.Instance.Etage.ToList(), "Id_etage", "Description");
-                ViewData["direction"] = new SelectList(BissInventaireEntities.Instance.Direction.ToList(), "Id_direction", "Libelle");
-
                 return View();
             }
         }
@@ -640,14 +772,14 @@ namespace WebApp.Controllers
             {
                 try
                 {
-                    
-                   
+
+
                     user.etatUtilisateur = true;
                     //db1.CreateUtilisateurs(user);
                     //db1.SaveEmploye();
                     BissInventaireEntities.Instance.Utilisateur.Add(user);
                     BissInventaireEntities.Instance.SaveChanges();
-                    
+
                     var Emp = (Utilisateur)Session["identifiant"];
                     Trace tr = new Trace();
                     tr.Dates = DateTime.Now;
@@ -683,16 +815,16 @@ namespace WebApp.Controllers
 
                     return RedirectToAction("Index", "Error");
                 }
-            //catch (SqlException sq)
-            //{
-            //    LogThread.WriteLine(sq.Message);
-            //    return RedirectToAction("Index", "Error");
-            //}
-            //catch (Exception ex)
-            //{
-            //    LogThread.WriteLine(ex.Message);
-            //    return RedirectToAction("Index", "Error");
-            //}
+                //catch (SqlException sq)
+                //{
+                //    LogThread.WriteLine(sq.Message);
+                //    return RedirectToAction("Index", "Error");
+                //}
+                //catch (Exception ex)
+                //{
+                //    LogThread.WriteLine(ex.Message);
+                //    return RedirectToAction("Index", "Error");
+                //}
             }
             else
 
@@ -848,18 +980,6 @@ namespace WebApp.Controllers
             return Json(obgcity);
         }
 
-        //[HttpPost]
-        //public ActionResult getBureauByEtage(int stateid)
-        //{
-
-        //    List<Bureau> objcity = new List<Bureau>();
-
-        //    objcity = db.findBureauByEtage(stateid).ToList();
-
-        //    SelectList obgcity = new SelectList(objcity, "Id_bureau", "Description", 0);
-        //    return Json(obgcity);
-        //}
-
         [HttpPost]
         public ActionResult getBureauByEtage(int stateid)
         {
@@ -955,12 +1075,12 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetDelegationByGouvernorat(string libelle)
+        public ActionResult GetDelegationByGouvernorat(int libelle)
         {
             IDelegationService bat = new DelegationService();
             List<Delegation> objcity = new List<Delegation>();
 
-            objcity = bat.findDelegationtByGouvernerat(libelle).ToList();
+            objcity = bat.FindDelegationtByGouvernerat(libelle).ToList();
 
             SelectList obgcity = new SelectList(objcity, "libelle", "libelle", 0);
             return Json(obgcity);
@@ -976,27 +1096,37 @@ namespace WebApp.Controllers
             return Json(objcity);
         }
 
-        [HttpPost]
-        public ActionResult GenerateCA()
+        public ActionResult getPrenom(int id)
         {
-            IBureauService kk55 = new BureauService();
-
-            double maxj = kk55.FindMaxID();
-            maxj = maxj + 1;
-            double jj = 6500000000000;
-
-            double kk = jj + maxj;
+            IPersonnelService pers = new PersonnelService();
 
 
-            return Json(kk);
+            string objcity = pers.findPrenomByNom(id);
+
+            return Json(objcity);
         }
+        [HttpPost]
+
         public ActionResult GenerateCABien()
         {
             IBienService kk55 = new BienService();
 
             double maxj = kk55.FindMaxIDBien();
             maxj = maxj + 1;
-            double jj = 5500000000000;
+            double jj = 1500000000000;
+
+            double kk = jj + maxj;
+
+
+            return Json(kk);
+        }
+        public ActionResult GenerateCABureau()
+        {
+            IBureauService kk55 = new BureauService();
+
+            double maxj = kk55.FindMaxIDBureau();
+            maxj = maxj + 1;
+            double jj = 2500000000000;
 
             double kk = jj + maxj;
 

@@ -1,0 +1,254 @@
+﻿@model IEnumerable<Domain.Bien>
+@using Service
+@{
+
+    IUtilisateurService kk = new UtilisateurService();
+    IInventaireService InB = new InventaireService();
+
+}
+
+<div class="row">
+    <!-- Start Panel -->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Liste des Inventaires Biens
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
+
+            </div>
+@using (Html.BeginForm("InventaireBiens", "Admin", FormMethod.Get))
+            {
+            <div class="form-horizontal" titre="filtre">
+
+
+                <style>
+                    select {
+                        height: 30px;
+                        width: 150px;
+                    }
+                </style>
+                <div class="panel panel-default">
+
+
+
+
+                    <center>
+                        <table>
+
+
+
+                            <tr>
+
+                                <td>
+
+                                    Délégation : &nbsp;    @Html.DropDownList("delegation", (SelectList)ViewData["delegation"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;
+                                    Organisation : &nbsp; &nbsp;  @Html.DropDownList("organisation", (SelectList)ViewData["organisation"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;&nbsp;  
+
+                                    Bâtiment:  &nbsp;&nbsp; @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
+                      ViewBag.CurrentFilter as string)&nbsp;
+
+                                    Étage : &nbsp;&nbsp; &nbsp; &nbsp;&nbsp;  &nbsp;  @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;
+
+                                    Bureau :   @Html.DropDownList("bureau", (SelectList)ViewData["bureau"], "",
+                     ViewBag.CurrentFilter as string)
+                                   
+
+                                </td>
+                            </tr>
+
+
+                        </table>
+                        <br />
+                        <table>
+
+
+
+                            <tr>
+
+                                <td>
+
+
+                                    &nbsp;  &nbsp;&nbsp;   &nbsp;   Direction : &nbsp;    &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; @Html.DropDownList("direction", (SelectList)ViewData["direction"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;  
+
+                                    Service :&nbsp;  &nbsp;  &nbsp; @Html.DropDownList("service", (SelectList)ViewData["service"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;
+
+
+                                    Dépôt:  &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;   @Html.DropDownList("Depot", (SelectList)ViewData["Depot"], "",
+                      ViewBag.CurrentFilter as string)
+
+
+
+
+                                </td>
+                            </tr>
+
+
+                        </table>
+                        <br />
+
+                        <table>
+
+
+
+                            <tr>
+
+                                <td>
+                                    Catégorie : &nbsp;  &nbsp;    @Html.DropDownList("categorie", (SelectList)ViewData["categorie"], "",
+                     ViewBag.CurrentFilter as string)
+
+
+
+                                    Sous-Catégorie: &nbsp;  @Html.DropDownList("sous_categorie", (SelectList)ViewData["sous_categorie"], "",
+                      ViewBag.CurrentFilter as string)&nbsp;&nbsp;  
+
+
+                                    Modèle : &nbsp; &nbsp;&nbsp;  @Html.DropDownList("modele", (SelectList)ViewData["modele"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;
+
+
+                                    Sous-Modèle :      @Html.DropDownList("Sous_modele", (SelectList)ViewData["Sous_modele"], "",
+                     ViewBag.CurrentFilter as string)
+
+                                    Marque :    @Html.DropDownList("marque", (SelectList)ViewData["marque"], "",
+                     ViewBag.CurrentFilter as string)
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+
+                        <br />
+                        <table>
+
+
+
+                            <tr>
+
+                                <td>
+                                    &nbsp; &nbsp;  &nbsp;   &nbsp;   &nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;  &nbsp;&nbsp;  &nbsp;  &nbsp;&nbsp; &nbsp;    Fournisseur :    &nbsp;   &nbsp;&nbsp;  @Html.DropDownList("fournisseur", (SelectList)ViewData["fournisseur"], "",
+                     ViewBag.CurrentFilter as string)&nbsp; 
+
+                                    Personnel :   &nbsp;      @Html.DropDownList("personnel", (SelectList)ViewData["personnel"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;
+
+
+
+
+                                    N° livraison : &nbsp; @Html.DropDownList("n_livraison", (SelectList)ViewData["n_livraison"], "",
+                     ViewBag.CurrentFilter as string)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;   &nbsp; &nbsp;  &nbsp;&nbsp;  &nbsp;&nbsp;&nbsp;  &nbsp;  &nbsp;
+
+                                </td>
+                            </tr>
+
+
+                        </table>
+
+                        <br />
+
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Filtrer" class="btn btn-default" />
+
+                        </div>
+
+                    </center>
+
+
+                </div>
+
+
+
+            </div>
+}
+            <div style="text-align:center;"><a href="~/Export/ExportInventaireBienAnnuel"><span class="icon color7"><i class="fa fa-file-excel-o"></i></span>&nbsp; &nbsp;  Export Vers Fichier Excel</a></div> <br />
+
+
+            <div class="panel-body table-responsive">
+
+                <table id="example0" class="table display">
+
+                    <thead>
+                        <tr>
+                            @*<th>Nom Inventaire</th>
+                            <th>Date Inventaire</th>*@
+                            <th>Catégorie</th>
+                            <th>Designation Bien</th>
+                            <th>Code à barre Bien</th>
+                            <th>Date d'achat</th>
+                            <th>Prix d'achat</th>
+                            <th>Quantité initiale</th>
+                            
+                            <th>2016</th>
+                            <th>2017</th>
+                            <th>2018</th>
+                            <th>2019</th>
+                            <th>2020</th>
+                            <th>2021</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+
+                            <tr>
+                                @{
+
+//var cod = InB.GetInvById(@item.Id_inventaire);
+                                }
+                                @*<td class="center">@cod.Nom_</td>
+                                    <td class="center">@cod.Date</td>*@
+
+                                @{
+
+                                    var code = kk.GetBienById(@item.Id_bien);
+                                }
+                                <td class="center">@code.Categorie.Description</td>
+                                <td class="center">@code.Designation</td>
+                                <td class="center">@code.Code_a_barre</td>
+                                <td class="center">@code.Achat.Date_d_achat</td>
+                                <td class="center">@code.Achat.Prix_d_achat</td>
+                                <td class="center">@code.Quantite</td>
+                                <td class="center">@code.Qte_inv1</td>
+                                <td class="center">@item.Qte_inv2</td>
+                                <td class="center">@code.Qte_inv3</td>
+                                <td class="center">@item.Qte_inv4</td>
+                                <td class="center">@code.Qte_inv5</td>
+                                <td class="center">@code.Qte_inv6</td>
+                               
+
+
+                            </tr>
+                                    }
+
+
+                    </tbody>
+
+
+                </table>
+                <br /><p>
+                    @Html.ActionLink("Affecter des Biens à un inventaire", "GetInventaire", "Inventaire")
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+

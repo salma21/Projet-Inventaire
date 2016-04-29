@@ -88,14 +88,22 @@ namespace Service
         }
 
 
+     
 
+        public MouvementVehicule FindMouvementVehiculeByID(int id)
+        {
+            var Dept = utOfWork.MouvementVehiculeRepository.FindMouvementVehiculeByID(id);
+            return Dept;
 
-
+        }
     }
 }
 
 public interface IMouvementVehiculeService
 {
+   
+
+    MouvementVehicule FindMouvementVehiculeByID(int id);
     IEnumerable<MouvementVehicule> GetMouvementVehicules();
     MouvementVehicule GetMouvementVehicule(int id);
     void SaveMouvementVehicule();

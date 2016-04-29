@@ -119,11 +119,19 @@
                                 </div>
                             </div>
                             <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">localité</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.localité, new { @class = "form-control", required = "" })
+                                    @Html.ValidationMessageFor(model => model.localité, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.Delegation.Code_postal, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Delegation.Code_postal, String.Empty, new { @class = "test" })
+                                    @Html.EditorFor(model => model.code_postale, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.code_postale, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                      

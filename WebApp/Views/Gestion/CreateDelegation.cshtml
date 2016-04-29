@@ -109,6 +109,22 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                             <hr />
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                             <div class="form-group">
+                                                <label class="control-label col-lg-4" style="font-style:oblique;">Localité </label>
+                                                <div class="col-lg-6">
+
+                                                    @Html.EditorFor(model => model.Localité, new { htmlAttributes = new { @id = "btnpopu", @class = "form-control", @onchange = "javascript:GetBatT(this.value)" } })
+                                                    @Html.ValidationMessageFor(model => model.Localité, String.Empty, new { @class = "test" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
+                                                <div class="col-lg-6">
+
+                                                    @Html.EditorFor(model => model.Code_postal, new { @class = "form-control", required = "True" })
+                                                    @Html.ValidationMessageFor(model => model.Code_postal, String.Empty, new { @class = "test" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
                                                 <label class="control-label col-lg-4" style="font-style:oblique;">Nom délégation </label>
                                                 <div class="col-lg-6">
 
@@ -117,14 +133,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
 </div>
                                             </div>
 
-                                            <div class="form-group">
-                                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
-                                                <div class="col-lg-6">
-
-                                                    @Html.EditorFor(model => model.Code_postal, new { @class = "form-control", required = "True" })
-                                                  @Html.ValidationMessageFor(model => model.Code_postal, String.Empty, new { @class = "test" })
-</div>
-                                            </div>
+                                            
 
 
                                             <div class="form-group">

@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Modele
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -23,9 +23,6 @@ namespace Domain
         public Nullable<int> Id_categorie { get; set; }
         public int id_sous_categorie { get; set; }
         public int IdModele { get; set; }
-        [Required(ErrorMessage = "Le modéle est obligatoire")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le modéle doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le modéle est invalide")]
         public string libelle { get; set; }
     
         public virtual Sous_categorie Sous_categorie { get; set; }

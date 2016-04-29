@@ -32,10 +32,12 @@
     <Property Name="code" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="description" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="code_a_barre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="localité" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Delegation" Relationship="Self.FK_BATIMENT_ASSOCIATI_DELEGATI" FromRole="Batiment" ToRole="Delegation" />
     <NavigationProperty Name="Organisation" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Batiment" ToRole="Organisation" />
     <NavigationProperty Name="Etage" Relationship="Self.FK_ETAGE_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Etage" />
     <NavigationProperty Name="Parc_auto" Relationship="Self.FK_PARC_AUT_ASSOCIATI_BATIMENT" FromRole="Batiment" ToRole="Parc_auto" />
+    <Property Name="code_postale" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="Bien">
     <Key>
@@ -70,11 +72,17 @@
     <Property Name="Photo" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="Code_immobilisation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Thumbnail" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Qte_inv1" Type="Int32" />
+    <Property Name="Qte_inv2" Type="Int32" />
+    <Property Name="Qte_inv3" Type="Int32" />
+    <Property Name="Qte_inv4" Type="Int32" />
     <NavigationProperty Name="Achat" Relationship="Self.FK_BIEN_ASSOCIATI_ACHAT" FromRole="Bien" ToRole="Achat" />
     <NavigationProperty Name="Categorie" Relationship="Self.FK_BIEN_ASSOCIATI_CATEGORI" FromRole="Bien" ToRole="Categorie" />
     <NavigationProperty Name="Depot" Relationship="Self.FK_BIEN_ASSOCIATI_DEPOT" FromRole="Bien" ToRole="Depot" />
     <NavigationProperty Name="Etage" Relationship="Self.FK_BIEN_ASSOCIATI_ETAGE" FromRole="Bien" ToRole="Etage" />
     <NavigationProperty Name="Personnel" Relationship="Self.FK_BIEN_ASSOCIATI_PERSONNE" FromRole="Bien" ToRole="Personnel" />
+    <NavigationProperty Name="Bien1" Relationship="Self.FK_Bien_Bien" FromRole="Bien" ToRole="Bien1" />
+    <NavigationProperty Name="Bien2" Relationship="Self.FK_Bien_Bien" FromRole="Bien1" ToRole="Bien" />
     <NavigationProperty Name="InventaireBien" Relationship="Self.FK_INVENTAI_ASSOCIATI_BIEN" FromRole="Bien" ToRole="InventaireBien" />
     <NavigationProperty Name="MouvementBien" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_BIEN" FromRole="Bien" ToRole="MouvementBien" />
   </EntityType>
@@ -157,6 +165,7 @@
     <Property Name="idDelegation" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="libelle" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Code_postal" Type="Int32" />
+    <Property Name="Localité" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Batiment" Relationship="Self.FK_BATIMENT_ASSOCIATI_DELEGATI" FromRole="Delegation" ToRole="Batiment" />
     <NavigationProperty Name="Gouvernorat" Relationship="Self.FK_DELEGATI_ASSOCIATI_GOUVERNO" FromRole="Delegation" ToRole="Gouvernorat" />
     <NavigationProperty Name="Depot" Relationship="Self.FK_DEPOT_ASSOCIATI_DELEGATI" FromRole="Delegation" ToRole="Depot" />
@@ -229,6 +238,8 @@
     <NavigationProperty Name="Achat" Relationship="Self.FK_ACHAT_ASSOCIATI_FOURNISS" FromRole="Fournisseur" ToRole="Achat" />
     <NavigationProperty Name="Contrat" Relationship="Self.FK_CONTRAT_ASSOCIATI_FOURNISS" FromRole="Fournisseur" ToRole="Contrat" />
     <NavigationProperty Name="Delegation" Relationship="Self.FK_FOURNISS_ASSOCIATI_DELEGATI" FromRole="Fournisseur" ToRole="Delegation" />
+    <Property Name="localité" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="code_postale" Type="Int32" />
   </EntityType>
   <EntityType Name="Gouvernorat">
     <Key>
@@ -285,6 +296,15 @@
     <Property Name="Id_inventaire" Type="Int32" Nullable="false" />
     <Property Name="Id_Vehicule" Type="Int32" Nullable="false" />
     <NavigationProperty Name="Inventaire" Relationship="Self.FK_INVENTAI_ASSOCIATI_INVENTAI" FromRole="InventaireVehicule" ToRole="Inventaire" />
+  </EntityType>
+  <EntityType Name="Localité">
+    <Key>
+      <PropertyRef Name="Id_localité" />
+    </Key>
+    <Property Name="CP" Type="Int32" />
+    <Property Name="delegation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Localité1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Id_localité" Type="Int32" Nullable="false" />
   </EntityType>
   <EntityType Name="Marque">
     <Key>
@@ -360,6 +380,7 @@
     <Property Name="ville" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="pays" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="gouvernorat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="localié" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Batiment" Relationship="Self.FK_BATIMENT_ASSOCIATI_ORGANISA" FromRole="Organisation" ToRole="Batiment" />
   </EntityType>
   <EntityType Name="Parc_auto">
@@ -512,6 +533,7 @@
     <Property Name="Etat" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Num_chassis" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
     <Property Name="Prix_d_achat" Type="Double" Nullable="false" />
+    <Property Name="Annee_achat" Type="DateTime" Precision="0" />
     <NavigationProperty Name="Achat" Relationship="Self.FK_VEHICULE_ASSOCIATI_ACHAT" FromRole="Vehicule" ToRole="Achat" />
     <NavigationProperty Name="MouvementVehicule" Relationship="Self.FK_MOUVEMEN_ASSOCIATI_VEHICULE" FromRole="Vehicule" ToRole="MouvementVehicule" />
     <NavigationProperty Name="Parc_auto" Relationship="Self.FK_VEHICULE_ASSOCIATI_PARC_AUT" FromRole="Vehicule" ToRole="Parc_auto" />
@@ -663,6 +685,20 @@
       <Dependent Role="Bien">
         <PropertyRef Name="Id_service" />
         <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bien_Bien">
+    <End Role="Bien" Type="Self.Bien" Multiplicity="1" />
+    <End Role="Bien1" Type="Self.Bien" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Bien">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_bien" />
+      </Principal>
+      <Dependent Role="Bien1">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_bien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -1008,7 +1044,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="BissTestEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="BissInventaireEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Achat" EntityType="Self.Achat" />
     <EntitySet Name="Batiment" EntityType="Self.Batiment" />
     <EntitySet Name="Bien" EntityType="Self.Bien" />
@@ -1027,6 +1063,7 @@
     <EntitySet Name="Inventaire" EntityType="Self.Inventaire" />
     <EntitySet Name="InventaireBien" EntityType="Self.InventaireBien" />
     <EntitySet Name="InventaireVehicule" EntityType="Self.InventaireVehicule" />
+    <EntitySet Name="Localité" EntityType="Self.Localité" />
     <EntitySet Name="Marque" EntityType="Self.Marque" />
     <EntitySet Name="Modele" EntityType="Self.Modele" />
     <EntitySet Name="MouvementBien" EntityType="Self.MouvementBien" />
@@ -1087,6 +1124,10 @@
     <AssociationSet Name="FK_BIEN_ASSOCIATI_PERSONNE" Association="Self.FK_BIEN_ASSOCIATI_PERSONNE">
       <End Role="Personnel" EntitySet="Personnel" />
       <End Role="Bien" EntitySet="Bien" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Bien_Bien" Association="Self.FK_Bien_Bien">
+      <End Role="Bien" EntitySet="Bien" />
+      <End Role="Bien1" EntitySet="Bien" />
     </AssociationSet>
     <AssociationSet Name="FK_INVENTAI_ASSOCIATI_BIEN" Association="Self.FK_INVENTAI_ASSOCIATI_BIEN">
       <End Role="Bien" EntitySet="Bien" />

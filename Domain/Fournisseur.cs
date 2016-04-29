@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Fournisseur
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,28 +26,14 @@ namespace Domain
         public Nullable<int> idGouvernorat { get; set; }
         public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
-
-        [Required(ErrorMessage = "La désignation est obligatoire")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "La désignation  doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La désignation est invalide")]
         public string Nom { get; set; }
-        [Required(ErrorMessage = "L'adresse est obligatoire")]
-        [StringLength(50, MinimumLength = 4, ErrorMessage = "L'adresse doit compor<int> faxter entre 4 et 50 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "L'adresse est invalide")]
         public string Rue { get; set; }
-        [Required(ErrorMessage = "Le numéro de téléphone est obligatoire")]
-        [Range(10000000, 99999999, ErrorMessage = "Le numéro de téléphone est invalide")]
         public Nullable<int> Tel { get; set; }
-
-        [Required(ErrorMessage = "Le numéro du fax est obligatoire")]
-        [Range(10000000, 99999999, ErrorMessage = "Le numéro du fax est invalide!")]
         public Nullable<int> Fax { get; set; }
-        [Display(Name = "Email address")]
-        [Required(ErrorMessage = "L'adresse email est obligatoire")]
-        [EmailAddress(ErrorMessage = "L'adresse email est invalide")]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "L'adresse email doit comporter au minumum 6 caractéres")]
         public string Email { get; set; }
         public string Commentaire { get; set; }
+        public string localité { get; set; }
+        public Nullable<int> code_postale { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Achat> Achat { get; set; }

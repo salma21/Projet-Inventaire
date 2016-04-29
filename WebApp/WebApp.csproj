@@ -205,6 +205,7 @@
     <Compile Include="Controllers\DbController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\EtageController.cs" />
+    <Compile Include="Controllers\ExportController.cs" />
     <Compile Include="Controllers\GestionContratController.cs" />
     <Compile Include="Controllers\GestionController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -289,6 +290,8 @@
     <Content Include="Content\img\error.png" />
     <Content Include="Content\img\loading.gif" />
     <Content Include="Content\img\Nouveau\ATB.png" />
+    <Content Include="Content\img\Nouveau\biss-invent-1.png" />
+    <Content Include="Content\img\Nouveau\biss.png" />
     <Content Include="Content\img\Nouveau\sss.png" />
     <Content Include="Content\img\rrrr.jpg" />
     <Content Include="Content\img\Untitled-2.png" />
@@ -451,7 +454,6 @@
     <Content Include="Views\ImportExport\ImportTxt.cshtml" />
     <Content Include="Views\ImportExport\Cipherlab.cshtml" />
     <Content Include="Views\Admin\EditUser.cshtml" />
-    <Content Include="Views\Gestion\EditBatiment1.cshtml" />
     <Content Include="Views\Admin\EditBureaux.cshtml" />
     <Content Include="Views\Gestion\EditDirection.cshtml" />
     <Content Include="Views\Gestion\EditDelegation.cshtml" />
@@ -504,7 +506,6 @@
     <Content Include="Views\Admin\CreateDepot.cshtml" />
     <Content Include="Views\Admin\CreateUsersTest.cshtml" />
     <Content Include="Views\Gestion\EditGouvernorat.cshtml" />
-    <Content Include="Views\Gestion\EditBatiment2.cshtml" />
     <Content Include="Views\ServiceD\EditServiceD.cshtml" />
     <Content Include="Views\ServiceD\EditServiceDTest.cshtml" />
     <Content Include="Views\Gestion\EditBatiment.cshtml" />
@@ -513,10 +514,19 @@
     <Content Include="Views\Categorie\EditSousModele.cshtml" />
     <Content Include="Views\Categorie\EditMarque.cshtml" />
     <Content Include="Views\Gestion\EditMouvementBien.cshtml" />
+    <Content Include="Views\Achats\Create.cshtml" />
+    <Content Include="Views\Achats\Delete.cshtml" />
+    <Content Include="Views\Achats\Details.cshtml" />
+    <Content Include="Views\Achats\Edit.cshtml" />
+    <Content Include="Views\Achats\Index.cshtml" />
+    <Content Include="Views\Admin\EditBureaux2.cshtml" />
+    <Content Include="Views\Gestion\EditMouvementVehicule.cshtml" />
+    <Content Include="Views\Admin\InventaireBiens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\UploadedFolder\" />
+    <Folder Include="Views\Export\" />
     <Folder Include="Views\ServiceDirection\" />
   </ItemGroup>
   <ItemGroup>

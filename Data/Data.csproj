@@ -72,6 +72,7 @@
     <Compile Include="Repositories\InventaireBienRepository.cs" />
     <Compile Include="Repositories\InventaireRepository.cs" />
     <Compile Include="Repositories\InventaireVehiculeRepository.cs" />
+    <Compile Include="Repositories\LocalitéRepository.cs" />
     <Compile Include="Repositories\MouvementBienRepository.cs" />
     <Compile Include="Repositories\MouvementVehiculeRepository.cs" />
     <Compile Include="Repositories\OrganisationRepository.cs" />

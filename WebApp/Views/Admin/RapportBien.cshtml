@@ -6,9 +6,14 @@
         <div class="panel panel-default">
             <div class="panel-title">
                 Liste des Biens
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
             @using (Html.BeginForm("RapportBien", "Admin", FormMethod.Get))
-                    {
+            {
 
 
 
@@ -23,23 +28,22 @@
                             width: 220px;
                         }
                     </style>
-                    <div style="margin-left:50px;">
-                        <table>          
-                        
-                        
-                        Délégation :      @Html.DropDownList("delegation", (SelectList)ViewData["delegation"], "",
+                    <div class="panel panel-default">
+                        <div style="margin-left:50px;">
+                            <table border="1">
+
+
+                                &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;Délégation :   &nbsp;&nbsp;   @Html.DropDownList("delegation", (SelectList)ViewData["delegation"], "",
                      ViewBag.CurrentFilter as string)&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
 
-                   
 
-                            Bâtiment:     @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
+
+                                Bâtiment:  &nbsp;&nbsp;   @Html.DropDownList("batiment", (SelectList)ViewData["batiment"], "",
                       ViewBag.CurrentFilter as string)&nbsp;&nbsp; &nbsp;&nbsp;
-                            &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
-
-                     Étage :      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
+                                &nbsp;&nbsp; &nbsp;
+                                Étage :&nbsp;&nbsp;      @Html.DropDownList("etage", (SelectList)ViewData["etage"], "",
                      ViewBag.CurrentFilter as string)
 
-                    
 
 
 
@@ -48,17 +52,19 @@
 
 
 
-                        </table><br /><br />
-                        <center>
-                            <div class="form-actions no-color">
-                                <input type="submit" value="Ok" class="btn btn-default" />
 
-                            </div>
-                        </center>
+                            </table><br /><br />
+                            <center>
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Filtrer" class="btn btn-default" />
 
+                                </div>
+                            </center>
+
+                        </div>
+                        </div>
+                        <br /><br />
                     </div>
-                    <br /><br />
-                </div>
             }
             <div class="panel panel-default">
                 <div class="panel-body table-responsive">
@@ -71,26 +77,26 @@
                                 <th>N° modéle</th>
                                 <th>Mode</th>
                                 <th>État</th>
-                                
+
                                 <th>Catégorie </th>
                                 <th>Sous catégorie</th>
                                 <th>Modéle</th>
                                 <th>Sous modéle</th>
                                 <th>Marque</th>
-                              
+
                                 <th>Batiment </th>
                                 <th>Étage</th>
                                 <th>Ville </th>
                                 <th>Région</th>
                                 <th>Image</th>
-                               
-                               
-                                
-                               
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                <th>Action</th>
-}
+
+
+
+
+                                @if (@Session["Role"].ToString() == "ADMIN")
+                                {
+                                    @*<th>Action</th>*@
+                                }
 
                             </tr>
                         </thead>
@@ -114,16 +120,16 @@
                                     <td>@item.Etage.Batiment.Delegation.libelle</td>
                                     <td>@item.Etage.Batiment.Delegation.Gouvernorat.Region.libelle</td>
                                     <td><img src="/Admin/RetrieveImage/@item.Id_bien" alt="" height=100 width=200 /></td>
-                                 
-                                   
-                                  
+
+
+
 
                                     <td>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                                        <a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>
-}
-                                      </td>
+                                        @if (@Session["Role"].ToString() == "ADMIN")
+                                        {
+                                            @*<a href="@Url.Action("DetailsBien", new { id = item.Id_bien })">&nbsp;&nbsp;<i class="fa fa-folder-open" title="Details"></i></a>*@
+                                        }
+                                    </td>
 
                                 </tr>
 
@@ -143,12 +149,12 @@
 
                     </p>
                     <br /><p>
-@if (@Session["Role"].ToString() == "ADMIN")
-{
-                        @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
-}
+                        @if (@Session["Role"].ToString() == "ADMIN")
+                        {
+                            @Html.ActionLink("Ajouter un nouveau Bien", "CreateBien")
+                        }
                     </p>
-                     
+
                 </div>
             </div>
         </div>

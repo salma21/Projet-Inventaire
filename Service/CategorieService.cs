@@ -47,7 +47,12 @@ namespace Service
         {
             utOfWork.CategorieRepository.UpdateSous_ModeleDetached(e);
         }
-       public void UpdateMarqueDetached(Marque e)
+        public void UpdateSous_categorieDetached(Sous_categorie e)
+        {
+            utOfWork.CategorieRepository.UpdateSous_categorieDetached(e);
+        }
+
+        public void UpdateMarqueDetached(Marque e)
         {
             utOfWork.CategorieRepository.UpdateMarqueDetached(e);
         }
@@ -86,7 +91,11 @@ namespace Service
             return Dept;
         }
 
-
+        public Sous_categorie FindSous_categorieById(int id_sous_categorie)
+        {
+            var Dept = utOfWork.CategorieRepository.FindSous_categorieById(id_sous_categorie);
+            return Dept;
+        }
 
 
 
@@ -223,7 +232,7 @@ namespace Service
         Sous_modele FindSous_ModeleById(int id);
         Marque FindMarqueById(int id);
 
-        
+        Sous_categorie FindSous_categorieById(int id_sous_categorie);
         IEnumerable<Sous_categorie> FindPorduitByID(int id);
         
         IEnumerable<Modele> findModeleBySousCategorie(string libelle);
@@ -244,6 +253,7 @@ namespace Service
         void SaveSousCategorie();
         void CreateCategorie_materiel(Categorie Categorie);
         void DeleteCategorie_materiel(int Id_categorie);
+        void UpdateSous_categorieDetached(Sous_categorie e);
     }
 
 }

@@ -42,7 +42,13 @@ namespace Data.Repositories
             ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
             this.DataContext.Entry(e).State = EntityState.Modified;
         }
-
+    
+        public void UpdateSous_categorieDetached(Sous_categorie e)
+        {
+            Sous_categorie existing = FindSous_categorieById(e.id_sous_categorie);
+            ((IObjectContextAdapter)DataContext).ObjectContext.Detach(existing);
+            this.DataContext.Entry(e).State = EntityState.Modified;
+        }
         public void UpdateMarqueDetached(Marque e)
         {
             Marque existing = FindMarqueById(e.IdMarque);
@@ -157,6 +163,14 @@ namespace Data.Repositories
             return pers.ToList();
         }
 
+        public Sous_categorie FindSous_categorieById(int id)
+        {
+
+            var pers = (from p in DataContext.Sous_categorie
+                        where p.id_sous_categorie == id
+                        select p);
+            return pers.FirstOrDefault();
+        }
         public IEnumerable<Sous_categorie> GetDesignationAll()
         {
 
@@ -203,6 +217,7 @@ namespace Data.Repositories
         void UpdateMarqueDetached(Marque e);
         Categorie FindCategorie_materielByNom(String id);
         Sous_categorie FindCategorie_DesignationById(int id);
+        Sous_categorie FindSous_categorieById(int id);
         Modele FindCategorie_ModeleById(int id);
         Sous_modele FindSous_ModeleById(int id);
         Marque FindMarqueById(int id);
@@ -217,6 +232,7 @@ namespace Data.Repositories
         IEnumerable<Modele> GetAllModele();
         IEnumerable<Sous_modele> GetAllSousModele();
         IEnumerable<Marque> GetAllMarque();
+        void UpdateSous_categorieDetached(Sous_categorie e);
     }
 
 

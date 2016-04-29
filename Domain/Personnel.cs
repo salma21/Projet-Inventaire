@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Personnel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,32 +26,12 @@ namespace Domain
         public int Id_service { get; set; }
         public int id_pers { get; set; }
         public int Rol_id { get; set; }
-        [Required(ErrorMessage = "Le nom est obligatoire")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom est invalide")]
         public string nom { get; set; }
-        [Required(ErrorMessage = "Le prénom est obligatoire")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "Le prénom doit comporter entre 3 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le prénom est invalide")]
         public string prenom { get; set; }
-        [Required(ErrorMessage = "La matricule est obligatoire")]
-        [Range(0001, 9999, ErrorMessage = "La matricule est invalide : il doit contenir 4 chiffres")]
-        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "La matricule est invalide")]
         public Nullable<int> Matricule { get; set; }
-        [Display(Name = "Email address")]
-        [Required(ErrorMessage = "L'adresse email est obligatoire")]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "L'adresse email doit comporter au minumum 6 caractéres")]
-        [EmailAddress(ErrorMessage = "L'adresse email est invalide")]
         public string Email { get; set; }
-        [Required(ErrorMessage = "Le numéro de téléphone est obligatoire")]
-        [Range(10000000, 99999999, ErrorMessage = "Le numéro de téléphone est invalide!")]
         public Nullable<int> Num_tel { get; set; }
-        [Required(ErrorMessage = "N° CIN  est obligatoire")]
-        [StringLength(8, MinimumLength = 8, ErrorMessage = "N° CIN est invalide : il doit contenir 8 chiffres")]
-        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "N° CIN  matricule est invalide")]
         public string CIN { get; set; }
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage = "La date de naissance est obligatoire")]
         public Nullable<System.DateTime> Date_anniv { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

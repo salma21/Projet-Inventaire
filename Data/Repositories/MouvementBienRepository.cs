@@ -48,14 +48,15 @@ namespace Data.Repositories
             return pers.ToList();
         }
 
-        public IEnumerable<MouvementBien> FindMouvementBienByID(int id)
+      
+        public MouvementBien FindMouvementBienByID(int id)
         {
+
             var pers = (from p in DataContext.MouvementBien
                         where p.Id_mouvementB == id
                         select p);
-            return pers.ToList();
+            return pers.FirstOrDefault();
         }
-
 
 
 
@@ -70,7 +71,7 @@ namespace Data.Repositories
        
         IEnumerable<Bien> FindBienByEtage(int id);
 
-        IEnumerable<MouvementBien> FindMouvementBienByID(int id);
+        MouvementBien FindMouvementBienByID(int id);
 
 
 

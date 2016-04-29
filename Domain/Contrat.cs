@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Contrat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -24,30 +24,12 @@ namespace Domain
         public int Id_contrat { get; set; }
         public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
-        [Required(ErrorMessage = "Le type de contrat est obligatoire")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Le type de contrat  doit contenir entre 5 et 30 caractères.")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le type de contrat est invalide.Exemple : contrat d'assurence.")]
         public string Type_Contrat { get; set; }
-        [Required(ErrorMessage = "Le numéro est obligatoire")]
-        [Range(1, 999999, ErrorMessage = "Le numéro de contrat doit contenir au minimum 1 et au maximum 6 chiffres.")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le numéro est invalide")]
         public Nullable<int> Num { get; set; }
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage = "La date début est obligatoire")]
         public Nullable<System.DateTime> Date_debut { get; set; }
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage = "La date fin est obligatoire")]
         public Nullable<System.DateTime> Date_fin { get; set; }
-        [Required(ErrorMessage = "Le coût est obligatoire")]
-        [RegularExpression(@"[0-9]+([,][0-9]{0,3})?", ErrorMessage = "Le coût est invalid.Exemlpe: 2000,000")]
         public Nullable<double> Cout { get; set; }
-        [Required(ErrorMessage = "Le sous-type de contrat est obligatoire")]
-        [StringLength(30, MinimumLength = 5, ErrorMessage = "Le sous-type de contrat  doit contenir entre 5 et 30 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le sous-type de contrat est invalide.Exemple : tous risques")]
         public string Sous_Type_Contrat { get; set; }
-        [Required(ErrorMessage = "Le code à barre est obligatoire")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "Le code à barre est invalide : il doit contenir 13 chiffres")]
-        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "Le code à barre est invalide")]
         public string code_a_barre { get; set; }
     
         public virtual Fournisseur Fournisseur { get; set; }

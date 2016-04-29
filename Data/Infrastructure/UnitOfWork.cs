@@ -30,8 +30,15 @@ namespace Data.Infrastructure
             }
         }
 
+        private ILocalitéRepository LocalitéRepository;
+        ILocalitéRepository IUnitOfWork.LocalitéRepository
+        {
+            get
+            {
+                return LocalitéRepository ?? (LocalitéRepository = new LocalitéRepository(dbFactory));
+            }
+        }
 
-    
 
         private IBureauRepository BureauRepository;
         IBureauRepository IUnitOfWork.BureauRepository

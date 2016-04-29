@@ -11,8 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    
     public partial class Achat
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -25,38 +24,12 @@ namespace Domain
         public int Id_achat { get; set; }
         public int idDelegation { get; set; }
         public int Id_fournisseur { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "La date de livraison est obligatoire")]
         public Nullable<System.DateTime> Date_livraison { get; set; }
-
-        [Required(ErrorMessage = "Le champ N° de facture est obligatoire")]
-        [Range(1, 999999, ErrorMessage = "Le numéro de la facture ne peut en contenir que 6 chiffre au maximum")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le numéro de la facture est invalide")]
-        [Column]
         public Nullable<int> Num_facture { get; set; }
-        [Required(ErrorMessage = "Le champ N° de commande est obligatoire")]
-        [Range(1, 999999, ErrorMessage = "Le numéro de commande ne peut en contenir que 6 chiffre au maximum")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le numéro de commande est invalide")]
-        [Column]
         public Nullable<int> Num_commande { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        [Required(ErrorMessage = "La date d'achat est obligatoire")]
         public Nullable<System.DateTime> Date_d_achat { get; set; }
-
-        [Required(ErrorMessage = "Le prix d'achat est obligatoire")]
-        [RegularExpression(@"[0-9]+([,][0-9]{0,3})?", ErrorMessage = "Le prix d'achat est invalid.Exemlpe: 20,000")]
-
         public Nullable<double> Prix_d_achat { get; set; }
-        [Required(ErrorMessage = "Le N° de livraison est obligatoire")]
-        [Range(1, 999999, ErrorMessage = "Le numéro de livraison ne peut en contenir que 6 chiffre au maximum")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "Le numéro de livraison est invalide")]
-        [Column]
         public Nullable<int> Num_livraison { get; set; }
-        [Required(ErrorMessage = "Le code à barre est obligatoire")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "Le code à barre est invalide : il doit contenir 13 chiffres")]
-        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "Le code à barre est invalide")]
         public string code_a_barre { get; set; }
     
         public virtual Fournisseur Fournisseur { get; set; }

@@ -71,6 +71,22 @@ namespace Data.Repositories
 
             return pers;
         }
+        public IEnumerable<Localité> findCodePByLocalite(int id)
+        {
+            var pers = (from p in DataContext.Localité
+                        where p.Id_localité == id
+                        select p).ToList();
+
+            return pers;
+        }
+        public IEnumerable<Delegation> findlocaliteByDelegation(int id)
+        {
+            var pers = (from p in DataContext.Delegation
+                        where p.idDelegation == id
+                        select p).ToList();
+
+            return pers;
+        }
 
         public IEnumerable<Delegation> findDelegationtByGouvernerat(string libelle)
         {

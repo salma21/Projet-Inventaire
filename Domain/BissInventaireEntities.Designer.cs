@@ -1,4 +1,4 @@
-﻿// La génération de code T4 est activée pour le modèle 'C:\version 11-03-2016 nesrine\ATB_SOLUTIONS\Domain\BissInventaireEntities.edmx'. 
+﻿// La génération de code T4 est activée pour le modèle 'C:\Users\nesrine.BISS\Desktop\vers 11-04-2016\ATB_SOLUTIONS\Domain\BissInventaireEntities.edmx'. 
 // Pour activer la génération de code héritée, définissez la valeur de la propriété
 // du concepteur 'Stratégie de génération de code' sur 'ObjectContext hérité'. Cette propriété est disponible dans la fenêtre Propriétés lorsque le modèle
 //  est ouvert dans le concepteur.

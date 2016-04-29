@@ -8,7 +8,7 @@ namespace Data.Infrastructure
     {
         void Commit();
 
-       
+         ILocalitéRepository LocalitéRepository { get; }
         IBureauRepository BureauRepository { get; }
         IRegionRepository RegionRepository { get; }
      

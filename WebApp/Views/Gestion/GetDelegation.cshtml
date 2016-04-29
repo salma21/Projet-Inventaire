@@ -8,13 +8,23 @@
         <div class="panel panel-default">
             <div class="panel-title">
                 Liste des Délégations
+
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
             <div class="panel-body table-responsive">
+                <div style="text-align:center;"><a href="~/Export/ExportDelegation"><span class="icon color7"><i class="fa fa-file-excel-o"></i></span>&nbsp; &nbsp;  Export Vers Fichier Excel</a></div> 
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
-                            <th>Nom</th>
+                            
+                            <th>Loclité</th>
                             <th>Code postal</th>
+                            <th>Délégation</th>
+                           
                             <th>Gouvernorat</th>
                             <th>Region</th>
                             <th>Pays</th>
@@ -28,9 +38,10 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-
-                                <td class="center">@item.libelle</td>
+                                <td class="center">@item.Localité</td>
                                 <td class="center">@item.Code_postal</td>
+                                <td class="center">@item.libelle</td>
+                               
                                 <td class="center">@item.Gouvernorat.libelle</td>
                                 <td class="center">@item.Gouvernorat.Region.libelle</td>
                                 <td class="center">@item.Gouvernorat.Region.Pays.libelle</td>

@@ -12,7 +12,7 @@ namespace Domain
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+
     public partial class BissInventaireEntities : DbContext
     {
         private static BissInventaireEntities instance;
@@ -31,12 +31,12 @@ namespace Domain
             : base("name=BissInventaireEntities")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Achat> Achat { get; set; }
         public virtual DbSet<Batiment> Batiment { get; set; }
         public virtual DbSet<Bien> Bien { get; set; }
@@ -72,5 +72,6 @@ namespace Domain
         public virtual DbSet<Trace> Trace { get; set; }
         public virtual DbSet<Utilisateur> Utilisateur { get; set; }
         public virtual DbSet<Vehicule> Vehicule { get; set; }
+        public virtual DbSet<Localité> Localité { get; set; }
     }
 }

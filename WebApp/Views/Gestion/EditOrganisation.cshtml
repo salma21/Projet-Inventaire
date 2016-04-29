@@ -61,6 +61,14 @@
 
     }
 </script>
+<script type="text/javascript">
+    function fileCheck(obj) {
+        var fileExtension = ['jpeg', 'jpg', 'png', 'gif', 'bmp'];
+        if ($.inArray($(obj).val().split('.').pop().toLowerCase(), fileExtension) == -1) {
+            alert("Only '.jpeg','.jpg', '.png', '.gif', '.bmp' formats are allowed.");
+        }
+    }
+</script>
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
@@ -147,12 +155,13 @@
                             @*<div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Logo</label>
                                 <div class="col-lg-6">
-                                    <input type="file" id="fileToUpload" name="file" />
-                                    @Html.EditorFor(model => model.Logo, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.Logo, String.Empty, new { @class = "test" })
+                                    <input type="file" name="Image" id="Image" onchange="fileCheck(this);" />
+                                    @Html.ValidationMessageFor(model => model.Logo)
                                 </div>
 
                             </div>*@
+
+
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Adresse </label>
                                 <div class="col-lg-6">
@@ -161,14 +170,7 @@
                                     @Html.ValidationMessageFor(model => model.adresse, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
-                                <div class="col-lg-6">
-
-                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "True" })
-                                    @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
-                                </div>
-                            </div>
+                           
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
@@ -190,8 +192,22 @@
 
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Localité</label>
+                                <div class="col-lg-6">
 
+                                    @Html.EditorFor(model => model.localié, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.localié, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code postal</label>
+                                <div class="col-lg-6">
 
+                                    @Html.EditorFor(model => model.description, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.description, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
 
 
                         </div>

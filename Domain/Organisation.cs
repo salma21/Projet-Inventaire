@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Organisation
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,44 +21,20 @@ namespace Domain
         }
     
         public int idOrganisation { get; set; }
-        [Required(ErrorMessage = "Le nom est obligatoire")]
-        [StringLength(30, MinimumLength = 2, ErrorMessage = "Le nom doit comporter entre 2 et 30 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le nom est invalide")]
         public string libelle { get; set; }
-        [Required(ErrorMessage = "La description est obligatoire")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide.Exemple : abc")]
         public string description { get; set; }
-
         public byte[] Logo { get; set; }
-        [Required(ErrorMessage = "Le numéro de téléphone est obligatoire")]
-        [Range(10000000, 99999999, ErrorMessage = "Le numéro de téléphone est invalide!")]
         public string tel { get; set; }
-        [Required(ErrorMessage = "Le numéro du fax est obligatoire")]
-        [Range(10000000, 99999999, ErrorMessage = "Le numéro du fax est invalide!")]
         public string fax { get; set; }
-        [Required(ErrorMessage = "L'adresse est obligatoire")]
-        [StringLength(50, MinimumLength = 4, ErrorMessage = "L'adresse doit comporter entre 4 et 50 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ']+$", ErrorMessage = "L'adresse est invalide")]
         public string adresse { get; set; }
-        [Required(ErrorMessage = "Matricule fiscal est obligatoire")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "Matricule fiscal doit comporter 13 caractéres")]
-        [RegularExpression(@"^([0-9]{7})([ABCDEFGHIJKLMNPQRSVWXYZ]{1})([ABPDN]{1})([MPCNE]{1})([0-9]{3})+$", ErrorMessage = "Matricule fiscal est invalide.Exemple: 1234567XAM000 ")]
         public string Matricule_fiscale { get; set; }
-        [Display(Name = "Email address")]
-        [Required(ErrorMessage = "L'adresse email est obligatoire")]
-        [StringLength(50, MinimumLength = 6, ErrorMessage = "L'adresse email doit comporter au minumum 6 caractéres")]
-        [EmailAddress(ErrorMessage = "L'adresse email est invalide")]
         public string Email { get; set; }
-        [RegularExpression(@"^[a-zA-Z 0-9]+$", ErrorMessage = "Le N° registre de commerce est invalide")]
-        [Required(ErrorMessage = " Le N° registre de commerce est obligatoire")]
         public string Registre_de_commerce { get; set; }
-        //[RegularExpression(@"^[a-zA-Z.-_ 0-9]+$", ErrorMessage = "Le site web est invalide")]
- 
         public string Site_web { get; set; }
         public string ville { get; set; }
         public string pays { get; set; }
         public string gouvernorat { get; set; }
+        public string localié { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Batiment> Batiment { get; set; }

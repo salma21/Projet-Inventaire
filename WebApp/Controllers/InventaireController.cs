@@ -259,8 +259,10 @@ namespace WebApp.Controllers
                 try
             {
                 reg.Date = DateTime.Now;
-                db.CreateInventaire(reg);
-                db.SaveInventaire();
+                    //db.CreateInventaire(reg);
+                    //db.SaveInventaire();
+                    BissInventaireEntities.Instance.Inventaire.Add(reg);
+                    BissInventaireEntities.Instance.SaveChanges();
                 
                 return RedirectToAction("GetInventaire");
             }

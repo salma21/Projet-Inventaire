@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Domain.Achat>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_livraison)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Num_facture)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Num_commande)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date_d_achat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prix_d_achat)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Num_livraison)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.code_a_barre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Fournisseur.Nom)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_livraison)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_facture)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_commande)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date_d_achat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix_d_achat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Num_livraison)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.code_a_barre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fournisseur.Nom)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id_achat }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id_achat }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id_achat })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

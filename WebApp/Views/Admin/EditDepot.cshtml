@@ -1,11 +1,11 @@
-﻿@model Domain.Depot
-
+﻿
+@model Domain.Depot
 
 <div class="row">
     <div class="col-md-12">
         <div class="panel panel-default">
             <div class="panel-title">
-                Dépôt
+                Modification Dépôt
             </div>
             <div class="panel-body">
 
@@ -13,19 +13,19 @@
 
                 <div class="panel panel-default">
 
-                    <h2>Modification Dépôt</h2>
 
                     @using (Html.BeginForm())
                     {
                         @Html.AntiForgeryToken()
-
+                        @Html.HiddenFor(model => model.idDelegation)
+                        @Html.HiddenFor(model => model.idPays)
+                        @Html.HiddenFor(model => model.idGouvernorat)
+                        @Html.HiddenFor(model => model.idRegion)
+                        @Html.HiddenFor(model => model.IdDepot)
                         <div class="form-horizontal">
-
+                            <h4>Dépôt</h4>
                             <hr />
-
-
-
-
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Désignation </label>
                                 <div class="col-lg-6">
@@ -37,14 +37,19 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Pays </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.idPays, (SelectList)ViewData["pays"], "--Choisir--", new { @id = "ddlstate", @class = "form-control", required = "", readOnly="True"})
+                                    @Html.TextBoxFor(model => model.Delegation.Gouvernorat.Region.Pays.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Delegation.Gouvernorat.Region.Pays.libelle, String.Empty, new { @class = "test" })
+
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Region </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.idRegion, (SelectList)ViewData["region"], "--Choisir--", new { @id = "ddlcity", @class = "form-control", required = "", readOnly="True" })
+                                    @Html.TextBoxFor(model => model.Delegation.Gouvernorat.Region.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Delegation.Gouvernorat.Region.libelle, String.Empty, new { @class = "test" })
+
+
                                 </div>
                             </div>
 
@@ -52,13 +57,15 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Gouvernorat </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(m => m.idGouvernorat, (SelectList)ViewData["gouvernourat"], "--Choisir--", new { @id = "ddlgouv", @class = "form-control", required = "" , readOnly = "True" })
+                                    @Html.TextBoxFor(model => model.Delegation.Gouvernorat.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Delegation.Gouvernorat.libelle, String.Empty, new { @class = "test" })
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Ville </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @id = "ddldeleg", @class = "form-control", required = "" , readOnly = "True" })
+                                    @Html.TextBoxFor(model => model.Delegation.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Delegation.libelle, String.Empty, new { @class = "test" })
 
                                 </div>
                             </div>
@@ -76,13 +83,15 @@
 
 
 
-                            <div style="text-align: center;">
-                                <input type="submit" value="Valider" class="btn btn-default" />
 
-                                <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "getDepots")</button>
-
-                            </div>
                         </div>
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+                            <button type="reset" class="btn btn-white">@Html.ActionLink("Annuler", "getDepots")</button>
+
+                        </div>
+                   
 
 
 
@@ -95,7 +104,10 @@
                     @Html.ActionLink("Liste des dépôts", "getDepots")
                 </div>
 
+
+
             </div>
         </div>
     </div>
 </div>
+

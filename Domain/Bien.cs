@@ -11,8 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+    
     public partial class Bien
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -31,42 +30,16 @@ namespace Domain
         public Nullable<int> Id_achat { get; set; }
         public Nullable<int> Id_service { get; set; }
         public Nullable<int> id { get; set; }
-        [Required(ErrorMessage = "La désignation est obligatoire")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "La désignation doit contenir entre 3 et 30 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La désignation est invalide.Exemple : table")]
         public string Designation { get; set; }
-       [StringLength(50, MinimumLength = 2, ErrorMessage = "Champ invalide")]
-        [RegularExpression(@"^[a-zA-Z 0-9_-]+$", ErrorMessage = "Le numéro de série est invalide")]
         public string Num_Modele { get; set; }
-
-        [StringLength(50, MinimumLength = 2, ErrorMessage = "Champ invalide")]
-        [RegularExpression(@"^[a-zA-Z 0-9_-]+$", ErrorMessage = "Le numéro de série est invalide")]
         public string Num_Serie { get; set; }
         public string Etat { get; set; }
-        [Range(1, 1000000, ErrorMessage = "La quantité est invalide")]
-        [RegularExpression(@"^[0-9]+$", ErrorMessage = "La quantité est invalide")]
-        [Column]
-        [Required(ErrorMessage = "La quantité est obligatoire")]
         public string Quantite { get; set; }
-        [Required(ErrorMessage = "La description est obligatoire")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "La description doit contenir au minimum 3 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La description est invalide.Exemple : Bureau 1")]
-        public string Description { get; set; }
         public string Mode { get; set; }
-
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "Le détail doit contenir au minimum 3 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le champ est invalide.Exemple : Bien 1")]
+        public string Description { get; set; }
         public string Detail { get; set; }
-        [Required(ErrorMessage = "Le code à barre est obligatoire")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "Le code à barre est invalide : il doit contenir 13 chiffres")]
-        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "Le code à barre est invalide")]
         public string Code_a_barre { get; set; }
-       
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "L'emploi principal doit contenir au minimum 5 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "Le champ est invalide: photocopie")]
         public string Emploi_principal { get; set; }
-        [DataType(DataType.Date)]
-        [Required(ErrorMessage = "La date d'installation est obligatoire")]
         public Nullable<System.DateTime> Date_d_installation { get; set; }
         public string Sous_categorie { get; set; }
         public string Modele { get; set; }
@@ -76,12 +49,19 @@ namespace Domain
         public byte[] Photo { get; set; }
         public string Code_immobilisation { get; set; }
         public byte[] Thumbnail { get; set; }
-    
+        public Nullable<int> Qte_inv1 { get; set; }
+        public Nullable<int> Qte_inv2 { get; set; }
+        public Nullable<int> Qte_inv3 { get; set; }
+        public Nullable<int> Qte_inv4 { get; set; }
+        public Nullable<int> Qte_inv5 { get; set; }
+        public Nullable<int> Qte_inv6 { get; set; }
         public virtual Achat Achat { get; set; }
         public virtual Categorie Categorie { get; set; }
         public virtual Depot Depot { get; set; }
         public virtual Etage Etage { get; set; }
         public virtual Personnel Personnel { get; set; }
+        public virtual Bien Bien1 { get; set; }
+        public virtual Bien Bien2 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<InventaireBien> InventaireBien { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

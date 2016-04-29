@@ -6,8 +6,15 @@
         <div class="panel panel-default">
             <div class="panel-title">
                 Liste des Fournisseurs
+
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
             <div class="panel-body table-responsive">
+                <div style="text-align:center;"><a href="~/Export/ExportFournisseur"><span class="icon color7"><i class="fa fa-file-excel-o"></i></span>&nbsp; &nbsp;  Export Vers Fichier Excel</a></div> 
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
@@ -16,10 +23,13 @@
                             <th>Tél</th>
                             <th>Fax</th>
                             <th>Email </th>
-
                             <th>Autre </th>
                             <th>Région </th>
-                            @*<th>Délégation </th>*@
+                            <th>Gouvernorat</th>
+                           <th>Délégation </th>
+                        
+                            <th>Localité </th>
+                            <th>Code postale</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -37,9 +47,11 @@
                                 <td class="center">@item.Fax</td>
                                 <td class="center">@item.Email</td>
                                 <td class="center">@item.Commentaire</td>
-                                @*<td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>*@
-                             
+                                <td class="center">@item.Delegation.Gouvernorat.Region.libelle</td>
+                                <td class="center">@item.Delegation.Gouvernorat.libelle</td>
                                 <td class="center">@item.Delegation.libelle</td>
+                                <td class="center">@item.localité</td>
+                                <td class="center">@item.code_postale</td>
                                 <td>
 @if (@Session["Role"].ToString() == "ADMIN")
 {

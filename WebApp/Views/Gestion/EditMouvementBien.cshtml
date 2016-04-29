@@ -1,101 +1,167 @@
 ﻿@model Domain.MouvementBien
 
-@{
-    Layout = null;
-}
 
-<!DOCTYPE html>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-title">
+                Modification Mouvement Bien
+            </div>
+            <div class="panel-body">
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>EditMouvementBien</title>
-</head>
-<body>
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        
-        <div class="form-horizontal">
-            <h4>MouvementBien</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.Id_mouvementB)
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Id_etage, "Id_etage", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Id_etage", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Id_etage, "", new { @class = "text-danger" })
+
+
+                <div class="panel panel-default">
+
+
+
+
+                    @using (@Html.BeginForm("EditMouvementBien", "Gestion", FormMethod.Post,
+new { @id = "frmId", @class = "fieldset-form" }))
+                    {
+                        <div class="form-horizontal">
+                            <h4>Mouvement bien</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Id_mouvementB)
+                            @Html.HiddenFor(model => model.Id_etage)
+                            @Html.HiddenFor(model => model.Id_bien)
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Désignation</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Délégation</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Bien.Depot.Delegation.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Bien.Depot.Delegation.libelle, String.Empty, new { @class = "test" })
+                                   
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Batiment</label>
+                                <div class="col-lg-6">
+                                   @Html.TextBoxFor(model => model.Bien.Etage.Batiment.description, new { @class = "form-control", required = "", disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.Bien.Etage.Batiment.description, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Étage</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Bien.Etage.description ,new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Bien.Etage.description, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre</label>
+                                <div class="col-lg-6">
+                                    @Html.TextBoxFor(model => model.Bien.Code_a_barre, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Bien.Code_a_barre, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            @*<div class="form-group">
+                                    <label class="control-label col-lg-4" style="font-style:oblique;">Nom </label>
+                                    <div class="col-lg-6">
+
+                                        @Html.EditorFor(model => model.Nom, new { @class = "form-control", required = "True" })
+                                        @Html.ValidationMessageFor(model => model.Nom, String.Empty, new { @class = "test" })
+                                    </div>
+                                </div>*@
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Derniére affectation </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date derniére affectation </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_derniere_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_derniere_affectation, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date prochaine affectation </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_prochaine_affectation, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_prochaine_affectation, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date renouvellement </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_renouvellement_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_renouvellement_prevue, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date retour prévue </label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_retour_prevue, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_retour_prevue, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-lg-4" style="font-style:oblique;">Date sortie</label>
+                                <div class="col-lg-6">
+
+                                    @Html.EditorFor(model => model.Date_sortie, new { @class = "form-control", required = "True" })
+                                    @Html.ValidationMessageFor(model => model.Date_sortie, String.Empty, new { @class = "test" })
+                                </div>
+                            </div>
+
+
+
+                        </div>
+
+                        <div style="text-align: center;">
+                            <input type="submit" value="Valider" class="btn btn-default" />
+
+
+                            <button type="reset" class="btn btn-white"> @Html.ActionLink("Annuler", "GetMouvementBien")</button>
+
+                        </div>
+
+                         
+                            }
+
+
+
+                        </div>
+                    </div>
+                    <div>
+                        @Html.ActionLink("Liste des mouvements bien", "GetMouvementBien")
+                    </div>
                 </div>
+
             </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Id_bien, "Id_bien", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.DropDownList("Id_bien", null, htmlAttributes: new { @class = "form-control" })
-                    @Html.ValidationMessageFor(model => model.Id_bien, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Nom, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nom, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nom, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Date_derniere_affectation, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date_derniere_affectation, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Date_derniere_affectation, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Date_prochaine_affectation, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date_prochaine_affectation, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Date_prochaine_affectation, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Date_renouvellement_prevue, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date_renouvellement_prevue, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Date_renouvellement_prevue, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Date_retour_prevue, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date_retour_prevue, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Date_retour_prevue, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.Date_sortie, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Date_sortie, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Date_sortie, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
-                </div>
-            </div>
+
         </div>
-    }
-    
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
-</body>
-</html>

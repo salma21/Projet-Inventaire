@@ -29,6 +29,8 @@
     <Property Name="code" Type="varchar" MaxLength="254" />
     <Property Name="description" Type="varchar" MaxLength="254" />
     <Property Name="code_a_barre" Type="varchar" MaxLength="50" />
+    <Property Name="localité" Type="varchar" MaxLength="50" />
+    <Property Name="code_postale" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Bien">
     <Key>
@@ -63,6 +65,10 @@
     <Property Name="Photo" Type="image" />
     <Property Name="Code_immobilisation" Type="varchar" MaxLength="50" />
     <Property Name="Thumbnail" Type="image" />
+    <Property Name="Qte_inv1" Type="int" />
+    <Property Name="Qte_inv2" Type="int" />
+    <Property Name="Qte_inv3" Type="int" />
+    <Property Name="Qte_inv4" Type="int" />
   </EntityType>
   <EntityType Name="Bureau">
     <Key>
@@ -134,6 +140,7 @@
     <Property Name="idDelegation" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="libelle" Type="varchar" MaxLength="254" />
     <Property Name="Code_postal" Type="int" />
+    <Property Name="Localité" Type="varchar" MaxLength="254" />
   </EntityType>
   <EntityType Name="Depot">
     <Key>
@@ -191,6 +198,8 @@
     <Property Name="Fax" Type="int" />
     <Property Name="Email" Type="varchar" MaxLength="254" />
     <Property Name="Commentaire" Type="varchar" MaxLength="254" />
+    <Property Name="localité" Type="varchar" MaxLength="50" />
+    <Property Name="code_postale" Type="int" />
   </EntityType>
   <EntityType Name="Gouvernorat">
     <Key>
@@ -240,6 +249,15 @@
     </Key>
     <Property Name="Id_inventaire" Type="int" Nullable="false" />
     <Property Name="Id_Vehicule" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Localité">
+    <Key>
+      <PropertyRef Name="Id_localité" />
+    </Key>
+    <Property Name="CP" Type="int" />
+    <Property Name="delegation" Type="varchar" MaxLength="50" />
+    <Property Name="Localité" Type="varchar" MaxLength="50" />
+    <Property Name="Id_localité" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Marque">
     <Key>
@@ -310,6 +328,7 @@
     <Property Name="ville" Type="varchar" MaxLength="50" />
     <Property Name="pays" Type="varchar" MaxLength="50" />
     <Property Name="gouvernorat" Type="varchar" MaxLength="50" />
+    <Property Name="localié" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="Parc_auto">
     <Key>
@@ -443,6 +462,7 @@
     <Property Name="Etat" Type="varchar" MaxLength="254" />
     <Property Name="Num_chassis" Type="varchar" MaxLength="254" />
     <Property Name="Prix_d_achat" Type="float" Nullable="false" />
+    <Property Name="Annee_achat" Type="date" />
   </EntityType>
   <Association Name="FK_ACHAT_ASSOCIATI_FOURNISS">
     <End Role="Fournisseur" Type="Self.Fournisseur" Multiplicity="1" />
@@ -563,6 +583,20 @@
       <Dependent Role="Bien">
         <PropertyRef Name="Id_service" />
         <PropertyRef Name="id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Bien_Bien">
+    <End Role="Bien" Type="Self.Bien" Multiplicity="1" />
+    <End Role="Bien1" Type="Self.Bien" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Bien">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_bien" />
+      </Principal>
+      <Dependent Role="Bien1">
+        <PropertyRef Name="Id_etage" />
+        <PropertyRef Name="Id_bien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -747,6 +781,18 @@
       </Principal>
       <Dependent Role="InventaireVehicule">
         <PropertyRef Name="Id_inventaire" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Localité_Localité">
+    <End Role="Localité" Type="Self.Localité" Multiplicity="1" />
+    <End Role="Localité1" Type="Self.Localité" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Localité">
+        <PropertyRef Name="Id_localité" />
+      </Principal>
+      <Dependent Role="Localité1">
+        <PropertyRef Name="Id_localité" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -955,6 +1001,7 @@
     <EntitySet Name="Inventaire" EntityType="Self.Inventaire" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InventaireBien" EntityType="Self.InventaireBien" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="InventaireVehicule" EntityType="Self.InventaireVehicule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Localité" EntityType="Self.Localité" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Marque" EntityType="Self.Marque" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Modele" EntityType="Self.Modele" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MouvementBien" EntityType="Self.MouvementBien" Schema="dbo" store:Type="Tables" />
@@ -1008,6 +1055,10 @@
       <End Role="Personnel" EntitySet="Personnel" />
       <End Role="Bien" EntitySet="Bien" />
     </AssociationSet>
+    <AssociationSet Name="FK_Bien_Bien" Association="Self.FK_Bien_Bien">
+      <End Role="Bien" EntitySet="Bien" />
+      <End Role="Bien1" EntitySet="Bien" />
+    </AssociationSet>
     <AssociationSet Name="FK_BUREAU_ASSOCIATI_ETAGE" Association="Self.FK_BUREAU_ASSOCIATI_ETAGE">
       <End Role="Etage" EntitySet="Etage" />
       <End Role="Bureau" EntitySet="Bureau" />
@@ -1059,6 +1110,10 @@
     <AssociationSet Name="FK_INVENTAI_ASSOCIATI_INVENTAI" Association="Self.FK_INVENTAI_ASSOCIATI_INVENTAI">
       <End Role="Inventaire" EntitySet="Inventaire" />
       <End Role="InventaireVehicule" EntitySet="InventaireVehicule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Localité_Localité" Association="Self.FK_Localité_Localité">
+      <End Role="Localité" EntitySet="Localité" />
+      <End Role="Localité1" EntitySet="Localité" />
     </AssociationSet>
     <AssociationSet Name="FK_MARQUE_ASSOCIATI_SOUS_MOD" Association="Self.FK_MARQUE_ASSOCIATI_SOUS_MOD">
       <End Role="Sous_modele" EntitySet="Sous_modele" />

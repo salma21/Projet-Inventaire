@@ -17,6 +17,8 @@
                     {
                         @Html.AntiForgeryToken()
                     @Html.HiddenFor(model => model.Id_parc)
+                        @Html.HiddenFor(model => model.idDelegation)
+                        @Html.HiddenFor(model => model.idBatiment)
                         <div class="form-horizontal">
                             <h4>Parc automobile</h4>
                             <hr />
@@ -36,14 +38,18 @@
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Délégation </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Batiment.Delegation.libelle, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Batiment.Delegation.libelle, String.Empty, new { @class = "test" })
+                                    @*@Html.DropDownListFor(model => model.idDelegation, (SelectList)ViewData["delegation"], "--Choisir--", new { @class = "form-control", required = "" })*@
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Bâtiment </label>
                                 <div class="col-lg-6">
-                                    @Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })
+                                    @Html.TextBoxFor(model => model.Batiment.description, new { @class = "form-control", required = "", disabled = "disabled" })
+                                    @Html.ValidationMessageFor(model => model.Batiment.description, String.Empty, new { @class = "test" })
+                                    @*@Html.DropDownListFor(model => model.idBatiment, (SelectList)ViewData["batiment"], "--Choisir--", new { @class = "form-control", required = "" })*@
                                 </div>
                             </div>
 

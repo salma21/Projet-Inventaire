@@ -27,12 +27,20 @@ new { @id = "frmId", @class = "fieldset-form" }))
                             @Html.HiddenFor(model => model.Id_etage)
                             @Html.HiddenFor(model => model.idBatiment)
                             @Html.HiddenFor(model => model.Id_bureau)
+                            @*@Html.HiddenFor(model => model.idGouvernorat)
+                            @Html.HiddenFor(model => model.idOrganisation)
+                            @Html.HiddenFor(model => model.idRegion)
+                            @Html.HiddenFor(model => model.idDelegation)*@
+                            @*@Html.HiddenFor(model => model.idPays)*@
+                            @Html.HiddenFor(model => model.Id_service)
+                            @Html.HiddenFor(model => model.id)
                             <div class="form-group">
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code à barre </label>
                                 <div class="col-lg-6">
-
                                     @Html.TextBoxFor(model => model.Code_a_barre, new { @class = "form-control", required = "", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(model => model.Code_a_barre, String.Empty, new { @class = "test" })
+       
+                               
                                 </div>
                             </div>
 
@@ -40,7 +48,7 @@ new { @id = "frmId", @class = "fieldset-form" }))
                                 <label class="control-label col-lg-4" style="font-style:oblique;">Code bureau </label>
                                 <div class="col-lg-6">
 
-                                    @Html.EditorFor(model => model.id, new { @class = "form-control", required = "" })
+                                    @Html.EditorFor(model => model.id, new { @class = "form-control", @readonly = "readonly" })
                                     @Html.ValidationMessageFor(model => model.id, String.Empty, new { @class = "test" })
                                 </div>
                             </div>

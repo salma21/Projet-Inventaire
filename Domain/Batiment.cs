@@ -11,7 +11,7 @@ namespace Domain
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
+    
     public partial class Batiment
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -27,19 +27,11 @@ namespace Domain
         public Nullable<int> idGouvernorat { get; set; }
         public int idDelegation { get; set; }
         public int idBatiment { get; set; }
-        [Required(ErrorMessage = "L'adresse est obligatoire")]
-        [StringLength(50, MinimumLength = 4, ErrorMessage = "L'adresse doit comporter entre 4 et 50 caractéres")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "L'adresse est invalide")]
         public string code { get; set; }
-
-        [Required(ErrorMessage = "La désignation est obligatoire")]
-        [StringLength(30, MinimumLength = 3, ErrorMessage = "La désignation doit contenir entre 3 et 30 caractères")]
-        [RegularExpression(@"^[a-zA-Z 0-9éèêâùÉÈ]+$", ErrorMessage = "La désignation est invalide.Exemple : Batiment 1")]
         public string description { get; set; }
-        [Required(ErrorMessage = "Le code à barre est obligatoire")]
-        [StringLength(13, MinimumLength = 13, ErrorMessage = "Le code à barre est invalide : il doit contenir 13 chiffres")]
-        [RegularExpression(@"^[0-9]+$+$", ErrorMessage = "Le code à barre est invalide")]
         public string code_a_barre { get; set; }
+        public string localité { get; set; }
+        public string code_postale { get; set; }
     
         public virtual Delegation Delegation { get; set; }
         public virtual Organisation Organisation { get; set; }

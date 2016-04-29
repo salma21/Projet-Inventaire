@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="BissTestModelStoreContainer" CdmEntityContainer="BissTestEntities">
+  <EntityContainerMapping StorageEntityContainer="BissTestModelStoreContainer" CdmEntityContainer="BissInventaireEntities">
     <EntitySetMapping Name="Achat">
       <EntityTypeMapping TypeName="BissTestModel.Achat">
         <MappingFragment StoreEntitySet="Achat">
@@ -20,6 +20,7 @@
     <EntitySetMapping Name="Batiment">
       <EntityTypeMapping TypeName="BissTestModel.Batiment">
         <MappingFragment StoreEntitySet="Batiment">
+          <ScalarProperty Name="code_postale" ColumnName="code_postale" />
           <ScalarProperty Name="idOrganisation" ColumnName="idOrganisation" />
           <ScalarProperty Name="idPays" ColumnName="idPays" />
           <ScalarProperty Name="idRegion" ColumnName="idRegion" />
@@ -29,6 +30,7 @@
           <ScalarProperty Name="code" ColumnName="code" />
           <ScalarProperty Name="description" ColumnName="description" />
           <ScalarProperty Name="code_a_barre" ColumnName="code_a_barre" />
+          <ScalarProperty Name="localité" ColumnName="localité" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,6 +65,10 @@
           <ScalarProperty Name="Photo" ColumnName="Photo" />
           <ScalarProperty Name="Code_immobilisation" ColumnName="Code_immobilisation" />
           <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
+          <ScalarProperty Name="Qte_inv1" ColumnName="Qte_inv1" />
+          <ScalarProperty Name="Qte_inv2" ColumnName="Qte_inv2" />
+          <ScalarProperty Name="Qte_inv3" ColumnName="Qte_inv3" />
+          <ScalarProperty Name="Qte_inv4" ColumnName="Qte_inv4" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -134,6 +140,7 @@
           <ScalarProperty Name="idDelegation" ColumnName="idDelegation" />
           <ScalarProperty Name="libelle" ColumnName="libelle" />
           <ScalarProperty Name="Code_postal" ColumnName="Code_postal" />
+          <ScalarProperty Name="Localité" ColumnName="Localité" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -181,6 +188,8 @@
     <EntitySetMapping Name="Fournisseur">
       <EntityTypeMapping TypeName="BissTestModel.Fournisseur">
         <MappingFragment StoreEntitySet="Fournisseur">
+          <ScalarProperty Name="code_postale" ColumnName="code_postale" />
+          <ScalarProperty Name="localité" ColumnName="localité" />
           <ScalarProperty Name="idPays" ColumnName="idPays" />
           <ScalarProperty Name="idRegion" ColumnName="idRegion" />
           <ScalarProperty Name="idGouvernorat" ColumnName="idGouvernorat" />
@@ -241,6 +250,16 @@
         <MappingFragment StoreEntitySet="InventaireVehicule">
           <ScalarProperty Name="Id_inventaire" ColumnName="Id_inventaire" />
           <ScalarProperty Name="Id_Vehicule" ColumnName="Id_Vehicule" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Localité">
+      <EntityTypeMapping TypeName="BissTestModel.Localité">
+        <MappingFragment StoreEntitySet="Localité">
+          <ScalarProperty Name="CP" ColumnName="CP" />
+          <ScalarProperty Name="delegation" ColumnName="delegation" />
+          <ScalarProperty Name="Localité1" ColumnName="Localité" />
+          <ScalarProperty Name="Id_localité" ColumnName="Id_localité" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -314,6 +333,7 @@
           <ScalarProperty Name="ville" ColumnName="ville" />
           <ScalarProperty Name="pays" ColumnName="pays" />
           <ScalarProperty Name="gouvernorat" ColumnName="gouvernorat" />
+          <ScalarProperty Name="localié" ColumnName="localié" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -451,6 +471,7 @@
           <ScalarProperty Name="Etat" ColumnName="Etat" />
           <ScalarProperty Name="Num_chassis" ColumnName="Num_chassis" />
           <ScalarProperty Name="Prix_d_achat" ColumnName="Prix_d_achat" />
+          <ScalarProperty Name="Annee_achat" ColumnName="Annee_achat" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

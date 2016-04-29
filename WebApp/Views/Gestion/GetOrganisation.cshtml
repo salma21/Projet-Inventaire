@@ -7,19 +7,28 @@
         <div class="panel panel-default">
             <div class="panel-title">
                 Liste des sociétés
+
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
             <div class="panel-body table-responsive">
+                <div style="text-align:center;"><a href="~/Export/ExportOrganisation"><span class="icon color7"><i class="fa fa-file-excel-o"></i></span>&nbsp; &nbsp;  Export Vers Fichier Excel</a></div> 
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
                             <th>Nom</th>
                             <th>Matricule fiscale</th>
-                            <th>N° Registre de coomerce</th>
+                            <th>N° RC</th>
                             <th>Email</th>
                             <th>Tél</th>
                             <th>Fax</th>
                             <th>Site Web</th>
                             <th>Adresse</th>
+                            <th>Localité</th>
+                            <th>Code Postale</th>
                             <th>Ville</th>
                             <th>Gouvernerat</th>
                             <th>Pays</th>
@@ -40,6 +49,8 @@
                                 <td class="center">@item.fax</td>
                                 <td class="center">@item.Site_web</td>
                                 <td class="center">@item.adresse</td>
+                                <td class="center">@item.localié</td>
+                                <td class="center">@item.description</td>
                                 <td class="center">@item.ville</td>
                                 <td class="center">@item.gouvernorat</td>
                                 <td class="center">@item.pays</td>

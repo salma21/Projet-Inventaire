@@ -7,8 +7,15 @@
         <div class="panel panel-default">
             <div class="panel-title">
                 Liste des Vehicules
+
+                <ul class="panel-tools">
+                    <li><a class="icon minimise-tool"><i class="fa fa-minus"></i></a></li>
+                    <li><a class="icon expand-tool"><i class="fa fa-expand"></i></a></li>
+                    <li><a class="icon closed-tool"><i class="fa fa-times"></i></a></li>
+                </ul>
             </div>
             <div class="panel-body table-responsive">
+                <div style="text-align:center;"><a href="~/Export/ExportVehicule"><span class="icon color7"><i class="fa fa-file-excel-o"></i></span>&nbsp; &nbsp;  Export Vers Fichier Excel</a></div> 
                 <table id="example0" class="table display">
                     <thead>
                         <tr>
@@ -16,6 +23,7 @@
                             <th>Modèle</th>
                             <th>Désignation</th>
                             <th>N° châssis</th>
+                            
                             <th>Parc</th>
                             <th>Batiment</th>
 
@@ -25,6 +33,7 @@
                             <th>Contrat assurance</th>
                             <th>Societe maintenance</th>
                             <th>Contrat maintenance</th>*@
+                            <th>Année achat</th>
                             <th>Prix achat</th>
                             <th>Action</th>
                         </tr>
@@ -50,6 +59,7 @@
                                     <td class="center"> @item.Contrat_maintenance.Type_maintenance</td>
                                     <td class="center">@item.Contrat_assurance.Societe_assurance.Libelle </td>
                                     <td class="center">@item.Contrat_assurance.Type_assurance </td>*@
+                                <td class="center">@item.Annee_achat</td>
                                     <td class="center">@item.Prix_d_achat</td>
 
 
